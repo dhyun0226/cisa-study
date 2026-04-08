@@ -425,7 +425,14 @@ topics: [
     'RTO 낮을수록 = <strong>복구 비용 증가</strong> — 허용 중단 시간↓ → 고가용성 전략 필요 → 비용↑ (RPO=데이터 손실, RTO=중단 시간)',
     'SW 업그레이드 실패 시 이전 상태 복원 = <strong>Back-out 절차</strong> — 변경 통제(Change Control) 프로세스의 핵심 요소 (문제관리=추적·분석, 인시던트관리=운영 오류 처리)',
     '대체 사이트(Hot/Warm/Cold) 계약 핵심 = <strong>동시 사용 가능 구독자 수</strong> — 총 구독자 수보다 동시 이용 제한이 핵심 (물리 보안·레퍼런스는 계약 조항 아님)',
-    '기술 용량 모니터링 주 목적 = <strong>SLA(서비스 수준) 충족 보장</strong> — HW 조달·미래 예측·최적 운영은 부차적, IT의 1차 의무는 비즈니스 서비스 수준 요구 충족'
+    '기술 용량 모니터링 주 목적 = <strong>SLA(서비스 수준) 충족 보장</strong> — HW 조달·미래 예측·최적 운영은 부차적, IT의 1차 의무는 비즈니스 서비스 수준 요구 충족',
+    'SaaS SLA 가용성 모니터링 최선 = <strong>자체 폴링 도구(내부 모니터링)</strong> — 벤더 보고서만으로 부족, 사용자 보고는 누락 가능, 제3자는 비용 비효율적',
+    '웹 애플리케이션 무중단 접근 보장 = <strong>로드 밸런싱</strong> — 다중 서버 트래픽 분산 + 서버 장애 시 자동 리디렉션 (미러링·RAID=디스크만, DNS=가용성 무관)',
+    '<strong>이중 IPF</strong> 실행 가능성 핵심 = <strong>주 사이트 워크로드 모니터링</strong> — 백업 용량 충분성 보장 (근접 위치=재해 동시 피해 위험, 최신 HW≠호환성, 설치 시 테스트만으로 부족→정기 테스트 필요)',
+    '장애 유형별 대응: <strong>서버 장애=클러스터링</strong>(자동 인계) / 통신 장애=이중 경로·다이얼 백업 / 전원 장애=UPS·대기 전원 — 문제가 묻는 장애 유형 정확히 매칭!',
+    '성능 우려 시 최우선 = <strong>Baseline 개발 + 모니터링</strong> — 실증 데이터 확보 후 판단 (즉시 변경 ✗, 대체 절차 ✗, 매뉴얼 ✗)',
+    '시스템 파라미터 검토 PRIMARY = <strong>보안+성능 균형</strong> — 설정 자체가 올바라야 감사추적·승인·접근제한이 유효 (잘못된 설정+완벽한 통제=여전히 악영향)',
+    '피크 시간 다운타임 위험 = <strong>물리 인프라 예방 정비</strong>(전기·냉각) — 사고 시 즉시 다운 / 데이터 마이그레이션=성능 저하(≠다운타임), 스테이징·대기 장비=영향 없음'
   ]
 }
 ]
@@ -6858,6 +6865,7127 @@ keyConcepts:[
 "용량 모니터링 주 목적|서비스 수준 요구사항(SLA) 충족 — IT의 1차 의무는 비즈니스 기대 충족",
 "용량 모니터링 부차적 이점|HW 조달 파악, 미래 용량 예측, 최적 운영 — 모두 SLA 충족보다 후순위",
 "IT 관리자 1차 의무|비즈니스 서비스 수준 기대 충족 — 기술적 최적화보다 상위 목표"
+]
+},
+
+// ============================================================
+// Q202 - SaaS SLA 가용성 모니터링
+// ============================================================
+{
+id: 202,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `조직이 SaaS(Software as a Service) 운영 모델을 사용하여 온라인 고객 헬프데스크 애플리케이션을 구현했다. IS 감사인은 SaaS 벤더와의 가용성 관련 SLA를 모니터링하기 위한 최선의 통제를 권고하도록 요청받았다. IS 감사인이 제공할 수 있는 최선의 권고는?<br><small style="color:#94a3b8">An organization implemented an online customer help desk application using a SaaS operating model. An IS auditor is asked to recommend the best control to monitor the SLA with the SaaS vendor regarding availability. What is the BEST recommendation?</small>`,
+options: [
+  "SaaS 벤더에게 주간 애플리케이션 가동 시간 보고서를 제공하도록 요청한다.<br><small style='color:#94a3b8'>Ask the SaaS vendor to provide a weekly report on application uptime.</small>",
+  "온라인 폴링 도구를 구현하여 애플리케이션을 모니터링하고 장애를 기록한다.<br><small style='color:#94a3b8'>Implement an online polling tool to monitor the application and record outages.</small>",
+  "사용자가 보고한 모든 장애를 기록하고 주간 장애 시간을 집계한다.<br><small style='color:#94a3b8'>Log all application outages reported by users and aggregate the outage time weekly.</small>",
+  "독립 제3자와 계약하여 주간 가동 시간 보고서를 제공받는다.<br><small style='color:#94a3b8'>Contract an independent third party to provide weekly reports on application uptime.</small>"
+],
+correct: 1,
+explanation: `<p><b>자체 온라인 폴링 도구</b>를 구현하여 SaaS 애플리케이션의 가용성을 직접 모니터링하는 것이 최선입니다. 내부 보고서와 벤더 SLA 보고서를 비교하여 정확성을 검증할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선택지</th><th style="padding:8px;border:1px solid #334155">판단</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 벤더 주간 보고서</td><td style="padding:8px;border:1px solid #ddd">벤더 관점만 반영 — 내부 모니터링 없이 부정확성 입증 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 자체 폴링 도구 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>내부 독립 모니터링 → 벤더 보고서와 비교 검증 가능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 사용자 보고 기록</td><td style="padding:8px;border:1px solid #ddd">간헐적 장애 누락 가능 — 완전한 그림 제공 못함</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 제3자 계약</td><td style="padding:8px;border:1px solid #ddd">비용 비효율적 + 벤더 대신 제3자를 모니터링해야 하는 문제 발생</td></tr>
+</table>
+<div class="sbox"><b>🔍 SLA 모니터링 원칙:</b><br>
+• <b>내부 독립 모니터링</b>이 최선 — 벤더 자체 보고만 의존하면 검증 불가<br>
+• 사용자 보고 = 수동적·불완전 (간헐적 장애 누락)<br>
+• 제3자 위탁 = 비용↑ + 모니터링 대상만 바뀜 (벤더→제3자)</div>`,
+reference:"CRM Chapter 4: IS Operations — SaaS & Cloud Service Level Monitoring",
+keyConcepts:[
+"SaaS SLA 모니터링|자체 폴링 도구로 독립 모니터링 — 벤더 보고서와 비교 검증이 핵심",
+"벤더 자체 보고 한계|벤더 관점만 반영 — 내부 데이터 없이 부정확성 입증 불가",
+"사용자 보고 한계|간헐적 장애 누락 가능 — 완전한 가용성 그림 제공 못함"
+]
+},
+
+// ============================================================
+// Q203 - 웹 애플리케이션 무중단 가용성
+// ============================================================
+{
+id: 203,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `다음 중 사용자가 중요하고 많이 사용되는 웹 기반 애플리케이션에 중단 없이 접근할 수 있도록 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">Which of the following BEST ensures that users have uninterrupted access to a critical, heavily used web-based application?</small>`,
+options: [
+  "디스크 미러링.<br><small style='color:#94a3b8'>Disk mirroring</small>",
+  "RAID(Redundant Array of Inexpensive Disks).<br><small style='color:#94a3b8'>Redundant array of inexpensive disks (RAID)</small>",
+  "동적 DNS(Domain Name System).<br><small style='color:#94a3b8'>Dynamic domain name system (DNS)</small>",
+  "로드 밸런싱.<br><small style='color:#94a3b8'>Load balancing</small>"
+],
+correct: 3,
+explanation: `<p><b>로드 밸런싱</b>은 트래픽을 다중 서버에 분산하여 무중단 가용성과 일관된 응답 시간을 보장합니다. 서버 장애 시 기능하는 서버로 자동 리디렉션합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">기술</th><th style="padding:8px;border:1px solid #334155">보호 범위</th><th style="padding:8px;border:1px solid #334155">한계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">디스크 미러링</td><td style="padding:8px;border:1px solid #ddd">디스크 실시간 복제</td><td style="padding:8px;border:1px solid #ddd">서버 크래시 시 가용성 보장 못함</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">RAID</td><td style="padding:8px;border:1px solid #ddd">디스크 복원력 향상</td><td style="padding:8px;border:1px solid #ddd">NIC·CPU 장애 보호 불가</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">동적 DNS</td><td style="padding:8px;border:1px solid #ddd">동적 IP에 호스트명 할당</td><td style="padding:8px;border:1px solid #ddd">가용성과 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>로드 밸런싱 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>다중 서버 트래픽 분산</b></td><td style="padding:8px;border:1px solid #ddd"><b>서버 장애 시 자동 리디렉션</b></td></tr>
+</table>
+<div class="sbox"><b>⚖️ 가용성 기술 비교:</b><br>
+• <b>로드 밸런싱</b> = 서버 레벨 가용성 (트래픽 분산 + 장애 전환)<br>
+• 미러링/RAID = <b>디스크 레벨</b>만 보호 (서버·NIC·CPU 장애 무방비)<br>
+• 동적 DNS = IP 관리 기술, 가용성 보장과 무관</div>`,
+reference:"CRM Chapter 4: IS Operations — Availability & Load Balancing",
+keyConcepts:[
+"로드 밸런싱|다중 서버 트래픽 분산 + 장애 시 자동 리디렉션 — 웹 앱 무중단 가용성 최선",
+"디스크 미러링 vs RAID|디스크 레벨 보호만 — 서버·NIC·CPU 장애 시 가용성 보장 못함",
+"동적 DNS|동적 IP에 호스트명 할당 기술 — 가용성 보장과 직접 관련 없음"
+]
+},
+
+// ============================================================
+// Q204 - Duplicate IPF Viability
+// ============================================================
+{
+id: 204,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `다음 중 이중 정보처리시설(Duplicate IPF)의 실행 가능성을 보장하기 위해 반드시 존재해야 하는 것은?<br><small style="color:#94a3b8">Which of the following must exist to ensure the viability of a duplicate information processing facility (IPF)?</small>`,
+options: [
+  "신속하고 효율적인 복구를 위해 주 사이트 근처에 위치해야 한다.<br><small style='color:#94a3b8'>The site is near the primary site to ensure quick and efficient recovery.</small>",
+  "사이트에 가용한 가장 최신 하드웨어가 구비되어야 한다.<br><small style='color:#94a3b8'>The site contains the most advanced hardware available.</small>",
+  "적절한 백업이 가능하도록 주 사이트의 워크로드를 모니터링해야 한다.<br><small style='color:#94a3b8'>The workload of the primary site is monitored to ensure adequate backup is available.</small>",
+  "하드웨어가 설치 시 테스트되어 정상 작동이 확인되어야 한다.<br><small style='color:#94a3b8'>The hardware is tested when it is installed to ensure it is working properly.</small>"
+],
+correct: 2,
+explanation: `<p><b>주 사이트의 워크로드 모니터링</b>은 이중 IPF의 실행 가능성을 보장하는 핵심 요소입니다. 자원 가용성이 확보되어야 비상 시 백업 사이트가 실제로 기능할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 주 사이트 근처 위치</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">동일 자연재해 노출 위험 — 근접성은 장점이자 위험</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 최신 하드웨어</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">합리적 호환성이 핵심 — 최신이 반드시 적합하지 않음</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 워크로드 모니터링 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>자원 가용성 확보 — 백업 용량 충분성 보장</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 설치 시 하드웨어 테스트</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">초기 테스트는 필수이나 정기적 백업 데이터 테스트가 더 중요</td></tr>
+</table>
+<div class="sbox"><b>🏢 이중 IPF 핵심 원칙:</b><br>
+• <b>워크로드 모니터링</b> = 백업 사이트 용량 충분성 지속 확인<br>
+• 위치 = 동일 재해 권역 회피 (근접 ≠ 무조건 좋음)<br>
+• 하드웨어 = <b>합리적 호환성</b> > 최신 사양<br>
+• 테스트 = 설치 시 1회가 아닌 <b>정기적 백업 데이터 테스트</b> 필요</div>`,
+reference:"CRM Chapter 4: IS Operations — Duplicate IPF & Backup Facilities",
+keyConcepts:[
+"이중 IPF 워크로드 모니터링|주 사이트 워크로드 모니터링으로 백업 사이트 자원 충분성 보장 — 실행 가능성의 핵심",
+"백업 사이트 위치|주 사이트와 동일 자연재해 권역 회피 — 근접성은 장단점 모두 존재",
+"백업 하드웨어 호환성|최신 하드웨어가 아닌 합리적 호환성(HW/SW)이 백업 기반",
+"백업 테스트|설치 시 1회 테스트 부족 — 실제 백업 데이터의 정기적 테스트 필수"
+]
+},
+
+// ============================================================
+// Q205 - Server Failure in Distributed Environment
+// ============================================================
+{
+id: 205,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `다음 중 분산 환경에서 서버 장애의 영향을 가장 잘 제한하는 것은?<br><small style="color:#94a3b8">Which of the following BEST limits the impact of server failures in a distributed environment?</small>`,
+options: [
+  "이중 경로(Redundant pathways).<br><small style='color:#94a3b8'>Redundant pathways</small>",
+  "클러스터링(Clustering).<br><small style='color:#94a3b8'>Clustering</small>",
+  "다이얼 백업 회선(Dial backup lines).<br><small style='color:#94a3b8'>Dial backup lines</small>",
+  "대기 전원(Standby power).<br><small style='color:#94a3b8'>Standby power</small>"
+],
+correct: 1,
+explanation: `<p><b>클러스터링</b>은 두 대 이상의 서버가 하나의 단위로 작동하여 한 서버가 장애 시 다른 서버가 자동으로 인계받는 기술입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">보호 대상</th><th style="padding:8px;border:1px solid #334155">서버 장애 대응</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">이중 경로</td><td style="padding:8px;border:1px solid #ddd">통신 채널 장애</td><td style="padding:8px;border:1px solid #ddd">✗ 서버 장애와 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>클러스터링 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>서버 장애</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 장애 서버 → 다른 서버 자동 인계</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">다이얼 백업 회선</td><td style="padding:8px;border:1px solid #ddd">통신 채널 장애</td><td style="padding:8px;border:1px solid #ddd">✗ 서버 장애와 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">대기 전원</td><td style="padding:8px;border:1px solid #ddd">전원 장애</td><td style="padding:8px;border:1px solid #ddd">✗ 서버 자체 장애와 무관</td></tr>
+</table>
+<div class="sbox"><b>🖥️ 장애 유형별 대응 기술:</b><br>
+• <b>서버 장애</b> → 클러스터링 (다중 서버 자동 인계)<br>
+• <b>통신 장애</b> → 이중 경로 / 다이얼 백업 회선<br>
+• <b>전원 장애</b> → 대기 전원 / UPS<br>
+• 각 기술은 <b>특정 장애 유형</b>에만 효과적 — 문제가 묻는 장애 유형을 정확히 파악!</div>`,
+reference:"CRM Chapter 4: IS Operations — Server Clustering & High Availability",
+keyConcepts:[
+"클러스터링|다중 서버가 하나의 단위로 작동 — 장애 시 자동 인계(Failover)로 서버 가용성 보장",
+"이중 경로 vs 다이얼 백업|통신 채널 장애 대응 기술 — 서버 장애와는 무관",
+"장애 유형별 대응|서버=클러스터링, 통신=이중 경로, 전원=UPS/대기 전원 — 유형 매칭이 핵심"
+]
+},
+
+// ============================================================
+// Q206 - System Performance Concerns
+// ============================================================
+{
+id: 206,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `비즈니스 부서가 새로 구현된 시스템의 성능에 대해 우려하고 있다. IS 감사인이 권고해야 할 사항은?<br><small style="color:#94a3b8">Business units are concerned about the performance of a newly implemented system. Which of the following should an information systems (IS) auditor recommend?</small>`,
+options: [
+  "기준선(Baseline)을 개발하고 시스템 사용량을 모니터링한다.<br><small style='color:#94a3b8'>Develop a baseline and monitor system usage.</small>",
+  "대체 처리 절차를 정의한다.<br><small style='color:#94a3b8'>Define alternate processing procedures.</small>",
+  "유지보수 매뉴얼을 준비한다.<br><small style='color:#94a3b8'>Prepare the maintenance manual.</small>",
+  "사용자가 제안한 변경사항을 구현한다.<br><small style='color:#94a3b8'>Implement the changes users have suggested.</small>"
+],
+correct: 0,
+explanation: `<p><b>성능 기준선(Baseline) 개발 및 모니터링</b>이 최우선입니다. 실증적 데이터를 기반으로 시스템 수정 여부를 판단해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 기준선 개발 + 모니터링 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>실증 데이터 기반 의사결정 — 원인 파악 후 조치</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 대체 처리 절차</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">성능 자체를 개선하지 않음, 원인 미파악 상태</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 유지보수 매뉴얼</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">성능 문제와 무관한 문서 작업</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 사용자 제안 변경 구현</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">원인 모른 채 변경 → 효과 불확실, 오히려 악화 가능</td></tr>
+</table>
+<div class="sbox"><b>📊 성능 문제 대응 원칙:</b><br>
+• <b>1단계: 측정(Baseline)</b> → 2단계: 모니터링 → 3단계: 분석 → 4단계: 조치<br>
+• "우려"만으로 즉시 변경 금지 — <b>실증 데이터(Empirical Data)</b> 확보가 선행<br>
+• 감사인 역할 = 체계적·객관적 접근 권고 (사용자 요청 즉시 수용 ✗)</div>`,
+reference:"CRM Chapter 4: IS Operations — Performance Monitoring & Capacity Management",
+keyConcepts:[
+"성능 기준선(Baseline)|시스템 성능 측정 기준점 설정 — 이후 모니터링·비교·의사결정의 기반",
+"실증 데이터 기반 접근|성능 우려 시 즉시 변경 금지 — 측정→모니터링→분석→조치 순서 준수",
+"감사인 권고 원칙|주관적 불만이 아닌 객관적 데이터 기반 판단 — 사용자 제안 무조건 수용 ✗"
+]
+},
+
+// ============================================================
+// Q207 - Authentication Server Performance
+// ============================================================
+{
+id: 207,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `CRM 애플리케이션 감사 중 IS 감사인은 피크 시간대에 사용자 로그온 시간이 현저히 길어지는 것을 관찰했다. 로그온 후 평균 응답 시간은 허용 범위 내이다. IS 감사인이 권고해야 할 사항은?<br><small style="color:#94a3b8">While conducting an audit on the CRM application, the IS auditor observes that it takes a significantly long time for users to log on during peak hours. After logged on, the average response time is within acceptable limits. Which should the IS auditor recommend?</small>`,
+options: [
+  "시스템이 현재 비즈니스 요구사항을 충족하므로 조치 불필요.<br><small style='color:#94a3b8'>No action should be taken because the system meets current business requirements.</small>",
+  "IT가 네트워크 대역폭을 증가시켜 성능을 개선해야 한다.<br><small style='color:#94a3b8'>IT should increase the network bandwidth to improve performance.</small>",
+  "사용자에게 시스템 사용법에 대한 상세 매뉴얼을 제공해야 한다.<br><small style='color:#94a3b8'>Users should be provided with detailed manuals to use the system properly.</small>",
+  "인증 서버에 대한 성능 측정 기준을 수립해야 한다.<br><small style='color:#94a3b8'>Establish performance measurement criteria for the authentication servers.</small>"
+],
+correct: 3,
+explanation: `<p><b>인증 서버 성능 측정 기준 수립</b>이 정답입니다. 로그온만 느리고 로그온 후 정상이라면 문제는 인증 서버에 있으며, 측정 기준을 통해 원인을 정량화하고 개선할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 조치 불필요</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">느린 로그온 = 직원 생산성 저하 — 무시 불가</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 네트워크 대역폭 증가</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">로그온 후 응답 정상 → 네트워크가 원인이 아닐 수 있음 (원인 미확인 상태 조치)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 사용자 매뉴얼 제공</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">로그온 문제 ≠ 사용법 문제 — 교육으로 해결 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 인증 서버 성능 기준 수립 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>허용 임계값 정량화 → 측정 → 원인 파악 → 개선</b></td></tr>
+</table>
+<div class="sbox"><b>🔍 성능 문제 진단 키워드 분석:</b><br>
+• <b>로그온만 느림</b> + 로그온 후 정상 → 병목 = <b>인증 서버</b> (네트워크·애플리케이션 아님)<br>
+• <b>피크 시간대만</b> → 용량/부하 관련 문제 시사<br>
+• 감사인 접근: 원인 추정으로 즉시 조치 ✗ → <b>성능 기준 수립 후 체계적 진단</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Authentication & Performance Management",
+keyConcepts:[
+"인증 서버 성능 기준|로그온만 느린 경우 인증 서버 병목 — 성능 임계값 정량화로 체계적 진단",
+"증상 기반 원인 특정|로그온 느림+응답 정상 → 네트워크 아닌 인증 서버 문제 — 증상으로 범위 좁히기",
+"원인 미확인 시 조치 금지|대역폭 증가 등 추정 기반 조치 ✗ — 측정 기준 수립이 선행"
+]
+},
+
+// ============================================================
+// Q208 - Optimal Server Configuration
+// ============================================================
+{
+id: 208,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `서버가 처리 요구사항을 지원하도록 최적으로 구성되어 있는지 확인하기 위해 IS 감사인이 검토해야 할 것은?<br><small style="color:#94a3b8">Which of the following should the IS auditor review to ensure that servers are optimally configured to support processing requirements?</small>`,
+options: [
+  "벤치마크 테스트 결과.<br><small style='color:#94a3b8'>Benchmark test results</small>",
+  "서버 로그.<br><small style='color:#94a3b8'>Server logs</small>",
+  "다운타임 보고서.<br><small style='color:#94a3b8'>Downtime reports</small>",
+  "서버 이용률 데이터.<br><small style='color:#94a3b8'>Server utilization data</small>"
+],
+correct: 3,
+explanation: `<p><b>서버 이용률 데이터</b>는 과소/과다 사용 서버를 식별하고 최적 구성 여부를 판단하는 데 가장 적합한 자료입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">제공 정보</th><th style="padding:8px;border:1px solid #334155">최적 구성 판단</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">벤치마크 테스트</td><td style="padding:8px;border:1px solid #ddd">표준 기준 대비 성능 비교</td><td style="padding:8px;border:1px solid #ddd">✗ 조직 특화 최적 구성 데이터 부족</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">서버 로그</td><td style="padding:8px;border:1px solid #ddd">수행된 활동 기록</td><td style="padding:8px;border:1px solid #ddd">✗ 이용률 데이터 미포함</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">다운타임 보고서</td><td style="padding:8px;border:1px solid #ddd">장애로 인한 비가동 시간</td><td style="padding:8px;border:1px solid #ddd">✗ 구성 최적화와 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>서버 이용률 데이터 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>CPU·메모리·디스크 사용률</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 과소/과다 사용 식별 → ROI 최적화</b></td></tr>
+</table>
+<div class="sbox"><b>📈 서버 최적 구성 검토 포인트:</b><br>
+• <b>이용률 모니터링</b> = 과소 사용 서버 식별 → 비용 효율성 저하 방지<br>
+• 벤치마크 = 표준화된 비교 도구 (조직 특화 ✗)<br>
+• 서버 로그 = 활동 기록 (이용률 ≠ 활동)<br>
+• 핵심: <b>"최적 구성"</b> = 자원 이용률 최적화 = <b>ROI 극대화</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Server Utilization & Capacity Planning",
+keyConcepts:[
+"서버 이용률 데이터|CPU·메모리·디스크 사용률 모니터링 — 과소/과다 사용 식별로 최적 구성 판단",
+"벤치마크 vs 이용률|벤치마크=표준 기준 비교, 이용률=실제 조직 환경 사용량 — 최적 구성은 이용률이 핵심",
+"이용률과 ROI|과소 사용 서버 = 비용 효율성 저하 — 이용률 비율 제고로 투자 수익 극대화"
+]
+},
+
+// ============================================================
+// Q209 - System Parameters Review
+// ============================================================
+{
+id: 209,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `시스템 매개변수(파라미터)를 검토할 때 IS 감사인의 주된 관심사(PRIMARY concern)는?<br><small style="color:#94a3b8">When reviewing system parameters, an IS auditor's PRIMARY concern should be that:</small>`,
+options: [
+  "보안과 성능 요구사항 모두를 충족하도록 설정되어 있다.<br><small style='color:#94a3b8'>They are set to meet both security and performance requirements.</small>",
+  "변경사항이 감사 추적에 기록되고 주기적으로 검토된다.<br><small style='color:#94a3b8'>Changes are recorded in an audit trail and periodically reviewed.</small>",
+  "변경사항이 승인되고 적절한 문서로 뒷받침된다.<br><small style='color:#94a3b8'>Changes are authorized and supported by appropriate documents.</small>",
+  "시스템 매개변수에 대한 접근이 제한되어 있다.<br><small style='color:#94a3b8'>Access to parameters in the system is restricted.</small>"
+],
+correct: 0,
+explanation: `<p><b>보안과 성능 요구사항의 균형</b>이 시스템 매개변수의 1차적 관심사입니다. 매개변수가 올바르게 설정되지 않으면 다른 통제(감사 추적, 승인, 접근 제한)가 있어도 부정적 영향을 방지할 수 없습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">판정</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 보안+성능 충족 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>예방적 (설정 자체)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 파라미터의 근본 목적 — 올바른 설정이 최우선</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 감사 추적 + 주기 검토</td><td style="padding:8px;border:1px solid #ddd">탐지적</td><td style="padding:8px;border:1px solid #ddd">✗ 잘못된 설정 하에서는 모니터링도 무효</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 승인 + 문서화</td><td style="padding:8px;border:1px solid #ddd">탐지적</td><td style="padding:8px;border:1px solid #ddd">✗ 승인·문서가 있어도 설정 자체가 잘못이면 영향 불변</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 접근 제한</td><td style="padding:8px;border:1px solid #ddd">예방적 (접근)</td><td style="padding:8px;border:1px solid #ddd">✗ 접근 통제해도 잘못된 값이면 악영향 지속</td></tr>
+</table>
+<div class="sbox"><b>⚙️ 시스템 파라미터 검토 원칙:</b><br>
+• <b>PRIMARY = 설정 값의 적정성</b> (보안 ↔ 성능 균형)<br>
+• B·C·D는 모두 "파라미터가 올바르게 설정된 후"에 의미 있는 보조 통제<br>
+• 핵심 논리: <b>잘못된 설정 + 완벽한 통제 = 여전히 부정적 영향</b></div>`,
+reference:"CRM Chapter 4: IS Operations — System Parameters & Configuration",
+keyConcepts:[
+"시스템 파라미터 PRIMARY|보안과 성능의 균형이 최우선 — 설정 자체가 올바라야 다른 통제가 유효",
+"통제 우선순위|설정 적정성(예방) > 감사 추적·승인(탐지) > 접근 제한 — 근본 설정이 최우선",
+"잘못된 설정의 영향|승인·문서화·접근 제한이 있어도 파라미터가 부적절하면 영향 불가피"
+]
+},
+
+// ============================================================
+// Q210 - Storage Capacity Management
+// ============================================================
+{
+id: 210,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `IT 인프라를 검토하는 중 IS 감사인은 스토리지 자원이 지속적으로 추가되고 있음을 발견했다. IS 감사인이 해야 할 조치는?<br><small style="color:#94a3b8">While reviewing the IT infrastructure, an IS auditor notices that storage resources are continuously being added. The IS auditor should:</small>`,
+options: [
+  "디스크 미러링 사용을 권고한다.<br><small style='color:#94a3b8'>Recommend the use of disk mirroring.</small>",
+  "원격지 저장소의 적절성을 검토한다.<br><small style='color:#94a3b8'>Review the adequacy of offsite storage.</small>",
+  "용량 관리 프로세스를 검토한다.<br><small style='color:#94a3b8'>Review the capacity management process.</small>",
+  "압축 알고리즘 사용을 권고한다.<br><small style='color:#94a3b8'>Recommend the use of a compression algorithm.</small>"
+],
+correct: 2,
+explanation: `<p><b>용량 관리(Capacity Management) 프로세스 검토</b>가 정답입니다. 스토리지가 지속 추가되는 것은 체계적 용량 계획 부재를 시사하며, 해결책 제시 전 근본 원인 파악이 선행되어야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 디스크 미러링</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">스토리지 요구량을 오히려 증가시킴 — 용량 계획 없이 부적절</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 원격지 저장소 검토</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">백업/재해복구 관련 — 스토리지 증가 문제와 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 용량 관리 프로세스 검토 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>전략적 관점에서 자원 계획·예측·효율적 사용 보장</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 압축 알고리즘</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">성능 저하 가능 — 원인 조사 전 해결책 제시는 부적절</td></tr>
+</table>
+<div class="sbox"><b>💾 용량 관리(Capacity Management) 핵심:</b><br>
+• 정의: IT 자원의 <b>계획·모니터링</b>으로 효율적·효과적 사용 보장<br>
+• <b>전략적 관점</b> — 수요 예측 + 계획적 장비 구매<br>
+• 감사인 원칙: <b>해결책(미러링·압축) 전에 프로세스(용량 관리) 검토가 선행</b><br>
+• Q206~209 공통 패턴: 문제 발견 → <b>즉시 해결책 ✗ → 프로세스/측정/모니터링 우선</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Capacity Management & Storage Planning",
+keyConcepts:[
+"용량 관리 프로세스|IT 자원의 전략적 계획·모니터링 — 효율적 사용과 계획적 확장 보장",
+"스토리지 지속 추가 징후|체계적 용량 계획 부재 시사 — 해결책 전 프로세스 검토 선행",
+"해결책 vs 프로세스|미러링·압축 등 기술적 해결책은 원인 파악 후 — 감사인은 프로세스 적정성을 먼저 검토"
+]
+},
+
+// ============================================================
+// Q211 - Peak Hours Unexpected Downtime
+// ============================================================
+{
+id: 211,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `다음 중 피크 운영 시간대에 수행할 경우 예상치 못한 다운타임을 초래할 수 있는 것은?<br><small style="color:#94a3b8">Doing which of the following during peak production hours can result in unexpected downtime?</small>`,
+options: [
+  "데이터 마이그레이션 수행.<br><small style='color:#94a3b8'>Performing data migration</small>",
+  "전기 시스템 예방 정비 수행.<br><small style='color:#94a3b8'>Performing preventive maintenance on electrical systems</small>",
+  "개발 환경에서 스테이징 환경으로 애플리케이션 이관.<br><small style='color:#94a3b8'>Promoting applications from development to the staging environment</small>",
+  "데이터 센터의 대기 라우터 재구성.<br><small style='color:#94a3b8'>Reconfiguring a standby router in the data center</small>"
+],
+correct: 1,
+explanation: `<p><b>전기 시스템 예방 정비</b>는 유지보수 작업자의 실수나 사고로 인해 계획되지 않은 다운타임을 유발할 수 있습니다. 예방 정비는 반드시 비피크 시간대 또는 유지보수 윈도우에 예약해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">피크 시간 영향</th><th style="padding:8px;border:1px solid #334155">다운타임 가능성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 데이터 마이그레이션</td><td style="padding:8px;border:1px solid #ddd">성능 저하 가능</td><td style="padding:8px;border:1px solid #ddd">✗ 다운타임은 아님</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 전기 시스템 예방 정비 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>물리적 사고 위험</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 실수 시 전원 차단 → 예상치 못한 다운타임</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 개발→스테이징 이관</td><td style="padding:8px;border:1px solid #ddd">운영 환경과 무관</td><td style="padding:8px;border:1px solid #ddd">✗ 스테이징 ≠ 운영</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 대기 라우터 재구성</td><td style="padding:8px;border:1px solid #ddd">비운영 장비</td><td style="padding:8px;border:1px solid #ddd">✗ 대기(Standby) 상태 → 트래픽 영향 없음</td></tr>
+</table>
+<div class="sbox"><b>⚡ 피크 시간대 작업 위험도 판단 키:</b><br>
+• <b>물리적 인프라 작업</b>(전기·냉각·배선) = 사고 시 <b>즉시 다운타임</b> → 비피크/유지보수 윈도우 필수<br>
+• 데이터 마이그레이션 = 성능 영향 O, 다운타임 ✗<br>
+• 비운영 환경(스테이징) / 비운영 장비(대기 라우터) = 운영 영향 ✗<br>
+• 핵심 구분: <b>"성능 저하" ≠ "다운타임"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Maintenance Scheduling & Availability",
+keyConcepts:[
+"예방 정비 스케줄링|전기 시스템 등 물리 인프라 정비는 비피크/유지보수 윈도우에 수행 — 피크 시 사고=다운타임",
+"성능 저하 vs 다운타임|데이터 마이그레이션=성능 영향, 전기 정비 사고=다운타임 — 두 개념 구분 필수",
+"비운영 자원|스테이징 환경·대기 라우터는 운영 트래픽과 격리 — 피크 시간 영향 없음"
+]
+},
+
+// ============================================================
+// Q212 - Network Performance Monitoring Tools
+// ============================================================
+{
+id: 212,
+domain: "4",
+ks: "4A6 Systems Availability and Capacity Management",
+question: `다음 중 네트워크 성능 모니터링 도구에 의해 가장 직접적으로 영향을 받는 것은?<br><small style="color:#94a3b8">Which of the following is MOST directly affected by network performance monitoring tools?</small>`,
+options: [
+  "무결성(Integrity).<br><small style='color:#94a3b8'>Integrity</small>",
+  "가용성(Availability).<br><small style='color:#94a3b8'>Availability</small>",
+  "완전성(Completeness).<br><small style='color:#94a3b8'>Completeness</small>",
+  "기밀성(Confidentiality).<br><small style='color:#94a3b8'>Confidentiality</small>"
+],
+correct: 1,
+explanation: `<p><b>가용성(Availability)</b>이 네트워크 모니터링 도구의 가장 직접적인 영향 대상입니다. 네트워크 문제를 관찰하고 시정 조치를 취함으로써 네트워크가 필요 시 사용 가능하도록 보장합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">속성</th><th style="padding:8px;border:1px solid #334155">모니터링 도구와의 관계</th><th style="padding:8px;border:1px solid #334155">직접 영향</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">무결성</td><td style="padding:8px;border:1px solid #ddd">네트워크 오류 전파 감지 가능</td><td style="padding:8px;border:1px solid #ddd">간접적 — 주 목적 아님</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>가용성 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>성능 관찰 → 문제 감지 → 시정 조치</b></td><td style="padding:8px;border:1px solid #ddd"><b>가장 직접적 — 네트워크 신뢰성·가용성 보장</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">완전성</td><td style="padding:8px;border:1px solid #ddd">통신 완전성은 종단점이 측정</td><td style="padding:8px;border:1px solid #ddd">✗ 모니터링 도구 범위 밖</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">기밀성</td><td style="padding:8px;border:1px solid #ddd">비암호화 트래픽 관찰 가능</td><td style="padding:8px;border:1px solid #ddd">오히려 위협 — 기밀성 침해 가능</td></tr>
+</table>
+<div class="sbox"><b>🌐 네트워크 모니터링 도구 정리:</b><br>
+• <b>주 목적</b> = 네트워크 신뢰성(Reliability) → <b>가용성</b> 보장<br>
+• 부수 효과: 오류 감지(무결성 간접 기여), 트래픽 관찰(<b>기밀성 위협</b> 가능)<br>
+• 완전성 = 종단점(End-point)에서 측정 — 모니터링 도구와 무관<br>
+• 주의: 모니터링 도구 자체가 <b>기밀성 침해 수단</b>이 될 수 있음 → 사용 정책·보호 필요</div>`,
+reference:"CRM Chapter 4: IS Operations — Network Monitoring & Availability",
+keyConcepts:[
+"네트워크 모니터링 주 목적|성능 관찰·문제 감지·시정 조치 → 가용성(Availability)에 가장 직접적 영향",
+"모니터링과 기밀성|비암호화 트래픽 관찰 가능 → 기밀성 침해 위험 — 사용 정책·보호 필수",
+"완전성 측정|통신 완전성은 종단점(End-point)이 측정 — 네트워크 모니터링 도구 범위 밖"
+]
+},
+
+// ============================================================
+// Q213 - RTO Increase Impact
+// ============================================================
+{
+id: 213,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `복구 시간 목표(RTO)가 증가하면:<br><small style="color:#94a3b8">If the recovery time objective (RTO) increases:</small>`,
+options: [
+  "재해 허용도(Disaster Tolerance)가 증가한다.<br><small style='color:#94a3b8'>The disaster tolerance increases.</small>",
+  "복구 비용이 증가한다.<br><small style='color:#94a3b8'>The cost of recovery increases.</small>",
+  "콜드 사이트를 사용할 수 없다.<br><small style='color:#94a3b8'>A cold site cannot be used.</small>",
+  "데이터 백업 빈도가 증가한다.<br><small style='color:#94a3b8'>The data backup frequency increases.</small>"
+],
+correct: 0,
+explanation: `<p><b>RTO 증가 = 재해 허용도 증가</b>입니다. RTO가 길어지면 업무 중단을 더 오래 감내할 수 있으므로 재해 허용도가 높아지고, 복구 비용은 오히려 낮아집니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 재해 허용도 증가 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>RTO↑ = 허용 중단 시간↑ = 재해 허용도↑</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 복구 비용 증가</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">RTO↑ → 복구 비용↓ (긴급성 낮아짐)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 콜드 사이트 사용 불가</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">오히려 RTO↑ → 콜드 사이트 사용 가능해짐</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 백업 빈도 증가</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">백업 빈도는 RPO와 관련 — RTO와 무관</td></tr>
+</table>
+<div class="sbox"><b>⏱️ RTO vs RPO 핵심 관계:</b><br>
+• <b>RTO↑</b> = 허용 중단 시간↑ = 재해 허용도↑ = 복구 비용↓ = 콜드 사이트 가능<br>
+• <b>RTO↓</b> = 허용 중단 시간↓ = 재해 허용도↓ = 복구 비용↑ = 핫 사이트 필요<br>
+• <b>RPO</b> = 데이터 손실 허용량 → 백업 빈도와 관련 (RTO와 구분!)<br>
+• RTO와 비용은 <b>반비례</b> 관계</div>`,
+reference:"CRM Chapter 4: IS Operations — RTO, RPO & Disaster Tolerance",
+keyConcepts:[
+"RTO와 재해 허용도|RTO↑ = 허용 중단 시간↑ = 재해 허용도↑ — 비례 관계",
+"RTO와 복구 비용|RTO↑ = 복구 비용↓ (반비례) — RTO↓일수록 고가용성 전략 필요 → 비용↑",
+"RTO vs RPO|RTO=중단 시간(복구 속도), RPO=데이터 손실(백업 빈도) — 혼동 주의",
+"RTO와 사이트 유형|RTO 짧음→핫 사이트, RTO 길음→콜드 사이트 가능"
+]
+},
+
+// ============================================================
+// Q214 - Recovery Strategy for High RTO
+// ============================================================
+{
+id: 214,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `높은 복구 시간 목표(RTO)를 가진 민감(Sensitive) 시스템에 가장 적절한 복구 전략은?<br><small style="color:#94a3b8">Which of the following would be the MOST appropriate recovery strategy for a sensitive system with a high recovery time objective (RTO)?</small>`,
+options: [
+  "웜 사이트(Warm site).<br><small style='color:#94a3b8'>Warm site</small>",
+  "핫 사이트(Hot site).<br><small style='color:#94a3b8'>Hot site</small>",
+  "콜드 사이트(Cold site).<br><small style='color:#94a3b8'>Cold site</small>",
+  "이동형 복구 사이트(Mobile recovery site).<br><small style='color:#94a3b8'>Mobile recovery site</small>"
+],
+correct: 2,
+explanation: `<p><b>콜드 사이트</b>가 정답입니다. 높은 RTO = 복구에 시간 여유 있음 → 가장 비용 효율적인 콜드 사이트가 적절합니다. 민감(Sensitive) 시스템은 수작업으로 허용 가능한 비용 내에서 장기간 운영 가능합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">사이트 유형</th><th style="padding:8px;border:1px solid #334155">복구 시간</th><th style="padding:8px;border:1px solid #334155">비용</th><th style="padding:8px;border:1px solid #334155">적합 대상</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">핫 사이트</td><td style="padding:8px;border:1px solid #ddd">수 분~수 시간</td><td style="padding:8px;border:1px solid #ddd">최고</td><td style="padding:8px;border:1px solid #ddd">Critical 시스템 (낮은 RTO)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">웜 사이트</td><td style="padding:8px;border:1px solid #ddd">수 시간~수 일</td><td style="padding:8px;border:1px solid #ddd">중간</td><td style="padding:8px;border:1px solid #ddd">중간 RTO — 가능하나 비용 대비 부적절</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>콜드 사이트 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>수 일~수 주</b></td><td style="padding:8px;border:1px solid #ddd"><b>최저</b></td><td style="padding:8px;border:1px solid #ddd"><b>Sensitive 시스템 (높은 RTO)</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">이동형 사이트</td><td style="padding:8px;border:1px solid #ddd">가변적</td><td style="padding:8px;border:1px solid #ddd">콜드보다 高</td><td style="padding:8px;border:1px solid #ddd">높은 RTO에 비용 대비 부적절</td></tr>
+</table>
+<div class="sbox"><b>🏗️ 시스템 분류와 복구 사이트 매칭:</b><br>
+• <b>Critical</b>(핵심) + 낮은 RTO → <b>핫 사이트</b><br>
+• <b>Vital</b>(중요) + 중간 RTO → <b>웜 사이트</b><br>
+• <b>Sensitive</b>(민감) + 높은 RTO → <b>콜드 사이트</b> (수작업 대체 가능)<br>
+• 핵심 원칙: <b>RTO가 높을수록 저비용 솔루션이 적절</b> — 과도한 투자 회피</div>`,
+reference:"CRM Chapter 4: IS Operations — Recovery Site Selection & RTO",
+keyConcepts:[
+"콜드 사이트|최저 비용 복구 사이트 — 높은 RTO·Sensitive 시스템에 가장 적절",
+"시스템 분류별 사이트|Critical→핫, Vital→웜, Sensitive→콜드 — RTO와 비용의 균형",
+"RTO와 사이트 선택|RTO↑ → 저비용 사이트(콜드) 적절 / RTO↓ → 고비용 사이트(핫) 필요",
+"웜 사이트 함정|높은 RTO에도 가능하나 콜드 대비 비용 과다 → MOST appropriate 아님"
+]
+},
+
+// ============================================================
+// Q215 - Maintenance Vendor Change
+// ============================================================
+{
+id: 215,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `IS 감사인은 IT 관리자가 비용 절감을 위해 핵심 컴퓨터 시스템 유지보수 벤더를 최근 변경했음을 확인했다. 새 벤더는 저렴하지만 인시던트 해결 시간이 기존과 다르다. IS 감사인의 가장 큰 우려사항은?<br><small style="color:#94a3b8">An IS auditor determined that the IT manager recently changed the vendor responsible for maintenance on critical systems to cut costs. The new contract specifies a change in incident resolution time. Which should be the GREATEST concern?</small>`,
+options: [
+  "재해복구계획(DRP)이 무효화되어 수정이 필요할 수 있다.<br><small style='color:#94a3b8'>Disaster recovery plans (DRPs) may be invalid and need to be revised.</small>",
+  "시스템 장애 시 거래 비즈니스 데이터가 손실될 수 있다.<br><small style='color:#94a3b8'>Transactional business data may be lost in the event of system failure.</small>",
+  "새 유지보수 벤더가 조직의 정책에 익숙하지 않다.<br><small style='color:#94a3b8'>The new maintenance vendor is not familiar with the organization's policies.</small>",
+  "애플리케이션 소유자가 변경 사항을 통보받지 못했다.<br><small style='color:#94a3b8'>Application owners were not informed of the change.</small>"
+],
+correct: 3,
+explanation: `<p><b>애플리케이션 소유자 미통보</b>가 가장 큰 우려입니다. 핵심 시스템의 인시던트 해결 시간 변경은 비즈니스 프로세스에 직접 영향을 미치므로, 해결 시간이 비즈니스 요구에 부합하는지 애플리케이션 소유자가 확인해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. DRP 무효화</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">DRP 수정은 필요할 수 있으나, 더 큰 위험은 소유자 미인지</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 데이터 손실</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">데이터 손실은 백업 빈도(RPO) 문제 — 유지보수 벤더 변경과 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 벤더 정책 미숙지</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">계약 조건에 정책 준수 포함 가능 — 소유자 미통보보다 낮은 위험</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 애플리케이션 소유자 미통보 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>해결 시간 변경이 비즈니스 요구와 불일치 가능 — 핵심 프로세스 악영향</b></td></tr>
+</table>
+<div class="sbox"><b>👤 애플리케이션 소유자(Application Owner) 역할:</b><br>
+• 비즈니스 요구사항의 <b>최종 결정권자</b> — IT 변경이 비즈니스에 미치는 영향 판단<br>
+• 인시던트 해결 시간 = <b>비즈니스 요구</b>에 부합해야 함 (비용만으로 결정 ✗)<br>
+• 핵심 시스템 변경 시 소유자 미통보 = <b>비즈니스-IT 정렬 실패</b><br>
+• CISA 원칙: IT 결정은 항상 <b>비즈니스 요구</b>에 의해 주도되어야 함</div>`,
+reference:"CRM Chapter 4: IS Operations — Vendor Management & Incident Resolution",
+keyConcepts:[
+"애플리케이션 소유자 통보|핵심 시스템 변경 시 소유자 미통보 = 최대 위험 — 비즈니스 요구 정렬 실패",
+"인시던트 해결 시간|비용 절감으로 해결 시간 변경 시 비즈니스 영향 평가 필수 — 소유자 확인 선행",
+"비즈니스-IT 정렬|IT 결정(벤더·비용)은 비즈니스 요구에 의해 주도 — 비용만으로 결정 불가"
+]
+},
+
+// ============================================================
+// Q216 - Problem Management First Step
+// ============================================================
+{
+id: 216,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `문제 관리(Problem Management) 메커니즘 실행의 첫 번째 단계는?<br><small style="color:#94a3b8">The FIRST step in the execution of a problem management mechanism should be:</small>`,
+options: [
+  "이슈 분석(Issue analysis).<br><small style='color:#94a3b8'>Issue analysis</small>",
+  "예외 순위 지정(Exception ranking).<br><small style='color:#94a3b8'>Exception ranking</small>",
+  "예외 보고(Exception reporting).<br><small style='color:#94a3b8'>Exception reporting</small>",
+  "근본 원인 분석(Root cause analysis).<br><small style='color:#94a3b8'>Root cause analysis</small>"
+],
+correct: 2,
+explanation: `<p><b>예외 보고(Exception Reporting)</b>가 문제 관리의 첫 번째 단계입니다. 운영 이슈를 보고(로깅)해야 이후 순위 지정, 분석, 근본 원인 분석이 가능합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">순서</th><th style="padding:8px;border:1px solid #334155">단계</th><th style="padding:8px;border:1px solid #334155">설명</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>1️⃣</b></td><td style="padding:8px;border:1px solid #ddd"><b>예외 보고 (Reporting) ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>운영 이슈 식별·기록 — 모든 후속 단계의 전제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">2️⃣</td><td style="padding:8px;border:1px solid #ddd">예외 순위 지정 (Ranking)</td><td style="padding:8px;border:1px solid #ddd">보고된 예외의 우선순위·심각도 분류</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">3️⃣</td><td style="padding:8px;border:1px solid #ddd">이슈 분석 (Analysis)</td><td style="padding:8px;border:1px solid #ddd">문제 상세 분석·해결 방안 도출</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">4️⃣</td><td style="padding:8px;border:1px solid #ddd">근본 원인 분석 (RCA)</td><td style="padding:8px;border:1px solid #ddd">재발 방지를 위한 근본 원인 규명</td></tr>
+</table>
+<div class="sbox"><b>📋 문제 관리 프로세스 순서:</b><br>
+• <b>보고(Report)</b> → 순위(Rank) → 분석(Analyze) → 근본 원인(RCA) → 해결(Resolve)<br>
+• 핵심 논리: 보고 없이는 순위 지정 불가, 식별 없이는 분석 불가<br>
+• "FIRST step" 문제 = <b>선행 조건 없이 수행 가능한 단계</b>를 찾기</div>`,
+reference:"CRM Chapter 4: IS Operations — Problem Management Process",
+keyConcepts:[
+"예외 보고|문제 관리의 첫 단계 — 운영 이슈 식별·기록이 모든 후속 활동의 전제",
+"문제 관리 순서|보고→순위→분석→RCA→해결 — 각 단계는 이전 단계 완료가 전제",
+"근본 원인 분석(RCA)|예외 식별·분류 후 수행 — 문제 관리의 첫 단계 아님"
+]
+},
+
+// ============================================================
+// Q217 - Medical Transcription Backup Concerns
+// ============================================================
+{
+id: 217,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `의료 전사(Medical Transcription) 서비스를 제공하는 소규모 조직의 감사에서 IS 감사인이 백업·복원 프로세스 관련 여러 문제를 발견했다. 감사인의 가장 큰 우려사항은?<br><small style="color:#94a3b8">During an audit of a small organization that provides medical transcription services, an IS auditor observes several issues related to the backup and restore process. Which should be the auditor's GREATEST concern?</small>`,
+options: [
+  "백업 매체의 복원 테스트가 수행되지 않으나, 모든 데이터 복원 요청은 성공적이었다.<br><small style='color:#94a3b8'>Restoration testing is not performed; however, all data restore requests have been successful.</small>",
+  "데이터 백업 및 보존 정책이 3년간 비즈니스 소유자에 의해 검토되지 않았다.<br><small style='color:#94a3b8'>The policy for data backup and retention has not been reviewed by the business owner for the past three years.</small>",
+  "조직이 제3자 서비스 제공자를 통해 전사 백업 매체를 원격지에 보관하며, 해당 제공자는 연 1회 재고 조사를 수행한다.<br><small style='color:#94a3b8'>The organization stores transcription backup media offsite using a third-party provider that inventories backups annually.</small>",
+  "마케팅 부서 데이터 파일의 백업 실패 알림이 IT 관리자에 의해 후속 처리되지 않는다.<br><small style='color:#94a3b8'>Failed backup alerts for marketing department data files are not followed up on by the IT administrator.</small>"
+],
+correct: 2,
+explanation: `<p><b>제3자 보관 + 연 1회 재고 조사</b>가 가장 큰 우려입니다. 의료 전사 데이터는 기밀 환자 정보를 포함하며, 백업 매체 분실은 개인정보보호법 위반·과징금·평판 손상을 초래합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">위험</th><th style="padding:8px;border:1px solid #334155">판정</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 복원 테스트 미수행</td><td style="padding:8px;border:1px solid #ddd">가용성 위험</td><td style="padding:8px;border:1px solid #ddd">실제 복원 성공으로 일부 완화됨</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 정책 3년간 미검토</td><td style="padding:8px;border:1px solid #ddd">정책 적정성 위험</td><td style="padding:8px;border:1px solid #ddd">우려 사항이나 정보 유출 위험은 아님</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 제3자 보관 + 연 1회 재고 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>기밀성·규정 준수 위험</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 기밀 환자 데이터 유출 → 법적 제재·평판 손상</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 마케팅 백업 실패 미처리</td><td style="padding:8px;border:1px solid #ddd">가용성 위험 (비핵심)</td><td style="padding:8px;border:1px solid #ddd">마케팅 데이터 ≠ 규제 대상 의료 데이터</td></tr>
+</table>
+<div class="sbox"><b>🏥 의료 데이터 백업 보관 핵심:</b><br>
+• <b>의료 전사 데이터</b> = 기밀 환자 정보 → 개인정보보호법(HIPAA 등) 적용<br>
+• 제3자 보관 시 <b>빈번한 물리적 재고 조사</b> + 제공자 통제 평가 필수<br>
+• 연 1회 재고 = <b>매체 분실 감지 지연</b> → 최대 11개월간 미인지 가능<br>
+• 핵심 판단: <b>기밀성·규정 준수 위험 > 가용성 위험</b> (특히 규제 산업)</div>`,
+reference:"CRM Chapter 4: IS Operations — Backup Media Management & Data Privacy",
+keyConcepts:[
+"제3자 백업 매체 보관|기밀 데이터의 제3자 보관 시 빈번한 재고 조사·통제 평가 필수 — 연 1회는 부족",
+"의료 데이터 기밀성|환자 정보 포함 매체 분실 = 개인정보보호법 위반·과징금·평판 손상",
+"위험 우선순위|규제 산업에서 기밀성·규정 준수 위험 > 가용성·정책 위험",
+"보상 통제 판단|복원 테스트 미수행이나 실제 성공 = 위험 일부 완화 (보상 통제 인정)"
+]
+},
+
+// ============================================================
+// Q218 - Preventing Critical IT System Failures
+// ============================================================
+{
+id: 218,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `다음 중 핵심 IT 시스템 장애의 재발을 방지하는 가장 좋은 방법은?<br><small style="color:#94a3b8">Which of the following is the BEST method to ensure that critical IT system failures do not reoccur?</small>`,
+options: [
+  "이중화 시스템에 투자한다.<br><small style='color:#94a3b8'>Invest in redundant systems.</small>",
+  "후속 감사를 수행한다.<br><small style='color:#94a3b8'>Conduct a follow-up audit.</small>",
+  "시스템 성능을 모니터링한다.<br><small style='color:#94a3b8'>Monitor system performance.</small>",
+  "근본 원인 분석(RCA)을 수행한다.<br><small style='color:#94a3b8'>Perform root cause analysis.</small>"
+],
+correct: 3,
+explanation: `<p><b>근본 원인 분석(Root Cause Analysis)</b>은 인시던트 발생의 핵심 이유를 규명하여 적절한 시정 조치를 가능하게 하고, 재발을 방지합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 이중화 시스템</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">해결책 중 하나일 수 있으나 원인 파악 없이 가정하는 것 — 근본 문제 미해결</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 후속 감사</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">감사는 운영 문제의 해결책이 아님 — IT 일상 프로세스로 소유해야 함</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 성능 모니터링</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">데이터 수집 수단 — RCA에 기여하나 단독으로 재발 방지 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 근본 원인 분석(RCA) ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>발생 원인 규명 → 적절한 시정 조치 → 재발 방지</b></td></tr>
+</table>
+<div class="sbox"><b>🔍 RCA vs 다른 접근법:</b><br>
+• <b>RCA</b> = 문제의 <b>근원(Origin)</b>을 찾아 해결 → 재발 방지의 핵심<br>
+• 이중화 = 증상 대응(Symptom Treatment) — 원인 불명 시 동일 장애 반복 가능<br>
+• 모니터링 = 데이터 수집 도구 — RCA의 <b>입력(Input)</b>이지 해결책 아님<br>
+• 감사 = 통제 평가 도구 — 운영 문제는 <b>IT 부서가 소유</b>해야 함</div>`,
+reference:"CRM Chapter 4: IS Operations — Root Cause Analysis & Problem Management",
+keyConcepts:[
+"근본 원인 분석(RCA)|인시던트의 핵심 원인 규명 → 적절한 시정 조치 → 재발 방지의 최선 방법",
+"RCA vs 이중화|이중화=증상 대응(가정 기반), RCA=원인 해결(근거 기반) — RCA가 선행되어야 함",
+"모니터링과 RCA 관계|모니터링=데이터 수집(RCA 입력) — 단독으로 재발 방지 불가",
+"운영 문제 소유권|운영 장애 해결은 IT 일상 프로세스 — 감사에 의존 ✗"
+]
+},
+
+// ============================================================
+// Q219 - Security Log Management
+// ============================================================
+{
+id: 219,
+domain: "4",
+ks: "4A7 Problem and Incident Management",
+question: `다음 중 효과적인 보안 로그 관리에 가장 유용한 것은?<br><small style="color:#94a3b8">Which of the following is MOST useful for effective security log management?</small>`,
+options: [
+  "로그를 수집, 분석, 보존하는 자동화 도구를 구현한다.<br><small style='color:#94a3b8'>Implementing automated tools to collect, analyze and retain logs</small>",
+  "역사적 데이터 가용성을 위해 로그를 무기한 보관·저장한다.<br><small style='color:#94a3b8'>Archiving and storing logs indefinitely to ensure historical data availability</small>",
+  "모든 시스템, 데이터베이스, 장치, 도구에서 모든 로그를 수집한다.<br><small style='color:#94a3b8'>Collecting all logs from all systems, databases, devices and tools</small>",
+  "보안 관리자가 매일 로그를 검토하여 보안 인시던트를 탐지·대응한다.<br><small style='color:#94a3b8'>Security manager reviewing logs daily to detect and respond to security incidents</small>"
+],
+correct: 0,
+explanation: `<p><b>자동화 도구</b>가 효과적인 보안 로그 관리의 핵심입니다. 다양한 소스의 로그를 중앙 집중화하고, 실시간 분석으로 이상 패턴을 식별하며, 규제 요구에 맞게 보존합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 자동화 도구 구현 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>수집+분석+보존 자동화 — 대량 처리·실시간 알림·패턴 식별</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 무기한 보관</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">스토리지 한계 + 규제 데이터 보존 정책과 불일치</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 모든 로그 수집</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">수집 대상 로그의 유형·성격 선별이 필요 — 전수 수집은 비실용적</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 보안 관리자 매일 검토</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">대량 로그의 수동 검토는 지루하고 비실용적 — 인간 분석가가 놓칠 수 있음</td></tr>
+</table>
+<div class="sbox"><b>📊 자동화 로그 관리의 장점:</b><br>
+• <b>대량 처리</b> — 인간이 놓치는 이상 패턴·의심 활동 식별<br>
+• <b>실시간 알림</b> — 잠재적 보안 인시던트 즉시 감지<br>
+• <b>중앙 집중화</b> — 다양한 소스의 로그 통합 관리<br>
+• <b>규제 준수</b> — 적절한 보존 기간 자동 적용 (무기한 ✗)<br>
+• 핵심: "모든" 로그가 아닌 <b>적절한 유형·소스</b>의 로그 선별 수집</div>`,
+reference:"CRM Chapter 4: IS Operations — Security Log Management & SIEM",
+keyConcepts:[
+"자동화 로그 관리|수집·분석·보존 자동화 — 대량 처리·실시간 탐지·패턴 식별로 효과적 관리",
+"로그 보존 정책|무기한 보관 ✗ — 규제·컴플라이언스 요구에 맞는 적절한 기간 설정",
+"로그 수집 범위|모든 로그 전수 수집 ✗ — 유형·성격·소스 기반 선별 수집이 적절",
+"수동 vs 자동 검토|대량 로그의 수동 일일 검토는 비실용적 — 자동화 도구가 보완"
+]
+},
+
+// ============================================================
+// Q220 - DBA Separation of Duties
+// ============================================================
+{
+id: 220,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `데이터베이스 환경을 감사할 때, IS 감사인이 데이터베이스 관리자(DBA)가 수행하는 다음 기능 중 가장 우려하는 것은?<br><small style="color:#94a3b8">When auditing a database environment, an IS auditor will be MOST concerned if the DBA is performing which of the following functions?</small>`,
+options: [
+  "변경 관리 절차에 따라 데이터베이스 변경을 수행한다.<br><small style='color:#94a3b8'>Performing database changes according to change management procedures</small>",
+  "운영 체제에 패치 또는 업그레이드를 설치한다.<br><small style='color:#94a3b8'>Installing patches or upgrades to the operating system</small>",
+  "테이블 공간 크기 조정 및 테이블 조인 제한에 대해 자문한다.<br><small style='color:#94a3b8'>Sizing table space and consulting on table join limitations</small>",
+  "백업 및 복구 절차를 수행한다.<br><small style='color:#94a3b8'>Performing backup and recovery procedures</small>"
+],
+correct: 1,
+explanation: `<p><b>OS 패치/업그레이드 설치</b>는 시스템 관리자(SA)의 역할이며, DBA가 수행 시 <b>직무 분리(SoD) 위반</b>입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">기능</th><th style="padding:8px;border:1px solid #334155">적정 수행자</th><th style="padding:8px;border:1px solid #334155">DBA 수행 시</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">DB 변경 (변경관리 준수)</td><td style="padding:8px;border:1px solid #ddd">DBA ✔</td><td style="padding:8px;border:1px solid #ddd">정상 — 절차 준수</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>OS 패치/업그레이드 설치</b></td><td style="padding:8px;border:1px solid #ddd"><b>시스템 관리자(SA)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✗ 직무 분리 위반 — 최대 우려</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">테이블 공간/조인 자문</td><td style="padding:8px;border:1px solid #ddd">DBA ✔</td><td style="padding:8px;border:1px solid #ddd">정상 — DB 설계·유지보수 역할</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">백업 및 복구</td><td style="padding:8px;border:1px solid #ddd">DBA ✔</td><td style="padding:8px;border:1px solid #ddd">정상 — DB 운영 역할</td></tr>
+</table>
+<div class="sbox"><b>👥 DBA vs 시스템 관리자(SA) 역할 구분:</b><br>
+• <b>DBA 정상 역할:</b> DB 변경, 테이블 설계·크기 조정, DB 백업/복구, DB 성능 튜닝<br>
+• <b>SA 역할:</b> OS 패치/업그레이드, OS 구성, 서버 관리<br>
+• DBA가 OS 접근 → <b>DB 수준을 넘어 시스템 수준 권한</b> 획득 → 통제 우회 위험<br>
+• 핵심: <b>직무 분리(SoD)</b> = 한 사람이 DB + OS 모두 통제하면 안 됨</div>`,
+reference:"CRM Chapter 4: IS Operations — DBA Roles & Separation of Duties",
+keyConcepts:[
+"DBA와 직무 분리|DBA가 OS 패치 설치 = 시스템 관리자 역할 겸임 → 직무 분리(SoD) 위반",
+"DBA 정상 역할|DB 변경·테이블 관리·백업/복구·성능 튜닝 — 모두 DB 범위 내 정상 기능",
+"DBA vs SA 구분|DBA=데이터베이스 수준, SA=운영체제 수준 — 역할 겸임 시 통제 우회 위험"
+]
+},
+
+// ============================================================
+// Q221 - Change Management & System Availability
+// ============================================================
+{
+id: 221,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 조직의 변경 관리 프로세스 효과성을 평가한다. 시스템 가용성을 보장하기 위해 IS 감사인이 찾아야 할 가장 중요한 통제는?<br><small style="color:#94a3b8">An IS auditor evaluates the effectiveness of the change management process. What is the MOST important control to ensure system availability?</small>`,
+options: [
+  "변경사항이 항상 IT 관리자에 의해 승인된다.<br><small style='color:#94a3b8'>Changes are authorized by IT managers at all times.</small>",
+  "사용자 수용 테스트(UAT)가 수행되고 적절히 문서화된다.<br><small style='color:#94a3b8'>User acceptance testing (UAT) is performed and properly documented.</small>",
+  "테스트 계획 및 절차가 존재하고 철저히 준수된다.<br><small style='color:#94a3b8'>Test plans and procedures exist and are closely followed.</small>",
+  "각 개발 프로젝트의 일부로 용량 계획이 수행된다.<br><small style='color:#94a3b8'>Capacity planning is performed as part of each development project.</small>"
+],
+correct: 2,
+explanation: `<p><b>테스트 계획 및 절차의 존재와 준수</b>가 변경 관리에서 시스템 가용성을 보장하는 가장 중요한 통제입니다. 체계적 테스트로 변경이 시스템 안정성에 미치는 영향을 사전 검증합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. IT 관리자 승인</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">승인자는 BA·CCB·기타 권한자 — 반드시 IT 관리자일 필요 없음</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. UAT 수행·문서화</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">중요하나 가용성보다 기능 요구사항 충족에 초점</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 테스트 계획·절차 준수 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>변경의 시스템 영향 사전 검증 → 가용성 보장의 핵심 통제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 용량 계획</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">가용성 보장 불가 + 변경 통제 프로세스의 일부 아님</td></tr>
+</table>
+<div class="sbox"><b>🔄 변경 관리와 가용성 핵심:</b><br>
+• <b>테스트 계획·절차</b> = 변경이 운영 환경에 미치는 영향을 사전 검증 → 장애 예방<br>
+• UAT = 비즈니스 요구 충족 확인 (가용성보다 <b>기능</b> 초점)<br>
+• 승인 = IT 관리자 한정 ✗ → <b>CCB(변경통제위원회)</b> 등 적절한 권한자<br>
+• 용량 계획 = 개발 프로젝트 범위 — 변경 통제와 별개</div>`,
+reference:"CRM Chapter 4: IS Operations — Change Management & Testing Controls",
+keyConcepts:[
+"변경 관리 테스트 통제|테스트 계획·절차 존재+준수 — 시스템 가용성 보장의 가장 중요한 통제",
+"UAT vs 테스트 계획|UAT=기능 요구 충족, 테스트 계획=시스템 안정성·가용성 검증 — 목적 구분",
+"변경 승인 권한|IT 관리자 한정 ✗ — BA·CCB·기타 권한 대표자가 승인 가능"
+]
+},
+
+// ============================================================
+// Q222 - Change Control Design Effectiveness Testing
+// ============================================================
+{
+id: 222,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `변경 통제 프로세스의 설계 효과성을 테스트하는 가장 효율적이고 충분히 신뢰할 수 있는 방법은?<br><small style="color:#94a3b8">Which of the following is the MOST efficient and sufficiently reliable way to test the design effectiveness of a change control process?</small>`,
+options: [
+  "변경 요청의 표본 모집단을 테스트한다.<br><small style='color:#94a3b8'>Test a sample population of change requests.</small>",
+  "승인된 변경의 표본을 테스트한다.<br><small style='color:#94a3b8'>Test a sample of authorized changes.</small>",
+  "변경 통제 프로세스 담당자를 인터뷰한다.<br><small style='color:#94a3b8'>Interview personnel in charge of the change control process.</small>",
+  "프로세스의 전체 워크스루(End-to-end walk-through)를 수행한다.<br><small style='color:#94a3b8'>Perform an end-to-end walk-through of the process.</small>"
+],
+correct: 3,
+explanation: `<p><b>전체 워크스루(End-to-end Walk-through)</b>가 설계 효과성 테스트에 가장 효율적이고 신뢰할 수 있는 방법입니다. 관찰을 통해 프로세스가 효과적으로 설계되었는지 전체 흐름을 검증합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">테스트 유형</th><th style="padding:8px;border:1px solid #334155">한계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 변경 요청 표본 테스트</td><td style="padding:8px;border:1px solid #ddd">준수성·운영 효과성 테스트</td><td style="padding:8px;border:1px solid #ddd">설계 효과성 테스트 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 승인된 변경 표본 테스트</td><td style="padding:8px;border:1px solid #ddd">부분적 운영 테스트</td><td style="padding:8px;border:1px solid #ddd">승인 절차 미검증 + 우회 변경 미탐지</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 담당자 인터뷰</td><td style="padding:8px;border:1px solid #ddd">지식 확인</td><td style="padding:8px;border:1px solid #ddd">알고 있어도 따르지 않을 수 있음</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 전체 워크스루 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>설계 효과성 테스트</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 관찰을 통한 전체 프로세스 흐름 검증</b></td></tr>
+</table>
+<div class="sbox"><b>🔍 설계 효과성 vs 운영 효과성 구분:</b><br>
+• <b>설계 효과성(Design)</b> = 프로세스가 올바르게 <b>설계</b>되었는가? → <b>워크스루</b><br>
+• <b>운영 효과성(Operating)</b> = 프로세스가 실제로 <b>작동</b>하는가? → <b>표본 테스트(샘플링)</b><br>
+• 인터뷰 = 지식 확인만 가능 — "알지만 따르지 않음" 탐지 불가<br>
+• 승인된 변경만 테스트 = <b>선택 편향</b> — 통제 우회 변경 미포함</div>`,
+reference:"CRM Chapter 4: IS Operations — Change Control Testing Methods",
+keyConcepts:[
+"워크스루|End-to-end 프로세스 관찰 — 설계 효과성 테스트의 가장 효율적·신뢰할 수 있는 방법",
+"설계 vs 운영 효과성|설계=프로세스 설계 적정성(워크스루), 운영=실제 작동 여부(샘플 테스트)",
+"인터뷰의 한계|지식 확인만 가능 — 실제 준수 여부 검증 불가 (알지만 미준수 가능)",
+"승인 변경 표본 편향|승인된 것만 테스트 → 승인 절차·통제 우회 변경 미검증"
+]
+},
+
+// ============================================================
+// Q223 - Change Management Audit Scope
+// ============================================================
+{
+id: 223,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 모든 IT 운영 시스템의 변경 관리 프로세스를 감사하도록 요청받았다. 감사 프로젝트의 범위 정의에 가장 도움이 되는 문서는?<br><small style="color:#94a3b8">An IS auditor is asked to audit the change management process for all IT operational systems. Which document will BEST aid the auditor in defining the scope for the audit project?</small>`,
+options: [
+  "엔터프라이즈 아키텍처(EA).<br><small style='color:#94a3b8'>Enterprise architecture (EA)</small>",
+  "통제 카탈로그(Control catalog).<br><small style='color:#94a3b8'>Control catalog</small>",
+  "위험 등록부(Risk register).<br><small style='color:#94a3b8'>Risk register</small>",
+  "IT 조직도(IT organizational chart).<br><small style='color:#94a3b8'>IT organizational chart</small>"
+],
+correct: 0,
+explanation: `<p><b>엔터프라이즈 아키텍처(EA)</b>는 IT 환경 전체에 대한 정보를 제공하여 "모든 IT 운영 시스템"의 변경 관리 감사 범위를 정의하는 데 가장 적합합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">문서</th><th style="padding:8px;border:1px solid #334155">용도</th><th style="padding:8px;border:1px solid #334155">범위 정의 적합성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>EA ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>IT 환경 전체 구조·시스템 목록</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ "모든 IT 시스템" 파악 → 범위 정의 최적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">통제 카탈로그</td><td style="padding:8px;border:1px solid #ddd">통제 테스트 계획</td><td style="padding:8px;border:1px solid #ddd">범위 정의 후 다음 단계 — 통제 테스트 시 활용</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">위험 등록부</td><td style="padding:8px;border:1px solid #ddd">감사 대상 시스템 우선순위</td><td style="padding:8px;border:1px solid #ddd">감사 계획에 유용하나 범위 정의와 다름</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">IT 조직도</td><td style="padding:8px;border:1px solid #ddd">프로세스 흐름·인력 이해</td><td style="padding:8px;border:1px solid #ddd">감사 계획에 유용하나 범위 정의와 다름</td></tr>
+</table>
+<div class="sbox"><b>📐 감사 단계별 문서 활용:</b><br>
+• <b>1단계 — 범위 정의:</b> EA (IT 환경·시스템 전체 파악)<br>
+• <b>2단계 — 감사 계획:</b> 위험 등록부 (우선순위), IT 조직도 (프로세스 흐름)<br>
+• <b>3단계 — 통제 테스트:</b> 통제 카탈로그 (테스트 대상 통제 식별)<br>
+• 핵심: "모든 IT 시스템" 키워드 → <b>전체 IT 환경 조감도 = EA</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Change Management Audit & Enterprise Architecture",
+keyConcepts:[
+"EA와 감사 범위|EA는 IT 환경 전체 구조 제공 — 모든 IT 시스템 대상 감사 범위 정의에 최적",
+"감사 단계별 문서|범위=EA, 계획=위험등록부·조직도, 테스트=통제카탈로그 — 단계별 용도 구분",
+"통제 카탈로그 시점|범위 정의 후 통제 테스트 계획 시 활용 — 범위 정의 단계 아님"
+]
+},
+
+// ============================================================
+// Q224 - Software Release Baselines
+// ============================================================
+{
+id: 224,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 소프트웨어 릴리스의 기준선(Baseline) 기록을 지원하기 위해 권고해야 할 프로세스는?<br><small style="color:#94a3b8">Which process should an IS auditor recommend to assist in the recording of baselines for software releases?</small>`,
+options: [
+  "사용자 수용 테스트(UAT).<br><small style='color:#94a3b8'>User acceptance testing (UAT)</small>",
+  "백업 및 복구.<br><small style='color:#94a3b8'>Backup and recovery</small>",
+  "인시던트 관리.<br><small style='color:#94a3b8'>Incident management</small>",
+  "구성 관리(Configuration management).<br><small style='color:#94a3b8'>Configuration management</small>"
+],
+correct: 3,
+explanation: `<p><b>구성 관리(Configuration Management)</b>는 소프트웨어 릴리스 기준선의 자동화된 기록을 제공합니다. 새 릴리스 실패 시 기준선이 복귀 지점(Rollback point)을 제공합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. UAT</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">기준선 설정 후 수행되는 검증 단계 — 기록과 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 백업 및 복구</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">구성의 백업은 중요하나 기준선 생성 자체가 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 인시던트 관리</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">이상 이벤트 대응 — 기준선 구성 기록과 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 구성 관리 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>SW 릴리스 기준선 자동 기록 + 실패 시 복귀 지점 제공</b></td></tr>
+</table>
+<div class="sbox"><b>⚙️ 구성 관리(Configuration Management) 핵심:</b><br>
+• <b>기준선(Baseline) 기록</b> = SW 릴리스의 알려진 정상 상태 스냅샷<br>
+• 자동화 도구로 릴리스별 구성 항목(CI) 자동 기록<br>
+• 릴리스 실패 시 → 기준선으로 <b>롤백(Rollback)</b> 가능<br>
+• 관련 개념: <b>CMDB</b>(구성 관리 데이터베이스) = 모든 CI 정보 중앙 저장소</div>`,
+reference:"CRM Chapter 4: IS Operations — Configuration Management & Release Baselines",
+keyConcepts:[
+"구성 관리와 기준선|SW 릴리스 기준선의 자동화된 기록 — 실패 시 롤백 지점 제공",
+"기준선 vs 백업|기준선=알려진 정상 구성 상태, 백업=데이터 복사본 — 기준선 생성은 구성 관리 영역",
+"UAT와 기준선 순서|기준선 설정 후 UAT 수행 — UAT는 검증 단계이지 기준선 기록 아님"
+]
+},
+
+// ============================================================
+// Q225 - Emergency Change Control Process
+// ============================================================
+{
+id: 225,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `조직이 긴급 변경 통제 프로세스를 사용하여 애플리케이션에 긴급 변경을 구현하는 가장 가능성 높은 이유는?<br><small style="color:#94a3b8">Which of the following is the MOST likely reason an organization implements an emergency change using the emergency change control process?</small>`,
+options: [
+  "애플리케이션 소유자가 새 기능을 요청했다.<br><small style='color:#94a3b8'>The application owner requested new functionality.</small>",
+  "변경이 애자일 방법론을 사용하여 개발되었다.<br><small style='color:#94a3b8'>Changes are developed using an agile methodology.</small>",
+  "운영에 중대한 영향을 미칠 가능성이 높다.<br><small style='color:#94a3b8'>There is a high probability of a significant impact on operations.</small>",
+  "운영 체제 벤더가 보안 패치를 릴리스했다.<br><small style='color:#94a3b8'>The operating system vendor has released a security patch.</small>"
+],
+correct: 2,
+explanation: `<p><b>운영에 중대한 영향(Significant Impact on Operations)</b>이 긴급 변경의 핵심 사유입니다. 긴급 릴리스는 심각한 사용자 다운타임을 방지하기 위한 긴급 수정(Urgent Fix)입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 새 기능 요청</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">일반적으로 정상 변경 통제 절차 — 비즈니스 영향 없으면 긴급 불필요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 애자일 방법론</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">애자일 반복(Iteration) ≠ 긴급 릴리스 — 운영 영향 없으면 정상 절차</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 운영 중대 영향 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>심각한 다운타임 방지를 위한 긴급 수정 — 긴급 변경의 핵심 사유</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. OS 보안 패치</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">테스트 후 적용 — 긴급 릴리스 불필요</td></tr>
+</table>
+<div class="sbox"><b>🚨 긴급 변경(Emergency Change) 핵심:</b><br>
+• <b>트리거</b> = 운영에 중대한 영향 / 심각한 사용자 다운타임 위험<br>
+• <b>목적</b> = 긴급 수정(Urgent Fix)으로 서비스 연속성 보장<br>
+• 정상 변경 vs 긴급 변경: <b>운영 영향의 심각도와 긴급성</b>이 구분 기준<br>
+• 보안 패치 = 테스트 후 정상 절차로 적용 (즉시 적용 ✗)<br>
+• 긴급 변경도 <b>사후 문서화·승인</b> 필수 — 절차 생략 ≠ 통제 생략</div>`,
+reference:"CRM Chapter 4: IS Operations — Emergency Change Control Process",
+keyConcepts:[
+"긴급 변경 트리거|운영에 중대한 영향·심각한 다운타임 위험 — 긴급 변경의 핵심 사유",
+"긴급 vs 정상 변경|운영 영향 심각도·긴급성이 구분 기준 — 새 기능·패치는 정상 절차",
+"긴급 변경 통제|절차 간소화되나 사후 문서화·승인 필수 — 통제 자체를 생략하는 것 아님",
+"보안 패치 적용|테스트 후 정상 절차 적용 — 긴급 릴리스 절차 불필요"
+]
+},
+
+// ============================================================
+// Q226 - Emergency Changes Bypassing Normal Process
+// ============================================================
+{
+id: 226,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `정상적인 변경 통제 프로세스를 우회하는 긴급 변경이 가장 수용 가능한 경우는?<br><small style="color:#94a3b8">Emergency changes that bypass the normal change control process are MOST acceptable if:</small>`,
+options: [
+  "경영진이 변경 발생 후 검토하고 승인한다.<br><small style='color:#94a3b8'>Management reviews and approves the changes after they have occurred.</small>",
+  "변경 시점에 동료(Peer)가 변경을 검토한다.<br><small style='color:#94a3b8'>The changes are reviewed by a peer at the time of the change.</small>",
+  "운영 부서가 변경 통제 시스템에 변경을 문서화한다.<br><small style='color:#94a3b8'>The changes are documented in the change control system by the operations department.</small>",
+  "경영진이 모든 긴급 변경을 사전 승인한다.<br><small style='color:#94a3b8'>Management has preapproved all emergency changes.</small>"
+],
+correct: 0,
+explanation: `<p><b>경영진의 사후 검토·승인</b>이 긴급 변경 우회 시 가장 수용 가능한 통제입니다. 시스템 장애 시 경영진이 항상 가용하지 않으므로, 합리적 시간 내 사후 검토·승인이 허용됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 경영진 사후 검토·승인 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>합리적 시간 내 사후 승인 — 책임성+통제 유지</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 동료 검토</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">일부 책임성 제공하나 경영진 검토·승인을 대체 불가</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 운영부서 문서화</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">문서화만으로는 검토·승인 프로세스를 대체 불가</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 경영진 사전 포괄 승인</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">경영진 책임 회피 — 비인가 변경이 경영진 모르게 발생 가능</td></tr>
+</table>
+<div class="sbox"><b>🚨 긴급 변경 통제 원칙:</b><br>
+• <b>사전 승인 불가 시 → 사후 검토·승인</b> (합리적 시간 내)<br>
+• 문서화만으로 부족 — <b>검토+승인</b>이 반드시 수반되어야 함<br>
+• 사전 포괄 승인 = 통제 무력화 (경영진 책임 포기)<br>
+• Q225 연결: 긴급 변경도 <b>통제 자체를 생략하는 것 아님</b> — 절차만 간소화</div>`,
+reference:"CRM Chapter 4: IS Operations — Emergency Change Control & Post-Implementation Review",
+keyConcepts:[
+"긴급 변경 사후 승인|경영진의 사후 검토·승인이 가장 수용 가능한 보상 통제 — 합리적 시간 내 수행",
+"사전 포괄 승인 위험|모든 긴급 변경 사전 승인 = 경영진 책임 회피 → 비인가 변경 위험",
+"문서화 vs 승인|문서화만으로 검토·승인 프로세스 대체 불가 — 둘 다 필요",
+"긴급 변경 통제 원칙|절차 간소화 ≠ 통제 생략 — 사후라도 경영진 검토·승인 필수"
+]
+},
+
+// ============================================================
+// Q227 - Testing Program Changes
+// ============================================================
+{
+id: 227,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 ERP 애플리케이션의 변경 관리 프로세스를 검토하고 있다. 프로그램 변경을 테스트하는 가장 좋은 방법은?<br><small style="color:#94a3b8">An IS auditor is reviewing the change management process for an ERP application. Which is the BEST method for testing program changes?</small>`,
+options: [
+  "변경 티켓 표본을 선택하여 승인 여부를 검토한다.<br><small style='color:#94a3b8'>Select a sample of change tickets and review them for authorization.</small>",
+  "프로그램 변경을 처음부터 끝까지 추적하여 워크스루를 수행한다.<br><small style='color:#94a3b8'>Perform a walk-through by tracing a program change from start to finish.</small>",
+  "수정된 프로그램 표본을 변경 티켓으로 역추적한다.<br><small style='color:#94a3b8'>Trace a sample of modified programs to support change tickets.</small>",
+  "쿼리 소프트웨어를 사용하여 모든 변경 티켓의 누락 필드를 분석한다.<br><small style='color:#94a3b8'>Use query software to analyze all change tickets for missing fields.</small>"
+],
+correct: 2,
+explanation: `<p><b>수정된 프로그램에서 변경 티켓으로 역추적</b>이 가장 좋은 방법입니다. 이 방법은 변경 티켓 없이 수행된 미문서화 변경(Undocumented Changes)을 탐지할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">방법</th><th style="padding:8px;border:1px solid #334155">추적 방향</th><th style="padding:8px;border:1px solid #334155">한계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 티켓→승인 검토</td><td style="padding:8px;border:1px solid #ddd">티켓 → 승인</td><td style="padding:8px;border:1px solid #ddd">티켓 없는 변경 미탐지</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 워크스루</td><td style="padding:8px;border:1px solid #ddd">프로세스 이해</td><td style="padding:8px;border:1px solid #ddd">모든 변경의 정상 절차 준수 확인 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 프로그램→티켓 역추적 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>프로그램 → 티켓</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 미문서화·비인가 변경 탐지 가능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 쿼리로 누락 필드 분석</td><td style="padding:8px;border:1px solid #ddd">티켓 완전성</td><td style="padding:8px;border:1px solid #ddd">티켓 없는 변경 미탐지</td></tr>
+</table>
+<div class="sbox"><b>🔄 추적 방향의 중요성:</b><br>
+• <b>티켓 → 프로그램</b> (순방향) = 승인·문서화 확인 가능, But 티켓 없는 변경 놓침<br>
+• <b>프로그램 → 티켓</b> (역방향) = <b>비인가·미문서화 변경 탐지</b> — 가장 효과적<br>
+• Q222 워크스루 = 설계 효과성 테스트 / 여기서는 <b>운영 효과성(실제 준수)</b> 테스트<br>
+• 핵심: 감사 시 <b>"실제 발생한 것 → 통제로 역추적"</b>이 우회 탐지에 최적</div>`,
+reference:"CRM Chapter 4: IS Operations — Change Management Testing & Audit Techniques",
+keyConcepts:[
+"역추적(프로그램→티켓)|수정된 프로그램에서 변경 티켓으로 역추적 — 미문서화·비인가 변경 탐지 최적",
+"추적 방향 원칙|순방향(티켓→프로그램)=승인 확인, 역방향(프로그램→티켓)=우회 탐지 — 역방향이 더 효과적",
+"워크스루 vs 표본 테스트|워크스루=설계 효과성(Q222), 표본 역추적=운영 효과성 — 목적별 구분"
+]
+},
+
+// ============================================================
+// Q228 - IPF Recovery Procedures Basis
+// ============================================================
+{
+id: 228,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `정보처리시설(IPF)의 복구 절차는 무엇에 기반하는 것이 가장 적절한가?<br><small style="color:#94a3b8">Recovery procedures for an information processing facility (IPF) are BEST based on:</small>`,
+options: [
+  "복구 시간 목표(RTO).<br><small style='color:#94a3b8'>Recovery time objective (RTO)</small>",
+  "복구 시점 목표(RPO).<br><small style='color:#94a3b8'>Recovery point objective (RPO)</small>",
+  "최대 허용 중단 시간(MTO).<br><small style='color:#94a3b8'>Maximum tolerable outage (MTO)</small>",
+  "정보 보안 정책.<br><small style='color:#94a3b8'>Information security policy</small>"
+],
+correct: 0,
+explanation: `<p><b>RTO(복구 시간 목표)</b>가 IPF 복구 절차의 기반입니다. RTO는 MTO에 기반한 <b>목표 복구 시간</b>으로, 가용한 복구 대안을 고려하여 설정됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">개념</th><th style="padding:8px;border:1px solid #334155">정의</th><th style="padding:8px;border:1px solid #334155">복구 절차 기반</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>RTO ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>목표 복구 시간 — MTO 기반 + 가용 복구 대안 고려</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 복구 절차의 직접적 기준</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">RPO</td><td style="padding:8px;border:1px solid #ddd">허용 데이터 손실량 — 백업 전략에 영향</td><td style="padding:8px;border:1px solid #ddd">데이터 복구 전략 기반 (절차 전체 아님)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">MTO</td><td style="padding:8px;border:1px solid #ddd">최대 허용 중단 시간 — 초과 시 조직 생존 위협</td><td style="padding:8px;border:1px solid #ddd">RTO의 상위 기준 (절차의 직접 기반 아님)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">정보 보안 정책</td><td style="padding:8px;border:1px solid #ddd">보안 원칙·기준 문서</td><td style="padding:8px;border:1px solid #ddd">✗ 복구 절차와 무관</td></tr>
+</table>
+<div class="sbox"><b>⏱️ MTO → RTO → 복구 절차 관계:</b><br>
+• <b>MTO</b> = 조직이 감내할 수 있는 <b>최대 중단 시간</b> (초과 시 생존 위협)<br>
+• <b>RTO</b> = MTO 내에서 설정하는 <b>목표 복구 시간</b> (RTO ≤ MTO)<br>
+• <b>복구 절차</b> = RTO를 충족하도록 설계 (사이트 유형·자원·단계 결정)<br>
+• <b>RPO</b> = 데이터 손실 허용량 → <b>백업 빈도·전략</b>에 영향 (복구 절차와 구분)<br>
+• 관계: MTO(상한) → RTO(목표) → 복구 절차(실행) / RPO → 백업 전략</div>`,
+reference:"CRM Chapter 4: IS Operations — RTO, MTO & Recovery Planning",
+keyConcepts:[
+"RTO와 복구 절차|RTO는 복구 절차의 직접적 기준 — MTO 기반 + 가용 복구 대안 고려하여 설정",
+"MTO vs RTO|MTO=최대 허용 중단(생존 한계), RTO=목표 복구 시간(RTO≤MTO) — MTO는 RTO의 상한",
+"RPO의 역할|RPO=데이터 손실 허용량 → 백업 빈도·전략 결정 — 복구 절차 전체의 기반 아님",
+"복구 계획 흐름|MTO 결정 → RTO 설정 → 복구 전략·절차 설계 → RPO로 백업 전략 결정"
+]
+},
+
+// ============================================================
+// Q229 - Change Control Compliance Testing
+// ============================================================
+{
+id: 229,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 수행하는 다음 테스트 중 조직의 변경 통제 절차 준수 여부를 판단하는 데 가장 효과적인 것은?<br><small style="color:#94a3b8">Which test performed by an IS auditor is the MOST effective in determining compliance with organizational change control procedures?</small>`,
+options: [
+  "소프트웨어 이관 기록을 검토하고 승인을 확인한다.<br><small style='color:#94a3b8'>Review software migration records and verify approvals.</small>",
+  "발생한 변경을 식별하고 승인을 확인한다.<br><small style='color:#94a3b8'>Identify changes that have occurred and verify approvals.</small>",
+  "변경 통제 문서를 검토하고 승인을 확인한다.<br><small style='color:#94a3b8'>Review change control documentation and verify approvals.</small>",
+  "적절한 직원만 변경을 운영 환경에 이관할 수 있도록 보장한다.<br><small style='color:#94a3b8'>Ensure that only appropriate staff can migrate changes into production.</small>"
+],
+correct: 1,
+explanation: `<p><b>실제 발생한 변경을 식별한 후 승인을 확인</b>하는 것이 가장 효과적입니다. 로그·수정 일자 등으로 실제 변경을 파악하면 문서화되지 않은 변경도 탐지할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">출발점</th><th style="padding:8px;border:1px solid #334155">한계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 이관 기록 → 승인</td><td style="padding:8px;border:1px solid #ddd">이관 기록(문서)</td><td style="padding:8px;border:1px solid #ddd">기록에 누락된 변경 미탐지</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 실제 변경 식별 → 승인 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>실제 시스템(로그·수정일)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 미문서화 변경 포함 — 가장 포괄적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 변경 통제 문서 → 승인</td><td style="padding:8px;border:1px solid #ddd">변경 통제 문서</td><td style="padding:8px;border:1px solid #ddd">문서에 누락된 변경 미탐지</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 이관 권한 확인</td><td style="padding:8px;border:1px solid #ddd">접근 통제</td><td style="padding:8px;border:1px solid #ddd">핵심 통제이나 단독으로 준수 확인 불가</td></tr>
+</table>
+<div class="sbox"><b>🔍 변경 통제 감사 — 추적 방향 원칙:</b><br>
+• <b>Q227과 동일 원칙:</b> 실제 발생(프로그램/시스템) → 문서로 역추적이 최적<br>
+• A·C = 문서 기반 출발 → 문서에 없는 변경 놓침 (선택 편향)<br>
+• <b>B = 실제 시스템 기반 출발</b> → 모든 변경 포착 가능 (미문서화 포함)<br>
+• 핵심: <b>"실제 무엇이 변경되었는가?"</b>가 출발점이어야 가장 효과적</div>`,
+reference:"CRM Chapter 4: IS Operations — Change Control Compliance Testing",
+keyConcepts:[
+"실제 변경 식별 우선|로그·수정일로 실제 변경 파악 후 승인 확인 — 미문서화 변경 탐지 가능",
+"문서 기반 한계|이관 기록·변경 통제 문서 = 문서에 없는 변경 놓침 — 선택 편향 위험",
+"역추적 원칙|Q227 연결: 실제 발생 → 문서 역추적이 우회·미문서화 탐지에 최적"
+]
+},
+
+// ============================================================
+// Q230 - Open-Source Software Patching
+// ============================================================
+{
+id: 230,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `오픈소스 소프트웨어를 사용하는 조직의 애플리케이션 시스템에 패치를 제공하는 단일 인정된 개발자가 없다. 오픈소스 소프트웨어를 업데이트하는 가장 안전한 방법은?<br><small style="color:#94a3b8">The application systems using open-source software have no single recognized developer producing patches. Which is the MOST secure way of updating open-source software?</small>`,
+options: [
+  "패치를 재작성하여 적용한다.<br><small style='color:#94a3b8'>Rewrite the patches and apply them.</small>",
+  "가용한 패치의 코드와 적용 사항을 검토한다.<br><small style='color:#94a3b8'>Review the code and application of available patches.</small>",
+  "자체 패치를 개발한다.<br><small style='color:#94a3b8'>Develop in-house patches.</small>",
+  "적합한 패치를 식별하고 적용 전 테스트한다.<br><small style='color:#94a3b8'>Identify and test suitable patches before applying them.</small>"
+],
+correct: 3,
+explanation: `<p><b>적합한 패치 식별 + 적용 전 테스트</b>가 가장 안전한 방법입니다. 기존 개발자들이 제공하는 패치 중 적합한 것을 선별하고, 철저한 테스트 후 적용합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 패치 재작성</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">숙련 인력·시간 필요 — 비실용적·비안전</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 코드 검토만</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">코드 검토 가능하나 적용 전 철저한 테스트가 필수</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 자체 패치 개발</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">IT 부서의 기술·자원 부족 시 오히려 불안전</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 식별 + 테스트 후 적용 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>적합한 패치 선별 → 테스트 → 안전한 적용</b></td></tr>
+</table>
+<div class="sbox"><b>🔓 오픈소스 패치 관리 원칙:</b><br>
+• 단일 개발자 없음 → 다수 커뮤니티 패치 중 <b>적합한 것 선별</b>이 핵심<br>
+• <b>식별(Identify)</b> → <b>테스트(Test)</b> → 적용(Apply) 순서 준수<br>
+• 코드 검토만으로 부족 — <b>실행 환경 테스트</b>가 반드시 수반<br>
+• 재작성·자체 개발 = 자원 집약적 + 기술 부족 시 위험 증가</div>`,
+reference:"CRM Chapter 4: IS Operations — Open-Source Patch Management",
+keyConcepts:[
+"오픈소스 패치 관리|적합한 패치 식별→테스트→적용이 가장 안전 — 단일 개발자 없는 환경의 최선",
+"코드 검토 vs 테스트|코드 검토만으로 부족 — 실행 환경 테스트가 반드시 수반되어야 함",
+"자체 개발 위험|IT 부서 기술·자원 부족 시 자체 패치 개발은 오히려 불안전"
+]
+},
+
+// ============================================================
+// Q231 - Patch Installation System Crash
+// ============================================================
+{
+id: 231,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `현장 감사 중 IS 감사인은 보안 패치 설치로 인한 시스템 크래시를 경험했다. 이 사건의 재발 방지를 합리적으로 보장하기 위해 IS 감사인이 확인해야 할 사항은?<br><small style="color:#94a3b8">During fieldwork, an IS auditor experienced a system crash caused by a security patch installation. To ensure this event will not recur, the IS auditor should ensure that:</small>`,
+options: [
+  "시스템 관리자만 비업무 시간에 패치 프로세스를 수행한다.<br><small style='color:#94a3b8'>Only systems administrators perform the patch process during nonbusiness hours.</small>",
+  "고객의 변경 관리 및 패치 프로세스에 적절한 통제가 있다.<br><small style='color:#94a3b8'>The client's change management and patching processes have proper controls.</small>",
+  "패치가 운영 환경에서 병행 테스트를 통해 검증된다.<br><small style='color:#94a3b8'>Patches are validated using parallel testing in production.</small>",
+  "위험 평가를 포함한 패치 승인 프로세스가 개발된다.<br><small style='color:#94a3b8'>An approval process of the patch, including a risk assessment, is developed.</small>"
+],
+correct: 1,
+explanation: `<p><b>변경 관리 및 패치 프로세스의 적절한 통제</b>를 확인하는 것이 가장 포괄적인 해결책입니다. 테스트, 비운영 시간 구현, 백아웃 계획 등을 포함하는 전체 프로세스가 필요합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. SA + 비업무 시간</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">부분적 — 공식 절차(테스트·백아웃 등)가 더 중요</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 변경 관리·패치 프로세스 통제 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>테스트+스케줄링+백아웃+승인 포함 — 가장 포괄적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 운영 환경 병행 테스트</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">모든 패치 철저 테스트 불가능 — 비운영 시간 적용+백아웃이 더 중요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 승인+위험 평가 프로세스</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">승인만으로 사고 방지 불가 — 전체 변경 관리 프로세스가 필요</td></tr>
+</table>
+<div class="sbox"><b>🔧 패치 관리의 완전한 통제 체계:</b><br>
+• <b>변경 관리 프로세스</b> = 테스트 + 스케줄링 + 승인 + 백아웃 계획 = 포괄적 통제<br>
+• 부분적 통제(A·C·D)만으로는 재발 방지 불충분<br>
+• 모든 패치의 철저한 테스트는 현실적 불가능 → <b>비운영 시간 적용 + 백아웃 계획</b>이 보상<br>
+• 핵심: 개별 통제보다 <b>프로세스 전체의 적절성</b> 확인이 감사인의 역할</div>`,
+reference:"CRM Chapter 4: IS Operations — Patch Management & Change Control",
+keyConcepts:[
+"패치 관리 통제|변경 관리 프로세스(테스트+스케줄링+승인+백아웃) 전체의 적절한 통제가 핵심",
+"백아웃 계획|모든 패치 완벽 테스트 불가능 — 비운영 시간 적용+백아웃 계획이 보상 통제",
+"부분 vs 전체 통제|승인만·시간만·테스트만 = 부분적 — 전체 프로세스 통제가 재발 방지의 핵심"
+]
+},
+
+// ============================================================
+// Q232 - Vendor Security Patches
+// ============================================================
+{
+id: 232,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `벤더들이 소프트웨어 보안 결함을 수정하는 패치를 릴리스했다. IS 감사인이 권고해야 할 사항은?<br><small style="color:#94a3b8">Vendors have released patches fixing security flaws in their software. Which should an IS auditor recommend?</small>`,
+options: [
+  "설치 전 패치의 영향을 평가한다.<br><small style='color:#94a3b8'>Assess the impact of patches prior to installation.</small>",
+  "벤더에게 모든 수정이 포함된 새 소프트웨어 버전을 요청한다.<br><small style='color:#94a3b8'>Ask the vendors for a new software version with all fixes included.</small>",
+  "보안 패치를 즉시 설치한다.<br><small style='color:#94a3b8'>Install the security patch immediately.</small>",
+  "향후 이 벤더와의 거래를 중단한다.<br><small style='color:#94a3b8'>Decline to deal with these vendors in the future.</small>"
+],
+correct: 0,
+explanation: `<p><b>설치 전 패치 영향 평가</b>가 최우선입니다. 한 벤더의 패치가 다른 시스템에 영향을 미치는 경우가 다수 있으므로, 가능한 한 테스트 후 조직 전체에 배포해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 영향 평가 후 설치 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>패치 영향 평가 → 테스트 → 적절한 시점 배포</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 새 버전 요청</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">항상 가용하지 않음 + 전체 설치는 시간 소모적</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 즉시 설치</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">영향 미파악 시 문제 유발 + 가용성 영향 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 벤더 거래 중단</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">결함 미해결 + 서비스 옵션 제한</td></tr>
+</table>
+<div class="sbox"><b>🩹 패치 관리 프로세스 원칙:</b><br>
+• <b>평가(Assess)</b> → 테스트(Test) → 스케줄(Schedule) → 적용(Apply)<br>
+• 보안 패치라도 <b>즉시 설치 ✗</b> — 다른 시스템 영향·가용성 문제 가능<br>
+• 비즈니스에 수용 가능한 시점에 배포 (가용성 고려)<br>
+• Q225(긴급 변경)와 구분: 보안 패치 = <b>정상 절차</b> / 운영 중대 영향 = 긴급 변경<br>
+• Q231 연결: 패치로 인한 크래시 방지 = 사전 영향 평가+테스트가 핵심</div>`,
+reference:"CRM Chapter 4: IS Operations — Patch Management & Impact Assessment",
+keyConcepts:[
+"패치 사전 영향 평가|설치 전 영향 평가 필수 — 한 벤더 패치가 다른 시스템에 영향 가능",
+"보안 패치 즉시 설치 ✗|보안 패치도 테스트+비즈니스 적합 시점 배포 — 즉시 설치는 위험",
+"패치 관리 순서|평가→테스트→스케줄→적용 — 보안 긴급성과 안정성의 균형"
+]
+},
+
+// ============================================================
+// Q233 - Change Request Separation of Duties
+// ============================================================
+{
+id: 233,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `자체 개발 애플리케이션 검토 중 IS 감사인에게 가장 큰 우려가 되는 것은?<br><small style="color:#94a3b8">During the review of an in-house developed application, the GREATEST concern to an IS auditor is if a:</small>`,
+options: [
+  "사용자가 변경 요청을 제기하고 테스트 환경에서 테스트한다.<br><small style='color:#94a3b8'>A user raises a change request and tests it in the test environment.</small>",
+  "프로그래머가 개발 환경에서 변경을 코딩하고 테스트 환경에서 테스트한다.<br><small style='color:#94a3b8'>A programmer codes a change in development and tests it in the test environment.</small>",
+  "관리자가 변경 요청을 승인한 후 운영 환경에서 검토한다.<br><small style='color:#94a3b8'>A manager approves a change request and then reviews it in production.</small>",
+  "관리자가 변경 요청을 시작(발의)하고 이후 이를 승인한다.<br><small style='color:#94a3b8'>A manager initiates a change request and subsequently approves it.</small>"
+],
+correct: 3,
+explanation: `<p><b>동일인이 변경을 발의하고 승인</b>하는 것은 직무 분리(SoD) 원칙 위반입니다. 자신의 요청을 스스로 승인해서는 안 됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 사용자: 요청+테스트</td><td style="padding:8px;border:1px solid #ddd">✔ 정상</td><td style="padding:8px;border:1px solid #ddd">사용자 테스트 참여는 일반적 관행</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 프로그래머: 코딩+테스트</td><td style="padding:8px;border:1px solid #ddd">✔ 정상</td><td style="padding:8px;border:1px solid #ddd">개발 환경 코딩 + 별도 테스트 환경 = 좋은 관행</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 관리자: 승인+운영 검토</td><td style="padding:8px;border:1px solid #ddd">✔ 수용 가능</td><td style="padding:8px;border:1px solid #ddd">승인 후 운영 환경 확인 = 적절한 검토</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 관리자: 발의+승인 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✗ SoD 위반</b></td><td style="padding:8px;border:1px solid #ddd"><b>자신의 요청을 스스로 승인 = 직무 분리 위반</b></td></tr>
+</table>
+<div class="sbox"><b>👥 변경 관리 직무 분리 원칙:</b><br>
+• <b>발의(Initiate) ≠ 승인(Approve)</b> — 동일인 수행 시 SoD 위반<br>
+• Q220(DBA+OS 패치)와 동일 원칙: <b>역할 간 견제와 균형</b>이 핵심<br>
+• 사용자 테스트 참여, 프로그래머 개발+테스트, 관리자 검토 = 모두 정상<br>
+• 핵심: <b>"자신의 요청을 자신이 승인"</b> = CISA 시험 단골 SoD 위반 패턴</div>`,
+reference:"CRM Chapter 4: IS Operations — Change Management & Separation of Duties",
+keyConcepts:[
+"변경 요청 SoD|발의자 ≠ 승인자 — 동일인이 발의+승인 시 직무 분리 위반",
+"변경 관리 정상 관행|사용자 테스트·프로그래머 개발+테스트·관리자 운영 검토 = 모두 수용 가능",
+"SoD 핵심 원칙|자신의 요청을 스스로 승인 금지 — 견제·균형의 기본"
+]
+},
+
+// ============================================================
+// Q234 - CMDB Maintenance Concern
+// ============================================================
+{
+id: 234,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `대규모 다국적 조직의 애플리케이션 변경 관리 프로세스를 검토하는 IS 감사인이 가장 우려해야 할 상황은?<br><small style="color:#94a3b8">An IS auditor reviewing the application change management process for a large multinational organization should be MOST concerned when:</small>`,
+options: [
+  "테스트 시스템이 운영 시스템과 다른 구성으로 실행된다.<br><small style='color:#94a3b8'>Test systems run different configurations than production systems.</small>",
+  "변경 관리 기록이 종이 기반이다.<br><small style='color:#94a3b8'>Change management records are paper based.</small>",
+  "구성 관리 데이터베이스(CMDB)가 유지 관리되지 않는다.<br><small style='color:#94a3b8'>The configuration management database is not maintained.</small>",
+  "테스트 환경이 운영 서버에 설치되어 있다.<br><small style='color:#94a3b8'>The test environment is installed on the production server.</small>"
+],
+correct: 2,
+explanation: `<p><b>CMDB 미유지 관리</b>가 가장 큰 우려입니다. CMDB는 구성 항목(CI)과 그 간의 의존성을 추적하며, 최신 상태가 아니면 잘못된 승인이나 테스트 단계에서 핵심 의존성 누락이 발생합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 테스트≠운영 구성</td><td style="padding:8px;border:1px solid #ddd">△</td><td style="padding:8px;border:1px solid #ddd">이상적이지 않으나 사유가 있을 수 있음 — CMDB보다 낮은 우려</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 종이 기반 기록</td><td style="padding:8px;border:1px solid #ddd">△</td><td style="padding:8px;border:1px solid #ddd">비효율적이나 적절히 유지 시 통제 관점 문제 없음</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. CMDB 미유지 관리 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>잘못된 승인 + 핵심 의존성 누락 → 변경 관리 통제 실패</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 테스트=운영 서버</td><td style="padding:8px;border:1px solid #ddd">△</td><td style="padding:8px;border:1px solid #ddd">이상적이지 않으나 환경이 분리되면 동일 서버 허용 가능</td></tr>
+</table>
+<div class="sbox"><b>📦 CMDB(구성 관리 데이터베이스) 핵심:</b><br>
+• <b>CI(구성 항목)</b>와 <b>의존성(Dependencies)</b> 추적<br>
+• 최신 상태 유지 필수 — 미유지 시:<br>
+  &nbsp;&nbsp;→ 잘못된 승인 (영향 범위 오판)<br>
+  &nbsp;&nbsp;→ 테스트 시 핵심 의존성 누락<br>
+• 특히 <b>대규모 다국적 조직</b>에서 CMDB 미유지 = 연쇄 영향 파악 불가<br>
+• Q224(구성 관리·기준선)와 연결: 구성 관리의 핵심 도구 = CMDB</div>`,
+reference:"CRM Chapter 4: IS Operations — CMDB & Configuration Management",
+keyConcepts:[
+"CMDB 유지 관리|CI와 의존성 추적 — 미유지 시 잘못된 승인·의존성 누락으로 변경 관리 실패",
+"CMDB와 대규모 조직|다국적 조직에서 CMDB 미유지 = 연쇄 영향 파악 불가 → 최대 우려",
+"테스트·운영 환경 분리|동일 서버에 설치 가능 — 환경(논리적)이 분리되면 통제 문제 아님",
+"종이 기반 기록|비효율적이나 적절히 유지 시 통제 관점 문제 없음 — 형태보다 관리가 핵심"
+]
+},
+
+// ============================================================
+// Q235 - Detecting Unauthorized Production Code Changes
+// ============================================================
+{
+id: 235,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `운영 코드에 비인가 변경이 이루어졌는지 판단하는 가장 효과적인 감사 절차는?<br><small style="color:#94a3b8">The MOST effective audit procedure in determining if unauthorized changes have been made to production code is to:</small>`,
+options: [
+  "변경 통제 시스템 기록을 검토하고 오브젝트 코드 파일로 순방향 추적한다.<br><small style='color:#94a3b8'>Examine change control system records and trace them forward to object code files.</small>",
+  "운영 프로그램 라이브러리의 접근 통제 권한을 검토한다.<br><small style='color:#94a3b8'>Review access control permissions operating within the production program libraries.</small>",
+  "오브젝트 코드를 검사하여 변경 사례를 찾고 변경 통제 기록으로 역추적한다.<br><small style='color:#94a3b8'>Examine object code to find instances of changes and trace them back to change control records.</small>",
+  "변경 통제 시스템 내 변경 승인 지정을 검토한다.<br><small style='color:#94a3b8'>Review change approved designations established within the change control system.</small>"
+],
+correct: 2,
+explanation: `<p><b>오브젝트 코드에서 변경을 식별한 후 변경 통제 기록으로 역추적</b>하는 것이 가장 효과적입니다. 이는 비인가 코드 변경 위험을 직접 다루는 실증적 테스트(Substantive Test)입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">추적 방향</th><th style="padding:8px;border:1px solid #334155">비인가 변경 탐지</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 기록 → 코드 (순방향)</td><td style="padding:8px;border:1px solid #ddd">변경 기록 → 오브젝트 코드</td><td style="padding:8px;border:1px solid #ddd">✗ 기록에 없는 변경 미탐지</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 접근 통제 검토</td><td style="padding:8px;border:1px solid #ddd">예방적 통제 확인</td><td style="padding:8px;border:1px solid #ddd">✗ 이미 발생한 변경 탐지 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 코드 → 기록 (역추적) ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>오브젝트 코드 → 변경 기록</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 기록 없는 변경 = 비인가 변경 탐지</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 승인 지정 검토</td><td style="padding:8px;border:1px solid #ddd">승인된 변경만 확인</td><td style="padding:8px;border:1px solid #ddd">✗ 비인가 변경 직접 탐지 불가</td></tr>
+</table>
+<div class="sbox"><b>🔄 역추적 원칙 — 3문제 연속 출제 패턴:</b><br>
+• <b>Q227:</b> 수정된 프로그램 → 변경 티켓 역추적 (프로그램 변경 테스트)<br>
+• <b>Q229:</b> 실제 발생 변경 식별 → 승인 확인 (준수 테스트)<br>
+• <b>Q235:</b> 오브젝트 코드 → 변경 통제 기록 역추적 (비인가 변경 탐지)<br>
+• <b>공통 원칙:</b> 실제 발생한 것에서 출발 → 문서로 역추적 = 우회·미문서화 탐지 최적<br>
+• 순방향(문서→실제) = 문서에 없는 것을 놓침 (선택 편향)</div>`,
+reference:"CRM Chapter 4: IS Operations — Change Control Audit & Substantive Testing",
+keyConcepts:[
+"역추적으로 비인가 변경 탐지|오브젝트 코드 변경 → 변경 통제 기록 역추적 = 가장 효과적 실증 테스트",
+"순방향 vs 역방향 추적|순방향=기록→코드(기록 누락 놓침), 역방향=코드→기록(비인가 변경 탐지)",
+"접근 통제의 한계|예방적 통제 — 이미 발생한 비인가 변경 탐지 불가",
+"CISA 역추적 패턴|Q227·Q229·Q235 공통: 실제 발생 → 문서 역추적이 우회 탐지 최적"
+]
+},
+
+// ============================================================
+// Q236 - Privileged Account Configuration Changes
+// ============================================================
+{
+id: 236,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `기업이 미션 크리티컬 애플리케이션의 구성 변경을 처리하기 위해 특권 계정을 사용한다. 이 상황에서 위험을 제한하는 가장 적절한 통제는?<br><small style="color:#94a3b8">An enterprise uses privileged accounts to process configuration changes for mission-critical applications. Which is the BEST control to limit the risk?</small>`,
+options: [
+  "감사 추적이 정확하고 구체적인지 확인한다.<br><small style='color:#94a3b8'>Ensure that audit trails are accurate and specific.</small>",
+  "직원이 적절한 교육을 받았는지 확인한다.<br><small style='color:#94a3b8'>Ensure that personnel have adequate training.</small>",
+  "핵심 인력에 대해 신원 조회가 수행되는지 확인한다.<br><small style='color:#94a3b8'>Ensure that personnel background checks are performed for critical personnel.</small>",
+  "핵심 변경에 대해 상급자 승인 및 검토가 수행되는지 확인한다.<br><small style='color:#94a3b8'>Ensure that supervisory approval and review are performed for critical changes.</small>"
+],
+correct: 3,
+explanation: `<p><b>상급자 승인 및 검토</b>가 가장 적절한 통제입니다. 책임 있는 관리자의 승인·검토는 비인가 변경을 예방·탐지하고, 직무 분리를 보장합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">한계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 감사 추적</td><td style="padding:8px;border:1px solid #ddd">탐지적</td><td style="padding:8px;border:1px solid #ddd">특권 접근자가 변경·삭제 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 적절한 교육</td><td style="padding:8px;border:1px solid #ddd">예방적 (간접)</td><td style="padding:8px;border:1px solid #ddd">억제 효과 있으나 비인가 변경 방지 불충분</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 신원 조회</td><td style="padding:8px;border:1px solid #ddd">예방적 (기본)</td><td style="padding:8px;border:1px solid #ddd">매우 기본적 통제 — 오류·부정 방지·탐지 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 상급자 승인·검토 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>예방+탐지</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ SoD 보장 + 비인가 변경 예방·탐지</b></td></tr>
+</table>
+<div class="sbox"><b>🔑 특권 계정 통제 핵심:</b><br>
+• <b>특권 계정</b> = 감사 추적 변경 가능 → 감사 추적만으로 부족<br>
+• <b>상급자 승인·검토</b> = 예방(사전 승인) + 탐지(사후 검토) 이중 통제<br>
+• 교육·신원 조회 = 보조적 통제 — 단독으로 비인가 변경 방지 불가<br>
+• 핵심: 특권 접근 환경에서 <b>독립적 감독(Supervisory Oversight)</b>이 최선</div>`,
+reference:"CRM Chapter 4: IS Operations — Privileged Access & Change Control",
+keyConcepts:[
+"상급자 승인·검토|특권 계정 환경에서 최선의 통제 — 예방(승인)+탐지(검토) 이중 기능",
+"감사 추적의 한계|특권 접근자가 감사 추적 변경·삭제 가능 — 단독 통제로 불충분",
+"특권 계정 위험|구성 변경+감사 추적 변경 가능 → 독립적 감독(SoD)이 핵심 보상 통제"
+]
+},
+
+// ============================================================
+// Q237 - Auditor Role in Patch Crash Prevention
+// ============================================================
+{
+id: 237,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `조직이 최근 보안 패치를 설치했으나 운영 서버가 크래시되었다. 이 재발 확률을 최소화하기 위해 IS 감사인이 해야 할 것은?<br><small style="color:#94a3b8">An organization recently installed a security patch that crashed the production server. To minimize the probability of this occurring again, an IS auditor should:</small>`,
+options: [
+  "패치 릴리스 노트에 따라 패치를 적용한다.<br><small style='color:#94a3b8'>Apply the patch according to the patch's release notes.</small>",
+  "적절한 변경 관리 프로세스가 마련되어 있는지 확인한다.<br><small style='color:#94a3b8'>Ensure that a good change management process is in place.</small>",
+  "운영 환경에 배포하기 전에 패치를 철저히 테스트한다.<br><small style='color:#94a3b8'>Thoroughly test the patch before sending it to production.</small>",
+  "위험 평가 후 패치를 승인한다.<br><small style='color:#94a3b8'>Approve the patch after doing a risk assessment.</small>"
+],
+correct: 1,
+explanation: `<p><b>변경 관리 프로세스의 적절성 확인</b>이 IS 감사인의 역할입니다. 감사인은 프로세스를 검토하고 적절한 통제가 있는지 확인하며, 직접 패치를 적용·테스트·승인하지 않습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">수행 주체</th><th style="padding:8px;border:1px solid #334155">감사인 역할?</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 패치 적용</td><td style="padding:8px;border:1px solid #ddd">시스템 관리자</td><td style="padding:8px;border:1px solid #ddd">✗ 감사인 역할 아님</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 변경 관리 프로세스 확인 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>IS 감사인</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 프로세스 검토·통제 확인·제안</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 패치 테스트</td><td style="padding:8px;border:1px solid #ddd">개발/운영 지원팀</td><td style="padding:8px;border:1px solid #ddd">✗ 감사인 역할 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 패치 승인</td><td style="padding:8px;border:1px solid #ddd">운영위원회/CCB</td><td style="padding:8px;border:1px solid #ddd">✗ 감사인 역할 아님</td></tr>
+</table>
+<div class="sbox"><b>👨‍💼 IS 감사인 역할 경계:</b><br>
+• <b>감사인 역할:</b> 프로세스 검토 → 통제 적절성 확인 → 개선 제안<br>
+• <b>감사인이 하지 않는 것:</b> 패치 적용(SA), 테스트(개발팀), 승인(CCB)<br>
+• Q231과 비교: 동일 시나리오지만 <b>주어(Subject)가 다름</b><br>
+  &nbsp;&nbsp;→ Q231 "감사인이 확인해야 할 것" = B(프로세스 통제)<br>
+  &nbsp;&nbsp;→ Q237 "감사인이 해야 할 것" = B(프로세스 확인) — 직접 행동 ✗<br>
+• 핵심: <b>감사인 = 독립적 평가자</b>, 운영 활동 직접 수행 금지</div>`,
+reference:"CRM Chapter 4: IS Operations — Auditor Role in Patch & Change Management",
+keyConcepts:[
+"감사인 역할 경계|프로세스 검토·통제 확인·제안이 역할 — 패치 적용·테스트·승인은 감사인 역할 아님",
+"변경 관리 프로세스 확인|패치 크래시 재발 방지 = 프로세스 적절성 검토가 감사인의 최선 조치",
+"감사인 독립성|운영 활동(적용·테스트·승인) 직접 수행 시 독립성 훼손 — 평가자 역할 유지"
+]
+},
+
+// ============================================================
+// Q238 - System Configuration Review Evidence
+// ============================================================
+{
+id: 238,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 시스템 구성 검토를 수행하고 있다. 현재 시스템 구성 설정을 뒷받침하는 가장 좋은 증거는?<br><small style="color:#94a3b8">An IS auditor is carrying out a system configuration review. Which is the BEST evidence in support of the current system configuration settings?</small>`,
+options: [
+  "시스템 관리자가 스프레드시트로 가져온 시스템 구성 값.<br><small style='color:#94a3b8'>System configuration values imported to a spreadsheet by the system administrator</small>",
+  "IS 감사인이 시스템에서 직접 조회한 구성 값의 표준 보고서.<br><small style='color:#94a3b8'>Standard report with configuration values retrieved from the system by the IS auditor</small>",
+  "시스템 관리자가 제공한 시스템 구성 설정의 날짜가 기재된 스크린샷.<br><small style='color:#94a3b8'>Dated screenshot of the system configuration settings made available by the system administrator</small>",
+  "비즈니스 소유자에 의한 승인된 시스템 구성 값의 연간 검토.<br><small style='color:#94a3b8'>Annual review of approved system configuration values by the business owner</small>"
+],
+correct: 1,
+explanation: `<p><b>IS 감사인이 시스템에서 직접 조회한 표준 보고서</b>가 가장 신뢰할 수 있는 증거입니다. 감사인은 감사 결과에 이해관계가 없으므로 직접 획득한 증거가 가장 신뢰성이 높습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">증거 출처</th><th style="padding:8px;border:1px solid #334155">신뢰성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. SA가 스프레드시트 가져오기</td><td style="padding:8px;border:1px solid #ddd">SA 제공 (가공 가능)</td><td style="padding:8px;border:1px solid #ddd">✗ 제시 전 수정 가능</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 감사인 직접 조회 보고서 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>감사인 직접 획득</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 가장 높은 신뢰성 — 이해관계 없음</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. SA 제공 스크린샷</td><td style="padding:8px;border:1px solid #ddd">SA 제공 (변경 가능)</td><td style="padding:8px;border:1px solid #ddd">✗ 촬영 전 설정 변경 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 소유자 연간 검토</td><td style="padding:8px;border:1px solid #ddd">비즈니스 소유자</td><td style="padding:8px;border:1px solid #ddd">✗ 현재 정보 미반영 가능</td></tr>
+</table>
+<div class="sbox"><b>📋 감사 증거 신뢰성 원칙:</b><br>
+• <b>감사인 직접 획득</b> > 피감사자 제공 — 이해관계 없는 독립적 증거<br>
+• <b>시스템 생성(System-generated)</b> > 수동 가공 — 변조 위험 낮음<br>
+• 현재 시점 조회 > 과거 검토(연간) — 최신성 보장<br>
+• SA 제공 증거(스프레드시트·스크린샷) = 제시 전 <b>수정·변조 가능</b><br>
+• 핵심: <b>"누가 획득했는가" + "어떻게 생성되었는가"</b>가 신뢰성 판단 기준</div>`,
+reference:"CRM Chapter 4: IS Operations — Audit Evidence & Configuration Review",
+keyConcepts:[
+"감사 증거 신뢰성|감사인 직접 획득 > 피감사자 제공 — 이해관계 없는 독립적 증거가 가장 신뢰",
+"시스템 생성 증거|표준 보고서(시스템 생성) > 스프레드시트·스크린샷(수동 가공) — 변조 위험 낮음",
+"SA 제공 증거 한계|스프레드시트·스크린샷은 제시 전 수정 가능 — 감사인 직접 조회가 우선"
+]
+},
+
+// ============================================================
+// Q239 - Patch Testing Under Resource Strain
+// ============================================================
+{
+id: 239,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `벤더가 최근 몇 달간 여러 중요 보안 패치를 릴리스하여 관리자의 테스트·배포 역량에 부담이 되고 있다. 관리자가 패치 테스트를 줄여도 되는지 물었다. 조직이 취해야 할 접근법은?<br><small style="color:#94a3b8">A vendor released several critical security patches recently, straining administrators' ability to keep patches tested and deployed timely. Administrators asked to reduce testing. What approach should the organization take?</small>`,
+options: [
+  "현재의 테스트 및 패치 적용 프로세스를 계속 유지한다.<br><small style='color:#94a3b8'>Continue the current process of testing and applying patches.</small>",
+  "테스트를 줄이고 적절한 백아웃 계획을 마련한다.<br><small style='color:#94a3b8'>Reduce testing and ensure that an adequate back-out plan is in place.</small>",
+  "테스트 자원이 확보될 때까지 패치를 지연한다.<br><small style='color:#94a3b8'>Delay patching until resources for testing are available.</small>",
+  "벤더의 패치 테스트에 의존한다.<br><small style='color:#94a3b8'>Rely on the vendor's testing of the patches.</small>"
+],
+correct: 0,
+explanation: `<p><b>현재 프로세스 유지</b>가 정답입니다. 보안 패치의 신속한 적용과 철저한 테스트 모두 필수적이며, 단기간 다수 패치 릴리스는 일시적 문제일 수 있으므로 프로세스 변경 전 관찰이 적절합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 현재 프로세스 유지 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>테스트+적시 적용 모두 유지 — 일시적 문제일 수 있음</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 테스트 축소+백아웃</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">테스트 축소 = 운영 중단 위험↑ — 백아웃은 보상이나 사전 테스트가 우선</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 패치 지연</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">보안 패치 지연 = 취약점 노출 → 보안 침해 위험↑</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 벤더 테스트 의존</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">벤더 테스트 ≠ 조직 환경 적합성 — 호환성 문제 미검증</td></tr>
+</table>
+<div class="sbox"><b>🩹 패치 관리 — 테스트 vs 적시성 균형:</b><br>
+• <b>테스트 축소</b> = 호환성 문제·운영 중단 위험 증가<br>
+• <b>패치 지연</b> = 보안 취약점 노출 기간 증가<br>
+• <b>벤더 테스트</b> = 조직 고유 환경·시스템 간 영향 미검증<br>
+• 일시적 부담 → 정책·절차 변경 전 <b>상황 관찰</b>이 적절<br>
+• 핵심: 보안과 안정성 <b>둘 다 타협하지 않는</b> 접근이 최선</div>`,
+reference:"CRM Chapter 4: IS Operations — Patch Management & Testing Requirements",
+keyConcepts:[
+"패치 테스트 유지|자원 부담에도 테스트+적시 적용 프로세스 유지 — 보안·안정성 모두 타협 불가",
+"테스트 축소 위험|호환성 미검증 → 운영 중단 위험 — 백아웃은 보상이나 사전 테스트가 우선",
+"패치 지연 위험|보안 패치 지연 = 취약점 노출 기간 증가 → 보안 침해 위험",
+"벤더 테스트 한계|벤더 환경 ≠ 조직 환경 — 조직 고유 호환성 테스트 불가"
+]
+},
+
+// ============================================================
+// Q240 - Developer Access to Production Command Line
+// ============================================================
+{
+id: 240,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 개발자들이 운영 환경 OS의 명령줄(Command Line)에 운영자 접근 권한을 가지고 있음을 발견했다. 운영 환경에 대한 미탐지·비인가 프로그램 변경 위험을 가장 잘 완화하는 통제는?<br><small style="color:#94a3b8">An IS auditor discovers that developers have operator access to the command line of a production environment OS. Which control would BEST mitigate the risk of undetected and unauthorized program changes?</small>`,
+options: [
+  "명령줄에 입력된 명령어가 로깅된다.<br><small style='color:#94a3b8'>Commands typed on the command line are logged.</small>",
+  "프로그램의 해시 키를 주기적으로 계산하여 최근 승인된 버전의 해시 키와 비교한다.<br><small style='color:#94a3b8'>Hash keys are calculated periodically for programs and matched against hash keys for the most recent authorized versions.</small>",
+  "접근 제한 도구를 통해 사전 승인된 권한으로 OS 명령줄 접근이 부여된다.<br><small style='color:#94a3b8'>Access to the OS command line is granted through an access restriction tool with preapproved rights.</small>",
+  "소프트웨어 개발 도구와 컴파일러가 운영 환경에서 제거되었다.<br><small style='color:#94a3b8'>Software development tools and compilers have been removed from the production environment.</small>"
+],
+correct: 1,
+explanation: `<p><b>해시 키 주기적 비교</b>가 가장 효과적입니다. 프로그램 파일의 해시 값을 최근 승인 버전과 대조하여 모든 변경(인가·비인가)을 탐지할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">한계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 명령어 로깅</td><td style="padding:8px;border:1px solid #ddd">탐지적 (부분)</td><td style="padding:8px;border:1px solid #ddd">로그만으로는 통제 아님 — 로그 검토가 동반되어야 함</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 해시 키 비교 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>탐지적 (포괄)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 모든 파일 변경 탐지 — 변경 수단 무관</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 접근 제한 도구</td><td style="padding:8px;border:1px solid #ddd">예방적</td><td style="padding:8px;border:1px solid #ddd">이미 명령줄 접근 있음 → 우회 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 개발 도구·컴파일러 제거</td><td style="padding:8px;border:1px solid #ddd">예방적 (부분)</td><td style="padding:8px;border:1px solid #ddd">변경 능력 제한하나 다른 수단 가능 + 미탐지 변경 미해결</td></tr>
+</table>
+<div class="sbox"><b>#️⃣ 해시 키 무결성 검증:</b><br>
+• <b>해시 키</b> = 파일의 고유 디지털 지문 — 1비트라도 변경 시 해시 값 변경<br>
+• 승인 버전의 해시 vs 현재 파일 해시 비교 → <b>모든 변경 탐지</b><br>
+• 변경 수단(명령줄·도구·외부) 무관하게 결과(파일 변경) 탐지<br>
+• "로그만 있으면 된다" 함정: <b>로그 존재 ≠ 통제</b> — 로그 검토가 반드시 수반<br>
+• Q235(역추적)과 보완: 해시=파일 레벨 탐지, 역추적=프로세스 레벨 탐지</div>`,
+reference:"CRM Chapter 4: IS Operations — File Integrity Monitoring & Hash Verification",
+keyConcepts:[
+"해시 키 무결성 검증|프로그램 해시를 승인 버전과 주기적 비교 — 모든 파일 변경 탐지 가능",
+"로그 vs 통제|로그 존재만으로는 통제 아님 — 로그 검토·분석이 동반되어야 유효한 통제",
+"개발자 운영 접근 위험|개발자의 운영 명령줄 접근 = SoD 위반 — 보상 통제로 해시 검증 최적",
+"개발 도구 제거 한계|도구 제거는 변경 능력 제한하나 다른 수단 가능 + 미탐지 변경 미해결"
+]
+},
+
+// ============================================================
+// Q241 - Programmer Production Access in Small Enterprise
+// ============================================================
+{
+id: 241,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `소규모 기업에서 애플리케이션 프로그래머가 운영 환경으로 프로그램을 이동할 수 있도록 허용되는 경우, 내부 부정 위험을 줄이기 위해 구현할 수 있는 통제는?<br><small style="color:#94a3b8">Which control can be implemented to reduce risk of internal fraud if application programmers are allowed to move programs into the production environment in a small enterprise?</small>`,
+options: [
+  "구현 후 기능 테스트(Post-implementation functional testing).<br><small style='color:#94a3b8'>Post-implementation functional testing</small>",
+  "변경 사항의 등록 및 검토(Registration and review of changes).<br><small style='color:#94a3b8'>Registration and review of changes</small>",
+  "사용자 요구사항의 검증(Validation of user requirements).<br><small style='color:#94a3b8'>Validation of user requirements</small>",
+  "사용자 수용 테스트(UAT).<br><small style='color:#94a3b8'>User acceptance testing (UAT)</small>"
+],
+correct: 1,
+explanation: `<p><b>변경 사항의 등록 및 독립적 검토</b>가 가장 효과적인 보상 통제입니다. 운영 환경 프로그램 변경의 독립적 검토를 통해 프로그래머가 투입한 비인가 변경·버전·기능을 식별할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">탐지 대상</th><th style="padding:8px;border:1px solid #334155">미문서화 기능 탐지</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 구현 후 기능 테스트</td><td style="padding:8px;border:1px solid #ddd">기능 작동 여부</td><td style="padding:8px;border:1px solid #ddd">✗ 미문서화 기능 탐지 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 변경 등록·검토 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>모든 변경 사항</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 비인가 변경·버전·기능 식별</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 사용자 요구사항 검증</td><td style="padding:8px;border:1px solid #ddd">요구사항 충족</td><td style="padding:8px;border:1px solid #ddd">✗ 요구 충족해도 미문서화 기능 포함 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. UAT</td><td style="padding:8px;border:1px solid #ddd">사용자 수용</td><td style="padding:8px;border:1px solid #ddd">✗ 수용되어도 미문서화 기능 미탐지</td></tr>
+</table>
+<div class="sbox"><b>🏢 소규모 기업 SoD 보상 통제:</b><br>
+• 소규모 기업 = 인력 부족 → SoD(개발자/운영자 분리) 어려움<br>
+• <b>보상 통제(Compensating Control):</b> 변경 등록 + 독립적 검토<br>
+• 핵심: 기능 테스트·UAT는 <b>"의도된 기능"</b>만 검증 → <b>"숨겨진 기능"</b> 탐지 불가<br>
+• 변경 등록·검토 = 모든 변경 내역 가시화 → 부정·악의적 코드 식별<br>
+• Q220·Q233·Q236 연결: 직무 분리 부재 시 <b>독립적 검토</b>가 핵심 보상</div>`,
+reference:"CRM Chapter 4: IS Operations — Compensating Controls & Small Enterprise SoD",
+keyConcepts:[
+"변경 등록·검토|소규모 기업의 SoD 부재 시 핵심 보상 통제 — 비인가 변경·미문서화 기능 식별",
+"기능 테스트의 한계|의도된 기능만 검증 — 프로그래머가 숨긴 미문서화 기능 탐지 불가",
+"소규모 기업 보상 통제|개발자/운영자 분리 어려운 경우 독립적 변경 검토가 핵심 보상",
+"UAT vs 변경 검토|UAT=사용자 수용 여부, 변경 검토=모든 변경 내역 — 부정 탐지는 변경 검토가 효과적"
+]
+},
+
+// ============================================================
+// Q242 - Substantive Testing After Compliance Testing
+// ============================================================
+{
+id: 242,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IT 환경의 통제를 감사하는 감사인이 구현된 통제에 대한 실증적 테스트(Substantive Test)를 수행하는 시점은?<br><small style="color:#94a3b8">An auditor conducting an audit of controls in an IT environment will perform substantive tests for the controls implemented after:</small>`,
+options: [
+  "통제가 기술 도구를 사용하여 자동화된 후.<br><small style='color:#94a3b8'>The control is automated using technical tools.</small>",
+  "원래의 통제 설계가 구현 중에 변경된 후.<br><small style='color:#94a3b8'>The original control design has been changed during implementation.</small>",
+  "통제가 위험을 완화하도록 설계되었음을 확인한 후.<br><small style='color:#94a3b8'>Confirming the control is designed to mitigate risk.</small>",
+  "통제가 설계된 대로 구현되었음을 확인한 후.<br><small style='color:#94a3b8'>Confirming the control is implemented as designed.</small>"
+],
+correct: 3,
+explanation: `<p><b>통제가 설계된 대로 구현되었음을 확인한 후</b> 실증적 테스트를 수행합니다. 실증적 테스트는 준수 테스트(Compliance Test) 통과 후 수행되며, 준수 테스트 실패 시 실증적 테스트는 의미가 없습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">단계</th><th style="padding:8px;border:1px solid #334155">테스트 유형</th><th style="padding:8px;border:1px solid #334155">목적</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">1️⃣ 설계 평가</td><td style="padding:8px;border:1px solid #ddd">설계 효과성 (워크스루)</td><td style="padding:8px;border:1px solid #ddd">통제가 위험 완화하도록 설계되었는가?</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">2️⃣ 준수 테스트</td><td style="padding:8px;border:1px solid #ddd">Compliance Test</td><td style="padding:8px;border:1px solid #ddd">통제가 설계대로 구현·작동하는가?</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>3️⃣ 실증적 테스트 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>Substantive Test</b></td><td style="padding:8px;border:1px solid #ddd"><b>거래·잔액의 정확성 검증 (준수 테스트 통과 후)</b></td></tr>
+</table>
+<div class="sbox"><b>📊 준수 테스트 vs 실증적 테스트:</b><br>
+• <b>준수 테스트(Compliance):</b> 통제가 설계대로 작동하는가? — <b>통제 자체</b> 평가<br>
+• <b>실증적 테스트(Substantive):</b> 거래·잔액·자산의 정확성 — <b>결과</b> 평가<br>
+• <b>순서:</b> 설계 평가 → 준수 테스트 → (통과 시) 실증적 테스트<br>
+• 준수 테스트 실패 시 → 통제 신뢰 불가 → 실증적 테스트 확대 필요<br>
+• 핵심: <b>"통제 작동 확인 → 결과 검증"</b> 순서</div>`,
+reference:"CRM Chapter 4: IS Operations — Audit Testing Methodology",
+keyConcepts:[
+"실증적 테스트 시점|준수 테스트 통과(통제 설계대로 구현 확인) 후 수행 — 순서 중요",
+"준수 vs 실증적 테스트|준수=통제 작동 확인, 실증=거래·결과 정확성 — 목적과 순서 구분",
+"테스트 단계 순서|설계 평가 → 준수 테스트 → 실증적 테스트 — 각 단계 통과가 다음 단계 전제",
+"준수 테스트 실패 영향|통제 신뢰 불가 → 실증적 테스트 확대 필요 — 감사 범위 증가"
+]
+},
+
+// ============================================================
+// Q243 - Delayed Patch Installation Audit Response
+// ============================================================
+{
+id: 243,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인은 미션 크리티컬 시스템의 최신 보안 관련 SW 패치가 2개월 전에 릴리스되었으나 IT 인력이 아직 설치하지 않았음을 관찰했다. IS 감사인은:<br><small style="color:#94a3b8">The IS auditor observes that the latest security patches for a mission-critical system were released two months ago, but IT personnel have not yet installed them. The IS auditor should:</small>`,
+options: [
+  "패치 관리 정책을 검토하고 이 상황과 관련된 위험을 파악한다.<br><small style='color:#94a3b8'>Review the patch management policy and determine the risk associated with this condition.</small>",
+  "IT 시스템 인력에게 패치를 테스트하고 즉시 설치하도록 권고한다.<br><small style='color:#94a3b8'>Recommend that IT systems personnel test and then install the patches immediately.</small>",
+  "매월 또는 릴리스 즉시 패치를 적용하도록 권고한다.<br><small style='color:#94a3b8'>Recommend that patches be applied every month or immediately upon release.</small>",
+  "패치 관리 IT 프로세스가 적절해 보이므로 조치를 취하지 않는다.<br><small style='color:#94a3b8'>Take no action, because the IT processes related to patch management appear to be adequate.</small>"
+],
+correct: 0,
+explanation: `<p><b>패치 관리 정책 검토 + 위험 파악</b>이 정답입니다. IT가 시스템 안정성 위험과 보안 위험을 비교하여 의도적으로 지연했을 수 있으므로, 정책 준수 여부와 관련 위험을 먼저 평가해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="파딩:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 정책 검토 + 위험 파악 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>정책 적정성·준수·위험 평가 — 감사인 본연 역할</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 즉시 테스트·설치 권고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">IT의 의도적 지연 사유(안정성) 미파악 상태 권고</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 정확한 일정 권고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">테스트 부족 시 더 큰 문제 — 일률적 일정은 부적절</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 조치 없음</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">프로세스 적절해도 시간 지연은 보고 대상</td></tr>
+</table>
+<div class="sbox"><b>🔍 감사인의 패치 지연 대응 원칙:</b><br>
+• <b>1단계:</b> 정책 검토 (조직의 패치 정책이 무엇을 요구하는가?)<br>
+• <b>2단계:</b> 준수 평가 (IT가 정책을 따르고 있는가?)<br>
+• <b>3단계:</b> 위험 파악 (지연으로 인한 보안 위험 vs 안정성 위험)<br>
+• Q237·Q239 연결: 감사인은 <b>평가자</b> — 직접 권고/지시 전 사실관계 파악<br>
+• 핵심: IT의 지연이 <b>의도적</b>(안정성 위험 평가)일 수 있음 → 사유 확인 우선</div>`,
+reference:"CRM Chapter 4: IS Operations — Patch Management Audit",
+keyConcepts:[
+"패치 지연 감사 대응|정책 검토 + 위험 파악 → 의도적 지연(안정성) 사유 확인 후 평가",
+"감사인 평가자 역할|즉시 권고/지시 전 정책·사유·위험 평가 — 사실관계 우선",
+"정책 vs 일률적 일정|조직 정책에 따른 평가 — 일률적 매월/즉시 적용 권고는 부적절",
+"보고 의무|프로세스 적절해도 관찰된 지연은 보고 대상 — 무시 ✗"
+]
+},
+
+// ============================================================
+// Q244 - Emergency Change Accountability
+// ============================================================
+{
+id: 244,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인이 예산이 제한된 조직의 긴급 변경 통제 절차 설계를 지원하고 있다. 시스템 지원 인력의 책임 추적성(Accountability)을 확립하는 데 가장 도움이 되는 권고는?<br><small style="color:#94a3b8">An IS auditor is assisting in the design of emergency change control procedures for an organization with a limited budget. Which recommendation BEST helps to establish accountability for the system support personnel?</small>`,
+options: [
+  "필요 시 개별 지원 ID에 운영 환경 접근 권한이 부여된다.<br><small style='color:#94a3b8'>Production access is granted to the individual support ID when needed.</small>",
+  "개발자가 파이어파이터(Firefighter) ID를 사용하여 코드를 운영 환경에 이관한다.<br><small style='color:#94a3b8'>Developers use a firefighter ID to promote code to production.</small>",
+  "전담 사용자가 긴급 변경을 운영 환경에 이관한다.<br><small style='color:#94a3b8'>A dedicated user promotes emergency changes to production.</small>",
+  "긴급 변경이 이관 전에 승인된다.<br><small style='color:#94a3b8'>Emergency changes are authorized prior to promotion.</small>"
+],
+correct: 0,
+explanation: `<p><b>개별 지원 ID에 필요 시 운영 접근 권한 부여</b>가 가장 좋은 책임 추적성 확립 방법입니다. 정보 보안팀이 운영 지원 그룹을 만들고, 필요 시 사용자 ID를 추가하여 변경을 이관하고, 완료 후 제거합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">책임 추적성</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 개별 ID + 임시 권한 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>완전 (개인 식별)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 활동이 특정 개인 ID와 연결 — 감사 가능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 파이어파이터 ID</td><td style="padding:8px;border:1px solid #ddd">제한적 (공유 ID)</td><td style="padding:8px;border:1px solid #ddd">일반/공유 ID — 누가 변경했는지 파악 어려움</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 전담 사용자</td><td style="padding:8px;border:1px solid #ddd">완전</td><td style="padding:8px;border:1px solid #ddd">이상적이나 비용 비효율적 — 예산 제약 시 비현실적</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 사전 승인</td><td style="padding:8px;border:1px solid #ddd">N/A</td><td style="padding:8px;border:1px solid #ddd">긴급 변경은 사후 승인이 일반 — 책임 추적성과 무관</td></tr>
+</table>
+<div class="sbox"><b>🔥 긴급 변경 책임 추적성 모델:</b><br>
+• <b>운영 지원 그룹(Production Support Group)</b> 운영<br>
+&nbsp;&nbsp;1. 긴급 시 개인 ID를 그룹에 추가<br>
+&nbsp;&nbsp;2. 해당 ID로 변경 이관<br>
+&nbsp;&nbsp;3. 완료 후 ID를 그룹에서 제거<br>
+• <b>장점:</b> 모든 활동이 개인 ID에 귀속 → 감사 추적 가능<br>
+• 파이어파이터 ID = 공유 ID → 누가 사용했는지 불명확<br>
+• Q226·Q236 연결: 긴급 변경에서도 <b>책임 추적성</b>이 핵심 통제</div>`,
+reference:"CRM Chapter 4: IS Operations — Emergency Change & Production Access Control",
+keyConcepts:[
+"개별 ID 임시 권한|운영 지원 그룹에 개인 ID 임시 추가/제거 — 책임 추적성 확립의 최선",
+"파이어파이터 ID 한계|공유 ID로 사용자 식별 어려움 — 흔히 사용되나 개별 ID가 더 나음",
+"전담 사용자 비용|이상적이나 예산 제약 시 비현실적 — 비용 효율성 고려 필요",
+"긴급 변경 사후 승인|긴급 변경은 일반적으로 이관 후 승인 — 책임 추적성과 별개"
+]
+},
+
+// ============================================================
+// Q245 - Version Control Systems Key Benefit
+// ============================================================
+{
+id: 245,
+domain: "3",
+ks: "3B2 Implementation Configuration and Release Management",
+question: `구성 및 릴리스 관리에서 버전 통제 시스템(Version Control System) 사용의 핵심 이점은?<br><small style="color:#94a3b8">Which of the following is a KEY benefit of using version control systems in configuration and release management?</small>`,
+options: [
+  "코드 관리의 복잡성을 관리한다.<br><small style='color:#94a3b8'>Manages complexity in code management</small>",
+  "다수 개발자와의 협업을 용이하게 한다.<br><small style='color:#94a3b8'>Eases collaboration with multiple developers</small>",
+  "개발자의 접근성을 제한한다.<br><small style='color:#94a3b8'>Limits accessibility for developers</small>",
+  "변경을 추적하고 되돌릴 수 있는 능력을 제공한다.<br><small style='color:#94a3b8'>Provides ability to track and revert changes</small>"
+],
+correct: 3,
+explanation: `<p><b>변경 추적 및 되돌리기(Track and Revert) 능력</b>이 핵심 이점입니다. 누가, 언제, 무엇을 변경했는지 추적하고, 필요 시 이전 버전으로 복귀할 수 있어 구성·릴리스 관리에 필수적입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">기능</th><th style="padding:8px;border:1px solid #334155">핵심 이점?</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 복잡성 관리</td><td style="padding:8px;border:1px solid #ddd">구조·조직 제공</td><td style="padding:8px;border:1px solid #ddd">부수적 이점</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 협업 용이</td><td style="padding:8px;border:1px solid #ddd">동시 개발·브랜칭·머지</td><td style="padding:8px;border:1px solid #ddd">중요하나 핵심 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 접근성 제한</td><td style="padding:8px;border:1px solid #ddd">접근 통제</td><td style="padding:8px;border:1px solid #ddd">보완적 — 추적 기능과 함께</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 추적·되돌리기 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>변경 이력·롤백</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 운영 이슈 시 이전 버전 복귀 — 핵심 이점</b></td></tr>
+</table>
+<div class="sbox"><b>📚 버전 통제 시스템(VCS) 핵심 기능:</b><br>
+• <b>WHO·WHEN·WHAT</b> 추적: 누가, 언제, 무엇을 변경했는가<br>
+• <b>롤백(Revert):</b> 운영 이슈 발견 시 이전 버전으로 복귀<br>
+• 부수 기능: 협업, 브랜칭, 머지, 접근 통제<br>
+• Q224(구성 관리·기준선) 연결: VCS = 기준선의 자동 기록·관리 도구<br>
+• 핵심: 다른 이점들은 모두 <b>"추적"</b>이라는 핵심 기능 위에 구축됨</div>`,
+reference:"CRM Chapter 3: SDLC — Version Control & Configuration Management",
+keyConcepts:[
+"VCS 핵심 이점|변경 추적(WHO·WHEN·WHAT) + 롤백 능력 — 구성·릴리스 관리의 핵심",
+"VCS 부수 기능|협업·복잡성 관리·접근 통제는 모두 추적 기능 위에 구축되는 부수적 이점",
+"VCS와 기준선|Q224 연결: VCS는 SW 릴리스 기준선의 자동 기록·관리 도구"
+]
+},
+
+// ============================================================
+// Q246 - Risk Assessment for Skipped Patch
+// ============================================================
+{
+id: 246,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인은 애플리케이션에 새 패치가 가용함을 발견했으나, IT 부서는 다른 보안 통제가 있어 패치가 필요 없다고 결정했다. IS 감사인이 권고해야 할 사항은?<br><small style="color:#94a3b8">An IS auditor discovered a new patch is available, but the IT department decided the patch is not needed because other security controls are in place. What should the IS auditor recommend?</small>`,
+options: [
+  "철저한 테스트 후에만 패치를 적용한다.<br><small style='color:#94a3b8'>Apply the patch only after it has been thoroughly tested.</small>",
+  "호스트 기반 침입 탐지 시스템(IDS)을 구현한다.<br><small style='color:#94a3b8'>Implement a host-based intrusion detection system (IDS).</small>",
+  "방화벽 규칙을 수정하여 애플리케이션 서버를 추가로 보호한다.<br><small style='color:#94a3b8'>Modify the firewall rules to further protect the application server.</small>",
+  "전체 위험을 평가한 후 패치 배포 여부를 권고한다.<br><small style='color:#94a3b8'>Assess the overall risk, then recommend whether to deploy the patch.</small>"
+],
+correct: 3,
+explanation: `<p><b>전체 위험 평가 후 권고</b>가 정답입니다. 취약점 악용 가능성·확률을 평가하여, 기존 보안 통제 우회 위험이 패치 배포를 정당화할 만큼 큰 경우에만 패치를 적용합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 테스트 후 적용</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">위험 평가 없이 적용 = 미션 크리티컬 아닐 시 자원 낭비</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 호스트 기반 IDS</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">유효한 통제이나 애플리케이션 내부 취약점 미해결</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 방화벽 규칙 수정</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">완화 도움되나 패치 위험 평가가 우선</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 위험 평가 후 권고 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>악용 가능성 평가 → 기존 통제 충분성 판단 → 권고</b></td></tr>
+</table>
+<div class="sbox"><b>⚖️ 패치 배포 의사결정 프레임워크:</b><br>
+• <b>위험 평가 요소:</b><br>
+&nbsp;&nbsp;1. 취약점의 악용 가능성·확률<br>
+&nbsp;&nbsp;2. 자산의 미션 크리티컬 여부<br>
+&nbsp;&nbsp;3. 기존 보상 통제의 효과성<br>
+• 위험 < 기존 통제 → IT 결정 정당 (패치 불필요)<br>
+• 위험 > 기존 통제 → 패치 권고<br>
+• Q232·Q239·Q243 연결: 패치 의사결정은 항상 <b>위험 기반</b><br>
+• 핵심: 감사인은 IT의 결정을 무조건 부정·긍정 ✗ → <b>객관적 위험 평가</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Patch Risk Assessment",
+keyConcepts:[
+"패치 배포 위험 평가|악용 가능성·미션 크리티컬·기존 통제 효과성 평가 후 결정 — 위험 기반 접근",
+"감사인 객관성|IT의 패치 미적용 결정을 무조건 부정 ✗ — 위험 평가로 객관적 판단",
+"보상 통제 인정|기존 보안 통제가 위험을 충분히 완화 시 패치 미적용도 정당 — 위험-통제 균형"
+]
+},
+
+// ============================================================
+// Q247 - Elevated Access Exception Process
+// ============================================================
+{
+id: 247,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `IS 감사인은 사용자가 때때로 시스템 데이터를 변경할 권한을 부여받는 것을 관찰했다. 이 상승된 시스템 접근은 비즈니스 운영의 원활한 기능을 위해 필요하다. 장기적 해결을 위해 IS 감사인이 가장 권고할 통제는?<br><small style="color:#94a3b8">An IS auditor observed that users are occasionally granted authority to change system data. This elevated access is required for smooth functioning. Which control does the IS auditor MOST likely recommend for long-term resolution?</small>`,
+options: [
+  "데이터 인가 관련 통제를 재설계한다.<br><small style='color:#94a3b8'>Redesign the controls related to data authorization.</small>",
+  "추가적인 직무 분리 통제를 구현한다.<br><small style='color:#94a3b8'>Implement additional separation of duties controls.</small>",
+  "공식적인 예외 프로세스가 필요한지 정책을 검토한다.<br><small style='color:#94a3b8'>Review policy to see if a formal exception process is required.</small>",
+  "추가 로깅 통제를 구현한다.<br><small style='color:#94a3b8'>Implement additional logging controls.</small>"
+],
+correct: 2,
+explanation: `<p><b>정책 검토 후 공식 예외 프로세스 필요성 판단</b>이 정답입니다. 데이터 인가 통제는 정책에 의해 주도되어야 하며, 변경이 드물게 발생한다면 예외 프로세스가 더 적절합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 통제 재설계</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">드문 변경 시 재설계는 과잉 — 예외 프로세스가 효율적</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. SoD 추가 통제</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">중요하나 정책 검토가 선행 — 임시 접근 정책 확인 우선</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 정책 검토 + 예외 프로세스 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>정책 기반 공식 프로세스 — 장기적 해결책</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 로깅 통제 추가</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">필요하나 첫 단계 아님 — 프로세스 설계 후 보완</td></tr>
+</table>
+<div class="sbox"><b>📋 예외 프로세스(Exception Process) 핵심:</b><br>
+• <b>정상 통제로 처리 어려운 비즈니스 필요 사항</b>에 대한 공식 절차<br>
+• 예외 요청 → 승인 → 임시 권한 → 모니터링 → 권한 회수<br>
+• <b>장점:</b> 정상 통제 유지 + 예외 상황 통제된 처리<br>
+• 정책 우선 원칙: 기존 정책 없으면 → 새로 설계 / 있으면 → 준수 확인<br>
+• Q231·Q237·Q243 연결: 감사인 권고는 항상 <b>"정책 → 프로세스 → 통제"</b> 순서</div>`,
+reference:"CRM Chapter 4: IS Operations — Exception Process & Policy Review",
+keyConcepts:[
+"예외 프로세스|드문 임시 권한 부여 = 공식 예외 프로세스가 장기 해결책 — 통제 재설계보다 효율",
+"정책 우선 원칙|감사인 권고는 정책 검토 우선 — 정책 부재 시 설계, 존재 시 준수 확인",
+"임시 권한 통제|예외 요청→승인→임시 부여→모니터링→회수 — 정상 통제 유지하며 예외 처리"
+]
+},
+
+// ============================================================
+// Q248 - Transaction Logs for Exception Investigation
+// ============================================================
+{
+id: 248,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `데이터 파일 변경 관리 통제 검토 중, 예외 사항 조사에 필요한 연구 시간을 감소시키는 데 가장 도움이 되는 것은?<br><small style="color:#94a3b8">During the review of data file change management controls, which of the following BEST helps to decrease the research time needed to investigate exceptions?</small>`,
+options: [
+  "1대1 체크(One-for-one checking).<br><small style='color:#94a3b8'>One-for-one checking</small>",
+  "데이터 파일 보안.<br><small style='color:#94a3b8'>Data file security</small>",
+  "거래 로그(Transaction logs).<br><small style='color:#94a3b8'>Transaction logs</small>",
+  "파일 업데이트 및 유지보수 인가.<br><small style='color:#94a3b8'>File updating and maintenance authorization</small>"
+],
+correct: 2,
+explanation: `<p><b>거래 로그(Transaction Logs)</b>가 정답입니다. 입력 일자·시간, 사용자 ID, 단말기 위치 등의 상세 목록을 제공하여 감사 추적을 생성하고, 전체 거래 파일이 아닌 로그만 검토하여 조사 시간을 단축합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">기능</th><th style="padding:8px;border:1px solid #334155">조사 시간 단축</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 1대1 체크</td><td style="padding:8px;border:1px solid #ddd">개별 문서 ↔ 처리 목록 대조</td><td style="padding:8px;border:1px solid #ddd">✗ 시간 매우 오래 걸림</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 데이터 파일 보안</td><td style="padding:8px;border:1px solid #ddd">비인가 접근 방지</td><td style="padding:8px;border:1px solid #ddd">✗ 거래 식별 도움 안 됨</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 거래 로그 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>날짜·시간·사용자·단말기 기록</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 로그만 검토 → 시간 단축</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 업데이트 인가</td><td style="padding:8px;border:1px solid #ddd">업데이트 권한 통제</td><td style="padding:8px;border:1px solid #ddd">✗ 게시 거래 식별에 비효과적</td></tr>
+</table>
+<div class="sbox"><b>📜 거래 로그의 조사 효율성:</b><br>
+• <b>기록 항목:</b> 날짜·시간·사용자 ID·단말기 위치·거래 내용<br>
+• <b>장점:</b> 전체 거래 파일 검색 ✗ → 로그만 검토 (효율적)<br>
+• <b>활용:</b><br>
+&nbsp;&nbsp;- 특정 계정에 게시된 거래 식별<br>
+&nbsp;&nbsp;- 특정 사용자의 활동 추적<br>
+&nbsp;&nbsp;- 특정 기간의 거래 분석<br>
+• 핵심: 로그 = <b>"누가, 언제, 무엇을"</b>의 압축된 인덱스 역할<br>
+• Q240·Q244 연결: 로그는 책임 추적성·조사 효율성의 기본 도구</div>`,
+reference:"CRM Chapter 4: IS Operations — Transaction Logs & Audit Trails",
+keyConcepts:[
+"거래 로그|날짜·시간·사용자·단말기 기록 → 예외 조사 시간 단축의 핵심 도구",
+"로그 vs 전체 검색|로그만 검토 vs 전체 거래 파일 검색 — 로그가 압도적으로 효율적",
+"1대1 체크 한계|개별 문서 대조는 정확하나 시간 매우 오래 걸림 — 효율성 ✗",
+"로그 활용|특정 계정·사용자·기간별 거래 식별 — 책임 추적성과 조사 효율성 동시 제공"
+]
+},
+
+// ============================================================
+// Q249 - Purpose of Code Signing
+// ============================================================
+{
+id: 249,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `코드 서명(Code Signing)의 목적은 무엇을 보장하는 것인가?<br><small style="color:#94a3b8">The purpose of code signing is to provide assurance that:</small>`,
+options: [
+  "소프트웨어가 이후에 수정되지 않았다.<br><small style='color:#94a3b8'>The software has not been subsequently modified.</small>",
+  "애플리케이션이 다른 서명된 애플리케이션과 안전하게 인터페이스할 수 있다.<br><small style='color:#94a3b8'>The application can safely interface with another signed application.</small>",
+  "애플리케이션의 서명자가 신뢰된다.<br><small style='color:#94a3b8'>The signer of the application is trusted.</small>",
+  "서명자의 개인 키가 손상되지 않았다.<br><small style='color:#94a3b8'>The private key of the signer has not been compromised.</small>"
+],
+correct: 0,
+explanation: `<p><b>코드 서명은 소프트웨어가 서명 이후 수정되지 않았음을 보장</b>합니다. 실행 코드가 신뢰할 수 있는 출처에서 왔으며, 서명 이후 변경되지 않았음을 검증하는 무결성 통제입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 미수정 보장 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>출처 + 무결성 보장 — 코드 서명의 핵심 목적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 안전한 인터페이스</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">코드 서명 ≠ 통합 보장 — 호환성과 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 서명자 신뢰</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">출처 확인은 가능하나 출처 신뢰성 보장은 별개</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 개인 키 미손상</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">개인 키 손상 시 신뢰 상실 — 코드 서명의 목적 아님</td></tr>
+</table>
+<div class="sbox"><b>✍️ 코드 서명(Code Signing) 핵심:</b><br>
+• <b>목적:</b> 코드의 <b>출처 확인 + 무결성 검증</b><br>
+• <b>메커니즘:</b> 개발자가 개인 키로 코드 해시 서명 → 사용자가 공개 키로 검증<br>
+• <b>제공 보장:</b><br>
+&nbsp;&nbsp;1. 서명 이후 코드 미수정 (무결성)<br>
+&nbsp;&nbsp;2. 서명자 신원 확인 (출처)<br>
+• <b>제공하지 않는 보장:</b><br>
+&nbsp;&nbsp;1. 서명자가 "신뢰할 만한" 사람인지 (출처 ≠ 신뢰)<br>
+&nbsp;&nbsp;2. 다른 SW와의 호환성·통합<br>
+• Q240(해시 키) 연결: 코드 서명 = 해시 + 디지털 서명 결합</div>`,
+reference:"CRM Chapter 4: IS Operations — Code Signing & Software Integrity",
+keyConcepts:[
+"코드 서명 목적|소프트웨어 출처 확인 + 서명 이후 미수정(무결성) 보장 — 핵심 목적",
+"코드 서명 메커니즘|개인 키로 해시 서명 → 공개 키로 검증 — 디지털 서명 기술 활용",
+"코드 서명 한계|서명자 신뢰성 보장 ✗, 호환성 보장 ✗ — 출처 확인과 신뢰는 별개",
+"해시 vs 코드 서명|해시=무결성만, 코드 서명=무결성+출처 — 코드 서명이 더 강력"
+]
+},
+
+// ============================================================
+// Q250 - Small Enterprise IS Director Superuser
+// ============================================================
+{
+id: 250,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `소규모 기업 감사 중, IS 감사인은 IS 디렉터가 애플리케이션 접근 역할(접근 유형) 변경 요청을 처리할 수 있는 슈퍼유저 권한 접근을 가지고 있음을 확인했다. IS 감사인이 권고해야 할 사항은?<br><small style="color:#94a3b8">During an audit of a small enterprise, the IS auditor noted that the IS director has superuser-privilege access allowing the director to process requests for application access role changes. Which should the IS auditor recommend?</small>`,
+options: [
+  "애플리케이션 역할 변경 요청에 대한 적절히 문서화된 프로세스를 구현한다.<br><small style='color:#94a3b8'>Implement a properly documented process for application role change requests.</small>",
+  "추가 직원을 고용하여 애플리케이션 역할 변경에 대한 직무 분리를 제공한다.<br><small style='color:#94a3b8'>Hire additional staff to provide a separation of duties for application role changes.</small>",
+  "애플리케이션 역할 변경을 위한 자동화된 프로세스를 구현한다.<br><small style='color:#94a3b8'>Implement an automated process for changing application roles.</small>",
+  "현재 절차를 상세히 문서화하고 기업 인트라넷에서 사용 가능하게 한다.<br><small style='color:#94a3b8'>Document the current procedure in detail and make it available on the enterprise intranet.</small>"
+],
+correct: 0,
+explanation: `<p><b>적절히 문서화된 변경 요청 프로세스 구현</b>이 정답입니다. 역할 변경 요청은 비즈니스 소유자에 의해 시작·승인된 후, IS 디렉터가 변경을 수행하도록 프로세스를 구축해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 문서화된 프로세스 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비즈니스 소유자 시작·승인 → IS 디렉터 변경 — 부적절 변경 방지·탐지</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 추가 직원 고용</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">이상적이나 소규모 기업에서 항상 가능 ✗ — 대안 프로세스 필요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 자동화 프로세스</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">최고 권한자(IS 디렉터)의 부적절 변경 방지에 비실용적</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 인트라넷 게시</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">시스템 보호 가치 없음 — 단순 게시는 통제 아님</td></tr>
+</table>
+<div class="sbox"><b>📑 소규모 기업 SoD 보상 통제 패턴:</b><br>
+• <b>1단계:</b> 비즈니스 소유자의 요청·승인 (개시·인가)<br>
+• <b>2단계:</b> IS 디렉터의 변경 수행 (실행)<br>
+• <b>3단계:</b> 문서화 + 사후 검토 (탐지)<br>
+• Q241(소규모 기업 프로그래머 운영 접근) 연결: 동일 패턴<br>
+• 핵심: SoD가 어려운 소규모 기업 → <b>프로세스 기반 보상 통제</b><br>
+• "변경 자체를 막을 수 없다면 → 인가 흐름을 분리"가 원칙</div>`,
+reference:"CRM Chapter 4: IS Operations — Small Enterprise SoD & Process Controls",
+keyConcepts:[
+"소규모 기업 SoD|문서화된 프로세스로 보상 — 비즈니스 소유자 승인 → IT 실행으로 인가 흐름 분리",
+"슈퍼유저 통제|최고 권한자 통제 = 자동화 ✗, 프로세스 기반 인가 흐름 분리가 핵심",
+"인력 추가 한계|이상적이나 소규모 기업에서 비현실적 — 대안 프로세스 권고가 감사인 역할",
+"문서화 vs 게시|적절한 프로세스 구현 ≠ 단순 인트라넷 게시 — 통제 메커니즘이어야 함"
+]
+},
+
+// ============================================================
+// Q251 - Out-of-Range Rate Change Authorization
+// ============================================================
+{
+id: 251,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `사무원이 마스터 파일의 대출 이자율을 변경했다. 입력된 이율은 해당 대출의 정상 범위를 벗어났다. 변경이 인가되었음을 합리적으로 보장하는 가장 효과적인 통제는?<br><small style="color:#94a3b8">A clerk changed the interest rate for a loan on a master file. The rate entered is outside the normal range. Which control is MOST effective in providing reasonable assurance that the change was authorized?</small>`,
+options: [
+  "사무원의 관리자가 승인 코드를 입력하여 변경을 확인하기 전에는 시스템이 변경을 처리하지 않는다.<br><small style='color:#94a3b8'>The system will not process the change until the clerk's manager confirms by entering an approval code.</small>",
+  "시스템이 모든 이율 예외 사항을 나열한 주간 보고서를 생성하고 사무원의 관리자가 검토한다.<br><small style='color:#94a3b8'>The system generates a weekly report listing all rate exceptions and the report is reviewed by the clerk's manager.</small>",
+  "시스템이 사무원에게 승인 코드 입력을 요구한다.<br><small style='color:#94a3b8'>The system requires the clerk to enter an approval code.</small>",
+  "시스템이 사무원에게 경고 메시지를 표시한다.<br><small style='color:#94a3b8'>The system displays a warning message to the clerk.</small>"
+],
+correct: 0,
+explanation: `<p><b>관리자 승인 코드 입력 후에만 처리</b>가 가장 효과적인 예방 통제입니다. 비인가 이율 사용을 사전에 방지하거나 즉시 탐지합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 시점</th><th style="padding:8px;border:1px solid #334155">효과성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 관리자 사전 승인 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>예방 (실시간)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 비인가 변경 처리 자체 차단</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 주간 예외 보고서</td><td style="padding:8px;border:1px solid #ddd">탐지 (사후)</td><td style="padding:8px;border:1px solid #ddd">사후 — 검토 전까지 비인가 거래 발생 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 사무원 승인 코드</td><td style="padding:8px;border:1px solid #ddd">예방 (자기 승인)</td><td style="padding:8px;border:1px solid #ddd">SoD 위반 — 사무원이 스스로 승인</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 경고 메시지</td><td style="padding:8px;border:1px solid #ddd">알림</td><td style="padding:8px;border:1px solid #ddd">실수 방지에만 도움 — 비인가 변경 차단 ✗</td></tr>
+</table>
+<div class="sbox"><b>🔐 예외 거래 인가 통제 — 효과성 순서:</b><br>
+• <b>최선:</b> 예방 + 실시간 + SoD = 관리자 사전 승인 (A)<br>
+• 차선: 탐지 + 사후 = 예외 보고서 검토 (B) — 간극 발생<br>
+• 부적절: 자기 승인 (C) = SoD 위반<br>
+• 최약: 단순 알림 (D) = 강제력 없음<br>
+• 핵심 원칙: <b>예방 > 탐지</b>, <b>실시간 > 사후</b>, <b>독립 승인 > 자기 승인</b><br>
+• Q233·Q236·Q244 연결: 인가 통제는 항상 <b>독립적 승인자</b>가 핵심</div>`,
+reference:"CRM Chapter 4: IS Operations — Authorization Controls & Exception Handling",
+keyConcepts:[
+"실시간 사전 승인|관리자 승인 코드 입력 전까지 처리 차단 — 예방 통제의 최선",
+"예방 vs 탐지|예방(사전 차단) > 탐지(사후 발견) — 비인가 거래 자체를 막는 것이 우선",
+"자기 승인 SoD 위반|사무원 본인의 승인 코드 = SoD 위반 — 독립적 승인자 필요",
+"경고 메시지 한계|단순 알림은 강제력 없음 — 실수 방지 도움되나 비인가 차단 ✗"
+]
+},
+
+// ============================================================
+// Q252 - Small Org Emergency Changes by Developers
+// ============================================================
+{
+id: 252,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `소규모 조직에서 개발자가 긴급 변경을 운영 환경에 직접 릴리스할 수 있다. 이 상황의 위험을 가장 잘 통제하는 방법은?<br><small style="color:#94a3b8">In a small organization, developers may release emergency changes directly to production. Which will BEST control the risk in this situation?</small>`,
+options: [
+  "릴리스 직후 신속하게 긴급 변경을 승인하고 문서화한다.<br><small style='color:#94a3b8'>Approve and document the emergency changes promptly after release.</small>",
+  "운영 환경 접근을 위한 분리된 환경을 구현하고 특정 시간대 외에는 개발자 접근을 제한한다.<br><small style='color:#94a3b8'>Implement a segregated environment for production access and restrict developer access outside of specific time frames.</small>",
+  "2차 승인을 포함하는 정의된 긴급 변경 관리 프로세스를 구현한다.<br><small style='color:#94a3b8'>Implement a defined emergency change management process that includes secondary approval.</small>",
+  "비인가 변경 방지를 위해 운영 머신에 엄격한 접근 통제와 권한을 구현한다.<br><small style='color:#94a3b8'>Implement strict access controls and permissions on the production machine to prevent unauthorized changes.</small>"
+],
+correct: 0,
+explanation: `<p><b>릴리스 직후 신속한 승인 및 문서화</b>가 정답입니다. 긴급 상황에서 사후 문서화·승인은 프로그래머의 긴급 변경을 허용하면서도 적절한 통제를 유지합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 사후 신속 승인·문서화 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>긴급 상황 대응 + 사후 통제 — 가장 실용적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 환경 분리 + 시간 제한</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">일부 통제이나 비인가 긴급 변경 위험 직접 해결 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 2차 승인 포함 프로세스</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">긴급 시 사전 2차 승인은 비현실적 — 사후 문서화가 더 중요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 엄격한 접근 통제</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">긴급 변경 위험과 직접 관련 ✗ — 변경 관리와 병행 필요</td></tr>
+</table>
+<div class="sbox"><b>🚨 긴급 변경 통제 원칙 (소규모 조직):</b><br>
+• <b>긴급 상황 = 사전 승인 비현실적</b> → 사후 통제로 전환<br>
+• <b>핵심 통제:</b> 즉시 문서화 + 신속한 사후 승인<br>
+• Q226(긴급 변경 사후 검토) 연결: 동일 원칙<br>
+• Q244(긴급 변경 책임 추적성)와 보완: 사후 승인 + 개인 ID 추적<br>
+• 핵심: 긴급 변경 통제는 <b>"방지"보다 "추적·검증"</b>에 초점<br>
+• 소규모 조직에서 SoD·2차 승인 강제 = 운영 마비 위험</div>`,
+reference:"CRM Chapter 4: IS Operations — Emergency Change Management in Small Organizations",
+keyConcepts:[
+"긴급 변경 사후 통제|릴리스 직후 신속한 승인·문서화 — 긴급성 + 통제 균형의 최선",
+"긴급 변경 통제 원칙|방지보다 추적·검증 — 사전 통제 비현실적 시 사후 통제로 전환",
+"소규모 조직 SoD 한계|사전 2차 승인은 비현실적 — 사후 문서화·승인이 실용적 대안",
+"Q226·Q244 연결|긴급 변경: 사후 검토(Q226) + 책임 추적(Q244) + 신속 문서화(Q252)"
+]
+},
+
+// ============================================================
+// Q253 - Log Management Implementation Challenge
+// ============================================================
+{
+id: 253,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `로그 관리 시스템 구현에서 주요 도전 과제는?<br><small style="color:#94a3b8">Which of the following is a MAJOR challenge in implementing a log management system?</small>`,
+options: [
+  "IT 인프라의 복잡성.<br><small style='color:#94a3b8'>Complexity of the IT infrastructure</small>",
+  "수집되는 로그의 다양한 형식.<br><small style='color:#94a3b8'>Multiple formats of logs collected</small>",
+  "로그 양으로 인한 스토리지 비용.<br><small style='color:#94a3b8'>Cost of storage due to the volume of logs</small>",
+  "오탐지(False Positive) 알림 처리.<br><small style='color:#94a3b8'>Addressing false-positive alerts</small>"
+],
+correct: 0,
+explanation: `<p><b>IT 인프라 복잡성</b>이 주요 도전 과제입니다. 많은 자원이 로깅 활성화 시 성능이 저하되므로, 각 자원에서 캡처할 로그 유형을 결정해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">도전 정도</th><th style="padding:8px;border:1px solid #334155">해결 방법</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. IT 인프라 복잡성 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>주요 도전</b></td><td style="padding:8px;border:1px solid #ddd"><b>로깅 시 성능 저하 + 자원별 로그 유형 결정 필요</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 다양한 로그 형식</td><td style="padding:8px;border:1px solid #ddd">중간</td><td style="padding:8px;border:1px solid #ddd">파싱(Parsing) 기법으로 해결 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 스토리지 비용</td><td style="padding:8px;border:1px solid #ddd">상대적 작음</td><td style="padding:8px;border:1px solid #ddd">예산 + 보존 기간으로 관리 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 오탐지 알림</td><td style="padding:8px;border:1px solid #ddd">초기 단계</td><td style="padding:8px;border:1px solid #ddd">단계별 도구 구현으로 해결 가능</td></tr>
+</table>
+<div class="sbox"><b>📊 로그 관리 구현 도전 과제 분석:</b><br>
+• <b>인프라 복잡성</b>의 핵심 문제:<br>
+&nbsp;&nbsp;1. 다양한 자원(서버·네트워크·앱·DB) 별 로깅 방식 차이<br>
+&nbsp;&nbsp;2. 로깅 활성화 시 <b>성능 저하</b> → 비즈니스 영향<br>
+&nbsp;&nbsp;3. 각 자원에서 어떤 로그를 캡처할지 결정 어려움<br>
+• 다른 도전(B·C·D)은 모두 <b>기술적·관리적 해결책 존재</b><br>
+• Q219(보안 로그 관리) 연결: 자동화 도구로 일부 도전 해결<br>
+• 핵심: 로그 관리는 <b>"무엇을 로깅할 것인가"</b>가 가장 어려운 결정</div>`,
+reference:"CRM Chapter 4: IS Operations — Log Management Implementation Challenges",
+keyConcepts:[
+"IT 인프라 복잡성|다양한 자원의 로깅 방식 차이 + 성능 저하 + 로그 유형 결정 — 주요 도전",
+"로그 관리 도전 우선순위|복잡성 > 형식·비용·오탐지 — 다른 도전은 기술·관리적 해결 가능",
+"로깅과 성능|로깅 활성화 시 성능 저하 — 캡처할 로그 유형 신중 결정 필요",
+"Q219 연결|보안 로그 관리 = 자동화 도구로 일부 도전 해결 가능 (형식·오탐지)"
+]
+},
+
+// ============================================================
+// Q254 - Verifying Correct Data File Version
+// ============================================================
+{
+id: 254,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `프로덕션 실행에 올바른 버전의 데이터 파일이 사용되었는지 확인하기 위해 IS 감사인이 검토해야 할 것은?<br><small style="color:#94a3b8">Which of the following should the IS auditor review to ensure the correct version of a data file is used for a production run?</small>`,
+options: [
+  "프로덕션 실행과 관련된 인시던트 또는 오류 보고서.<br><small style='color:#94a3b8'>Incident or error reports related to the production run</small>",
+  "운영자가 수행한 작업을 상세히 기재한 일정.<br><small style='color:#94a3b8'>Schedules detailing the tasks performed by operators</small>",
+  "관련 시스템 활동 및 이벤트가 포함된 로그.<br><small style='color:#94a3b8'>Logs containing relevant system activity and events</small>",
+  "생산된 출력물의 배포를 문서화한 보고서.<br><small style='color:#94a3b8'>Reports documenting the distribution of the produced output</small>"
+],
+correct: 2,
+explanation: `<p><b>시스템 활동 및 이벤트 로그</b>를 검토하는 것이 정답입니다. 시스템 로그와 분석 프로그램은 프로덕션 실행에 올바른 파일 버전이 사용되었는지 확인하는 데 사용됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">제공 정보</th><th style="padding:8px;border:1px solid #334155">파일 버전 검증</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 인시던트·오류 보고서</td><td style="padding:8px;border:1px solid #ddd">실행 중 오류·이슈</td><td style="padding:8px;border:1px solid #ddd">간접적 — 문제 발생 후에만 단서</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 운영자 작업 일정</td><td style="padding:8px;border:1px solid #ddd">예정된 작업 목록</td><td style="padding:8px;border:1px solid #ddd">✗ 파일 버전 검증과 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 시스템 활동 로그 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>실제 사용 파일·버전·시간</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 어떤 파일 버전이 사용되었는지 직접 확인</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 출력 배포 보고서</td><td style="padding:8px;border:1px solid #ddd">출력물 배포 추적</td><td style="padding:8px;border:1px solid #ddd">✗ 입력 파일 버전 검증 ✗</td></tr>
+</table>
+<div class="sbox"><b>📜 시스템 로그의 역할 — 데이터 파일 검증:</b><br>
+• <b>로그 기록 항목:</b> 사용된 파일명·버전·접근 시간·작업 ID<br>
+• <b>분석 프로그램</b>으로 로그 검토 → 실제 사용 파일 식별<br>
+• Q248(거래 로그) 연결: 로그 = 실제 발생 활동의 신뢰할 수 있는 증거<br>
+• 핵심: <b>"실제 무엇이 사용되었는가?"</b>는 로그가 가장 정확한 증거<br>
+• 일정·보고서는 <b>계획·결과</b>이지 <b>실제 실행</b> 증거 아님</div>`,
+reference:"CRM Chapter 4: IS Operations — System Logs & File Version Verification",
+keyConcepts:[
+"시스템 로그 검증|실제 사용 파일·버전·시간 기록 — 데이터 파일 버전 검증의 직접적 증거",
+"로그 vs 일정·보고서|로그=실제 실행, 일정=계획, 보고서=결과 — 검증은 실제 실행 증거가 핵심",
+"Q248 일관성|로그는 항상 '실제 발생한 것'의 가장 신뢰할 수 있는 증거"
+]
+},
+
+// ============================================================
+// Q255 - DBA Activities Requiring Separation
+// ============================================================
+{
+id: 255,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `데이터베이스 관리자(DBA)가 수행하는 다음 활동 중 다른 사람이 수행해야 할 것은?<br><small style="color:#94a3b8">Which of the following activities performed by a database administrator (DBA) should be performed by a different person?</small>`,
+options: [
+  "데이터베이스 활동 로그 삭제.<br><small style='color:#94a3b8'>Deleting database activity logs</small>",
+  "데이터베이스 최적화 도구 구현.<br><small style='color:#94a3b8'>Implementing database optimization tools</small>",
+  "데이터베이스 사용량 모니터링.<br><small style='color:#94a3b8'>Monitoring database usage</small>",
+  "백업 및 복구 절차 정의.<br><small style='color:#94a3b8'>Defining backup and recovery procedures</small>"
+],
+correct: 0,
+explanation: `<p><b>데이터베이스 활동 로그 삭제</b>는 DBA가 아닌 다른 사람이 수행해야 합니다. 활동 로그가 DBA의 활동을 기록하므로, DBA가 직접 삭제하면 자신의 활동을 은폐할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">DBA 정상 역할?</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. DB 활동 로그 삭제 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✗ 다른 사람</b></td><td style="padding:8px;border:1px solid #ddd"><b>로그가 DBA 활동 기록 → 자기 활동 은폐 위험</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 최적화 도구 구현</td><td style="padding:8px;border:1px solid #ddd">✔ 정상</td><td style="padding:8px;border:1px solid #ddd">DBA의 일반 직무 기능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. DB 사용량 모니터링</td><td style="padding:8px;border:1px solid #ddd">✔ 정상</td><td style="padding:8px;border:1px solid #ddd">DBA의 일반 직무 기능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 백업·복구 절차 정의</td><td style="padding:8px;border:1px solid #ddd">✔ 정상</td><td style="padding:8px;border:1px solid #ddd">DBA의 일반 직무 기능</td></tr>
+</table>
+<div class="sbox"><b>👥 DBA SoD 보상 통제 — 활동 로그:</b><br>
+• <b>핵심 원칙:</b> 자신의 활동을 기록하는 로그를 자신이 삭제 ✗<br>
+• <b>보상 통제:</b> 로그 삭제는 별도 인력(보안 관리자·운영자) 수행<br>
+• Q220(DBA OS 패치) 연결: DBA SoD 위반 패턴<br>
+&nbsp;&nbsp;- Q220: DBA가 OS 패치 설치 (역할 경계 위반)<br>
+&nbsp;&nbsp;- Q255: DBA가 자신 활동 로그 삭제 (감사 추적 무력화)<br>
+• 핵심: DBA = DB 운영 OK, 그러나 <b>자기 통제 메커니즘은 별도 인력</b><br>
+• Q236(특권 계정) 연결: 특권자의 감사 추적 변경 가능 → 별도 통제 필요</div>`,
+reference:"CRM Chapter 4: IS Operations — DBA SoD & Audit Log Protection",
+keyConcepts:[
+"DBA 로그 삭제 금지|DBA 활동 로그를 DBA가 삭제 = 자기 활동 은폐 — 별도 인력 수행 필요",
+"DBA 정상 역할|최적화·모니터링·백업 절차 정의 = DBA 일반 직무 — 정상 수행",
+"감사 추적 보호|자기 활동을 기록하는 로그는 자신이 통제 ✗ — SoD 핵심 원칙",
+"Q220·Q236 연결|특권자의 감사 추적 변경/삭제 가능 → 보상 통제로 별도 인력 필수"
+]
+},
+
+// ============================================================
+// Q256 - Application Maintenance Audit Log Review
+// ============================================================
+{
+id: 256,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `애플리케이션 유지보수 감사를 수행하는 IS 감사인이 프로그램 변경 로그를 검토하는 목적은?<br><small style="color:#94a3b8">An IS auditor performing an application maintenance audit would review the log of program changes for the:</small>`,
+options: [
+  "프로그램 변경의 인가(Authorization).<br><small style='color:#94a3b8'>Authorization of program changes</small>",
+  "현재 오브젝트 모듈의 생성 일자.<br><small style='color:#94a3b8'>Creation date of a current object module</small>",
+  "실제로 이루어진 프로그램 변경 횟수.<br><small style='color:#94a3b8'>Number of program changes actually made</small>",
+  "현재 소스 프로그램의 생성 일자.<br><small style='color:#94a3b8'>Creation date of a current source program</small>"
+],
+correct: 0,
+explanation: `<p><b>프로그램 변경의 인가 확인</b>이 정답입니다. 감사인은 인가된 변경만 이루어졌음을 보장하기 위해, 모든 변경이 승인되었는지 변경 로그를 검토합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">제공 정보</th><th style="padding:8px;border:1px solid #334155">감사 가치</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 변경 인가 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>승인 여부</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 비인가 변경 탐지 — 핵심 감사 목적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 오브젝트 모듈 생성 일자</td><td style="padding:8px;border:1px solid #ddd">최근 컴파일 일자</td><td style="padding:8px;border:1px solid #ddd">이전 변경 이력 미제공</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 변경 횟수</td><td style="padding:8px;border:1px solid #ddd">변경 빈도</td><td style="padding:8px;border:1px solid #ddd">횟수만으로는 인가 여부 불명</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 소스 프로그램 생성 일자</td><td style="padding:8px;border:1px solid #ddd">파일 생성 시점</td><td style="padding:8px;border:1px solid #ddd">이전 변경 이력 미제공</td></tr>
+</table>
+<div class="sbox"><b>📋 변경 로그 감사의 핵심 목적:</b><br>
+• <b>주요 질문:</b> "모든 변경이 인가되었는가?"<br>
+• 변경 횟수·일자는 <b>사실(Facts)</b> — 인가 여부 판단 불가<br>
+• 인가 확인 = <b>통제 작동</b> 검증<br>
+• Q229·Q235 연결: 변경 감사 = 실제 변경 + 인가 여부 매칭<br>
+• 핵심 흐름:<br>
+&nbsp;&nbsp;1. 변경 식별 (로그)<br>
+&nbsp;&nbsp;2. 인가 확인 (승인 문서 매칭)<br>
+&nbsp;&nbsp;3. 비인가 변경 탐지 → 후속 조치</div>`,
+reference:"CRM Chapter 4: IS Operations — Application Maintenance Audit",
+keyConcepts:[
+"변경 로그 감사 목적|모든 프로그램 변경의 인가 확인 — 비인가 변경 탐지가 핵심",
+"인가 vs 사실|변경 횟수·일자=사실, 인가=통제 검증 — 감사는 통제 작동 확인이 목적",
+"Q229·Q235 일관성|변경 감사: 실제 변경 식별 → 인가 여부 매칭 → 비인가 탐지"
+]
+},
+
+// ============================================================
+// Q257 - Detecting Application Execution Problems
+// ============================================================
+{
+id: 257,
+domain: "4",
+ks: "4A10 IT Service Level Management",
+question: `IT 운영 중 애플리케이션 실행에서 발생한 문제를 IS 감사인이 탐지하는 데 가장 도움이 되는 것은?<br><small style="color:#94a3b8">Which of the following BEST helps an IS auditor to detect the problems encountered by application executions during IT operations?</small>`,
+options: [
+  "운영 체제 로그.<br><small style='color:#94a3b8'>Operating system logs</small>",
+  "인시던트 보고서.<br><small style='color:#94a3b8'>Incident reports</small>",
+  "예외 보고서.<br><small style='color:#94a3b8'>Exception reports</small>",
+  "컴퓨터 운영자 로그.<br><small style='color:#94a3b8'>Computer operator logs</small>"
+],
+correct: 2,
+explanation: `<p><b>예외 보고서(Exception Reports)</b>가 정답입니다. 예외 보고서는 애플리케이션이 실행 중 발생한 문제를 나열하는 자동화된 보고서입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">기록 대상</th><th style="padding:8px;border:1px solid #334155">애플리케이션 문제 탐지</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. OS 로그</td><td style="padding:8px;border:1px solid #ddd">OS 수준 이벤트</td><td style="padding:8px;border:1px solid #ddd">애플리케이션 문제 미보고</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 인시던트 보고서</td><td style="padding:8px;border:1px solid #ddd">중요 중단 이벤트</td><td style="padding:8px;border:1px solid #ddd">중대한 경우만 — 사소한 문제 누락</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 예외 보고서 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>애플리케이션 실행 문제</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 자동화된 애플리케이션 문제 목록</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 운영자 로그</td><td style="padding:8px;border:1px solid #ddd">수동 입력 운영 활동</td><td style="padding:8px;border:1px solid #ddd">애플리케이션 문제 식별 불확실</td></tr>
+</table>
+<div class="sbox"><b>📊 로그·보고서 유형별 용도:</b><br>
+• <b>예외 보고서:</b> 애플리케이션 실행 중 자동 감지된 문제<br>
+• <b>OS 로그:</b> 운영 체제 수준 이벤트·오류<br>
+• <b>인시던트 보고서:</b> 중요한 중단 이벤트 (임계값 이상)<br>
+• <b>운영자 로그:</b> 수동 기록된 운영 활동<br>
+• Q216 연결: 문제 관리 첫 단계 = 예외 보고 (Exception Reporting)<br>
+• 핵심: <b>"애플리케이션 문제"</b>는 예외 보고서가 가장 직접적·포괄적</div>`,
+reference:"CRM Chapter 4: IS Operations — Exception Reports & Application Monitoring",
+keyConcepts:[
+"예외 보고서|애플리케이션 실행 중 발생 문제의 자동 목록 — 애플리케이션 문제 탐지의 최선",
+"로그 유형별 범위|OS 로그=OS 수준, 예외 보고서=앱 수준, 인시던트=중대한 경우만 — 범위 구분",
+"Q216 연결|문제 관리 첫 단계=예외 보고 — 예외 보고서가 모든 후속 활동의 기반"
+]
+},
+
+// ============================================================
+// Q258 - Automated Data Conversion Verification
+// ============================================================
+{
+id: 258,
+domain: "4",
+ks: "4A8 IT Change, Configuration, and Patch Management",
+question: `구 시스템에서 신 시스템으로의 자동화된 데이터 변환이 성공적으로 완료되었는지 IS 감사인이 확인하는 데 가장 도움이 되는 것은?<br><small style="color:#94a3b8">Which of the following BEST helps an IS auditor in ensuring that automated data conversion from an old system to a new system has been completed successfully?</small>`,
+options: [
+  "운영자 보고서.<br><small style='color:#94a3b8'>Operator reports</small>",
+  "예외 보고서.<br><small style='color:#94a3b8'>Exception reports</small>",
+  "통제 합계(Control totals).<br><small style='color:#94a3b8'>Control totals</small>",
+  "애플리케이션 로그.<br><small style='color:#94a3b8'>Application logs</small>"
+],
+correct: 1,
+explanation: `<p><b>예외 보고서(Exception Reports)</b>가 정답입니다. 처리 중 발생한 오류와 자동 변환되지 않은 거래를 식별하는 자동화된 보고서입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">제공 정보</th><th style="padding:8px;border:1px solid #334155">변환 검증</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 운영자 보고서</td><td style="padding:8px;border:1px solid #ddd">수동 오류 로그</td><td style="padding:8px;border:1px solid #ddd">자동 변환 검증에 부적합</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 예외 보고서 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>변환 오류·미변환 거래</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 구체적 미변환 레코드 식별 가능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 통제 합계</td><td style="padding:8px;border:1px solid #ddd">전체 합계 일치</td><td style="padding:8px;border:1px solid #ddd">완전성 확인하나 특정 누락 레코드 식별 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 애플리케이션 로그</td><td style="padding:8px;border:1px solid #ddd">실행 중 오류</td><td style="padding:8px;border:1px solid #ddd">실행 오류만 — 변환 누락 식별 부족</td></tr>
+</table>
+<div class="sbox"><b>🔄 데이터 변환 검증 — 통제 합계 vs 예외 보고서:</b><br>
+• <b>통제 합계:</b> 전체 일치 여부 확인 — "총량은 맞는가?"<br>
+&nbsp;&nbsp;→ 한계: 어떤 레코드가 누락되었는지 식별 불가<br>
+• <b>예외 보고서:</b> 미변환·오류 레코드 자동 목록<br>
+&nbsp;&nbsp;→ 장점: 구체적 누락·오류 레코드 식별 + 후속 조치 가능<br>
+• Q257 연결: 예외 보고서 = 자동화된 문제 식별의 핵심 도구<br>
+• 핵심: "성공적 완료 확인" = <b>"문제가 없음을 입증"</b> = 예외 보고서로 가능</div>`,
+reference:"CRM Chapter 4: IS Operations — Data Conversion Verification & Exception Reports",
+keyConcepts:[
+"예외 보고서 변환 검증|미변환·오류 레코드 자동 식별 — 데이터 변환 검증의 최선",
+"예외 보고서 vs 통제 합계|예외=구체적 누락 식별, 합계=전체 일치만 — 예외가 더 정밀",
+"Q257 일관성|예외 보고서 = 자동화된 문제 식별의 핵심 도구 (Q257·Q258 모두 정답)"
+]
+},
+
+// ============================================================
+// Q259 - Detecting Unauthorized Production Modifications
+// ============================================================
+{
+id: 259,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `IS 감사인이 운영 프로그램에 비인가 수정이 이루어졌는지 판단하는 데 사용할 수 있는 것은?<br><small style="color:#94a3b8">Which of the following would an IS auditor use to determine if unauthorized modifications were made to production programs?</small>`,
+options: [
+  "시스템 로그 분석.<br><small style='color:#94a3b8'>System log analysis</small>",
+  "준수 테스트(Compliance testing).<br><small style='color:#94a3b8'>Compliance testing</small>",
+  "포렌식 분석.<br><small style='color:#94a3b8'>Forensic analysis</small>",
+  "분석적 검토(Analytical review).<br><small style='color:#94a3b8'>Analytical review</small>"
+],
+correct: 1,
+explanation: `<p><b>준수 테스트(Compliance Testing)</b>가 정답입니다. 운영 프로그램에 인가된 수정만 이루어졌는지 판단하려면 변경 관리 프로세스의 일관된 적용 여부를 검증하는 준수 테스트가 필요합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">비인가 수정 탐지</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 시스템 로그 분석</td><td style="padding:8px;border:1px solid #ddd">변경·활동 식별</td><td style="padding:8px;border:1px solid #ddd">변경 식별만 — 인가 여부 판단 불가</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 준수 테스트 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>변경 관리 프로세스 준수 검증</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 문서적 증거 추적 → 인가 확인</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 포렌식 분석</td><td style="padding:8px;border:1px solid #ddd">범죄 수사 기법</td><td style="padding:8px;border:1px solid #ddd">특수 상황 — 일반 감사 부적합</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 분석적 검토</td><td style="padding:8px;border:1px solid #ddd">전반적 통제 환경 평가</td><td style="padding:8px;border:1px solid #ddd">일반적 평가 — 특정 비인가 수정 식별 ✗</td></tr>
+</table>
+<div class="sbox"><b>🔍 준수 테스트(Compliance Testing) 핵심:</b><br>
+• <b>목적:</b> 통제(변경 관리 프로세스)가 일관되게 적용되었는지 검증<br>
+• <b>방법:</b> 변경 식별 → 문서적 증거(승인) 추적 → 매칭<br>
+• Q242 연결: 준수 테스트 = 통제 작동 검증 (실증적 테스트의 전제)<br>
+• Q227·Q229·Q235 연결: 변경 → 인가 매칭 = 준수 테스트 일종<br>
+• <b>시스템 로그 분석</b>은 준수 테스트의 <b>일부 도구</b>이지 단독으로 인가 여부 판단 불가<br>
+• 핵심: <b>"비인가 수정 탐지" = 통제 준수 검증 = Compliance Testing</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Compliance Testing & Change Audit",
+keyConcepts:[
+"준수 테스트|변경 관리 프로세스 일관 적용 검증 — 비인가 수정 탐지의 핵심 감사 기법",
+"로그 분석 한계|시스템 로그=변경 식별만, 인가 여부 판단 ✗ — 준수 테스트의 일부 도구",
+"준수 vs 분석적 검토|준수=특정 통제 작동, 분석적=전반적 환경 평가 — 목적 구분",
+"Q242 연결|준수 테스트 = 통제 작동 검증 (실증적 테스트의 전제)"
+]
+},
+
+// ============================================================
+// Q260 - Audit Trail Reliability
+// ============================================================
+{
+id: 260,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `애플리케이션 시스템의 감사 추적(Audit Trail) 신뢰성이 의심스러울 수 있는 경우는?<br><small style="color:#94a3b8">The reliability of an application system's audit trail may be questionable if:</small>`,
+options: [
+  "사용자 ID가 감사 추적에 기록된다.<br><small style='color:#94a3b8'>User IDs are recorded in the audit trail.</small>",
+  "보안 관리자가 감사 파일에 읽기 전용 권한을 갖는다.<br><small style='color:#94a3b8'>The security administrator has read-only rights to the audit file.</small>",
+  "조치가 발생할 때 날짜 및 시간 스탬프가 기록된다.<br><small style='color:#94a3b8'>Date and time stamps are recorded when an action occurs.</small>",
+  "사용자가 시스템 오류 수정 시 감사 추적 기록을 수정할 수 있다.<br><small style='color:#94a3b8'>Users can amend audit trail records when correcting system errors.</small>"
+],
+correct: 3,
+explanation: `<p><b>사용자가 감사 추적 기록을 수정할 수 있는 경우</b> 신뢰성이 의심스럽습니다. 감사 추적의 세부 사항을 수정할 수 있다면 추적의 효과는 사라집니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">신뢰성 영향</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 사용자 ID 기록</td><td style="padding:8px;border:1px solid #ddd">책임 추적성 확립</td><td style="padding:8px;border:1px solid #ddd">✔ 정상 — 감사 추적의 필수 요소</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 보안 관리자 읽기 전용</td><td style="padding:8px;border:1px solid #ddd">감사 파일 변조 방지</td><td style="padding:8px;border:1px solid #ddd">✔ 정상 — 무결성 보호</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 날짜·시간 스탬프</td><td style="padding:8px;border:1px solid #ddd">이벤트 재구성 가능</td><td style="padding:8px;border:1px solid #ddd">✔ 정상 — 시간 기반 분석 가능</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 사용자 수정 가능 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>무결성 파괴</b></td><td style="padding:8px;border:1px solid #ddd"><b>✗ 수정 가능 = 추적의 효과 무효</b></td></tr>
+</table>
+<div class="sbox"><b>📜 감사 추적 신뢰성 핵심 요소:</b><br>
+• <b>필수 요소:</b><br>
+&nbsp;&nbsp;1. 사용자 ID (책임 추적성)<br>
+&nbsp;&nbsp;2. 날짜·시간 스탬프 (시간 순서)<br>
+&nbsp;&nbsp;3. 활동 내역<br>
+• <b>무결성 보호:</b> 감사 추적은 <b>읽기 전용</b>이어야 함 (수정 ✗)<br>
+• <b>"오류 수정"이라도 직접 수정 ✗</b> → 별도 정정 거래로 처리<br>
+• Q255 연결: DBA도 자기 활동 로그 삭제 ✗ (동일 원칙)<br>
+• 핵심: <b>감사 추적의 가치 = 변경 불가능성(Immutability)</b><br>
+• 수정 가능한 감사 추적 = 신뢰할 수 없는 감사 추적</div>`,
+reference:"CRM Chapter 4: IS Operations — Audit Trail Integrity",
+keyConcepts:[
+"감사 추적 무결성|사용자가 감사 기록 수정 가능 = 신뢰성 파괴 — 변경 불가능성이 핵심",
+"감사 추적 필수 요소|사용자 ID + 날짜·시간 스탬프 + 활동 내역 — 책임 추적성 확립",
+"오류 수정 원칙|감사 추적 직접 수정 ✗ — 별도 정정 거래로 처리해야 함",
+"Q255 일관성|특권자(DBA)도 자기 활동 로그 통제 ✗ — 감사 추적 무결성 보호 원칙"
+]
+},
+
+// ============================================================
+// Q261 - Main Benefit of Monitoring Operational Logs
+// ============================================================
+{
+id: 261,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `운영 로그 모니터링의 주요 이점은?<br><small style="color:#94a3b8">Which of the following is a MAIN benefit of monitoring operational logs?</small>`,
+options: [
+  "위험 현실화에 대한 조기 경고를 제공한다.<br><small style='color:#94a3b8'>It provides early warnings of possible risk materialization.</small>",
+  "운영 중 발생한 문제를 IS 감사인이 탐지하는 데 도움을 준다.<br><small style='color:#94a3b8'>It helps IS auditors in detecting problems encountered during operations.</small>",
+  "IT 인프라의 상태 및 성능에 대한 통찰을 제공한다.<br><small style='color:#94a3b8'>It gives insight into the health and performance of the IT infrastructure.</small>",
+  "운영 중 처리된 거래의 감사 추적을 제공한다.<br><small style='color:#94a3b8'>It provides audit trails for transactions processed during operations.</small>"
+],
+correct: 2,
+explanation: `<p><b>IT 인프라의 상태 및 성능 통찰</b>이 주요 이점입니다. 운영 로그 모니터링은 CPU 성능, 스토리지 용량, 네트워크 대역폭, 최대 거래 수 등 다양한 IT 자원의 성능 메트릭 데이터를 제공합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">제공 가치</th><th style="padding:8px;border:1px solid #334155">주요성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 조기 경고</td><td style="padding:8px;border:1px solid #ddd">위험 사전 감지</td><td style="padding:8px;border:1px solid #ddd">일부 로그만 제공 — 모든 로그 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 감사인 문제 탐지</td><td style="padding:8px;border:1px solid #ddd">샘플링 검토</td><td style="padding:8px;border:1px solid #ddd">제한적 — 식별된 영역만</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. IT 인프라 통찰 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>성능 메트릭 데이터</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 운영 로그 모니터링의 주요 목적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 감사 추적</td><td style="padding:8px;border:1px solid #ddd">거래 처리 추적</td><td style="padding:8px;border:1px solid #ddd">처리 적정성 보장 — 문제 식별 ✗</td></tr>
+</table>
+<div class="sbox"><b>📈 운영 로그 모니터링의 핵심 목적:</b><br>
+• <b>주 목적:</b> IT 인프라 상태·성능 통찰<br>
+• <b>제공 메트릭:</b><br>
+&nbsp;&nbsp;1. CPU 성능<br>
+&nbsp;&nbsp;2. 스토리지 용량 사용량<br>
+&nbsp;&nbsp;3. 네트워크 대역폭 사용량<br>
+&nbsp;&nbsp;4. 최대 거래 수<br>
+• <b>활용:</b> 용량 계획·성능 튜닝·자원 최적화<br>
+• Q212(네트워크 모니터링→가용성) 연결: 모니터링 = 가용성 보장<br>
+• 감사 추적 vs 운영 로그 구분:<br>
+&nbsp;&nbsp;- 감사 추적: 거래·활동 책임 추적<br>
+&nbsp;&nbsp;- 운영 로그: 시스템 상태·성능 모니터링</div>`,
+reference:"CRM Chapter 4: IS Operations — Operational Log Monitoring & Performance Metrics",
+keyConcepts:[
+"운영 로그 주 목적|IT 인프라 상태·성능 통찰 — 성능 메트릭 데이터 수집의 핵심",
+"운영 로그 vs 감사 추적|운영=시스템 상태/성능, 감사 추적=거래/활동 책임 — 목적 구분",
+"성능 메트릭 항목|CPU·스토리지·네트워크·거래 수 — 용량 계획·튜닝의 기반 데이터",
+"Q212 연결|네트워크 모니터링 = 가용성 보장 — 운영 로그 모니터링의 핵심 가치"
+]
+},
+
+// ============================================================
+// Q262 - Reciprocal Agreement Risk Mitigation
+// ============================================================
+{
+id: 262,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `복구 대안으로 상호 협정(Reciprocal Agreement)을 사용하는 데 따르는 위험을 가장 잘 완화하는 것은?<br><small style="color:#94a3b8">Which of the following BEST mitigates the risk arising from using reciprocal agreements as a recovery alternative?</small>`,
+options: [
+  "재해복구 훈련을 매년 수행한다.<br><small style='color:#94a3b8'>Perform disaster recovery exercises annually.</small>",
+  "협력 조직이 지리적으로 분리되어 있도록 한다.<br><small style='color:#94a3b8'>Ensure that partnering organizations are separated geographically.</small>",
+  "비즈니스 영향 분석(BIA)을 정기적으로 수행한다.<br><small style='color:#94a3b8'>Regularly perform a business impact analysis (BIA).</small>",
+  "유사한 시스템을 가진 협력 조직을 선택한다.<br><small style='color:#94a3b8'>Select a partnering organization with similar systems.</small>"
+],
+correct: 1,
+explanation: `<p><b>지리적 분리(Geographic Separation)</b>가 가장 효과적입니다. 협력 조직이 지리적으로 가까우면 동일한 환경 재해(지진 등)에 함께 영향을 받을 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 매년 DR 훈련</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">중요하나 상호 협정에서 수행 어려움 — 지리적 위험이 더 큼</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 지리적 분리 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>동일 자연재해 동시 영향 회피 — 핵심 위험 완화</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. BIA 정기 수행</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">핵심 앱 식별 도움 — 분리가 더 중요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 유사 시스템 협력</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">호환성 좋으나 분리가 더 우선</td></tr>
+</table>
+<div class="sbox"><b>🤝 상호 협정(Reciprocal Agreement) 핵심:</b><br>
+• <b>정의:</b> 두 조직이 재해 시 서로의 시설을 사용하기로 합의<br>
+• <b>장점:</b> 저비용·유연성<br>
+• <b>핵심 위험:</b><br>
+&nbsp;&nbsp;1. 지리적 근접 → 동일 재해 동시 영향 (가장 큰 위험)<br>
+&nbsp;&nbsp;2. 시스템 호환성 부족<br>
+&nbsp;&nbsp;3. DR 훈련 어려움<br>
+&nbsp;&nbsp;4. 동시 사용 시 자원 부족<br>
+• Q204(이중 IPF 실행 가능성) 연결: 백업 사이트는 동일 재해 권역 회피 필수<br>
+• 핵심: 상호 협정은 <b>"지리적 분리 + 시스템 호환성"</b>이 양대 필수 조건</div>`,
+reference:"CRM Chapter 4: IS Operations — Reciprocal Agreements & Disaster Recovery",
+keyConcepts:[
+"상호 협정 핵심 위험|지리적 근접 → 동일 재해 동시 영향 — 분리가 위험 완화의 최선",
+"상호 협정 정의|두 조직이 재해 시 시설 상호 사용 합의 — 저비용·유연하나 위험 존재",
+"Q204 일관성|백업 사이트는 동일 재해 권역 회피 — 상호 협정도 동일 원칙",
+"상호 협정 양대 조건|지리적 분리 + 시스템 호환성 — 둘 다 필수"
+]
+},
+
+// ============================================================
+// Q263 - SLA Review Major Concern
+// ============================================================
+{
+id: 263,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `서비스 수준 협약(SLA)을 검토하는 IS 감사인에게 다음 중 어느 이슈가 주요 우려사항이 되어야 하는가?<br><small style="color:#94a3b8">Which of the following issues should be a MAJOR concern to an IS auditor who is reviewing a service level agreement (SLA)?</small>`,
+options: [
+  "예외 보고서로 인한 서비스 조정에 하루가 걸렸다.<br><small style='color:#94a3b8'>A service adjustment resulting from an exception report took a day to implement.</small>",
+  "서비스 모니터링에 사용된 애플리케이션 로그의 복잡성으로 검토가 어려웠다.<br><small style='color:#94a3b8'>The complexity of application logs used for service monitoring made the review difficult.</small>",
+  "핵심 성과 지표(KPI)가 SLA에 포함되어 있지 않았다.<br><small style='color:#94a3b8'>Key performance indicators (KPIs) were not included in the SLA.</small>",
+  "문서가 연 1회 기준으로 업데이트된다.<br><small style='color:#94a3b8'>The document is updated on an annual basis.</small>"
+],
+correct: 2,
+explanation: `<p><b>KPI 미포함</b>이 가장 큰 우려입니다. KPI 같은 서비스 측정 지표가 없으면 IT 서비스의 효율성·효과성을 측정할 수 없습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">SLA 관련성</th><th style="padding:8px;border:1px solid #334155">우려 정도</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 조정에 하루 소요</td><td style="padding:8px;border:1px solid #ddd">운영 이슈</td><td style="padding:8px;border:1px solid #ddd">SLA 조건 따라 수용 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 로그 복잡성</td><td style="padding:8px;border:1px solid #ddd">운영 이슈</td><td style="padding:8px;border:1px solid #ddd">SLA와 직접 관련 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. KPI 미포함 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>SLA 핵심 요소</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 서비스 측정 불가 — 최대 우려</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 연간 업데이트</td><td style="padding:8px;border:1px solid #ddd">문서 관리</td><td style="padding:8px;border:1px solid #ddd">계약 기간 따라 적절할 수 있음</td></tr>
+</table>
+<div class="sbox"><b>📊 SLA의 핵심 요소 — KPI:</b><br>
+• <b>일반적 SLA KPI:</b><br>
+&nbsp;&nbsp;1. 응답 시간 (Response Time)<br>
+&nbsp;&nbsp;2. 가동 시간 (Uptime)<br>
+&nbsp;&nbsp;3. 서비스 신뢰성 (Service Reliability)<br>
+&nbsp;&nbsp;4. 처리량 (Throughput)<br>
+• <b>KPI의 역할:</b> 서비스 효율성·효과성 측정 → 합의 이행 검증<br>
+• KPI 없음 = SLA의 본질적 목적 상실 → "측정할 수 없으면 관리할 수 없다"<br>
+• Q228(RTO), Q261(성능 메트릭) 연결: 모든 IT 관리는 측정 가능 지표 기반</div>`,
+reference:"CRM Chapter 4: IS Operations — SLA & Key Performance Indicators",
+keyConcepts:[
+"SLA KPI 필수|KPI 없는 SLA = 서비스 측정 불가 → SLA 본질적 목적 상실 — 최대 우려",
+"일반 SLA KPI|응답 시간·가동 시간·신뢰성·처리량 — 서비스 측정의 표준 지표",
+"측정 가능성 원칙|측정할 수 없으면 관리할 수 없다 — IT 서비스 관리의 기본 원칙",
+"Q228·Q261 연결|모든 IT 관리는 측정 가능 지표 기반 (RTO·성능 메트릭·KPI)"
+]
+},
+
+// ============================================================
+// Q264 - New IT Service Provider Audit Priority
+// ============================================================
+{
+id: 264,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `조직이 새 IT 서비스 제공자를 사용하는 것을 고려하고 있다. 감사 관점에서 검토해야 할 가장 중요한 항목은?<br><small style="color:#94a3b8">An organization is considering using a new IT service provider. From an audit perspective, which is the MOST important item to review?</small>`,
+options: [
+  "다른 고객으로부터의 서비스 제공자 추천서.<br><small style='color:#94a3b8'>References from other clients for the service provider</small>",
+  "서비스 제공자 사이트의 물리적 보안.<br><small style='color:#94a3b8'>The physical security of the service provider site</small>",
+  "서비스 제공자와의 제안된 서비스 수준 협약(SLA).<br><small style='color:#94a3b8'>The proposed service level agreement (SLA) with the service provider</small>",
+  "서비스 제공자 직원의 신원 조회.<br><small style='color:#94a3b8'>Background checks of the service provider's employees</small>"
+],
+correct: 2,
+explanation: `<p><b>제안된 SLA</b>가 가장 중요합니다. SLA는 요구되는 구체적 성능 수준을 정의하고, 제공자가 약속한 것을 이행할 계약상 의무를 만듭니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">실사 활동</th><th style="padding:8px;border:1px solid #334155">계약 구속력</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 추천서</td><td style="padding:8px;border:1px solid #ddd">실사(Due Diligence)</td><td style="padding:8px;border:1px solid #ddd">참고용 — 강제력 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 물리적 보안</td><td style="padding:8px;border:1px solid #ddd">실사</td><td style="padding:8px;border:1px solid #ddd">현황 확인 — 강제력 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. SLA ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>계약</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 성능·보안 요구의 계약상 의무화</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 직원 신원 조회</td><td style="padding:8px;border:1px solid #ddd">실사</td><td style="padding:8px;border:1px solid #ddd">현황 확인 — 강제력 ✗</td></tr>
+</table>
+<div class="sbox"><b>📜 SLA의 우선순위 — 계약 vs 실사:</b><br>
+• <b>SLA(계약):</b> 법적 구속력 + 성능·보안 요구 명시<br>
+• <b>실사(추천서·물리 보안·신원 조회):</b> 좋은 관행이나 <b>참고용</b><br>
+• 핵심 원리: <b>"계약에 없으면 강제할 수 없다"</b><br>
+• SLA 검토 포인트:<br>
+&nbsp;&nbsp;1. 성능 지표(KPI) 명확성 (Q263 연결)<br>
+&nbsp;&nbsp;2. 보안 요구사항<br>
+&nbsp;&nbsp;3. 위반 시 제재·종료 조항<br>
+&nbsp;&nbsp;4. 감사권(Right to Audit)<br>
+• Q263 연결: SLA에 KPI 없음 = 측정 불가 / Q264: SLA 자체 = 가장 중요 검토 대상</div>`,
+reference:"CRM Chapter 4: IS Operations — SLA & Vendor Selection",
+keyConcepts:[
+"SLA 우선순위|계약(SLA)이 실사(추천서·보안·신원조회)보다 우선 — 계약 구속력이 핵심",
+"SLA 검토 포인트|KPI·보안 요구·제재·감사권 — 모든 요구사항 계약 명시 필요",
+"실사 vs 계약|실사=참고용, 계약=강제력 — 계약에 없으면 강제 불가",
+"Q263 연결|Q263: SLA 내용(KPI), Q264: SLA 자체 우선 — SLA는 IT 서비스 관리의 핵심"
+]
+},
+
+// ============================================================
+// Q265 - Healthcare Cloud Provider Contract Risk
+// ============================================================
+{
+id: 265,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `의료 조직의 IS 감사인이 환자 건강 정보를 호스팅할 제3자 클라우드 제공자의 계약 조건을 검토하고 있다. 다음 계약 조건 중 고객 조직에 가장 큰 위험은?<br><small style="color:#94a3b8">An IS auditor of a healthcare organization is reviewing contractual terms of a third-party cloud provider being considered to host patient health information. Which contractual term is the GREATEST risk?</small>`,
+options: [
+  "데이터 소유권은 고객 조직에 의해 유지된다.<br><small style='color:#94a3b8'>Data ownership is retained by the customer organization.</small>",
+  "제3자 제공자가 특정 작업 수행을 위해 데이터에 접근할 권리를 보유한다.<br><small style='color:#94a3b8'>The third-party provider reserves the right to access data to perform certain operations.</small>",
+  "대량 데이터 인출 메커니즘이 정의되지 않았다.<br><small style='color:#94a3b8'>Bulk data withdrawal mechanisms are undefined.</small>",
+  "고객 조직이 백업, 아카이빙 및 복원에 대한 책임이 있다.<br><small style='color:#94a3b8'>The customer organization is responsible for backup, archiving and restoration.</small>"
+],
+correct: 1,
+explanation: `<p><b>제3자 제공자의 데이터 접근 권리 보유</b>가 가장 큰 위험입니다. 환자 건강 정보(PHI)는 규제로 인해 접근이 제한될 수 있으며, 제3자 접근은 규정 위반과 데이터 보안 통제 부족으로 이어질 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">위험 정도</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 고객 데이터 소유권 유지</td><td style="padding:8px;border:1px solid #ddd">유리</td><td style="padding:8px;border:1px solid #ddd">고객에게 유리 — 위험 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 제3자 데이터 접근 권리 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>최대 위험</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ PHI 규제 위반·기밀성 침해 가능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 대량 인출 메커니즘 미정의</td><td style="padding:8px;border:1px solid #ddd">전환 위험</td><td style="padding:8px;border:1px solid #ddd">서비스 종료 시 문제 — 사전 명확화 필요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 고객 백업·복원 책임</td><td style="padding:8px;border:1px solid #ddd">관리 부담</td><td style="padding:8px;border:1px solid #ddd">고객 자체 수행 가능 시 위험 ✗</td></tr>
+</table>
+<div class="sbox"><b>🏥 의료 클라우드 — PHI 규제 환경:</b><br>
+• <b>PHI(Protected Health Information):</b> HIPAA 등 엄격한 규제<br>
+• <b>제3자 접근 위험:</b><br>
+&nbsp;&nbsp;1. 규정 위반 가능성<br>
+&nbsp;&nbsp;2. 기밀성 침해<br>
+&nbsp;&nbsp;3. 데이터 보안 통제 미흡 가능<br>
+• <b>검토 포인트:</b><br>
+&nbsp;&nbsp;1. 접근 사유·범위 명확성<br>
+&nbsp;&nbsp;2. 접근 통제·로깅<br>
+&nbsp;&nbsp;3. 규제 준수 보장<br>
+• Q217(의료 전사 백업) 연결: 의료 데이터 = 규제·기밀성 최우선<br>
+• 핵심: <b>규제 산업 + 제3자 접근 = 가장 큰 위험</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Cloud Provider & Healthcare Data",
+keyConcepts:[
+"제3자 데이터 접근 위험|PHI 환경에서 제3자 접근 = 규제 위반·기밀성 침해 — 최대 위험",
+"의료 데이터 규제|HIPAA 등 엄격 규제 — 제3자 접근은 명확한 사유·통제·로깅 필요",
+"클라우드 계약 검토|데이터 소유권·접근권·인출 메커니즘·백업 책임 — 모두 검토 필수",
+"Q217 일관성|의료 데이터 = 규제·기밀성 최우선 — 가용성보다 기밀성·규제 우선"
+]
+},
+
+// ============================================================
+// Q266 - ISP SLA Compliance Verification
+// ============================================================
+{
+id: 266,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `IS 감사인이 ISP가 외주 통신 서비스 가용성에 대한 기업 SLA를 준수해 왔는지 검증하기 위한 정보 출처로 가장 적절한 보고서는?<br><small style="color:#94a3b8">Which report is the MOST appropriate source of information for an IS auditor to validate that an ISP has been complying with an enterprise SLA for outsourced telecommunication services availability?</small>`,
+options: [
+  "ISP가 생성한 통신 서비스 다운타임 보고서.<br><small style='color:#94a3b8'>Downtime reports on the telecommunication services generated by the ISP</small>",
+  "기업이 생성한 자동 페일오버(Failover) 서비스 사용률 보고서.<br><small style='color:#94a3b8'>A utilization report of automatic failover services generated by the enterprise</small>",
+  "ISP가 제공한 대역폭 사용률 보고서.<br><small style='color:#94a3b8'>A bandwidth utilization report provided by the ISP</small>",
+  "기업이 생성한 통신 서비스 다운타임 보고서.<br><small style='color:#94a3b8'>Downtime reports on the telecommunication services generated by the enterprise</small>"
+],
+correct: 3,
+explanation: `<p><b>기업이 생성한 다운타임 보고서</b>가 가장 적절합니다. 기업은 내부 생성 보고서로 ISP 서비스를 모니터링하고, 가용 시 ISP 제공 보고서와 비교해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">출처</th><th style="padding:8px;border:1px solid #334155">신뢰성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. ISP 생성 다운타임</td><td style="padding:8px;border:1px solid #ddd">피감사자(ISP)</td><td style="padding:8px;border:1px solid #ddd">자기 모니터링 — 편향·오류 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 기업 페일오버 사용률</td><td style="padding:8px;border:1px solid #ddd">기업</td><td style="padding:8px;border:1px solid #ddd">간접 증거 — 사용 여부만</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. ISP 대역폭 사용률</td><td style="padding:8px;border:1px solid #ddd">ISP</td><td style="padding:8px;border:1px solid #ddd">대역폭 측정 — 가동 시간 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 기업 생성 다운타임 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>독립적 출처</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 가용성 직접 측정 + 독립성 보장</b></td></tr>
+</table>
+<div class="sbox"><b>📡 SLA 준수 검증 — 출처 신뢰성 원칙:</b><br>
+• <b>독립적 출처 > 피감사자 출처</b> — Q238(시스템 구성 검토)와 동일 원칙<br>
+• ISP 생성 보고서 = 자기 보고 → 편향 가능<br>
+• 기업 생성 보고서 = 독립적 측정 → 객관적 증거<br>
+• <b>최선:</b> 양쪽 보고서 비교 검증<br>
+• 보고서 유형별 적합성:<br>
+&nbsp;&nbsp;- 다운타임 보고서 = 가용성 직접 측정 ✔<br>
+&nbsp;&nbsp;- 페일오버 사용률 = 간접 증거<br>
+&nbsp;&nbsp;- 대역폭 사용률 = 사용량 (가용성 ✗)<br>
+• Q263·Q264 연결: SLA = 측정 가능 + 독립적 검증 가능해야 함</div>`,
+reference:"CRM Chapter 4: IS Operations — SLA Compliance Verification",
+keyConcepts:[
+"독립적 출처 우선|기업 생성 다운타임 보고서 = 독립적·객관적 증거 — ISP 자기 보고보다 신뢰성 높음",
+"보고서 유형 적합성|다운타임=가용성 직접 측정, 페일오버=간접, 대역폭=사용량 — SLA 가용성은 다운타임",
+"Q238 일관성|감사 증거 신뢰성 = 독립적 출처 > 피감사자 제공 (SLA·구성 검토 모두 동일)",
+"양방 검증|기업+ISP 보고서 비교 = 최선의 검증 — 한쪽만으로는 편향 위험"
+]
+},
+
+// ============================================================
+// Q267 - BCP Process After BIA
+// ============================================================
+{
+id: 267,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `한 조직이 비즈니스 연속성 계획의 일부로 비즈니스 영향 분석(BIA)을 완료했다. 프로세스의 다음 단계는 무엇을 개발하는 것인가?<br><small style="color:#94a3b8">An organization completed a business impact analysis (BIA) as part of business continuity planning. The NEXT step in the process is to develop:</small>`,
+options: [
+  "비즈니스 연속성 전략(Business Continuity Strategy).<br><small style='color:#94a3b8'>A business continuity strategy</small>",
+  "테스트 및 훈련 계획.<br><small style='color:#94a3b8'>A test and exercise plan</small>",
+  "사용자 교육 프로그램.<br><small style='color:#94a3b8'>A user training program</small>",
+  "비즈니스 연속성 계획(BCP).<br><small style='color:#94a3b8'>The business continuity plan (BCP)</small>"
+],
+correct: 0,
+explanation: `<p><b>비즈니스 연속성 전략</b>이 BIA의 다음 단계입니다. 전략은 복구 최선 방법을 식별하며, 이 단계에서 비즈니스 프로세스 중요도, 비용, 복구 시간, 보안을 고려합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">단계</th><th style="padding:8px;border:1px solid #334155">활동</th><th style="padding:8px;border:1px solid #334155">산출물</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">1️⃣</td><td style="padding:8px;border:1px solid #ddd">위험 평가</td><td style="padding:8px;border:1px solid #ddd">위협·취약점 식별</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">2️⃣</td><td style="padding:8px;border:1px solid #ddd">BIA 수행</td><td style="padding:8px;border:1px solid #ddd">중요 프로세스·RTO·RPO 식별</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>3️⃣</b></td><td style="padding:8px;border:1px solid #ddd"><b>연속성 전략 개발 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>복구 방안·비용·시간 고려</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">4️⃣</td><td style="padding:8px;border:1px solid #ddd">BCP 개발</td><td style="padding:8px;border:1px solid #ddd">상세 절차 문서화</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">5️⃣</td><td style="padding:8px;border:1px solid #ddd">교육·테스트</td><td style="padding:8px;border:1px solid #ddd">훈련 + 검증</td></tr>
+</table>
+<div class="sbox"><b>📚 BCP 개발 프로세스 순서:</b><br>
+• <b>위험 평가 → BIA → 전략 → BCP → 교육·테스트 → 유지보수</b><br>
+• <b>BIA의 산출물:</b> 중요 프로세스 + RTO + RPO + 영향 분석<br>
+• <b>전략의 역할:</b> BIA 결과를 바탕으로 복구 방법 결정<br>
+&nbsp;&nbsp;- 핫/웜/콜드 사이트 선택 (Q214 연결)<br>
+&nbsp;&nbsp;- 상호 협정 검토 (Q262 연결)<br>
+&nbsp;&nbsp;- 비용·복구 시간·보안 고려<br>
+• 전략 → BCP → 교육·테스트 순서 준수<br>
+• 핵심: <b>"무엇을 보호할지(BIA) → 어떻게 보호할지(전략) → 상세 절차(BCP)"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — BCP Development Process",
+keyConcepts:[
+"BCP 프로세스 순서|위험 평가 → BIA → 전략 → BCP → 교육·테스트 — 단계별 산출물 의존",
+"BIA 다음 단계|연속성 전략 개발 — BIA 결과(중요도·RTO) 기반 복구 방법 결정",
+"전략의 역할|복구 방안·비용·시간·보안 고려 — BCP의 기본 방향 설정",
+"Q214·Q262 연결|전략 단계에서 사이트 유형(Q214)·상호 협정(Q262) 결정"
+]
+},
+
+// ============================================================
+// Q268 - Main Purpose of Service Level Management
+// ============================================================
+{
+id: 268,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `서비스 수준 관리(SLM)의 주요 목적은?<br><small style="color:#94a3b8">The MAIN purpose of service level management (SLM) is to:</small>`,
+options: [
+  "사용자와 제공자 사이의 기대치를 설정한다.<br><small style='color:#94a3b8'>Set expectations between users and providers.</small>",
+  "달성 가능한 최고 수준의 가용성을 제공하도록 서비스를 관리한다.<br><small style='color:#94a3b8'>Ensure that services are managed to deliver the highest achievable level of availability.</small>",
+  "모든 서비스 관련 비용을 최소로 유지한다.<br><small style='color:#94a3b8'>Keep the costs associated with any service at a minimum.</small>",
+  "법적 미준수를 모니터링하고 비즈니스 경영진에 보고한다.<br><small style='color:#94a3b8'>Monitor and report any legal noncompliance to business management.</small>"
+],
+correct: 0,
+explanation: `<p><b>사용자와 제공자 간 기대치 설정</b>이 SLM의 주요 목적입니다. SLM의 목적은 고객이 요구하는 방식으로 서비스를 협상·문서화·관리(제공·모니터링)하는 것입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 기대치 설정 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>협상·문서화·관리 — SLM의 근본 목적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 최고 가용성</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">일률적 최고 가용성 ✗ — 서비스별로 다름</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 비용 최소화</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">비용은 고객 요구에 따라 결정 — 무조건 최소 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 법적 미준수 보고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">SLM의 1차 목적 아님</td></tr>
+</table>
+<div class="sbox"><b>🤝 서비스 수준 관리(SLM) 핵심:</b><br>
+• <b>SLM 4단계:</b><br>
+&nbsp;&nbsp;1. <b>협상(Negotiate)</b> — 기대치 합의<br>
+&nbsp;&nbsp;2. <b>문서화(Document)</b> — SLA 작성<br>
+&nbsp;&nbsp;3. <b>제공(Deliver)</b> — 합의된 수준 이행<br>
+&nbsp;&nbsp;4. <b>모니터링(Monitor)</b> — KPI 측정·보고<br>
+• <b>핵심 통찰:</b> SLM ≠ "최고 서비스" → SLM = <b>"합의된 서비스"</b><br>
+• 서비스 수준은 비용·중요도·요구에 따라 다름<br>
+• Q263·Q264·Q266 연결: SLA = SLM의 산출물 + 핵심 도구<br>
+• 핵심: SLM = <b>"기대치 = 실제 제공"의 일치 보장</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Service Level Management",
+keyConcepts:[
+"SLM 주 목적|사용자·제공자 간 기대치 설정 — 협상·문서화·관리·모니터링",
+"SLM 4단계|협상 → 문서화(SLA) → 제공 → 모니터링 — 기대치 일치 보장",
+"SLM ≠ 최고 서비스|최고 가용성·최저 비용 ✗ — 합의된 수준 제공이 핵심",
+"Q263·Q264·Q266 연결|SLA = SLM의 산출물·도구 — KPI(Q263)·SLA 우선(Q264)·검증(Q266)"
+]
+},
+
+// ============================================================
+// Q269 - Acceptable Recovery Time Period
+// ============================================================
+{
+id: 269,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `핵심 비즈니스 프로세스의 재개를 위한 허용 가능한 시간을 결정할 때:<br><small style="color:#94a3b8">When determining the acceptable time period for the resumption of critical business processes:</small>`,
+options: [
+  "다운타임 비용만 고려하면 된다.<br><small style='color:#94a3b8'>Only downtime costs need to be considered.</small>",
+  "복구 운영을 분석해야 한다.<br><small style='color:#94a3b8'>Recovery operations should be analyzed.</small>",
+  "다운타임 비용과 복구 비용 모두를 평가해야 한다.<br><small style='color:#94a3b8'>Both downtime costs and recovery costs need to be evaluated.</small>",
+  "간접 다운타임 비용은 무시되어야 한다.<br><small style='color:#94a3b8'>Indirect downtime costs should be ignored.</small>"
+],
+correct: 2,
+explanation: `<p><b>다운타임 비용과 복구 비용 모두 평가</b>가 정답입니다. BIA의 결과는 두 비용의 최적 균형을 나타내는 복구 전략이어야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 다운타임 비용만</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">독립적 평가 ✗ — 복구 비용 고려 필요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 복구 운영만</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">비용 비교 누락 + 간접 비용 무시</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 다운타임+복구 비용 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>최적 균형점 도출 — BIA의 핵심</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 간접 비용 무시</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">간접 비용(평판·고객 손실)이 직접 비용보다 클 수 있음</td></tr>
+</table>
+<div class="sbox"><b>⚖️ RTO 결정 — 비용 균형 분석:</b><br>
+• <b>다운타임 비용 (시간↑ = 비용↑):</b><br>
+&nbsp;&nbsp;- 직접: 매출 손실, 운영 중단<br>
+&nbsp;&nbsp;- 간접: 평판·고객·시장 점유율 손실 (장기적으로 더 클 수 있음)<br>
+• <b>복구 비용 (RTO↓ = 비용↑):</b><br>
+&nbsp;&nbsp;- 핫 사이트·이중화·실시간 백업 등 인프라 투자<br>
+• <b>최적점:</b> 두 비용의 합이 최소가 되는 지점 = <b>적정 RTO</b><br>
+• Q213·Q214 연결: RTO와 비용은 반비례 — 균형이 핵심<br>
+• 간접 비용 주의: 평판·고객 손실 = 비즈니스 생존 위협 가능</div>`,
+reference:"CRM Chapter 4: IS Operations — Cost-Benefit Analysis for RTO",
+keyConcepts:[
+"RTO 결정 비용 균형|다운타임 비용 + 복구 비용 모두 평가 — 최적 균형점 = 적정 RTO",
+"직접 vs 간접 비용|간접 비용(평판·고객 손실)이 장기적으로 더 클 수 있음 — 무시 ✗",
+"BIA 산출물|두 비용의 균형 분석을 통한 최적 복구 전략 도출",
+"Q213·Q214 일관성|RTO와 비용 반비례 — 균형 분석으로 결정"
+]
+},
+
+// ============================================================
+// Q270 - Verbal SLA Audit Response
+// ============================================================
+{
+id: 270,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `HR 감사 중, IS 감사인은 IT 부서와 HR 부서 간에 예상되는 IT 서비스 수준에 대한 구두 합의가 있다는 것을 통보받았다. 이 상황에서 IS 감사인이 가장 먼저 해야 할 일은?<br><small style="color:#94a3b8">During an HR audit, an IS auditor is informed that there is a verbal agreement between the IT and HR departments about the level of IT services expected. What should the IS auditor do FIRST?</small>`,
+options: [
+  "합의가 문서화될 때까지 감사를 연기한다.<br><small style='color:#94a3b8'>Postpone the audit until the agreement is documented.</small>",
+  "문서화되지 않은 합의의 존재를 고위 경영진에 보고한다.<br><small style='color:#94a3b8'>Report the existence of the undocumented agreement to senior management.</small>",
+  "양 부서와 합의 내용을 확인한다.<br><small style='color:#94a3b8'>Confirm the content of the agreement with both departments.</small>",
+  "두 부서를 위한 SLA 초안을 작성한다.<br><small style='color:#94a3b8'>Draft a service level agreement for the two departments.</small>"
+],
+correct: 2,
+explanation: `<p><b>양 부서와 합의 내용 확인</b>이 정답입니다. IS 감사인은 권고를 하기 전에 먼저 현재 관행을 확인하고 이해해야 하며, 양측이 합의 조건에 동의하는지 확인해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 감사 연기</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">미문서화는 연기 사유 아님 — 감사 진행 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 경영진 보고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">즉각적 심각한 취약점 아님 — 시기상조</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 양 부서 확인 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>현재 관행 이해 우선 — 권고 전 사실 확인</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. SLA 초안 작성</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">감사인 역할 아님 — 독립성 훼손</td></tr>
+</table>
+<div class="sbox"><b>👨‍💼 감사인 FIRST 단계 원칙:</b><br>
+• <b>1단계: 사실 확인</b> — 현재 관행 이해<br>
+• <b>2단계: 평가</b> — 위험·통제 평가<br>
+• <b>3단계: 보고</b> — 발견사항 보고<br>
+• <b>4단계: 권고</b> — 개선 제안<br>
+• Q237·Q243 연결: 감사인 = 평가자, 직접 행동 ✗<br>
+&nbsp;&nbsp;- 초안 작성(D) = 감사인 역할 아님 (독립성 훼손)<br>
+&nbsp;&nbsp;- 즉각 보고(B) = 사실 확인 후<br>
+• 핵심: <b>"확인 → 평가 → 보고 → 권고"</b> 순서<br>
+• 미문서화 SLA = 즉각적 위험 ✗ → 사실관계 파악 우선</div>`,
+reference:"CRM Chapter 4: IS Operations — Audit Procedures & SLA",
+keyConcepts:[
+"감사인 FIRST 단계|사실 확인 → 평가 → 보고 → 권고 — 항상 사실 확인이 우선",
+"양 부서 합의 확인|구두 합의도 양측 확인 후 평가 — 즉각 보고·권고 ✗",
+"감사인 독립성|SLA 초안 작성 = 감사인 역할 아님 — 평가자 역할 유지",
+"Q237·Q243 일관성|감사인은 평가자 — 직접 행동(작성·실행) 회피"
+]
+},
+
+// ============================================================
+// Q271 - Outsourcing Contract Right to Audit
+// ============================================================
+{
+id: 271,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `IS 감사인이 서비스 제공자와의 새 외주 계약을 검토할 때, 다음 중 어느 것이 누락된 경우 가장 우려할 것인가?<br><small style="color:#94a3b8">An IS auditor reviewing a new outsourcing contract with a service provider would be MOST concerned if which of the following was missing?</small>`,
+options: [
+  "서비스 제공자에 대한 감사권(Right to Audit) 조항.<br><small style='color:#94a3b8'>A clause providing a right to audit the service provider</small>",
+  "성과 부진 시 위약금 지불을 정의하는 조항.<br><small style='color:#94a3b8'>A clause defining penalty payments for poor performance</small>",
+  "사전 정의된 서비스 수준 보고서 템플릿.<br><small style='color:#94a3b8'>Predefined service level report templates</small>",
+  "공급자 책임 제한에 관한 조항.<br><small style='color:#94a3b8'>A clause regarding supplier limitation of liability</small>"
+],
+correct: 0,
+explanation: `<p><b>감사권(Right to Audit) 조항</b>의 누락이 가장 큰 우려입니다. 이 조항이 없으면 향후 공급자 성과(통제 결함, 부진, 법적 요구사항 준수)의 어떤 측면도 조사할 수 없습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">누락 시 영향</th><th style="padding:8px;border:1px solid #334155">우려 정도</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 감사권 조항 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>공급자 통제·성과 조사 불가</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 최대 우려</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 위약금 조항</td><td style="padding:8px;border:1px solid #ddd">개별 협상 가능</td><td style="padding:8px;border:1px solid #ddd">바람직하나 필수 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 보고서 템플릿</td><td style="padding:8px;border:1px solid #ddd">보고 요구만 있으면 됨</td><td style="padding:8px;border:1px solid #ddd">사소한 우려</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 책임 제한</td><td style="padding:8px;border:1px solid #ddd">공급자 무한 책임 노출</td><td style="padding:8px;border:1px solid #ddd">고객에게 유리 — 우려 ✗</td></tr>
+</table>
+<div class="sbox"><b>📋 감사권(Right to Audit) 핵심:</b><br>
+• <b>역할:</b> 외주 관계에서 통제 검증의 유일한 수단<br>
+• <b>없으면 불가능한 것:</b><br>
+&nbsp;&nbsp;1. 통제 결함 조사<br>
+&nbsp;&nbsp;2. 성과 부진 검증<br>
+&nbsp;&nbsp;3. 법적 요구사항 준수 확인<br>
+&nbsp;&nbsp;4. SLA 준수 검증 (Q266 연결)<br>
+• <b>대안:</b> 제3자 감사 보고서(SOC 등) 수령 권리<br>
+• Q264·Q265 연결: 외주 계약 핵심 = SLA + 감사권<br>
+• 책임 제한 누락(D) 함정: 오히려 <b>고객에게 유리</b> (공급자 무한 책임)<br>
+• 핵심: <b>감사권 = 외주 관리의 근본 도구</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Outsourcing Contract & Right to Audit",
+keyConcepts:[
+"감사권 조항|외주 계약의 핵심 — 누락 시 공급자 통제·성과·준수 검증 불가",
+"감사권 대안|제3자 감사 보고서(SOC) 수령 권리도 가능 — 직접 감사 어려운 경우",
+"책임 제한 누락 함정|공급자 책임 제한 없음 = 고객 유리 — 우려 사항 아님",
+"Q264·Q265·Q266 연결|외주 핵심 = SLA(Q264) + 감사권(Q271) + 검증(Q266) + 위험 조항(Q265)"
+]
+},
+
+// ============================================================
+// Q272 - Incident Priority Misassignment
+// ============================================================
+{
+id: 272,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `최근 애플리케이션 배포의 구현 검토 중, 여러 인시던트에 잘못된 우선순위가 할당되어 비즈니스 SLA를 충족하지 못한 것으로 판명되었다. 가장 큰 우려는?<br><small style="color:#94a3b8">During an implementation review of a recent application deployment, it was determined that several incidents were assigned incorrect priorities, failing to meet the business SLA. What is the GREATEST concern?</small>`,
+options: [
+  "지원 모델이 고위 경영진에 의해 승인되지 않았다.<br><small style='color:#94a3b8'>The support model was not approved by senior management.</small>",
+  "SLA에 명시된 인시던트 해결 시간이 비현실적이다.<br><small style='color:#94a3b8'>The incident resolution time specified in the SLA is not realistic.</small>",
+  "애플리케이션을 지원할 자원이 부족하다.<br><small style='color:#94a3b8'>There are inadequate resources to support the applications.</small>",
+  "지원 모델이 부실하게 개발·구현되어 부정확한 우선순위 지정과 SLA 실패에 기여했다.<br><small style='color:#94a3b8'>The support model was poorly developed and implemented contributing to inaccurate prioritization and SLA failures.</small>"
+],
+correct: 3,
+explanation: `<p><b>지원 모델의 부실한 개발·구현</b>이 가장 큰 우려입니다. 인시던트는 비즈니스에 상당한 비용을 발생시키며, 지원 모델은 프로젝트와 함께 SDLC 단계로 구현되어야 합니다. 한 프로젝트에서 누락되었다면 전체 프로세스 붕괴의 징후일 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 경영진 미승인</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">중요하나 부실 설계가 더 핵심 문제</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 비현실적 SLA</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">SLA 검토 필요하나 부실 설계가 근본 원인</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 자원 부족</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">중요하나 부실 설계가 더 핵심 문제</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 부실한 지원 모델 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>근본 원인 — 우선순위 오류·SLA 실패의 직접 원인</b></td></tr>
+</table>
+<div class="sbox"><b>🛠️ 지원 모델(Support Model) 핵심:</b><br>
+• <b>정의:</b> 인시던트 분류·우선순위·에스컬레이션·해결 프로세스<br>
+• <b>SDLC 통합:</b> 프로젝트와 함께 설계·구현되어야 함<br>
+• <b>부실 시 영향:</b><br>
+&nbsp;&nbsp;1. 우선순위 잘못 할당 → SLA 위반<br>
+&nbsp;&nbsp;2. 비즈니스 비용 증가<br>
+&nbsp;&nbsp;3. 다른 프로젝트도 동일 문제 가능 (시스템적 결함)<br>
+• Q216(예외 보고) 연결: 문제 관리 = 보고 → 분류 → 분석 → RCA<br>
+• 핵심: <b>증상(SLA 실패) vs 근본 원인(부실 모델)</b> 구분<br>
+• 감사인은 <b>근본 원인</b>에 집중 — 다른 옵션은 모두 증상</div>`,
+reference:"CRM Chapter 4: IS Operations — Support Model & Incident Management",
+keyConcepts:[
+"지원 모델 부실|인시던트 분류·우선순위·에스컬레이션 프로세스 설계 부실 = 근본 원인",
+"증상 vs 근본 원인|SLA 실패=증상, 부실 모델=근본 원인 — 감사인은 근본 원인 집중",
+"SDLC 통합|지원 모델은 프로젝트와 함께 설계·구현 — 누락 시 시스템적 결함 가능",
+"Q216 일관성|문제 관리는 분류부터 시작 — 분류 오류 = 전체 프로세스 실패"
+]
+},
+
+// ============================================================
+// Q273 - Service Delivery Objective Basis
+// ============================================================
+{
+id: 273,
+domain: "4",
+ks: "4A1 IT Service Level Management",
+question: `서비스 제공 목표(SDO)를 결정하는 것은 주로 무엇에 기반해야 하는가?<br><small style="color:#94a3b8">Determining the service delivery objective (SDO) should be based PRIMARILY on:</small>`,
+options: [
+  "최소 허용 운영 역량.<br><small style='color:#94a3b8'>The minimum acceptable operational capability.</small>",
+  "복원 프로세스의 비용 효율성.<br><small style='color:#94a3b8'>The cost-effectiveness of the restoration process.</small>",
+  "복구 시간 목표(RTO) 충족.<br><small style='color:#94a3b8'>Meeting the recovery time objectives (RTOs).</small>",
+  "허용 가능한 중단 윈도우.<br><small style='color:#94a3b8'>The allowable interruption window.</small>"
+],
+correct: 0,
+explanation: `<p><b>최소 허용 운영 역량</b>이 SDO 결정의 주요 기반입니다. SDO는 정상 상황이 복원될 때까지 대체 처리 모드 중에 도달해야 할 서비스 수준이며, 이는 비즈니스 요구와 직접 관련됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">SDO와의 관계</th><th style="padding:8px;border:1px solid #334155">우선순위</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 최소 운영 역량 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비즈니스 요구 직접 반영</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 1차 기준</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 비용 효율성</td><td style="padding:8px;border:1px solid #ddd">고려 요소</td><td style="padding:8px;border:1px solid #ddd">SDO 결정의 주요 기준 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. RTO 충족</td><td style="padding:8px;border:1px solid #ddd">관련 개념</td><td style="padding:8px;border:1px solid #ddd">2차 요소</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 허용 중단 윈도우</td><td style="padding:8px;border:1px solid #ddd">관련 개념</td><td style="padding:8px;border:1px solid #ddd">2차 요소</td></tr>
+</table>
+<div class="sbox"><b>📊 SDO(Service Delivery Objective) 핵심:</b><br>
+• <b>정의:</b> 재해 후 대체 처리 모드에서 도달해야 할 서비스 수준<br>
+• <b>특징:</b> "정상 100%"이 아닌 "비즈니스 최소 허용 수준"<br>
+• <b>예시:</b> 평상시 1000건/시간 처리 → SDO = 500건/시간 (50%)<br>
+• <b>관련 개념 비교:</b><br>
+&nbsp;&nbsp;- <b>RTO:</b> 복구까지의 시간 (Q213·Q228)<br>
+&nbsp;&nbsp;- <b>RPO:</b> 데이터 손실 허용량<br>
+&nbsp;&nbsp;- <b>SDO:</b> 복구 후 서비스 수준<br>
+&nbsp;&nbsp;- <b>MTO:</b> 최대 허용 중단 시간 (Q228)<br>
+• 핵심: SDO = <b>"얼마나 빨리(RTO) ≠ 얼마나 잘(SDO)"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Service Delivery Objective & BCP Metrics",
+keyConcepts:[
+"SDO 정의|재해 후 대체 처리 모드의 서비스 수준 — 비즈니스 최소 허용 운영 역량 기반",
+"SDO vs RTO|SDO=서비스 수준(얼마나 잘), RTO=복구 시간(얼마나 빨리) — 다른 차원",
+"BCP 메트릭 종합|RTO(시간)+RPO(데이터)+SDO(수준)+MTO(최대 한도) — 모두 비즈니스 요구 기반",
+"비즈니스 요구 우선|SDO는 비용·다른 메트릭보다 비즈니스 최소 운영 역량이 1차 기준"
+]
+},
+
+// ============================================================
+// Q274 - Database Integrity Greatest Assurance
+// ============================================================
+{
+id: 274,
+domain: "4",
+ks: "4A1 Database Management",
+question: `다음 통제 중 데이터베이스 무결성에 대한 가장 큰 보장을 제공하는 것은?<br><small style="color:#94a3b8">Which of the following controls provides the GREATEST assurance of database integrity?</small>`,
+options: [
+  "감사 로그 절차.<br><small style='color:#94a3b8'>Audit log procedures</small>",
+  "테이블 링크/참조 점검.<br><small style='color:#94a3b8'>Table link/reference checks</small>",
+  "쿼리/테이블 접근 시간 점검.<br><small style='color:#94a3b8'>Query/table access time checks</small>",
+  "롤백 및 롤포워드 데이터베이스 기능.<br><small style='color:#94a3b8'>Rollback and rollforward database features</small>"
+],
+correct: 1,
+explanation: `<p><b>테이블 링크/참조 점검(Table Link/Reference Checks)</b>이 데이터베이스 무결성에 대한 가장 큰 보장을 제공합니다. 테이블 연결 오류(데이터베이스 내용의 완전성·정확성)를 탐지합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">무결성 보장</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 감사 로그 절차</td><td style="padding:8px;border:1px solid #ddd">이벤트 기록·추적</td><td style="padding:8px;border:1px solid #ddd">이벤트만 — 내용 무결성 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 테이블 링크/참조 점검 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>참조 무결성 검증</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 완전성·정확성 직접 검증</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 접근 시간 점검</td><td style="padding:8px;border:1px solid #ddd">성능 모니터링</td><td style="padding:8px;border:1px solid #ddd">성능만 — 무결성 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 롤백·롤포워드</td><td style="padding:8px;border:1px solid #ddd">거래 복구</td><td style="padding:8px;border:1px solid #ddd">거래 무결성만 — DB 내용 ✗</td></tr>
+</table>
+<div class="sbox"><b>🗃️ DB 무결성 통제 — 참조 무결성:</b><br>
+• <b>참조 무결성(Referential Integrity):</b><br>
+&nbsp;&nbsp;- 외래 키(FK)가 참조하는 기본 키(PK) 존재 보장<br>
+&nbsp;&nbsp;- 부모 레코드 삭제 시 자식 레코드 처리 (CASCADE/RESTRICT)<br>
+• <b>다른 통제의 한계:</b><br>
+&nbsp;&nbsp;1. 감사 로그 = 추적만, 무결성 검증 ✗<br>
+&nbsp;&nbsp;2. 접근 시간 = 성능 지표, 무결성과 무관<br>
+&nbsp;&nbsp;3. 롤백/롤포워드 = 복구 메커니즘, 콘텐츠 무결성 ✗<br>
+• <b>DB 무결성 4가지:</b><br>
+&nbsp;&nbsp;1. 엔티티 무결성 (PK 유일성)<br>
+&nbsp;&nbsp;2. 참조 무결성 (FK 일관성)<br>
+&nbsp;&nbsp;3. 도메인 무결성 (값 범위)<br>
+&nbsp;&nbsp;4. 사용자 정의 무결성 (비즈니스 규칙)</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Integrity Controls",
+keyConcepts:[
+"테이블 링크/참조 점검|참조 무결성 검증 — DB 내용의 완전성·정확성 보장의 최선",
+"감사 로그 한계|이벤트 추적만 — DB 내용의 무결성 검증 ✗",
+"롤백/롤포워드 한계|거래 복구 메커니즘 — 거래 무결성만, 콘텐츠 무결성 ✗",
+"DB 무결성 4유형|엔티티·참조·도메인·사용자 정의 — 참조 무결성이 핵심"
+]
+},
+
+// ============================================================
+// Q275 - Before-Image Dump Restoration
+// ============================================================
+{
+id: 275,
+domain: "4",
+ks: "4A1 Database Management",
+question: `데이터베이스가 비포 이미지(Before-Image) 덤프를 사용하여 복원된 경우, 중단 후 프로세스는 어디에서 시작해야 하는가?<br><small style="color:#94a3b8">If a database is restored using before-image dumps, where should the process begin following an interruption?</small>`,
+options: [
+  "마지막 거래 이전.<br><small style='color:#94a3b8'>Before the last transaction</small>",
+  "마지막 거래 이후.<br><small style='color:#94a3b8'>After the last transaction</small>",
+  "최신 체크포인트 이후 첫 번째 거래에서.<br><small style='color:#94a3b8'>At the first transaction after the latest checkpoint</small>",
+  "최신 체크포인트 이전 마지막 거래에서.<br><small style='color:#94a3b8'>At the last transaction before the latest checkpoint</small>"
+],
+correct: 0,
+explanation: `<p><b>마지막 거래 이전</b>에서 시작해야 합니다. 비포 이미지 덤프 사용 시, 덤프의 마지막 거래는 덤프 시점 이전에 데이터베이스를 업데이트하지 않았을 수 있으므로 재처리해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 마지막 거래 이전 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>마지막 거래 미반영 가능 → 재처리 필요</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 마지막 거래 이후</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">마지막 거래가 누락됨</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 체크포인트 이후 첫 거래</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">체크포인트는 애플리케이션 장애에 사용 — 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 체크포인트 이전 마지막</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">체크포인트는 이 상황과 무관</td></tr>
+</table>
+<div class="sbox"><b>💾 비포 이미지(Before-Image) vs 애프터 이미지(After-Image):</b><br>
+• <b>비포 이미지:</b> 거래 <b>적용 전</b>의 DB 상태 기록<br>
+&nbsp;&nbsp;- 용도: 롤백(Rollback) — 거래 취소<br>
+&nbsp;&nbsp;- 복원 시: 마지막 거래 이전부터 재처리<br>
+• <b>애프터 이미지:</b> 거래 <b>적용 후</b>의 DB 상태 기록<br>
+&nbsp;&nbsp;- 용도: 롤포워드(Rollforward) — 거래 재적용<br>
+&nbsp;&nbsp;- 복원 시: 마지막 적용 거래 이후부터 시작<br>
+• <b>체크포인트:</b> 애플리케이션 장애 시 복구 지점 — 본 시나리오 무관<br>
+• 핵심: 비포 이미지 = "거래 전 상태로 되돌림" → 마지막 거래 재처리</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Recovery & Image Dumps",
+keyConcepts:[
+"비포 이미지 복원|마지막 거래 미반영 가능 → 마지막 거래 이전부터 재처리 필요",
+"비포 vs 애프터 이미지|비포=거래 전 상태(롤백), 애프터=거래 후 상태(롤포워드) — 목적 구분",
+"체크포인트|애플리케이션 장애 복구용 — DB 이미지 덤프 복원과 별개",
+"DB 복구 메커니즘|이미지 덤프 + 트랜잭션 로그 = DB 복구의 기본 도구"
+]
+},
+
+// ============================================================
+// Q276 - Database Hardening Most Important
+// ============================================================
+{
+id: 276,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 조직의 데이터베이스 보안을 검토하고 있다. 데이터베이스 하드닝(Hardening)에서 가장 중요한 고려사항은?<br><small style="color:#94a3b8">An IS auditor is reviewing database security for an organization. Which is the MOST important consideration for database hardening?</small>`,
+options: [
+  "기본 구성(Default Configurations)이 변경된다.<br><small style='color:#94a3b8'>The default configurations are changed.</small>",
+  "데이터베이스의 모든 테이블이 비정규화된다.<br><small style='color:#94a3b8'>All tables in the database are denormalized.</small>",
+  "저장 프로시저와 트리거가 암호화된다.<br><small style='color:#94a3b8'>Stored procedures and triggers are encrypted.</small>",
+  "데이터베이스 서버가 사용하는 서비스 포트가 변경된다.<br><small style='color:#94a3b8'>The service port used by the database server is changed.</small>"
+],
+correct: 0,
+explanation: `<p><b>기본 구성 변경</b>이 가장 중요합니다. 기본 비밀번호와 서비스 등 기본 데이터베이스 구성을 변경하지 않으면 악성 코드와 침입자에 의해 쉽게 손상될 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">하드닝 우선순위</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 기본 구성 변경 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>알려진 취약점 차단</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 1차 — 가장 기본·중요</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 테이블 비정규화</td><td style="padding:8px;border:1px solid #ddd">성능 최적화</td><td style="padding:8px;border:1px solid #ddd">보안과 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 프로시저·트리거 암호화</td><td style="padding:8px;border:1px solid #ddd">코드 보호</td><td style="padding:8px;border:1px solid #ddd">유효하나 기본 구성보다 후순위</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 서비스 포트 변경</td><td style="padding:8px;border:1px solid #ddd">은닉(Obscurity)</td><td style="padding:8px;border:1px solid #ddd">기본 구성 변경의 일부 — 후순위</td></tr>
+</table>
+<div class="sbox"><b>🔒 데이터베이스 하드닝(Hardening) 핵심:</b><br>
+• <b>기본 구성 변경 항목:</b><br>
+&nbsp;&nbsp;1. <b>기본 관리자 비밀번호 변경</b> (sa, root 등)<br>
+&nbsp;&nbsp;2. 기본 계정 비활성화·삭제<br>
+&nbsp;&nbsp;3. 불필요한 기본 서비스 비활성화<br>
+&nbsp;&nbsp;4. 기본 샘플 DB·예제 제거<br>
+&nbsp;&nbsp;5. 기본 포트 변경 (선택)<br>
+• <b>"기본값 그대로 = 알려진 취약점 노출"</b><br>
+• 공격자 첫 시도 = 기본 비밀번호·기본 서비스 스캔<br>
+• Q220·Q255 연결: DB 보안 = 하드닝 + SoD + 로그 보호<br>
+• 핵심: 하드닝의 1단계 = <b>"알려진 취약점 제거"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Database Hardening",
+keyConcepts:[
+"DB 하드닝 1순위|기본 구성 변경(비밀번호·서비스·계정) — 알려진 취약점 제거가 가장 중요",
+"기본값 위험|기본 비밀번호·기본 서비스 = 공격자 첫 표적 — 변경 필수",
+"하드닝 항목 우선순위|기본 구성 > 암호화·포트 변경 — 기본부터 단계적 강화",
+"비정규화 vs 보안|비정규화는 성능 최적화 — 보안과 무관"
+]
+},
+
+// ============================================================
+// Q277 - Interface for RDBMS Access
+// ============================================================
+{
+id: 277,
+domain: "4",
+ks: "4A1 Database Management",
+question: `다양한 소프트웨어 애플리케이션이 관계형 데이터베이스 관리 시스템(RDBMS)에 접근하고 조작할 수 있게 하는 인터페이스는?<br><small style="color:#94a3b8">Which interface allows different software applications to access and manipulate a relational database management system (RDBMS)?</small>`,
+options: [
+  "애플리케이션 프로그래밍 인터페이스(API).<br><small style='color:#94a3b8'>Application programming interface (API)</small>",
+  "구조화 질의어(SQL).<br><small style='color:#94a3b8'>Structured query language (SQL)</small>",
+  "객체-관계 매핑(Object-relational mapping).<br><small style='color:#94a3b8'>Object-relational mapping</small>",
+  "Java 데이터베이스 연결(JDBC).<br><small style='color:#94a3b8'>Java database connectivity</small>"
+],
+correct: 0,
+explanation: `<p><b>API(Application Programming Interface)</b>가 정답입니다. API는 개발자가 데이터베이스와 상호작용하고, 쿼리를 수행하고, 데이터를 관리할 수 있는 함수·메서드·프로토콜 집합을 제공합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">분류</th><th style="padding:8px;border:1px solid #334155">역할</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. API ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>일반 인터페이스</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 함수·메서드·프로토콜로 DB 접근</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. SQL</td><td style="padding:8px;border:1px solid #ddd">프로그래밍 언어</td><td style="padding:8px;border:1px solid #ddd">언어 — 인터페이스 ✗ (API와 함께 사용)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. ORM</td><td style="padding:8px;border:1px solid #ddd">매핑 기법</td><td style="padding:8px;border:1px solid #ddd">객체↔테이블 매핑 — 인터페이스 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. JDBC</td><td style="padding:8px;border:1px solid #ddd">Java 전용 API</td><td style="padding:8px;border:1px solid #ddd">특정 언어 한정 — 일반 목적 ✗</td></tr>
+</table>
+<div class="sbox"><b>🔌 RDBMS 접근 방식 정리:</b><br>
+• <b>API:</b> 일반적·다언어 지원 인터페이스 (가장 광의)<br>
+• <b>SQL:</b> DB 조작용 표준 언어 (API 위에서 실행)<br>
+• <b>ORM:</b> OO 언어와 RDBMS 사이 추상화 계층<br>
+• <b>JDBC:</b> Java 전용 데이터베이스 API (API의 한 종류)<br>
+• <b>유사 기술:</b> ODBC(개방형), ADO.NET(.NET 전용)<br>
+• 핵심 계층 구조:<br>
+&nbsp;&nbsp;<b>애플리케이션 → API(JDBC/ODBC) → SQL → RDBMS</b><br>
+• 핵심: <b>"인터페이스"</b>를 묻는 질문 → API가 가장 일반적·정확한 답</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Interfaces & APIs",
+keyConcepts:[
+"API와 RDBMS|API = 다양한 SW가 RDBMS에 접근하는 일반 인터페이스 — 함수·메서드·프로토콜 제공",
+"SQL vs API|SQL=언어, API=인터페이스 — SQL은 API 위에서 실행",
+"JDBC vs API|JDBC=Java 전용 API — 일반 목적 인터페이스는 API",
+"DB 접근 계층|애플리케이션→API(JDBC/ODBC)→SQL→RDBMS — 계층 구조 이해"
+]
+},
+
+// ============================================================
+// Q278 - Database Vendor Change Examination
+// ============================================================
+{
+id: 278,
+domain: "4",
+ks: "4A1 Database Management",
+question: `새로운 비즈니스 요구사항으로 데이터베이스 벤더를 변경해야 한다. 이 구현과 관련하여 IS 감사인이 주로 검토해야 할 영역은?<br><small style="color:#94a3b8">A new business requirement required changing database vendors. Which area should the IS auditor PRIMARILY examine concerning this implementation?</small>`,
+options: [
+  "데이터의 무결성.<br><small style='color:#94a3b8'>Integrity of the data</small>",
+  "전환(Cutover)의 시기.<br><small style='color:#94a3b8'>Timing of the cutover</small>",
+  "사용자의 인가 수준.<br><small style='color:#94a3b8'>Authorization level of users</small>",
+  "데이터의 정규화.<br><small style='color:#94a3b8'>Normalization of the data</small>"
+],
+correct: 0,
+explanation: `<p><b>데이터 무결성</b>이 가장 중요한 검토 영역입니다. 한 데이터베이스에서 다른 데이터베이스로 데이터를 마이그레이션할 때 핵심 이슈는 데이터의 무결성과 완전·정확한 마이그레이션 보장입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">중요도</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 데이터 무결성 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>최우선</b></td><td style="padding:8px;border:1px solid #ddd"><b>완전·정확한 마이그레이션 보장 — 핵심 이슈</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 전환 시기</td><td style="padding:8px;border:1px solid #ddd">중요</td><td style="padding:8px;border:1px solid #ddd">새 DB로 이동 → 중복 문제 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 사용자 인가</td><td style="padding:8px;border:1px solid #ddd">덜 중요</td><td style="padding:8px;border:1px solid #ddd">사용자는 앱 통해 접근 — 직접 DB ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 데이터 정규화</td><td style="padding:8px;border:1px solid #ddd">설계 단계</td><td style="padding:8px;border:1px solid #ddd">DB 설계용 — 마이그레이션과 무관</td></tr>
+</table>
+<div class="sbox"><b>🔄 DB 마이그레이션 — 데이터 무결성 검증:</b><br>
+• <b>완전성(Completeness):</b> 모든 레코드가 이전되었는가?<br>
+&nbsp;&nbsp;- 통제 합계(Control Totals) 검증<br>
+&nbsp;&nbsp;- 레코드 수 비교<br>
+• <b>정확성(Accuracy):</b> 데이터 값이 올바르게 변환되었는가?<br>
+&nbsp;&nbsp;- 샘플링 검증<br>
+&nbsp;&nbsp;- 예외 보고서 (Q258 연결)<br>
+• <b>참조 무결성:</b> FK·PK 관계 유지 (Q274 연결)<br>
+• <b>데이터 형식 변환:</b> 벤더 간 데이터 타입·인코딩 차이<br>
+• 핵심: 마이그레이션 = "무엇이 옮겨졌는가?"가 가장 중요한 질문</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Migration & Data Integrity",
+keyConcepts:[
+"DB 마이그레이션 무결성|완전·정확한 데이터 이전이 가장 중요 — 벤더 변경 시 핵심 이슈",
+"마이그레이션 검증 도구|통제 합계+예외 보고서+샘플링 — 완전성·정확성 검증",
+"Q258·Q274 연결|데이터 변환=예외 보고서, 무결성=참조 점검 — 마이그레이션 검증의 기반",
+"사용자 인가 vs 무결성|사용자는 앱 통해 접근 — DB 변경 시 무결성이 더 핵심"
+]
+},
+
+// ============================================================
+// Q279 - Denormalization Result
+// ============================================================
+{
+id: 279,
+domain: "4",
+ks: "4A1 Database Management",
+question: `데이터베이스 관리자(DBA)가 일부 테이블을 비정규화(Denormalize)하여 데이터베이스 효율성을 개선할 수 있다고 제안한다. 이는 어떤 결과를 초래하는가?<br><small style="color:#94a3b8">The DBA suggests that database efficiency can be improved by denormalizing some tables. This will result in:</small>`,
+options: [
+  "기밀성 손실.<br><small style='color:#94a3b8'>Loss of confidentiality</small>",
+  "중복(Redundancy) 증가.<br><small style='color:#94a3b8'>Increased redundancy</small>",
+  "비인가 접근.<br><small style='color:#94a3b8'>Unauthorized accesses</small>",
+  "애플리케이션 오작동.<br><small style='color:#94a3b8'>Application malfunctions</small>"
+],
+correct: 1,
+explanation: `<p><b>중복 증가</b>가 비정규화의 결과입니다. 비정규화는 관계형 데이터베이스의 설계·최적화 프로세스로, 중복을 증가시킵니다. 자원 가용성에는 긍정적이나 데이터베이스 환경에서는 추가적·불필요한 데이터 처리가 필요합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">관련성</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 기밀성 손실</td><td style="padding:8px;border:1px solid #ddd">접근 통제 영역</td><td style="padding:8px;border:1px solid #ddd">비정규화와 무관 — 접근 통제 유지</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 중복 증가 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비정규화 본질</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 직접적 결과 — 성능 향상의 대가</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 비인가 접근</td><td style="padding:8px;border:1px solid #ddd">접근 통제 영역</td><td style="padding:8px;border:1px solid #ddd">DB 구조 변경 — 접근 통제와 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 앱 오작동</td><td style="padding:8px;border:1px solid #ddd">호출 변경 가능</td><td style="padding:8px;border:1px solid #ddd">호출 수정 필요하나 오작동 ✗</td></tr>
+</table>
+<div class="sbox"><b>📊 정규화 vs 비정규화:</b><br>
+• <b>정규화(Normalization):</b><br>
+&nbsp;&nbsp;- 중복 제거 → 저장 공간 절약<br>
+&nbsp;&nbsp;- 무결성 향상<br>
+&nbsp;&nbsp;- 단점: JOIN 증가 → 성능 저하<br>
+• <b>비정규화(Denormalization):</b><br>
+&nbsp;&nbsp;- 중복 허용 → 성능 향상<br>
+&nbsp;&nbsp;- JOIN 감소 → 쿼리 빠름<br>
+&nbsp;&nbsp;- 단점: 추가 저장 + 데이터 일관성 유지 부담<br>
+• <b>트레이드오프:</b> 성능 ↔ 무결성·저장 효율<br>
+• Q276 연결: 비정규화는 <b>성능 최적화</b> — 보안과 무관<br>
+• 핵심: 비정규화 = "성능을 위해 중복을 의도적으로 받아들임"</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Normalization & Denormalization",
+keyConcepts:[
+"비정규화 결과|중복 증가 → 성능 향상의 대가 — 데이터 일관성 유지 부담 발생",
+"정규화 vs 비정규화|정규화=중복 제거(무결성), 비정규화=중복 허용(성능) — 트레이드오프",
+"비정규화와 보안|구조 변경만 — 기밀성·접근 통제와 무관",
+"Q276 일관성|비정규화 = 성능 최적화 — 보안 하드닝과 별개"
+]
+},
+
+// ============================================================
+// Q280 - Database Server Greatest Security Risk
+// ============================================================
+{
+id: 280,
+domain: "4",
+ks: "4A1 Database Management",
+question: `데이터베이스 서버 감사 중, 다음 중 가장 큰 보안 위험은?<br><small style="color:#94a3b8">During the audit of a database server, which of the following poses the GREATEST security risk?</small>`,
+options: [
+  "관리자 계정의 비밀번호가 만료되지 않는다.<br><small style='color:#94a3b8'>The password on the administrator account does not expire.</small>",
+  "데이터베이스의 기본 글로벌 보안 설정이 변경되지 않은 상태이다.<br><small style='color:#94a3b8'>Default global security settings for the database remain unchanged.</small>",
+  "오래된 데이터가 삭제되지 않았다.<br><small style='color:#94a3b8'>Old data have not been purged.</small>",
+  "데이터베이스 활동이 완전히 로깅되지 않는다.<br><small style='color:#94a3b8'>Database activity is not fully logged.</small>"
+],
+correct: 1,
+explanation: `<p><b>기본 글로벌 보안 설정 미변경</b>이 가장 큰 보안 위험입니다. 기본 보안 설정은 빈 사용자 비밀번호나 사용자명과 동일한 비밀번호 같은 이슈를 허용할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">위험 유형</th><th style="padding:8px;border:1px solid #334155">심각도</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 관리자 비밀번호 미만료</td><td style="padding:8px;border:1px solid #ddd">계정 위험</td><td style="padding:8px;border:1px solid #ddd">위험·노출이나 기본 설정보다 덜 심각</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 기본 보안 설정 미변경 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>알려진 취약점</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 빈 비밀번호·기본 계정 노출 — 최대 위험</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 오래된 데이터 미삭제</td><td style="padding:8px;border:1px solid #ddd">관리·성능 이슈</td><td style="padding:8px;border:1px solid #ddd">즉각적 보안 우려 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 불완전한 로깅</td><td style="padding:8px;border:1px solid #ddd">탐지 위험</td><td style="padding:8px;border:1px solid #ddd">잠재 위험이나 기본 설정보다 덜 심각</td></tr>
+</table>
+<div class="sbox"><b>🔓 기본 보안 설정 위험 — 알려진 취약점:</b><br>
+• <b>기본 설정의 흔한 문제:</b><br>
+&nbsp;&nbsp;1. <b>빈 비밀번호</b> (sa 계정 등)<br>
+&nbsp;&nbsp;2. <b>사용자명 = 비밀번호</b> (admin/admin)<br>
+&nbsp;&nbsp;3. 모든 사용자에 광범위한 권한<br>
+&nbsp;&nbsp;4. 원격 접근 허용<br>
+&nbsp;&nbsp;5. 불필요한 기본 계정 활성화<br>
+• <b>공격자의 첫 시도:</b> 기본 자격 증명 시도 (Q276 연결)<br>
+• Q276과 동일 원칙: <b>"기본값 = 알려진 취약점"</b><br>
+• 핵심: 다른 위험(비밀번호 만료·로깅·데이터 삭제) < 기본 설정<br>
+• 기본 설정 미변경 = <b>"문이 활짝 열려 있음"</b>과 동일</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Default Settings & Hardening",
+keyConcepts:[
+"기본 보안 설정 위험|빈 비밀번호·기본 계정·광범위 권한 — DB 보안의 최대 위험",
+"기본값 = 알려진 취약점|공격자 첫 시도 = 기본 자격 증명 — 변경 필수",
+"위험 우선순위|기본 설정 > 비밀번호 만료 > 로깅 > 데이터 보관 — 기본 설정이 가장 심각",
+"Q276 일관성|DB 하드닝 1순위 = 기본 구성 변경 (Q276·Q280 동일 원칙)"
+]
+},
+
+// ============================================================
+// Q281 - DBA Read-Write Production Access
+// ============================================================
+{
+id: 281,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 데이터베이스 관리자(DBA)가 운영 데이터에 읽기·쓰기 권한을 가지고 있음을 발견했다. IS 감사인은:<br><small style="color:#94a3b8">An IS auditor finds that a DBA has read-and-write access to production data. The IS auditor should:</small>`,
+options: [
+  "DBA 접근을 일반적 관행으로 수용한다.<br><small style='color:#94a3b8'>Accept the DBA access as a common practice.</small>",
+  "DBA 기능과 관련된 통제를 평가한다.<br><small style='color:#94a3b8'>Assess the controls relevant to the DBA function.</small>",
+  "운영 데이터에 대한 DBA 접근의 즉각적 회수를 권고한다.<br><small style='color:#94a3b8'>Recommend the immediate revocation of the DBA access to production data.</small>",
+  "DBA가 승인한 사용자 접근 인가를 검토한다.<br><small style='color:#94a3b8'>Review user access authorizations approved by the DBA.</small>"
+],
+correct: 1,
+explanation: `<p><b>DBA 기능 관련 통제 평가</b>가 정답입니다. 특권 계정 검토 시 감사인은 잠재적 노출을 해결할 수 있는 보상 통제를 찾아야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 일반 관행 수용</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">일반적이나 통제 평가가 감사인 역할</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 통제 평가 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>보상 통제 식별 → 위험 평가 — 감사인 본연 역할</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 즉시 회수 권고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">DBA 직무 수행 불가 → 운영 마비 위험</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 사용자 접근 인가 검토</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">사용자 인가 = 데이터 소유자 책임 — DBA 아님</td></tr>
+</table>
+<div class="sbox"><b>👨‍💼 DBA 운영 접근 — 감사인 접근법:</b><br>
+• <b>일반적 관행:</b> DBA는 직무 수행상 운영 접근 필요<br>
+• <b>핵심 위험:</b> SoD 위반 가능성 (Q220·Q255 연결)<br>
+• <b>보상 통제 예시:</b><br>
+&nbsp;&nbsp;1. 활동 로깅·모니터링 (별도 인력 - Q255)<br>
+&nbsp;&nbsp;2. 정기적 활동 검토<br>
+&nbsp;&nbsp;3. 최소 권한 원칙 적용<br>
+&nbsp;&nbsp;4. 변경 사전 승인 절차<br>
+&nbsp;&nbsp;5. 이중 통제(Dual Control)<br>
+• Q237·Q243·Q270 연결: 감사인 = 평가자 — 즉시 권고/지시 ✗<br>
+• 핵심: <b>"위험 = 통제 - 노출"</b> → 통제 평가 후 결론</div>`,
+reference:"CRM Chapter 4: IS Operations — DBA Access & Compensating Controls",
+keyConcepts:[
+"DBA 운영 접근 평가|일반적 관행 — 감사인은 보상 통제 식별 후 위험 평가",
+"보상 통제 식별|활동 로깅·검토·최소 권한·이중 통제 — DBA 위험 완화",
+"감사인 평가자 역할|즉시 회수 권고 ✗ — 통제 평가 후 위험 기반 결정",
+"Q220·Q255 연결|DBA SoD 위반 패턴 — 운영 접근은 보상 통제로 균형"
+]
+},
+
+// ============================================================
+// Q282 - Non-Normalized Database Review
+// ============================================================
+{
+id: 282,
+domain: "4",
+ks: "4A1 Database Management",
+question: `데이터베이스 검토 중, IS 감사인은 데이터베이스의 일부 테이블이 정규화되지 않았음을 발견했다. IS 감사인이 다음으로 해야 할 일은?<br><small style="color:#94a3b8">During a database review, an IS auditor notices that some tables in the database are not normalized. The IS auditor should next:</small>`,
+options: [
+  "데이터베이스를 정규화하도록 권고한다.<br><small style='color:#94a3b8'>Recommend that the database be normalized.</small>",
+  "개념 데이터 모델을 검토한다.<br><small style='color:#94a3b8'>Review the conceptual data model.</small>",
+  "저장 프로시저를 검토한다.<br><small style='color:#94a3b8'>Review the stored procedures.</small>",
+  "정당화 사유를 검토한다.<br><small style='color:#94a3b8'>Review the justification.</small>"
+],
+correct: 3,
+explanation: `<p><b>정당화 사유 검토</b>가 정답입니다. 일부 상황에서는 성능상 이유로 비정규화가 권장되므로, 데이터베이스가 정규화되지 않은 경우 IS 감사인은 정당화 사유를 검토해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 정규화 권고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">조사·분석 전 즉시 권고 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 개념 데이터 모델 검토</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">정규화 정당화 사유 직접 제공 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 저장 프로시저 검토</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">정규화 정보 직접 제공 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 정당화 사유 검토 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비정규화 = 성능상 의도된 결정 가능 — 사유 확인 우선</b></td></tr>
+</table>
+<div class="sbox"><b>🔍 비정규화 발견 시 감사인 접근:</b><br>
+• <b>정규화 위반 ≠ 항상 결함</b><br>
+• 정당화 사유 가능성:<br>
+&nbsp;&nbsp;1. <b>성능 최적화</b> (Q279 연결)<br>
+&nbsp;&nbsp;2. 보고·조회 빈번한 테이블<br>
+&nbsp;&nbsp;3. 데이터 웨어하우스 환경<br>
+&nbsp;&nbsp;4. JOIN 비용 절감<br>
+• <b>감사인 단계:</b><br>
+&nbsp;&nbsp;1. 사실 확인 (비정규화 존재)<br>
+&nbsp;&nbsp;2. <b>정당화 사유 확인</b> ← 현 단계<br>
+&nbsp;&nbsp;3. 위험 평가<br>
+&nbsp;&nbsp;4. 권고<br>
+• Q237·Q270·Q281 일관: <b>"확인 → 평가 → 권고"</b> 순서<br>
+• 핵심: 기술적 결정이 의도적인지 무지인지 구분 필요</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Normalization Audit",
+keyConcepts:[
+"비정규화 정당화|성능 최적화·보고 빈도·JOIN 비용 등 정당한 사유 가능 — 사유 확인 우선",
+"감사인 평가 순서|사실 확인 → 정당화 검토 → 위험 평가 → 권고 — 즉시 권고 ✗",
+"Q279 연결|비정규화 = 성능 향상 vs 중복 증가 트레이드오프 — 의도된 결정일 수 있음",
+"기술 결정 평가|의도적 vs 무지 구분 — 정당화 사유 확인이 핵심"
+]
+},
+
+// ============================================================
+// Q283 - Database User Accountability
+// ============================================================
+{
+id: 283,
+domain: "4",
+ks: "4A9 Operational Log Management",
+question: `민감한 정보에 접근하는 데이터베이스 사용자에 대한 책임 추적성(Accountability)을 강제하는 가장 효과적인 통제는?<br><small style="color:#94a3b8">What is the MOST effective control for enforcing accountability among database users who are accessing sensitive information?</small>`,
+options: [
+  "로그 관리 프로세스를 구현한다.<br><small style='color:#94a3b8'>Implement a log management process.</small>",
+  "이중 인증을 구현한다.<br><small style='color:#94a3b8'>Implement a two-factor authentication.</small>",
+  "테이블 뷰를 사용하여 민감 데이터에 접근한다.<br><small style='color:#94a3b8'>Use table views to access sensitive data.</small>",
+  "데이터베이스와 애플리케이션 서버를 분리한다.<br><small style='color:#94a3b8'>Separate database and application servers.</small>"
+],
+correct: 0,
+explanation: `<p><b>로그 관리 프로세스</b>가 정답입니다. 책임 추적성은 누가 무엇을 하는지 아는 것이며, 사용자명·거래 유형·시간 등 관련 정보가 포함된 로그를 생성·저장하는 로그 관리 프로세스가 최선입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">책임 추적성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 로그 관리 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>탐지·기록</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 누가·무엇을·언제 기록 — 책임 추적성의 핵심</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 이중 인증</td><td style="padding:8px;border:1px solid #ddd">예방 (인증)</td><td style="padding:8px;border:1px solid #ddd">비인가 접근 방지 — 활동 기록 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 테이블 뷰</td><td style="padding:8px;border:1px solid #ddd">예방 (접근 제한)</td><td style="padding:8px;border:1px solid #ddd">볼 수 있는 데이터 제한 — 활동 기록 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 서버 분리</td><td style="padding:8px;border:1px solid #ddd">아키텍처</td><td style="padding:8px;border:1px solid #ddd">관리 효율 — 책임 추적성과 무관</td></tr>
+</table>
+<div class="sbox"><b>👥 책임 추적성(Accountability) 핵심:</b><br>
+• <b>정의:</b> 누가(Who) + 무엇을(What) + 언제(When) + 어디서(Where) 했는가?<br>
+• <b>로그 필수 항목:</b><br>
+&nbsp;&nbsp;1. 사용자명/ID<br>
+&nbsp;&nbsp;2. 거래 유형·내용<br>
+&nbsp;&nbsp;3. 타임스탬프<br>
+&nbsp;&nbsp;4. 접근 객체<br>
+&nbsp;&nbsp;5. 결과(성공/실패)<br>
+• Q244·Q248·Q260 연결: 책임 추적성 = 로그 + 무결성 보호<br>
+• 다른 통제와의 관계:<br>
+&nbsp;&nbsp;- <b>인증(2FA)</b> = 신원 확인 (예방)<br>
+&nbsp;&nbsp;- <b>접근 통제(뷰)</b> = 권한 제한 (예방)<br>
+&nbsp;&nbsp;- <b>로그</b> = 활동 기록 (탐지·책임 추적성)<br>
+• 핵심: <b>"예방 통제로는 책임 추적성 확립 불가"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Accountability & Log Management",
+keyConcepts:[
+"로그와 책임 추적성|사용자·활동·시간 기록 — 누가 무엇을 했는지 추적의 핵심 통제",
+"예방 vs 탐지 통제|2FA·뷰=예방(접근 차단), 로그=탐지(활동 기록) — 책임 추적성은 탐지 영역",
+"책임 추적성 4W|Who·What·When·Where — 로그에 모두 포함되어야 함",
+"Q244·Q248·Q260 연결|책임 추적성 = 로그 + 무결성 보호 + 개인 ID 식별"
+]
+},
+
+// ============================================================
+// Q284 - Database Segmentation Result
+// ============================================================
+{
+id: 284,
+domain: "4",
+ks: "4A1 Database Management",
+question: `매우 민감한 데이터베이스를 세그먼트화하면 어떤 결과가 나오는가?<br><small style="color:#94a3b8">Segmenting a highly sensitive database results in:</small>`,
+options: [
+  "노출(Exposure) 감소.<br><small style='color:#94a3b8'>Reduced exposure</small>",
+  "위협(Threat) 감소.<br><small style='color:#94a3b8'>Reduced threat</small>",
+  "중요도(Criticality) 감소.<br><small style='color:#94a3b8'>Less criticality</small>",
+  "민감도(Sensitivity) 감소.<br><small style='color:#94a3b8'>Less sensitivity</small>"
+],
+correct: 0,
+explanation: `<p><b>노출 감소</b>가 정답입니다. 데이터를 세그먼트화하면 특정 취약점에 노출되는 데이터의 양이 감소합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">세그먼트화 영향</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 노출 감소 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>침해 시 영향 범위 축소</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 한 세그먼트 손상이 전체 데이터에 영향 ✗</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 위협 감소</td><td style="padding:8px;border:1px solid #ddd">변화 없음</td><td style="padding:8px;border:1px solid #ddd">위협은 동일 — 각 세그먼트가 다른 공격 벡터</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 중요도 감소</td><td style="padding:8px;border:1px solid #ddd">변화 없음</td><td style="padding:8px;border:1px solid #ddd">중요도 = 데이터 속성 — 세그먼트화와 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 민감도 감소</td><td style="padding:8px;border:1px solid #ddd">변화 없음</td><td style="padding:8px;border:1px solid #ddd">민감도 = 데이터 속성 — 세그먼트화와 무관</td></tr>
+</table>
+<div class="sbox"><b>🛡️ 데이터 세그먼트화 — 위험 모델:</b><br>
+• <b>위험 = 위협 × 취약점 × 영향</b><br>
+• <b>세그먼트화 효과:</b><br>
+&nbsp;&nbsp;- 위협(Threat): 변화 없음 (외부 요인)<br>
+&nbsp;&nbsp;- 취약점(Vulnerability): 변화 없음<br>
+&nbsp;&nbsp;- <b>영향(Impact)/노출(Exposure): 감소</b> ✔<br>
+• 한 세그먼트 침해 = 전체 데이터의 일부만 노출<br>
+• <b>데이터 속성 vs 위험 요소:</b><br>
+&nbsp;&nbsp;- 속성(불변): 중요도, 민감도<br>
+&nbsp;&nbsp;- 변경 가능: 노출, 영향<br>
+• Q204·Q262 연결: 분리·세그먼트화 = 동일 재해/침해의 동시 영향 회피<br>
+• 핵심: 세그먼트화 = <b>"계란을 한 바구니에 담지 않기"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Database Segmentation & Risk Reduction",
+keyConcepts:[
+"세그먼트화 효과|특정 취약점에 노출되는 데이터 양 감소 — 침해 시 영향 범위 축소",
+"위험 모델|위험 = 위협 × 취약점 × 영향 — 세그먼트화는 영향(노출)만 감소",
+"데이터 속성 불변|중요도·민감도 = 데이터 본질 속성 — 세그먼트화로 변하지 않음",
+"Q204·Q262 일관성|분리·세그먼트화 = 동시 영향 회피 — 위험 완화의 기본 원리"
+]
+},
+
+// ============================================================
+// Q285 - DBA Log Purge Prevention
+// ============================================================
+{
+id: 285,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인은 DBA가 데이터베이스 서버의 로그 위치에 접근할 수 있고 시스템에서 로그를 삭제(Purge)할 수 있음을 발견했다. DBA 활동이 효과적으로 모니터링되도록 보장하는 가장 좋은 감사 권고는?<br><small style="color:#94a3b8">An IS auditor finds that DBAs have access to the log location on the database server and the ability to purge logs. What is the BEST audit recommendation to ensure DBA activity is effectively monitored?</small>`,
+options: [
+  "DBA가 로그를 삭제할 수 없도록 권한을 변경한다.<br><small style='color:#94a3b8'>Change permissions to prevent DBAs from purging logs.</small>",
+  "DBA가 접근할 수 없는 중앙 로그 서버로 데이터베이스 로그를 전달한다.<br><small style='color:#94a3b8'>Forward database logs to a centralized log server to which the DBAs do not have access.</small>",
+  "데이터베이스에 대한 핵심 변경이 공식적으로 승인되도록 요구한다.<br><small style='color:#94a3b8'>Require that critical changes to the database are formally approved.</small>",
+  "데이터베이스 로그를 자기 매체에 백업한다.<br><small style='color:#94a3b8'>Back up database logs to magnetic media.</small>"
+],
+correct: 1,
+explanation: `<p><b>중앙 로그 서버로 로그 전달</b>이 가장 좋은 권고입니다. DBA가 접근할 수 없는 별도의 서버로 로그를 실시간 전달하면 로그의 가용성과 무결성을 효과적으로 보호할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 권한 변경</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">DBA 직무상 불가능 — 로그 보호 불충분</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 중앙 로그 서버 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>가용성+무결성 보호 — DBA 접근 불가 영역</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 공식 변경 승인</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">변경 통제 — 로그 보호와 별개</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 자기 매체 백업</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">백업 시점까지의 로그만 보호 — 실시간 보호 ✗</td></tr>
+</table>
+<div class="sbox"><b>📡 중앙 로그 서버(Centralized Log Server) 핵심:</b><br>
+• <b>아키텍처:</b> DB 서버 → 실시간 전송 → 별도 로그 서버 (SIEM)<br>
+• <b>장점:</b><br>
+&nbsp;&nbsp;1. <b>DBA 접근 불가</b> → 변조·삭제 방지<br>
+&nbsp;&nbsp;2. 실시간 전송 → 즉각 보호<br>
+&nbsp;&nbsp;3. 중앙 집중 관리·분석<br>
+&nbsp;&nbsp;4. 다중 시스템 로그 통합 (Q219 연결)<br>
+• <b>SoD 보상 통제:</b> 로그 관리 = 별도 보안팀 책임<br>
+• Q255 일관성: DBA는 자기 활동 로그 통제 ✗ → 별도 인력·시스템<br>
+• Q236·Q260 연결: 특권 계정 + 감사 추적 무결성 = 별도 시스템 필수<br>
+• 핵심: <b>"관찰 대상이 관찰자를 통제할 수 없게"</b> 분리</div>`,
+reference:"CRM Chapter 4: IS Operations — Centralized Log Management & DBA Monitoring",
+keyConcepts:[
+"중앙 로그 서버|DBA 접근 불가 별도 서버 — 로그 가용성·무결성 보호의 최선",
+"실시간 전송|로그 생성 즉시 외부 서버로 전송 — 변조·삭제 방지",
+"SoD 보상 통제|특권 계정의 로그 통제 분리 — 별도 보안팀 책임",
+"Q255·Q236·Q260 일관성|특권자 + 감사 추적 무결성 = 분리된 시스템 필수"
+]
+},
+
+// ============================================================
+// Q286 - Stolen Laptop with DB Passwords
+// ============================================================
+{
+id: 286,
+domain: "4",
+ks: "4A1 Database Management",
+question: `기업 DBA의 노트북이 도난당했고, 운영 데이터베이스 비밀번호 파일이 포함되어 있었다. 조직이 가장 먼저 해야 할 일은?<br><small style="color:#94a3b8">A laptop belonging to an enterprise DBA and containing a file of production database passwords has been stolen. What should the organization do FIRST?</small>`,
+options: [
+  "IS 감사 부서에 보고서를 보낸다.<br><small style='color:#94a3b8'>Send a report to the IS audit department.</small>",
+  "DBA 계정의 이름을 변경한다.<br><small style='color:#94a3b8'>Change the name of the DBA account.</small>",
+  "DBA 계정을 일시 정지한다.<br><small style='color:#94a3b8'>Suspend the DBA account.</small>",
+  "데이터베이스 비밀번호를 변경한다.<br><small style='color:#94a3b8'>Change the database password.</small>"
+],
+correct: 3,
+explanation: `<p><b>데이터베이스 비밀번호 즉시 변경</b>이 첫 단계입니다. 비밀번호가 손상되었는지 확인할 방법이 없으므로 즉시 변경해야 합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">판정</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 감사 부서 보고</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">필요하나 첫 단계 아님 — 즉각적 위협 차단 우선</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 계정 이름 변경</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">운영 DB 서버 영향 — 부적절</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 계정 정지</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">운영 영향 + 다른 DBA 계정 공유 시 무효</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 비밀번호 변경 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>즉각적 위협 차단 — 운영 영향 최소</b></td></tr>
+</table>
+<div class="sbox"><b>🚨 자격 증명 침해 — 인시던트 대응 우선순위:</b><br>
+• <b>1단계: 즉시 위협 차단</b> → 비밀번호 변경<br>
+• 2단계: 영향 평가 → 손상 범위 파악<br>
+• 3단계: 보고 → 경영진·감사 부서<br>
+• 4단계: 근본 원인 분석 → 재발 방지<br>
+• <b>비밀번호 변경 vs 계정 정지/이름 변경:</b><br>
+&nbsp;&nbsp;- 비밀번호 변경 = 위협 차단 + 운영 유지<br>
+&nbsp;&nbsp;- 계정 정지/이름 변경 = 운영 마비 가능<br>
+• Q243·Q252·Q270 연결: FIRST 단계는 항상 <b>가장 시급한 위험 차단</b><br>
+• 핵심: <b>"위협 차단 → 평가 → 보고 → 분석"</b> 순서<br>
+• 도난 노트북 = 비밀번호 즉시 손상 가능 → 시간이 핵심</div>`,
+reference:"CRM Chapter 4: IS Operations — Credential Compromise Incident Response",
+keyConcepts:[
+"자격 증명 침해 1단계|비밀번호 즉시 변경 — 위협 차단이 최우선 (운영 영향 최소)",
+"인시던트 대응 순서|위협 차단 → 영향 평가 → 보고 → 근본 원인 분석",
+"계정 정지 vs 비밀번호 변경|정지=운영 마비, 변경=운영 유지 + 위협 차단 — 변경이 우선",
+"Q243·Q252·Q270 일관성|FIRST 단계 = 가장 시급한 위험 차단"
+]
+},
+
+// ============================================================
+// Q287 - Out-of-Range Data Prevention
+// ============================================================
+{
+id: 287,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 데이터베이스의 일부 테이블에서 범위 외 데이터를 발견했다. 이 상황을 피하기 위해 IS 감사인이 권고해야 할 통제는?<br><small style="color:#94a3b8">An IS auditor finds out-of-range data in some tables of a database. Which control should the IS auditor recommend to avoid this situation?</small>`,
+options: [
+  "모든 테이블 업데이트 거래를 로깅한다.<br><small style='color:#94a3b8'>Log all table update transactions</small>",
+  "데이터베이스에 무결성 제약 조건(Integrity Constraints)을 구현한다.<br><small style='color:#94a3b8'>Implement integrity constraints in the database</small>",
+  "전후 이미지(Before and After Image) 보고를 구현한다.<br><small style='color:#94a3b8'>Implement before and after image reporting</small>",
+  "추적 및 태깅(Tracing and Tagging)을 사용한다.<br><small style='color:#94a3b8'>Use tracing and tagging</small>"
+],
+correct: 1,
+explanation: `<p><b>무결성 제약 조건 구현</b>이 정답입니다. 데이터가 사전 정의된 테이블이나 규칙에 대해 검증되므로 정의되지 않은 데이터의 입력을 방지하는 예방 통제입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 거래 로깅</td><td style="padding:8px;border:1px solid #ddd">탐지 (감사 추적)</td><td style="padding:8px;border:1px solid #ddd">부정확 데이터 입력 방지 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 무결성 제약 조건 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>예방</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 사전 정의 규칙으로 입력 차단</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 전후 이미지 보고</td><td style="padding:8px;border:1px solid #ddd">탐지</td><td style="padding:8px;border:1px solid #ddd">거래 영향 추적 — 사후 분석</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 추적·태깅</td><td style="padding:8px;border:1px solid #ddd">테스트 기법</td><td style="padding:8px;border:1px solid #ddd">시스템 테스트용 — 예방 통제 ✗</td></tr>
+</table>
+<div class="sbox"><b>🔒 무결성 제약 조건(Integrity Constraints) 유형:</b><br>
+• <b>도메인 제약(Domain Constraint):</b> 값 범위·유형 제한 (Q287의 정답)<br>
+&nbsp;&nbsp;예: CHECK (age BETWEEN 0 AND 150)<br>
+• <b>엔티티 무결성:</b> PK NOT NULL + 유일성<br>
+• <b>참조 무결성:</b> FK가 PK 참조 (Q274 연결)<br>
+• <b>사용자 정의 무결성:</b> 비즈니스 규칙<br>
+• <b>예방 vs 탐지 통제:</b><br>
+&nbsp;&nbsp;- 예방(무결성 제약): 입력 시점 차단 ✔<br>
+&nbsp;&nbsp;- 탐지(로그·이미지): 사후 발견<br>
+• Q251 연결: 예방 > 탐지 — 입력 시점 통제가 최선<br>
+• 핵심: 범위 외 데이터 = <b>도메인 무결성</b> 필요</div>`,
+reference:"CRM Chapter 4: IS Operations — Database Integrity Constraints",
+keyConcepts:[
+"무결성 제약 조건|사전 정의 규칙으로 데이터 입력 차단 — 예방 통제의 핵심",
+"도메인 무결성|값 범위·유형 제한 — 범위 외 데이터 방지의 직접 통제",
+"예방 vs 탐지|로그·이미지=탐지(사후), 무결성 제약=예방(입력 시점) — 예방이 우선",
+"Q274·Q251 일관성|DB 무결성 + 예방 통제 우선 — CISA 일관 원칙"
+]
+},
+
+// ============================================================
+// Q288 - Production DB Direct Update Accountability
+// ============================================================
+{
+id: 288,
+domain: "4",
+ks: "4A1 Database Management",
+question: `운영 데이터베이스에서 직접 데이터를 업데이트할 때 책임 추적성을 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">Which of the following choices BEST ensures accountability when updating data directly in a production database?</small>`,
+options: [
+  "감사 로그 검토.<br><small style='color:#94a3b8'>Review of audit logs</small>",
+  "최소 권한 원칙.<br><small style='color:#94a3b8'>Principle of least privilege</small>",
+  "승인된 검증 계획.<br><small style='color:#94a3b8'>Approved validation plan</small>",
+  "직무 분리.<br><small style='color:#94a3b8'>Separation of duties</small>"
+],
+correct: 0,
+explanation: `<p><b>감사 로그 검토</b>가 정답입니다. 변경을 수행한 개인의 사용자 ID와 변경 전후의 데이터를 포함하는 상세한 감사 로그가 데이터베이스 변경의 가장 좋은 증거입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">책임 추적성 제공</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 감사 로그 검토 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>탐지·기록</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 변경자·변경 내용 모두 식별</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 최소 권한 원칙</td><td style="padding:8px;border:1px solid #ddd">예방</td><td style="padding:8px;border:1px solid #ddd">접근 제한 — 누가 변경했는지 식별 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 승인된 검증 계획</td><td style="padding:8px;border:1px solid #ddd">정확성</td><td style="padding:8px;border:1px solid #ddd">정확성 보장 — 변경자 식별 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 직무 분리</td><td style="padding:8px;border:1px solid #ddd">예방</td><td style="padding:8px;border:1px solid #ddd">변경자 vs 승인자 분리 — 개인 식별 ✗</td></tr>
+</table>
+<div class="sbox"><b>👤 책임 추적성 vs 다른 통제:</b><br>
+• <b>책임 추적성(Accountability):</b> "누가 했는가?" 추적<br>
+• <b>유일한 도구:</b> 시스템 생성 감사 로그<br>
+• 다른 통제는 모두 다른 목적:<br>
+&nbsp;&nbsp;1. 최소 권한 = <b>접근 제한</b> (누가 ✗)<br>
+&nbsp;&nbsp;2. 검증 계획 = <b>정확성</b> (누가 ✗)<br>
+&nbsp;&nbsp;3. 직무 분리 = <b>역할 분리</b> (누가 ✗)<br>
+• <b>감사 로그 필수 요소:</b> 사용자 ID + 시간 + 변경 전·후 데이터<br>
+• Q283 일관성: 책임 추적성 = 로그 (다른 통제로는 불가능)<br>
+• Q260 연결: 감사 추적은 변경 불가능해야 신뢰성 보장<br>
+• 핵심: <b>책임 추적성 = 시스템 생성 로그가 유일한 증명 수단</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Audit Logs & Accountability",
+keyConcepts:[
+"감사 로그와 책임 추적성|시스템 생성 감사 로그가 책임 추적성의 유일한 증명 수단",
+"감사 로그 필수 요소|사용자 ID + 시간 + 변경 전·후 데이터 — 모두 포함되어야 함",
+"통제 유형 구분|최소 권한·SoD·검증 = 다른 목적 (예방·정확성·역할) — 책임 추적성은 로그",
+"Q283·Q260 일관성|책임 추적성 = 로그 + 무결성 보호 — CISA 일관 원칙"
+]
+},
+
+// ============================================================
+// Q289 - DBA Emergency Login Method
+// ============================================================
+{
+id: 289,
+domain: "4",
+ks: "4A1 Database Management",
+question: `정상 업무 시간 후에 데이터베이스에 긴급 변경을 해야 하는 DBA는 어떻게 로그인해야 하는가?<br><small style="color:#94a3b8">A DBA who needs to make emergency changes to a database after normal working hours should log in:</small>`,
+options: [
+  "변경을 위해 본인의 명명된(Named) 계정으로.<br><small style='color:#94a3b8'>With their named account to make the changes.</small>",
+  "변경을 위해 공유 DBA 계정으로.<br><small style='color:#94a3b8'>With the shared DBA account to make the changes.</small>",
+  "변경을 위해 서버 관리자 계정으로.<br><small style='color:#94a3b8'>To the server administrative account to make the changes.</small>",
+  "변경을 위해 사용자 계정으로.<br><small style='color:#94a3b8'>To the user's account to make the changes.</small>"
+],
+correct: 0,
+explanation: `<p><b>본인의 명명된 계정</b>으로 로그인해야 합니다. DBA 계정을 사용하기 전에 개별 사용자 계정으로 로그인하면 변경을 수행한 사람을 기록하여 책임 추적성을 제공합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">계정 유형</th><th style="padding:8px;border:1px solid #334155">책임 추적성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 명명된 본인 계정 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>개인 식별</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 변경자 식별 가능 — 책임 추적성</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 공유 DBA 계정</td><td style="padding:8px;border:1px solid #ddd">공유</td><td style="padding:8px;border:1px solid #ddd">개인 식별 어려움</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 서버 관리자 계정</td><td style="padding:8px;border:1px solid #ddd">공유 + 권한 부족</td><td style="padding:8px;border:1px solid #ddd">공유 사용 + DB 변경 권한 부족 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 일반 사용자 계정</td><td style="padding:8px;border:1px solid #ddd">권한 부족</td><td style="padding:8px;border:1px solid #ddd">DB 변경 권한 ✗</td></tr>
+</table>
+<div class="sbox"><b>👤 명명된 계정(Named Account) 모델:</b><br>
+• <b>원칙:</b> 모든 활동은 개인 식별 가능한 계정으로 수행<br>
+• <b>특권 작업 절차:</b><br>
+&nbsp;&nbsp;1. 본인 명명된 계정으로 로그인<br>
+&nbsp;&nbsp;2. 권한 상승(sudo·su) 또는 권한 부여<br>
+&nbsp;&nbsp;3. 활동이 본인 ID에 귀속<br>
+• <b>공유 계정 위험:</b><br>
+&nbsp;&nbsp;1. 책임 추적성 상실<br>
+&nbsp;&nbsp;2. 비밀번호 공유 = 침해 위험 증가<br>
+&nbsp;&nbsp;3. SoD 위반 가능<br>
+• Q244·Q288 연결: 책임 추적성 = 개인 식별 가능 계정<br>
+• 핵심: <b>"개인 ID → 권한 상승 → 활동 추적"</b> 모델</div>`,
+reference:"CRM Chapter 4: IS Operations — Named Accounts & Accountability",
+keyConcepts:[
+"명명된 계정|개인 식별 가능 계정 사용 — 책임 추적성의 기본 원칙",
+"공유 계정 위험|책임 추적성 상실 + 비밀번호 공유 + SoD 위반 — 회피 필요",
+"특권 작업 절차|개인 계정 로그인 → 권한 상승 → 활동 추적 — 책임 추적성 유지",
+"Q244·Q288 일관성|책임 추적성 = 개인 식별 가능 계정 + 감사 로그"
+]
+},
+
+// ============================================================
+// Q290 - Denormalization Risk
+// ============================================================
+{
+id: 290,
+domain: "4",
+ks: "4A1 Database Management",
+question: `DBA가 일부 테이블의 성능 문제를 식별했고, 이는 비정규화를 통해 해결할 수 있다. 이 상황은 어떤 위험을 증가시키는가?<br><small style="color:#94a3b8">A DBA has identified a performance problem with some tables, which can be solved through denormalization. This situation will increase the risk of:</small>`,
+options: [
+  "동시 접근(Concurrent access).<br><small style='color:#94a3b8'>Concurrent access</small>",
+  "교착 상태(Deadlocks).<br><small style='color:#94a3b8'>Deadlocks</small>",
+  "데이터에 대한 비인가 접근.<br><small style='color:#94a3b8'>Unauthorized access to data</small>",
+  "데이터 무결성 손실.<br><small style='color:#94a3b8'>A loss of data integrity</small>"
+],
+correct: 3,
+explanation: `<p><b>데이터 무결성 손실</b>이 비정규화의 주요 위험입니다. 비정규화는 데이터 무결성을 보장하는 구조를 손상시켜 데이터 불일치와 무결성 손실 위험을 증가시킵니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">비정규화 영향</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 동시 접근</td><td style="padding:8px;border:1px solid #ddd">간접</td><td style="padding:8px;border:1px solid #ddd">직접 관련 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 교착 상태</td><td style="padding:8px;border:1px solid #ddd">간접</td><td style="padding:8px;border:1px solid #ddd">성능 영향 가능하나 직접 관련 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 비인가 접근</td><td style="padding:8px;border:1px solid #ddd">없음</td><td style="padding:8px;border:1px solid #ddd">접근 통제 영역 — 비정규화 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 데이터 무결성 손실 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>직접</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 중복 데이터 = 일관성 유지 부담</b></td></tr>
+</table>
+<div class="sbox"><b>⚠️ 비정규화와 데이터 무결성:</b><br>
+• <b>비정규화 = 중복 의도적 도입</b> (Q279 연결)<br>
+• <b>중복의 무결성 위험:</b><br>
+&nbsp;&nbsp;1. 한 곳만 업데이트 → 다른 곳과 불일치<br>
+&nbsp;&nbsp;2. 트리거·프로시저로 동기화 부담<br>
+&nbsp;&nbsp;3. 갱신 이상(Update Anomaly)<br>
+&nbsp;&nbsp;4. 삭제 이상(Deletion Anomaly)<br>
+&nbsp;&nbsp;5. 삽입 이상(Insertion Anomaly)<br>
+• <b>정규화의 목적:</b> 이런 이상(Anomaly) 제거 → 무결성 보장<br>
+• <b>비정규화 = 정규화 역행</b> → 무결성 위험 증가<br>
+• <b>트레이드오프:</b> 성능↑ vs 무결성↓<br>
+• Q279 연결: 비정규화 결과 = 중복 증가<br>
+• 핵심: <b>"중복 = 무결성의 적"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Denormalization Risks",
+keyConcepts:[
+"비정규화 무결성 위험|중복 데이터 = 일관성 유지 부담 — 갱신·삽입·삭제 이상 발생 가능",
+"정규화 목적|이상(Anomaly) 제거 → 무결성 보장 — 비정규화는 역행",
+"비정규화 트레이드오프|성능↑ vs 무결성↓ — 의도된 결정이지만 위험 증가",
+"Q279 일관성|비정규화 = 중복 증가 (Q279) → 무결성 손실 (Q290) — 동일 흐름"
+]
+},
+
+// ============================================================
+// Q291 - Foreign Key Referential Integrity
+// ============================================================
+{
+id: 291,
+domain: "4",
+ks: "4A1 Database Management",
+question: `참조 무결성을 가진 관계형 데이터베이스에서, 고객 테이블의 행에 있는 고객 번호가 주문 테이블의 활성 주문과 함께 저장되어 있을 때 해당 행의 삭제를 방지하는 키는?<br><small style="color:#94a3b8">In a relational database with referential integrity, the use of which key would prevent deletion of a row from a customer table if the customer number is stored with live orders on the orders table?</small>`,
+options: [
+  "외래 키(Foreign Key).<br><small style='color:#94a3b8'>Foreign key</small>",
+  "기본 키(Primary Key).<br><small style='color:#94a3b8'>Primary key</small>",
+  "보조 키(Secondary Key).<br><small style='color:#94a3b8'>Secondary key</small>",
+  "공개 키(Public Key).<br><small style='color:#94a3b8'>Public key</small>"
+],
+correct: 0,
+explanation: `<p><b>외래 키(Foreign Key)</b>가 정답입니다. 참조 무결성을 가진 관계형 데이터베이스에서, 외래 키는 기본 키 변경과 레코드 삭제를 방지하여 데이터베이스 내 고아 관계(Orphaned Relations) 발생을 방지합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">키 유형</th><th style="padding:8px;border:1px solid #334155">역할</th><th style="padding:8px;border:1px solid #334155">참조 무결성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>외래 키 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>다른 테이블 PK 참조</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 참조 무결성 강제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">기본 키</td><td style="padding:8px;border:1px solid #ddd">테이블 내 행 고유 식별</td><td style="padding:8px;border:1px solid #ddd">단일 테이블 — 단독 참조 무결성 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">보조 키</td><td style="padding:8px;border:1px solid #ddd">대체 식별자·인덱스</td><td style="padding:8px;border:1px solid #ddd">참조 무결성 검사 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">공개 키</td><td style="padding:8px;border:1px solid #ddd">암호화</td><td style="padding:8px;border:1px solid #ddd">DB 키와 무관</td></tr>
+</table>
+<div class="sbox"><b>🔗 외래 키와 참조 무결성 동작:</b><br>
+• <b>예시 시나리오:</b><br>
+&nbsp;&nbsp;- Customer 테이블: customer_id (PK)<br>
+&nbsp;&nbsp;- Orders 테이블: customer_id (FK → Customer.customer_id)<br>
+• <b>FK 제약 동작:</b><br>
+&nbsp;&nbsp;1. <b>RESTRICT/NO ACTION</b>: 자식 레코드 존재 시 부모 삭제 차단 (Q291의 정답)<br>
+&nbsp;&nbsp;2. <b>CASCADE</b>: 부모 삭제 시 자식도 삭제<br>
+&nbsp;&nbsp;3. <b>SET NULL</b>: 부모 삭제 시 자식 FK를 NULL로<br>
+&nbsp;&nbsp;4. <b>SET DEFAULT</b>: 부모 삭제 시 기본값으로<br>
+• <b>고아 레코드(Orphan Record):</b> 부모 없는 자식 → 무결성 위반<br>
+• Q274·Q287 연결: 참조 무결성 = DB 무결성의 핵심 유형<br>
+• 핵심: <b>FK = "부모-자식 일관성 유지" 메커니즘</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Foreign Keys & Referential Integrity",
+keyConcepts:[
+"외래 키와 참조 무결성|FK가 다른 테이블 PK 참조 — 부모 삭제 방지로 고아 레코드 방지",
+"FK 제약 동작|RESTRICT(차단)·CASCADE(연쇄)·SET NULL·SET DEFAULT — 4가지 옵션",
+"PK vs FK|PK=단일 테이블 식별, FK=테이블 간 관계 — 참조 무결성은 FK가 강제",
+"Q274·Q287 일관성|참조 무결성 = DB 무결성의 핵심 — FK가 메커니즘"
+]
+},
+
+// ============================================================
+// Q292 - Concurrency Control Objective
+// ============================================================
+{
+id: 292,
+domain: "4",
+ks: "4A1 Database Management",
+question: `데이터베이스 시스템에서 동시성 통제(Concurrency Control)의 목적은?<br><small style="color:#94a3b8">The objective of concurrency control in a database system is to:</small>`,
+options: [
+  "데이터베이스 업데이트를 인가된 사용자로 제한한다.<br><small style='color:#94a3b8'>Restrict updating of the database to authorized users.</small>",
+  "두 프로세스가 동일 데이터를 동시에 업데이트하려 할 때 무결성을 보장한다.<br><small style='color:#94a3b8'>Ensure integrity when two processes attempt to update the same data simultaneously.</small>",
+  "데이터베이스의 부주의한 또는 비인가 데이터 노출을 방지한다.<br><small style='color:#94a3b8'>Prevent inadvertent or unauthorized disclosure of data in the database.</small>",
+  "데이터의 정확성, 완전성, 일관성을 보장한다.<br><small style='color:#94a3b8'>Ensure the accuracy, completeness, and consistency of data.</small>"
+],
+correct: 1,
+explanation: `<p><b>두 프로세스가 동일 데이터 동시 업데이트 시 무결성 보장</b>이 동시성 통제의 목적입니다. 동시 갱신 프로세스가 같은 데이터 항목에 동시 접근할 때 발생할 수 있는 데이터 무결성 문제를 방지합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">담당 영역</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 인가된 사용자 제한</td><td style="padding:8px;border:1px solid #ddd">접근 통제</td><td style="padding:8px;border:1px solid #ddd">권한 관리 — 동시성 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 동시 업데이트 무결성 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>동시성 통제</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 동시 접근 시 무결성 보호</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 노출 방지</td><td style="padding:8px;border:1px solid #ddd">기밀성 통제</td><td style="padding:8px;border:1px solid #ddd">비밀번호 등 — 동시성 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 정확성·완전성·일관성</td><td style="padding:8px;border:1px solid #ddd">품질 통제</td><td style="padding:8px;border:1px solid #ddd">편집·검증 — 동시성 ✗</td></tr>
+</table>
+<div class="sbox"><b>🔒 동시성 통제(Concurrency Control) 메커니즘:</b><br>
+• <b>발생 문제(Concurrency Problems):</b><br>
+&nbsp;&nbsp;1. <b>Lost Update</b>: 한 트랜잭션 갱신이 다른 트랜잭션에 덮어씌워짐<br>
+&nbsp;&nbsp;2. <b>Dirty Read</b>: 커밋되지 않은 데이터 읽기<br>
+&nbsp;&nbsp;3. <b>Non-repeatable Read</b>: 같은 쿼리가 다른 결과<br>
+&nbsp;&nbsp;4. <b>Phantom Read</b>: 존재하지 않던 행이 나타남<br>
+• <b>통제 메커니즘:</b><br>
+&nbsp;&nbsp;1. <b>잠금(Locking)</b>: 락 획득 후 접근<br>
+&nbsp;&nbsp;2. <b>타임스탬프</b>: 시간 순서 기반<br>
+&nbsp;&nbsp;3. <b>낙관적 동시성(MVCC)</b>: 충돌 시 롤백<br>
+• <b>ACID 속성:</b> 동시성 통제 = <b>I (Isolation)</b><br>
+• 핵심: 동시성 통제 = <b>"동시 트랜잭션 격리"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Concurrency Control & ACID",
+keyConcepts:[
+"동시성 통제 목적|동시 트랜잭션의 데이터 무결성 보장 — 동시 업데이트 충돌 방지",
+"동시성 문제 4가지|Lost Update·Dirty Read·Non-repeatable Read·Phantom Read",
+"동시성 통제 메커니즘|잠금(Locking)·타임스탬프·MVCC — 트랜잭션 격리 기법",
+"ACID와 동시성|동시성 통제 = ACID의 Isolation(격리성) 보장"
+]
+},
+
+// ============================================================
+// Q293 - Transaction Integrity During Halt
+// ============================================================
+{
+id: 293,
+domain: "4",
+ks: "4A1 Database Management",
+question: `온라인 뱅킹 거래가 데이터베이스에 게시되고 있을 때 처리가 갑자기 중단되었다. 거래 처리의 무결성을 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">Online banking transactions are being posted to the database when processing suddenly comes to a halt. The integrity of the transaction processing is BEST ensured by:</small>`,
+options: [
+  "데이터베이스 무결성 점검.<br><small style='color:#94a3b8'>Database integrity checks</small>",
+  "검증 점검(Validation checks).<br><small style='color:#94a3b8'>Validation checks</small>",
+  "입력 통제.<br><small style='color:#94a3b8'>Input controls</small>",
+  "데이터베이스 커밋 및 롤백.<br><small style='color:#94a3b8'>Database commits and rollbacks</small>"
+],
+correct: 3,
+explanation: `<p><b>데이터베이스 커밋 및 롤백</b>이 정답입니다. 커밋은 완료된 거래 처리를 저장하고, 롤백은 거래 실패 시 부분 완료된 거래 처리를 되돌립니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">시스템 장애 대응</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. DB 무결성 점검</td><td style="padding:8px;border:1px solid #ddd">일관성·정확성</td><td style="padding:8px;border:1px solid #ddd">중요하나 원자성 직접 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 검증 점검</td><td style="padding:8px;border:1px solid #ddd">손상 데이터 입력 방지</td><td style="padding:8px;border:1px solid #ddd">시스템 장애 대응 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 입력 통제</td><td style="padding:8px;border:1px solid #ddd">입력 데이터 보호</td><td style="padding:8px;border:1px solid #ddd">시스템 장애 대응 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 커밋·롤백 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>원자성(Atomicity) 보장</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 전체 완료 or 전체 취소 — 시스템 장애 대응</b></td></tr>
+</table>
+<div class="sbox"><b>⚛️ ACID 속성과 거래 무결성:</b><br>
+• <b>A (Atomicity·원자성):</b> 전체 완료 or 전체 취소 ← Q293의 핵심<br>
+&nbsp;&nbsp;- 커밋: 전체 완료 시 영구 저장<br>
+&nbsp;&nbsp;- 롤백: 일부 실패 시 전체 취소<br>
+• <b>C (Consistency·일관성):</b> 거래 전후 DB 일관성<br>
+• <b>I (Isolation·격리성):</b> 동시 트랜잭션 격리 (Q292)<br>
+• <b>D (Durability·내구성):</b> 커밋된 데이터 영구 보존<br>
+• <b>"All or Nothing" 원칙:</b><br>
+&nbsp;&nbsp;예: 계좌 A 출금 + 계좌 B 입금<br>
+&nbsp;&nbsp;- 출금 후 시스템 다운 → 롤백 → 출금 취소<br>
+• Q275(이미지 덤프) 연결: 롤백 = 비포 이미지 활용<br>
+• 핵심: <b>거래 처리 = ACID 보장</b></div>`,
+reference:"CRM Chapter 4: IS Operations — ACID Properties & Transaction Integrity",
+keyConcepts:[
+"원자성(Atomicity)|거래의 전체 완료 or 전체 취소 — 커밋·롤백으로 보장",
+"커밋·롤백 메커니즘|커밋=완료 저장, 롤백=실패 시 취소 — 시스템 장애 대응",
+"ACID 속성|A(원자)·C(일관)·I(격리)·D(내구) — 거래 무결성의 4대 원칙",
+"Q275·Q292 일관성|롤백(Q275)·격리성(Q292)·원자성(Q293) — ACID 종합"
+]
+},
+
+// ============================================================
+// Q294 - Out-of-Range Data Prevention (Variant)
+// ============================================================
+{
+id: 294,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 데이터베이스의 일부 테이블에서 범위 외 데이터를 발견했다. 이 상황을 가장 잘 피할 수 있는 통제는?<br><small style="color:#94a3b8">An IS auditor finds out-of-range data in some tables of a database. Which control would BEST avoid this situation?</small>`,
+options: [
+  "모든 테이블 업데이트 거래를 로깅한다.<br><small style='color:#94a3b8'>Log all table update transactions.</small>",
+  "전후 이미지 보고를 구현한다.<br><small style='color:#94a3b8'>Implement before-and-after image reporting.</small>",
+  "추적 및 태깅을 사용한다.<br><small style='color:#94a3b8'>Use tracing and tagging.</small>",
+  "데이터베이스에 무결성 제약 조건을 구현한다.<br><small style='color:#94a3b8'>Implement integrity constraints in the database.</small>"
+],
+correct: 3,
+explanation: `<p><b>무결성 제약 조건 구현</b>이 정답입니다(Q287의 변형). 데이터가 사전 정의된 테이블·규칙에 대해 검증되어 정의되지 않은 데이터의 입력을 차단하는 예방 통제입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 거래 로깅</td><td style="padding:8px;border:1px solid #ddd">탐지</td><td style="padding:8px;border:1px solid #ddd">유효하지 않은 데이터 입력 방지 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 전후 이미지 보고</td><td style="padding:8px;border:1px solid #ddd">탐지</td><td style="padding:8px;border:1px solid #ddd">사후 분석 — 회피 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 추적·태깅</td><td style="padding:8px;border:1px solid #ddd">테스트 기법</td><td style="padding:8px;border:1px solid #ddd">시스템 테스트용 — 예방 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 무결성 제약 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>예방</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 사전 규칙으로 입력 차단</b></td></tr>
+</table>
+<div class="sbox"><b>🔁 Q287 = Q294 (동일 패턴 반복):</b><br>
+• 범위 외 데이터 = <b>도메인 무결성 제약</b> (예방 통제)<br>
+• 예방 통제 우선 원칙: 입력 시점 차단 > 사후 탐지<br>
+• 무결성 제약 종류:<br>
+&nbsp;&nbsp;1. 도메인 (값 범위·유형)<br>
+&nbsp;&nbsp;2. 엔티티 (PK)<br>
+&nbsp;&nbsp;3. 참조 (FK - Q291)<br>
+&nbsp;&nbsp;4. 사용자 정의 (비즈니스 규칙)<br>
+• Q251·Q287·Q294 일관: <b>예방 통제(입력 시점) > 탐지 통제(사후)</b><br>
+• 핵심: CISA 단골 패턴 — "Out of range" → 무결성 제약</div>`,
+reference:"CRM Chapter 4: IS Operations — Integrity Constraints (Same as Q287)",
+keyConcepts:[
+"무결성 제약 = 예방 통제|사전 정의 규칙으로 입력 시점 차단 — 범위 외 데이터 방지",
+"CISA 단골 패턴|범위 외 데이터 → 무결성 제약 (Q287·Q294 동일)",
+"예방 vs 탐지|로그·이미지=탐지(사후), 무결성 제약=예방(입력 시점) — 예방이 우선",
+"무결성 제약 4유형|도메인·엔티티·참조·사용자 정의 — 모두 예방 통제"
+]
+},
+
+// ============================================================
+// Q295 - Situation Increasing Fraud Likelihood
+// ============================================================
+{
+id: 295,
+domain: "4",
+ks: "4A1 Database Management",
+question: `다음 중 어느 상황이 부정(Fraud) 가능성을 증가시키는가?<br><small style="color:#94a3b8">Which of the following situations would increase the likelihood of fraud?</small>`,
+options: [
+  "애플리케이션 프로그래머가 운영 데이터베이스의 데이터에 변경을 구현한다.<br><small style='color:#94a3b8'>Application programmers are implementing changes to data in the production database.</small>",
+  "관리자가 변경 통제 절차를 따르지 않고 벤더 제공 SW에 벤더 패치를 구현한다.<br><small style='color:#94a3b8'>Administrators are implementing vendor patches to vendor-supplied software without following change control procedures.</small>",
+  "운영 지원 직원이 배치 스케줄에 변경을 구현한다.<br><small style='color:#94a3b8'>Operations support staff members are implementing changes to batch schedules.</small>",
+  "DBA가 데이터 구조에 변경을 구현한다.<br><small style='color:#94a3b8'>DBAs are implementing changes to data structures.</small>"
+],
+correct: 0,
+explanation: `<p><b>애플리케이션 프로그래머의 운영 데이터 변경</b>이 부정 가능성을 가장 크게 증가시킵니다. 운영 프로그램 변경 통제가 엄격하지 않으면 애플리케이션 프로그램이 데이터를 조작하도록 수정될 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">SoD 위반</th><th style="padding:8px;border:1px solid #334155">부정 가능성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 프로그래머→운영 데이터 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>심각한 SoD 위반</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 데이터 조작 코드 삽입 가능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 패치 변경 통제 미준수</td><td style="padding:8px;border:1px solid #ddd">절차 위반</td><td style="padding:8px;border:1px solid #ddd">위험이나 벤더 패치 한정 — 작음</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 배치 스케줄 변경</td><td style="padding:8px;border:1px solid #ddd">정상 직무</td><td style="padding:8px;border:1px solid #ddd">스케줄링만 — 데이터 영향 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. DBA 데이터 구조 변경</td><td style="padding:8px;border:1px solid #ddd">정상 직무</td><td style="padding:8px;border:1px solid #ddd">DBA 본연 역할 — 정상</td></tr>
+</table>
+<div class="sbox"><b>🚨 프로그래머의 운영 접근 위험:</b><br>
+• <b>핵심 위험:</b> 코드를 작성하는 사람이 운영 데이터에 접근<br>
+• <b>가능한 부정 시나리오:</b><br>
+&nbsp;&nbsp;1. 자신에게 유리한 거래 조작<br>
+&nbsp;&nbsp;2. 감사 추적 회피 코드 삽입<br>
+&nbsp;&nbsp;3. 백도어 설치<br>
+&nbsp;&nbsp;4. 데이터 직접 변조<br>
+• <b>SoD 위반:</b> 개발(코드 작성) ↔ 운영(데이터 변경) 분리 필요<br>
+• Q220·Q241·Q255 연결: 직무 분리 위반 패턴<br>
+&nbsp;&nbsp;- Q220: DBA → OS 패치<br>
+&nbsp;&nbsp;- Q241: 프로그래머 → 운영 환경 이관<br>
+&nbsp;&nbsp;- Q255: DBA → 자기 활동 로그 삭제<br>
+&nbsp;&nbsp;- Q295: 프로그래머 → 운영 데이터 변경<br>
+• 핵심: <b>"코드 + 데이터 모두 통제 = 견제 없음 = 부정 위험"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — SoD & Fraud Prevention",
+keyConcepts:[
+"프로그래머 운영 접근|개발자가 운영 데이터 변경 = SoD 위반 → 부정 가능성 최대",
+"부정 시나리오|거래 조작·백도어·감사 회피·데이터 변조 — 코드+데이터 통제 시 가능",
+"SoD 위반 패턴|Q220·Q241·Q255·Q295 일관 — 역할 경계 침범 = 부정 위험",
+"DBA 정상 직무|데이터 구조 변경 = DBA 본연 역할 — 부정과 무관"
+]
+},
+
+// ============================================================
+// Q296 - Referential Integrity Assurance Review
+// ============================================================
+{
+id: 296,
+domain: "4",
+ks: "4A1 Database Management",
+question: `애플리케이션 감사 중, IS 감사인이 데이터베이스의 참조 무결성에 대한 보증을 제공하도록 요청받았다. 무엇을 검토해야 하는가?<br><small style="color:#94a3b8">During an application audit, an IS auditor is asked to provide assurance of the database's referential integrity. Which of the following should be reviewed?</small>`,
+options: [
+  "필드 정의(Field definition).<br><small style='color:#94a3b8'>Field definition</small>",
+  "마스터 테이블 정의.<br><small style='color:#94a3b8'>Master table definition</small>",
+  "복합 키(Composite keys).<br><small style='color:#94a3b8'>Composite keys</small>",
+  "외래 키 구조(Foreign key structure).<br><small style='color:#94a3b8'>Foreign key structure</small>"
+],
+correct: 3,
+explanation: `<p><b>외래 키 구조</b>를 검토해야 합니다. 관계형 데이터베이스의 참조 무결성은 연결된 테이블 간의 일관성을 의미하며, 일반적으로 기본 키(또는 후보 키)와 외래 키의 조합으로 강제됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">설명 대상</th><th style="padding:8px;border:1px solid #334155">참조 무결성과의 관계</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 필드 정의</td><td style="padding:8px;border:1px solid #ddd">테이블 레이아웃</td><td style="padding:8px;border:1px solid #ddd">직접 관련 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 마스터 테이블 정의</td><td style="padding:8px;border:1px solid #ddd">DB 구조</td><td style="padding:8px;border:1px solid #ddd">직접 관련 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 복합 키</td><td style="padding:8px;border:1px solid #ddd">키 생성 방식</td><td style="padding:8px;border:1px solid #ddd">직접 관련 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 외래 키 구조 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>테이블 간 연결</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 참조 무결성의 강제 메커니즘</b></td></tr>
+</table>
+<div class="sbox"><b>🔗 외래 키 구조 검토 항목:</b><br>
+• <b>FK가 부모 테이블의 PK·후보 키를 참조하는지 확인</b><br>
+• <b>FK 제약 동작 설정 확인 (Q291 연결):</b><br>
+&nbsp;&nbsp;1. RESTRICT/NO ACTION (삭제 차단)<br>
+&nbsp;&nbsp;2. CASCADE (연쇄 삭제)<br>
+&nbsp;&nbsp;3. SET NULL<br>
+&nbsp;&nbsp;4. SET DEFAULT<br>
+• <b>고아 레코드 점검:</b> 부모 없는 자식 레코드 존재 여부<br>
+• <b>NULL 처리:</b> FK 컬럼의 NULL 허용 여부<br>
+• Q274·Q291 일관성: 참조 무결성 = FK가 메커니즘<br>
+• 핵심: <b>참조 무결성 검토 = FK 구조 검토</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Referential Integrity Audit",
+keyConcepts:[
+"FK 구조 검토|참조 무결성 = FK가 강제 메커니즘 — FK 구조 검토가 직접적 보증",
+"FK 검토 항목|FK→PK 참조 + 제약 동작 + 고아 레코드 + NULL 처리",
+"필드·테이블 정의 vs FK|필드·테이블 = 구조, FK = 관계 — 참조 무결성은 관계 영역",
+"Q274·Q291·Q296 일관성|참조 무결성 = FK 메커니즘 (CISA 일관 원칙)"
+]
+},
+
+// ============================================================
+// Q297 - Continuous Database Availability
+// ============================================================
+{
+id: 297,
+domain: "4",
+ks: "4A1 Database Management",
+question: `온라인 판매를 지원하는 대규모 데이터베이스의 데이터를 인가된 사용자에게 지속적으로 제공하는 가장 좋은 접근법은?<br><small style="color:#94a3b8">What is the BEST approach to ensure data is continuously available to authorized users of a large database with data supporting online sales?</small>`,
+options: [
+  "주간 전체 백업 + 일일 증분 백업.<br><small style='color:#94a3b8'>Weekly full backup with daily incremental backup</small>",
+  "일일 전체 백업.<br><small style='color:#94a3b8'>Daily full backup</small>",
+  "클러스터 서버.<br><small style='color:#94a3b8'>Clustered servers</small>",
+  "미러링된 하드 디스크.<br><small style='color:#94a3b8'>Mirrored hard disks</small>"
+],
+correct: 3,
+explanation: `<p><b>미러링된 하드 디스크</b>가 정답입니다. 미러링은 한 드라이브 장애 시 다른 드라이브에서 데이터 가용성을 보장하는 데이터 중복을 제공합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">기능</th><th style="padding:8px;border:1px solid #334155">지속적 가용성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 주간+일일 증분</td><td style="padding:8px;border:1px solid #ddd">백업 전략</td><td style="padding:8px;border:1px solid #ddd">최대 1일 데이터 손실 — 부적합</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 일일 전체 백업</td><td style="padding:8px;border:1px solid #ddd">백업 전략</td><td style="padding:8px;border:1px solid #ddd">대규모 DB는 시간 소요 — 비현실적</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 클러스터 서버</td><td style="padding:8px;border:1px solid #ddd">처리 이중화</td><td style="padding:8px;border:1px solid #ddd">처리 가용성 ✔ but 데이터 가용성은 별개</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 미러링 디스크 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>데이터 이중화</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 디스크 장애에도 데이터 즉시 사용 가능</b></td></tr>
+</table>
+<div class="sbox"><b>💾 데이터 가용성 vs 백업:</b><br>
+• <b>미러링(Mirroring/RAID 1):</b><br>
+&nbsp;&nbsp;- 실시간 데이터 복제<br>
+&nbsp;&nbsp;- 디스크 장애 시 즉시 전환<br>
+&nbsp;&nbsp;- <b>데이터 손실 0</b> + 다운타임 최소<br>
+• <b>백업 vs 미러링:</b><br>
+&nbsp;&nbsp;- 백업 = 시점 복사 → 복원 시간 + 데이터 손실 가능<br>
+&nbsp;&nbsp;- 미러링 = 실시간 복제 → 즉시 사용<br>
+• <b>클러스터 vs 미러링:</b><br>
+&nbsp;&nbsp;- 클러스터(Q205) = 서버 장애 대응<br>
+&nbsp;&nbsp;- 미러링 = 디스크 장애 대응 + 데이터 가용성<br>
+• Q203(웹 앱 가용성) 연결: 가용성 기술 비교<br>
+&nbsp;&nbsp;- 로드 밸런싱 = 서버 트래픽 분산<br>
+&nbsp;&nbsp;- 클러스터링 = 서버 페일오버<br>
+&nbsp;&nbsp;- 미러링 = 디스크 이중화<br>
+• 핵심: <b>온라인 판매 = 지속적 데이터 가용성 = 미러링</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Disk Mirroring & Data Availability",
+keyConcepts:[
+"디스크 미러링|실시간 데이터 복제 — 디스크 장애 시 즉시 전환으로 지속적 가용성 보장",
+"백업 vs 미러링|백업=시점 복사(데이터 손실 가능), 미러링=실시간 복제(손실 0)",
+"클러스터링 vs 미러링|클러스터=서버 장애, 미러링=디스크 장애 — 다른 계층의 가용성",
+"Q203·Q205 일관성|가용성 기술: 로드밸런싱(트래픽)·클러스터(서버)·미러링(디스크)"
+]
+},
+
+// ============================================================
+// Q298 - Overseas Mirrored Database Risk
+// ============================================================
+{
+id: 298,
+domain: "4",
+ks: "4A1 Database Management",
+question: `해외 데이터 센터에 새 데이터베이스가 설정되어 일반 대중에게 정보를 제공하고 정보 제공 속도를 증가시킨다. 해외 DB는 로컬 정보를 미러링하기 위해 실시간 업데이트된다. 다음 운영 영역 중 가장 큰 위험으로 고려해야 할 것은?<br><small style="color:#94a3b8">A new database is being set up overseas to provide public information and increase availability speed. It's housed at a data center and updated in real time to mirror local information. Which area has the HIGHEST risk?</small>`,
+options: [
+  "데이터베이스에 저장된 정보의 기밀성.<br><small style='color:#94a3b8'>Confidentiality of the information stored in the database</small>",
+  "데이터베이스 애플리케이션을 실행하는 데 사용되는 하드웨어.<br><small style='color:#94a3b8'>The hardware being used to run the database application</small>",
+  "해외 데이터베이스 정보의 백업.<br><small style='color:#94a3b8'>Backups of the information in the overseas database</small>",
+  "백업 데이터베이스에 대한 원격 접근.<br><small style='color:#94a3b8'>Remote access to the backup database</small>"
+],
+correct: 1,
+explanation: `<p><b>하드웨어</b>가 가장 큰 위험입니다. 비즈니스 목표가 대중에게 정보를 적시에 제공하는 것이며, 데이터베이스가 물리적으로 해외에 위치하므로 수정되지 않은 하드웨어 장애는 사용자에 대한 시스템 가용성을 감소시킬 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">위험 평가</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 기밀성</td><td style="padding:8px;border:1px solid #ddd">낮음</td><td style="padding:8px;border:1px solid #ddd">공개 정보 — 기밀성 우려 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. 하드웨어 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>최대</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 해외 위치 → 장애 시 수리 지연 → 가용성 영향</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 백업</td><td style="padding:8px;border:1px solid #ddd">낮음</td><td style="padding:8px;border:1px solid #ddd">해외 DB가 로컬의 미러 — 백업본은 로컬에 존재</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 원격 접근</td><td style="padding:8px;border:1px solid #ddd">낮음</td><td style="padding:8px;border:1px solid #ddd">가용성 영향 ✗</td></tr>
+</table>
+<div class="sbox"><b>🌍 해외 데이터 센터 위험 분석:</b><br>
+• <b>비즈니스 목표:</b> 빠른 정보 제공 (가용성 중심)<br>
+• <b>해외 위치 특수 위험:</b><br>
+&nbsp;&nbsp;1. 물리적 접근 어려움<br>
+&nbsp;&nbsp;2. 하드웨어 수리 지연<br>
+&nbsp;&nbsp;3. 시간대 차이로 지원 어려움<br>
+&nbsp;&nbsp;4. 현지 인프라 의존<br>
+• <b>위험 분석 핵심:</b> 항상 <b>비즈니스 목표</b>와 <b>데이터 특성</b> 고려<br>
+&nbsp;&nbsp;- 공개 정보 → 기밀성 ✗<br>
+&nbsp;&nbsp;- 가용성 목표 → 가용성 위험에 집중<br>
+&nbsp;&nbsp;- 미러링 → 백업 우려 ✗<br>
+• Q284 연결: 데이터 속성(공개 vs 기밀)이 위험 평가에 영향<br>
+• 핵심: <b>"비즈니스 목표 + 데이터 특성"</b>이 위험 우선순위 결정</div>`,
+reference:"CRM Chapter 4: IS Operations — Risk Assessment & Data Center Location",
+keyConcepts:[
+"해외 위치 위험|물리적 접근 어려움 → 하드웨어 수리 지연 → 가용성 영향",
+"위험 분석 원칙|비즈니스 목표 + 데이터 특성 고려 — 공개 정보는 기밀성 우려 ✗",
+"미러링과 백업|미러링된 DB = 백업본은 원본 위치에 존재 — 백업 우려 감소",
+"Q284 연결|데이터 속성(공개 vs 기밀)이 위험 평가의 핵심 요소"
+]
+},
+
+// ============================================================
+// Q299 - Data Warehouse Integrity
+// ============================================================
+{
+id: 299,
+domain: "4",
+ks: "4A1 Database Management",
+question: `다음 보안 조치 중 데이터 웨어하우스에 저장된 정보의 무결성을 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">Which of the following security measures BEST ensures the integrity of information stored in a data warehouse?</small>`,
+options: [
+  "검증된 일일 백업.<br><small style='color:#94a3b8'>Validated daily backups</small>",
+  "변경 관리 절차.<br><small style='color:#94a3b8'>Change management procedures</small>",
+  "데이터 사전 유지보수.<br><small style='color:#94a3b8'>Data dictionary maintenance</small>",
+  "읽기 전용 제한(Read-only restriction).<br><small style='color:#94a3b8'>A read-only restriction</small>"
+],
+correct: 3,
+explanation: `<p><b>읽기 전용 제한</b>이 정답입니다. 데이터 웨어하우스에 저장된 대부분의 데이터는 역사적(Historical) 데이터로 변경이 필요하지 않으므로, 읽기 전용 제한 적용으로 데이터 조작을 방지할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">DW 무결성 보장</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 검증된 일일 백업</td><td style="padding:8px;border:1px solid #ddd">가용성</td><td style="padding:8px;border:1px solid #ddd">백업 작동 보장 — 무결성 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 변경 관리 절차</td><td style="padding:8px;border:1px solid #ddd">시스템 변경 통제</td><td style="padding:8px;border:1px solid #ddd">시스템 보호 — 데이터 무결성 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 데이터 사전 유지</td><td style="padding:8px;border:1px solid #ddd">메타데이터 정의</td><td style="padding:8px;border:1px solid #ddd">입력 데이터 정의 — 기존 데이터 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 읽기 전용 제한 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>변경 차단</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 데이터 조작 원천 차단 — 무결성 보장</b></td></tr>
+</table>
+<div class="sbox"><b>📊 데이터 웨어하우스(DW) 특성:</b><br>
+• <b>주 용도:</b> 분석·보고 (OLAP)<br>
+• <b>데이터 특성:</b> <b>역사적·축적</b> (변경 거의 없음)<br>
+• <b>OLTP vs OLAP:</b><br>
+&nbsp;&nbsp;- OLTP (운영 DB) = 거래 처리, 빈번한 변경<br>
+&nbsp;&nbsp;- OLAP (DW) = 분석, 읽기 중심<br>
+• <b>읽기 전용 제한의 효과:</b><br>
+&nbsp;&nbsp;1. 사용자 실수로 인한 변경 방지<br>
+&nbsp;&nbsp;2. 악의적 조작 차단<br>
+&nbsp;&nbsp;3. 분석 결과의 일관성 보장<br>
+• <b>DW 갱신:</b> ETL 프로세스를 통해서만 (통제된 경로)<br>
+• Q280 연결: 보안 = 알려진 취약점 차단 / DW 보안 = 변경 차단<br>
+• 핵심: <b>"DW = 읽기 전용이 본질에 부합"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Data Warehouse Security",
+keyConcepts:[
+"데이터 웨어하우스 읽기 전용|역사적 데이터 특성상 읽기 전용 제한이 무결성 보장의 최선",
+"OLTP vs OLAP|운영 DB(변경 빈번)와 DW(읽기 중심) 특성 차이 — 보안 접근 다름",
+"DW 갱신 경로|ETL 프로세스만 — 통제된 경로로만 데이터 추가",
+"무결성 vs 다른 통제|읽기 전용=무결성, 백업=가용성, 변경관리=시스템 — 목적 구분"
+]
+},
+
+// ============================================================
+// Q300 - Migrated Account Balance Verification
+// ============================================================
+{
+id: 300,
+domain: "4",
+ks: "4A1 Database Management",
+question: `한 데이터베이스에서 다른 데이터베이스로 마이그레이션된 개별 계정 잔액의 정확성을 판단할 때 가장 효과적인 것은?<br><small style="color:#94a3b8">Which of the following is the MOST effective when determining the correctness of individual account balances migrated from one database to another?</small>`,
+options: [
+  "마이그레이션 전후의 해시 합계를 비교한다.<br><small style='color:#94a3b8'>Compare the hash total before and after the migration.</small>",
+  "두 데이터베이스의 레코드 수가 동일한지 확인한다.<br><small style='color:#94a3b8'>Verify that the number of records is the same for both databases.</small>",
+  "마이그레이션된 계정 잔액의 샘플 테스트를 수행한다.<br><small style='color:#94a3b8'>Perform sample testing of the migrated account balances.</small>",
+  "모든 거래의 통제 합계를 비교한다.<br><small style='color:#94a3b8'>Compare the control totals of all of the transactions.</small>"
+],
+correct: 2,
+explanation: `<p><b>샘플 테스트</b>가 정답입니다. 마이그레이션 전후의 데이터베이스에서 개별 거래를 선택하여 비교하는 것으로, <b>개별 잔액의 정확성</b>을 확인할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">검증 수준</th><th style="padding:8px;border:1px solid #334155">개별 정확성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 해시 합계</td><td style="padding:8px;border:1px solid #ddd">배치 수준</td><td style="padding:8px;border:1px solid #ddd">전체 무결성만 — 개별 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 레코드 수</td><td style="padding:8px;border:1px solid #ddd">개수만</td><td style="padding:8px;border:1px solid #ddd">필드 마이그레이션 검증 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 샘플 테스트 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>개별 거래</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 개별 잔액 정확성 직접 확인</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 통제 합계</td><td style="padding:8px;border:1px solid #ddd">전체 합계</td><td style="padding:8px;border:1px solid #ddd">완전성·정확성 보장 ✗</td></tr>
+</table>
+<div class="sbox"><b>🎯 개별 정확성 vs 전체 무결성:</b><br>
+• <b>전체 검증 (Aggregate):</b><br>
+&nbsp;&nbsp;- 해시 합계, 통제 합계, 레코드 수<br>
+&nbsp;&nbsp;- 장점: 빠르고 간단<br>
+&nbsp;&nbsp;- 한계: 개별 오류 식별 ✗<br>
+• <b>개별 검증 (Individual):</b><br>
+&nbsp;&nbsp;- 샘플 테스트<br>
+&nbsp;&nbsp;- 장점: 개별 정확성 확인 가능<br>
+&nbsp;&nbsp;- 한계: 시간·자원 소요<br>
+• <b>"개별 잔액의 정확성" 키워드:</b> 샘플 테스트가 유일한 답<br>
+• Q258·Q278 연결: 데이터 마이그레이션 검증<br>
+&nbsp;&nbsp;- Q258: 변환 누락 식별 = 예외 보고서<br>
+&nbsp;&nbsp;- Q278: 무결성 = 가장 중요<br>
+&nbsp;&nbsp;- Q300: 개별 정확성 = 샘플 테스트<br>
+• 핵심: <b>"개별 = 샘플링", "전체 = 합계"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Migration Testing & Sampling",
+keyConcepts:[
+"개별 정확성 검증|샘플 테스트가 개별 잔액의 정확성 확인의 가장 효과적 방법",
+"전체 vs 개별|합계(해시·통제)=전체 무결성, 샘플=개별 정확성 — 목적별 선택",
+"합계 검증 한계|합계 일치해도 개별 오류 식별 ✗ — 보상 효과 가능",
+"Q258·Q278·Q300 연결|마이그레이션: 누락(예외)·무결성(전체)·개별(샘플) — 다층 검증"
+]
+},
+
+// ============================================================
+// Q301 - HR DB Initialization Parameters
+// ============================================================
+{
+id: 301,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 기업의 HR 데이터베이스 구현을 검토하고 있다. 감사인은 DB 서버가 고가용성을 위해 클러스터링되어 있고, 모든 기본 DB 계정이 제거되었으며, DB 감사 로그가 보관되고 매주 검토됨을 확인했다. 데이터베이스가 적절히 보호되도록 IS 감사인이 추가로 점검해야 할 영역은?<br><small style="color:#94a3b8">An IS auditor is reviewing an HR database implementation. Servers are clustered, default accounts removed, audit logs kept/reviewed weekly. What other area should the IS auditor check?</small>`,
+options: [
+  "DBA가 HR 데이터에 접근하지 못하도록 제한된다.<br><small style='color:#94a3b8'>DBAs are restricted from access to HR data.</small>",
+  "데이터베이스 로그가 암호화된다.<br><small style='color:#94a3b8'>Database logs are encrypted.</small>",
+  "데이터베이스 저장 프로시저가 암호화된다.<br><small style='color:#94a3b8'>Database stored procedures are encrypted.</small>",
+  "데이터베이스 초기화 매개변수가 적절하다.<br><small style='color:#94a3b8'>Database initialization parameters are appropriate.</small>"
+],
+correct: 3,
+explanation: `<p><b>데이터베이스 초기화 매개변수</b>가 정답입니다. 데이터베이스가 열릴 때 많은 구성 옵션이 초기화 매개변수에 의해 결정되며, 인증·원격 접근·기타 핵심 보안 영역을 포함한 글로벌 DB 설정을 다룹니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">평가</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. DBA 데이터 접근 제한</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">DBA는 모든 데이터 접근 — 실용적 통제 ✗ (Q281)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. DB 로그 암호화</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">로그는 보통 기밀 데이터 미포함 — 암호화 불필요</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 저장 프로시저 암호화</td><td style="padding:8px;border:1px solid #ddd">✗</td><td style="padding:8px;border:1px solid #ddd">민감한 함수만 필요 — 초기화 매개변수보다 덜 중요</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 초기화 매개변수 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>인증·원격 접근·핵심 보안 글로벌 설정</b></td></tr>
+</table>
+<div class="sbox"><b>⚙️ 데이터베이스 초기화 매개변수 검토:</b><br>
+• <b>설정 파일:</b> Oracle init.ora, SQL Server 구성 등<br>
+• <b>핵심 매개변수 영역:</b><br>
+&nbsp;&nbsp;1. <b>인증:</b> OS 인증·강력한 비밀번호 정책<br>
+&nbsp;&nbsp;2. <b>원격 접근:</b> 원격 로그인 허용 여부<br>
+&nbsp;&nbsp;3. <b>감사:</b> 감사 수준·대상<br>
+&nbsp;&nbsp;4. <b>네트워크:</b> 암호화·포트<br>
+&nbsp;&nbsp;5. <b>권한:</b> 시스템 권한 부여<br>
+• Q276·Q280 연결: DB 하드닝 = 기본 구성 변경 + 초기화 매개변수<br>
+• 이미 점검된 항목: 가용성(클러스터)·기본 계정·로그 → 다음은 <b>구성 검토</b><br>
+• 핵심: <b>"기본 계정 제거" + "초기화 매개변수 검토" = 완전한 하드닝"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Database Initialization Parameters",
+keyConcepts:[
+"초기화 매개변수|인증·원격 접근·감사·네트워크 등 글로벌 보안 설정 — DB 하드닝의 핵심",
+"DB 하드닝 종합|기본 계정 제거 + 초기화 매개변수 검토 + 패치 + 로그 — 다층 접근",
+"DBA 데이터 접근|실용적 통제 ✗ — 보상 통제(로그·검토)로 관리 (Q281)",
+"Q276·Q280 일관성|DB 하드닝 = 기본 설정 변경이 핵심 — 초기화 매개변수 포함"
+]
+},
+
+// ============================================================
+// Q302 - After-Hours DB Change Compensating Controls
+// ============================================================
+{
+id: 302,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 데이터베이스 통제를 검토하다가, 정상 업무 시간 동안의 DB 변경은 표준 절차로 처리되지만 정상 업무 시간 외 변경은 축약된 단계만 필요함을 발견했다. 이 상황에서 적절한 보상 통제 세트로 간주되는 것은?<br><small style="color:#94a3b8">An IS auditor reviewing database controls discovered that changes during normal hours follow standard procedures, but after-hours changes require only abbreviated steps. Which is considered adequate compensating controls?</small>`,
+options: [
+  "DBA 사용자 계정으로만 변경을 허용한다.<br><small style='color:#94a3b8'>Allow changes to be made only with the DBA user account.</small>",
+  "일반 사용자 계정에 접근 권한을 부여한 후 데이터베이스 변경을 한다.<br><small style='color:#94a3b8'>Make changes to the database after granting access to a normal user account.</small>",
+  "DBA 사용자 계정으로 변경하고, 변경을 로깅하며, 다음날 변경 로그를 검토한다.<br><small style='color:#94a3b8'>Use the DBA user account to make changes, log the changes and review the change log the following day.</small>",
+  "일반 사용자 계정으로 변경하고, 변경을 로깅하며, 다음날 변경 로그를 검토한다.<br><small style='color:#94a3b8'>Use the normal user account to make changes, log the changes and review the change log the following day.</small>"
+],
+correct: 2,
+explanation: `<p><b>DBA 계정 사용 + 변경 로깅 + 다음날 검토</b>가 적절한 보상 통제 세트입니다. DBA 계정 사용은 정상적이며, 로깅과 사후 검토가 축약된 절차를 보완합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 요소</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. DBA만 변경 (로깅 ✗)</td><td style="padding:8px;border:1px solid #ddd">접근 통제만</td><td style="padding:8px;border:1px solid #ddd">로깅 없음 → 통제되지 않은 변경</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 일반 사용자 변경</td><td style="padding:8px;border:1px solid #ddd">부적절 권한</td><td style="padding:8px;border:1px solid #ddd">일반 사용자는 DB 접근 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. DBA + 로깅 + 검토 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>다층 통제</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 적절한 권한 + 사후 검토 = 보상 통제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 일반 사용자 + 로깅</td><td style="padding:8px;border:1px solid #ddd">부적절 권한</td><td style="padding:8px;border:1px solid #ddd">일반 사용자가 변경하면 안 됨</td></tr>
+</table>
+<div class="sbox"><b>🛡️ 보상 통제(Compensating Controls) 설계:</b><br>
+• <b>원칙:</b> 사전 통제 부족 → 사후 통제로 보완<br>
+• <b>축약된 절차의 보상:</b><br>
+&nbsp;&nbsp;1. <b>적절한 권한자 사용</b> (DBA)<br>
+&nbsp;&nbsp;2. <b>활동 로깅</b> (감사 추적)<br>
+&nbsp;&nbsp;3. <b>사후 검토</b> (다음날)<br>
+• <b>긴급 변경 통제 패턴 (Q226·Q244·Q252):</b><br>
+&nbsp;&nbsp;- Q226: 사후 경영진 검토·승인<br>
+&nbsp;&nbsp;- Q244: 개인 ID 책임 추적<br>
+&nbsp;&nbsp;- Q252: 신속 문서화·승인<br>
+&nbsp;&nbsp;- Q302: DBA 계정 + 로깅 + 사후 검토<br>
+• 핵심: <b>"적절한 권한 + 추적 + 검토" = 보상 통제 3요소</b><br>
+• 사전 통제 약화 시 → 사후 통제 강화로 균형</div>`,
+reference:"CRM Chapter 4: IS Operations — Compensating Controls for After-Hours Changes",
+keyConcepts:[
+"보상 통제 3요소|적절한 권한 + 활동 로깅 + 사후 검토 — 사전 통제 약화 시 보완",
+"DBA 계정 + 로깅|특권 사용 시 로깅이 필수 — 단독 사용은 통제 부족",
+"긴급/축약 절차 통제|Q226·Q244·Q252·Q302 일관 — 사후 통제로 균형",
+"일반 사용자와 DB|일반 사용자는 DB 직접 변경 권한 ✗ — 앱 통한 접근만"
+]
+},
+
+// ============================================================
+// Q303 - Data Warehouse Sensitive Data Protection
+// ============================================================
+{
+id: 303,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `데이터 웨어하우스에 저장된 특정 민감 정보의 보호를 위해 IS 감사인이 권고해야 할 것은?<br><small style="color:#94a3b8">Which of the following should an IS auditor recommend for the protection of specific sensitive information stored in a data warehouse?</small>`,
+options: [
+  "열(Column)·행(Row) 수준 권한을 구현한다.<br><small style='color:#94a3b8'>Implement column- and row-level permissions.</small>",
+  "강력한 비밀번호로 사용자 인증을 강화한다.<br><small style='color:#94a3b8'>Enhance user authentication via strong passwords.</small>",
+  "데이터 웨어하우스를 주제별 데이터베이스로 구성한다.<br><small style='color:#94a3b8'>Organize the data warehouse into subject matter-specific databases.</small>",
+  "데이터 웨어하우스에 대한 사용자 접근을 로깅한다.<br><small style='color:#94a3b8'>Log user access to the data warehouse.</small>"
+],
+correct: 0,
+explanation: `<p><b>열·행 수준 권한 구현</b>이 정답입니다. 사용자가 접근할 수 있는 정보를 통제하며, 가장 세밀한 보안 모델로 정보 보호와 다양한 분석·보고 사용을 균형 있게 지원합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">통제 단위</th><th style="padding:8px;border:1px solid #334155">민감 정보 보호</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 열·행 수준 권한 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>세밀한 단위</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 특정 속성·레코드 단위 보호</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 강력한 비밀번호</td><td style="padding:8px;border:1px solid #ddd">전역</td><td style="padding:8px;border:1px solid #ddd">모든 사용자 — 특정 정보 보호 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 주제별 DB 분리</td><td style="padding:8px;border:1px solid #ddd">데이터베이스</td><td style="padding:8px;border:1px solid #ddd">너무 거친 단위 — 효과 부족</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 접근 로깅</td><td style="padding:8px;border:1px solid #ddd">탐지</td><td style="padding:8px;border:1px solid #ddd">탐지 통제 — 예방 ✗</td></tr>
+</table>
+<div class="sbox"><b>🔐 행·열 수준 보안(Row/Column-Level Security):</b><br>
+• <b>열 수준 보안:</b> 특정 컬럼 비공개 (예: 급여, SSN)<br>
+• <b>행 수준 보안:</b> 특정 레코드 그룹 제한 (예: 임원 급여 행)<br>
+• <b>구현 방법:</b><br>
+&nbsp;&nbsp;1. 뷰(View) 사용 — 논리적 표현 접근<br>
+&nbsp;&nbsp;2. 정책 기반 접근 통제<br>
+&nbsp;&nbsp;3. 동적 마스킹<br>
+• <b>장점:</b> 가장 세밀한 통제 + 분석 활용 균형<br>
+• <b>통제 단위 비교:</b><br>
+&nbsp;&nbsp;- 데이터베이스 < 테이블 < <b>행·열 (가장 세밀)</b><br>
+• Q299 연결: DW = 읽기 전용 + 행·열 권한<br>
+• 핵심: <b>"세밀한 통제 = 필요한 만큼만 보호"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Row/Column-Level Security",
+keyConcepts:[
+"행·열 수준 권한|특정 컬럼·레코드 단위 보호 — 세밀한 통제로 민감 정보 보호의 최선",
+"통제 단위 계층|DB < 테이블 < 행·열 — 세밀할수록 정밀한 보호",
+"뷰(View) 활용|논리적 데이터 표현으로 행·열 권한 구현",
+"Q299·Q303 일관성|DW 보안: 읽기 전용(Q299) + 행·열 권한(Q303) — 종합 접근"
+]
+},
+
+// ============================================================
+// Q304 - ACID Atomicity Violation
+// ============================================================
+{
+id: 304,
+domain: "4",
+ks: "4A1 Database Management",
+question: `IS 감사인이 DBMS의 감사 로그를 분석하다가 일부 거래가 오류의 결과로 부분적으로 실행되었고 롤백되지 않았음을 발견했다. 어떤 거래 처리 기능이 위반되었는가?<br><small style="color:#94a3b8">An IS auditor analyzing a DBMS audit log finds that some transactions were partially executed as a result of an error and have not been rolled back. Which transaction processing feature has been violated?</small>`,
+options: [
+  "일관성(Consistency).<br><small style='color:#94a3b8'>Consistency</small>",
+  "격리성(Isolation).<br><small style='color:#94a3b8'>Isolation</small>",
+  "내구성(Durability).<br><small style='color:#94a3b8'>Durability</small>",
+  "원자성(Atomicity).<br><small style='color:#94a3b8'>Atomicity</small>"
+],
+correct: 3,
+explanation: `<p><b>원자성(Atomicity)</b>이 위반되었습니다. 원자성은 거래 전체가 처리되거나 아무것도 처리되지 않음을 보장하지만, 부분 실행 + 롤백 미수행 = 원자성 위반입니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">ACID 속성</th><th style="padding:8px;border:1px solid #334155">정의</th><th style="padding:8px;border:1px solid #334155">위반 시나리오</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 일관성(C)</td><td style="padding:8px;border:1px solid #ddd">거래 전후 DB 정상 상태</td><td style="padding:8px;border:1px solid #ddd">무결성 규칙 위반 시</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 격리성(I)</td><td style="padding:8px;border:1px solid #ddd">중간 상태 외부 비가시</td><td style="padding:8px;border:1px solid #ddd">동시 거래 충돌 시 (Q292)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 내구성(D)</td><td style="padding:8px;border:1px solid #ddd">성공 거래 영구 보존</td><td style="padding:8px;border:1px solid #ddd">커밋 후 손실 시</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 원자성(A) ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>전체 처리 or 전체 취소</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 부분 실행 + 롤백 ✗ = 원자성 위반</b></td></tr>
+</table>
+<div class="sbox"><b>⚛️ ACID 속성 종합 정리:</b><br>
+• <b>A (Atomicity·원자성):</b> All or Nothing<br>
+&nbsp;&nbsp;- 정상: 전체 커밋 또는 전체 롤백<br>
+&nbsp;&nbsp;- 위반: 부분 실행 (Q304)<br>
+• <b>C (Consistency·일관성):</b> 무결성 규칙 유지<br>
+&nbsp;&nbsp;- 거래 전후 DB가 유효한 상태<br>
+• <b>I (Isolation·격리성):</b> 동시 거래 격리<br>
+&nbsp;&nbsp;- Lost Update·Dirty Read 등 방지 (Q292)<br>
+• <b>D (Durability·내구성):</b> 영구 보존<br>
+&nbsp;&nbsp;- 커밋된 데이터는 시스템 장애에도 유지<br>
+• Q293 연결: 커밋·롤백 = 원자성 메커니즘<br>
+• <b>"부분 실행 + 미롤백"</b> = 원자성 위반의 전형적 예시</div>`,
+reference:"CRM Chapter 4: IS Operations — ACID Properties Violation",
+keyConcepts:[
+"원자성 위반|부분 실행 + 롤백 미수행 = All or Nothing 원칙 위반",
+"ACID 4속성|A(원자)·C(일관)·I(격리)·D(내구) — 거래 처리의 4대 보장",
+"원자성 메커니즘|커밋(전체 완료)·롤백(전체 취소) — 부분 상태 허용 ✗",
+"Q292·Q293·Q304 일관성|격리성(Q292)·원자성(Q293·Q304) — ACID 종합 이해"
+]
+},
+
+// ============================================================
+// Q305 - Primary Purpose of BIA
+// ============================================================
+{
+id: 305,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `비즈니스 영향 분석(BIA)의 주요 목적은?<br><small style="color:#94a3b8">The PRIMARY purpose of a business impact analysis (BIA) is to:</small>`,
+options: [
+  "복구 전략을 정의한다.<br><small style='color:#94a3b8'>Define recovery strategies.</small>",
+  "대체 사이트를 식별한다.<br><small style='color:#94a3b8'>Identify the alternate site.</small>",
+  "복구 테스트를 개선한다.<br><small style='color:#94a3b8'>Improve recovery testing.</small>",
+  "연간 손실 기대치(ALE)를 계산한다.<br><small style='color:#94a3b8'>Calculate the annual loss expectancy.</small>"
+],
+correct: 0,
+explanation: `<p><b>복구 전략 정의</b>가 BIA의 주요 목적입니다. BIA의 주요 산출물 중 하나가 복구 시간 목표(RTO)와 복구 시점 목표(RPO)이며, 이는 복구 전략 정의에 도움이 됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">BIA 단계</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 복구 전략 정의 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>BIA 산출물 활용</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ RTO·RPO → 복구 전략의 기반</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 대체 사이트 식별</td><td style="padding:8px;border:1px solid #ddd">복구 전략 단계</td><td style="padding:8px;border:1px solid #ddd">전략 단계 활동 — BIA 자체 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 복구 테스트 개선</td><td style="padding:8px;border:1px solid #ddd">구현·테스트 단계</td><td style="padding:8px;border:1px solid #ddd">후속 단계 — BIA 자체 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. ALE 계산</td><td style="padding:8px;border:1px solid #ddd">위험 평가</td><td style="padding:8px;border:1px solid #ddd">위험 평가 단계 — BIA에서 검토만</td></tr>
+</table>
+<div class="sbox"><b>📋 BIA(Business Impact Analysis) 핵심:</b><br>
+• <b>주요 산출물:</b><br>
+&nbsp;&nbsp;1. <b>핵심 비즈니스 프로세스</b> 식별<br>
+&nbsp;&nbsp;2. <b>RTO</b> (복구 시간 목표)<br>
+&nbsp;&nbsp;3. <b>RPO</b> (복구 시점 목표)<br>
+&nbsp;&nbsp;4. <b>SDO</b> (서비스 제공 목표)<br>
+&nbsp;&nbsp;5. <b>MTO</b> (최대 허용 중단 시간)<br>
+&nbsp;&nbsp;6. 다운타임 영향 (재무·운영·평판)<br>
+• <b>BIA 산출물의 활용:</b> 복구 전략 정의의 기반<br>
+• Q267 연결: BIA → 전략 → BCP → 교육·테스트 (순서)<br>
+• <b>BIA vs 위험 평가:</b><br>
+&nbsp;&nbsp;- BIA: 비즈니스 영향 분석 (정량·정성)<br>
+&nbsp;&nbsp;- 위험 평가: 위협 × 취약점 × 영향 (ALE 계산)<br>
+• 핵심: <b>BIA = "무엇을 보호할지·얼마나 빨리 복구할지" 결정</b></div>`,
+reference:"CRM Chapter 4: IS Operations — Business Impact Analysis",
+keyConcepts:[
+"BIA 주요 목적|복구 전략 정의의 기반 — RTO·RPO·SDO·MTO 산출물 제공",
+"BIA 산출물|핵심 프로세스·RTO·RPO·SDO·MTO·다운타임 영향 — 종합적 평가",
+"BIA vs 위험 평가|BIA=비즈니스 영향, 위험 평가=ALE 계산 — 다른 활동",
+"Q267·Q269·Q273 일관성|BCP 프로세스: BIA → 전략 → BCP → 테스트"
+]
+},
+
+// ============================================================
+// Q306 - DRP Preparation First Task
+// ============================================================
+{
+id: 306,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `재해복구계획(DRP) 준비 시 가장 먼저 수행해야 할 작업은?<br><small style="color:#94a3b8">Which of the following tasks should be performed FIRST when preparing a disaster recovery plan (DRP)?</small>`,
+options: [
+  "복구 전략을 개발한다.<br><small style='color:#94a3b8'>Develop a recovery strategy.</small>",
+  "비즈니스 영향 분석(BIA)을 수행한다.<br><small style='color:#94a3b8'>Perform a business impact analysis (BIA).</small>",
+  "소프트웨어 시스템·하드웨어·네트워크 구성요소를 매핑한다.<br><small style='color:#94a3b8'>Map software systems, hardware and network components.</small>",
+  "정의된 인력·역할·계층 구조를 가진 복구 팀을 임명한다.<br><small style='color:#94a3b8'>Appoint recovery teams with defined personnel, roles and hierarchy.</small>"
+],
+correct: 1,
+explanation: `<p><b>BIA 수행</b>이 DRP 준비의 첫 단계입니다. BIA는 핵심 비즈니스 프로세스와 이를 지원하는 시스템을 식별하며, 모든 후속 활동의 기반이 됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">단계</th><th style="padding:8px;border:1px solid #334155">활동</th><th style="padding:8px;border:1px solid #334155">의존성</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>1️⃣ BIA ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>핵심 프로세스·시스템 식별</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 모든 후속 활동의 전제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">2️⃣ 복구 전략</td><td style="padding:8px;border:1px solid #ddd">복구 방안 결정</td><td style="padding:8px;border:1px solid #ddd">BIA 결과 기반</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">3️⃣ 시스템 매핑</td><td style="padding:8px;border:1px solid #ddd">자산 인벤토리</td><td style="padding:8px;border:1px solid #ddd">BIA 결과 기반</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">4️⃣ 복구 팀 임명</td><td style="padding:8px;border:1px solid #ddd">인력 조직</td><td style="padding:8px;border:1px solid #ddd">BIA 결과 기반</td></tr>
+</table>
+<div class="sbox"><b>📋 DRP 준비 프로세스 — BIA가 시작점:</b><br>
+• <b>BIA 산출물 → 후속 활동:</b><br>
+&nbsp;&nbsp;1. 핵심 프로세스 → 보호 대상 결정<br>
+&nbsp;&nbsp;2. RTO·RPO → 전략 선택 (사이트 유형 등)<br>
+&nbsp;&nbsp;3. 영향 분석 → 비용 정당화<br>
+&nbsp;&nbsp;4. 의존성 → 시스템 매핑<br>
+&nbsp;&nbsp;5. 우선순위 → 복구 순서<br>
+• <b>"BIA 없이는 무엇도 결정 불가":</b><br>
+&nbsp;&nbsp;- 무엇을 보호할지 ✗<br>
+&nbsp;&nbsp;- 얼마나 빨리 복구할지 ✗<br>
+&nbsp;&nbsp;- 어떤 사이트 필요한지 ✗<br>
+• Q267·Q305·Q306 일관성: BIA = BCP/DRP의 첫 단계<br>
+• 핵심: <b>"BIA → 전략 → 매핑 → 팀 → BCP/DRP"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — DRP Development Process",
+keyConcepts:[
+"DRP 첫 단계|BIA 수행 — 핵심 프로세스·시스템 식별이 모든 후속 활동의 전제",
+"BIA 산출물 활용|RTO·RPO·우선순위·영향 → 전략·매핑·팀·예산 결정",
+"DRP/BCP 프로세스|BIA → 복구 전략 → 시스템 매핑 → 팀 → 계획 → 테스트",
+"Q267·Q305·Q306 일관성|BIA = BCP/DRP의 시작점 (모든 의존성의 뿌리)"
+]
+},
+
+// ============================================================
+// Q307 - BIA to Optimize BCP
+// ============================================================
+{
+id: 307,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `조직의 비즈니스 연속성 계획을 최적화하기 위해 IS 감사인이 BIA를 권고하여 결정해야 할 것은?<br><small style="color:#94a3b8">To optimize an organization's BCP, an IS auditor should recommend a BIA to determine:</small>`,
+options: [
+  "조직에 가장 큰 재무 가치를 창출하는 비즈니스 프로세스 — 따라서 먼저 복구되어야 한다.<br><small style='color:#94a3b8'>The business processes that generate the most financial value and must be recovered first.</small>",
+  "조직의 비즈니스 전략과 정렬되도록 복구의 우선순위와 순서.<br><small style='color:#94a3b8'>The priorities and order for recovery to ensure alignment with the organization's business strategy.</small>",
+  "조직의 생존을 보장하기 위해 재해 후 복구되어야 하는 비즈니스 프로세스.<br><small style='color:#94a3b8'>The business processes that must be recovered following a disaster to ensure the organization's survival.</small>",
+  "가장 짧은 시간 내에 가장 많은 시스템을 복구하는 우선순위와 순서.<br><small style='color:#94a3b8'>The priorities and order of recovery, which will recover the greatest number of systems in the shortest time.</small>"
+],
+correct: 2,
+explanation: `<p><b>조직 생존을 보장하기 위해 복구되어야 하는 비즈니스 프로세스</b> 결정이 BIA의 핵심입니다. 재해 후 가장 핵심적인 비즈니스 프로세스를 먼저 복구해야 조직 생존이 보장됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">기준</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 재무 가치 우선</td><td style="padding:8px;border:1px solid #ddd">재무</td><td style="padding:8px;border:1px solid #ddd">흔한 실수 — 긴급성과 재무 가치는 다름</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 비즈니스 전략 정렬</td><td style="padding:8px;border:1px solid #ddd">전략(장기)</td><td style="padding:8px;border:1px solid #ddd">장기 관점 — 즉각적 복구와 무관</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 조직 생존 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>긴급성·생존</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ BIA 핵심 — 생존에 필수적인 프로세스 식별</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 시스템 수 최대화</td><td style="padding:8px;border:1px solid #ddd">양적 기준</td><td style="padding:8px;border:1px solid #ddd">생존 영향 미고려 — 수보다 중요도</td></tr>
+</table>
+<div class="sbox"><b>🎯 BIA 핵심 통찰 — 재무 vs 생존:</b><br>
+• <b>재무 가치 ≠ 긴급성</b><br>
+• <b>예시 (CRM 인용):</b><br>
+&nbsp;&nbsp;- 모기지 대금 처리 = 재무적 중요하나 며칠 지연 가능<br>
+&nbsp;&nbsp;- 대출 자금 송금 = 직접 수익 ✗이나 즉시 처리 필요<br>
+&nbsp;&nbsp;- 이유: 규제 문제·고객 불만·평판 위험<br>
+• <b>BIA 우선순위 결정 요소:</b><br>
+&nbsp;&nbsp;1. 규제 준수 영향<br>
+&nbsp;&nbsp;2. 고객 영향<br>
+&nbsp;&nbsp;3. 평판 영향<br>
+&nbsp;&nbsp;4. 운영 의존성<br>
+&nbsp;&nbsp;5. 재무 영향<br>
+• <b>"가장 큰 재무 가치 ≠ 가장 먼저 복구"</b><br>
+• Q269·Q305 연결: BIA = 비즈니스 영향(다차원) 분석<br>
+• 핵심: <b>생존 = 즉시 필요한 것을 먼저</b></div>`,
+reference:"CRM Chapter 4: IS Operations — BIA & Business Survival",
+keyConcepts:[
+"BIA 핵심 목적|조직 생존 보장 — 재해 후 핵심 프로세스 식별이 우선",
+"재무 가치 ≠ 긴급성|흔한 실수 — 재무 가치 큰 것보다 즉시 필요한 것이 우선",
+"BIA 우선순위 요소|규제·고객·평판·운영·재무 — 다차원 평가",
+"Q269·Q305·Q307 일관성|BIA = 종합적 비즈니스 영향 분석 (재무만 ✗)"
+]
+},
+
+// ============================================================
+// Q308 - Next Step After BIA (Variant of Q267)
+// ============================================================
+{
+id: 308,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `BIA를 완료한 후, 비즈니스 연속성 계획 프로세스의 다음 단계는?<br><small style="color:#94a3b8">After completing the business impact analysis (BIA), what is the NEXT step in the business continuity planning process?</small>`,
+options: [
+  "계획을 테스트하고 유지보수한다.<br><small style='color:#94a3b8'>Test and maintain the plan.</small>",
+  "구체적인 계획을 개발한다.<br><small style='color:#94a3b8'>Develop a specific plan.</small>",
+  "복구 전략을 개발한다.<br><small style='color:#94a3b8'>Develop recovery strategies.</small>",
+  "계획을 구현한다.<br><small style='color:#94a3b8'>Implement the plan.</small>"
+],
+correct: 2,
+explanation: `<p><b>복구 전략 개발</b>이 BIA의 다음 단계입니다(Q267과 동일). BIA 완료 후, BIA에서 정의된 타임라인과 우선순위를 충족시키는 가장 적절한 복구 전략을 식별·선택합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">단계</th><th style="padding:8px;border:1px solid #334155">활동</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">1️⃣</td><td style="padding:8px;border:1px solid #ddd">위험 평가</td><td style="padding:8px;border:1px solid #ddd">위협·취약점 식별</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">2️⃣</td><td style="padding:8px;border:1px solid #ddd">BIA 수행</td><td style="padding:8px;border:1px solid #ddd">완료 (현 시점)</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>3️⃣</b></td><td style="padding:8px;border:1px solid #ddd"><b>복구 전략 개발 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 다음 단계 (Q267 일관)</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">4️⃣</td><td style="padding:8px;border:1px solid #ddd">구체적 BCP 작성</td><td style="padding:8px;border:1px solid #ddd">전략 후</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">5️⃣</td><td style="padding:8px;border:1px solid #ddd">테스트·유지보수</td><td style="padding:8px;border:1px solid #ddd">최종 단계</td></tr>
+</table>
+<div class="sbox"><b>🔁 Q267 = Q308 (동일 패턴 반복):</b><br>
+• BCP 프로세스 순서는 CISA 시험 단골 출제<br>
+• <b>완전한 BCP 흐름:</b><br>
+&nbsp;&nbsp;1. <b>위험 평가</b><br>
+&nbsp;&nbsp;2. <b>BIA</b> (Q305·Q306·Q307)<br>
+&nbsp;&nbsp;3. <b>복구 전략 개발</b> (Q267·Q308)<br>
+&nbsp;&nbsp;4. <b>BCP/DRP 작성</b><br>
+&nbsp;&nbsp;5. <b>교육·테스트</b><br>
+&nbsp;&nbsp;6. <b>유지보수</b><br>
+• <b>BIA 산출물 → 전략 결정 요소:</b><br>
+&nbsp;&nbsp;- RTO → 사이트 유형(핫/웜/콜드)<br>
+&nbsp;&nbsp;- RPO → 백업 빈도·전략<br>
+&nbsp;&nbsp;- 우선순위 → 복구 순서<br>
+• 핵심: <b>"BIA → 전략 → BCP" 순서는 절대 변경 ✗</b></div>`,
+reference:"CRM Chapter 4: IS Operations — BCP Development Process (Same as Q267)",
+keyConcepts:[
+"BIA 다음 단계|복구 전략 개발 — BIA의 RTO·우선순위를 충족하는 전략 선택",
+"BCP 단계 순서|위험 평가 → BIA → 전략 → BCP → 테스트 → 유지보수",
+"CISA 단골 패턴|Q267·Q308 동일 — BCP 프로세스 순서는 빈번한 출제 토픽",
+"Q305·Q306·Q307·Q308 종합|BIA의 목적·시점·산출물·다음 단계 — 종합 이해 필요"
+]
+},
+
+// ============================================================
+// Q309 - BIA vs Risk Assessment Distinction
+// ============================================================
+{
+id: 309,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `다음 중 BIA를 위험 평가와 구별하는 것은?<br><small style="color:#94a3b8">Which of the following distinguishes a business impact analysis (BIA) from a risk assessment?</small>`,
+options: [
+  "핵심 자산 인벤토리.<br><small style='color:#94a3b8'>Inventory of critical assets</small>",
+  "취약점 식별.<br><small style='color:#94a3b8'>Identification of vulnerabilities</small>",
+  "위협 목록 작성.<br><small style='color:#94a3b8'>Listing of threats</small>",
+  "허용 가능한 다운타임 결정.<br><small style='color:#94a3b8'>Determination of acceptable downtime</small>"
+],
+correct: 3,
+explanation: `<p><b>허용 가능한 다운타임 결정</b>이 BIA만의 고유 활동입니다. 핵심 자산 인벤토리, 취약점 식별, 위협 목록은 위험 평가와 BIA 모두에서 수행됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">활동</th><th style="padding:8px;border:1px solid #334155">위험 평가</th><th style="padding:8px;border:1px solid #334155">BIA</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 핵심 자산 인벤토리</td><td style="padding:8px;border:1px solid #ddd">✔</td><td style="padding:8px;border:1px solid #ddd">✔ (공통)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 취약점 식별</td><td style="padding:8px;border:1px solid #ddd">✔</td><td style="padding:8px;border:1px solid #ddd">✔ (공통)</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 위협 목록</td><td style="padding:8px;border:1px solid #ddd">✔</td><td style="padding:8px;border:1px solid #ddd">✔ (공통)</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 허용 다운타임 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>✗</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ BIA만의 활동</b></td></tr>
+</table>
+<div class="sbox"><b>📊 BIA vs 위험 평가 비교:</b><br>
+• <b>공통 활동:</b><br>
+&nbsp;&nbsp;1. 자산 인벤토리<br>
+&nbsp;&nbsp;2. 위협 식별<br>
+&nbsp;&nbsp;3. 취약점 식별<br>
+• <b>위험 평가 고유 활동:</b><br>
+&nbsp;&nbsp;1. 위험 = 위협 × 취약점 × 영향<br>
+&nbsp;&nbsp;2. ALE 계산<br>
+&nbsp;&nbsp;3. 위험 처리 전략 (수용·전가·완화·회피)<br>
+• <b>BIA 고유 활동:</b><br>
+&nbsp;&nbsp;1. <b>RTO·RPO·SDO·MTO 결정</b><br>
+&nbsp;&nbsp;2. <b>허용 다운타임</b> (Q309 정답)<br>
+&nbsp;&nbsp;3. 비즈니스 프로세스 우선순위<br>
+&nbsp;&nbsp;4. 다운타임의 비즈니스 영향 정량·정성 분석<br>
+• <b>관계:</b> 위험 평가 = "위험" 식별 / BIA = "영향" 분석<br>
+• Q269·Q305·Q307 연결: BIA = 비즈니스 영향 다차원 분석</div>`,
+reference:"CRM Chapter 4: IS Operations — BIA vs Risk Assessment",
+keyConcepts:[
+"BIA 고유 활동|허용 다운타임 결정 — 위험 평가와 구별되는 BIA만의 활동",
+"BIA vs 위험 평가|공통=자산·위협·취약점, 차이=BIA는 RTO·다운타임, 위험 평가는 ALE·처리 전략",
+"BIA 산출물|RTO·RPO·SDO·MTO·우선순위·다운타임 영향 — 모두 BIA 특유",
+"CISA 출제 패턴|BIA vs 위험 평가 구별 = 시험 빈출 토픽"
+]
+},
+
+// ============================================================
+// Q310 - First Identification in BIA
+// ============================================================
+{
+id: 310,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `BCP 프로세스의 일부로, BIA에서 가장 먼저 식별되어야 할 것은?<br><small style="color:#94a3b8">As part of the BCP process, which of the following should be identified FIRST in the BIA?</small>`,
+options: [
+  "단일 장애 지점(SPoF)·인프라 위험과 같은 위험.<br><small style='color:#94a3b8'>Risk, such as single point-of-failure and infrastructure risk</small>",
+  "핵심 비즈니스 프로세스에 대한 위협.<br><small style='color:#94a3b8'>Threats to critical business processes</small>",
+  "복구 우선순위 확인을 위한 핵심 비즈니스 프로세스.<br><small style='color:#94a3b8'>Critical business processes for ascertaining the priority for recovery</small>",
+  "비즈니스 재개에 필요한 자원.<br><small style='color:#94a3b8'>Resources required for resumption of business</small>"
+],
+correct: 2,
+explanation: `<p><b>핵심 비즈니스 프로세스</b>가 BIA에서 가장 먼저 식별되어야 합니다. 핵심 프로세스 식별이 우선되어야 복구 우선순위와 타임라인을 문서화할 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">시점</th><th style="padding:8px;border:1px solid #334155">의존성</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. SPoF·인프라 위험</td><td style="padding:8px;border:1px solid #ddd">후속</td><td style="padding:8px;border:1px solid #ddd">핵심 프로세스 식별 후</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 위협 식별</td><td style="padding:8px;border:1px solid #ddd">후속</td><td style="padding:8px;border:1px solid #ddd">핵심 프로세스 식별 후</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. 핵심 프로세스 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>FIRST</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ BIA의 시작점 — 모든 활동의 기반</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 필요 자원</td><td style="padding:8px;border:1px solid #ddd">후속</td><td style="padding:8px;border:1px solid #ddd">핵심 프로세스 식별 후</td></tr>
+</table>
+<div class="sbox"><b>📋 BIA 내부 단계 순서:</b><br>
+• <b>1단계: 핵심 비즈니스 프로세스 식별</b> ← FIRST<br>
+• <b>2단계:</b> 각 프로세스의 위협·위험 식별<br>
+• <b>3단계:</b> 다운타임 영향 평가<br>
+• <b>4단계:</b> RTO·RPO·SDO 결정<br>
+• <b>5단계:</b> 필요 자원 식별<br>
+• <b>6단계:</b> 우선순위 정의<br>
+• <b>핵심 원리:</b> "보호 대상이 정의되지 않으면 위협·위험·자원 평가 ✗"<br>
+• <b>BIA 종합 흐름:</b><br>
+&nbsp;&nbsp;핵심 프로세스 → 위협·위험 → 영향 → RTO/RPO → 자원 → 우선순위<br>
+• Q306·Q307·Q310 일관성: BIA는 항상 <b>"무엇을 보호할지"</b>부터 시작<br>
+• 핵심: <b>"What → How → Who → When"</b> 순서</div>`,
+reference:"CRM Chapter 4: IS Operations — BIA Internal Process",
+keyConcepts:[
+"BIA 첫 단계|핵심 비즈니스 프로세스 식별 — 모든 후속 활동의 전제",
+"BIA 내부 순서|핵심 프로세스 → 위협·위험 → 영향 → RTO/RPO → 자원 → 우선순위",
+"의존성 원리|보호 대상이 정의되지 않으면 위협·위험·자원 평가 불가",
+"Q306·Q307·Q310 일관성|BIA는 항상 '무엇을 보호할지'부터 시작"
+]
+},
+
+// ============================================================
+// Q311 - BIA Information Source for Criticality
+// ============================================================
+{
+id: 311,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `BIA의 일부로 애플리케이션 시스템의 중요도를 결정하는 데 가장 좋은 정보 출처는?<br><small style="color:#94a3b8">Which of the following groups is the BEST source of information for determining the criticality of application systems as part of a BIA?</small>`,
+options: [
+  "비즈니스 프로세스 소유자.<br><small style='color:#94a3b8'>Business process owners</small>",
+  "IT 경영진.<br><small style='color:#94a3b8'>IT management</small>",
+  "고위 비즈니스 경영진.<br><small style='color:#94a3b8'>Senior business management</small>",
+  "산업 전문가.<br><small style='color:#94a3b8'>Industry experts</small>"
+],
+correct: 0,
+explanation: `<p><b>비즈니스 프로세스 소유자</b>가 가장 좋은 정보 출처입니다. BIA가 비즈니스 요구에 기반하여 중요도와 복구 타임라인을 평가하도록 설계되었으므로, 프로세스 소유자가 가장 관련 있는 정보를 제공합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">정보 깊이</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>A. 프로세스 소유자 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비즈니스 직접 지식</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 일상 운영·중요도 가장 잘 이해</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. IT 경영진</td><td style="padding:8px;border:1px solid #ddd">기술 지식</td><td style="padding:8px;border:1px solid #ddd">기술적 측면만 — 비즈니스 영향 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 고위 비즈니스 경영진</td><td style="padding:8px;border:1px solid #ddd">전략적 관점</td><td style="padding:8px;border:1px solid #ddd">상위 수준 — 운영 세부 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. 산업 전문가</td><td style="padding:8px;border:1px solid #ddd">일반적 지식</td><td style="padding:8px;border:1px solid #ddd">조직 고유 요구 ✗</td></tr>
+</table>
+<div class="sbox"><b>👤 비즈니스 프로세스 소유자의 역할:</b><br>
+• <b>책임:</b> 특정 프로세스의 일상 운영·성과·결과<br>
+• <b>BIA 기여:</b><br>
+&nbsp;&nbsp;1. 프로세스 중요도 평가<br>
+&nbsp;&nbsp;2. 다운타임 허용 시간 (RTO) 결정<br>
+&nbsp;&nbsp;3. 데이터 손실 허용량 (RPO) 결정<br>
+&nbsp;&nbsp;4. 의존성 식별<br>
+&nbsp;&nbsp;5. 비즈니스 영향 정량·정성<br>
+• <b>다른 그룹의 한계:</b><br>
+&nbsp;&nbsp;- IT 경영진: 기술 측면만<br>
+&nbsp;&nbsp;- 고위 경영진: 전략 수준만<br>
+&nbsp;&nbsp;- 산업 전문가: 조직 특수성 ✗<br>
+• Q215·Q272 연결: 애플리케이션 소유자 = 비즈니스 요구의 최종 결정권자<br>
+• 핵심: <b>"비즈니스 정보는 비즈니스 사람에게서"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — BIA Information Sources",
+keyConcepts:[
+"프로세스 소유자|일상 운영·중요도·의존성 가장 잘 이해 — BIA 정보의 최선 출처",
+"비즈니스 vs 기술 정보|중요도=비즈니스 관점, 기술 구현=IT 경영진 — 출처 구분",
+"BIA 정보 수집|프로세스 소유자 인터뷰 + 설문 = 핵심 데이터 수집 방법",
+"Q215·Q272 일관성|애플리케이션·프로세스 소유자 = 비즈니스 요구의 결정권자"
+]
+},
+
+// ============================================================
+// Q312 - IT Asset Recovery Prioritization
+// ============================================================
+{
+id: 312,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `재해 계획 시 IT 자산의 복구 우선순위를 정하는 데 가장 도움이 되는 것은?<br><small style="color:#94a3b8">Which of the following BEST helps prioritize the recovery of IT assets when planning for a disaster?</small>`,
+options: [
+  "인시던트 대응 계획.<br><small style='color:#94a3b8'>Incident response plan</small>",
+  "비즈니스 영향 분석(BIA).<br><small style='color:#94a3b8'>Business impact analysis (BIA)</small>",
+  "위협 및 위험 분석.<br><small style='color:#94a3b8'>Threat and risk analysis</small>",
+  "복구 시간 목표(RTO).<br><small style='color:#94a3b8'>Recovery time objective (RTO)</small>"
+],
+correct: 1,
+explanation: `<p><b>BIA</b>가 가장 도움이 됩니다. BIA를 IT 재해복구 계획 프로세스에 통합하는 것은 IT 자산이 비즈니스와 정렬되도록 우선순위를 정하는 데 중요합니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">우선순위 결정</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 인시던트 대응 계획</td><td style="padding:8px;border:1px solid #ddd">보안 침해·공격 대응</td><td style="padding:8px;border:1px solid #ddd">우선순위 결정 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>B. BIA ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비즈니스 영향 분석</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 비즈니스 정렬 + 우선순위 종합 결정</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 위협·위험 분석</td><td style="padding:8px;border:1px solid #ddd">위험 식별</td><td style="padding:8px;border:1px solid #ddd">중요하나 우선순위 결정 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. RTO</td><td style="padding:8px;border:1px solid #ddd">복구 시간 목표</td><td style="padding:8px;border:1px solid #ddd">BIA의 산출물 — 우선순위 표현 도구</td></tr>
+</table>
+<div class="sbox"><b>📋 BIA와 IT 자산 우선순위:</b><br>
+• <b>BIA의 우선순위 결정 메커니즘:</b><br>
+&nbsp;&nbsp;1. 핵심 비즈니스 프로세스 식별 (Q310)<br>
+&nbsp;&nbsp;2. 프로세스별 RTO·RPO 결정<br>
+&nbsp;&nbsp;3. IT 자산이 어떤 프로세스를 지원하는지 매핑<br>
+&nbsp;&nbsp;4. <b>가장 중요한 프로세스를 지원하는 IT 자산이 최우선</b><br>
+• <b>RTO vs BIA 관계:</b><br>
+&nbsp;&nbsp;- RTO는 BIA의 <b>산출물</b><br>
+&nbsp;&nbsp;- BIA는 RTO를 <b>포함한 종합 분석</b><br>
+&nbsp;&nbsp;- 우선순위 결정 = BIA가 더 포괄적<br>
+• Q305·Q306·Q310 연결: BIA = BCP/DRP의 핵심 도구<br>
+• 핵심: <b>"BIA = IT 자산을 비즈니스 요구에 정렬"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — BIA & IT Asset Prioritization",
+keyConcepts:[
+"BIA와 자산 우선순위|비즈니스 정렬을 통한 IT 자산 우선순위 결정 — 종합적 도구",
+"BIA vs RTO|RTO=BIA의 산출물, BIA=RTO 포함 종합 분석 — BIA가 더 포괄적",
+"우선순위 결정 메커니즘|핵심 프로세스 → RTO → IT 자산 매핑 → 우선순위",
+"Q305·Q306·Q310·Q312 일관성|BIA = BCP/DRP의 핵심 도구 (모든 의존성의 뿌리)"
+]
+},
+
+// ============================================================
+// Q313 - Determining Application Criticality
+// ============================================================
+{
+id: 313,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `운영 환경의 각 애플리케이션 시스템의 중요도를 결정하는 가장 좋은 방법은?<br><small style="color:#94a3b8">Which of the following is the BEST method for determining the criticality of each application system in the production environment?</small>`,
+options: [
+  "애플리케이션 프로그래머를 인터뷰한다.<br><small style='color:#94a3b8'>Interview the application programmers.</small>",
+  "갭 분석(Gap analysis)을 수행한다.<br><small style='color:#94a3b8'>Perform a gap analysis.</small>",
+  "가장 최근의 애플리케이션 감사를 검토한다.<br><small style='color:#94a3b8'>Review the most recent application audits.</small>",
+  "비즈니스 영향 분석(BIA)을 수행한다.<br><small style='color:#94a3b8'>Perform a business impact analysis (BIA).</small>"
+],
+correct: 3,
+explanation: `<p><b>BIA 수행</b>이 정답입니다. BIA는 각 애플리케이션 손실의 영향을 제공하며, 시스템의 중요도와 비즈니스에 대한 중요성을 정확히 설명할 수 있는 비즈니스 대표자와 함께 수행됩니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">정보 출처</th><th style="padding:8px;border:1px solid #334155">중요도 결정</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 프로그래머 인터뷰</td><td style="padding:8px;border:1px solid #ddd">기술 관점</td><td style="padding:8px;border:1px solid #ddd">비즈니스 중요도 정보 제한</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 갭 분석</td><td style="padding:8px;border:1px solid #ddd">현재 vs 목표</td><td style="padding:8px;border:1px solid #ddd">SDLC·프로젝트 관련 — 중요도 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 최근 감사 검토</td><td style="padding:8px;border:1px solid #ddd">감사 보고서</td><td style="padding:8px;border:1px solid #ddd">중요도 정보 미포함 가능</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. BIA 수행 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>비즈니스 대표자</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 손실 영향 + 중요도 종합 평가</b></td></tr>
+</table>
+<div class="sbox"><b>📊 BIA를 통한 애플리케이션 중요도 평가:</b><br>
+• <b>BIA의 평가 방법:</b><br>
+&nbsp;&nbsp;1. 비즈니스 프로세스 소유자 인터뷰 (Q311)<br>
+&nbsp;&nbsp;2. 다운타임 영향 정량·정성 분석<br>
+&nbsp;&nbsp;3. 의존성 매핑<br>
+&nbsp;&nbsp;4. 우선순위 분류 (Critical/Vital/Sensitive)<br>
+• <b>BIA 활용 - 애플리케이션 중요도:</b><br>
+&nbsp;&nbsp;- 핵심 프로세스를 지원하는 앱 → 최우선<br>
+&nbsp;&nbsp;- 손실 시 비즈니스 영향 큰 앱 → 우선<br>
+&nbsp;&nbsp;- RTO 짧은 앱 → 우선<br>
+• Q214 연결: 시스템 분류 → 사이트 유형 (Critical→핫, Vital→웜, Sensitive→콜드)<br>
+• Q311 일관성: 중요도 정보는 비즈니스 사람에게서<br>
+• 핵심: <b>"중요도 결정 = BIA의 핵심 산출물"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — BIA & Application Criticality",
+keyConcepts:[
+"BIA와 애플리케이션 중요도|손실 영향 + 비즈니스 중요성 종합 평가 — 가장 정확한 방법",
+"BIA 평가 방법|소유자 인터뷰 + 영향 분석 + 의존성 매핑 + 우선순위 분류",
+"중요도 분류|Critical/Vital/Sensitive — Q214 사이트 유형과 매칭",
+"Q311·Q313 일관성|중요도 정보 = 비즈니스 대표자(프로세스 소유자) 출처"
+]
+},
+
+// ============================================================
+// Q314 - DRP Implementation Greatest Risk
+// ============================================================
+{
+id: 314,
+domain: "4",
+ks: "4B1 Business Impact Analysis",
+question: `IS 감사인이 조직의 DRP 구현을 검토하고 있다. 프로젝트는 일정과 예산 내에 완료되었으나, 감사 중 여러 우려 사항이 발견되었다. 다음 중 가장 큰 위험은?<br><small style="color:#94a3b8">An IS auditor is reviewing an organization's DRP implementation. Several concerns are found. Which presents the GREATEST risk?</small>`,
+options: [
+  "DRP 테스트가 수행되지 않았다.<br><small style='color:#94a3b8'>Testing of the DRP has not been performed.</small>",
+  "재해복구 전략이 핫 사이트 사용을 명시하지 않는다.<br><small style='color:#94a3b8'>The disaster recovery strategy does not specify the use of a hot site.</small>",
+  "BIA가 수행되었으나, 결과가 사용되지 않았다.<br><small style='color:#94a3b8'>The BIA was conducted, but the results were not used.</small>",
+  "구현을 위한 재해복구 프로젝트 매니저가 최근 조직을 떠났다.<br><small style='color:#94a3b8'>The disaster recovery project manager has recently left the organization.</small>"
+],
+correct: 2,
+explanation: `<p><b>BIA 결과 미활용</b>이 가장 큰 위험입니다. BIA 결과를 재해복구 계획에 사용하지 않으면 DRP가 가장 핵심 자산을 올바른 순서로 복구하도록 설계되지 않았을 수 있으며, 결과적으로 조직이 재해로부터 회복할 수 없을 수 있습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">선지</th><th style="padding:8px;border:1px solid #334155">위험 정도</th><th style="padding:8px;border:1px solid #334155">이유</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. DRP 테스트 미수행</td><td style="padding:8px;border:1px solid #ddd">중요</td><td style="padding:8px;border:1px solid #ddd">중요하나 설계 결함보다 작음</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 핫 사이트 미사용</td><td style="padding:8px;border:1px solid #ddd">전략 결정</td><td style="padding:8px;border:1px solid #ddd">조직 요구 따라 — 항상 필요 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>C. BIA 결과 미활용 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>치명적 설계 결함</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ DRP 자체가 부적절 — 복구 불가 위험</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">D. PM 이직</td><td style="padding:8px;border:1px solid #ddd">낮음</td><td style="padding:8px;border:1px solid #ddd">제대로 문서화되었다면 영향 최소</td></tr>
+</table>
+<div class="sbox"><b>⚠️ BIA 결과 미활용의 치명성:</b><br>
+• <b>치명적 결과:</b><br>
+&nbsp;&nbsp;1. 잘못된 우선순위 → 중요 자산이 후순위로<br>
+&nbsp;&nbsp;2. 부적절한 RTO·RPO → 비즈니스 요구 미충족<br>
+&nbsp;&nbsp;3. 자원 배분 오류 → 비효율적 투자<br>
+&nbsp;&nbsp;4. <b>재해 시 조직 생존 위협</b><br>
+• <b>다른 위험과의 비교:</b><br>
+&nbsp;&nbsp;- 테스트 미수행 = 검증 못함, but 설계는 가능<br>
+&nbsp;&nbsp;- 핫 사이트 미사용 = 비용·요구 따라 결정<br>
+&nbsp;&nbsp;- PM 이직 = 문서화로 보완 가능<br>
+&nbsp;&nbsp;- BIA 미활용 = <b>설계 자체가 잘못됨</b> (가장 근본적)<br>
+• Q272 일관성: 증상 vs 근본 원인 — 근본 원인이 가장 큰 위험<br>
+• Q305·Q306·Q310 연결: BIA가 모든 BCP/DRP 활동의 기반<br>
+• 핵심: <b>"BIA 미활용 = 토대 없는 건물"</b></div>`,
+reference:"CRM Chapter 4: IS Operations — DRP & BIA Integration",
+keyConcepts:[
+"BIA 결과 미활용 위험|DRP 설계 자체가 부적절 → 재해 시 조직 생존 위협 — 가장 큰 위험",
+"증상 vs 근본 원인|테스트·사이트·PM = 보완 가능, BIA 미활용 = 근본 결함",
+"DRP 설계 기반|BIA = 모든 DRP 활동의 토대 — 미활용 시 토대 부재",
+"Q272·Q305·Q310 일관성|근본 원인 우선 + BIA = BCP/DRP의 기반"
+]
+},
+
+{
+id: 315,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `패스워드 관리에 대한 프로그램화된 통제(programmed controls)를 평가할 때, IS 감사인이 가장 의존할 가능성이 높은 것은?<br><small style="color:#94a3b8">In evaluating programmed controls over password management, which of the following is the IS auditor MOST likely to rely on?</small>`,
+options: [
+"크기 검사 (Size check)<br><small style='color:#94a3b8'>Size check</small>",
+"해시 합계 (Hash total)<br><small style='color:#94a3b8'>Hash total</small>",
+"유효성 검사 (Validity check)<br><small style='color:#94a3b8'>Validity check</small>",
+"필드 검사 (Field check)<br><small style='color:#94a3b8'>Field check</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 유효성 검사 (Validity check)</b> — 패스워드가 요구되는 형식 기준(최소 길이, 영문/숫자/특수문자 조합, 사전 단어 금지 등)을 모두 충족하는지 종합 검증하므로 패스워드 관리 통제 중 가장 강력함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">검사 유형</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">패스워드 적합성</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Size check</td><td style="padding:8px;border:1px solid #334155">필드 길이만 확인</td><td style="padding:8px;border:1px solid #334155">부분적 (최소 길이만)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Hash total</td><td style="padding:8px;border:1px solid #334155">배치 처리 무결성 검증</td><td style="padding:8px;border:1px solid #334155">부적합 (패스워드는 배치 X)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. Validity check ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>형식·규칙 종합 검증</b></td><td style="padding:8px;border:1px solid #10b981"><b>최강 (복잡도 전체)</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. Field check</td><td style="padding:8px;border:1px solid #334155">데이터 타입 확인</td><td style="padding:8px;border:1px solid #334155">부분적 (Validity보다 약함)</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Validity check</b> = 패스워드 복잡도 정책(길이·문자종류·사전단어 금지)을 통합 검증<br>
+• <b>Hash total</b>은 배치 트랜잭션용 — 패스워드는 개별 입력이라 부적합<br>
+• Size/Field check은 Validity의 부분집합 — 단독으로는 약한 통제
+</div>`,
+reference:"CRM Chapter 4: Programmed Input Controls / Password Management",
+keyConcepts:[
+"Validity Check|형식·복잡도 규칙 종합 검증 — 패스워드 통제의 최강 수단",
+"Hash Total|배치 처리 무결성용 — 개별 입력인 패스워드에는 부적합",
+"Size/Field Check|길이·타입만 확인 — Validity의 부분집합"
+]
+},
+
+{
+id: 316,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `프로덕션 소스 코드와 오브젝트 코드가 동기화되어 있음을 보장하는 데 가장 효과적인 통제는?<br><small style="color:#94a3b8">Which of the following controls is MOST effective in ensuring that production source code and object code are synchronized?</small>`,
+options: [
+"릴리즈 간 소스·오브젝트 비교 보고서<br><small style='color:#94a3b8'>Release-to-release source and object comparison reports</small>",
+"소스 코드 변경을 제한하는 라이브러리 통제 소프트웨어<br><small style='color:#94a3b8'>Library control software restricting changes to source code</small>",
+"소스·오브젝트 코드에 대한 접근 제한<br><small style='color:#94a3b8'>Restricted access to source code and object code</small>",
+"소스·오브젝트 코드의 날짜/시간 스탬프 검토<br><small style='color:#94a3b8'>Date and time-stamp reviews of source and object code</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 날짜/시간 스탬프 검토</b> — 컴파일된 오브젝트 코드의 타임스탬프가 소스 코드 타임스탬프와 일치하는지 비교하면 "현재 운영 중인 오브젝트가 승인된 소스로부터 컴파일되었는지"를 직접 확인할 수 있음. 동기화 검증의 가장 직접적·효과적 방법.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">통제</th><th style="padding:8px;border:1px solid #334155">기능</th><th style="padding:8px;border:1px solid #334155">동기화 보장?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 릴리즈 비교 보고서</td><td style="padding:8px;border:1px solid #334155">버전 간 변경 추적</td><td style="padding:8px;border:1px solid #334155">간접 — 버전 불일치 미탐지 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 라이브러리 통제 SW</td><td style="padding:8px;border:1px solid #334155">소스 변경 제한</td><td style="padding:8px;border:1px solid #334155">변조 방지만, 동기화 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 접근 제한</td><td style="padding:8px;border:1px solid #334155">무단 접근 차단</td><td style="padding:8px;border:1px solid #334155">보호만, 동기화 X</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 타임스탬프 검토 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>소스·오브젝트 컴파일 시점 직접 비교</b></td><td style="padding:8px;border:1px solid #10b981"><b>직접 보장</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>동기화(Synchronization)</b> = 운영 오브젝트가 승인된 소스에서 컴파일됨을 입증<br>
+• 타임스탬프 비교 = 가장 직접적인 증거 — 오브젝트 생성 시점이 소스 수정 시점과 일치해야 함<br>
+• 접근 제한·라이브러리 통제는 <b>예방통제</b>지만 동기화 자체를 보장하지 못함<br>
+• 릴리즈 비교는 버전 흐름은 보여주나 "현재 컴파일된 것이 그 버전인지"는 미확인
+</div>`,
+reference:"CRM Chapter 4: Source Code Management / Production Library Controls",
+keyConcepts:[
+"Source-Object Synchronization|운영 오브젝트가 승인된 소스로부터 컴파일됐음을 보장",
+"Timestamp Review|컴파일 시점 직접 비교 — 동기화 검증 최강 방법",
+"예방 vs 탐지 통제|접근제한·라이브러리통제 = 예방 / 타임스탬프 = 탐지·검증"
+]
+},
+
+{
+id: 317,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `IS 감사인이 동일 서버에 여러 애플리케이션이 호스팅되어 있음을 관찰했다. 해당 서버의 복구 목표 시간(RTO)은?<br><small style="color:#94a3b8">An IS auditor observed that multiple applications are hosted on the same server. The RTO for the server is:</small>`,
+options: [
+"가장 긴 RTO를 가진 애플리케이션 기준<br><small style='color:#94a3b8'>based on the application with the longest RTO.</small>",
+"가장 짧은 RTO를 가진 애플리케이션 기준<br><small style='color:#94a3b8'>based on the application with the shortest RTO.</small>",
+"각 애플리케이션 RTO의 평균값 기준<br><small style='color:#94a3b8'>based on the mean of each application's RTO.</small>",
+"애플리케이션 RTO와 무관하게 중요도 기준<br><small style='color:#94a3b8'>independent of the RTO and based on the criticality of the application.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 가장 짧은 RTO</b> — 서버에 여러 앱이 올라가 있을 때, 서버 RTO는 <b>가장 중요한(=가장 짧은 RTO를 가진) 애플리케이션</b>에 맞춰야 함. 그렇지 않으면 가장 critical한 앱이 제 시간에 복구되지 못함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">결과</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 가장 긴 RTO</td><td style="padding:8px;border:1px solid #334155">비핵심 앱 기준 → critical 앱 SLA 위반</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 가장 짧은 RTO ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>가장 critical한 앱 기준 → 모두 보호</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 평균값</td><td style="padding:8px;border:1px solid #334155">critical 앱 RTO보다 길어 부적합</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 무관</td><td style="padding:8px;border:1px solid #334155">서버 RTO는 앱 RTO에 종속됨</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>최약 링크 원칙</b>: 공유 인프라의 RTO는 가장 엄격한(짧은) 요구사항에 맞춤<br>
+• 짧은 RTO = 더 critical한 앱 — 이를 충족하면 나머지는 자동 충족<br>
+• 반대로 RPO도 동일 원리: 가장 짧은 RPO 기준 (데이터 손실 허용 최소)
+</div>`,
+reference:"CRM Chapter 4: RTO / Shared Infrastructure Resilience",
+keyConcepts:[
+"Shared Server RTO|가장 짧은(=가장 critical한) 앱 RTO 기준 — 최약 링크 원칙",
+"RTO와 Criticality|짧은 RTO = 높은 중요도 — 둘은 반비례 관계",
+"공유 인프라 원칙|RTO·RPO 모두 가장 엄격한 요구사항에 맞춰 설계"
+]
+},
+
+{
+id: 318,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `IS 감사인이 SLA의 가동 시간(uptime) 요구사항 준수 여부를 확인하기 위해 사용해야 할 보고서는?<br><small style="color:#94a3b8">Which of the following reports should an IS auditor use to check compliance with a service level agreement's requirement for uptime?</small>`,
+options: [
+"사용률 보고서 (Utilization reports)<br><small style='color:#94a3b8'>Utilization reports</small>",
+"하드웨어 오류 보고서 (Hardware error reports)<br><small style='color:#94a3b8'>Hardware error reports</small>",
+"시스템 로그 (System logs)<br><small style='color:#94a3b8'>System logs</small>",
+"가용성 보고서 (Availability reports)<br><small style='color:#94a3b8'>Availability reports</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 가용성 보고서</b> — Availability report는 시스템이 사용자/프로세스에게 실제로 사용 가능했던 시간 구간을 직접 기록하므로 SLA의 uptime 요구사항 준수 여부를 가장 직접적으로 검증함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">보고서</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">Uptime 검증</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Utilization</td><td style="padding:8px;border:1px solid #334155">자원 사용량·용량 계획</td><td style="padding:8px;border:1px solid #334155">간접 (사용량 ≠ 가용시간)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Hardware error</td><td style="padding:8px;border:1px solid #334155">HW 장애 탐지·시정조치</td><td style="padding:8px;border:1px solid #334155">간접 (오류 ≠ 다운타임)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. System logs</td><td style="padding:8px;border:1px solid #334155">시스템 활동 기록</td><td style="padding:8px;border:1px solid #334155">간접 (가공 필요)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. Availability ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>가용 시간 구간 직접 기록</b></td><td style="padding:8px;border:1px solid #10b981"><b>직접 (SLA 준수 검증)</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>SLA uptime 검증</b> = Availability report가 직접 증거 — "언제부터 언제까지 사용 가능했는가"<br>
+• Utilization = 얼마나 많이 썼는가 (capacity planning용)<br>
+• Hardware error = 무엇이 고장났는가 (incident관리용)<br>
+• System logs = 무슨 일이 일어났는가 (raw data — 가공 후 availability 산출 가능하나 직접 보고서 아님)<br>
+• <b>"무엇을 측정하는 보고서인가?"</b> 질문에서 답은 보고서 이름과 SLA 지표가 직접 매칭되는 것
+</div>`,
+reference:"CRM Chapter 4: IT Operations Reporting / SLA Monitoring",
+keyConcepts:[
+"Availability Report|시스템 가용 시간 구간 직접 기록 — SLA uptime 검증의 직접 증거",
+"보고서 매칭 원칙|SLA 지표와 보고서 이름이 직접 일치하는 것 선택",
+"보고서별 용도|Utilization=용량계획 / HW error=장애관리 / Logs=활동기록 / Availability=가용성"
+]
+},
+
+{
+id: 319,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `예방적 컴퓨터 유지보수 프로그램의 효과성·적정성을 평가할 때 IS 감사인에게 가장 유용한 것은?<br><small style="color:#94a3b8">Which of the following would an IS auditor consider to be MOST helpful when evaluating the effectiveness and adequacy of a preventive computer maintenance program?</small>`,
+options: [
+"시스템 다운타임 로그<br><small style='color:#94a3b8'>System downtime log</small>",
+"벤더 신뢰성 수치<br><small style='color:#94a3b8'>Vendor reliability figures</small>",
+"정기 유지보수 수행 로그<br><small style='color:#94a3b8'>Regularly scheduled maintenance log</small>",
+"작성된 예방 유지보수 스케줄<br><small style='color:#94a3b8'>Written preventive maintenance schedule</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 시스템 다운타임 로그</b> — 다운타임 로그는 탐지 통제이지만, 예방 유지보수가 <b>실제로 효과를 발휘했는지(=다운타임이 줄었는지)</b>를 직접 보여주는 결과 지표. 다른 옵션들은 "수행됐는가/계획됐는가"만 보여줄 뿐 효과를 입증하지 못함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">측정 대상</th><th style="padding:8px;border:1px solid #334155">효과성 입증?</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 다운타임 로그 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>실제 결과(다운타임 감소)</b></td><td style="padding:8px;border:1px solid #10b981"><b>직접 입증</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 벤더 신뢰성</td><td style="padding:8px;border:1px solid #334155">제조사 데이터</td><td style="padding:8px;border:1px solid #334155">무관 (자사 PM 효과 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 유지보수 수행 로그</td><td style="padding:8px;border:1px solid #334155">수행 사실</td><td style="padding:8px;border:1px solid #334155">수행 여부만 (효과 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. PM 스케줄</td><td style="padding:8px;border:1px solid #334155">계획</td><td style="padding:8px;border:1px solid #334155">계획만 (실행·효과 X)</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>효과성(Effectiveness) = 결과 지표</b>: 통제가 의도한 목표를 실제로 달성했는가<br>
+• PM의 목표 = 장애·다운타임 예방 → 다운타임 로그로 직접 검증<br>
+• <b>탐지 통제로 예방 통제의 효과를 검증</b>하는 패턴 (통제 평가의 고전)<br>
+• 수행 로그·스케줄·벤더 데이터 = 입력·과정 지표 (효과 측정 X)<br>
+• 패턴: "효과성을 묻는 질문 → 결과 지표(outcome metric) 선택"
+</div>`,
+reference:"CRM Chapter 4: Preventive Maintenance / Control Effectiveness Evaluation",
+keyConcepts:[
+"효과성 vs 수행성|효과성 = 결과 지표 / 수행성 = 활동 기록",
+"다운타임 로그|PM 효과 직접 검증 — 탐지통제로 예방통제 효과 입증",
+"통제 평가 패턴|'effectiveness' 질문 → outcome metric 선택"
+]
+},
+
+{
+id: 320,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `프로덕션 시스템 변경 통제 감사 중, IS 감사인이 변경관리 프로세스가 공식 문서화되지 않았고 일부 마이그레이션 절차가 실패한 것을 발견했다. IS 감사인의 다음 조치는?<br><small style="color:#94a3b8">During a production system change control audit, an IS auditor finds that the change management process is not formally documented and that some migration procedures failed. What should the IS auditor do next?</small>`,
+options: [
+"변경관리 프로세스 재설계 권고<br><small style='color:#94a3b8'>Recommend redesigning the change management process.</small>",
+"근본 원인 분석을 통해 발견사항에 대한 추가 확신 확보<br><small style='color:#94a3b8'>Gain more assurance on the findings through root cause analysis.</small>",
+"변경 프로세스가 문서화될 때까지 프로그램 마이그레이션 중단 권고<br><small style='color:#94a3b8'>Recommend that program migration be stopped until the change process is documented.</small>",
+"발견사항을 문서화하여 경영진에게 보고<br><small style='color:#94a3b8'>Document the finding and present it to management.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 근본 원인 분석</b> — 마이그레이션 실패가 변경관리 프로세스의 결함 때문인지, 아니면 다른 원인 때문인지 먼저 확인해야 함. 권고·보고·중단 모두 근본 원인이 확정된 후에 진행할 수 있는 조치.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">조치</th><th style="padding:8px;border:1px solid #334155">시점</th><th style="padding:8px;border:1px solid #334155">적절성</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 재설계 권고</td><td style="padding:8px;border:1px solid #334155">근본 원인 확인 후</td><td style="padding:8px;border:1px solid #334155">조급함 — 원인 미확정</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 근본 원인 분석 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>지금 (다음 단계)</b></td><td style="padding:8px;border:1px solid #10b981"><b>발견사항 검증의 정석</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 마이그레이션 중단</td><td style="padding:8px;border:1px solid #334155">—</td><td style="padding:8px;border:1px solid #334155">비현실적 — 보안패치 등 차단</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 경영진 보고</td><td style="padding:8px;border:1px solid #334155">RCA 완료 후</td><td style="padding:8px;border:1px solid #334155">조급함 — 미검증 발견 보고</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사인의 발견사항 처리 순서</b>: 발견 → <b>RCA</b> → 검증 → 권고 → 보고<br>
+• 미검증 발견을 즉시 보고·권고하면 잘못된 결론·과잉 대응 위험<br>
+• 마이그레이션 중단(C) = 사업 운영 마비, 보안패치 지연 → 비현실적<br>
+• 패턴: "감사 중 발견 직후 → 다음 단계는?" → 거의 항상 RCA 또는 추가 증거 수집<br>
+• 관련: Q272 (증상 vs 근본 원인), Q314 (BIA 미활용)
+</div>`,
+reference:"CRM Chapter 4: Audit Findings / Root Cause Analysis",
+keyConcepts:[
+"감사 발견 처리 순서|발견 → RCA → 검증 → 권고 → 보고",
+"근본 원인 분석|미검증 발견의 즉시 권고·보고는 부적절",
+"실용성 원칙|변경 중단 등 사업 마비 권고는 거의 정답 아님"
+]
+},
+
+{
+id: 321,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `한 지역 내 여러 사무소를 가진 기업이 제한된 복구 예산 하에서 가장 적절한 복구 전략은?<br><small style="color:#94a3b8">Which recovery strategy is MOST appropriate for a business with multiple offices within a region and a limited recovery budget?</small>`,
+options: [
+"기업이 직접 운영하는 핫 사이트<br><small style='color:#94a3b8'>Hot site maintained by the business</small>",
+"상용 콜드 사이트<br><small style='color:#94a3b8'>Commercial cold site</small>",
+"사무소 간 상호 협약<br><small style='color:#94a3b8'>Reciprocal arrangement between its offices</small>",
+"제3자 핫 사이트<br><small style='color:#94a3b8'>Third-party hot site</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 사무소 간 상호 협약 (Reciprocal arrangement)</b> — 이미 보유한 여러 사무소를 서로의 복구 사이트로 지정하면 추가 시설 비용 없이 가장 저렴하게 수용 가능한 수준의 복구 능력을 확보 가능. "여러 사무소 + 제한 예산" 조건의 정석.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">전략</th><th style="padding:8px;border:1px solid #334155">비용</th><th style="padding:8px;border:1px solid #334155">신뢰도</th><th style="padding:8px;border:1px solid #334155">적합성</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 자체 핫사이트</td><td style="padding:8px;border:1px solid #334155">매우 높음</td><td style="padding:8px;border:1px solid #334155">매우 높음</td><td style="padding:8px;border:1px solid #334155">예산 초과</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 상용 콜드사이트</td><td style="padding:8px;border:1px solid #334155">중간</td><td style="padding:8px;border:1px solid #334155">낮음</td><td style="padding:8px;border:1px solid #334155">다중 사이트 비효율</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 상호 협약 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>최저 (기존 자산 활용)</b></td><td style="padding:8px;border:1px solid #10b981"><b>수용 가능</b></td><td style="padding:8px;border:1px solid #10b981"><b>최적</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 3자 핫사이트</td><td style="padding:8px;border:1px solid #334155">높음</td><td style="padding:8px;border:1px solid #334155">높음</td><td style="padding:8px;border:1px solid #334155">예산 초과</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Reciprocal Agreement</b> = 비슷한 환경의 두 조직(또는 자사 사무소)이 상호 백업 사이트로 합의 — 가장 저렴<br>
+• 단점: 용량·호환성·우선순위 충돌 위험 — 일반적으로 비추천이지만 "예산 제약 + 다중 사이트" 조건에서는 최적<br>
+• <b>조건 매칭이 핵심</b>: "여러 사무소" + "제한 예산" → Reciprocal<br>
+• 핫사이트(A,D)는 신뢰도 최고지만 예산 제약 위반 — 문제의 제약 조건을 무시하면 안 됨<br>
+• 콜드사이트(B)를 여러 개 임대 = 비용 증가·가용성 저하로 비효율
+</div>`,
+reference:"CRM Chapter 4: Recovery Site Strategies / Reciprocal Agreements",
+keyConcepts:[
+"Reciprocal Agreement|사무소·조직 간 상호 백업 — 최저 비용, 일반적 비추천",
+"조건 매칭|'여러 사무소 + 제한 예산' = Reciprocal의 정석 시나리오",
+"복구 사이트 비용 순서|Cold < Reciprocal < Warm < Hot < Mirror"
+]
+},
+
+{
+id: 322,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `통제 자가평가(CSA) 프로그램에서 IS 감사인의 주된 역할은?<br><small style="color:#94a3b8">What is the PRIMARY role of the IS auditor in controlling self-assessment programs?</small>`,
+options: [
+"평가자 (Assessor)<br><small style='color:#94a3b8'>Assessor</small>",
+"참여자 (Participant)<br><small style='color:#94a3b8'>Participant</small>",
+"촉진자 (Facilitator)<br><small style='color:#94a3b8'>Facilitator</small>",
+"관리자 (Manager)<br><small style='color:#94a3b8'>Manager</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 촉진자 (Facilitator)</b> — CSA에서 IS 감사인은 위험 평가에 기반한 통제 목표에 대한 통찰을 제공하며 피감사자가 자신의 환경을 평가하도록 <b>유도·안내</b>하는 역할. 실제 평가와 통제 소유권은 업무 부서 관리자에게 있음.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">역할</th><th style="padding:8px;border:1px solid #334155">담당 주체</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Assessor (평가자)</td><td style="padding:8px;border:1px solid #334155">전통적 감사 — CSA 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Participant (참여자)</td><td style="padding:8px;border:1px solid #334155">경영진·업무 부서</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. Facilitator ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>IS 감사인 — 안내·통찰 제공</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. Manager (관리자)</td><td style="padding:8px;border:1px solid #334155">업무 부서 관리자 — 통제 소유권</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>CSA 핵심 철학</b>: 통제 책임을 업무 부서로 이전 — 부서가 스스로 자신의 통제를 평가<br>
+• IS 감사인 = <b>코치·가이드</b> — 직접 평가하지 않음 (전통적 감사와 정반대)<br>
+• 업무 부서 관리자 = <b>통제 소유자</b> — 자신의 부서 통제에 책임<br>
+• <b>역할 분리</b>: 감사인(촉진) ≠ 경영진(참여·소유)<br>
+• 전통적 감사 vs CSA: 전통=감사인이 평가 / CSA=피감사자가 평가, 감사인은 도움
+</div>`,
+reference:"CRM Chapter 4: Control Self-Assessment (CSA)",
+keyConcepts:[
+"CSA Facilitator|IS 감사인 = 안내·통찰 제공, 직접 평가 X",
+"통제 소유권|업무 부서 관리자 = 통제 owner, 평가의 실제 주체",
+"전통감사 vs CSA|전통=감사인 평가 / CSA=부서 자가평가 + 감사인 촉진"
+]
+},
+
+{
+id: 323,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `기업 전반의 모든 컴퓨터 시계를 동기화해야 하는 주된 이유는?<br><small style="color:#94a3b8">The MAIN reason for requiring that all computer clocks across an enterprise are synchronized is to:</small>`,
+options: [
+"트랜잭션 누락·중복 방지<br><small style='color:#94a3b8'>prevent omission or duplication of transactions.</small>",
+"클라이언트→서버 데이터 전송 원활화<br><small style='color:#94a3b8'>ensure smooth data transition from client machines to servers.</small>",
+"이메일 메시지의 정확한 타임스탬프 보장<br><small style='color:#94a3b8'>ensure that email messages have accurate time stamps.</small>",
+"사고 조사 프로세스 지원<br><small style='color:#94a3b8'>support the incident investigation process.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 사고 조사 지원</b> — 사고 조사 시 여러 시스템의 감사 로그를 증거로 사용하는데, 시계가 동기화되지 않으면 시스템 간 사건의 시간순(timeline) 재구성이 어려워 조사가 사실상 불가능해짐. 이것이 시계 동기화의 주된 이유.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 트랜잭션 누락·중복 방지</td><td style="padding:8px;border:1px solid #334155">시계와 무관 (DB·MQ가 처리)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 데이터 전송 원활화</td><td style="padding:8px;border:1px solid #334155">시계와 무관 (전송은 시간 독립)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 이메일 타임스탬프</td><td style="padding:8px;border:1px solid #334155">사소한 이슈 — 주된 이유 아님</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 사고 조사 지원 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>로그 타임라인 재구성의 필수 조건</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>NTP(Network Time Protocol) 동기화</b>의 주된 목적 = 포렌식·사고 조사 가능성 확보<br>
+• 시스템 간 시계가 다르면 사건 인과관계·순서 입증 불가 → 법적 증거 가치 상실<br>
+• 감사 로그의 <b>타임스탬프 일관성</b> = 디지털 포렌식의 기본 전제<br>
+• 트랜잭션 무결성·이메일·전송은 모두 시계 동기화에 의존하지 않음<br>
+• 패턴: "왜 시계 동기화?" → 거의 항상 사고 조사·포렌식·로그 상관관계
+</div>`,
+reference:"CRM Chapter 4: Time Synchronization / Audit Log Integrity",
+keyConcepts:[
+"NTP 동기화 목적|사고 조사·포렌식의 timeline 재구성 가능성 확보",
+"감사 로그 타임라인|시스템 간 시계 일치 = 인과관계·순서 입증의 전제",
+"시계 동기화 무관|트랜잭션·전송·이메일은 동기화에 의존하지 않음"
+]
+},
+
+{
+id: 324,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `한 조직의 비즈니스 프로세스가 RTO=0, RPO≈1분이다. 이는 프로세스가 다음을 허용함을 의미한다:<br><small style="color:#94a3b8">An organization has a business process with RTO equal to zero and RPO close to one minute. This implies that the process can tolerate:</small>`,
+options: [
+"최대 1분의 데이터 손실, 단 처리는 연속적이어야 함<br><small style='color:#94a3b8'>a data loss of up to one minute, but the processing must be continuous.</small>",
+"1분의 처리 중단, 데이터 손실은 불가<br><small style='color:#94a3b8'>a one-minute processing interruption but cannot tolerate any data loss.</small>",
+"1분 이상의 처리 중단<br><small style='color:#94a3b8'>a processing interruption of one minute or more.</small>",
+"1분 이상의 데이터 손실과 처리 중단 모두<br><small style='color:#94a3b8'>both a data loss and processing interruption longer than one minute.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 최대 1분의 데이터 손실, 처리는 연속적</b> — RTO=0은 다운타임 0(=연속 가용성), RPO=1분은 최대 1분치 데이터 손실 허용을 의미. 두 지표는 독립적으로 해석.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">지표</th><th style="padding:8px;border:1px solid #334155">측정 대상</th><th style="padding:8px;border:1px solid #334155">본 문제 값</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">RTO</td><td style="padding:8px;border:1px solid #334155">다운타임 허용 (시간)</td><td style="padding:8px;border:1px solid #334155">0 → 중단 불가</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">RPO</td><td style="padding:8px;border:1px solid #334155">데이터 손실 허용 (시간)</td><td style="padding:8px;border:1px solid #334155">1분 → 최대 1분치 손실 허용</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RTO = Recovery Time</b>: "얼마나 빨리 복구해야 하는가" → 다운타임 허용량<br>
+• <b>RPO = Recovery Point</b>: "얼마나 최근 데이터까지 복구해야 하는가" → 데이터 손실 허용량<br>
+• 두 지표는 독립적: RTO=0이어도 RPO>0 가능 (연속 가동하지만 약간의 데이터 손실은 OK)<br>
+• 본 시나리오 구현 = 핫 standby + 1분 간격 비동기 복제 (동기 복제면 RPO=0 가능)<br>
+• B 오답: RTO=0인데 1분 중단을 허용한다는 것은 모순<br>
+• 관련: Q317 (공유 서버 RTO = 가장 짧은 앱 기준)
+</div>`,
+reference:"CRM Chapter 4: RTO vs RPO",
+keyConcepts:[
+"RTO|다운타임 허용량 — '얼마나 빨리 복구'",
+"RPO|데이터 손실 허용량 — '얼마나 최근 데이터까지'",
+"RTO·RPO 독립성|두 지표는 별개 — RTO=0이어도 RPO>0 가능"
+]
+},
+
+{
+id: 325,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `서비스 중단 사고의 심각도 등급을 결정하는 주된 기준은?<br><small style="color:#94a3b8">The MAIN criterion for determining the severity level of a service disruption incident is:</small>`,
+options: [
+"복구 비용<br><small style='color:#94a3b8'>cost of recovery.</small>",
+"부정적 여론<br><small style='color:#94a3b8'>negative public opinion.</small>",
+"지리적 위치<br><small style='color:#94a3b8'>geographic location.</small>",
+"다운타임<br><small style='color:#94a3b8'>downtime.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 다운타임</b> — 고객에게 서비스를 제공하지 못하는 시간이 길수록 사고의 심각도(영향)가 커짐. 다운타임이 가장 직접적인 비즈니스 영향 지표.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">기준</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 복구 비용</td><td style="padding:8px;border:1px solid #334155">비용 적어도 영향 클 수 있음 → 부정확</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 부정적 여론</td><td style="padding:8px;border:1px solid #334155">사고의 증상·결과 — 원인 지표 아님</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 지리적 위치</td><td style="padding:8px;border:1px solid #334155">심각도 결정 요인 아님</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 다운타임 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>가장 직접적 영향 지표</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>심각도(Severity) ∝ 다운타임</b>: 서비스 미제공 시간 = 가장 직접적·정량적 영향<br>
+• 비용·여론 = 부수적·간접 지표 — 다운타임의 결과로 발생<br>
+• RTO와 연결: RTO 초과 = 심각도 상승 → SLA 위반<br>
+• 패턴: "서비스 중단 사고의 심각도" → 거의 항상 다운타임
+</div>`,
+reference:"CRM Chapter 4: Incident Severity Classification",
+keyConcepts:[
+"Incident Severity|다운타임 = 주된 결정 기준",
+"직접 vs 간접 지표|다운타임=직접 / 비용·여론=간접·결과",
+"RTO 연결|심각도와 RTO 초과는 직접 연관"
+]
+},
+
+{
+id: 326,
+domain: "4",
+ks: "4B2 System and Operational Resilience",
+question: `IS 감사인이 재해 복구를 검토하던 중, 사업 운영 재개에 필요한 모든 핵심 데이터가 보존되지 않았음을 발견했다. 다음 중 잘못 정의된 것은?<br><small style="color:#94a3b8">An IS auditor is reviewing an organization's recovery from a disaster in which not all the critical data needed to resume business operations were retained. Which of the following was incorrectly defined?</small>`,
+options: [
+"중단 윈도우 (Interruption window)<br><small style='color:#94a3b8'>Interruption window</small>",
+"복구 목표 시간 (RTO)<br><small style='color:#94a3b8'>Recovery time objective</small>",
+"서비스 제공 목표 (SDO)<br><small style='color:#94a3b8'>Service delivery objective</small>",
+"복구 시점 목표 (RPO)<br><small style='color:#94a3b8'>Recovery point objective</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. RPO (Recovery Point Objective)</b> — RPO는 허용 가능한 <b>데이터 손실량</b>을 정의함. 핵심 데이터가 충분히 보존되지 않았다면 RPO가 너무 길게(=손실 허용량 과대) 정의되었거나 백업 주기와 맞지 않게 잘못 설정된 것.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">지표</th><th style="padding:8px;border:1px solid #334155">정의</th><th style="padding:8px;border:1px solid #334155">데이터 손실 관련?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Interruption Window</td><td style="padding:8px;border:1px solid #334155">장애~복구까지의 운영 중단 시간</td><td style="padding:8px;border:1px solid #334155">시간 지표 (데이터 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. RTO</td><td style="padding:8px;border:1px solid #334155">허용 가능한 다운타임</td><td style="padding:8px;border:1px solid #334155">시간 지표 (데이터 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. SDO</td><td style="padding:8px;border:1px solid #334155">대체 운영 시 제공할 서비스 수준</td><td style="padding:8px;border:1px solid #334155">서비스 수준 (데이터 X)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. RPO ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>허용 가능한 데이터 손실량</b></td><td style="padding:8px;border:1px solid #10b981"><b>직접 관련</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>증상 → 원인 매핑</b>: "데이터가 부족하다" = RPO 결함<br>
+• 4가지 BCP 지표 분류:<br>
+&nbsp;&nbsp;- 시간 지표: Interruption Window, RTO<br>
+&nbsp;&nbsp;- 데이터 지표: <b>RPO</b><br>
+&nbsp;&nbsp;- 서비스 수준 지표: SDO, MTO<br>
+• RPO 짧음 = 데이터 손실 적음 (잦은 백업·복제 필요)<br>
+• 핵심 데이터 누락 = RPO가 백업 주기보다 짧게 정의됐거나, RPO 자체가 비현실적<br>
+• 관련: Q324 (RTO=0, RPO=1분 시나리오)
+</div>`,
+reference:"CRM Chapter 4: BCP Metrics (RTO/RPO/SDO/MTO)",
+keyConcepts:[
+"증상 매핑|'데이터 손실' 증상 → RPO 결함",
+"BCP 지표 분류|시간(IW·RTO) / 데이터(RPO) / 서비스수준(SDO·MTO)",
+"RPO 정의|허용 가능한 데이터 손실량 — 백업 주기와 직접 연관"
+]
+},
+
+{
+id: 327,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `모든 시스템에 대한 백업 고려사항 외에, 온라인 시스템 백업에서 중요한 고려사항은?<br><small style="color:#94a3b8">In addition to the backup considerations for all systems, which of the following is an important consideration in providing backup for online systems?</small>`,
+options: [
+"시스템 소프트웨어 파라미터 유지<br><small style='color:#94a3b8'>Maintaining system software parameters</small>",
+"트랜잭션 로그의 정기적 덤프<br><small style='color:#94a3b8'>Ensuring periodic dumps of transaction logs</small>",
+"GFS(grandfather-father-son) 파일 백업<br><small style='color:#94a3b8'>Ensuring grandfather-father-son file backups</small>",
+"중요 데이터의 오프사이트 보관<br><small style='color:#94a3b8'>Maintaining important data at an offsite location</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 트랜잭션 로그의 정기적 덤프</b> — 온라인 시스템은 활동량이 높아 전통적 풀백업 방식이 비현실적. 트랜잭션 로그를 자주 덤프해야 최신 데이터를 보존하고 데이터 손실을 최소화할 수 있음. 이것이 온라인 시스템 <b>고유</b>의 백업 고려사항.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">온라인 시스템 고유?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. SW 파라미터 유지</td><td style="padding:8px;border:1px solid #334155">모든 시스템 공통</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 트랜잭션 로그 덤프 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>온라인 고유 — 고활동량 대응</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. GFS 백업</td><td style="padding:8px;border:1px solid #334155">모든 시스템 공통</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 오프사이트 보관</td><td style="padding:8px;border:1px solid #334155">모든 시스템 공통</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"In addition to ... for all systems"</b> 단서: 온라인 시스템 <b>고유</b>의 고려사항을 묻는 것<br>
+• 온라인 시스템 = 24/7 트랜잭션 처리 → 풀백업 윈도우 확보 어려움<br>
+• 해결책: <b>트랜잭션 로그 덤프</b> + 주기적 풀백업 결합<br>
+• 복구 시: 가장 최근 풀백업 + 이후 트랜잭션 로그 재실행 → RPO 최소화<br>
+• A·C·D는 모든 시스템에 적용되는 일반 원칙 → 본 문제 의도에 부적합<br>
+• 관련: Q326 (RPO 정의), Q324 (RPO=1분 시나리오 구현)
+</div>`,
+reference:"CRM Chapter 4: Online System Backup / Transaction Log Management",
+keyConcepts:[
+"Transaction Log Dump|온라인 시스템 고유 백업 — 풀백업 사이의 변경 보존",
+"온라인 백업 전략|풀백업 + 로그 덤프 결합 — RPO 최소화",
+"문제 단서|'in addition to all systems' = 온라인 고유 고려사항 묻는 패턴"
+]
+},
+
+{
+id: 328,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `파일 서버에 RAID 레벨 1을 구현하는 주된 목적은?<br><small style="color:#94a3b8">The PRIMARY purpose of implementing RAID level 1 in a file server is to:</small>`,
+options: [
+"성능 향상 달성<br><small style='color:#94a3b8'>achieve performance improvement.</small>",
+"사용자 인증 제공<br><small style='color:#94a3b8'>provide user authentication.</small>",
+"데이터 가용성 보장<br><small style='color:#94a3b8'>ensure availability of data.</small>",
+"데이터 기밀성 보장<br><small style='color:#94a3b8'>ensure the confidentiality of data.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 데이터 가용성 보장</b> — RAID 1은 디스크 미러링: 동일 데이터를 두 디스크에 동시에 기록. 한 디스크가 고장나면 다른 디스크가 즉시 대체 → 데이터 가용성 보장이 주된 목적.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">RAID 레벨</th><th style="padding:8px;border:1px solid #334155">방식</th><th style="padding:8px;border:1px solid #334155">주 목적</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">RAID 0</td><td style="padding:8px;border:1px solid #334155">스트라이핑</td><td style="padding:8px;border:1px solid #334155">성능 (가용성 X)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>RAID 1 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>미러링</b></td><td style="padding:8px;border:1px solid #10b981"><b>가용성</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">RAID 5</td><td style="padding:8px;border:1px solid #334155">스트라이핑 + 분산 패리티</td><td style="padding:8px;border:1px solid #334155">가용성 + 효율</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">RAID 10</td><td style="padding:8px;border:1px solid #334155">미러링 + 스트라이핑</td><td style="padding:8px;border:1px solid #334155">가용성 + 성능</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RAID 1 = Mirroring</b>: 동일 데이터를 두 디스크에 복제 → 단일 디스크 장애 허용<br>
+• 성능 향상은 아님 — 쓰기 시 두 곳에 기록하므로 오히려 성능 부담<br>
+• 인증·기밀성과 무관 — RAID는 가용성·내결함성 메커니즘<br>
+• <b>RAID ≠ Backup</b>: RAID는 하드웨어 장애만 대응, 논리적 오류·악성코드·삭제는 백업으로 대응<br>
+• 패턴: "RAID 목적" → 거의 항상 가용성/내결함성
+</div>`,
+reference:"CRM Chapter 4: RAID Levels / Data Availability",
+keyConcepts:[
+"RAID 1|미러링 — 동일 데이터 두 디스크 복제, 가용성 보장",
+"RAID vs Backup|RAID=하드웨어 장애 대응 / Backup=논리 오류·재해 대응",
+"RAID 레벨 비교|0=성능 / 1=가용성 / 5=균형 / 10=가용성+성능"
+]
+},
+
+{
+id: 329,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `OLTP 시스템 데이터베이스에서 트랜잭션 무결성을 유지하는 데이터베이스 통제는?<br><small style="color:#94a3b8">Which of the following database controls ensure that the integrity of transactions is maintained in an online transaction processing system's database?</small>`,
+options: [
+"인증 통제<br><small style='color:#94a3b8'>Authentication controls</small>",
+"데이터 정규화 통제<br><small style='color:#94a3b8'>Data normalization controls</small>",
+"읽기/쓰기 접근 로그 통제<br><small style='color:#94a3b8'>Read/write access log controls</small>",
+"커밋·롤백 통제<br><small style='color:#94a3b8'>Commitment and rollback controls</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 커밋·롤백 통제</b> — 논리적 트랜잭션 단위의 모든 DB 작업이 <b>완전히 수행되거나(commit) 전혀 수행되지 않도록(rollback)</b> 보장. 트랜잭션 도중 실패 시 미완성 작업을 되돌려 DB를 이전 상태로 복원 → 무결성 직접 보장(ACID의 Atomicity).</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">통제</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">트랜잭션 무결성?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 인증</td><td style="padding:8px;border:1px solid #334155">권한 사용자만 접근</td><td style="padding:8px;border:1px solid #334155">접근 통제 (무결성 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 정규화</td><td style="padding:8px;border:1px solid #334155">중복 제거·구조 설계</td><td style="padding:8px;border:1px solid #334155">설계 단계 (런타임 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 접근 로그</td><td style="padding:8px;border:1px solid #334155">활동 기록</td><td style="padding:8px;border:1px solid #334155">탐지 (예방 X)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. Commit/Rollback ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>All-or-nothing 보장</b></td><td style="padding:8px;border:1px solid #10b981"><b>직접 보장 (Atomicity)</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>ACID 속성</b> 중 <b>Atomicity(원자성)</b> = Commit/Rollback로 구현<br>
+• 트랜잭션 무결성 = "전부 또는 전무" → 부분 업데이트 방지<br>
+• 인증·정규화·로그는 무결성을 직접 보장하지 못함<br>
+• 패턴: "트랜잭션 무결성" → Commit/Rollback (또는 ACID 속성)<br>
+• 관련: ACID 속성 (Atomicity·Consistency·Isolation·Durability)
+</div>`,
+reference:"CRM Chapter 4: Database Integrity Controls / ACID Properties",
+keyConcepts:[
+"Commit/Rollback|ACID Atomicity 구현 — 트랜잭션 all-or-nothing",
+"트랜잭션 무결성|부분 업데이트 방지 — 실패 시 이전 상태 복원",
+"통제 분류|인증=접근 / 정규화=설계 / 로그=탐지 / Commit·Rollback=무결성"
+]
+},
+
+{
+id: 330,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `핵심 파일 서버에서 스토리지 증가에 대한 부적절한 관리와 관련된 가장 큰 위험은?<br><small style="color:#94a3b8">What is the GREATEST risk associated with inadequate management of storage growth in a critical file server?</small>`,
+options: [
+"백업 시간이 지속적으로 증가<br><small style='color:#94a3b8'>Backup time steadily increases.</small>",
+"백업 운영 비용이 크게 증가<br><small style='color:#94a3b8'>Backup operational costs significantly increase.</small>",
+"스토리지 운영 비용이 크게 증가<br><small style='color:#94a3b8'>Storage operational costs significantly increase.</small>",
+"서버 복구 작업이 RTO를 충족하지 못할 수 있음<br><small style='color:#94a3b8'>Server recovery work may not meet the RTO.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. RTO 미충족</b> — 데이터가 비대해지면 복구에 더 많은 시간이 소요되고, 결국 RTO를 초과해 BCP 전략 자체가 깨질 위험. 비용 증가나 백업 시간 증가는 관리 가능한 운영 이슈지만 RTO 미충족은 사업 연속성 실패로 직결.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">위험</th><th style="padding:8px;border:1px solid #334155">영향</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 백업 시간 증가</td><td style="padding:8px;border:1px solid #334155">운영 이슈 — 관리 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 백업 비용 증가</td><td style="padding:8px;border:1px solid #334155">재무 이슈 — 사업 연속성 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 스토리지 비용 증가</td><td style="padding:8px;border:1px solid #334155">재무 이슈 — 사업 연속성 X</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. RTO 미충족 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>BCP 실패 — 사업 중단</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>위험 평가 기준</b>: 비용·운영 이슈 < 사업 연속성 실패<br>
+• 데이터 비대화 → 복구 시간 증가 → RTO 초과 → BCP 전략 붕괴<br>
+• 백업 시간(A)은 백업 윈도우 내에 끝나기만 하면 OK — 관리 가능<br>
+• <b>"GREATEST risk" 패턴</b>: 거의 항상 사업 영향이 가장 큰 옵션 선택<br>
+• 관련: Q317 (RTO와 critical 앱), Q324·Q326 (RTO 정의)
+</div>`,
+reference:"CRM Chapter 4: Storage Management / RTO Compliance",
+keyConcepts:[
+"스토리지 비대화 위험|복구 시간 증가 → RTO 미충족 → BCP 실패",
+"GREATEST risk 패턴|운영·비용 이슈 < 사업 연속성 실패",
+"백업 vs 복구|백업 시간은 윈도우 내, 복구 시간은 RTO 내가 핵심"
+]
+},
+
+{
+id: 331,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `이메일 온사이트 아카이빙 프로세스를 감사할 때 IS 감사인이 가장 주의해야 할 것은?<br><small style="color:#94a3b8">When auditing the onsite archiving process of emails, the IS auditor should pay the MOST attention to which of the following?</small>`,
+options: [
+"데이터 보관 정책의 존재<br><small style='color:#94a3b8'>Existence of a data retention policy</small>",
+"아카이빙 솔루션의 저장 용량<br><small style='color:#94a3b8'>Storage capacity of the archiving solution</small>",
+"이메일 사용에 대한 사용자 인식 수준<br><small style='color:#94a3b8'>Level of user awareness concerning email use</small>",
+"아카이빙 솔루션 제조사의 지원·안정성<br><small style='color:#94a3b8'>Support and stability of the archiving solution manufacturer</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 데이터 보관 정책의 존재</b> — 사업·규제 요구사항에 부합하는 보관 정책이 없으면, 필요할 때 올바른 이메일을 보존·재생산하지 못함. 정책은 모든 아카이빙 활동의 기준이자 출발점.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">우선순위</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 보관 정책 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>최우선 — 모든 활동의 기준</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 저장 용량</td><td style="padding:8px;border:1px solid #334155">기술적 — 정책 없으면 무의미</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 사용자 인식</td><td style="padding:8px;border:1px solid #334155">간접적 — 아카이빙 정확성과 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 벤더 지원</td><td style="padding:8px;border:1px solid #334155">2차 — 정책이 우선</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>정책 우선 원칙</b>: 정책 → 절차 → 기술 구현 → 운영의 순서<br>
+• 보관 정책 = "무엇을, 얼마나 오래, 어떻게 보관할지" 정의 — 규제·법적 요구사항 반영<br>
+• 정책 없는 아카이빙 = 무엇을 보존하고 무엇을 삭제할지 모름 → 컴플라이언스 실패<br>
+• 용량·벤더는 정책이 정의된 후 그것을 충족하기 위한 수단<br>
+• 패턴: 감사 우선순위 질문 → 거의 항상 정책·거버넌스가 기술보다 우선<br>
+• 관련: e-Discovery·법적 보존 명령(Legal Hold) 대응
+</div>`,
+reference:"CRM Chapter 4: Email Archiving / Data Retention Policy",
+keyConcepts:[
+"Data Retention Policy|아카이빙 활동의 기준 — 무엇을·얼마나·어떻게 보관",
+"정책 우선 원칙|정책 → 절차 → 기술 → 운영 순서",
+"감사 우선순위|거버넌스(정책) > 기술 구현(용량·벤더)"
+]
+},
+
+{
+id: 332,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `24시간 영업 주문을 받기 위해 시스템이 항상 온라인이어야 하는 대용량 미션 크리티컬 데이터의 백업 전략으로 가장 효율적인 것은?<br><small style="color:#94a3b8">Which of the following is the MOST efficient strategy for the backup of large quantities of mission-critical data when the systems need to be online 24 hours a day?</small>`,
+options: [
+"내결함성 디스크-투-디스크 백업 솔루션 구현<br><small style='color:#94a3b8'>Implementing a fault-tolerant disk-to-disk backup solution.</small>",
+"주간 풀 백업 + 야간 증분 백업<br><small style='color:#94a3b8'>Making a full backup weekly and an incremental backup nightly.</small>",
+"중복 SAN 생성 후 두 번째 SAN으로 복제<br><small style='color:#94a3b8'>Creating a duplicate SAN and replicating the data to a second SAN.</small>",
+"핫 사이트에 동일 서버·스토리지 인프라 구축<br><small style='color:#94a3b8'>Creating identical server and storage infrastructure at a hot site.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 디스크-투-디스크(D2D) 백업</b> — 1차 백업을 테이프 대신 디스크에 기록하여 시스템 성능 영향 최소화, 대용량 데이터 빠른 백업, 장애 시 즉시 대체 디스크로 전환 가능. 24/7 온라인 시스템에 적합.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">24/7 적합?</th><th style="padding:8px;border:1px solid #334155">백업 기능?</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. D2D ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>예 — 백업 윈도우 불필요</b></td><td style="padding:8px;border:1px solid #10b981"><b>예 — 진정한 백업</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 풀+증분 백업</td><td style="padding:8px;border:1px solid #334155">아니오 — 백업 윈도우 필요</td><td style="padding:8px;border:1px solid #334155">예</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. SAN 복제</td><td style="padding:8px;border:1px solid #334155">예</td><td style="padding:8px;border:1px solid #334155">아니오 — 중복일 뿐 (백업 X)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 핫 사이트</td><td style="padding:8px;border:1px solid #334155">예 (가용성)</td><td style="padding:8px;border:1px solid #334155">아니오 — 장기 보관 미해결</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Backup vs Replication 구분</b>:<br>
+&nbsp;&nbsp;- Backup = 시점 복원(point-in-time) — 논리적 오류·삭제·랜섬웨어 대응<br>
+&nbsp;&nbsp;- Replication/Mirror = 동시 복제 — 하드웨어 장애·재해 대응 (실수도 즉시 복제됨)<br>
+• <b>D2D</b> = 디스크 속도로 백업 → 백업 윈도우 거의 0 → 24/7 가능<br>
+• 전통적 야간 백업(B)은 시스템을 잠시 오프라인으로 만들거나 성능 저하 → 24/7 부적합<br>
+• SAN 복제(C)·핫사이트(D) = 가용성·중복은 좋지만 <b>백업이 아님</b> (논리적 오류 시 함께 복제됨)<br>
+• 패턴: "24/7 + 백업" → D2D 또는 스냅샷 기반 솔루션<br>
+• 관련: Q328 (RAID ≠ Backup), Q327 (트랜잭션 로그 덤프)
+</div>`,
+reference:"CRM Chapter 4: Disk-to-Disk Backup / 24x7 Backup Strategies",
+keyConcepts:[
+"Disk-to-Disk Backup|디스크에 직접 백업 — 백업 윈도우 거의 0, 24/7 가능",
+"Backup vs Replication|백업=시점 복원 / 복제=실시간 중복 (논리오류 대응 X)",
+"24/7 백업 패턴|D2D·스냅샷 기반 — 전통적 야간 백업 윈도우 회피"
+]
+},
+
+{
+id: 333,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `IT 경영진이 오프사이트 백업을 폐지하는 대신 모든 서버에 RAID 1을 설치하기로 결정했다. IS 감사인은 무엇을 권고해야 하는가?<br><small style="color:#94a3b8">IT management has decided to install a level 1 RAID system in all servers to compensate for the elimination of offsite backups. The IS auditor should recommend:</small>`,
+options: [
+"RAID 5로 업그레이드<br><small style='color:#94a3b8'>upgrading to a level 5 RAID.</small>",
+"온사이트 백업 빈도 증가<br><small style='color:#94a3b8'>increasing the frequency of onsite backups.</small>",
+"오프사이트 백업 복원<br><small style='color:#94a3b8'>reinstating the offsite backups.</small>",
+"보안된 위치에 콜드 사이트 구축<br><small style='color:#94a3b8'>establishing a cold site in a secure location.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 오프사이트 백업 복원</b> — RAID는 어느 레벨이든 자연재해·데이터센터 전소로부터 보호하지 못함. 오프사이트 백업이 유일한 재해 대응 수단이므로 즉시 복원해야 함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">재해 대응?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. RAID 5 업그레이드</td><td style="padding:8px;border:1px solid #334155">아니오 — 같은 DC 내 디스크 보호만</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 온사이트 백업 증가</td><td style="padding:8px;border:1px solid #334155">아니오 — 같은 위치, RAID 1과 중복</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 오프사이트 복원 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>예 — 재해 대응 유일 수단</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 콜드 사이트</td><td style="padding:8px;border:1px solid #334155">시설만 — 데이터 저장 X</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RAID ≠ Backup ≠ DR</b>: 세 가지는 별개의 보호 계층<br>
+&nbsp;&nbsp;- RAID = 디스크 장애 대응 (같은 서버 내)<br>
+&nbsp;&nbsp;- 온사이트 백업 = 논리적 오류 대응 (같은 사이트)<br>
+&nbsp;&nbsp;- <b>오프사이트 백업</b> = 재해·물리적 손실 대응 (지리적 분리)<br>
+• 경영진의 결정 = 위험 오판 — RAID로 백업을 대체할 수 없음<br>
+• 콜드 사이트(D)는 시설만 제공, 데이터 저장 기능 없음 → 별도 백업 필수<br>
+• 패턴: "RAID로 백업 대체" → 거의 항상 오답 (재해 대응 불가)<br>
+• 관련: Q328 (RAID 1 미러링), Q332 (D2D 백업)
+</div>`,
+reference:"CRM Chapter 4: RAID vs Backup vs DR / Offsite Backup Necessity",
+keyConcepts:[
+"RAID ≠ Backup|RAID는 디스크 장애만 대응 — 재해·논리오류 보호 X",
+"오프사이트 백업|재해 대응의 유일 수단 — 지리적 분리 필수",
+"3중 보호 계층|RAID(디스크) + 백업(논리) + 오프사이트(재해)"
+]
+},
+
+{
+id: 334,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `RPO를 정의할 때 가장 중요한 고려사항은?<br><small style="color:#94a3b8">Which of the following is the MOST important consideration when defining recovery point objectives (RPOs)?</small>`,
+options: [
+"최소 운영 요구사항<br><small style='color:#94a3b8'>Minimum operating requirements</small>",
+"허용 가능한 데이터 손실<br><small style='color:#94a3b8'>Acceptable data loss</small>",
+"평균 고장 간격(MTBF)<br><small style='color:#94a3b8'>Mean time between failures</small>",
+"허용 가능한 복구 시간<br><small style='color:#94a3b8'>Acceptable time for recovery</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 허용 가능한 데이터 손실</b> — RPO는 정의상 조직이 수용할 수 있는 데이터 손실/재작업의 양. 다른 옵션들은 다른 BCP 지표(D=RTO, A=MOR/SDO, C=MTBF)에 해당.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">실제 정의</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 최소 운영 요구</td><td style="padding:8px;border:1px solid #334155">복구 전략 설계 입력 (MOR/SDO)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 데이터 손실 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>RPO 정의 그 자체</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. MTBF</td><td style="padding:8px;border:1px solid #334155">고장 가능성 지표</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 복구 시간</td><td style="padding:8px;border:1px solid #334155">RTO 정의</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RPO = 데이터 손실 허용량</b> (정의 매핑)<br>
+• RTO = 시간, RPO = 데이터 — 외워야 할 핵심 구분<br>
+• 관련: Q324·Q326 (RPO/RTO 시나리오)
+</div>`,
+reference:"CRM Chapter 4: RPO Definition",
+keyConcepts:[
+"RPO 정의|허용 가능한 데이터 손실량",
+"RTO vs RPO|RTO=시간 / RPO=데이터",
+"BCP 지표 매핑|MOR/SDO=서비스수준 / MTBF=신뢰성 / RTO=시간 / RPO=데이터"
+]
+},
+
+{
+id: 335,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `예산이 제한된 조직의 RTO=72시간, RPO=24시간이다. 사업 요구사항을 가장 잘 충족하는 것은?<br><small style="color:#94a3b8">An organization with a limited budget has an RTO of 72 hours and an RPO of 24 hours. Which of the following would BEST meet the requirements of the business?</small>`,
+options: [
+"핫 사이트 (Hot site)<br><small style='color:#94a3b8'>Hot site</small>",
+"콜드 사이트 (Cold site)<br><small style='color:#94a3b8'>Cold site</small>",
+"미러드 사이트 (Mirrored site)<br><small style='color:#94a3b8'>Mirrored site</small>",
+"웜 사이트 (Warm site)<br><small style='color:#94a3b8'>Warm site</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 웜 사이트</b> — 72시간 RTO·24시간 RPO는 비교적 여유 있는 요구사항이며, 웜 사이트는 필수 인프라와 대부분의 IT 장비를 합리적 비용으로 제공. 핫/미러는 과도, 콜드는 부족.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">사이트 유형</th><th style="padding:8px;border:1px solid #334155">복구 시간</th><th style="padding:8px;border:1px solid #334155">비용</th><th style="padding:8px;border:1px solid #334155">72h/24h 적합?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Hot</td><td style="padding:8px;border:1px solid #334155">수시간</td><td style="padding:8px;border:1px solid #334155">높음</td><td style="padding:8px;border:1px solid #334155">과도 — 예산 낭비</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Cold</td><td style="padding:8px;border:1px solid #334155">수주</td><td style="padding:8px;border:1px solid #334155">낮음</td><td style="padding:8px;border:1px solid #334155">부족 — 72h 초과</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. Mirrored</td><td style="padding:8px;border:1px solid #334155">즉시</td><td style="padding:8px;border:1px solid #334155">매우 높음</td><td style="padding:8px;border:1px solid #334155">과도 — 예산 위반</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. Warm ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>1~3일</b></td><td style="padding:8px;border:1px solid #10b981"><b>중간</b></td><td style="padding:8px;border:1px solid #10b981"><b>딱 맞음 (cost-effective)</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"BEST" + 예산 제약</b>: 요구사항을 충족하면서도 가장 저렴한 옵션 선택<br>
+• 사이트 비용·복구속도 순서: Cold &lt; Warm &lt; Hot &lt; Mirrored<br>
+• RTO 72h = 며칠 여유 → Warm으로 충분<br>
+• 핫·미러는 RTO 충족하지만 "limited budget" 위반 → 차선<br>
+• 콜드는 비용은 OK지만 RTO 72h 초과 위험 → 부적합<br>
+• 패턴: 예산 + RTO/RPO 매칭 → 정확히 충족하는 최저 비용 옵션<br>
+• 관련: Q321 (Reciprocal — 가장 저렴), Q317 (RTO 결정)
+</div>`,
+reference:"CRM Chapter 4: Recovery Site Selection / Cost-RTO Trade-off",
+keyConcepts:[
+"Warm Site|필수 인프라+대부분 장비 — 1~3일 복구, 중간 비용",
+"사이트 비용 순서|Cold < Warm < Hot < Mirrored",
+"BEST 매칭 원칙|RTO 충족 + 최저 비용 = cost-effective 정답"
+]
+},
+
+{
+id: 336,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `대체 불가능한 정보를 담은 백업 미디어가 운송 중 분실·도난되는 위험을 가장 잘 완화하는 것은?<br><small style="color:#94a3b8">Which of the following BEST mitigates the risk of backup media containing irreplaceable information being lost or stolen while in transit?</small>`,
+options: [
+"미디어 암호화 보장<br><small style='color:#94a3b8'>Ensure that media are encrypted.</small>",
+"중복 사본 유지<br><small style='color:#94a3b8'>Maintain a duplicate copy.</small>",
+"보관 연속성 사슬(chain of custody) 유지<br><small style='color:#94a3b8'>Maintain chain of custody.</small>",
+"인력에 대한 보증보험 가입<br><small style='color:#94a3b8'>Ensure that personnel are bonded.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 중복 사본 유지</b> — "대체 불가능한(irreplaceable)" 데이터의 핵심 위험은 <b>가용성 손실</b>. 암호화·CoC·보증보험은 도난·기밀성 보호에 좋지만 분실 자체를 복구하지 못함. 중복 사본만이 원본 손실 시에도 데이터를 복원 가능하게 함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">통제</th><th style="padding:8px;border:1px solid #334155">보호하는 위험</th><th style="padding:8px;border:1px solid #334155">손실 복구?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 암호화</td><td style="padding:8px;border:1px solid #334155">기밀성 (도난 시 노출)</td><td style="padding:8px;border:1px solid #334155">아니오</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 중복 사본 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>가용성 (분실 시 복원)</b></td><td style="padding:8px;border:1px solid #10b981"><b>예</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. CoC</td><td style="padding:8px;border:1px solid #334155">책임 추적</td><td style="padding:8px;border:1px solid #334155">아니오</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 보증보험</td><td style="padding:8px;border:1px solid #334155">금전적 보상</td><td style="padding:8px;border:1px solid #334155">아니오 (사고 후 보상만)</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"Irreplaceable" 키워드</b>: 가용성·복구가능성이 핵심 → 중복 사본 필수<br>
+• 암호화 = 기밀성 통제 (도난 → 노출 방지) — 데이터 자체 손실은 못 막음<br>
+• <b>CIA 매칭</b>: 분실(가용성) → 백업·중복 / 도난(기밀성) → 암호화<br>
+• 운송 중 사고 = 단일 사본의 단일 장애점 → 사전 중복이 유일한 해결책<br>
+• 패턴: 키워드 "irreplaceable/lost" → 가용성 통제 (중복·백업)<br>
+• 관련: Q333 (오프사이트 백업), Q332 (D2D)
+</div>`,
+reference:"CRM Chapter 4: Backup Media Transit / CIA Triad Mapping",
+keyConcepts:[
+"Irreplaceable 위험|가용성 손실 — 중복 사본만이 직접 완화",
+"CIA 매칭 통제|기밀성=암호화 / 가용성=중복·백업 / 무결성=해시",
+"암호화 한계|도난 시 노출은 막지만 손실 자체는 복구 못 함"
+]
+},
+
+{
+id: 337,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `IS 감사인이 IT 운영팀이 데이터에 대해 향상된 보안 수준을 구현했음을 확인했다. IT 운영팀이 구현했을 가능성이 가장 높은 객체지향 기술 특성은?<br><small style="color:#94a3b8">Which of the following object-oriented technology characteristic is MOST likely be implemented by the IT operations team [for enhanced data security]?</small>`,
+options: [
+"상속 (Inheritance)<br><small style='color:#94a3b8'>Inheritance</small>",
+"동적 웨어하우징 (Dynamic warehousing)<br><small style='color:#94a3b8'>Dynamic warehousing</small>",
+"캡슐화 (Encapsulation)<br><small style='color:#94a3b8'>Encapsulation</small>",
+"다형성 (Polymorphism)<br><small style='color:#94a3b8'>Polymorphism</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 캡슐화 (Encapsulation)</b> — 객체의 속성·메서드를 외부에서 직접 접근하지 못하게 하고 정의된 공개 인터페이스를 통해서만 상호작용하도록 제한. 정보 은닉(information hiding)으로 데이터 보안을 직접 강화.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">OO 특성</th><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">보안 관련?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Inheritance</td><td style="padding:8px;border:1px solid #334155">코드 재사용</td><td style="padding:8px;border:1px solid #334155">아니오</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Dynamic warehousing</td><td style="padding:8px;border:1px solid #334155">OO 특성 아님 (혼동 옵션)</td><td style="padding:8px;border:1px solid #334155">아니오</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. Encapsulation ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>정보 은닉·접근 제한</b></td><td style="padding:8px;border:1px solid #10b981"><b>예 — 직접 보안 기능</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. Polymorphism</td><td style="padding:8px;border:1px solid #334155">동작의 다형 처리</td><td style="padding:8px;border:1px solid #334155">아니오</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Encapsulation = Information Hiding</b>: private 속성·메서드는 외부에서 접근 불가<br>
+• 공개 인터페이스(public API)만 노출 → 내부 구현 보호<br>
+• 데이터 무결성·기밀성 강화의 OO 핵심 메커니즘<br>
+• 다른 OO 특성(상속·다형성)은 설계·재사용 목적이지 보안 목적이 아님<br>
+• 패턴: "OO + 보안" → 거의 항상 Encapsulation
+</div>`,
+reference:"CRM Chapter 4: Object-Oriented Technology / Encapsulation",
+keyConcepts:[
+"Encapsulation|정보 은닉 — public 인터페이스만 노출, 내부 보호",
+"OO 특성 분류|상속=재사용 / 캡슐화=보안 / 다형성=유연성",
+"OO + 보안 패턴|Encapsulation이 정답"
+]
+},
+
+{
+id: 338,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `IS 감사인이 데이터 흐름도(DFD)를 사용하는 목적은?<br><small style="color:#94a3b8">Data flow diagrams are used by IS auditors to:</small>`,
+options: [
+"핵심 통제 식별<br><small style='color:#94a3b8'>identify key controls.</small>",
+"고수준 데이터 정의 강조<br><small style='color:#94a3b8'>highlight high-level data definitions.</small>",
+"데이터 경로와 저장소를 그래픽으로 요약<br><small style='color:#94a3b8'>graphically summarize data paths and storage.</small>",
+"데이터 생성의 단계별 세부 묘사<br><small style='color:#94a3b8'>portray step-by-step details of data generation.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 데이터 경로와 저장소를 그래픽으로 요약</b> — DFD는 데이터가 발생지에서 목적지까지 어떻게 이동하고 어디에 저장되는지를 시각적으로 추적. 데이터 흐름과 저장 위치 파악이 주된 목적.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">실제 도구</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 통제 식별</td><td style="padding:8px;border:1px solid #334155">Control Matrix·RCM</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 데이터 정의</td><td style="padding:8px;border:1px solid #334155">Data Dictionary</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 흐름·저장 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>DFD 정의 그 자체</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 생성 세부</td><td style="padding:8px;border:1px solid #334155">Process Flow·시퀀스 다이어그램</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DFD = Data Flow Diagram</b>: 데이터의 이동·저장·변환을 시각화<br>
+• 4가지 요소: External Entity / Process / Data Store / Data Flow<br>
+• 감사 활용: 데이터 처리 경로 파악 → 잠재적 보안·통제 지점 식별의 <b>입력</b>으로 사용 (DFD 자체가 통제 식별 도구는 아님)<br>
+• 다른 도구 매핑: 통제→RCM, 정의→Data Dictionary, 절차→Flowchart
+</div>`,
+reference:"CRM Chapter 4: Data Flow Diagrams / Audit Tools",
+keyConcepts:[
+"DFD 정의|데이터 경로·저장소 시각화 — 흐름 추적 도구",
+"DFD 4요소|External Entity / Process / Data Store / Data Flow",
+"감사 도구 매핑|DFD=흐름 / RCM=통제 / Dictionary=정의 / Flowchart=절차"
+]
+},
+
+{
+id: 339,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `잠재적 자연재해에 대비한 데이터 백업 전략 설계에 가장 주요하게 도움이 되는 입력은?<br><small style="color:#94a3b8">Which of the following inputs would PRIMARILY help in designing the data backup strategy in case of potential natural disasters?</small>`,
+options: [
+"복구 시점 목표 (RPO)<br><small style='color:#94a3b8'>Recovery point objective (RPO)</small>",
+"백업할 데이터 볼륨<br><small style='color:#94a3b8'>Volume of data to be backed up</small>",
+"사용 가능한 데이터 백업 기술<br><small style='color:#94a3b8'>Available data backup technologies</small>",
+"복구 시간 목표 (RTO)<br><small style='color:#94a3b8'>Recovery time objective (RTO)</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. RPO</b> — RPO는 허용 가능한 데이터 손실량을 정의하므로 <b>백업 주기·방식</b>을 결정하는 직접적 입력. 백업 전략(빈도·기술 선택)의 핵심 출발점.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">입력</th><th style="padding:8px;border:1px solid #334155">결정 대상</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. RPO ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>백업 주기·방식 (전략의 핵심)</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 데이터 볼륨</td><td style="padding:8px;border:1px solid #334155">용량 계획 (보조)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 백업 기술</td><td style="padding:8px;border:1px solid #334155">구현 수단 (RPO 후 결정)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. RTO</td><td style="padding:8px;border:1px solid #334155">DR 사이트 설계 (백업 전략 X)</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RPO → 백업 전략 / RTO → 복구 사이트 전략</b> 매핑<br>
+• RPO 1시간 = 매시간 백업/복제 필요 → 백업 기술·주기 결정<br>
+• 볼륨·기술은 RPO가 정해진 후 그것을 충족하기 위한 수단<br>
+• <b>요구사항 → 전략 → 기술</b> 순서 (Top-down)<br>
+• 패턴: "백업 전략 입력" → RPO / "복구 사이트 입력" → RTO<br>
+• 관련: Q324·Q326·Q334 (RPO 시리즈)
+</div>`,
+reference:"CRM Chapter 4: Backup Strategy Design / RPO Driver",
+keyConcepts:[
+"RPO → 백업 전략|허용 데이터 손실량이 백업 주기·방식 결정",
+"RTO vs RPO 매핑|RTO=DR 사이트 / RPO=백업 전략",
+"설계 순서|요구사항(RPO) → 전략 → 기술 → 운영"
+]
+},
+
+{
+id: 340,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `데이터센터 재해 시, 핵심 데이터베이스의 완전한 복구를 가능하게 하는 가장 적절한 전략은?<br><small style="color:#94a3b8">In the event of a data center disaster, which of the following is the MOST appropriate strategy to enable a complete recovery of a critical database?</small>`,
+options: [
+"원격 사이트로 일일 데이터 백업<br><small style='color:#94a3b8'>Daily data backup to a remote site</small>",
+"원격 사이트로 실시간 복제<br><small style='color:#94a3b8'>Real-time replication to a remote site</small>",
+"로컬 서버로 하드 디스크 미러링<br><small style='color:#94a3b8'>Hard disk mirroring to a local server</small>",
+"로컬 SAN으로 실시간 데이터 백업<br><small style='color:#94a3b8'>Real-time data backup to the local storage area network</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 원격 사이트로 실시간 복제</b> — "완전한 복구(complete recovery)" + "데이터센터 재해" 조건 동시 충족. 실시간 = 데이터 손실 0(완전), 원격 = 동일 재해 영향 회피.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">전략</th><th style="padding:8px;border:1px solid #334155">완전 복구?</th><th style="padding:8px;border:1px solid #334155">재해 회피?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 일일 원격 백업</td><td style="padding:8px;border:1px solid #334155">아니오 (최대 1일 손실)</td><td style="padding:8px;border:1px solid #334155">예</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 원격 실시간 복제 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>예 (RPO≈0)</b></td><td style="padding:8px;border:1px solid #10b981"><b>예</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 로컬 미러링</td><td style="padding:8px;border:1px solid #334155">예</td><td style="padding:8px;border:1px solid #334155">아니오 (동일 DC)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 로컬 실시간 백업</td><td style="padding:8px;border:1px solid #334155">예</td><td style="padding:8px;border:1px solid #334155">아니오 (동일 DC)</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>두 가지 조건 동시 충족</b>: (1) 완전 복구 = 실시간 / (2) 재해 대응 = 원격<br>
+• 로컬(C·D) = 동일 재해에 함께 파괴 → 재해 시나리오 부적합<br>
+• 일일 백업(A) = 최대 24시간 데이터 손실 → "complete" 위반<br>
+• <b>원격 + 실시간 = 유일 해법</b><br>
+• 패턴: "재해 + complete recovery" → 항상 원격 실시간 복제<br>
+• 관련: Q333 (오프사이트 필수), Q204·Q262 (사이트 분리)
+</div>`,
+reference:"CRM Chapter 4: Real-Time Replication / DR Strategies",
+keyConcepts:[
+"원격 실시간 복제|RPO≈0 + 재해 회피 동시 충족",
+"로컬 vs 원격|로컬 통제는 재해 시 함께 파괴 — 지리적 분리 필수",
+"두 조건 매핑|complete=실시간 / 재해=원격"
+]
+},
+
+{
+id: 341,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `재해 후 데이터 복원 시 백업·복원 절차의 효과성을 가장 잘 나타내는 지표는?<br><small style="color:#94a3b8">Which of the following is the BEST indicator of the effectiveness of backup and restore procedures while restoring data after a disaster?</small>`,
+options: [
+"복구팀 인력의 가용성<br><small style='color:#94a3b8'>Members of the recovery team were available.</small>",
+"RTO 충족<br><small style='color:#94a3b8'>Recovery time objectives (RTOs) were met.</small>",
+"백업 미디어 인벤토리 적절 관리<br><small style='color:#94a3b8'>Inventory of backup media was properly maintained.</small>",
+"백업 미디어가 대체 사이트에서 완전히 복원됨<br><small style='color:#94a3b8'>Backup media was completely restored at an alternate site.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. RTO 충족</b> — 백업·복원 절차의 효과성은 BIA에서 정의된 RTO를 실제로 충족했는지로 판단. RTO 충족 = 사업 요구사항 충족 = 절차 효과성 입증.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">효과성 입증?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 인력 가용성</td><td style="padding:8px;border:1px solid #334155">전제 조건 — 결과 X</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. RTO 충족 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>결과 지표 — 사업 요구 충족</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 인벤토리 관리</td><td style="padding:8px;border:1px solid #334155">한 요소일 뿐</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 완전 복원</td><td style="padding:8px;border:1px solid #334155">시간 무관 — RTO 초과 시 무의미</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>효과성 = 결과 지표</b>: 절차가 의도한 사업 목표(RTO)를 달성했는가<br>
+• 복원이 완료돼도(D) RTO 초과 시 사업 손실 발생 → 효과성 미입증<br>
+• 인력·인벤토리는 입력·전제조건이지 결과 아님<br>
+• 패턴: "효과성 지표" → 결과 지표(outcome) 선택<br>
+• 관련: Q319 (PM 효과성=다운타임 로그), Q325 (심각도=다운타임)
+</div>`,
+reference:"CRM Chapter 4: Backup/Restore Effectiveness / RTO Validation",
+keyConcepts:[
+"백업·복원 효과성|RTO 충족 = 결과 지표 — 사업 요구 입증",
+"효과성 패턴|입력·과정 ≠ 효과성 / 결과 지표가 효과성",
+"완전 복원의 한계|시간 초과 시 무의미 — RTO가 우선"
+]
+},
+
+{
+id: 342,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `증분 백업(Incremental Backup) 방식을 구현하는 것이 가장 적절한 경우는?<br><small style="color:#94a3b8">It is MOST appropriate to implement an incremental backup scheme when:</small>`,
+options: [
+"핵심 데이터의 복구 시간이 제한된 경우<br><small style='color:#94a3b8'>there is limited recovery time for critical data.</small>",
+"온라인 디스크 기반 미디어가 선호되는 경우<br><small style='color:#94a3b8'>online disk-based media are preferred.</small>",
+"미디어 용량이 제한된 경우<br><small style='color:#94a3b8'>there is limited media capacity.</small>",
+"백업 세트의 무작위 선택이 필요한 경우<br><small style='color:#94a3b8'>a random selection of backup sets is required.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 미디어 용량 제한</b> — 증분 백업은 마지막 백업 이후 변경된 파일만 백업하므로 미디어 사용량이 최소. 용량 제약 환경에 가장 적합.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">백업 유형</th><th style="padding:8px;border:1px solid #334155">백업 시간</th><th style="padding:8px;border:1px solid #334155">미디어 사용</th><th style="padding:8px;border:1px solid #334155">복구 시간</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">Full</td><td style="padding:8px;border:1px solid #334155">길다</td><td style="padding:8px;border:1px solid #334155">많다</td><td style="padding:8px;border:1px solid #334155">짧다 (1세트)</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">Differential</td><td style="padding:8px;border:1px solid #334155">중간</td><td style="padding:8px;border:1px solid #334155">중간</td><td style="padding:8px;border:1px solid #334155">중간 (2세트)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>Incremental ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>짧다</b></td><td style="padding:8px;border:1px solid #10b981"><b>최소</b></td><td style="padding:8px;border:1px solid #10b981"><b>길다 (다중 세트)</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Incremental</b> = 마지막 백업(Full 또는 Incremental) 이후 변경분만 백업<br>
+• <b>장점</b>: 백업 시간·미디어 용량 최소<br>
+• <b>단점</b>: 복구 시 Full + 모든 Incremental을 순서대로 적용 → 복구 시간 길어짐<br>
+• A(짧은 RTO) → Full 또는 Differential이 적합 (Incremental 부적합)<br>
+• B(미디어 종류) → 백업 방식과 무관<br>
+• D(무작위 선택) → Incremental은 의존 체인 때문에 무작위 선택 불가<br>
+• 트레이드오프: 백업 시간·용량 ↔ 복구 시간
+</div>`,
+reference:"CRM Chapter 4: Backup Types (Full/Differential/Incremental)",
+keyConcepts:[
+"Incremental Backup|마지막 백업 이후 변경분만 — 시간·용량 최소",
+"백업 트레이드오프|용량·시간 ↓ ↔ 복구 시간 ↑",
+"백업 유형 매핑|용량 제한=Incremental / 짧은 RTO=Full·Differential"
+]
+},
+
+{
+id: 343,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `IS 감사인이 데이터 웨어하우스 쿼리 성능이 하루 중 특정 시간에 크게 저하됨을 발견했다. 가장 관련성 있는 검토 대상 통제는?<br><small style="color:#94a3b8">An IS auditor finds that the data warehouse query performance decreases significantly at certain times of the day. Which of the following controls are MOST relevant for the IS auditor to review?</small>`,
+options: [
+"영구 테이블스페이스 할당<br><small style='color:#94a3b8'>Permanent table-space allocation</small>",
+"커밋·롤백 통제<br><small style='color:#94a3b8'>Commitment and rollback controls</small>",
+"사용자 스풀·DB 한도 통제<br><small style='color:#94a3b8'>User spool and database limit controls</small>",
+"읽기/쓰기 접근 로그 통제<br><small style='color:#94a3b8'>Read/write access log controls</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 사용자 스풀·DB 한도 통제</b> — 사용자별 임시 작업 공간(spool)과 DB 사용량 제한이 없으면 잘못 작성된 쿼리·과도한 ad hoc 테이블 빌드가 자원을 독점해 다른 사용자 쿼리 성능을 저하시킴. 특정 시간대 성능 저하의 직접 원인.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">통제</th><th style="padding:8px;border:1px solid #334155">시간대별 성능 영향?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 테이블스페이스 할당</td><td style="padding:8px;border:1px solid #334155">정적 — 시간 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Commit/Rollback</td><td style="padding:8px;border:1px solid #334155">DW는 OLTP 아님 — 무관</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 스풀·DB 한도 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>피크 사용 시 자원 독점 방지</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 접근 로그</td><td style="padding:8px;border:1px solid #334155">기록만 — 성능 무관</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DW 특성</b>: OLTP가 아니므로 Commit/Rollback 영향 X — 대신 대용량 쿼리·ad hoc 분석이 자원 소비<br>
+• <b>스풀 한도</b> = 사용자별 임시 작업 공간 제한 → 잘못된 쿼리의 자원 독점 방지<br>
+• <b>DB 한도</b> = 사용자 테이블 크기 제한 → 디스크·버퍼 보호<br>
+• "특정 시간대 저하" = 동시 사용자 피크 시간대 → 자원 경쟁 → 한도 통제 부재 신호<br>
+• 정적 통제(A·D)·OLTP 통제(B)는 시간대별 변동 설명 못 함<br>
+• 관련: Q329 (Commit/Rollback은 OLTP용)
+</div>`,
+reference:"CRM Chapter 4: Data Warehouse Performance / Resource Limits",
+keyConcepts:[
+"User Spool Limit|사용자별 임시 공간 제한 — ad hoc 쿼리 자원 독점 방지",
+"DW vs OLTP|DW는 Commit/Rollback 무관, 자원 한도가 핵심",
+"피크 시간대 성능|자원 한도 통제 부재 = 동시 사용 시 경쟁 발생"
+]
+},
+
+{
+id: 344,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `IS 백업 파일용 오프사이트 저장 시설 위치 선정 시 가장 중요한 기준은? 오프사이트 시설은:<br><small style="color:#94a3b8">Which of the following is the MOST important criterion when selecting a location for an offsite storage facility for IS backup files? The offsite facility must be:</small>`,
+options: [
+"데이터센터와 물리적으로 분리되고 동일 위험에 노출되지 않을 것<br><small style='color:#94a3b8'>physically separated from the data center and not subject to the same risk.</small>",
+"데이터센터와 동일한 수준의 보호 제공<br><small style='color:#94a3b8'>given the same level of protection as that of the computer data center.</small>",
+"신뢰할 수 있는 제3자에 아웃소싱<br><small style='color:#94a3b8'>outsourced to a reliable third party.</small>",
+"감시(surveillance) 기능 구비<br><small style='color:#94a3b8'>equipped with surveillance capabilities.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 물리적 분리 + 동일 위험 미노출</b> — 오프사이트의 핵심 목적은 주 사이트가 재해를 입었을 때 백업이 살아남는 것. 같은 위험 영역에 있으면 동시 파괴되어 의미 없음.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">기준</th><th style="padding:8px;border:1px solid #334155">우선순위</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 물리적 분리 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>최우선 — 오프사이트의 본질</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 동일 보호 수준</td><td style="padding:8px;border:1px solid #334155">중요하나 2차 — 더 강할 수도 있음</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 제3자 아웃소싱</td><td style="padding:8px;border:1px solid #334155">선택사항 — 자체 운영도 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 감시 기능</td><td style="padding:8px;border:1px solid #334155">물리 보안의 일부 — 부수적</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>오프사이트의 본질</b> = 지리적·위험 영역 분리 — 같은 재해 동시 영향 회피<br>
+• 같은 도시·전력망·홍수지대 → 분리 의미 없음<br>
+• 거리 가이드라인: 일반적 수십 km 이상, 핵심 시스템은 다른 지진대·전력망<br>
+• 보호 수준(B)·소유 형태(C)·감시(D)는 선택지일 뿐 본질 아님<br>
+• 패턴: "오프사이트 선정 기준" → 거의 항상 "동일 재해 회피"<br>
+• 관련: Q204·Q262 (사이트 분리), Q333 (오프사이트 필수)
+</div>`,
+reference:"CRM Chapter 4: Offsite Storage Selection / Geographic Separation",
+keyConcepts:[
+"오프사이트 본질|물리적 분리 + 동일 위험 미노출 — 동시 파괴 회피",
+"위험 영역 분리|지진대·전력망·홍수지대 등 인프라 의존성 분리",
+"우선순위|분리 > 보호수준 > 소유형태 > 감시"
+]
+},
+
+{
+id: 345,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `24/7 가용성을 가장 잘 지원하는 것은?<br><small style="color:#94a3b8">Which of the following BEST supports 24/7 availability?</small>`,
+options: [
+"일일 백업 (Daily backup)<br><small style='color:#94a3b8'>Daily backup</small>",
+"오프사이트 저장 (Offsite storage)<br><small style='color:#94a3b8'>Offsite storage</small>",
+"미러링 (Mirroring)<br><small style='color:#94a3b8'>Mirroring</small>",
+"정기 테스트 (Periodic testing)<br><small style='color:#94a3b8'>Periodic testing</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 미러링</b> — 핵심 요소를 실시간 복제하여 장애 시 즉시 페일오버 가능. 24/7 연속 가용성을 직접 지원하는 유일한 옵션.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">24/7 지원?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 일일 백업</td><td style="padding:8px;border:1px solid #334155">아니오 — 복원에 수시간</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 오프사이트 저장</td><td style="padding:8px;border:1px solid #334155">아니오 — 보관일 뿐</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 미러링 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>예 — 즉시 페일오버</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 정기 테스트</td><td style="padding:8px;border:1px solid #334155">아니오 — 검증일 뿐</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>24/7 가용성 = 즉시 페일오버</b> — 다운타임 0 요구<br>
+• 미러링 = 실시간 복제 → 장애 시 자동 전환<br>
+• 백업·저장·테스트는 모두 다른 목적 (복원·보관·검증)<br>
+• 패턴: "24/7" → 미러링·실시간 복제<br>
+• 관련: Q328 (RAID 1 미러링), Q340 (원격 실시간 복제), Q332 (D2D)
+</div>`,
+reference:"CRM Chapter 4: High Availability / Mirroring",
+keyConcepts:[
+"Mirroring|실시간 복제 — 즉시 페일오버, 24/7 직접 지원",
+"24/7 패턴|미러링·실시간 복제만 가능",
+"백업 vs 미러링|백업=복원용 / 미러링=가용성용"
+]
+},
+
+{
+id: 346,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `백업 서버의 무단 소프트웨어가 프로덕션 서버로 배포될 위험을 줄이는 데 가장 효과적인 프로세스는?<br><small style="color:#94a3b8">Which of the following processes will be MOST effective in reducing the risk that unauthorized software on a backup server is distributed to the production server?</small>`,
+options: [
+"수동 파일 복사로 복제 수행<br><small style='color:#94a3b8'>Manually copy files to accomplish replication.</small>",
+"소프트웨어 버전 통제 시스템의 변경사항 검토<br><small style='color:#94a3b8'>Review changes in the software version control system.</small>",
+"개발자가 백업 서버에 접근하지 못하게 함<br><small style='color:#94a3b8'>Ensure that developers do not have access to the backup server.</small>",
+"백업 서버의 접근 통제 로그 검토<br><small style='color:#94a3b8'>Review the access control log of the backup server.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 버전 통제 시스템 변경 검토</b> — 소프트웨어 변경은 버전 통제 시스템(VCS)을 통해 추적되며, 승인된 버전만 프로덕션으로 이전되도록 함. VCS 로그·보고서 검토로 무단 코드 식별 가능. 가장 직접적·체계적 통제.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">효과성</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 수동 복사</td><td style="padding:8px;border:1px solid #334155">위험 증가 — 인적 실수</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. VCS 검토 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>승인 버전만 이전 — 직접 통제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 개발자 접근 차단</td><td style="padding:8px;border:1px solid #334155">예방적이나 우회 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 접근 로그 검토</td><td style="padding:8px;border:1px solid #334155">탐지만 — 누가 접근했나만</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>VCS = 단일 진실 소스(SSOT)</b>: 무엇이 승인됐고 무엇이 이전됐는지 추적<br>
+• 백업 서버에 무단 코드가 있어도 VCS를 통해서만 프로덕션 이전된다면 차단 가능<br>
+• <b>SoD 원칙</b>: 개발 → VCS → 빌드 → 프로덕션 (각 단계 통제)<br>
+• 수동 복사(A)는 통제 우회 자체 — 가장 위험<br>
+• 접근 로그(D)는 사후 탐지일 뿐 — 무단 코드 자체 식별 못 함<br>
+• 관련: Q316 (소스·오브젝트 동기화), Q320 (변경관리)
+</div>`,
+reference:"CRM Chapter 4: Software Version Control / Production Promotion",
+keyConcepts:[
+"VCS 검토|승인 버전만 프로덕션 이전 — 무단 코드 차단의 직접 통제",
+"SSOT|VCS = 단일 진실 소스, 모든 변경의 추적·승인",
+"접근 통제 한계|로그·차단은 우회 가능 / VCS 통제는 체계적"
+]
+},
+
+{
+id: 347,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `파일에 보관 날짜(retention date)를 적용하면 무엇이 보장되는가?<br><small style="color:#94a3b8">Applying a retention date on a file will ensure that:</small>`,
+options: [
+"날짜가 설정될 때까지 데이터를 읽을 수 없음<br><small style='color:#94a3b8'>data cannot be read until the date is set.</small>",
+"해당 날짜 전에는 데이터가 삭제되지 않음<br><small style='color:#94a3b8'>data will not be deleted before that date.</small>",
+"백업 사본이 해당 날짜 이후 보관되지 않음<br><small style='color:#94a3b8'>backup copies are not retained after that date.</small>",
+"동일 이름의 데이터셋이 구별됨<br><small style='color:#94a3b8'>datasets having the same name are differentiated.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 해당 날짜 전에는 삭제 불가</b> — Retention date는 파일이 해당 날짜 전에는 덮어쓰기·삭제되지 않도록 보장하는 메커니즘. 법적·규제 보존 요구사항 충족용.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 읽기 제한</td><td style="padding:8px;border:1px solid #334155">읽기와 무관 (접근 통제와 혼동)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 삭제 방지 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>Retention date 정의</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 백업 후 삭제</td><td style="padding:8px;border:1px solid #334155">백업은 별도 retention</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 파일 구별</td><td style="padding:8px;border:1px solid #334155">생성 날짜의 역할</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Retention Date</b> = "이 날짜 전에는 삭제·덮어쓰기 금지"<br>
+• 법적 보존 명령(Legal Hold)·규제 준수(SOX·HIPAA)·e-Discovery 대응<br>
+• WORM(Write Once Read Many) 스토리지의 핵심 기능<br>
+• 읽기 제한과 무관 — 접근 통제는 별개<br>
+• 관련: Q331 (이메일 보관 정책)
+</div>`,
+reference:"CRM Chapter 4: File Retention / Data Lifecycle",
+keyConcepts:[
+"Retention Date|해당 날짜 전 삭제·덮어쓰기 방지",
+"법적 보존|규제·소송 대응의 핵심 메커니즘",
+"WORM 스토리지|Write Once Read Many — Retention 강제 구현"
+]
+},
+
+{
+id: 348,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `WAN 사용량 검토에서 마스터와 standby DB를 동기 연결하는 사이트 간 통신선 한 라인의 트래픽이 회선 용량의 96%에서 피크에 달함을 발견했다. IS 감사인의 결론은?<br><small style="color:#94a3b8">A review of WAN usage discovers that traffic on one communication line between sites, synchronously linking the master and standby database, peaks at 96 percent of the line capacity. An IS auditor should conclude that:</small>`,
+options: [
+"단시간 서비스 손실을 야기하는 패턴이 나타나는지 분석 필요<br><small style='color:#94a3b8'>analysis is required to determine if a pattern emerges that results in a service loss for a short period of time.</small>",
+"포화에 도달하지 않았으므로 WAN 용량은 최대 트래픽 수요에 충분<br><small style='color:#94a3b8'>WAN capacity is adequate for the maximum traffic demands because saturation has not been reached.</small>",
+"약 85% 포화를 제공하도록 즉시 더 큰 용량의 회선으로 교체해야 함<br><small style='color:#94a3b8'>the line should immediately be replaced by one with a larger capacity to provide approximately 85 percent saturation.</small>",
+"사용자에게 트래픽 수요를 줄이거나 모든 서비스 시간에 분산하도록 지시<br><small style='color:#94a3b8'>users should be instructed to reduce their traffic demands or distribute them across all service hours.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 패턴 분석 필요</b> — 96% 피크는 일회성 이벤트(대용량 다운로드 등)일 수도, 반복 패턴일 수도 있음. 회선 교체·사용자 지도 같은 조치를 권고하기 전에 먼저 패턴을 분석해 근본 원인을 파악해야 함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 분석 필요 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>RCA 우선 — 감사 정석</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 용량 충분</td><td style="padding:8px;border:1px solid #334155">96%는 임계 수준 — 안일한 결론</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 즉시 교체</td><td style="padding:8px;border:1px solid #334155">조급함 — 분석 없이 비용 발생</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 사용자 지도</td><td style="padding:8px;border:1px solid #334155">조급함 — 원인 미확인</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사인의 발견 처리 패턴</b>: 발견 → <b>RCA·분석</b> → 권고 → 보고<br>
+• 96% = 우려되지만 일회성/반복성 구분 없이 결론 내릴 수 없음<br>
+• 가능한 원인: (1) 일회성 대용량 전송 (2) 정기 백업 (3) 점진적 트래픽 증가 — 각각 다른 대응<br>
+• 분석 후에야 적절한 권고 가능 (용량 증설/QoS/트래픽 분산 등)<br>
+• 패턴: 측정값 발견 → 즉시 행동 권고는 거의 항상 오답<br>
+• 관련: Q272·Q314·Q320 (RCA 우선 패턴)
+</div>`,
+reference:"CRM Chapter 4: WAN Capacity Management / Audit Conclusions",
+keyConcepts:[
+"감사 결론 패턴|발견 → RCA·분석 → 권고 — 즉시 행동 권고는 부적절",
+"96% 임계값|일회성/반복성 구분이 결론의 핵심",
+"안일·조급 양극단 회피|B(안일)·C·D(조급) 모두 분석 우선 원칙 위반"
+]
+},
+
+{
+id: 349,
+domain: "4",
+ks: "4B3 Data Backup, Storage, and Restoration",
+question: `RPO에서 정의된 매우 세분화된 데이터 복원 시점이 필요한 조직에 가장 적합한 백업 기법은?<br><small style="color:#94a3b8">Which of the following backup techniques is the MOST appropriate when an organization requires extremely granular data restore points, as defined in the RPO?</small>`,
+options: [
+"가상 테이프 라이브러리 (VTL)<br><small style='color:#94a3b8'>Virtual tape libraries</small>",
+"디스크 기반 스냅샷<br><small style='color:#94a3b8'>Disk-based snapshots</small>",
+"지속적 데이터 백업 (CDB/CDP)<br><small style='color:#94a3b8'>Continuous data backup</small>",
+"디스크-투-테이프 백업<br><small style='color:#94a3b8'>Disk-to-tape backup</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 지속적 데이터 백업 (Continuous Data Protection, CDP)</b> — 실시간으로 모든 변경을 기록하므로 RPO가 거의 0에 가까운 매우 세분화된 복원 시점 제공. 다른 기법은 모두 백업 주기 사이에 데이터 손실 발생.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">기법</th><th style="padding:8px;border:1px solid #334155">백업 주기</th><th style="padding:8px;border:1px solid #334155">복원 시점 세분화</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. VTL</td><td style="padding:8px;border:1px solid #334155">스케줄 기반</td><td style="padding:8px;border:1px solid #334155">중간</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 스냅샷</td><td style="padding:8px;border:1px solid #334155">주기적 (시간/일)</td><td style="padding:8px;border:1px solid #334155">중간 — 주기 간 손실</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. CDP ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>실시간 (모든 변경)</b></td><td style="padding:8px;border:1px solid #10b981"><b>최대 세분화 (RPO≈0)</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. D2T</td><td style="padding:8px;border:1px solid #334155">스케줄 기반</td><td style="padding:8px;border:1px solid #334155">낮음</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>CDP = Continuous Data Protection</b>: 모든 쓰기 작업을 실시간 캡처<br>
+• <b>임의 시점 복구(Any Point in Time, APIT)</b> 가능 — 분 단위가 아닌 초 단위<br>
+• 스냅샷(B)도 우수하지만 주기적이라 주기 간 데이터 손실 발생<br>
+• RPO가 매우 짧을수록 → CDP / 짧음 → 스냅샷 / 보통 → VTL/D2T<br>
+• 패턴: "extremely granular RPO" → CDP<br>
+• 관련: Q324·Q326·Q334·Q339 (RPO 시리즈), Q340 (실시간 복제)
+</div>`,
+reference:"CRM Chapter 4: Continuous Data Protection / Granular RPO",
+keyConcepts:[
+"CDP|모든 변경 실시간 캡처 — Any Point in Time 복구",
+"세분화 vs 주기|CDP=초단위 / 스냅샷=분~시간 / VTL·D2T=일단위",
+"RPO 매핑|매우 세분화=CDP / 분단위=스냅샷 / 일단위=VTL·D2T"
+]
+},
+
+{
+id: 350,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `주 정보처리 시설(IPF)의 하드웨어 교체 후, 사업연속성 관리자가 가장 먼저 수행해야 할 활동은?<br><small style="color:#94a3b8">Which of the following activities should the business continuity manager perform FIRST after the replacement of hardware at the primary information processing facility (IPF)?</small>`,
+options: [
+"핫 사이트와의 호환성 검증<br><small style='color:#94a3b8'>Verify compatibility with the hot site.</small>",
+"구현 보고서 검토<br><small style='color:#94a3b8'>Review the implementation report.</small>",
+"DRP 워크스루 수행<br><small style='color:#94a3b8'>Perform a walk-through of the disaster recovery plan (DRP).</small>",
+"IT 자산 인벤토리 갱신<br><small style='color:#94a3b8'>Update the IT assets inventory.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. IT 자산 인벤토리 갱신</b> — IT 자산 인벤토리는 BCP/DRP의 기본 입력. 인프라 변경(하드웨어 교체)을 반영해야 모든 후속 활동(호환성 검증·워크스루)이 정확한 정보 위에서 수행됨.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">활동</th><th style="padding:8px;border:1px solid #334155">순서</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 호환성 검증</td><td style="padding:8px;border:1px solid #334155">2단계 — 인벤토리 후</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 구현 보고서</td><td style="padding:8px;border:1px solid #334155">제한적 가치 — 이미 설치됨</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. DRP 워크스루</td><td style="padding:8px;border:1px solid #334155">3단계 — 인벤토리·호환성 후</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 인벤토리 갱신 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>1단계 — 모든 BCP 활동의 기본 입력</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 활동 순서</b>: 인벤토리 갱신 → 호환성 검증 → 워크스루 → 테스트<br>
+• 인벤토리 = BCP/DRP의 <b>SSOT(Single Source of Truth)</b><br>
+• 인벤토리 미갱신 상태에서 호환성 검증·워크스루는 잘못된 정보 기반 → 의미 없음<br>
+• 패턴: "FIRST" 질문 → 거의 항상 기초·기본 입력이 정답<br>
+• 관련: Q272·Q314 (BIA = BCP의 토대)
+</div>`,
+reference:"CRM Chapter 4: BCP Maintenance / IT Asset Inventory",
+keyConcepts:[
+"IT 자산 인벤토리|BCP/DRP의 기본 입력 — 모든 후속 활동의 토대",
+"BCP 변경 순서|인벤토리 → 호환성 → 워크스루 → 테스트",
+"FIRST 패턴|기초·기본 입력 갱신이 항상 우선"
+]
+},
+
+{
+id: 351,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 검토 중 IS 감사인이 위기 상황 선언 시점이 정의되지 않은 것을 발견했다. 이와 관련된 주된 위험은?<br><small style="color:#94a3b8">During a review of a BCP, an IS auditor noticed that the point at which a situation is declared to be a crisis has not been defined. The MAJOR risk associated with this is that:</small>`,
+options: [
+"대응·복구 조치가 너무 일찍 시작됨<br><small style='color:#94a3b8'>response and recovery actions are initiated too early.</small>",
+"위기 시 적절한 대응·복구 조치 활성화 지연<br><small style='color:#94a3b8'>activating the appropriate response and recovery actions are delayed during a crisis.</small>",
+"위기 상황이 과소평가되거나 간과될 수 있음<br><small style='color:#94a3b8'>crisis situations may be underestimated or overlooked.</small>",
+"BCP가 너무 경직될 수 있음<br><small style='color:#94a3b8'>the BCP may become too rigid.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 대응·복구 조치 활성화 지연</b> — 위기 선언 기준이 없으면 언제 에스컬레이션해야 할지 불확실하고 의사결정이 혼란스러워 자원 동원·핵심 조치 실행이 지연. 시간 손실 = 위기 영향 확대로 가장 심각한 위험.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">위험</th><th style="padding:8px;border:1px solid #334155">심각도</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 너무 일찍 시작</td><td style="padding:8px;border:1px solid #334155">불필요 비용 — 가역적</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 활성화 지연 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>최대 — 사업 손실 확대</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 과소평가</td><td style="padding:8px;border:1px solid #334155">우려되나 B만큼 직접적 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 경직성</td><td style="padding:8px;border:1px solid #334155">2차적 — 효율성 문제</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>위기 선언 기준(Declaration Threshold)</b> = BCP 발동의 트리거<br>
+• 기준 부재 → "지금이 위기인가?" 의사결정 마비 → 골든타임 손실<br>
+• 위기 영향은 시간이 지날수록 기하급수적 증가 → 지연이 가장 큰 위험<br>
+• 너무 일찍 시작(A)은 비용일 뿐 가역적, 지연은 비가역적<br>
+• 패턴: BCP·사고관리 시간성 → 지연이 항상 가장 큰 위험<br>
+• 관련: Q325 (심각도=다운타임), Q330 (RTO 미충족)
+</div>`,
+reference:"CRM Chapter 4: Crisis Declaration / BCP Activation",
+keyConcepts:[
+"Declaration Threshold|위기 선언 기준 — BCP 발동 트리거",
+"지연 위험|골든타임 손실 — 위기 영향 기하급수적 확대",
+"시간성 위험|조기 시작(가역) < 지연(비가역)"
+]
+},
+
+{
+id: 352,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP를 검토하는 IS 감사인에게 가장 큰 우려사항은?<br><small style="color:#94a3b8">Which of the following would be a MAJOR concern for an IS auditor reviewing a business continuity plan?</small>`,
+options: [
+"계획이 CIO에 의해 승인됨<br><small style='color:#94a3b8'>The plan is approved by the chief information officer.</small>",
+"계획의 연락처 목록이 갱신되지 않음<br><small style='color:#94a3b8'>The plan contact lists have not been updated.</small>",
+"테스트 결과가 적절히 문서화되지 않음<br><small style='color:#94a3b8'>Test results are not adequately documented.</small>",
+"복구 인력 교육 일정이 포함되지 않음<br><small style='color:#94a3b8'>The training schedule for recovery personnel is not included.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 테스트 결과 미문서화</b> — BCP 효과성은 테스트로만 검증 가능하며, 결과가 문서화되지 않으면 피드백·개선·갱신의 근거가 없음. BCP의 지속적 개선 사이클이 끊김.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">심각도</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. CIO 승인</td><td style="padding:8px;border:1px solid #334155">이상적이진 않으나 위임 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 연락처 미갱신</td><td style="padding:8px;border:1px solid #334155">중요하나 단일 항목</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 테스트 결과 미문서화 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>최대 — BCP 검증·개선 불가</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 교육 일정 누락</td><td style="padding:8px;border:1px solid #334155">중요하나 테스트 결과로 식별 가능</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 사이클</b>: 계획 → 테스트 → 결과 문서화 → 피드백 → 갱신<br>
+• 테스트 결과 문서화가 사이클의 핵심 연결고리 — 빠지면 모든 후속 활동 마비<br>
+• 연락처(B)·교육(D)는 테스트 결과를 통해 식별·개선되는 항목<br>
+• <b>"검증되지 않은 BCP는 BCP가 아니다"</b><br>
+• 패턴: BCP 효과성·개선 → 테스트 결과 문서화가 핵심
+</div>`,
+reference:"CRM Chapter 4: BCP Testing / Documentation Requirements",
+keyConcepts:[
+"테스트 결과 문서화|BCP 사이클의 핵심 연결고리 — 피드백·개선의 기반",
+"BCP 사이클|계획 → 테스트 → 문서화 → 피드백 → 갱신",
+"검증 원칙|테스트되지 않은 BCP는 효과성 입증 불가"
+]
+},
+
+{
+id: 353,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 설계 중 BIA가 핵심 프로세스와 지원 애플리케이션을 식별한다. 이는 주로 무엇에 영향을 미치는가?<br><small style="color:#94a3b8">During the design of a BCP, the BIA identifies critical processes and supporting applications. This will PRIMARILY influence the:</small>`,
+options: [
+"BCP 유지 책임<br><small style='color:#94a3b8'>responsibility for maintaining the BCP.</small>",
+"복구 사이트 공급자 선정 기준<br><small style='color:#94a3b8'>criteria for selecting a recovery site provider.</small>",
+"복구 전략<br><small style='color:#94a3b8'>recovery strategy.</small>",
+"핵심 인력의 책임<br><small style='color:#94a3b8'>responsibilities of key personnel.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 복구 전략</b> — BIA에서 식별된 상대적 위험·타임라인·중요도가 가장 적절한 복구 전략(사이트 유형, RTO/RPO 충족 방식 등)을 결정. 다른 모든 BCP 요소는 복구 전략이 정해진 후 도출됨.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">BIA의 영향</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. BCP 유지 책임</td><td style="padding:8px;border:1px solid #334155">계획 개발 후 결정</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 사이트 공급자 기준</td><td style="padding:8px;border:1px solid #334155">전략 결정 후 도출</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 복구 전략 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>BIA의 직접 산출물</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 인력 책임</td><td style="padding:8px;border:1px solid #334155">계획 개발 단계에서 결정</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 설계 흐름</b>: BIA → <b>복구 전략</b> → 사이트 선정 → 인력·책임 → 유지·테스트<br>
+• BIA = 무엇이 critical하고 얼마나 빨리 복구해야 하는지 정의<br>
+• 복구 전략 = BIA 결과를 어떻게 충족할지의 청사진<br>
+• 사이트·인력·유지 책임은 모두 전략의 종속 결정사항<br>
+• 패턴: "BIA는 무엇에 영향?" → 거의 항상 복구 전략<br>
+• 관련: Q272·Q305·Q310·Q314 (BIA의 토대 역할)
+</div>`,
+reference:"CRM Chapter 4: BIA → Recovery Strategy",
+keyConcepts:[
+"BIA → 복구 전략|BIA의 직접 산출물 — RTO/RPO·중요도가 전략 결정",
+"BCP 설계 흐름|BIA → 전략 → 사이트 → 인력 → 유지·테스트",
+"BIA 영향 패턴|항상 복구 전략이 1차 결정사항"
+]
+},
+
+{
+id: 354,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `핵심 제3자 애플리케이션 검토 시 IS 감사인이 가장 우려하는 발견사항은?<br><small style="color:#94a3b8">While performing a review of a critical third-party application, an IS auditor is MOST concerned with discovering:</small>`,
+options: [
+"시스템 이식성(portability) 보장 절차 미흡<br><small style='color:#94a3b8'>inadequate procedures for ensuring adequate system portability.</small>",
+"시스템 운영 문서 미흡<br><small style='color:#94a3b8'>inadequate operational documentation for the system.</small>",
+"대체 서비스 공급자 목록 미흡<br><small style='color:#94a3b8'>an inadequate alternate service provider listing.</small>",
+"소프트웨어 에스크로 계약 미흡<br><small style='color:#94a3b8'>an inadequate software escrow agreement.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 소프트웨어 에스크로 계약 미흡</b> — 에스크로 계약은 벤더 폐업·서비스 중단 시 고객이 소스 코드에 접근하여 시스템을 계속 사용·유지할 수 있게 보장. 핵심 애플리케이션의 가용성을 보호하는 가장 중요한 통제.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">우려사항</th><th style="padding:8px;border:1px solid #334155">사업 영향</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 이식성 미흡</td><td style="padding:8px;border:1px solid #334155">인프라 변경 시 영향 — 우회 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 운영 문서 미흡</td><td style="padding:8px;border:1px solid #334155">운영 어려움 — 사업 연속성 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 대체 공급자 목록</td><td style="padding:8px;border:1px solid #334155">대안 — 소스 코드 접근이 우선</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 에스크로 미흡 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>벤더 폐업 시 시스템 사용 불가</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Software Escrow</b>: 제3자 보관 기관에 소스 코드·문서를 보관, 트리거 조건(폐업·중단) 발생 시 고객에게 공개<br>
+• 핵심 애플리케이션 = 벤더 의존성 위험이 가장 큼 — 벤더 폐업 시 사업 마비<br>
+• 에스크로 = 가용성·연속성의 마지막 보호막<br>
+• 다른 옵션은 모두 운영상 불편이지만 시스템 자체는 사용 가능<br>
+• 패턴: "제3자 핵심 시스템" → 에스크로가 가장 큰 BCP 우려<br>
+• 관련: Q333 (오프사이트 백업), Q344 (오프사이트 위치)
+</div>`,
+reference:"CRM Chapter 4: Software Escrow / Third-Party Risk",
+keyConcepts:[
+"Software Escrow|벤더 폐업 시 소스 코드 접근 보장 — 가용성 마지막 보호막",
+"제3자 의존성 위험|핵심 애플리케이션 벤더 폐업 = 사업 마비",
+"BCP 우려 우선순위|에스크로(가용성) > 문서·이식성·대체공급자(운영)"
+]
+},
+
+{
+id: 355,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 전체 시뮬레이션 관찰 중, IS 감사인이 조직 시설 내 알림 시스템이 인프라 손상에 의해 심각하게 영향받을 수 있음을 발견했다. 가장 적절한 권고는?<br><small style="color:#94a3b8">An IS auditor notices that the notification systems within the organizational facilities can be severely impacted by infrastructure damage. The BEST recommendation:</small>`,
+options: [
+"구조팀이 알림 시스템 사용 교육을 받도록 함<br><small style='color:#94a3b8'>the salvage team is trained to use the notification system.</small>",
+"알림 시스템이 백업 복구를 제공하도록 함<br><small style='color:#94a3b8'>the notification system provides for the recovery of the backup.</small>",
+"알림 시스템에 중복성(redundancy) 구축<br><small style='color:#94a3b8'>redundancies are built into the notification system.</small>",
+"알림 시스템을 금고(vault)에 보관<br><small style='color:#94a3b8'>the notification systems are stored in a vault.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 중복성 구축</b> — 알림 시스템이 인프라 손상에 영향받는다면 단일 장애점이 존재. 중복성(독립 통신 채널·대체 시스템)을 구축해야 한 시스템이 손상돼도 다른 시스템이 동작.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 교육</td><td style="padding:8px;border:1px solid #334155">손상된 시스템은 사용 불가</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 백업 복구 제공</td><td style="padding:8px;border:1px solid #334155">알림 시스템과 무관</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 중복성 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>SPOF 제거 — 직접 해결</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 금고 보관</td><td style="padding:8px;border:1px solid #334155">건물 손상 시 무의미</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>SPOF(단일 장애점) 제거</b>: 중복성이 핵심 원칙<br>
+• 알림 시스템 중복화 예: 유선+무선, 전화+문자+이메일, 자체+클라우드, 본사+오프사이트<br>
+• 위기 시 통신 = 모든 BCP 활동의 전제 조건 → 통신 두절 = BCP 마비<br>
+• 교육·금고는 시스템이 살아있을 때만 의미 — 손상되면 무용지물<br>
+• 패턴: 인프라 단일 장애점 → 중복성·다양화가 정답
+</div>`,
+reference:"CRM Chapter 4: BCP Communications / Redundancy",
+keyConcepts:[
+"알림 시스템 중복성|SPOF 제거 — 통신 두절은 BCP 마비",
+"위기 통신|모든 BCP 활동의 전제 조건 — 다양한 채널 필수",
+"SPOF 제거 패턴|인프라 단일 장애점 → 중복성·다양화"
+]
+},
+
+{
+id: 356,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `여러 국가에 IT 운영 센터를 가진 조직에서 중단 없는 운영을 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">Which of the following BEST ensures uninterrupted operations in an organization with IT operation centers in several countries?</small>`,
+options: [
+"핵심 절차 문서의 배포<br><small style='color:#94a3b8'>Distribution of key procedural documentation</small>",
+"사업 파트너 간 상호 협약<br><small style='color:#94a3b8'>Reciprocal agreement between business partners</small>",
+"강력한 고위 경영진 리더십<br><small style='color:#94a3b8'>Strong senior management leadership</small>",
+"BCP에 대한 직원 교육<br><small style='color:#94a3b8'>Employee training on the BCP</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. BCP 직원 교육</b> — 재해 시 지휘 체계가 끊길 수 있으므로 직원들이 자신의 역할을 직접 이해해야 함. 지리적으로 분산된 조직은 통신 단절 가능성이 높아 교육이 더욱 중요.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 문서 배포</td><td style="padding:8px;border:1px solid #334155">필요하나 문서만으론 부족 — 이해·실행 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 상호 협약</td><td style="padding:8px;border:1px solid #334155">시설 옵션 — 운영 자체 보장 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 경영진 리더십</td><td style="padding:8px;border:1px solid #334155">재해 시 가용 보장 어려움</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 직원 교육 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>지휘 끊겨도 자율 실행 가능</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>분산 조직 + 재해</b>: 통신·지휘 단절 가능성 ↑ → 자율 실행 능력 필수<br>
+• 문서(A)는 정적 — 직원이 읽고 이해·연습해야 효과<br>
+• 경영진(C)은 재해 시 가용 보장 안 됨 — 의존하면 위험<br>
+• 교육 = 직원이 자신의 역할을 내재화 → 지휘 없이도 실행<br>
+• 패턴: BCP 효과성 → 사람(교육·인식)이 시스템·문서보다 우선<br>
+• 관련: Q352 (BCP 테스트 결과 문서화), Q355 (통신 중복성)
+</div>`,
+reference:"CRM Chapter 4: BCP Training / Geographic Distribution",
+keyConcepts:[
+"BCP 직원 교육|지휘 끊겨도 자율 실행 — 분산 조직의 핵심",
+"문서 vs 교육|문서는 정적 / 교육은 내재화·실행 능력",
+"분산 조직 BCP|통신 단절 가능성 ↑ → 자율 실행 능력 필수"
+]
+},
+
+{
+id: 357,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `IS 감사인은 조직의 BCP가 효과적임을 무엇을 검토하여 검증할 수 있는가?<br><small style="color:#94a3b8">An IS auditor can verify that an organization's BCP is effective by reviewing the:</small>`,
+options: [
+"BCP의 업계 모범 사례와의 정합성<br><small style='color:#94a3b8'>alignment of the BCP with industry good practices.</small>",
+"IS 및 최종사용자 인력이 수행한 사업연속성 테스트 결과<br><small style='color:#94a3b8'>results of business continuity tests performed by IS and end-user personnel.</small>",
+"오프사이트 시설과 그 내용물·보안·환경 통제<br><small style='color:#94a3b8'>offsite facility, its contents, security and environmental controls.</small>",
+"BCP 활동의 연간 재무 비용 대비 구현 기대 효익<br><small style='color:#94a3b8'>annual financial cost of the BCP activities versus the expected benefit of the implementation of the plan.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 사업연속성 테스트 결과</b> — BCP 효과성은 실제 테스트에서 명시된 목표를 정확하고 철저하게 달성했는지로만 검증 가능. 정합성·시설·비용은 효과성과 무관.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">효과성 입증?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 업계 정합성</td><td style="padding:8px;border:1px solid #334155">설계 품질 — 효과성 X</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 테스트 결과 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>유일한 직접 증거</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 오프사이트 시설</td><td style="padding:8px;border:1px solid #334155">자원 — 효과성 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 비용 대비 효익</td><td style="padding:8px;border:1px solid #334155">재무 분석 — 효과성 X</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"검증되지 않은 BCP는 BCP가 아니다"</b> 원칙의 재확인<br>
+• 효과성 = 결과 지표 — 테스트만이 실제 성과 입증<br>
+• 정합성·시설·비용은 모두 입력·전제조건이지 결과 아님<br>
+• 패턴: "BCP 효과성 검증" → 항상 테스트 결과<br>
+• 관련: Q319·Q325·Q330·Q341·Q352 (효과성 = 결과 지표)
+</div>`,
+reference:"CRM Chapter 4: BCP Effectiveness / Test Results",
+keyConcepts:[
+"BCP 효과성 검증|테스트 결과만이 유일한 직접 증거",
+"검증 원칙|테스트되지 않은 BCP는 효과성 입증 불가",
+"입력 vs 결과|정합성·시설·비용=입력 / 테스트 결과=효과성"
+]
+},
+
+{
+id: 358,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `재해 시 트랜잭션의 가용성을 보장하는 방법은?<br><small style="color:#94a3b8">Which of the following ensures the availability of transactions in the event of a disaster?</small>`,
+options: [
+"트랜잭션을 포함한 시간당 백업을 오프사이트로 전송<br><small style='color:#94a3b8'>Send hourly backups containing transactions offsite.</small>",
+"트랜잭션을 포함한 일일 백업을 오프사이트로 전송<br><small style='color:#94a3b8'>Send daily backups containing transactions offsite.</small>",
+"트랜잭션을 다중 저장 장치에 캡처<br><small style='color:#94a3b8'>Capture transactions to multiple storage devices.</small>",
+"트랜잭션을 실시간으로 오프사이트에 전송<br><small style='color:#94a3b8'>Transmit transactions offsite in real time.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 실시간 오프사이트 전송</b> — 모든 트랜잭션의 가용성을 보장하는 유일한 방법. 시간당·일일 백업은 백업 사이의 데이터 손실 발생, 다중 로컬 저장은 재해 시 함께 파괴.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">데이터 손실</th><th style="padding:8px;border:1px solid #334155">재해 회피?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 시간당 백업</td><td style="padding:8px;border:1px solid #334155">최대 1시간</td><td style="padding:8px;border:1px solid #334155">예</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 일일 백업</td><td style="padding:8px;border:1px solid #334155">최대 24시간</td><td style="padding:8px;border:1px solid #334155">예</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 다중 로컬</td><td style="padding:8px;border:1px solid #334155">0</td><td style="padding:8px;border:1px solid #334155">아니오 (로컬)</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 실시간 오프사이트 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>0</b></td><td style="padding:8px;border:1px solid #10b981"><b>예</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"모든 트랜잭션 가용성"</b> = RPO 0 + 재해 회피<br>
+• 두 조건 동시 충족 = 실시간 + 오프사이트<br>
+• Q340과 동일한 패턴 — 두 조건 매핑<br>
+• 관련: Q340 (원격 실시간 복제), Q349 (CDP), Q345 (24/7 미러링)
+</div>`,
+reference:"CRM Chapter 4: Real-Time Transaction Availability",
+keyConcepts:[
+"실시간 + 오프사이트|모든 트랜잭션 가용성의 유일 해법",
+"두 조건 매핑|RPO 0=실시간 / 재해 회피=오프사이트",
+"백업 주기 한계|어떤 주기든 사이의 손실 발생"
+]
+},
+
+{
+id: 359,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `한 조직이 연간 위험 평가를 막 완료했다. BCP에 관해 IS 감사인이 다음 단계로 권고해야 할 것은?<br><small style="color:#94a3b8">An organization has just completed its annual risk assessment. Regarding the BCP, what should an IS auditor recommend as the next step?</small>`,
+options: [
+"BCP의 적정성을 검토·평가<br><small style='color:#94a3b8'>Review and evaluate the BCP for adequacy.</small>",
+"BCP 전체 시뮬레이션 수행<br><small style='color:#94a3b8'>Perform a full simulation of the BCP.</small>",
+"BCP에 대해 직원 교육<br><small style='color:#94a3b8'>Train and educate employees regarding the BCP.</small>",
+"BCP의 핵심 연락처에 통지<br><small style='color:#94a3b8'>Notify critical contacts in the BCP.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. BCP 적정성 검토·평가</b> — 위험 평가가 완료될 때마다 BCP를 검토하여 새로운 위험이 반영됐는지 확인해야 함. 시뮬레이션·교육은 BCP가 적정하다고 판단된 후에 수행.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">활동</th><th style="padding:8px;border:1px solid #334155">순서</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 검토·평가 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>1단계 — RA 직후</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 시뮬레이션</td><td style="padding:8px;border:1px solid #334155">2단계 — 적정성 확인 후</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 교육</td><td style="padding:8px;border:1px solid #334155">2단계 — 적정성 확인 후</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 연락처 통지</td><td style="padding:8px;border:1px solid #334155">불필요 — 위기 상황 아님</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RA → BCP 검토 → 갱신 → 테스트 → 교육</b> 순서<br>
+• 위험 평가는 BCP의 입력 — 새로운 위험·변경된 위험을 BCP에 반영해야 함<br>
+• 적정성 확인 없는 시뮬레이션·교육은 잘못된 계획을 학습시킬 위험<br>
+• 패턴: "RA 직후" → BCP 적정성 검토<br>
+• 관련: Q350 (HW 교체 후 인벤토리 갱신 우선), Q353 (BIA → 전략)
+</div>`,
+reference:"CRM Chapter 4: Risk Assessment → BCP Review",
+keyConcepts:[
+"RA → BCP 검토|위험 평가 후 BCP 적정성 검토가 첫 단계",
+"BCP 갱신 사이클|RA → 검토 → 갱신 → 테스트 → 교육",
+"적정성 우선|잘못된 계획의 시뮬레이션·교육은 위험"
+]
+},
+
+{
+id: 360,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP를 IT 프로젝트 관리에 통합하는 것은 무엇에 도움이 되는가?<br><small style="color:#94a3b8">Integrating the business continuity plan (BCP) into IT project management aids in:</small>`,
+options: [
+"사업연속성 요구사항의 테스트<br><small style='color:#94a3b8'>the testing of the business continuity requirements.</small>",
+"보다 포괄적인 요구사항의 개발<br><small style='color:#94a3b8'>the development of a more comprehensive set of requirements.</small>",
+"트랜잭션 흐름도의 개발<br><small style='color:#94a3b8'>the development of a transaction flowchart.</small>",
+"애플리케이션이 사용자 요구를 충족하도록 보장<br><small style='color:#94a3b8'>ensuring the application meets the users' needs.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 보다 포괄적인 요구사항 개발</b> — BCP를 IT 프로젝트 관리에 통합하면 프로젝트의 각 단계에서 사업연속성 요구사항이 빠짐없이 반영됨. 결과적으로 가용성·복구·내결함성을 포함한 포괄적 요구사항 도출.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. BCP 테스트</td><td style="padding:8px;border:1px solid #334155">프로젝트 관리와 무관</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 포괄적 요구사항 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>각 단계에서 BC 요구 반영</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 트랜잭션 흐름도</td><td style="padding:8px;border:1px solid #334155">통제 분석 — BC와 무관</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 사용자 요구 충족</td><td style="padding:8px;border:1px solid #334155">기능 요구 — BC 직접 X</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Shift-Left 원칙</b>: BCP를 프로젝트 초기에 통합 → 가용성·복구 요구사항을 처음부터 설계에 반영<br>
+• 사후 추가는 비용·복잡도 폭증 — "Build for Resilience" 사고방식<br>
+• BCP 통합 → 백업·복제·페일오버·모니터링이 기능 요구와 동등하게 다뤄짐<br>
+• 패턴: "BCP 통합" → 요구사항·설계의 포괄성 향상<br>
+• 관련: Q353 (BIA → 복구 전략)
+</div>`,
+reference:"CRM Chapter 4: BCP Integration / Project Lifecycle",
+keyConcepts:[
+"BCP 프로젝트 통합|초기 단계부터 BC 요구 반영 — Shift-Left",
+"포괄적 요구사항|기능 + 가용성·복구·내결함성 통합 도출",
+"Build for Resilience|사후 추가는 비용·복잡도 폭증"
+]
+},
+
+{
+id: 361,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 개발 측면에서 가장 중요한 이해관계자는?<br><small style="color:#94a3b8">Which of the following stakeholders is the MOST important in terms of developing a BCP?</small>`,
+options: [
+"프로세스 소유자<br><small style='color:#94a3b8'>Process owners</small>",
+"애플리케이션 소유자<br><small style='color:#94a3b8'>Application owners</small>",
+"이사회<br><small style='color:#94a3b8'>Board of directors</small>",
+"IT 경영진<br><small style='color:#94a3b8'>IT management</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 프로세스 소유자</b> — BCP는 사업 프로세스의 연속성에 관한 것. 프로세스 소유자가 핵심 사업 기능·복구 시간·필요 자원을 식별하는 가장 중요한 입력 제공자.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">이해관계자</th><th style="padding:8px;border:1px solid #334155">역할</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 프로세스 소유자 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>핵심 기능·RTO/RPO·자원 정의</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 앱 소유자</td><td style="padding:8px;border:1px solid #334155">앱 ⊂ 프로세스 — 종속 관계</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 이사회</td><td style="padding:8px;border:1px solid #334155">승인만 — 세부 개발 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. IT 경영진</td><td style="padding:8px;border:1px solid #334155">기술 자원 식별 — 사업 정의는 X</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><   br>
+• <b>BCP 본질</b>: 사업 프로세스 연속성 (IT 연속성 X)<br>
+• 프로세스 소유자 = 무엇이 critical인지 아는 유일한 사람 — BIA의 주된 입력 제공자<br>
+• IT는 프로세스 소유자가 정의한 요구를 충족하는 수단<br>
+• 패턴: "BCP 핵심 이해관계자" → 항상 비즈니스(프로세스 소유자)<br>
+• 관련: Q353 (BIA → 전략), Q272·Q314·Q305 (BIA 토대)
+</div>`,
+reference:"CRM Chapter 4: BCP Stakeholders / Business Ownership",
+keyConcepts:[
+"프로세스 소유자|핵심 기능·RTO/RPO 정의 — BIA의 주된 입력자",
+"BCP 본질|사업 프로세스 연속성 (IT 연속성 X)",
+"비즈니스 우선|IT는 비즈니스 요구를 충족하는 수단"
+]
+},
+
+{
+id: 362,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 효과성을 평가하는 가장 좋은 방법은 무엇을 검토하는 것인가?<br><small style="color:#94a3b8">The BEST method for assessing the effectiveness of a BCP is to review the:</small>`,
+options: [
+"계획을 적절한 표준과 비교<br><small style='color:#94a3b8'>plans and compare them to appropriate standards.</small>",
+"이전 테스트 결과<br><small style='color:#94a3b8'>results from previous tests.</small>",
+"비상 절차와 직원 교육<br><small style='color:#94a3b8'>emergency procedures and employee training.</small>",
+"오프사이트 저장과 환경 통제<br><small style='color:#94a3b8'>offsite storage and environmental controls.</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 이전 테스트 결과</b> — Q357과 동일 패턴: BCP 효과성은 실제 테스트 결과만이 직접 증거. 표준 비교·절차 검토·시설 검토는 모두 입력·전제조건이지 효과성 증거가 아님.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">효과성 증거?</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 표준 비교</td><td style="padding:8px;border:1px solid #334155">설계 적정성만 — 효과성 X</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. 테스트 결과 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>유일한 직접 증거</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 절차·교육</td><td style="padding:8px;border:1px solid #334155">부분 통찰 — 전체 효과 X</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 시설</td><td style="padding:8px;border:1px solid #334155">자원만 — 효과성 X</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"검증되지 않은 BCP는 BCP가 아니다"</b> 원칙 재확인<br>
+• Q357과 동일 — 효과성은 결과 지표(테스트)로만 증명<br>
+• 패턴: "BCP 효과성 평가" → 항상 테스트 결과<br>
+• 관련: Q319·Q325·Q330·Q341·Q352·Q357 (효과성 = 결과 지표 시리즈)
+</div>`,
+reference:"CRM Chapter 4: BCP Effectiveness Assessment",
+keyConcepts:[
+"BCP 효과성|테스트 결과만이 직접 증거",
+"효과성 평가 원칙|입력·자원 ≠ 효과성 / 결과 지표만 인정",
+"Q357 동일 패턴|효과성 = 테스트 결과"
+]
+},
+
+{
+id: 363,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP에 적용할 수 있는 적절한 테스트 방법은?<br><small style="color:#94a3b8">Which of the following is an appropriate test method to apply to a business continuity plan (BCP)?</small>`,
+options: [
+"파일럿 (Pilot)<br><small style='color:#94a3b8'>Pilot</small>",
+"페이퍼 (Paper)<br><small style='color:#94a3b8'>Paper</small>",
+"유닛 (Unit)<br><small style='color:#94a3b8'>Unit</small>",
+"시스템 (System)<br><small style='color:#94a3b8'>System</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 페이퍼 테스트 (Paper Test, Desk Check)</b> — BCP의 전체 또는 일부를 BCP 실행의 주요 참여자가 함께 검토하며 특정 재해 상황에서 무엇이 일어날지 워크스루하는 방식. BCP 테스트의 가장 기본적이고 적절한 형태.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">테스트</th><th style="padding:8px;border:1px solid #334155">적용 대상</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. Pilot</td><td style="padding:8px;border:1px solid #334155">신규 프로세스·기술 도입</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>B. Paper ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>BCP 워크스루</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. Unit</td><td style="padding:8px;border:1px solid #334155">신규 소프트웨어 컴포넌트</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. System</td><td style="padding:8px;border:1px solid #334155">통합 IT 시스템</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 테스트 유형 (점진적 강도)</b>:<br>
+&nbsp;&nbsp;1. <b>Checklist</b>: 문서 검토<br>
+&nbsp;&nbsp;2. <b>Structured Walk-through (Paper)</b>: 회의실 시뮬레이션<br>
+&nbsp;&nbsp;3. <b>Simulation</b>: 시나리오 기반 모의 훈련<br>
+&nbsp;&nbsp;4. <b>Parallel</b>: 대체 사이트에서 병렬 처리<br>
+&nbsp;&nbsp;5. <b>Full Interruption</b>: 실제 운영 중단 후 대체 사이트 전환<br>
+• Pilot·Unit·System은 SDLC 테스트 — BCP와 무관<br>
+• 패턴: BCP 테스트 → Checklist·Walk-through·Simulation·Parallel·Full
+</div>`,
+reference:"CRM Chapter 4: BCP Test Methods",
+keyConcepts:[
+"Paper Test|BCP 워크스루 — 회의실 기반 시뮬레이션",
+"BCP 테스트 5단계|Checklist → Walk-through → Simulation → Parallel → Full",
+"SDLC vs BCP 테스트|Pilot·Unit·System=SDLC / Paper=BCP"
+]
+},
+
+{
+id: 364,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `위기관리·대응팀의 관련 구성원이 참여하여 적절한 협력을 연습하는 BCP 테스트는?<br><small style="color:#94a3b8">Which of the following BCP tests involves participation of relevant members of the crisis management/response team to practice proper coordination?</small>`,
+options: [
+"테이블탑 (Tabletop)<br><small style='color:#94a3b8'>Tabletop</small>",
+"기능 테스트 (Functional)<br><small style='color:#94a3b8'>Functional</small>",
+"전면 테스트 (Full-scale)<br><small style='color:#94a3b8'>Full-scale</small>",
+"데스크 체크 (Desk check)<br><small style='color:#94a3b8'>Desk check</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 테이블탑 (Tabletop)</b> — 위기팀 구성원이 모여 시나리오를 함께 검토하며 협력·의사소통을 연습하는 데 초점. 기술적 세부보다 조정·역할 명확화가 주된 목적.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">테스트</th><th style="padding:8px;border:1px solid #334155">초점</th><th style="padding:8px;border:1px solid #334155">참여자</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. Tabletop ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>협력·의사소통</b></td><td style="padding:8px;border:1px solid #10b981"><b>위기팀 전원</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. Functional</td><td style="padding:8px;border:1px solid #334155">자원·인력 동원</td><td style="padding:8px;border:1px solid #334155">현장 인력</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. Full-scale</td><td style="padding:8px;border:1px solid #334155">전체 BCP 실행</td><td style="padding:8px;border:1px solid #334155">전 조직</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. Desk check</td><td style="padding:8px;border:1px solid #334155">문서 검토</td><td style="padding:8px;border:1px solid #334155">소수·수동적</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Tabletop = 위기팀 협력 연습</b>: 회의실에서 시나리오 토론, 역할·의사결정·통신 흐름 점검<br>
+• Desk Check(D)와 차이: Tabletop은 위기팀 능동 참여, Desk Check는 문서 수동 검토<br>
+• Functional·Full-scale은 실제 자원·인력 동원하는 더 강도 높은 테스트<br>
+• 패턴: "협력·의사소통 연습" → Tabletop<br>
+• 관련: Q363 (BCP 테스트 5단계)
+</div>`,
+reference:"CRM Chapter 4: Tabletop Exercise / Crisis Coordination",
+keyConcepts:[
+"Tabletop|위기팀 회의실 시뮬레이션 — 협력·의사소통 연습",
+"Desk Check vs Tabletop|Desk Check=문서 수동 / Tabletop=팀 능동",
+"BCP 테스트 강도|Desk Check < Tabletop < Functional < Full-scale"
+]
+},
+
+{
+id: 365,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `복잡한 조직에서 BCP가 다양한 측면을 다루는 여러 계획 세트로 개발될 수 있다. 이 환경에서 필수적인 것은?<br><small style="color:#94a3b8">In an environment where BCP is developed as a set of plans, it is essential that:</small>`,
+options: [
+"각 계획이 서로 일관성을 가짐<br><small style='color:#94a3b8'>each plan is consistent with one another.</small>",
+"모든 계획이 단일 계획으로 통합됨<br><small style='color:#94a3b8'>all plans are integrated into a single plan.</small>",
+"각 계획이 서로 의존함<br><small style='color:#94a3b8'>each plan is dependent on one another.</small>",
+"모든 계획의 구현 순서가 정의됨<br><small style='color:#94a3b8'>the sequence for implementation of all plans is defined.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 각 계획이 서로 일관성을 가짐</b> — 여러 BCP/DRP 문서가 존재할 수 있으나, 가정·역할·연락처·우선순위 등이 서로 모순되면 위기 시 혼란 발생. 일관성이 효과성의 전제 조건.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 일관성 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>모순 제거 — 효과성 전제</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 단일 통합</td><td style="padding:8px;border:1px solid #334155">필수 아님 — 분리도 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 상호 의존</td><td style="padding:8px;border:1px solid #334155">독립적도 가능</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 순서 정의</td><td style="padding:8px;border:1px solid #334155">재해 종류·중요도 따라 가변</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>다중 BCP 계획 환경</b>: 사이트별·부서별·프로세스별로 분리 가능<br>
+• 핵심 = <b>일관성</b>: RTO/RPO·역할·연락처·자원 할당이 서로 모순되지 않을 것<br>
+• 단일 통합(B)은 복잡도·관리 부담 증가 — 필수 아님<br>
+• 순서(D)는 재해 종류에 따라 동적 — 사전 고정 불가능<br>
+• 패턴: 다중 계획 → 일관성·정합성이 핵심
+</div>`,
+reference:"CRM Chapter 4: Multi-Plan BCP / Consistency",
+keyConcepts:[
+"BCP 계획 일관성|RTO·역할·연락처·자원이 서로 모순 없을 것",
+"다중 vs 단일|단일 통합 필수 아님 — 분리해도 일관성만 유지",
+"순서의 가변성|재해 종류·중요도 따라 동적 — 사전 고정 불가"
+]
+},
+
+{
+id: 366,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 및 DRP의 주된 목적은?<br><small style="color:#94a3b8">The PRIMARY objective of business continuity and disaster recovery plans should be to:</small>`,
+options: [
+"중요 IS 자산 보호<br><small style='color:#94a3b8'>safeguard critical IS assets.</small>",
+"운영 연속성 제공<br><small style='color:#94a3b8'>provide for continuity of operations.</small>",
+"조직 손실 최소화<br><small style='color:#94a3b8'>minimize the loss to an organization.</small>",
+"인명 보호<br><small style='color:#94a3b8'>protect human life.</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 인명 보호</b> — 모든 BCP/DRP의 최우선 목적은 사람의 생명. 자산 보호·운영 연속성·손실 최소화는 모두 2차 목적이며 인명이 항상 최우선.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">목적</th><th style="padding:8px;border:1px solid #334155">우선순위</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>D. 인명 보호 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>1차 — 절대 최우선</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 자산 보호</td><td style="padding:8px;border:1px solid #334155">2차</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 운영 연속성</td><td style="padding:8px;border:1px solid #334155">2차</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 손실 최소화</td><td style="padding:8px;border:1px solid #334155">2차</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP/DRP 우선순위 절대 원칙</b>: <b>People → Process → Technology</b><br>
+• 인명은 무엇으로도 대체 불가능 — 절대 최우선<br>
+• 대피·점호·구조가 데이터·시스템 복구보다 항상 우선<br>
+• 패턴: "BCP/DRP 1차 목적" → 항상 인명 보호<br>
+• 시험 단골 — 단순해 보이지만 자산·연속성에 속기 쉬움
+</div>`,
+reference:"CRM Chapter 4: BCP Priorities / Life Safety",
+keyConcepts:[
+"인명 보호|BCP/DRP의 절대 1차 목적",
+"우선순위 원칙|People → Process → Technology",
+"시험 함정|자산·연속성·손실은 모두 2차 — 인명이 항상 우선"
+]
+},
+
+{
+id: 367,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 프로세스의 주된 목적은?<br><small style="color:#94a3b8">Which of the following is the PRIMARY objective of the BCP process?</small>`,
+options: [
+"재해 시 사업 운영이 계속될 것이라는 확신을 이해관계자에게 제공<br><small style='color:#94a3b8'>To provide assurance to stakeholders that business operations will continue in the event of disaster.</small>",
+"사전 정의된 RTO를 충족하기 위한 IT 서비스 대체 사이트 구축<br><small style='color:#94a3b8'>To establish an alternate site for IT services to meet predefined RTOs.</small>",
+"운영에 부정적 영향을 준 사건에서 복구하는 동안 위험 관리<br><small style='color:#94a3b8'>To manage risk while recovering from an event that adversely affected operations.</small>",
+"자연재해 시 규제 컴플라이언스 요구사항 충족<br><small style='color:#94a3b8'>To meet the regulatory compliance requirements in the event of natural disaster.</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 복구 중 위험 관리</b> — BCP의 주된 목적은 운영에 영향을 미친 사건으로부터 복구하는 동안의 위험을 관리·완화하는 것. "운영이 계속됨"을 보장하는 것이 아니라 복구 능력을 제공.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">옵션</th><th style="padding:8px;border:1px solid #334155">평가</th></tr>
+<tr><td style="padding:8px;border:1px solid #334155">A. 운영 지속 확신</td><td style="padding:8px;border:1px solid #334155">BCP는 보장이 아님 — 대응 능력 제공</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 대체 사이트 구축</td><td style="padding:8px;border:1px solid #334155">DRP의 영역 — BCP의 일부일 뿐</td></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>C. 복구 중 위험 관리 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>BCP 본질 — 위험 완화</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 규제 충족</td><td style="padding:8px;border:1px solid #334155">부수적 — RTO 입력일 뿐</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP = 위험 관리 도구</b>: 사건 발생 시 손실·영향을 최소화<br>
+• "보장" vs "관리" 차이: BCP는 무중단 보장이 아닌 영향 최소화·복구 가능성 제공<br>
+• DRP(B)는 BCP의 IT 영역 하위 집합<br>
+• 규제(D)는 BCP 설계의 입력 요소이지 목적 아님<br>
+• 패턴: "BCP 주된 목적" → 위험 관리·복구 능력
+</div>`,
+reference:"CRM Chapter 4: BCP Process Objectives",
+keyConcepts:[
+"BCP 주된 목적|복구 중 위험 관리·완화",
+"보장 vs 관리|BCP는 무중단 보장 X — 영향 최소화·복구 능력 제공",
+"BCP vs DRP|DRP는 BCP의 IT 하위 영역"
+]
+},
+
+{
+id: 368,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `IS 감사인이 핵심 이해관계자들과 인터뷰하여 그들이 역할과 책임을 이해하는지 확인한다. 감사인이 평가하려는 것은?<br><small style="color:#94a3b8">An IS auditor interviews key stakeholders to determine whether they understand their roles and responsibilities. The IS auditor is attempting to evaluate the:</small>`,
+options: [
+"BCP의 명확성과 단순성<br><small style='color:#94a3b8'>clarity and simplicity of the BCPs.</small>",
+"BCP의 적정성<br><small style='color:#94a3b8'>adequacy of the BCPs.</small>",
+"BCP의 효과성<br><small style='color:#94a3b8'>effectiveness of the BCPs.</small>",
+"IS·최종사용자 인력의 비상 시 효과적 대응 능력<br><small style='color:#94a3b8'>ability of IS and end-user personnel to respond effectively in emergencies.</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 명확성과 단순성</b> — 이해관계자가 자신의 역할·책임을 잘 이해하고 있다면 BCP가 명확하고 단순하다는 증거. 평가 방법(인터뷰)과 평가 대상(이해도)이 명확성과 매핑됨.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">평가 대상</th><th style="padding:8px;border:1px solid #334155">평가 방법</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 명확성·단순성 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>이해관계자 인터뷰</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 적정성</td><td style="padding:8px;border:1px solid #334155">계획 검토 + 표준 비교</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 효과성</td><td style="padding:8px;border:1px solid #334155">테스트 결과 검토</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 대응 능력</td><td style="padding:8px;border:1px solid #334155">테스트 결과 + 교육 검토</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>평가 대상별 방법 매핑</b>:<br>
+&nbsp;&nbsp;- <b>명확성·단순성</b> → 이해관계자 인터뷰 (이해도)<br>
+&nbsp;&nbsp;- <b>적정성</b> → 계획 vs 표준·요구사항 비교<br>
+&nbsp;&nbsp;- <b>효과성</b> → 테스트 결과 분석<br>
+&nbsp;&nbsp;- <b>대응 능력</b> → 시뮬레이션·교육 결과<br>
+• 이해관계자가 역할을 모른다 = 계획이 복잡·불명확<br>
+• 핵심: 평가 방법(How)이 평가 대상(What)을 결정<br>
+• 관련: Q357·Q362 (효과성=테스트 결과)
+</div>`,
+reference:"CRM Chapter 4: BCP Evaluation Methods",
+keyConcepts:[
+"명확성·단순성 평가|이해관계자 인터뷰 — 역할 이해도가 지표",
+"평가 방법 매핑|명확성=인터뷰 / 적정성=비교 / 효과성=테스트 / 대응=시뮬레이션",
+"방법 → 대상 추론|감사 방법으로 평가 대상을 역추적"
+]
+},
+
+{
+id: 369,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 감사 중, 모든 부서가 같은 건물에 있는데도 각 부서가 별도의 BCP를 가진 것을 발견했다. 감사인이 BCP 조정(reconcile)을 권고했다. 가장 먼저 조정해야 할 영역은?<br><small style="color:#94a3b8">During an audit of a BCP, an IS auditor found that each department had a separate BCP though housed in the same building. Which of the following areas should be reconciled FIRST?</small>`,
+options: [
+"대피 계획<br><small style='color:#94a3b8'>Evacuation plan</small>",
+"복구 우선순위<br><small style='color:#94a3b8'>Recovery priorities</small>",
+"백업 저장소<br><small style='color:#94a3b8'>Backup storages</small>",
+"콜 트리 (Call tree)<br><small style='color:#94a3b8'>Call tree</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 대피 계획</b> — 인명이 절대 최우선. 같은 건물에서 부서별 대피 계획이 다르면 충돌(서로 다른 대피로·집결지)로 인해 직원·고객 안전이 위험. 인명 보호가 가장 먼저 조정되어야 함.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">영역</th><th style="padding:8px;border:1px solid #334155">우선순위</th></tr>
+<tr style="background:#064e3b;color:#d1fae5"><td style="padding:8px;border:1px solid #10b981"><b>A. 대피 계획 ✓</b></td><td style="padding:8px;border:1px solid #10b981"><b>1차 — 인명 보호</b></td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">B. 복구 우선순위</td><td style="padding:8px;border:1px solid #334155">2차 — 운영 영역</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">C. 백업 저장소</td><td style="padding:8px;border:1px solid #334155">2차 — 데이터 영역</td></tr>
+<tr><td style="padding:8px;border:1px solid #334155">D. 콜 트리</td><td style="padding:8px;border:1px solid #334155">2차 — 통신 영역</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>People → Process → Technology</b> 우선순위 재확인 (Q366)<br>
+• 같은 건물 = 물리적 위험을 공유 — 대피 계획 충돌은 직접적 인명 위험<br>
+• 다른 항목은 운영·데이터·통신 영역으로 인명 우선 조정 후 처리<br>
+• 패턴: BCP 우선순위 질문 → 항상 인명·안전 관련 답이 1차<br>
+• 관련: Q366 (BCP 1차 목적 = 인명 보호), Q365 (다중 계획 일관성)
+</div>`,
+reference:"CRM Chapter 4: BCP Reconciliation / Life Safety First",
+keyConcepts:[
+"대피 계획 우선|인명 보호가 BCP의 절대 1차",
+"같은 건물 위험 공유|대피로·집결지 충돌은 직접 인명 위험",
+"우선순위 재확인|People → Process → Technology"
+]
+},
+
+{
+id: 370,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `다음 중 전사적 광역 네트워크(WAN)의 연속성을 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">Which of the following BEST ensures continuity of a wide area network (WAN) across the enterprise?</small>`,
+options: [
+"내장된 대체 라우팅<br><small style='color:#94a3b8'>Built-in alternative routing</small>",
+"매일 전체 시스템 백업<br><small style='color:#94a3b8'>Complete full system backup daily</small>",
+"서비스 제공업체와의 수리 계약<br><small style='color:#94a3b8'>A repair contract with a service provider</small>",
+"각 서버 옆에 중복 장비 배치<br><small style='color:#94a3b8'>A duplicate machine alongside each server</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 내장된 대체 라우팅(Alternative Routing)</b></p>
+<p>통신 장비 장애 또는 링크 단절 시 메시지가 <b>자동으로 재라우팅</b>되므로 네트워크 연속성이 유지된다. WAN 연속성의 핵심은 경로 다중화이다.</p>
+<table>
+<tr><th>옵션</th><th>WAN 연속성 효과</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 대체 라우팅</b></td><td>✅ 자동 재경로 — 링크/장비 장애 즉시 우회</td></tr>
+<tr><td>B. 전체 백업</td><td>❌ 데이터 보호용 — 네트워크 장애와 무관</td></tr>
+<tr><td>C. 수리 계약</td><td>❌ 수리까지 다운타임 — 영구적 해결 아님</td></tr>
+<tr><td>D. 중복 서버</td><td>❌ 서버 이중화 — 링크 단절 시 무용</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>WAN 연속성 = 경로 이중화</b> (서버 이중화 ❌)<br>
+• 자동 재라우팅이 수동 복구(수리계약)보다 항상 우월<br>
+• 백업은 데이터 보호, 라우팅은 통신 보호 — 영역이 다름<br>
+• 관련: Q355(통신 시스템 redundancy), Q335(Warm site)</div>`,
+reference:"CRM Chapter 4: Network Resilience & Alternative Routing",
+keyConcepts:[
+"Alternative Routing|장애 시 트래픽을 다른 경로로 자동 전환",
+"WAN 연속성|링크/노드 다중화 — 단일 장애점(SPOF) 제거",
+"자동 vs 수동 복구|자동 복구가 RTO를 0에 가깝게 만듦"
+]
+},
+
+{
+id: 371,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP를 검토하는 IS 감사인에게 가장 우려되는 사항은?<br><small style="color:#94a3b8">Which of the following should be of MOST concern to an IS auditor reviewing the business continuity plan (BCP)?</small>`,
+options: [
+"재해 등급이 손상 기능의 범위에 기반하나 지속 시간은 고려하지 않음<br><small style='color:#94a3b8'>Disaster levels based on scope but not duration</small>",
+"낮은 수준의 재해와 소프트웨어 사고의 구분이 명확하지 않음<br><small style='color:#94a3b8'>Difference between low-level disaster and software incidents not clear</small>",
+"전체 BCP는 문서화되어 있으나 상세 복구 절차가 명시되지 않음<br><small style='color:#94a3b8'>BCP documented but detailed recovery steps not specified</small>",
+"재해 선언 책임자가 식별되지 않음<br><small style='color:#94a3b8'>Responsibility for declaring a disaster is not identified</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 재해 선언 책임자 미식별</b></p>
+<p>아무도 재해를 선언하지 않으면 <b>BCP 자체가 발동되지 않는다</b>. 발동 트리거가 없으면 다른 모든 우려사항(상세 절차, 등급 분류 등)은 의미가 없다.</p>
+<table>
+<tr><th>옵션</th><th>심각도</th></tr>
+<tr><td>A. 지속 시간 미고려</td><td>범위가 더 중요 — 부차적</td></tr>
+<tr><td>B. 사고/재해 구분 불명확</td><td>항상 모호한 영역 — 정상적</td></tr>
+<tr><td>C. 상세 절차 누락</td><td>문서 보완 가능 — BCP는 발동됨</td></tr>
+<tr style="background:#dcfce7"><td><b>D. 선언 책임자 부재</b></td><td>✅ BCP 자체가 시작 안 됨 — 치명적</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 발동 트리거 부재 = BCP 무용지물</b><br>
+• "선언 권한"은 BCP의 첫 번째 전제조건<br>
+• 관련: Q351(위기 선언 미정의 → 활성화 지연), Q361(프로세스 오너 핵심 이해관계자)</div>`,
+reference:"CRM Chapter 4: BCP Activation Authority",
+keyConcepts:[
+"재해 선언 권한|BCP 발동의 필수 전제조건 — 부재 시 계획 무용",
+"트리거 우선|발동 메커니즘이 상세 절차보다 우선",
+"권한과 책임|위기 시점 의사결정자가 명확해야 함"
+]
+},
+
+{
+id: 372,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `전기 배선, 공조, 바닥은 갖추었으나 컴퓨터·통신 장비는 없는 외부 정보처리시설(IPF)은?<br><small style="color:#94a3b8">An offsite IPF with electrical wiring, air conditioning and flooring, but no computer or communications equipment, is a:</small>`,
+options: [
+"콜드 사이트<br><small style='color:#94a3b8'>cold site</small>",
+"웜 사이트<br><small style='color:#94a3b8'>warm site</small>",
+"다이얼업 사이트<br><small style='color:#94a3b8'>dial-up site</small>",
+"중복 처리 시설<br><small style='color:#94a3b8'>duplicate processing facility</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 콜드 사이트(Cold Site)</b></p>
+<p>콜드 사이트는 <b>기본 환경(전원·공조·바닥)</b>만 갖춘 빈 공간이다. 재해 발생 시 장비를 들여와 설치해야 하므로 복구 시간이 가장 길지만 비용은 가장 저렴하다.</p>
+<table>
+<tr><th>사이트 유형</th><th>구성</th><th>RTO</th><th>비용</th></tr>
+<tr style="background:#dcfce7"><td><b>Cold</b></td><td>전원·공조·바닥만</td><td>가장 김(주 단위)</td><td>최저</td></tr>
+<tr><td>Warm</td><td>일부 장비·네트워크 구성</td><td>중간(일 단위)</td><td>중간</td></tr>
+<tr><td>Hot</td><td>완전 구성·데이터 동기화</td><td>짧음(시간)</td><td>높음</td></tr>
+<tr><td>Mirrored/Duplicate</td><td>실시간 복제·동등 시설</td><td>거의 0</td><td>최고</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>콜드 = 빈 껍데기</b> (장비 ❌)<br>
+• 다이얼업 사이트는 원격 접속용 — 복구 사이트 아님<br>
+• 관련: Q317(공유 서버 RTO), Q321(상호협정), Q335(72h Warm), Q345(Mirroring)</div>`,
+reference:"CRM Chapter 4: Recovery Site Types",
+keyConcepts:[
+"Cold Site|기본 시설만 — 장비는 재해 시 반입, 가장 저렴·가장 느림",
+"Warm Site|부분 구성 — 균형형, 중간 RTO/비용",
+"Hot Site|완전 구성·동기화 — 빠른 복구, 고비용",
+"Duplicate IPF|전용 동등 시설 — 즉시 전환 가능"
+]
+},
+
+{
+id: 373,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP를 최신 상태로 유지하기 위한 가장 좋은 방법은?<br><small style="color:#94a3b8">Which of the following is the BEST method to ensure that the BCP remains up to date?</small>`,
+options: [
+"그룹이 계획의 다양한 시나리오를 처음부터 끝까지 walk-through<br><small style='color:#94a3b8'>The group walks through the different scenarios from beginning to end</small>",
+"그룹이 대체 사이트에서 특정 시스템이 실제로 적절히 작동하는지 확인<br><small style='color:#94a3b8'>Ensures specific systems perform adequately at the alternate offsite facility</small>",
+"그룹이 full-interruption 테스트 절차를 인지<br><small style='color:#94a3b8'>Group is aware of full-interruption test procedures</small>",
+"부서 간 의사소통 촉진<br><small style='color:#94a3b8'>Interdepartmental communication is promoted</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 구조화된 Walk-through 테스트</b></p>
+<p>각 부서 대표가 모여 계획을 처음부터 끝까지 검토하며 <b>약점·누락·구식 정보를 식별</b>한다. 이는 BCP를 최신 상태로 유지하는 가장 효과적인 방법이다.</p>
+<table>
+<tr><th>테스트 유형</th><th>특징</th><th>최신화 효과</th></tr>
+<tr><td>Checklist</td><td>문서 점검</td><td>낮음</td></tr>
+<tr style="background:#dcfce7"><td><b>Walk-through</b></td><td>✅ 부서 대표 모여 시나리오 검토</td><td>높음 — 약점 식별</td></tr>
+<tr><td>Parallel</td><td>대체 사이트 실제 가동(B 옵션)</td><td>기능 검증용</td></tr>
+<tr><td>Full-Interruption</td><td>실제 운영 중단 — 가장 침습적</td><td>최종 검증, 위험 큼</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>최신화 = Walk-through</b> (그룹 검토로 약점·변경사항 발굴)<br>
+• 기능 검증 = Parallel, 최종 검증 = Full-Interruption<br>
+• 관련: Q363(Paper test), Q364(Tabletop), Q357(BCP 효과성)</div>`,
+reference:"CRM Chapter 4: BCP Test Types",
+keyConcepts:[
+"Walk-through Test|부서 대표가 시나리오 검토 — 계획 최신화의 핵심",
+"Parallel Test|대체 사이트에서 실제 시스템 가동 검증",
+"Full-Interruption|실제 운영 중단 — 가장 강력하나 가장 위험"
+]
+},
+
+{
+id: 374,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 테스트의 1차 목적은?<br><small style="color:#94a3b8">The PRIMARY objective of testing a BCP is to:</small>`,
+options: [
+"직원들이 BCP에 익숙해지도록 함<br><small style='color:#94a3b8'>familiarize employees with the BCP</small>",
+"모든 잔여 위험이 처리되도록 보장<br><small style='color:#94a3b8'>ensure that all residual risk is addressed</small>",
+"가능한 모든 재해 시나리오를 연습<br><small style='color:#94a3b8'>exercise all possible disaster scenarios</small>",
+"BCP의 한계를 식별<br><small style='color:#94a3b8'>identify limitations of the BCP</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. BCP의 한계 식별</b></p>
+<p>테스트는 계획의 <b>약점·결함·누락</b>을 드러내는 가장 좋은 증거이다. 한계를 식별해야 개선이 가능하므로 이것이 1차 목적이다.</p>
+<table>
+<tr><th>옵션</th><th>평가</th></tr>
+<tr><td>A. 직원 친숙화</td><td>부수적 효과 — 1차 목적 아님</td></tr>
+<tr><td>B. 모든 잔여 위험 처리</td><td>비용 효율적이지 않음 — 불가능</td></tr>
+<tr><td>C. 모든 시나리오 연습</td><td>실용적이지 않음 — 무한대</td></tr>
+<tr style="background:#dcfce7"><td><b>D. 한계 식별</b></td><td>✅ 테스트의 핵심 가치 — 개선 근거</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>테스트 목적 = 결함 발견</b> (개선을 위한 입력)<br>
+• 친숙화·훈련은 부수 효과<br>
+• 관련: Q319·Q325·Q341·Q352·Q357·Q362·Q373(테스트 결과 = 효과성 증거)</div>`,
+reference:"CRM Chapter 4: BCP Testing Objectives",
+keyConcepts:[
+"테스트 1차 목적|계획의 한계·결함 식별 → 개선",
+"부수 효과|직원 친숙화, 인식 제고",
+"테스트 한계|모든 시나리오·잔여 위험 커버는 비현실적"
+]
+},
+
+{
+id: 375,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 활성화는 사전 정의된 어떤 기준에 기반해야 하는가?<br><small style="color:#94a3b8">BCP activation should be based on predetermined criteria that address the:</small>`,
+options: [
+"중단의 지속 시간<br><small style='color:#94a3b8'>duration of the outage</small>",
+"중단의 유형<br><small style='color:#94a3b8'>type of outage</small>",
+"중단 발생 확률<br><small style='color:#94a3b8'>probability of the outage</small>",
+"중단의 원인<br><small style='color:#94a3b8'>cause of the outage</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 중단의 지속 시간(Duration)</b></p>
+<p>BCP 발동은 비즈니스 기능이 <b>조직 목표 달성에 위협이 될 정도로 중단되는 최대 시간</b>에 기반해야 한다. 즉, 일정 지속 시간을 초과하면 자동으로 발동되도록 설계된다.</p>
+<table>
+<tr><th>옵션</th><th>BCP 활성화 기준 적합성</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 지속 시간</b></td><td>✅ 임계 시간 초과 시 발동 — MTO/RTO 기준</td></tr>
+<tr><td>B. 유형</td><td>대응 방법에 영향, 발동 결정 아님</td></tr>
+<tr><td>C. 확률</td><td>리스크 평가용 — 발동 결정과 무관</td></tr>
+<tr><td>D. 원인</td><td>대응 절차 선택에 영향, 발동 결정 아님</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 발동 트리거 = 시간(Duration)</b><br>
+• 원인·유형은 어떤 절차를 쓸지 결정 (발동 여부 ❌)<br>
+• MTO(Maximum Tolerable Outage) 초과 시 BCP 발동<br>
+• 관련: Q371(선언 책임자), Q351(위기 선언 미정의)</div>`,
+reference:"CRM Chapter 4: BCP Activation Criteria",
+keyConcepts:[
+"발동 기준|지속 시간(Duration) — 조직 목표 위협 임계점",
+"MTO|Maximum Tolerable Outage — BCP 발동 임계 시간",
+"원인 vs 발동|원인은 대응 방법 선택, 시간은 발동 여부 결정"
+]
+},
+
+{
+id: 376,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 개발 시 조직의 비즈니스 프로세스를 이해하기 위해 사용해야 하는 도구는?<br><small style="color:#94a3b8">When developing a BCP, which tool should be used to gain an understanding of the organization's business processes?</small>`,
+options: [
+"비즈니스 연속성 자체 감사<br><small style='color:#94a3b8'>Business continuity self-audit</small>",
+"자원 복구 분석<br><small style='color:#94a3b8'>Resource recovery analysis</small>",
+"위험 평가<br><small style='color:#94a3b8'>Risk assessment</small>",
+"갭 분석<br><small style='color:#94a3b8'>Gap analysis</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 위험 평가(Risk Assessment) / BIA</b></p>
+<p>위험 평가와 비즈니스 영향 분석(BIA)은 BCP의 일부로서 <b>비즈니스를 이해하는 도구</b>이다. 어떤 프로세스가 핵심인지, 어떤 위협이 있는지 파악한다.</p>
+<table>
+<tr><th>도구</th><th>목적</th></tr>
+<tr style="background:#dcfce7"><td><b>Risk Assessment / BIA</b></td><td>✅ 비즈니스 프로세스·위협·영향 이해</td></tr>
+<tr><td>Self-Audit</td><td>BCP의 적정성 평가</td></tr>
+<tr><td>Resource Recovery Analysis</td><td>복구 전략 구성요소 식별</td></tr>
+<tr><td>Gap Analysis</td><td>계획의 결함 식별</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>비즈니스 이해 = RA/BIA</b><br>
+• BIA는 BCP 개발의 출발점 — 무엇이 핵심인지 식별<br>
+• 관련: Q353(BIA가 복구 전략에 영향), Q359(연간 RA → BCP 검토)</div>`,
+reference:"CRM Chapter 4: BCP Development - BIA & Risk Assessment",
+keyConcepts:[
+"BIA|핵심 프로세스·RTO·RPO 식별 — BCP의 기초",
+"Risk Assessment|위협·취약점·영향 평가",
+"BCP 개발 순서|RA/BIA → 전략 → 계획 수립 → 테스트"
+]
+},
+
+{
+id: 377,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `핵심 프로세스의 RPO를 결정하는 데 가장 중요한 것은?<br><small style="color:#94a3b8">Which is MOST important to determine the RPO for a critical process?</small>`,
+options: [
+"허용 가능한 다운타임 시간<br><small style='color:#94a3b8'>Number of hours of acceptable downtime</small>",
+"핵심 시스템 복구 총 비용<br><small style='color:#94a3b8'>Total cost of recovering critical systems</small>",
+"허용 가능한 데이터 손실 범위<br><small style='color:#94a3b8'>Extent of data loss that is acceptable</small>",
+"허용 가능한 서비스 수준 감소<br><small style='color:#94a3b8'>Acceptable reduction in the level of service</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 허용 가능한 데이터 손실 범위</b></p>
+<p>RPO는 <b>"허용 가능한 데이터 손실량"</b>을 정의한다 — 재해 직전 어느 시점까지 데이터를 복구해야 하는지를 결정한다.</p>
+<table>
+<tr><th>지표</th><th>의미</th><th>옵션</th></tr>
+<tr style="background:#dcfce7"><td><b>RPO</b></td><td>허용 가능 데이터 손실</td><td>✅ C</td></tr>
+<tr><td>RTO</td><td>허용 가능 다운타임</td><td>A</td></tr>
+<tr><td>SDO</td><td>대체 모드 서비스 수준</td><td>D</td></tr>
+<tr><td>비용</td><td>RPO 결정 시 이미 고려됨</td><td>B</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RPO = 데이터 손실 허용량</b> (시간이 아닌 데이터 관점)<br>
+• RTO = 시간, RPO = 데이터, SDO = 서비스 수준<br>
+• 관련: Q324·Q326·Q334·Q339·Q349(RPO 시리즈)</div>`,
+reference:"CRM Chapter 4: RPO Determination",
+keyConcepts:[
+"RPO|허용 가능 데이터 손실량 — 백업 빈도 결정",
+"RTO|허용 가능 다운타임 — 복구 속도 결정",
+"SDO|대체 운영 모드의 서비스 수준"
+]
+},
+
+{
+id: 378,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `항공사 예약 시스템의 BCP 설계 시 외부 위치로의 데이터 전송/백업에 가장 적합한 방법은?<br><small style="color:#94a3b8">For an airline reservation system BCP, the MOST appropriate offsite data transfer/backup method is:</small>`,
+options: [
+"섀도우 파일 처리<br><small style='color:#94a3b8'>shadow file processing</small>",
+"전자 볼팅<br><small style='color:#94a3b8'>electronic vaulting</small>",
+"하드 디스크 미러링<br><small style='color:#94a3b8'>hard-disk mirroring</small>",
+"핫 사이트 프로비저닝<br><small style='color:#94a3b8'>hot-site provisioning</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 섀도우 파일 처리(Shadow File Processing)</b></p>
+<p>섀도우 파일 처리는 원격지에 파일의 <b>정확한 복제본을 동시에 처리</b>한다. 항공 예약처럼 손실 허용이 거의 없는 핵심 데이터에 사용된다 (RPO≈0).</p>
+<table>
+<tr><th>방법</th><th>특징</th><th>적합성</th></tr>
+<tr style="background:#dcfce7"><td><b>Shadow File</b></td><td>✅ 원격지 동시 처리 — 실시간</td><td>항공 예약에 최적</td></tr>
+<tr><td>Electronic Vaulting</td><td>저장소로 전자 전송 — 보통 비실시간</td><td>은행 등 배치형</td></tr>
+<tr><td>Disk Mirroring</td><td>같은 서버 내 디스크 이중화</td><td>로컬 — 외부 백업 ❌</td></tr>
+<tr><td>Hot Site</td><td>복구 시설 — 백업 방법 아님</td><td>해당 없음</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>실시간 항공 예약 = Shadow File</b> (RPO≈0)<br>
+• Mirroring은 로컬 redundancy, Shadow는 원격 동시 처리<br>
+• 관련: Q340(실시간 원격 복제), Q345(Mirroring), Q349(CDP)</div>`,
+reference:"CRM Chapter 4: Real-time Backup Methods",
+keyConcepts:[
+"Shadow File Processing|원격지 실시간 동시 파일 처리 — 항공·증권용",
+"Electronic Vaulting|전자 전송 백업 — 보통 배치형",
+"Disk Mirroring|로컬 디스크 이중화 — 외부 백업 아님"
+]
+},
+
+{
+id: 379,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP가 복구 과정 중 정보 기밀성을 충분히 다루지 않을 때, IS 감사인이 계획에 포함하도록 권고해야 할 것은?<br><small style="color:#94a3b8">When BCP does not adequately address information confidentiality during recovery, IS auditor should recommend the plan include:</small>`,
+options: [
+"비즈니스 복구 절차 발동 시 요구되는 정보 보안 수준<br><small style='color:#94a3b8'>the level of information security required when business recovery procedures are invoked</small>",
+"위기 관리 구조 내 정보 보안 역할과 책임<br><small style='color:#94a3b8'>information security roles and responsibilities in the crisis management structure</small>",
+"정보 보안 자원 요구사항<br><small style='color:#94a3b8'>information security resource requirements</small>",
+"BCP에 영향을 미칠 수 있는 정보 보안 변경 관리 절차<br><small style='color:#94a3b8'>change management procedures for information security</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 복구 절차 발동 시 요구되는 정보 보안 수준</b></p>
+<p>위기 시 직무 분리(SoD) 등 평소 통제가 무력화되므로 보안 요구가 오히려 <b>증가</b>한다. 복구 시점에 어떤 보안 수준을 유지할지 명확히 정의해야 기밀성이 보호된다.</p>
+<table>
+<tr><th>옵션</th><th>적합성</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 보안 수준 정의</b></td><td>✅ 기밀성 직접 보호 — 핵심</td></tr>
+<tr><td>B. 역할/책임</td><td>중요하나 보안 수준 정의가 우선</td></tr>
+<tr><td>C. 자원 요구사항</td><td>보안 수준이 정해진 후 도출</td></tr>
+<tr><td>D. 변경 관리</td><td>이 시나리오와 무관</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>위기 시 통제 약화 → 보안 요구 증가</b><br>
+• "Level of security" 정의가 모든 후속 활동의 기반<br>
+• SoD 등 일반 통제 부재 시 보상 통제 필요</div>`,
+reference:"CRM Chapter 4: Information Security in BCP",
+keyConcepts:[
+"복구 시 보안 수준|위기 중에도 기밀성 유지를 위한 명시적 기준",
+"통제 약화|SoD 등 일반 통제가 위기 시 무력화될 수 있음",
+"보상 통제|일반 통제 부재 시 대체 통제 필요"
+]
+},
+
+{
+id: 380,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `비즈니스 연속성 감사 시 IS 감사인이 검증해야 할 가장 중요한 것은?<br><small style="color:#94a3b8">Which is MOST important for an IS auditor to verify while conducting a business continuity audit?</small>`,
+options: [
+"데이터 백업이 적시에 수행되는지<br><small style='color:#94a3b8'>Data backups are performed on a timely basis</small>",
+"복구 사이트가 계약되어 필요 시 사용 가능한지<br><small style='color:#94a3b8'>A recovery site is contracted and available</small>",
+"인명 안전 절차가 마련되어 있는지<br><small style='color:#94a3b8'>Human safety procedures are in place</small>",
+"보험 보장이 적절하고 보험료가 최신인지<br><small style='color:#94a3b8'>Insurance coverage is adequate and premiums current</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 인명 안전 절차</b></p>
+<p>BCP의 어떤 요소보다도 <b>인명 보호가 절대 최우선</b>이다. 다른 모든 항목(백업·복구 사이트·보험)은 인명 안전 다음이다.</p>
+<table>
+<tr><th>옵션</th><th>우선순위</th></tr>
+<tr style="background:#dcfce7"><td><b>C. 인명 안전</b></td><td>✅ 절대 1순위 — 모든 것에 우선</td></tr>
+<tr><td>A. 데이터 백업</td><td>중요하나 인명 다음</td></tr>
+<tr><td>B. 복구 사이트</td><td>중요하나 인명 다음</td></tr>
+<tr><td>D. 보험</td><td>재무 보호 — 후순위</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>People → Process → Technology</b> (불변의 원칙)<br>
+• BCP 질문에서 "인명/안전" 선택지가 있으면 거의 항상 정답<br>
+• 관련: Q366(BCP 1차 목적 = 인명 보호), Q369(대피 계획 우선)</div>`,
+reference:"CRM Chapter 4: Life Safety Priority in BCP",
+keyConcepts:[
+"인명 우선|BCP의 절대 1순위 — 양보 불가",
+"우선순위|People → Process → Technology",
+"감사 초점|생명 안전 절차 검증이 최우선 사항"
+]
+},
+
+{
+id: 381,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `최적화된 DRP는 어떻게 작동해야 하는가?<br><small style="color:#94a3b8">An optimized disaster recovery plan (DRP) for an organization should:</small>`,
+options: [
+"복구 시간과 복구 비용을 모두 감소시킴<br><small style='color:#94a3b8'>reduce the length of recovery time and the cost of recovery</small>",
+"복구 시간과 복구 비용을 모두 증가시킴<br><small style='color:#94a3b8'>increase the length of recovery time and the cost of recovery</small>",
+"복구 시간은 줄이지만 복구 비용은 증가시킴<br><small style='color:#94a3b8'>reduce recovery time and increase the cost of recovery</small>",
+"복구 시간이나 복구 비용에 영향을 주지 않음<br><small style='color:#94a3b8'>not affect the recovery time or the cost of recovery</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 복구 시간과 비용 모두 감소</b></p>
+<p>DRP의 목적은 재해로부터 <b>복구 시간(RTO)과 비용을 모두 최소화</b>하는 것이다. 최적화된 계획은 빠른 복구로 손실을 줄이고, 효율적 자원 배치로 복구 비용도 절감한다.</p>
+<table>
+<tr><th>옵션</th><th>DRP 효과</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 시간↓ 비용↓</b></td><td>✅ DRP 최적화의 본질적 목표</td></tr>
+<tr><td>B. 시간↑ 비용↑</td><td>❌ 정반대</td></tr>
+<tr><td>C. 시간↓ 비용↑</td><td>준비 비용은 들지만 복구 비용은 줄어야 함</td></tr>
+<tr><td>D. 영향 없음</td><td>❌ DRP 의미 없음</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DRP 목적 = 재해 영향 최소화</b> (시간·비용 둘 다)<br>
+• 사전 준비 비용은 발생하나, 재해 시 손실·복구 비용은 절감<br>
+• 관련: Q335(예산·RTO 균형), Q353(BIA → 복구 전략)</div>`,
+reference:"CRM Chapter 4: DRP Optimization Objectives",
+keyConcepts:[
+"DRP 목적|복구 시간·비용 동시 최소화",
+"사전 투자 vs 재해 손실|준비 비용 < 재해 손실 절감",
+"최적화|RTO/RPO 충족하면서 비용 효율 극대화"
+]
+},
+
+{
+id: 382,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `효과적인 BCP에 가장 크게 기여하는 것은?<br><small style="color:#94a3b8">Which of the following contributes MOST to an effective BCP?</small>`,
+options: [
+"문서가 모든 이해관계자에게 회람됨<br><small style='color:#94a3b8'>The document is circulated to all interested parties</small>",
+"계획 수립에 모든 사용자 부서가 참여함<br><small style='color:#94a3b8'>Planning involves all user departments</small>",
+"계획이 고위 경영진의 승인을 받음<br><small style='color:#94a3b8'>The plan is approved by senior management</small>",
+"외부 IS 감사인의 감사가 수행됨<br><small style='color:#94a3b8'>An audit is performed by an external IS auditor</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 모든 사용자 부서의 참여</b></p>
+<p>사용자 부서의 참여는 <b>비즈니스 처리 우선순위 식별과 효과적 계획 수립</b>에 핵심이다. 실제 업무를 아는 사람들이 참여해야 현실적이고 효과적인 BCP가 만들어진다.</p>
+<table>
+<tr><th>옵션</th><th>기여도</th></tr>
+<tr><td>A. 회람</td><td>인지 확보 — 효과성과는 별개</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 사용자 부서 참여</b></td><td>✅ 우선순위·요구사항 정확 반영</td></tr>
+<tr><td>C. 경영진 승인</td><td>지원 확보 — 효과성 보장 ❌</td></tr>
+<tr><td>D. 외부 감사</td><td>품질 검증 — 개선 보장 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>효과성 = 현장 지식 통합</b> (사용자 부서 참여)<br>
+• 회람·승인·감사는 모두 보완적 — 핵심은 참여<br>
+• 관련: Q361(프로세스 오너 핵심 이해관계자), Q353(BIA)</div>`,
+reference:"CRM Chapter 4: BCP Effectiveness Factors",
+keyConcepts:[
+"사용자 참여|비즈니스 우선순위·요구사항을 정확히 반영하는 핵심",
+"BCP 효과성|현장 지식 통합 → 현실적 계획",
+"보완 활동|회람·승인·감사는 효과성을 보장하지 않음"
+]
+},
+
+{
+id: 383,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `IT DR은 수년간 정기 테스트되어 왔고, 새 BCP의 기본 tabletop이 성공한 후, IS 감사인이 다음으로 권고할 테스트는?<br><small style="color:#94a3b8">After successful basic tabletop of a new BCP (with mature IT DR), what testing should be performed NEXT?</small>`,
+options: [
+"IT 포함 모든 부서를 비상 사이트로 이전하는 전면 테스트<br><small style='color:#94a3b8'>Full-scale test with relocation of all departments including IT</small>",
+"모든 핵심 인력이 참여하는 사전 정의 시나리오 walk-through<br><small style='color:#94a3b8'>Walk-through test with all critical personnel</small>",
+"비즈니스 부서가 참여하는 IT DR 테스트<br><small style='color:#94a3b8'>IT DR test with business departments involved</small>",
+"제한된 IT 개입의 시나리오 기능 테스트<br><small style='color:#94a3b8'>Functional test of a scenario with limited IT involvement</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 제한된 IT 개입의 기능 테스트(Functional Test)</b></p>
+<p>Tabletop 다음 단계는 <b>Functional Test</b>이다. 인력 동원으로 BCP의 행정·조직 기능을 검증한다. IT DR은 이미 성숙하므로 BCP의 비-IT 부분을 먼저 검증·최적화하는 것이 효율적이다. 전면 테스트는 마지막 단계.</p>
+<table>
+<tr><th>테스트 단계 (점진적)</th><th>설명</th></tr>
+<tr><td>1. Checklist</td><td>문서 점검</td></tr>
+<tr><td>2. Walk-through</td><td>키 인력 친숙화·검토</td></tr>
+<tr><td>3. Tabletop</td><td>시나리오 토론 (이미 완료)</td></tr>
+<tr style="background:#dcfce7"><td><b>4. Functional</b></td><td>✅ 인력 동원·기능 검증 (다음 단계)</td></tr>
+<tr><td>5. Parallel</td><td>대체 사이트 병행 운영</td></tr>
+<tr><td>6. Full-Interruption</td><td>전면 운영 중단 — 최종</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>테스트는 점진적으로</b> — 단계 건너뛰면 실패·자원 낭비<br>
+• Tabletop → Functional → Parallel → Full<br>
+• 성숙한 IT DR이 있어도 BCP의 비-IT 부분은 별도 검증 필요<br>
+• 관련: Q363(Paper test), Q364(Tabletop), Q373(Walk-through)</div>`,
+reference:"CRM Chapter 4: BCP Test Progression",
+keyConcepts:[
+"테스트 점진성|단순→복잡, 단계 생략 시 실패 위험",
+"Functional Test|인력 동원·행정 절차 검증 — Tabletop 다음 단계",
+"Full-Scale|모든 검증 후 최종 단계 — 첫 시도로 부적절"
+]
+},
+
+{
+id: 384,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `ATM 연결을 위한 중앙 통신 프로세서(스위치)에 가장 좋은 비상 계획은?<br><small style="color:#94a3b8">BEST contingency plan for a central communications processor connecting to ATMs?</small>`,
+options: [
+"다른 조직과의 상호 협정<br><small style='color:#94a3b8'>Reciprocal agreement with another organization</small>",
+"동일 위치의 대체 프로세서<br><small style='color:#94a3b8'>Alternate processor in the same location</small>",
+"다른 네트워크 노드의 대체 프로세서<br><small style='color:#94a3b8'>Alternate processor at another network node</small>",
+"이중 통신 링크<br><small style='color:#94a3b8'>Duplex communication links</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 다른 네트워크 노드의 대체 프로세서</b></p>
+<p>중앙 통신 프로세서 장애는 장비·전력·통신 어떤 원인이든 발생 가능하므로, <b>다른 위치에 중복 프로세서</b>를 두어야 환경적 장애(정전 등)에도 대응할 수 있다.</p>
+<table>
+<tr><th>옵션</th><th>커버 범위</th></tr>
+<tr><td>A. 상호 협정</td><td>의존성·프라이버시·규제 문제</td></tr>
+<tr><td>B. 동일 위치 대체</td><td>장비 장애만 — 환경 장애 ❌</td></tr>
+<tr style="background:#dcfce7"><td><b>C. 다른 노드 대체</b></td><td>✅ 장비·전력·환경 모두 커버</td></tr>
+<tr><td>D. 이중 링크</td><td>통신 링크 장애만</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>지리적 분산이 핵심</b> — SPOF(단일 장애점) 완전 제거<br>
+• 동일 위치 이중화는 환경 재해 시 동시 실패<br>
+• 관련: Q321(상호협정), Q344(외부 위치 기준), Q370(대체 라우팅)</div>`,
+reference:"CRM Chapter 4: Communications Resilience",
+keyConcepts:[
+"지리적 분산|환경적 재해까지 커버하는 진정한 redundancy",
+"SPOF 제거|장비·전력·통신 모든 장애 유형 대비",
+"동일 위치 이중화 한계|건물 단위 재해 시 무력"
+]
+},
+
+{
+id: 385,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `BCP 개발 후 효과적인 구현을 위해 가장 중요한 것은?<br><small style="color:#94a3b8">For effective implementation after a BCP has been developed, it is MOST important that the BCP be:</small>`,
+options: [
+"안전한 외부 시설에 보관됨<br><small style='color:#94a3b8'>stored in a secure offsite facility</small>",
+"고위 경영진의 승인을 받음<br><small style='color:#94a3b8'>approved by senior management</small>",
+"적절한 인력에게 전달됨<br><small style='color:#94a3b8'>communicated to appropriate personnel</small>",
+"기업 인트라넷을 통해 이용 가능함<br><small style='color:#94a3b8'>made available through the enterprise's intranet</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 적절한 인력에게 전달(Communicated)</b></p>
+<p>BCP는 적절한 인력이 <b>모든 측면을 인지하고 이해</b>해야만 효과적으로 구현된다. 사람이 알지 못하면 계획은 무용지물이다.</p>
+<table>
+<tr><th>옵션</th><th>구현 효과</th></tr>
+<tr><td>A. 안전 보관</td><td>접근성 ❌ — 사용자에게 도달 안 됨</td></tr>
+<tr><td>B. 경영진 승인</td><td>전제조건 — 구현 보장 아님</td></tr>
+<tr style="background:#dcfce7"><td><b>C. 인력에게 전달</b></td><td>✅ 인지·이해가 실행의 핵심</td></tr>
+<tr><td>D. 인트라넷 게시</td><td>접근성만 — 인지 보장 안 됨</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>구현 효과 = 인력 인지</b> (능동적 커뮤니케이션)<br>
+• 게시·보관은 수동적 — 전달·교육이 능동적<br>
+• 관련: Q356(다국적 BCP 직원 교육), Q382(사용자 부서 참여)</div>`,
+reference:"CRM Chapter 4: BCP Implementation",
+keyConcepts:[
+"능동적 커뮤니케이션|인력에게 직접 전달·교육해야 효과 발생",
+"수동적 게시 한계|보관·게시만으로는 인지 보장 안 됨",
+"BCP 실행력|아는 사람만 실행 가능"
+]
+},
+
+{
+id: 386,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `사고 대응 활동이 비즈니스 연속성 요구사항과 일치하도록 보장하는 가장 좋은 방법은?<br><small style="color:#94a3b8">BEST way to ensure that incident response activities are consistent with business continuity requirements?</small>`,
+options: [
+"전사 사고 대응에 대한 명확한 실무 지침 작성·공표<br><small style='color:#94a3b8'>Draft and publish a clear practice for enterprise-level incident response</small>",
+"부서 간 워킹 그룹 구성 및 관점 공유<br><small style='color:#94a3b8'>Establish a cross-departmental working group</small>",
+"시나리오 개발 및 구조화된 walk-through 수행<br><small style='color:#94a3b8'>Develop a scenario and perform a structured walk-through</small>",
+"DR 종단 간 테스트를 위한 프로젝트 계획 수립<br><small style='color:#94a3b8'>Develop a project plan for end-to-end DR testing</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 시나리오 기반 구조화 Walk-through</b></p>
+<p>사고 대응팀과 BC팀이 함께 참여하는 walk-through는 두 계획 간의 <b>간극·불일치를 식별할 최적의 기회</b>를 제공한다. 실제 시나리오를 따라가며 인터페이스를 검증한다.</p>
+<table>
+<tr><th>옵션</th><th>일치 확인 효과</th></tr>
+<tr><td>A. 지침 공표</td><td>BC가 IR에 정렬되어야만 효과 — 본말 전도</td></tr>
+<tr><td>B. 워킹 그룹</td><td>관점 공유만 — 실행 검증 부족</td></tr>
+<tr style="background:#dcfce7"><td><b>C. Walk-through</b></td><td>✅ 시나리오로 인터페이스 직접 검증</td></tr>
+<tr><td>D. DR 프로젝트 계획</td><td>BC/IR 결함 다루지 않음</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>계획 간 정렬 검증 = Walk-through</b> (실제 시나리오로 갭 노출)<br>
+• 사고 대응이 BC를 지원 (역방향 ❌)<br>
+• 관련: Q373(Walk-through로 BCP 최신화), Q383(테스트 진행)</div>`,
+reference:"CRM Chapter 4: IR/BC Integration",
+keyConcepts:[
+"계획 간 정렬|Walk-through로 인터페이스·갭 식별",
+"IR ↔ BC 관계|IR이 BC를 지원하는 구조",
+"시나리오 기반 검증|문서 검토보다 실효적"
+]
+},
+
+{
+id: 387,
+domain: "4",
+ks: "4B4 Business Continuity Plan",
+question: `상호 협정의 실시간 테스트(4시간 집중 사용 포함)가 성공적이었으나, 이는 다음에 대해 부분적 확신만 제공한다:<br><small style="color:#94a3b8">A live mutual agreement test (4-hour intensive usage) was successful but gives only partial assurance that the:</small>`,
+options: [
+"시스템과 IT 운영팀이 비상 환경에서 운영을 지속할 수 있음<br><small style='color:#94a3b8'>system and IT operations team can sustain operations in the emergency environment</small>",
+"자원과 환경이 트랜잭션 부하를 감당할 수 있음<br><small style='color:#94a3b8'>resources and environment can sustain the transaction load</small>",
+"원격 사이트의 애플리케이션 연결성이 응답 시간 요구사항을 충족<br><small style='color:#94a3b8'>connectivity at remote site meets response time requirements</small>",
+"실제 비즈니스 운영의 워크플로가 재해 시 비상 시스템을 사용할 수 있음<br><small style='color:#94a3b8'>workflow of actual business operations can use the emergency system in case of a disaster</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 실제 비즈니스 워크플로의 사용 가능성</b></p>
+<p>4시간 집중 테스트로 트랜잭션 부하·연결성·응답 시간은 검증되었지만, <b>전체 비즈니스 워크플로</b>(배치 마감·오류 정정·출력 배포·일·주·월 단위 사이클)는 부분적으로만 검증된다.</p>
+<table>
+<tr><th>옵션</th><th>4시간 테스트 검증도</th></tr>
+<tr><td>A. 시스템·IT팀 지속</td><td>부분적 (보조 운영 미검증)</td></tr>
+<tr><td>B. 트랜잭션 부하</td><td>✓ 집중 사용으로 검증됨</td></tr>
+<tr><td>C. 응답 시간</td><td>✓ 사용자 접속으로 검증됨</td></tr>
+<tr style="background:#dcfce7"><td><b>D. 전체 워크플로</b></td><td>⚠ 부분적 — 전체 사이클 미검증</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>4시간 ≠ 전체 비즈니스 사이클</b><br>
+• 배치·일마감·월마감 등 주기적 작업은 별도 검증 필요<br>
+• 단기 테스트 = 즉시 기능 검증, 장기 테스트 = 지속 가능성<br>
+• 관련: Q321(상호협정), Q383(테스트 진행)</div>`,
+reference:"CRM Chapter 4: Test Coverage Limitations",
+keyConcepts:[
+"부분 검증|단기 테스트는 전체 비즈니스 사이클을 다 다루지 못함",
+"워크플로 vs 트랜잭션|개별 처리 ≠ 전체 운영 흐름",
+"테스트 한계|주기적 작업·예외 처리는 별도 검증 필요"
 ]
 }
 
