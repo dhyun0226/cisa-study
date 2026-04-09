@@ -764,28 +764,7 @@ ISP의 가용성 SLA 준수 검증:
 | **DRP** | 시간/일 | IT 시스템 | 시스템/데이터 복구 |
 | **BCP** | 일/주 | 비즈니스 전체 | 운영 지속/재개 |
 
-### BCP/DRP 수립 5단계 순서 (★ 매우 중요)
-
-```
-1. BIA (Business Impact Analysis) ← FIRST
-   "어떤 업무가 멈추면 얼마나 손해?"
-   → 핵심 프로세스 식별 → RTO/RPO 도출
-
-2. Strategy (복구 전략) ← BIA 다음
-   "어떻게 복구할까?" 방향 결정
-   → Hot/Warm/Cold Site 등
-
-3. BCP/DRP (계획서)
-   전략을 구체적 문서로
-
-4. Test (테스트)
-   모의 재해 시뮬레이션
-
-5. Training (교육) / Maintenance
-   직원 교육 + 유지보수
-```
-
-### 수립(plan/develop) 순서 vs 발동(activate) 순서 (헷갈리지 마라)
+### 수립(plan/develop) 순서 vs 발동(activate) 순서 (★ 매우 중요)
 
 #### 수립(plan/develop) 순서
 ```
@@ -830,9 +809,10 @@ BCP vs DRP:
 | BIA의 PRIMARY 목적 | 복구 전략 정의를 위한 기반 제공 |
 | BIA의 NEXT 단계 | Recovery Strategy (전략) |
 | BIA에서 FIRST 식별 | **핵심 비즈니스 프로세스** |
-| BIA 정보 출처 BEST | **Business Process Owner** |
+| BIA 정보 출처 BEST | **Business Process Owner** (업무 직접 담당자가 영향도 가장 잘 앎. ❌ IT 경영진/Senior 경영진/외부 전문가) |
 | BIA가 결정하는 우선순위 기준 | **조직 생존(survival)** ← 재무 가치 X |
 | BIA를 리스크 평가와 구별하는 것 | **허용 다운타임 결정** (시간) |
+| BCP 핵심 이해관계자 | **Process Owner** (BCP 개발에 가장 중요. ❌ Application Owner/이사회/IT 경영진) |
 
 ### BIA 내부 순서
 ```
@@ -893,23 +873,7 @@ BIA만 하는 것:
 → Risk Assessment = "위협"의 학문
 ```
 
-### 정보 출처: Business Process Owner
-```
-BIA 정보 출처 BEST = Business Process Owner
-
-이유: 그 업무 직접 담당자가 영향도 가장 잘 앎
-  - 매일 운영하는 사람
-  - 멈추면 어떤 영향인지 안다
-
-함정:
-  ❌ IT 경영진 (기술만 앎)
-  ❌ Senior 경영진 (큰 그림만)
-  ❌ 외부 전문가 (우리 회사 고유 상황 모름)
-
-CISA 패턴:
-  Business 결정 → Business 측 (Owner)
-  IT 결정 → IT 측
-```
+<!-- 정보 출처: Business Process Owner → "BIA 핵심" 테이블에 통합됨 -->
 
 ### DRP 검토 GREATEST 결함 = BIA 결과 미사용
 ```
@@ -981,6 +945,10 @@ BIA   전략   BCP    테스트   교육
 - **다운타임 비용**: 매출 손실/유휴 인력/급여 → 시간 누적 증가
 - **복구 비용**: 빨리 복구할수록 비싼 솔루션 → 시간 여유 있으면 저렴
 - **DRP 본질**: 두 곡선의 교차점(최적 RTO) 찾기
+- **총비용 = Downtime + Recovery**. U자형 곡선 최저점 = 최적 RTO.
+- **RTO 길수록 Downtime 비용만 증가**. 복구/재개 비용은 오히려 감소.
+  - 직관 함정: "오래 걸리면 복구비도 더 들 것" → 틀림
+  - 현실: 여유있게 복구 = 싸게 복구. 멈춰있는 손실이 누적될 뿐.
 
 **오답 패턴**:
 - "복구 비용은 시간과 무관" → 정반대
@@ -1055,20 +1023,7 @@ BCP를 IT 프로젝트에 통합 → 포괄적 요구사항
   → "중복" 한글 번역 함정 (긍정적 의미)
 ```
 
-### BCP 효과성 평가 = 테스트 결과 (★ 반복)
-
-```
-"BCP 효과성 평가" → 이전 테스트 결과
-  → 활동/계획/문서 ≠ 효과
-  → 결과로만 증명
-
-함정:
-  ❌ 모범 사례 정렬 (정렬이지 효과 X)
-  ❌ 직원 교육 (활동, 효과 X)  
-  ❌ 시설 조건/오프사이트 (조건이지 효과 X)
-
-D4-11과 동일 원칙: effectiveness = 결과
-```
+<!-- BCP 효과성 평가 = 테스트 결과 → "BCP의 PRIMARY 목적 (관점별 답이 다름)" 테이블 참고 -->
 
 ### BCP 보장 vs BCP 효과성 평가 (헷갈림 주의)
 
@@ -1082,20 +1037,7 @@ D4-11과 동일 원칙: effectiveness = 결과
 같은 BCP, 동사가 다르면 답이 다름
 ```
 
-### BCP 핵심 이해관계자 = Process Owner (반복)
-
-```
-"BCP 개발에 가장 중요" → Process Owner
-  → 비즈니스 프로세스 직접 책임
-  → 어떤 프로세스가 critical인지 가장 잘 앎
-
-함정:
-  ❌ Application Owner (앱이지 프로세스 X)
-  ❌ 이사회 (승인하지만 개발 X)
-  ❌ IT 경영진 (인프라 결정, 우선순위 X)
-
-같은 패턴 (BIA 정보 출처도 동일)
-```
+<!-- BCP 핵심 이해관계자 = Process Owner → "BIA 핵심" 및 "정보 출처: Business Process Owner" 참고 -->
 
 ### Software Escrow (제3자 SW 핵심 통제)
 
@@ -1172,6 +1114,20 @@ Tabletop = 팀이 회의실에 모여 토론 (능동적)
   → 기술 검증 X
 ```
 
+### 오프사이트 시설 테스트 MAIN purpose = 호환성(Compatibility) 검증
+
+```
+메인 사이트는 OS/HW/앱이 계속 바뀌는데 DR 사이트 그대로면 drift 발생
+  → 재해 시 "복원했는데 안 돌아감"
+  → 테스트가 이걸 잡는 유일한 방법
+
+오답 함정: 데이터 무결성 보호(X), 문서 최신화(X), 상세 계획 제거(X)
+
+"절차가 요구사항 충족" BEST indicator = Tabletop exercise ★
+  문서/승인 = "있다"의 영역 (약)
+  Tabletop 이상 = "작동한다"의 영역 (강)
+```
+
 ### BCP의 PRIMARY 목적 (관점별 답이 다름 ★)
 
 | 질문 | 답 | 이유 |
@@ -1183,13 +1139,9 @@ Tabletop = 팀이 회의실에 모여 토론 (능동적)
 | "BCP 핵심 이해관계자" | **Process Owner** | 비즈니스 결정 |
 
 ```
-BCP 우선순위:
-  1. 인명 보호 ★
-  2. 자산 보호
-  3. 운영 연속성
-  4. 손실 최소화
-
+BCP 우선순위: 인명 보호 ★ > 자산 > 운영 연속성 > 손실 최소화
 → 시스템/데이터보다 사람이 먼저 (개발자 본능과 반대)
+→ 재해 발생 시 구체적 행동 순서는 "재해 발생 순간 행동 우선순위" 참고
 ```
 
 ### "보장(assurance)" 함정 키워드
@@ -1288,11 +1240,7 @@ Dial-up Site = ❌ 사이트 종류 아님 (함정 선택지)
   → 전화선 백업 회선 의미
   → 사이트 질문에 보이면 즉시 탈락
 
-사이트 구성 요소 비교:
-  Cold     : 시설만 (전기/공조/바닥)
-  Warm     : 시설 + 일부 장비 + 부분 데이터
-  Hot      : 시설 + 전체 장비 + 최신 데이터 (수 시간)
-  Mirrored : 시설 + 전체 장비 + 실시간 데이터 (즉시)
+→ 사이트 구성 요소 상세 비교: "DR 사이트 등급표 (재정리)" 참고
 ```
 
 ### 테스트 PRIMARY 목적 = 한계 식별
@@ -1483,21 +1431,7 @@ actual resources 사용 여부:
 
 **교훈**: 조건 2개 이상이면 AND로 읽기. 한쪽 극단 답은 함정.
 
-### DR 비용 trade-off 곡선 (★)
-
-```
-빨리 복구 (짧은 RTO)     천천히 복구 (긴 RTO)
-──────────────────     ──────────────────
-Recovery 비용 ↑ (급함)    Recovery 비용 ↓
-Resumption 비용 ↑         Resumption 비용 ↓
-Downtime 비용 ↓           Downtime 비용 ↑ ★
-```
-
-**RTO 길수록 Downtime 비용만 증가**. 복구/재개 비용은 오히려 감소.
-- 직관 함정: "오래 걸리면 복구비도 더 들 것" → 틀림
-- 현실: 여유있게 복구 = 싸게 복구. 멈춰있는 손실이 누적될 뿐.
-
-**총비용 = Downtime + Recovery**. U자형 곡선 최저점 = 최적 RTO.
+<!-- DR 비용 trade-off → "다운타임 비용 vs 복구 비용 (DRP 비용 곡선)" ASCII 그래프 참고 -->
 
 ### RPO vs RTO 독립 매칭 (★★ 단골 함정)
 
@@ -2652,21 +2586,11 @@ CSA = Control Self-Assessment
 
 ### Hot/Warm/Cold Site = 가용성 (백업 X)
 
-```
-Hot Site:
-  장비 ✅ + 데이터 ✅ (실시간 복제) → 즉시 사용
-  
-Warm Site:
-  장비 ✅ + 데이터 ❌ → 백업 필요
-  
-Cold Site:
-  빈 공간만 → 백업 + 장비 다 필요
+> 사이트 등급/비용/복구 시간 비교표는 [D4-3](#d4-3-재해복구-사이트rtorpomto) 및 "DR 사이트 등급표 (재정리)" 참고.
 
-→ 셋 다 가용성 솔루션
-→ 백업 대체 X
 ```
-
-> 사이트 비용/복구 시간 비교표와 시스템 분류 매칭은 [D4-3](#d4-3-재해복구-사이트rtorpomto) 참고.
+핵심: Hot/Warm/Cold 셋 다 "가용성" 솔루션이지 백업 대체 X
+```
 
 ### Hot Site 있어도 백업 필요한 이유 (★)
 
@@ -2842,6 +2766,8 @@ MOST important:
 
 ## "MOST important" 질문 분류표 (BCP/DRP)
 
+> 4축 프레임워크(단계/역할/문서/실행)별 단골 정답은 D4-8 "BCP/DR MOST important 4축 프레임워크" 참고.
+
 같은 단어라도 **수식구**에 따라 정답 카테고리가 통째로 바뀜.
 
 | 질문 패턴 | 정답 카테고리 |
@@ -2859,13 +2785,7 @@ MOST important:
 | MOST important **to update frequently** | **연락처(인사 데이터)** |
 | **PRIMARILY** ensure DRP covers | **비즈니스 기능 분석/우선순위 (BIA)** ★ |
 
-### 절대 우선순위 (단독 MOST important)
-```
-1. 인명 ★★★   ← 보기에 있으면 무조건 정답
-2. 자산
-3. 운영 연속성
-4. 손실 최소화
-```
+<!-- 절대 우선순위 (인명>자산>연속성>손실최소화) → "BCP의 PRIMARY 목적" 및 "재해 발생 순간 행동 우선순위" 참고 -->
 
 ---
 
@@ -2890,17 +2810,7 @@ MOST important:
 
 ---
 
-## BCP 단계별 MOST important (다시 강조)
-
-| 단계 | 키워드 | 정답 방향 |
-|---|---|---|
-| 개발(develop) | planning, designing | **현업 부서 참여** |
-| 승인 | approval | 경영진 승인 |
-| 구현(implement) | "after developed" | **인력에 전달(communicate)** |
-| 유지 | up to date | Walk-through |
-| 테스트 | verify, test | **한계(limitations) 식별** |
-
-**→ "어느 단계"인지 먼저 확인. "이미 개발됨" 조건이면 승인 답은 탈락.**
+<!-- BCP 단계별 MOST important → D4-8 "BCP 효과적 구현/계획 단계별 MOST important" 참고 -->
 
 ---
 
@@ -2938,38 +2848,9 @@ MOST important:
 
 ---
 
-## DRP 테스트 상세
-
-### 테스트 사다리 (점프 금지)
-```
-Paper → Walk-through → Tabletop → Functional → Parallel → Full Interruption
-```
-
-- 한 칸씩만 올라가라
-- 이미 검증된 영역은 재검증 금지 (효율성)
-- **Test(결함 찾기) ≠ Training(사람 가르치기)**
-
-### 오프사이트 시설 테스트의 MAIN purpose
-> **호환성(Compatibility) 지속 검증** ★
-
-메인 사이트는 OS/HW/앱이 계속 바뀌는데 DR 사이트가 그대로면 **drift** 발생 → 재해 시 "복원했는데 안 돌아감". 테스트가 이걸 잡는 유일한 방법.
-
-**오답 함정**:
-- 데이터 무결성 보호 (X -- 별개 통제)
-- 문서 최신화 (X -- 부수 효과)
-- 상세 계획 제거 (X -- 정반대)
-
-### "절차가 요구사항 충족" BEST indicator
-> **Tabletop exercise** (실제 검증의 시작점)
-
-**문서/승인/비교는 "있다"의 영역, Tabletop부터가 "작동한다"의 영역.**
-
-| 보기 유형 | 위상 |
-|---|---|
-| 문서 존재/완성 | 약 |
-| 거버넌스 승인 | 약 |
-| 외부 기준 비교 | 중 |
-| **실제 실행/검증** | **강 ★** |
+<!-- DRP 테스트 상세 → D4-8 "BCP 테스트 종류" 테이블 참고 -->
+<!-- 오프사이트 테스트 MAIN purpose = 호환성(Compatibility) 검증, drift 방지 -->
+<!-- 절차 검증 BEST indicator = Tabletop exercise (문서/승인=약, 실제 실행=강) -->
 
 ---
 
