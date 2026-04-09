@@ -39,14 +39,12 @@
   --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
   --shadow:0 4px 12px rgba(0,0,0,.07),0 1px 3px rgba(0,0,0,.05);
   --shadow-md:0 8px 24px rgba(0,0,0,.09),0 2px 6px rgba(0,0,0,.05);
+  --radius:12px;
 }
 body{
   font-family:'Noto Sans KR','DM Sans',-apple-system,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  line-height:1.7;
-  font-size:15px;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;line-height:1.7;font-size:15px;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -54,64 +52,80 @@ body{
 .hdr{
   background:#fff;
   border-bottom:1px solid var(--border);
-  padding:.875rem 2rem;
+  padding:.75rem 2rem;
   display:flex;align-items:center;justify-content:space-between;
   position:sticky;top:0;z-index:100;
   box-shadow:var(--shadow-sm);
 }
 .hdr h1{
   font-family:'DM Sans','Noto Sans KR',sans-serif;
-  font-size:1.35rem;font-weight:700;
-  color:var(--primary);
-  letter-spacing:-.02em;
+  font-size:1.3rem;font-weight:700;color:var(--primary);letter-spacing:-.02em;
 }
 .hdr h1 span{color:var(--text);font-weight:600}
-.hdr-stats{display:flex;gap:1.5rem;font-size:.82rem;color:var(--muted)}
-.hdr-stats .v{color:var(--text2);font-weight:700}
+.hdr-right{display:flex;align-items:center;gap:1rem}
+.hdr-stats{display:flex;gap:1.25rem;font-size:.8rem;color:var(--muted)}
+.hdr-stats .v{font-weight:700}
+.dday-chip{
+  padding:.3rem .75rem;border-radius:20px;font-size:.75rem;font-weight:700;
+  background:var(--danger-light);color:var(--danger);border:1px solid var(--danger-mid);
+  white-space:nowrap;
+}
+.lang-btn{
+  padding:.3rem .65rem;border-radius:6px;
+  border:1.5px solid var(--border2);background:#fff;
+  cursor:pointer;font-size:.75rem;font-weight:700;
+  color:var(--primary);font-family:inherit;transition:all .15s;
+}
+.lang-btn:hover{background:var(--primary-light);border-color:var(--primary)}
 
 /* ── TABS ── */
 .tabs{
-  display:flex;
-  background:#fff;
+  display:flex;background:#fff;
   border-bottom:2px solid var(--border);
-  padding:0 2rem;
-  overflow-x:auto;
-  gap:.25rem;
+  padding:0 2rem;overflow-x:auto;gap:.25rem;
 }
 .tabs::-webkit-scrollbar{height:0}
 .tab{
-  padding:.8rem 1.25rem;
-  cursor:pointer;
-  color:var(--muted);
-  border-bottom:2px solid transparent;
-  margin-bottom:-2px;
-  font-size:.875rem;
-  font-weight:500;
-  white-space:nowrap;
+  padding:.75rem 1.25rem;cursor:pointer;color:var(--muted);
+  border-bottom:2.5px solid transparent;margin-bottom:-2px;
+  font-size:.875rem;font-weight:500;white-space:nowrap;
   transition:color .15s,border-color .15s;
-  letter-spacing:.01em;
 }
 .tab:hover{color:var(--text2)}
-.tab.on{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
+.tab.on{color:var(--primary);border-bottom-color:var(--primary);font-weight:700}
 
 /* ── MAIN LAYOUT ── */
-.main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.main{max-width:1000px;margin:0 auto;padding:2rem 1.5rem}
 .pane{display:none}.pane.on{display:block}
 
 /* ── CARD ── */
 .card{
-  background:var(--card);
-  border-radius:12px;
-  padding:2rem;
-  margin-bottom:1.5rem;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
+  background:var(--card);border-radius:var(--radius);
+  padding:2rem 2.25rem;margin-bottom:1.5rem;
+  border:1px solid var(--border);box-shadow:var(--shadow);
   animation:fadeIn .25s ease;
 }
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
+/* ── DAILY BANNER ── */
+.daily-banner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.5rem;margin-bottom:1.25rem;
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--primary-light),#dbeafe);
+  border:1px solid var(--primary-mid);
+}
+.daily-banner .db-left{display:flex;align-items:center;gap:1rem}
+.daily-banner .db-icon{font-size:1.5rem}
+.daily-banner .db-text{font-size:.875rem;color:var(--pl);font-weight:600}
+.daily-banner .db-sub{font-size:.78rem;color:var(--primary);font-weight:400;margin-top:.1rem}
+.daily-banner .db-progress{
+  width:120px;height:8px;background:rgba(255,255,255,.6);border-radius:4px;overflow:hidden;
+}
+.daily-banner .db-fill{height:100%;background:var(--primary);border-radius:4px;transition:width .5s}
+
 /* ── BADGES ── */
-.meta{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.meta{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center}
 .bg{padding:.2rem .7rem;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.02em}
 .bg-d{background:var(--primary-light);color:var(--primary);border:1px solid var(--primary-mid)}
 .bg-k{background:#f3f4f6;color:var(--muted);border:1px solid var(--border2)}
@@ -119,98 +133,103 @@ body{
 .bg-w{background:var(--danger-light);color:var(--danger);border:1px solid var(--danger-mid)}
 .bg-s{background:var(--warn-light);color:var(--warn);border:1px solid var(--warn-mid);cursor:pointer;transition:background .15s}
 .bg-s:hover{background:var(--warn-mid)}
+.bg-id{background:var(--purple-light);color:var(--purple);border:1px solid var(--purple-mid);font-family:'DM Sans',sans-serif}
 
-/* ── QUESTION ── */
+/* ── QUESTION (가독성 강화) ── */
 .qtxt{
-  font-size:1.1rem;
-  line-height:1.85;
-  margin-bottom:1.5rem;
-  font-weight:500;
+  font-size:1.15rem;
+  line-height:2;
+  margin-bottom:1.75rem;
+  font-weight:600;
   color:var(--text);
   word-break:keep-all;
+  letter-spacing:-.01em;
 }
-.opts{display:flex;flex-direction:column;gap:.625rem}
+.opts{display:flex;flex-direction:column;gap:.75rem}
 .opt{
-  padding:.875rem 1.125rem;
+  padding:1rem 1.25rem;
   border-radius:10px;
   border:1.5px solid var(--border);
   cursor:pointer;
-  transition:border-color .15s,background .15s,box-shadow .15s;
-  display:flex;align-items:flex-start;gap:.75rem;
+  transition:all .2s ease;
+  display:flex;align-items:flex-start;gap:.875rem;
   background:#fff;
 }
-.opt:hover:not(.dis){border-color:var(--primary);background:var(--primary-light);box-shadow:0 0 0 3px rgba(37,99,235,.06)}
-.opt.ok{border-color:var(--success);background:var(--success-light)}
-.opt.no{border-color:var(--danger);background:var(--danger-light)}
+.opt:hover:not(.dis){
+  border-color:var(--primary);background:var(--primary-light);
+  box-shadow:0 0 0 3px rgba(37,99,235,.08);
+  transform:translateX(4px);
+}
+.opt.ok{
+  border-color:var(--success);background:var(--success-light);
+  box-shadow:0 0 0 3px rgba(5,150,105,.12);
+}
+.opt.no{
+  border-color:var(--danger);background:var(--danger-light);
+  box-shadow:0 0 0 3px rgba(220,38,38,.1);
+}
 .opt.dis{cursor:default}
 .ol{
-  width:26px;height:26px;border-radius:50%;
+  width:28px;height:28px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:.78rem;flex-shrink:0;
+  font-weight:700;font-size:.8rem;flex-shrink:0;
   background:var(--bg2);color:var(--muted);
   border:1.5px solid var(--border2);
+  transition:all .2s;
 }
 .opt:hover:not(.dis) .ol{background:var(--primary-mid);color:var(--primary);border-color:var(--primary)}
 .opt.ok .ol{background:var(--success);color:#fff;border-color:var(--success)}
 .opt.no .ol{background:var(--danger);color:#fff;border-color:var(--danger)}
-.ot{padding-top:.1rem;line-height:1.6;color:var(--text2);font-size:.9rem;word-break:keep-all}
+.ot{padding-top:.15rem;line-height:1.7;color:var(--text2);font-size:.925rem;word-break:keep-all}
 
 /* ── EXPLANATION ── */
 .expl{
-  margin-top:1.5rem;padding:1.5rem;
-  border-radius:10px;
+  margin-top:1.75rem;padding:1.75rem;
+  border-radius:var(--radius);
   background:var(--primary-light);
   border:1px solid var(--primary-mid);
   display:none;
 }
-.expl.show{display:block}
-.expl h3{color:var(--primary);margin-bottom:.875rem;font-size:.95rem;font-weight:700;letter-spacing:.01em}
-.expl-c{line-height:1.9;color:var(--text2)}
+.expl.show{display:block;animation:fadeIn .3s ease}
+.expl h3{color:var(--primary);margin-bottom:1rem;font-size:.95rem;font-weight:700}
+.expl-c{line-height:2;color:var(--text2)}
 .expl-c p{margin-bottom:.75rem;word-break:keep-all}
 .expl-c strong{color:var(--text);font-weight:600}
 
-/* callout boxes in explanation */
+/* callout boxes */
 .kp{
-  background:var(--success-light);
-  border-left:3px solid var(--success);
-  padding:.75rem 1rem;margin:.75rem 0;
-  border-radius:0 8px 8px 0;
-  color:var(--text2);
-  font-size:.9rem;
+  background:var(--success-light);border-left:3px solid var(--success);
+  padding:.75rem 1rem;margin:.75rem 0;border-radius:0 8px 8px 0;
+  color:var(--text2);font-size:.9rem;
 }
 .wp{
-  background:var(--danger-light);
-  border-left:3px solid var(--danger);
-  padding:.75rem 1rem;margin:.75rem 0;
-  border-radius:0 8px 8px 0;
-  color:var(--text2);
-  font-size:.9rem;
+  background:var(--danger-light);border-left:3px solid var(--danger);
+  padding:.75rem 1rem;margin:.75rem 0;border-radius:0 8px 8px 0;
+  color:var(--text2);font-size:.9rem;
 }
 
 /* ── TABLES ── */
-.expl-c table,.cb table{
+.expl-c table,.cb table,.comparison-table table{
   width:100%;border-collapse:collapse;margin:1rem 0;font-size:.875rem;
   box-shadow:var(--shadow-sm);border-radius:8px;overflow:hidden;
 }
-.expl-c th,.cb th{
+.expl-c th,.cb th,.comparison-table th{
   background:var(--primary);color:#fff;
-  padding:.625rem 1rem;text-align:left;font-weight:600;
-  border:none;
+  padding:.625rem 1rem;text-align:left;font-weight:600;border:none;
 }
-.expl-c td,.cb td{
-  padding:.5rem 1rem;
-  border-bottom:1px solid var(--border);
-  color:var(--text2);
+.expl-c td,.cb td,.comparison-table td{
+  padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text2);
 }
 .expl-c tr:nth-child(even) td,.cb tr:nth-child(even) td{background:var(--bg2)}
 .expl-c tr:hover td,.cb tr:hover td{background:var(--primary-light)}
 .expl-c tr:last-child td,.cb tr:last-child td{border-bottom:none}
+.correct-row td{background:var(--success-light) !important;color:var(--success) !important;font-weight:600}
+.correct-row:hover td{background:var(--success-mid) !important}
 
 /* ── SUMMARY BOX ── */
 .sbox{
-  background:var(--purple-light);
-  border:1px solid var(--purple-mid);
-  border-radius:10px;padding:1.25rem;margin:1rem 0;
+  background:var(--purple-light);border:1px solid var(--purple-mid);
+  border-radius:var(--radius);padding:1.25rem;margin:1rem 0;
 }
 .sbox h4{color:var(--purple);margin-bottom:.75rem;font-weight:700;font-size:.9rem}
 .sbox ul{padding-left:1.25rem;color:var(--text2)}
@@ -219,64 +238,53 @@ body{
 
 /* ── REFERENCE BOX ── */
 .rbox{
-  margin-top:1rem;padding:1rem 1.25rem;
-  border-radius:10px;
-  background:var(--warn-light);
-  border:1px solid var(--warn-mid);
-  display:none;
+  margin-top:1rem;padding:1rem 1.25rem;border-radius:var(--radius);
+  background:var(--warn-light);border:1px solid var(--warn-mid);display:none;
 }
-.rbox.show{display:block}
+.rbox.show{display:block;animation:fadeIn .3s ease}
 .rbox h4{color:var(--warn);margin-bottom:.5rem;font-size:.85rem;font-weight:700}
 .rbox ul{padding-left:1.25rem;color:var(--text2);font-size:.875rem}
 .rbox li{margin-bottom:.3rem}
 
 /* ── KEY CONCEPT BOX ── */
 .kcbox{
-  margin-top:1rem;padding:1rem 1.25rem;
-  border-radius:10px;
-  background:var(--purple-light);
-  border:1px solid var(--purple-mid);
-  display:none;
+  margin-top:1rem;padding:1rem 1.25rem;border-radius:var(--radius);
+  background:var(--purple-light);border:1px solid var(--purple-mid);display:none;
 }
-.kcbox.show{display:block}
+.kcbox.show{display:block;animation:fadeIn .3s ease}
 .kcbox h4{color:var(--purple);margin-bottom:.75rem;font-size:.875rem;font-weight:700}
 .ci{
   margin-bottom:.5rem;padding:.625rem .875rem;
   border-left:2px solid var(--purple-mid);
-  font-size:.875rem;color:var(--text2);
-  background:#fff;
-  border-radius:0 8px 8px 0;
-  line-height:1.7;
-  word-break:keep-all;
+  font-size:.875rem;color:var(--text2);background:#fff;
+  border-radius:0 8px 8px 0;line-height:1.7;word-break:keep-all;
 }
 .ci strong{color:var(--purple);font-weight:600}
 
 /* ── BUTTONS ── */
 .btn{
-  padding:.6rem 1.375rem;
-  border-radius:8px;border:none;cursor:pointer;
-  font-weight:600;font-size:.875rem;
-  transition:background .15s,box-shadow .15s,transform .1s;
-  letter-spacing:.01em;
+  padding:.6rem 1.375rem;border-radius:8px;border:none;cursor:pointer;
+  font-weight:600;font-size:.875rem;transition:all .15s;
   font-family:inherit;
 }
 .btn:active{transform:scale(.98)}
 .btn-p{background:var(--primary);color:#fff;box-shadow:0 1px 3px rgba(37,99,235,.3)}
 .btn-p:hover{background:var(--pl);box-shadow:0 2px 8px rgba(37,99,235,.35)}
-.btn-o{
-  background:#fff;color:var(--muted);
-  border:1.5px solid var(--border2);
-}
+.btn-o{background:#fff;color:var(--muted);border:1.5px solid var(--border2)}
 .btn-o:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
-.btn-s{background:var(--success);color:#fff;box-shadow:0 1px 3px rgba(5,150,105,.25)}
-.btn-s:hover{background:#047857}
 
 /* ── QUIZ ACTIONS ── */
 .qact{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
 .qprog{color:var(--muted);font-size:.85rem;font-weight:500}
+.kbd{
+  display:inline-block;padding:.1rem .4rem;border-radius:4px;
+  background:var(--bg2);border:1px solid var(--border2);
+  font-size:.68rem;font-family:'DM Sans',monospace;color:var(--muted);
+  margin-left:.15rem;vertical-align:middle;
+}
 
 /* ── FILTER BAR ── */
-.fbar{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center}
+.fbar{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center}
 .fchip{
   padding:.35rem .875rem;border-radius:20px;font-size:.78rem;cursor:pointer;
   border:1.5px solid var(--border2);background:#fff;
@@ -288,154 +296,132 @@ body{
 /* ── SEARCH ── */
 .csearch{
   width:100%;padding:.875rem 1.25rem;
-  border-radius:10px;border:1.5px solid var(--border2);
-  background:#fff;color:var(--text);
-  font-size:.95rem;margin-bottom:1.5rem;
-  font-family:inherit;
-  box-shadow:var(--shadow-sm);
-  transition:border-color .15s,box-shadow .15s;
+  border-radius:var(--radius);border:1.5px solid var(--border2);
+  background:#fff;color:var(--text);font-size:.95rem;margin-bottom:1.25rem;
+  font-family:inherit;box-shadow:var(--shadow-sm);transition:all .15s;
 }
 .csearch:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .csearch::placeholder{color:var(--muted2)}
+
+/* ── DASHBOARD ── */
+.dash-hero{
+  background:linear-gradient(135deg,#1e3a5f 0%,var(--pl) 50%,var(--primary) 100%);
+  border-radius:var(--radius);padding:2rem 2.25rem;margin-bottom:1.5rem;
+  color:#fff;position:relative;overflow:hidden;
+}
+.dash-hero::after{
+  content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;
+  background:rgba(255,255,255,.05);border-radius:50%;
+}
+.dash-hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.dash-dday{font-size:2.5rem;font-weight:800;font-family:'DM Sans',sans-serif;letter-spacing:-.03em}
+.dash-dday small{font-size:.875rem;font-weight:500;opacity:.8;display:block;margin-top:.25rem}
+.dash-exam{text-align:right;opacity:.85;font-size:.85rem;line-height:1.6}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.dash-stat{
+  background:rgba(255,255,255,.12);border-radius:10px;
+  padding:1rem;text-align:center;backdrop-filter:blur(4px);
+}
+.dash-stat .n{font-size:1.5rem;font-weight:700;font-family:'DM Sans',sans-serif}
+.dash-stat .l{font-size:.72rem;opacity:.75;margin-top:.2rem}
+.dash-plan{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;
+}
+.plan-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem;text-align:center;box-shadow:var(--shadow-sm);
+}
+.plan-card .plan-icon{font-size:1.5rem;margin-bottom:.5rem}
+.plan-card .plan-val{font-size:1.5rem;font-weight:700;color:var(--primary);font-family:'DM Sans',sans-serif}
+.plan-card .plan-label{font-size:.78rem;color:var(--muted);margin-top:.25rem}
+.plan-card .plan-sub{font-size:.72rem;color:var(--muted2);margin-top:.15rem}
+
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem}
+.sc{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.125rem;text-align:center;box-shadow:var(--shadow-sm);
+}
+.sc .n{font-size:1.5rem;font-weight:700;margin-bottom:.15rem;font-family:'DM Sans',sans-serif}
+.sc .l{color:var(--muted);font-size:.75rem;font-weight:500}
+
+.drow{
+  display:flex;align-items:center;gap:1rem;
+  padding:.875rem 1.25rem;background:#fff;
+  border:1px solid var(--border);border-radius:10px;
+  margin-bottom:.5rem;box-shadow:var(--shadow-sm);
+  transition:box-shadow .15s;
+}
+.drow:hover{box-shadow:var(--shadow)}
+.drow-name{min-width:40px;font-weight:700;font-size:.85rem;color:var(--primary);font-family:'DM Sans',sans-serif}
+.drow-bar{flex:1;height:10px;background:var(--bg2);border-radius:5px;overflow:hidden}
+.drow-fill{height:100%;border-radius:5px;transition:width .8s ease}
+.drow-stat{font-size:.78rem;color:var(--muted);min-width:130px;text-align:right;font-family:'DM Sans',sans-serif}
+.drow-pct{font-weight:700;margin-left:.25rem}
+
+/* ── CONCEPT CARDS ── */
+.cc{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem;margin-bottom:.75rem;
+  cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);
+}
+.cc:hover{border-color:var(--primary-mid);box-shadow:var(--shadow)}
+.cc .cc-q{font-weight:600;font-size:.95rem;color:var(--text);line-height:1.7;word-break:keep-all}
+.cc .cc-a{
+  color:var(--text2);line-height:1.85;font-size:.875rem;
+  max-height:0;overflow:hidden;transition:max-height .35s ease;word-break:keep-all;
+  margin-top:0;
+}
+.cc.open .cc-a{max-height:1200px;margin-top:.75rem}
+.cc .cc-hint{color:var(--primary);font-size:.75rem;margin-top:.4rem;font-weight:500}
+.cc.open .cc-hint{display:none}
+.cc.open{border-color:var(--primary-mid);background:var(--primary-light)}
 
 /* ── DOMAIN SECTIONS ── */
 .dsec{margin-bottom:1.5rem}
 .dhdr{
   display:flex;align-items:center;justify-content:space-between;
-  padding:.875rem 1.375rem;
-  background:#fff;
-  border-radius:10px 10px 0 0;
-  border:1px solid var(--border);
-  cursor:pointer;user-select:none;
-  box-shadow:var(--shadow-sm);
+  padding:.875rem 1.375rem;background:#fff;
+  border-radius:10px 10px 0 0;border:1px solid var(--border);
+  cursor:pointer;user-select:none;box-shadow:var(--shadow-sm);
 }
 .dhdr h2{font-size:.975rem;font-weight:600;color:var(--text)}
 .dhdr .tgl{color:var(--muted2);font-size:1rem;transition:transform .2s}
 .dhdr.off .tgl{transform:rotate(-90deg)}
 .dbody{
-  padding:1.375rem;
-  background:var(--card2);
+  padding:1.375rem;background:var(--card2);
   border:1px solid var(--border);border-top:none;
   border-radius:0 0 10px 10px;
 }
 .dbody.off{display:none}
 
-/* ── CONCEPT ENTRIES ── */
-.ce{
-  padding:1.125rem;border-radius:8px;
-  background:#fff;margin-bottom:.625rem;
-  border-left:3px solid var(--primary);
-  border:1px solid var(--border);
-  border-left:3px solid var(--primary);
-  box-shadow:var(--shadow-sm);
-  transition:box-shadow .15s;
-}
-.ce:hover{box-shadow:var(--shadow)}
-.ce h4{color:var(--primary);margin-bottom:.4rem;font-size:.95rem;font-weight:600}
-.ce p{color:var(--text2);line-height:1.85;font-size:.875rem;word-break:keep-all}
-.ce .tgs{margin-top:.625rem;display:flex;gap:.375rem;flex-wrap:wrap}
-.ctag{
-  font-size:.7rem;padding:.15rem .5rem;border-radius:10px;
-  background:var(--purple-light);color:var(--purple);
-  border:1px solid var(--purple-mid);
-}
-
-/* ── MEMO CARDS ── */
-.mc{
-  background:#fff;
-  border:1.5px solid var(--border);
-  border-radius:12px;padding:1.375rem;margin-bottom:.875rem;
-  cursor:pointer;transition:box-shadow .2s,border-color .2s;
-  box-shadow:var(--shadow-sm);
-}
-.mc:hover{border-color:var(--primary-mid);box-shadow:var(--shadow)}
-.mc .mq{font-weight:600;margin-bottom:.625rem;font-size:.975rem;color:var(--text);line-height:1.7;word-break:keep-all}
-.mc .ma{
-  color:var(--text2);line-height:1.85;font-size:.875rem;
-  max-height:0;overflow:hidden;transition:max-height .35s ease;
-  word-break:keep-all;
-}
-.mc.open .ma{max-height:800px}
-.mc .rh{color:var(--primary);font-size:.78rem;margin-top:.5rem;font-weight:500}
-.mc.open .rh{display:none}
-.mc.open{border-color:var(--primary-mid);background:var(--primary-light)}
-
-/* ── SUMMARY STATS ── */
-.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem}
-.sc{
-  background:#fff;border:1px solid var(--border);
-  border-radius:12px;padding:1.375rem;text-align:center;
-  box-shadow:var(--shadow-sm);
-  transition:box-shadow .15s;
-}
-.sc:hover{box-shadow:var(--shadow)}
-.sc .n{font-size:2rem;font-weight:700;margin-bottom:.25rem;font-family:'DM Sans',sans-serif}
-.sc .l{color:var(--muted);font-size:.8rem;font-weight:500}
-
-/* ── FORMS ── */
-.fg{margin-bottom:1.25rem}
-.fg label{display:block;margin-bottom:.4rem;color:var(--text2);font-size:.82rem;font-weight:600}
-.fg input,.fg textarea,.fg select{
-  width:100%;padding:.75rem 1rem;
-  border-radius:8px;border:1.5px solid var(--border2);
-  background:#fff;color:var(--text);
-  font-size:.9rem;font-family:inherit;
-  transition:border-color .15s,box-shadow .15s;
-}
-.fg textarea{min-height:100px;resize:vertical}
-.fg input:focus,.fg textarea:focus,.fg select:focus{
-  outline:none;border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(37,99,235,.1);
-}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.oig{display:flex;gap:.75rem;align-items:center;margin-bottom:.5rem}
-.oig input[type="text"]{flex:1}
-.oig input[type="radio"]{width:18px;height:18px;accent-color:var(--success)}
-
 /* ── CHEAT SHEET ── */
 .cs-domain{margin-bottom:2.5rem}
 .cs-domain-title{
   font-size:1.1rem;font-weight:700;color:var(--primary);
-  padding-bottom:.625rem;
-  border-bottom:2px solid var(--primary-mid);
-  margin-bottom:1.25rem;
-  font-family:'DM Sans',sans-serif;
+  padding-bottom:.625rem;border-bottom:2px solid var(--primary-mid);
+  margin-bottom:1.25rem;font-family:'DM Sans',sans-serif;
 }
 .cs-topic{
-  margin-bottom:1.25rem;padding:1.25rem;
-  background:#fff;border-radius:10px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow-sm);
+  margin-bottom:1.25rem;padding:1.25rem;background:#fff;
+  border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);
 }
-.cs-topic-title{
-  font-size:.95rem;font-weight:700;
-  color:var(--warn);margin-bottom:.875rem;
-  display:flex;align-items:center;gap:.5rem;
-}
+.cs-topic-title{font-size:.95rem;font-weight:700;color:var(--warn);margin-bottom:.875rem;display:flex;align-items:center;gap:.5rem}
 .cs-bullets{padding-left:1.25rem;margin-bottom:.5rem}
 .cs-bullets li{margin-bottom:.5rem;line-height:1.8;color:var(--text2);font-size:.875rem;word-break:keep-all}
 .cs-bullets li strong{color:var(--text);font-weight:600}
 .cs-rule{
-  background:var(--success-light);
-  border-left:3px solid var(--success);
-  padding:.5rem .875rem;margin:.4rem 0;
-  border-radius:0 6px 6px 0;
+  background:var(--success-light);border-left:3px solid var(--success);
+  padding:.5rem .875rem;margin:.4rem 0;border-radius:0 6px 6px 0;
   font-size:.85rem;color:var(--text2);
-  list-style:none;
 }
 .cs-vs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:.625rem 0}
-.cs-vs-item{
-  padding:.875rem;border-radius:8px;
-  background:var(--bg2);border:1px solid var(--border);font-size:.84rem;
-}
+.cs-vs-item{padding:.875rem;border-radius:8px;background:var(--bg2);border:1px solid var(--border);font-size:.84rem}
 .cs-vs-item h5{color:var(--primary);margin-bottom:.375rem;font-size:.875rem;font-weight:600}
 .cs-vs-item p{color:var(--text2);line-height:1.65;word-break:keep-all}
 
-/* ── EMPTY STATE ── */
+/* ── EMPTY / SCROLLBAR ── */
 .empty{text-align:center;padding:4rem 2rem;color:var(--muted2)}
 .empty::before{content:'📭';display:block;font-size:2rem;margin-bottom:1rem}
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
@@ -444,109 +430,225 @@ body{
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   .main{padding:1rem}
-  .hdr{padding:.75rem 1rem}
+  .hdr{padding:.6rem 1rem;flex-wrap:wrap;gap:.5rem}
+  .hdr h1{font-size:1.1rem}
   .tabs{padding:0 .5rem}
-  .tab{padding:.7rem .875rem;font-size:.8rem}
-  .fr{grid-template-columns:1fr}
-  .qtxt{font-size:1rem}
-  .card{padding:1.25rem}
+  .tab{padding:.65rem .875rem;font-size:.8rem}
+  .qtxt{font-size:1.05rem}
+  .card{padding:1.5rem}
   .cs-vs{grid-template-columns:1fr}
-  .sg{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+  .dash-hero{padding:1.5rem}
+  .dash-dday{font-size:1.75rem}
+  .dash-stats{grid-template-columns:repeat(2,1fr)}
+  .dash-plan{grid-template-columns:1fr}
+  .sg{grid-template-columns:repeat(2,1fr)}
+  .drow{flex-wrap:wrap;gap:.5rem}
+  .drow-bar{flex-basis:100%;order:3}
+  .kbd{display:none}
+  .daily-banner{flex-direction:column;gap:.75rem;text-align:center}
 }
 </style>
 </head>
 <body>
 <div class="hdr">
     <h1>CISA <span>스터디 허브</span></h1>
-    <div class="hdr-stats">
-        <span>문제 수: <span class="v" id="sTotal">0</span></span>
-        <span>정답률: <span class="v" style="color:var(--success)" id="sRate">0%</span></span>
+    <div class="hdr-right">
+        <span class="dday-chip" id="ddayChip"></span>
+        <div class="hdr-stats">
+            <span>문제 <span class="v" style="color:var(--primary)" id="sTotal">0</span></span>
+            <span>정답률 <span class="v" style="color:var(--success)" id="sRate">0%</span></span>
+        </div>
+        <button class="lang-btn" id="langBtn" onclick="A.toggleLang()" title="언어 전환 (L)">KO</button>
     </div>
 </div>
 <div class="tabs">
     <div class="tab on" data-t="quiz">문제풀기</div>
-    <div class="tab" data-t="concepts">개념정리</div>
-    <div class="tab" data-t="memo">암기카드</div>
-    <div class="tab" data-t="summary">요약</div>
+    <div class="tab" data-t="dash">대시보드</div>
+    <div class="tab" data-t="cards">개념카드</div>
     <div class="tab" data-t="wrong">오답노트</div>
     <div class="tab" data-t="cheat">치트시트</div>
-    <div class="tab" data-t="add">추가</div>
 </div>
 <div class="main">
+
 <div class="pane on" id="pQuiz">
+    <div class="daily-banner" id="dailyBanner"></div>
     <div class="fbar" id="fbar"></div>
     <div id="qArea"></div>
-    <div class="qact"><span class="qprog" id="qProg"></span><div style="display:flex;gap:.75rem"><button class="btn btn-o" onclick="A.shuffle()">섞기</button><button class="btn btn-p" onclick="A.next()">다음</button></div></div>
+    <div class="qact">
+        <span class="qprog" id="qProg"></span>
+        <div style="display:flex;gap:.75rem;align-items:center">
+            <span style="font-size:.7rem;color:var(--muted2)" class="kbd-hints">
+                <span class="kbd">1</span>~<span class="kbd">4</span> 답
+                <span class="kbd">N</span> 다음
+                <span class="kbd">S</span> 섞기
+                <span class="kbd">L</span> 언어
+            </span>
+            <button class="btn btn-o" onclick="A.shuffle()">섞기</button>
+            <button class="btn btn-p" onclick="A.next()">다음 →</button>
+        </div>
+    </div>
 </div>
-<div class="pane" id="pConcepts">
-    <input type="text" class="csearch" placeholder="Search concepts... (stress test, SDLC, audit...)" id="cSearch" oninput="A.rConcepts()">
+
+<div class="pane" id="pDash"><div id="dashArea"></div></div>
+
+<div class="pane" id="pCards">
+    <input type="text" class="csearch" placeholder="개념 검색... (TEMPEST, BCP, 접근통제, 화재 진압...)" id="cSearch" oninput="A.rCards()">
     <div id="cArea"></div>
 </div>
-<div class="pane" id="pMemo">
-    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:.875rem">카드를 클릭하면 정답을 확인할 수 있습니다.</p>
-    <div id="mArea"></div>
-</div>
-<div class="pane" id="pSummary"><div id="sumArea"></div></div>
+
 <div class="pane" id="pWrong"><div id="wArea"></div></div>
+
 <div class="pane" id="pCheat"><div id="cheatArea"></div></div>
-<div class="pane" id="pAdd">
-    <div class="card">
-        <h2 style="margin-bottom:1.5rem;font-size:1.15rem;color:var(--text)">새 문제 추가</h2>
-        <div class="fr">
-            <div class="fg"><label>Domain</label><select id="aD"><option value="1">1. IS Audit Process</option><option value="2">2. Governance & Management of IT</option><option value="3" selected>3. IS Acquisition, Development & Implementation</option><option value="4">4. IS Operations & Business Resilience</option><option value="5">5. Protection of Information Assets</option></select></div>
-            <div class="fg"><label>Knowledge Statement</label><input type="text" id="aK" placeholder="e.g. 3A1 Project Governance"></div>
-        </div>
-        <div class="fg"><label>Question</label><textarea id="aQ"></textarea></div>
-        <div class="fg"><label>Options (select correct)</label>
-            <div class="oig"><input type="radio" name="co" value="0" checked><b style="width:20px">A.</b><input type="text" id="oA"></div>
-            <div class="oig"><input type="radio" name="co" value="1"><b style="width:20px">B.</b><input type="text" id="oB"></div>
-            <div class="oig"><input type="radio" name="co" value="2"><b style="width:20px">C.</b><input type="text" id="oC"></div>
-            <div class="oig"><input type="radio" name="co" value="3"><b style="width:20px">D.</b><input type="text" id="oD"></div>
-        </div>
-        <div class="fg"><label>Explanation (Korean HTML)</label><textarea id="aE"></textarea></div>
-        <div class="fg"><label>Reference</label><input type="text" id="aR"></div>
-        <div class="fg"><label>Key Concepts (term|desc, comma or newline separated)</label><textarea id="aC"></textarea></div>
-        <div style="display:flex;gap:.75rem"><button class="btn btn-s" onclick="A.addQ()">추가</button><button class="btn btn-o" onclick="A.clrForm()">초기화</button></div>
-    </div>
-    <div class="card" style="margin-top:1rem">
-        <h2 style="margin-bottom:1rem;font-size:1.05rem;color:var(--text)">가져오기 / 내보내기</h2>
-        <div class="fg"><textarea id="bJson" style="min-height:120px;font-family:monospace;font-size:.82rem"></textarea></div>
-        <button class="btn btn-p" onclick="A.bulkImp()">가져오기</button>
-        <button class="btn btn-o" onclick="A.exportJ()" style="margin-left:.5rem">내보내기</button>
-    </div>
-</div>
+
 </div>
 
 <script src="questions.js"></script>
 <script>
-const DN={"1":"IS Audit Process (IS 감사 프로세스)","2":"Governance & Management of IT (IT 거버넌스 및 관리)","3":"IS Acquisition, Development & Implementation (IS 획득, 개발 및 구현)","4":"IS Operations & Business Resilience (IS 운영 및 비즈니스 회복력)","5":"Protection of Information Assets (정보자산 보호)"};
+const EXAM_DATE=new Date(2026,5,26);
+const DN={
+  "1":"IS Audit Process",
+  "2":"Governance & Management of IT",
+  "3":"IS Acquisition, Development & Implementation",
+  "4":"IS Operations & Business Resilience",
+  "5":"Protection of Information Assets"
+};
+const DNK={
+  "1":"IS 감사 프로세스",
+  "2":"IT 거버넌스 및 관리",
+  "3":"IS 획득·개발·구현",
+  "4":"IS 운영·비즈니스 회복력",
+  "5":"정보자산 보호"
+};
+
+function dday(){
+    const now=new Date();now.setHours(0,0,0,0);
+    return Math.ceil((EXAM_DATE-now)/(1000*60*60*24));
+}
 
 class App{
 constructor(){
     this.qs=JSON.parse(localStorage.getItem('cisa4'))||QUESTIONS;
     this.st=JSON.parse(localStorage.getItem('cisaSt4'))||{t:0,c:0};
     this.wl=JSON.parse(localStorage.getItem('cisaW4'))||[];
+    this.todaySt=JSON.parse(localStorage.getItem('cisaToday'))||{date:'',solved:0};
+    this.lang=localStorage.getItem('cisaLang')||'ko';
     this.ci=0;this.flt='all';this.fq=[...this.qs];this.ans=false;
-    this.initTabs();this.initFilter();this.rQuiz();this.uStats();
+    this.activeTab='quiz';
+    this.checkToday();
+    this.initTabs();this.initFilter();this.initKeys();
+    this.rQuiz();this.uStats();this.uLangBtn();this.uDday();this.uBanner();
 }
-save(){localStorage.setItem('cisa4',JSON.stringify(this.qs));localStorage.setItem('cisaSt4',JSON.stringify(this.st));localStorage.setItem('cisaW4',JSON.stringify(this.wl));}
-initTabs(){document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');const id=t.dataset.t;document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));document.getElementById('p'+id[0].toUpperCase()+id.slice(1)).classList.add('on');if(id==='concepts')this.rConcepts();if(id==='memo')this.rMemo();if(id==='summary')this.rSummary();if(id==='wrong')this.rWrong();if(id==='cheat')this.rCheat();};});}
-initFilter(){const b=document.getElementById('fbar');let h='<div class="fchip on" data-d="all">All</div><div class="fchip" data-d="starred">Starred</div>';for(const k of Object.keys(DN))h+=`<div class="fchip" data-d="${k}">D${k}</div>`;b.innerHTML=h;b.querySelectorAll('.fchip').forEach(c=>{c.onclick=()=>{b.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');this.flt=c.dataset.d;this.applyF();};});}
-applyF(){if(this.flt==='all')this.fq=[...this.qs];else if(this.flt==='starred')this.fq=this.qs.filter(q=>q.starred);else this.fq=this.qs.filter(q=>q.domain===this.flt);this.ci=0;this.rQuiz();}
+save(){
+    localStorage.setItem('cisa4',JSON.stringify(this.qs));
+    localStorage.setItem('cisaSt4',JSON.stringify(this.st));
+    localStorage.setItem('cisaW4',JSON.stringify(this.wl));
+    localStorage.setItem('cisaToday',JSON.stringify(this.todaySt));
+}
+checkToday(){
+    const td=new Date().toISOString().slice(0,10);
+    if(this.todaySt.date!==td){this.todaySt={date:td,solved:0};this.save();}
+}
+dailyTarget(){
+    const unseen=this.qs.filter(q=>!q.attempts).length;
+    const d=dday();
+    if(d<=0)return unseen;
+    return Math.max(5,Math.ceil(unseen/d));
+}
+
+toggleLang(){
+    this.lang=this.lang==='ko'?'en':'ko';
+    localStorage.setItem('cisaLang',this.lang);
+    this.uLangBtn();
+    if(this.activeTab==='quiz')this.rQuiz();
+}
+uLangBtn(){
+    const b=document.getElementById('langBtn');
+    b.textContent=this.lang==='ko'?'KO':'EN';
+    b.style.background=this.lang==='ko'?'var(--primary-light)':'var(--warn-light)';
+    b.style.color=this.lang==='ko'?'var(--primary)':'var(--warn)';
+    b.style.borderColor=this.lang==='ko'?'var(--primary-mid)':'var(--warn-mid)';
+}
+uDday(){
+    const d=dday();
+    const el=document.getElementById('ddayChip');
+    if(d>0)el.textContent=`D-${d}`;
+    else if(d===0)el.textContent='D-Day!';
+    else el.textContent=`D+${Math.abs(d)}`;
+}
+uBanner(){
+    const target=this.dailyTarget();
+    const solved=this.todaySt.solved;
+    const pct=Math.min(100,Math.round(solved/target*100));
+    const el=document.getElementById('dailyBanner');
+    if(solved>=target){
+        el.innerHTML=`<div class="db-left"><div class="db-icon">🎉</div><div><div class="db-text">오늘 목표 달성!</div><div class="db-sub">${solved}문제 풀이 완료</div></div></div><div class="db-progress"><div class="db-fill" style="width:100%;background:var(--success)"></div></div>`;
+    }else{
+        el.innerHTML=`<div class="db-left"><div class="db-icon">📖</div><div><div class="db-text">오늘 목표: ${solved} / ${target}문제</div><div class="db-sub">시험까지 하루 ${target}문제씩 풀면 모든 문제 커버</div></div></div><div class="db-progress"><div class="db-fill" style="width:${pct}%"></div></div>`;
+    }
+}
+
+initTabs(){
+    document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{
+        document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+        const id=t.dataset.t;this.activeTab=id;
+        document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+        document.getElementById('p'+id[0].toUpperCase()+id.slice(1)).classList.add('on');
+        if(id==='cards')this.rCards();
+        if(id==='dash')this.rDash();
+        if(id==='wrong')this.rWrong();
+        if(id==='cheat')this.rCheat();
+    };});
+}
+
+initFilter(){
+    const b=document.getElementById('fbar');
+    let h='<div class="fchip on" data-d="all">전체</div><div class="fchip" data-d="unseen">안 푼 문제</div><div class="fchip" data-d="starred">★ 즐겨찾기</div><div class="fchip" data-d="wrong">오답만</div>';
+    for(const k of Object.keys(DN))h+=`<div class="fchip" data-d="${k}">D${k}</div>`;
+    b.innerHTML=h;
+    b.querySelectorAll('.fchip').forEach(c=>{c.onclick=()=>{
+        b.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+        this.flt=c.dataset.d;this.applyF();
+    };});
+}
+applyF(){
+    if(this.flt==='all')this.fq=[...this.qs];
+    else if(this.flt==='starred')this.fq=this.qs.filter(q=>q.starred);
+    else if(this.flt==='unseen')this.fq=this.qs.filter(q=>!q.attempts);
+    else if(this.flt==='wrong')this.fq=this.qs.filter(q=>this.wl.includes(q.id));
+    else this.fq=this.qs.filter(q=>q.domain===this.flt);
+    this.ci=0;this.rQuiz();
+}
+
+initKeys(){
+    document.addEventListener('keydown',e=>{
+        if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
+        if(this.activeTab!=='quiz')return;
+        const k=e.key.toLowerCase();
+        if(k>='1'&&k<='4'){e.preventDefault();this.pick(parseInt(k)-1);}
+        else if(k==='n'||k==='arrowright'){e.preventDefault();this.next();}
+        else if(k==='s'){e.preventDefault();this.shuffle();}
+        else if(k==='l'){e.preventDefault();this.toggleLang();}
+    });
+}
 
 rQuiz(){
     const a=document.getElementById('qArea');
-    if(!this.fq.length){a.innerHTML='<div class="empty">No questions. Add some!</div>';document.getElementById('qProg').textContent='';return;}
+    if(!this.fq.length){a.innerHTML='<div class="empty">해당 조건의 문제가 없습니다.</div>';document.getElementById('qProg').textContent='';return;}
     const q=this.fq[this.ci],L=['A','B','C','D'];this.ans=false;
+    const isKo=this.lang==='ko';
+    const qTxt=isKo&&q.questionKo?q.questionKo:q.question;
+    const opts=isKo&&q.optionsKo?q.optionsKo:q.options;
+    const unseenBadge=!q.attempts?'<span class="bg" style="background:#e0f2fe;color:#0284c7;border:1px solid #7dd3fc">NEW</span>':'';
     a.innerHTML=`<div class="card"><div class="meta">
-        <span class="bg bg-d">Domain ${q.domain}</span>
+        <span class="bg bg-id">Q${q.id}</span>
+        <span class="bg bg-d">D${q.domain}</span>
         ${q.ks?`<span class="bg bg-k">${q.ks}</span>`:''}
-        ${q.reference?'<span class="bg bg-r">REF</span>':''}
-        ${q.wrongCount>0?`<span class="bg bg-w">Missed ${q.wrongCount}x</span>`:''}
-        <span class="bg bg-s" onclick="A.star(${q.id})">${q.starred?'★':'☆'}</span>
+        ${unseenBadge}
+        ${q.wrongCount>0?`<span class="bg bg-w">X ${q.wrongCount}회</span>`:''}
+        <span class="bg bg-s" onclick="A.star(${q.id})">${q.starred?'★ 즐겨찾기':'☆'}</span>
     </div>
-    <div class="qtxt">${q.question}</div>
-    <div class="opts">${q.options.map((o,i)=>`<div class="opt" onclick="A.pick(${i})"><div class="ol">${L[i]}</div><div class="ot">${o}</div></div>`).join('')}</div>
+    <div class="qtxt">${qTxt}</div>
+    <div class="opts">${opts.map((o,i)=>`<div class="opt" onclick="A.pick(${i})"><div class="ol">${L[i]}</div><div class="ot">${o}</div></div>`).join('')}</div>
     <div class="expl" id="expl"><h3>해설</h3><div class="expl-c">${q.explanation||''}</div></div>
     <div class="rbox" id="rbox"><h4>📖 Reference</h4><ul>${(q.reference||'').split(',').map(r=>`<li>${r.trim()}</li>`).join('')}</ul></div>
     <div class="kcbox" id="kcbox"><h4>🔑 핵심 암기 포인트</h4>${(q.keyConcepts||[]).map(c=>{const[t,d]=c.split('|');return`<div class="ci"><strong>${t}</strong><br>${d||''}</div>`;}).join('')}</div>
@@ -554,96 +656,199 @@ rQuiz(){
     document.getElementById('qProg').textContent=`${this.ci+1} / ${this.fq.length}`;
 }
 pick(i){
-    if(this.ans)return;this.ans=true;const q=this.fq[this.ci],opts=document.querySelectorAll('.opt');
-    opts.forEach(o=>o.classList.add('dis'));const rq=this.qs.find(x=>x.id===q.id);
-    rq.attempts=(rq.attempts||0)+1;this.st.t++;
+    if(this.ans||!this.fq.length)return;this.ans=true;
+    const q=this.fq[this.ci],opts=document.querySelectorAll('.opt');
+    opts.forEach(o=>o.classList.add('dis'));
+    const rq=this.qs.find(x=>x.id===q.id);
+    rq.attempts=(rq.attempts||0)+1;this.st.t++;this.todaySt.solved++;
     if(i===q.correct){opts[i].classList.add('ok');rq.correctCount=(rq.correctCount||0)+1;this.st.c++;}
     else{opts[i].classList.add('no');opts[q.correct].classList.add('ok');rq.wrongCount=(rq.wrongCount||0)+1;if(!this.wl.includes(q.id))this.wl.push(q.id);}
-    document.getElementById('expl').classList.add('show');document.getElementById('rbox').classList.add('show');document.getElementById('kcbox').classList.add('show');
-    this.save();this.uStats();
+    document.getElementById('expl').classList.add('show');
+    document.getElementById('rbox').classList.add('show');
+    document.getElementById('kcbox').classList.add('show');
+    this.save();this.uStats();this.uBanner();
 }
 next(){if(!this.fq.length)return;this.ci=(this.ci+1)%this.fq.length;this.rQuiz();}
 shuffle(){for(let i=this.fq.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[this.fq[i],this.fq[j]]=[this.fq[j],this.fq[i]];}this.ci=0;this.rQuiz();}
 star(id){const q=this.qs.find(x=>x.id===id);if(q){q.starred=!q.starred;this.save();this.rQuiz();}}
 uStats(){document.getElementById('sTotal').textContent=this.qs.length;document.getElementById('sRate').textContent=(this.st.t?Math.round(this.st.c/this.st.t*100):0)+'%';}
 
-rConcepts(){
-    const a=document.getElementById('cArea'),s=(document.getElementById('cSearch').value||'').toLowerCase(),gc={};
-    this.qs.forEach(q=>{const d=q.domain;if(!gc[d])gc[d]=[];(q.keyConcepts||[]).forEach(c=>{const[term,desc]=c.split('|');const txt=(term+' '+(desc||'')+' '+q.question).toLowerCase();if(!s||txt.includes(s)){if(!gc[d].find(x=>x.term===term))gc[d].push({term,desc:desc||'',ks:q.ks,ref:q.reference});}});});
-    let h='';for(const[d,cs]of Object.entries(gc).sort()){if(!cs.length)continue;h+=`<div class="dsec"><div class="dhdr" onclick="this.classList.toggle('off');this.nextElementSibling.classList.toggle('off')"><h2>Domain ${d}: ${DN[d]}</h2><span class="tgl">▼</span></div><div class="dbody cb">${cs.map(c=>`<div class="ce"><h4>${c.term}</h4><p>${c.desc}</p><div class="tgs">${c.ks?`<span class="ctag">${c.ks}</span>`:''}${c.ref?`<span class="ctag" style="background:rgba(245,158,11,.12);color:var(--warn);border-color:rgba(245,158,11,.25)">📖 ${c.ref.split(',')[0].trim()}</span>`:''}</div></div>`).join('')}</div></div>`;}
-    a.innerHTML=h||'<div class="empty">No concepts found.</div>';
-}
+// ===== DASHBOARD =====
+rDash(){
+    const a=document.getElementById('dashArea');
+    const total=this.qs.length;
+    const seen=this.qs.filter(q=>q.attempts).length;
+    const unseen=total-seen;
+    const att=this.st.t,cor=this.st.c,wrong=att-cor;
+    const rate=att?Math.round(cor/att*100):0;
+    const d=dday();
+    const target=this.dailyTarget();
+    const todaySolved=this.todaySt.solved;
 
-rMemo(){
-    const a=document.getElementById('mArea'),cards=[];
-    this.qs.forEach(q=>{cards.push({q:q.question,a:`<strong>Answer: ${['A','B','C','D'][q.correct]}. ${q.options[q.correct]}</strong>`,d:q.domain});(q.keyConcepts||[]).forEach(c=>{const[t,desc]=c.split('|');if(desc)cards.push({q:t+' 이란?',a:desc,d:q.domain});});});
-    if(!cards.length){a.innerHTML='<div class="empty">No cards.</div>';return;}
-    a.innerHTML=cards.map(c=>`<div class="mc" onclick="this.classList.toggle('open')"><div style="display:flex;justify-content:space-between"><div class="mq">${c.q}</div><span class="bg bg-d" style="flex-shrink:0;height:fit-content">D${c.d}</span></div><div class="rh">클릭하여 정답 보기</div><div class="ma">${c.a}</div></div>`).join('');
-}
+    // Estimated completion date
+    let estDays=target>0?Math.ceil(unseen/target):999;
+    let estDate=new Date();estDate.setDate(estDate.getDate()+estDays);
+    const estStr=estDate.toLocaleDateString('ko-KR',{month:'long',day:'numeric'});
+    const onTrack=estDate<=EXAM_DATE;
 
-rSummary(){
-    const a=document.getElementById('sumArea'),kc=this.qs.reduce((n,q)=>n+(q.keyConcepts||[]).length,0);
-    let h=`<div class="sg"><div class="sc"><div class="n" style="color:var(--pl)">${this.qs.length}</div><div class="l">Questions</div></div><div class="sc"><div class="n" style="color:var(--success)">${this.st.c}</div><div class="l">Correct</div></div><div class="sc"><div class="n" style="color:var(--danger)">${this.st.t-this.st.c}</div><div class="l">Wrong</div></div><div class="sc"><div class="n" style="color:var(--warn)">${this.st.t?Math.round(this.st.c/this.st.t*100):0}%</div><div class="l">Accuracy</div></div><div class="sc"><div class="n" style="color:var(--purple)">${kc}</div><div class="l">Concepts</div></div></div>`;
-    const gr={};this.qs.forEach(q=>{if(!gr[q.domain])gr[q.domain]=[];gr[q.domain].push(q);});
-    for(const[d,qs]of Object.entries(gr).sort()){
-        h+=`<div class="dsec"><div class="dhdr" onclick="this.classList.toggle('off');this.nextElementSibling.classList.toggle('off')"><h2>Domain ${d}: ${DN[d]}</h2><span style="color:var(--muted)">${qs.length}문제</span></div><div class="dbody cb">${qs.map(q=>`<div class="ce" style="border-left-color:${q.wrongCount>0?'var(--danger)':'var(--success)'}"><h4>${q.question}</h4><p><strong style="color:var(--success)">정답: ${['A','B','C','D'][q.correct]}. ${q.options[q.correct]}</strong></p>${q.reference?`<p style="margin-top:.5rem;font-size:.85rem">📖 ${q.reference}</p>`:''}${(q.keyConcepts||[]).length?`<div style="margin-top:.75rem;padding:.75rem;background:rgba(139,92,246,.06);border-radius:6px"><p style="color:var(--purple);font-weight:600;font-size:.85rem;margin-bottom:.5rem">🔑 핵심 개념</p>${(q.keyConcepts||[]).map(c=>{const[t]=c.split('|');return`<p style="font-size:.85rem;margin-bottom:.3rem">- <strong>${t}</strong></p>`;}).join('')}</div>`:''}<p style="font-size:.8rem;color:var(--muted);margin-top:.5rem">Attempts: ${q.attempts||0} | O ${q.correctCount||0} | X ${q.wrongCount||0}</p></div>`).join('')}</div></div>`;
+    let h=`
+    <div class="dash-hero">
+        <div class="dash-hero-top">
+            <div>
+                <div class="dash-dday">${d>0?'D-'+d:d===0?'D-Day':'D+'+Math.abs(d)}</div>
+                <small>시험일 2026. 6. 26.</small>
+            </div>
+            <div class="dash-exam">
+                진도율 <strong>${seen}/${total}</strong> (${Math.round(seen/total*100)}%)<br>
+                오늘 ${todaySolved}문제 풀이${todaySolved>=target?' ✅':''}
+            </div>
+        </div>
+        <div class="dash-stats">
+            <div class="dash-stat"><div class="n">${total}</div><div class="l">전체 문제</div></div>
+            <div class="dash-stat"><div class="n">${unseen}</div><div class="l">안 푼 문제</div></div>
+            <div class="dash-stat"><div class="n">${rate}%</div><div class="l">정답률</div></div>
+            <div class="dash-stat"><div class="n">${this.wl.length}</div><div class="l">오답 수</div></div>
+        </div>
+    </div>`;
+
+    h+=`<div class="dash-plan">
+        <div class="plan-card">
+            <div class="plan-icon">🎯</div>
+            <div class="plan-val">${target}</div>
+            <div class="plan-label">일일 목표 (문제)</div>
+            <div class="plan-sub">남은 문제 ÷ 남은 일수</div>
+        </div>
+        <div class="plan-card">
+            <div class="plan-icon">📅</div>
+            <div class="plan-val">${estStr}</div>
+            <div class="plan-label">예상 완료일</div>
+            <div class="plan-sub" style="color:${onTrack?'var(--success)':'var(--danger)'}">${onTrack?'✅ 시험 전 완료 가능':'⚠️ 페이스 올려야 합니다'}</div>
+        </div>
+        <div class="plan-card">
+            <div class="plan-icon">🔄</div>
+            <div class="plan-val">${this.wl.length>0?Math.max(2,Math.ceil(this.wl.length/Math.max(1,d))):0}</div>
+            <div class="plan-label">일일 복습 (오답)</div>
+            <div class="plan-sub">오답 ${this.wl.length}개 ÷ 남은 일수</div>
+        </div>
+    </div>`;
+
+    h+='<h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)">도메인별 현황</h3>';
+    for(const[dk,name]of Object.entries(DN)){
+        const dqs=this.qs.filter(q=>q.domain===dk);
+        const dTotal=dqs.length;
+        if(!dTotal)continue;
+        const dSeen=dqs.filter(q=>q.attempts).length;
+        const dCor=dqs.reduce((s,q)=>s+(q.correctCount||0),0);
+        const dWrong=dqs.reduce((s,q)=>s+(q.wrongCount||0),0);
+        const dRate=(dCor+dWrong)?Math.round(dCor/(dCor+dWrong)*100):0;
+        const dPct=Math.round(dSeen/dTotal*100);
+        const fillColor=dPct>=80?'var(--success)':dPct>=50?'var(--warn)':'var(--danger)';
+        h+=`<div class="drow">
+            <div class="drow-name">D${dk}</div>
+            <div style="flex:1;font-size:.78rem;color:var(--text2)">${DNK[dk]}</div>
+            <div class="drow-bar"><div class="drow-fill" style="width:${dPct}%;background:${fillColor}"></div></div>
+            <div class="drow-stat">${dSeen}/${dTotal} 완료 · 정답률 <span class="drow-pct">${dRate}%</span></div>
+        </div>`;
     }
+
+    // Recent wrong
+    const recentWrong=this.qs.filter(q=>this.wl.includes(q.id)).slice(-5).reverse();
+    if(recentWrong.length){
+        h+='<h3 style="font-size:1rem;font-weight:700;margin:1.5rem 0 1rem;color:var(--text)">최근 오답</h3>';
+        recentWrong.forEach(q=>{
+            const qShort=(this.lang==='ko'&&q.questionKo?q.questionKo.replace(/<[^>]*>/g,''):q.question).slice(0,55);
+            h+=`<div class="drow" style="cursor:default">
+                <span class="bg bg-id" style="flex-shrink:0">Q${q.id}</span>
+                <div style="flex:1;font-size:.82rem;color:var(--text2);word-break:keep-all">${qShort}…</div>
+                <span class="bg bg-w" style="flex-shrink:0">X ${q.wrongCount}회</span>
+            </div>`;
+        });
+    }
+
     a.innerHTML=h;
 }
 
+// ===== CONCEPT CARDS =====
+rCards(){
+    const a=document.getElementById('cArea');
+    const s=(document.getElementById('cSearch').value||'').toLowerCase();
+    let cards=[];
+    this.qs.forEach(q=>{
+        const qTxt=this.lang==='ko'&&q.questionKo?q.questionKo.replace(/<[^>]*>/g,''):q.question;
+        const ans=`<strong>정답: ${['A','B','C','D'][q.correct]}. ${(this.lang==='ko'&&q.optionsKo?q.optionsKo:q.options)[q.correct]}</strong>`;
+        const searchTxt=(qTxt+' '+(q.keyConcepts||[]).join(' ')+' '+(q.ks||'')).toLowerCase();
+        if(!s||searchTxt.includes(s)){
+            cards.push({q:`Q${q.id}. ${qTxt}`,a:ans,d:q.domain,type:'q'});
+        }
+        (q.keyConcepts||[]).forEach(c=>{
+            const[t,desc]=c.split('|');
+            if(!desc)return;
+            const cSearch=(t+' '+desc+' '+qTxt).toLowerCase();
+            if(!s||cSearch.includes(s)){
+                cards.push({q:t,a:desc,d:q.domain,type:'c'});
+            }
+        });
+    });
+    const seen=new Set();
+    cards=cards.filter(c=>{if(seen.has(c.q))return false;seen.add(c.q);return true;});
+    if(!cards.length){a.innerHTML='<div class="empty">검색 결과가 없습니다.</div>';return;}
+    a.innerHTML=`<p style="color:var(--muted);margin-bottom:1rem;font-size:.82rem">${cards.length}개 카드 · 클릭하여 답 확인</p>`+
+        cards.map(c=>`<div class="cc" onclick="this.classList.toggle('open')">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
+            <div class="cc-q">${c.type==='c'?'💡 ':''}<span>${c.q}</span></div>
+            <span class="bg bg-d" style="flex-shrink:0">D${c.d}</span>
+        </div>
+        <div class="cc-hint">클릭하여 답 보기</div>
+        <div class="cc-a">${c.a}</div>
+    </div>`).join('');
+}
+
+// ===== WRONG =====
 rWrong(){
     const a=document.getElementById('wArea'),wqs=this.qs.filter(q=>this.wl.includes(q.id));
-    if(!wqs.length){a.innerHTML='<div class="empty">No wrong answers yet!</div>';return;}
-    let h='<p style="color:var(--muted);margin-bottom:1.5rem;font-size:.875rem">카드를 클릭하면 해설을 확인할 수 있습니다.</p>';
-    wqs.forEach(q=>{h+=`<div class="card" style="cursor:pointer" onclick="this.querySelector('.expl').classList.toggle('show');this.querySelector('.kcbox').classList.toggle('show')"><div class="meta"><span class="bg bg-d">Domain ${q.domain}</span><span class="bg bg-w">Missed ${q.wrongCount}x</span></div><div class="qtxt" style="font-size:1.05rem">${q.question}</div><div class="expl"><h3>정답: ${['A','B','C','D'][q.correct]}. ${q.options[q.correct]}</h3><div class="expl-c">${q.explanation}</div></div><div class="kcbox"><h4>🔑 핵심 암기</h4>${(q.keyConcepts||[]).map(c=>{const[t,d]=c.split('|');return`<div class="ci"><strong>${t}</strong><br>${d||''}</div>`;}).join('')}</div></div>`;});
-    h+='<button class="btn btn-o" onclick="A.clrW()" style="margin-top:1rem">오답 초기화</button>';
+    if(!wqs.length){a.innerHTML='<div class="empty">오답이 없습니다! 계속 풀어보세요.</div>';return;}
+    const isKo=this.lang==='ko';
+    let h=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+        <span style="color:var(--muted);font-size:.875rem">${wqs.length}개 오답 · 카드를 클릭하면 해설 확인</span>
+        <button class="btn btn-o" onclick="A.clrW()">오답 초기화</button>
+    </div>`;
+    wqs.forEach(q=>{
+        const qTxt=isKo&&q.questionKo?q.questionKo:q.question;
+        h+=`<div class="card" style="cursor:pointer" onclick="this.querySelector('.expl').classList.toggle('show');this.querySelector('.kcbox').classList.toggle('show')">
+        <div class="meta"><span class="bg bg-id">Q${q.id}</span><span class="bg bg-d">D${q.domain}</span><span class="bg bg-w">X ${q.wrongCount}회</span></div>
+        <div class="qtxt" style="font-size:1.05rem">${qTxt}</div>
+        <div class="expl"><h3>정답: ${['A','B','C','D'][q.correct]}. ${(isKo&&q.optionsKo?q.optionsKo:q.options)[q.correct]}</h3><div class="expl-c">${q.explanation}</div></div>
+        <div class="kcbox"><h4>🔑 핵심 암기</h4>${(q.keyConcepts||[]).map(c=>{const[t,d]=c.split('|');return`<div class="ci"><strong>${t}</strong><br>${d||''}</div>`;}).join('')}</div>
+        </div>`;
+    });
     a.innerHTML=h;
 }
 clrW(){this.wl=[];this.save();this.rWrong();}
 
-addQ(){
-    const q=document.getElementById('aQ').value.trim(),oA=document.getElementById('oA').value.trim(),oB=document.getElementById('oB').value.trim(),oC=document.getElementById('oC').value.trim(),oD=document.getElementById('oD').value.trim();
-    if(!q||!oA||!oB||!oC||!oD){alert('Fill in question and all options.');return;}
-    this.qs.push({id:Date.now(),domain:document.getElementById('aD').value,ks:document.getElementById('aK').value.trim(),question:q,options:[oA,oB,oC,oD],correct:parseInt(document.querySelector('input[name="co"]:checked').value),explanation:document.getElementById('aE').value.trim().replace(/\n/g,'<br>'),reference:document.getElementById('aR').value.trim(),keyConcepts:document.getElementById('aC').value.trim().split('\n').flatMap(l=>l.split(',')).map(s=>s.trim()).filter(Boolean),wrongCount:0,attempts:0,correctCount:0,starred:false});
-    this.save();this.applyF();this.uStats();this.clrForm();alert('Added!');
-}
-clrForm(){['aQ','aK','oA','oB','oC','oD','aE','aR','aC'].forEach(id=>document.getElementById(id).value='');}
-bulkImp(){const r=document.getElementById('bJson').value.trim();if(!r)return;try{const arr=JSON.parse(r);if(!Array.isArray(arr))throw new Error('Array needed');arr.forEach(q=>{this.qs.push({id:Date.now()+Math.random(),domain:q.domain||"1",ks:q.ks||"",question:q.question,options:q.options,correct:q.correct,explanation:q.explanation||"",reference:q.reference||"",keyConcepts:q.keyConcepts||[],wrongCount:0,attempts:0,correctCount:0,starred:false});});this.save();this.applyF();this.uStats();document.getElementById('bJson').value='';alert(`Imported ${arr.length}!`);}catch(e){alert('Error: '+e.message);}}
-exportJ(){const d=JSON.stringify(this.qs,null,2),b=new Blob([d],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='cisa_questions.json';a.click();URL.revokeObjectURL(u);}
-
 // ===== CHEAT SHEET =====
 rCheat(){
     const a=document.getElementById('cheatArea');
-    // Build cheat sheet from CHEAT_SHEET data in questions.js
     if(typeof CHEAT_SHEET!=='undefined' && CHEAT_SHEET.length){
         let h='<h2 style="margin-bottom:1.5rem;font-size:1.2rem;color:var(--text);font-weight:700">치트시트 — 시험 직전 요약 노트</h2>';
         CHEAT_SHEET.forEach(domain=>{
             h+=`<div class="cs-domain"><div class="cs-domain-title">Domain ${domain.id}: ${domain.name}</div>`;
             domain.topics.forEach(topic=>{
                 h+=`<div class="cs-topic"><div class="cs-topic-title">${topic.icon||'📌'} ${topic.title}</div>`;
-                if(topic.bullets){
-                    h+=`<ul class="cs-bullets">${topic.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
-                }
-                if(topic.rules){
-                    h+=topic.rules.map(r=>`<div class="cs-rule">${r}</div>`).join('');
-                }
-                if(topic.vs){
-                    h+=`<div class="cs-vs">${topic.vs.map(v=>`<div class="cs-vs-item"><h5>${v.name}</h5><p>${v.desc}</p></div>`).join('')}</div>`;
-                }
-                if(topic.table){
-                    h+=`<table style="width:100%;border-collapse:collapse;margin:.5rem 0;font-size:.85rem"><tr>${topic.table.headers.map(th=>`<th style="background:rgba(59,130,246,.15);color:var(--pl);padding:.5rem .75rem;border:1px solid var(--border);text-align:left">${th}</th>`).join('')}</tr>${topic.table.rows.map(row=>`<tr>${row.map(td=>`<td style="padding:.5rem .75rem;border:1px solid var(--border);color:var(--muted)">${td}</td>`).join('')}</tr>`).join('')}</table>`;
-                }
+                if(topic.bullets)h+=`<ul class="cs-bullets">${topic.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+                if(topic.rules)h+=topic.rules.map(r=>`<div class="cs-rule">${r}</div>`).join('');
+                if(topic.vs)h+=`<div class="cs-vs">${topic.vs.map(v=>`<div class="cs-vs-item"><h5>${v.name}</h5><p>${v.desc}</p></div>`).join('')}</div>`;
+                if(topic.table)h+=`<table style="width:100%;border-collapse:collapse;margin:.5rem 0;font-size:.85rem"><tr>${topic.table.headers.map(th=>`<th style="background:rgba(59,130,246,.15);color:var(--pl);padding:.5rem .75rem;border:1px solid var(--border);text-align:left">${th}</th>`).join('')}</tr>${topic.table.rows.map(row=>`<tr>${row.map(td=>`<td style="padding:.5rem .75rem;border:1px solid var(--border);color:var(--muted)">${td}</td>`).join('')}</tr>`).join('')}</table>`;
                 h+=`</div>`;
             });
             h+=`</div>`;
         });
         a.innerHTML=h;
-    } else {
-        a.innerHTML='<div class="empty">Cheat Sheet data not loaded yet.</div>';
+    }else{
+        a.innerHTML='<div class="empty">치트시트 데이터가 아직 없습니다.</div>';
     }
 }
 
-// Sync new questions from questions.js that aren't in localStorage yet
+// ===== SYNC =====
 syncNew(){
     const ids=new Set(this.qs.map(q=>q.id));
     let added=0;
