@@ -13987,6 +13987,2685 @@ keyConcepts:[
 "워크플로 vs 트랜잭션|개별 처리 ≠ 전체 운영 흐름",
 "테스트 한계|주기적 작업·예외 처리는 별도 검증 필요"
 ]
+},
+
+{
+id: 388,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `재해 복구 상황에서 핵심 시스템 간 데이터 동기화를 보장하는 가장 중요한 지표는?<br><small style="color:#94a3b8">In a DR situation, which metric is MOST important to ensure data are synchronized between critical systems?</small>`,
+options: [
+"RPO (복구 시점 목표)<br><small style='color:#94a3b8'>recovery point objective (RPO)</small>",
+"RTO (복구 시간 목표)<br><small style='color:#94a3b8'>recovery time objective (RTO)</small>",
+"복구 서비스 회복력<br><small style='color:#94a3b8'>recovery service resilience</small>",
+"복구 서비스 확장성<br><small style='color:#94a3b8'>recovery service scalability</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. RPO (Recovery Point Objective)</b></p>
+<p>시스템 간 <b>공통 RPO</b>를 설정해야 상호 의존 시스템이 동일 시점으로 복구된다. RPO가 다르면 시스템 간 데이터 시점이 어긋나 회계 거래 불일치·참조 무결성 손상이 발생한다.</p>
+<table>
+<tr><th>지표</th><th>동기화 관련성</th></tr>
+<tr style="background:#dcfce7"><td><b>RPO</b></td><td>✅ 데이터 시점 일치 — 동기화 핵심</td></tr>
+<tr><td>RTO</td><td>복구 시간 — 시스템마다 다를 수 있음</td></tr>
+<tr><td>Resilience</td><td>장애 허용·재시작 능력</td></tr>
+<tr><td>Scalability</td><td>용량·확장 한계</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>공통 RPO = 데이터 시점 일치</b> (참조 무결성 보호)<br>
+• 상호 의존 시스템은 같은 시점으로 복구되어야 함<br>
+• 관련: Q324·Q326·Q334·Q339·Q349·Q377(RPO 시리즈)</div>`,
+reference:"CRM Chapter 4: RPO Synchronization Across Systems",
+keyConcepts:[
+"공통 RPO|상호 의존 시스템의 데이터 시점 일치 보장",
+"참조 무결성|시점 불일치 시 거래 조정 불가",
+"RTO vs RPO|RTO=시간(시스템별 다양), RPO=데이터(통일 필요)"
+]
+},
+
+{
+id: 389,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `IT DR 테스트 검토 시 IS 감사인의 가장 큰 우려사항은?<br><small style="color:#94a3b8">GREATEST concern to IS auditor when reviewing an IT DR test?</small>`,
+options: [
+"제한된 시간으로 핵심 시스템만 테스트, 나머지는 연중 별도 테스트<br><small style='color:#94a3b8'>Only essential systems tested due to time, others tested separately during the year</small>",
+"테스트 중 일부 백업 시스템이 결함이 있거나 작동하지 않아 실패<br><small style='color:#94a3b8'>Some backup systems were defective or not working, causing test failure</small>",
+"원본 운영 사이트 종료·보안 절차가 계획보다 훨씬 오래 걸림<br><small style='color:#94a3b8'>Shutdown and securing of original production site took far more time than planned</small>",
+"매년 동일 직원이 테스트, 모두 잘 알고 있어 복구 문서 미사용<br><small style='color:#94a3b8'>Same employees test annually, recovery plan documents not used</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 백업 시스템의 결함·작동 실패</b></p>
+<p>테스트의 목적은 백업 계획의 작동 여부 확인이다. <b>백업 시스템이 작동하지 않으면 실제 재해 시 의지할 수 없다</b>. 이는 가장 심각한 문제이다.</p>
+<table>
+<tr><th>옵션</th><th>심각도</th></tr>
+<tr><td>A. 부분 테스트</td><td>연중 모두 테스트됨 — 우려 ❌</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 백업 시스템 실패</b></td><td>✅ 실제 재해 시 복구 불가 — 치명적</td></tr>
+<tr><td>C. 종료 시간 초과</td><td>실제 재해 시 정상 종료 불필요</td></tr>
+<tr><td>D. 동일 인력·문서 미사용</td><td>중요하나 시스템 실패보다 덜 심각</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>백업 시스템 실패 = DR의 근본 실패</b><br>
+• 인력 의존도(D)도 문제이나 인프라 실패가 우선<br>
+• 관련: Q341(테스트 결과 = 효과성), Q352(테스트 결과 미문서화)</div>`,
+reference:"CRM Chapter 4: DR Test Review",
+keyConcepts:[
+"백업 시스템 신뢰성|실제 작동이 DR의 절대 전제조건",
+"테스트 우선순위|인프라 실패 > 절차/인력 문제",
+"DR 핵심|신뢰할 수 있는 백업 시스템 없으면 모든 계획 무용"
+]
+},
+
+{
+id: 390,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `글로벌 기업 DR 감사 중 일부 원격 사무소가 매우 제한된 IT 자원만 보유. 가장 중요한 관찰은?<br><small style="color:#94a3b8">During DR audit of global enterprise, some remote offices have very limited local IT resources. MOST critical observation?</small>`,
+options: [
+"재해/사고 복구 시 로컬 자원이 보안·서비스 표준을 유지할 수 있는지 테스트되지 않음<br><small style='color:#94a3b8'>A test has not been made to ensure local resources can maintain security and service standards</small>",
+"기업 BCP가 원격 사무소 시스템을 정확히 문서화하지 않음<br><small style='color:#94a3b8'>BCP does not accurately document systems at remote offices</small>",
+"기업 보안 조치가 테스트 계획에 포함되지 않음<br><small style='color:#94a3b8'>Corporate security measures not incorporated into the test plan</small>",
+"원격 사무소 백업의 사용 가능성이 테스트되지 않음<br><small style='color:#94a3b8'>Backups from remote offices have not been tested</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 로컬 복구 테스트 부재</b></p>
+<p>로컬 IT 자원의 능력과 관계없이, <b>테스트 부재는 복구 프로세스의 품질 문제를 식별할 수 없게 만드는 가장 치명적 리스크</b>이다. 다른 모든 우려(문서화·보안·백업)는 테스트 부재라는 더 큰 문제의 부분집합이다.</p>
+<table>
+<tr><th>옵션</th><th>심각도</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 테스트 부재</b></td><td>✅ 모든 결함 식별 불가 — 최우선</td></tr>
+<tr><td>B. 문서화 부정확</td><td>중요하나 테스트로 발견 가능</td></tr>
+<tr><td>C. 보안 미포함</td><td>중요하나 테스트가 우선</td></tr>
+<tr><td>D. 백업 미테스트</td><td>전체 DR 테스트의 일부</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>테스트 = 모든 결함의 식별 수단</b><br>
+• 테스트하지 않으면 문제가 있는지조차 알 수 없음<br>
+• 관련: Q374(테스트 1차 목적 = 한계 식별), Q389(백업 실패)</div>`,
+reference:"CRM Chapter 4: DR Testing for Distributed Sites",
+keyConcepts:[
+"테스트 우선|미테스트 = 모든 결함이 잠재화",
+"원격 사이트 DR|중앙 BCP에 포함되지 않을 수 있어 별도 검증 필요",
+"결함 식별|테스트만이 실제 작동 여부 검증 가능"
+]
+},
+
+{
+id: 391,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `조직 내 두 사업부 간 DR 상호 협정 사용의 주요 리스크는?<br><small style="color:#94a3b8">PRIMARY risk of using reciprocal agreements for DR between two business units?</small>`,
+options: [
+"문서의 법적 충분성 부족<br><small style='color:#94a3b8'>Documents lack legal sufficiency</small>",
+"두 주체가 동일한 사고에 취약함<br><small style='color:#94a3b8'>Both entities are vulnerable to the same incident</small>",
+"IT 시스템이 동일하지 않은 구성을 가짐<br><small style='color:#94a3b8'>IT systems have non-identical configurations</small>",
+"한 쪽이 다른 쪽보다 더 자주 중단을 경험함<br><small style='color:#94a3b8'>One party experiences more frequent disruptions</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 두 주체가 동일한 사고에 동시 취약</b></p>
+<p>상호 협정의 전제는 <b>두 조직이 동시에 재해를 겪지 않을 확률</b>에 기반한다. 하지만 동일 조직 내 사업부들은 지역·인프라·위험을 공유할 가능성이 커 동시 피해 위험이 크다.</p>
+<table>
+<tr><th>옵션</th><th>위험도</th></tr>
+<tr><td>A. 법적 충분성</td><td>해결 가능 — 부차적</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 동시 취약</b></td><td>✅ 상호 협정 전제의 근본 붕괴</td></tr>
+<tr><td>C. 비호환 시스템</td><td>해결 가능 — 부차적</td></tr>
+<tr><td>D. 사용 빈도 차이</td><td>계약으로 해결</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>상호 협정 = 독립성 가정</b> — 동일 조직 내에선 깨짐<br>
+• 지리적·환경적 분리가 핵심<br>
+• 관련: Q321(상호협정 BEST 시나리오), Q344(외부 위치 기준)</div>`,
+reference:"CRM Chapter 4: Reciprocal Agreement Risks",
+keyConcepts:[
+"독립성 가정|동시 재해 가능성이 낮을 때만 유효",
+"동일 조직 내 한계|공유 인프라·지리로 동시 피해 위험 증가",
+"상호 협정|저비용이나 신뢰성·독립성 검증 필요"
+]
+},
+
+{
+id: 392,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `두 조직 간 DR 상호 협정이 만드는 가장 큰 리스크는?<br><small style="color:#94a3b8">GREATEST risk created by a reciprocal agreement for DR between two organizations?</small>`,
+options: [
+"개발로 인한 하드웨어·소프트웨어 비호환<br><small style='color:#94a3b8'>Developments may result in hardware and software incompatibility</small>",
+"필요할 때 자원이 사용 불가<br><small style='color:#94a3b8'>Resources may not be available when needed</small>",
+"복구 계획을 실제로 테스트할 수 없음<br><small style='color:#94a3b8'>Recovery plan cannot be live tested</small>",
+"각 조직의 보안 인프라가 다를 수 있음<br><small style='color:#94a3b8'>Security infrastructures may be different</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 하드웨어·소프트웨어 비호환</b></p>
+<p>한 조직이 시스템 구성을 업그레이드하면 다른 조직과 <b>호환되지 않게 되어</b> 재해 시 상대 시설을 사용할 수 없게 된다. 시간이 지날수록 두 환경의 격차는 벌어진다.</p>
+<table>
+<tr><th>옵션</th><th>위험도</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 비호환</b></td><td>✅ 시간 경과 시 복구 불가능 — 가장 큼</td></tr>
+<tr><td>B. 자원 미가용</td><td>계약으로 해결 가능</td></tr>
+<tr><td>C. 실제 테스트 불가</td><td>Paper walk-through로 가능</td></tr>
+<tr><td>D. 보안 인프라 차이</td><td>극복 가능</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>두 조직 간 협정 = 호환성 리스크가 핵심</b> (Q391의 동일 조직 내 = 동시 취약)<br>
+• 시스템은 끊임없이 변화 — 정기적 호환성 검증 필요<br>
+• 관련: Q321(상호협정 BEST), Q391(동일 조직 내 리스크)</div>`,
+reference:"CRM Chapter 4: Reciprocal Agreement - Inter-Organization",
+keyConcepts:[
+"호환성 표류|시간 경과에 따른 양측 환경 격차",
+"두 조직 간 vs 동일 조직 내|호환성 vs 동시 취약 — 다른 1차 리스크",
+"정기 검증|호환성·구성 일치 주기적 확인 필수"
+]
+},
+
+{
+id: 393,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `광범위한 지역에 다수의 사무소를 가진 조직이 DRP를 개발했다. 실제 자원을 사용하는 가장 비용 효율적인 DRP 테스트는?<br><small style="color:#94a3b8">Using actual resources, which is the MOST cost-effective test of the DRP?</small>`,
+options: [
+"전면 운영 테스트<br><small style='color:#94a3b8'>Full operational test</small>",
+"준비성 테스트<br><small style='color:#94a3b8'>Preparedness test</small>",
+"종이 테스트<br><small style='color:#94a3b8'>Paper test</small>",
+"회귀 테스트<br><small style='color:#94a3b8'>Regression test</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 준비성 테스트(Preparedness Test)</b></p>
+<p>준비성 테스트는 <b>실제 자원·시스템의 일부를 동원</b>하여 복구 준비 상태를 검증한다. 전면 운영 테스트만큼 비싸지 않으면서도 종이 테스트보다 훨씬 높은 확신을 제공한다 — 즉 "실제 자원 사용" 조건에서 가장 비용 효율적.</p>
+<table>
+<tr><th>테스트 유형</th><th>실제 자원</th><th>비용</th></tr>
+<tr><td>A. Full operational</td><td>전체 동원</td><td>매우 높음 ❌</td></tr>
+<tr style="background:#dcfce7"><td><b>B. Preparedness</b></td><td>✅ 부분 동원</td><td>중간 — 최적</td></tr>
+<tr><td>C. Paper</td><td>없음 (문서 검토)</td><td>저렴하나 "실제 자원" 조건 미충족</td></tr>
+<tr><td>D. Regression</td><td>DRP 테스트 아님</td><td>SW 개발용 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+<b>진행 순서: Paper → Preparedness → Full operational</b><br>
+• Paper(문서 walk-through) → Preparedness(부분 실제 동원) → Full(전면)<br>
+• 질문에 "actual resources" 명시 → Paper 제외<br>
+• 다지역 분산 조직에 특히 적합 — 일부 사이트만 동원하여 점진적 검증<br>
+• 관련: Q363(Paper test), Q383(Functional 단계), Q387(부분 라이브 테스트)</div>`,
+reference:"CRM Chapter 4: DRP Testing — Preparedness Test",
+keyConcepts:[
+"Preparedness Test|실제 자원 일부 동원으로 준비 상태 검증 — 비용 효율적",
+"테스트 진행|Paper → Preparedness → Full operational 순",
+"실제 자원 조건|Paper test는 문서 검토라 'actual resources' 충족 못함"
+]
+},
+
+{
+id: 394,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `조직의 재해 복구 요구사항을 충족하려면 백업 간격은 무엇을 초과해서는 안 되는가?<br><small style="color:#94a3b8">Backup intervals should not exceed the:</small>`,
+options: [
+"서비스 수준 목표(SLO)<br><small style='color:#94a3b8'>service level objective</small>",
+"복구 시간 목표(RTO)<br><small style='color:#94a3b8'>recovery time objective (RTO)</small>",
+"최대 허용 중단 시간(MAO)<br><small style='color:#94a3b8'>maximum acceptable outage (MAO)</small>",
+"복구 시점 목표(RPO)<br><small style='color:#94a3b8'>recovery point objective (RPO)</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 복구 시점 목표(RPO)</b></p>
+<p>RPO는 재해 후 데이터를 복원해야 하는 <b>시점</b>을 정의한다. 즉 "허용 가능한 데이터 손실량(시간)". 백업 주기가 RPO보다 길면 데이터 손실이 허용 한도를 초과한다 → 백업 간격 ≤ RPO.</p>
+<table>
+<tr><th>지표</th><th>대상</th><th>백업 간격과 관계</th></tr>
+<tr><td>A. SLO</td><td>서비스 회복 수준</td><td>데이터 백업과 무관</td></tr>
+<tr><td>B. RTO</td><td>복구까지 허용 시간</td><td>시스템 복구 시간 — 데이터 ❌</td></tr>
+<tr><td>C. MAO</td><td>최대 허용 다운타임</td><td>생존 한계 — 데이터 ❌</td></tr>
+<tr style="background:#dcfce7"><td><b>D. RPO</b></td><td><b>허용 데이터 손실</b></td><td>✅ 백업 간격 ≤ RPO</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RPO ↔ 데이터 / RTO ↔ 시스템 시간</b> (불변 매핑)<br>
+• RPO=4h → 백업은 최소 4시간마다<br>
+• RPO=0 → 동기 미러링·실시간 복제 필요<br>
+• MAO ≥ RTO (RTO는 목표, MAO는 생존 한계)<br>
+• 관련: Q377(RPO 결정), Q388(데이터 동기 지표)</div>`,
+reference:"CRM Chapter 4: RPO and Backup Frequency",
+keyConcepts:[
+"RPO|허용 가능한 데이터 손실량(시간) — 백업 주기 상한",
+"RPO vs RTO|RPO=데이터 시점, RTO=복구 시간",
+"MAO|생존 한계 시간 — RTO ≤ MAO 이어야 함"
+]
+},
+
+{
+id: 395,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `경영진이 두 DRP를 검토했다: 플랜 A는 완전 복구까지 2개월, 플랜 B는 8개월. RPO는 동일하다. 플랜 B에서 더 높을 것으로 예상되는 비용은?<br><small style="color:#94a3b8">Plan A: 2 months to fully recover; Plan B: 8 months. RPOs are the same. Plan B projected higher:</small>`,
+options: [
+"다운타임 비용<br><small style='color:#94a3b8'>downtime costs</small>",
+"재개 비용<br><small style='color:#94a3b8'>resumption costs</small>",
+"복구 비용<br><small style='color:#94a3b8'>recovery costs</small>",
+"워크스루 비용<br><small style='color:#94a3b8'>walk-through costs</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 다운타임 비용</b></p>
+<p>복구 기간이 길수록(8개월 > 2개월) 업무 중단이 길어지므로 <b>다운타임 비용(매출 손실·기회 비용)이 증가</b>한다. 반대로 빠른 복구를 위한 재개·복구 비용(투자)은 플랜 A가 더 높다 — 빠른 복구일수록 사전 투자 비용이 큼.</p>
+<table>
+<tr><th>비용 유형</th><th>플랜 A (2개월)</th><th>플랜 B (8개월)</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 다운타임</b></td><td>낮음</td><td><b>높음 ✅</b></td></tr>
+<tr><td>B. 재개 비용</td><td>높음</td><td>낮음</td></tr>
+<tr><td>C. 복구 비용</td><td>높음</td><td>낮음</td></tr>
+<tr><td>D. 워크스루</td><td>DRP 비용 아님</td><td>—</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>복구 시간 ↑ → 다운타임 비용 ↑ / 사전 투자 ↓</b> (트레이드오프)<br>
+• 빠른 복구는 hot site·이중화 등 고비용 인프라 필요<br>
+• 최적 RTO = 다운타임 비용 + 복구 비용 합계 최소점<br>
+• 관련: Q335(예산-RTO 균형), Q381(DRP 최적화 = 시간·비용 최소화)</div>`,
+reference:"CRM Chapter 4: DRP Cost Trade-offs",
+keyConcepts:[
+"다운타임 비용|복구 기간에 비례 — 매출·생산성 손실",
+"복구/재개 비용|빠른 복구일수록 사전 투자 ↑",
+"최적 RTO|다운타임 + 복구 비용 합계 최소점에서 결정"
+]
+},
+
+{
+id: 396,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `금융 시스템 DRP가 RPO=0, RTO=72시간을 명시한다. 가장 비용 효율적인 솔루션은?<br><small style="color:#94a3b8">RPO=0, RTO=72h. MOST cost-effective solution?</small>`,
+options: [
+"8시간 내 가동 가능한 핫사이트 + 트랜잭션 로그 비동기 백업<br><small style='color:#94a3b8'>Hot site operational in 8h with asynchronous backup of transaction logs</small>",
+"여러 위치의 비동기 업데이트 분산 DB<br><small style='color:#94a3b8'>Distributed databases in multiple locations updated asynchronously</small>",
+"동기식 데이터 업데이트 + 핫사이트 standby active 시스템<br><small style='color:#94a3b8'>Synchronous data updates and standby active systems in a hot site</small>",
+"48시간 내 가동 가능한 웜사이트 + 동기식 원격 데이터 복사<br><small style='color:#94a3b8'>Synchronous remote copy of data in a warm site operational in 48h</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 동기식 복사 + 48h 웜사이트</b></p>
+<p>RPO=0 → <b>동기식 복제 필수</b>. RTO=72h → 48h 가동 웜사이트로 충족(여유 있음). 핫사이트는 RTO를 초과 충족하지만 불필요하게 비싸다 → <b>요구사항을 정확히 충족하는 가장 저렴한 옵션</b>.</p>
+<table>
+<tr><th>옵션</th><th>RPO=0</th><th>RTO≤72h</th><th>비용</th></tr>
+<tr><td>A. 핫(8h) + 비동기</td><td>❌ 비동기</td><td>✅</td><td>높음</td></tr>
+<tr><td>B. 비동기 분산</td><td>❌ 비동기</td><td>✅</td><td>중간</td></tr>
+<tr><td>C. 동기 + 핫 standby</td><td>✅</td><td>✅</td><td>매우 높음</td></tr>
+<tr style="background:#dcfce7"><td><b>D. 동기 + 웜(48h)</b></td><td>✅</td><td>✅ (여유)</td><td><b>최저 ✅</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RPO=0 ⇒ 동기식 복제 필수</b> (비동기 즉시 탈락)<br>
+• <b>RTO 충족하는 가장 느린 사이트가 가장 저렴</b> (overspec = 낭비)<br>
+• 데이터(RPO)와 사이트(RTO)는 독립적으로 설계 가능<br>
+• 관련: Q394(RPO=백업 간격 상한), Q335(예산-RTO 균형), Q346(사이트 유형)</div>`,
+reference:"CRM Chapter 4: Matching DR Solutions to RPO/RTO",
+keyConcepts:[
+"RPO=0 → 동기 복제|비동기 옵션은 자동 탈락",
+"RTO 정확 충족|요구보다 빠른 사이트는 비용 낭비",
+"데이터와 사이트 분리 설계|동기 복사 + 웜사이트 조합 가능"
+]
+},
+
+{
+id: 397,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `재해 복구 전략 개발의 첫 번째 접근은 무엇을 평가하는 것인가?<br><small style="color:#94a3b8">FIRST approach to developing a disaster recovery strategy is to assess whether:</small>`,
+options: [
+"모든 위협을 완전히 제거할 수 있는지<br><small style='color:#94a3b8'>all threats can be completely removed</small>",
+"비용 효율적인 내장 복원력을 구현할 수 있는지<br><small style='color:#94a3b8'>a cost-effective, built-in resilience can be implemented</small>",
+"RTO를 최적화할 수 있는지<br><small style='color:#94a3b8'>the RTO can be optimized</small>",
+"복구 비용을 최소화할 수 있는지<br><small style='color:#94a3b8'>the cost of recovery can be minimized</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 비용 효율적인 내장 복원력 구현 가능성</b></p>
+<p>DR 전략 개발의 첫 단계는 자산을 <b>본질적으로 더 복원력 있게(resilient)</b> 만들 수 있는지 식별하는 것 — 다양한 라우팅, 대체 경로, 다중 통신사 등. <b>예방이 대응보다 우월</b>하다.</p>
+<table>
+<tr><th>옵션</th><th>단계</th></tr>
+<tr><td>A. 위협 완전 제거</td><td>❌ 불가능</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 내장 복원력</b></td><td>✅ 1단계 — 예방이 우선</td></tr>
+<tr><td>C. RTO 최적화</td><td>나중 단계</td></tr>
+<tr><td>D. 복구 비용 최소화</td><td>나중 단계</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>예방(resilience) > 대응(recovery)</b><br>
+• 자산 자체를 견고하게 → 복구 부담 자체를 줄임<br>
+• RTO/비용 최적화는 복원력 평가 이후 단계<br>
+• 관련: Q370(대체 라우팅), Q384(다른 노드 대체 프로세서), Q381(DRP 최적화)</div>`,
+reference:"CRM Chapter 4: DR Strategy Development",
+keyConcepts:[
+"내장 복원력|자산 자체를 견고하게 — DR 전략의 1단계",
+"예방 > 대응|문제 발생 후 처리보다 사전 방지가 우월",
+"단계적 접근|복원력 평가 → RTO 결정 → 복구 솔루션 선택"
+]
+},
+
+{
+id: 398,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `비핵심 시스템 복구에 가장 합리적인 옵션은?<br><small style="color:#94a3b8">MOST reasonable option for recovering a noncritical system?</small>`,
+options: [
+"웜사이트<br><small style='color:#94a3b8'>Warm site</small>",
+"모바일 사이트<br><small style='color:#94a3b8'>Mobile site</small>",
+"핫사이트<br><small style='color:#94a3b8'>Hot site</small>",
+"콜드사이트<br><small style='color:#94a3b8'>Cold site</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 콜드사이트</b></p>
+<p>콜드사이트는 <b>저비용·장기 계약</b>이지만 가동까지 시간이 오래 걸린다. 비핵심 시스템은 빠른 복구가 필요 없으므로 콜드사이트가 비용 효율적으로 합리적이다.</p>
+<table>
+<tr><th>사이트</th><th>비용</th><th>가동 시간</th><th>적합 시스템</th></tr>
+<tr><td>핫</td><td>매우 높음</td><td>즉시~수시간</td><td>핵심·필수</td></tr>
+<tr><td>웜</td><td>중간</td><td>중간</td><td>중요</td></tr>
+<tr><td>모바일</td><td>가변</td><td>운송 시간</td><td>특수 상황</td></tr>
+<tr style="background:#dcfce7"><td><b>콜드</b></td><td><b>낮음 ✅</b></td><td>길음</td><td><b>비핵심 ✅</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>중요도와 사이트 매칭</b>: 핵심=핫, 중요=웜, 비핵심=콜드<br>
+• 비핵심 시스템에 핫사이트는 과잉 투자<br>
+• 관련: Q372(콜드사이트=배선·AC·바닥만), Q396(RTO 정확 충족)</div>`,
+reference:"CRM Chapter 4: Recovery Site Types",
+keyConcepts:[
+"콜드사이트|저비용·긴 가동 시간 — 비핵심 시스템 적합",
+"중요도-사이트 매칭|핫=핵심, 웜=중요, 콜드=비핵심",
+"비용 효율|복구 시급성에 맞는 최소 사양 선택"
+]
+},
+
+{
+id: 399,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `고가용성 네트워크의 복원력을 평가하는 IS 감사인이 가장 우려해야 할 상황은?<br><small style="color:#94a3b8">IS auditor evaluating high-availability network resilience should be MOST concerned if:</small>`,
+options: [
+"설정이 지리적으로 분산되어 있음<br><small style='color:#94a3b8'>setup is geographically dispersed</small>",
+"서버가 한 사이트에 클러스터링되어 있음<br><small style='color:#94a3b8'>servers are clustered in one site</small>",
+"핫사이트가 활성화 준비되어 있음<br><small style='color:#94a3b8'>hot site is ready for activation</small>",
+"네트워크에 다양한 라우팅이 구현됨<br><small style='color:#94a3b8'>diverse routing is implemented</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 한 사이트에 클러스터링된 서버</b></p>
+<p>단일 사이트 클러스터는 자연재해·정전 등 환경적 사건 발생 시 <b>전체 네트워크가 동시에 무력화</b>된다 — SPOF(단일 장애점). 클러스터링은 장비 장애엔 효과적이지만 사이트 단위 재해엔 무력하다.</p>
+<table>
+<tr><th>옵션</th><th>복원력 영향</th></tr>
+<tr><td>A. 지리적 분산</td><td>✅ 사이트 파괴 시 백업</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 단일 사이트 클러스터</b></td><td>❌ SPOF — 가장 우려</td></tr>
+<tr><td>C. 핫사이트 준비</td><td>✅ SPOF 대비책</td></tr>
+<tr><td>D. 다양한 라우팅</td><td>✅ 통신 백업</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>지리적 분산 ≠ 동일 사이트 클러스터링</b><br>
+• 진정한 HA는 사이트 단위 장애도 견뎌야 함<br>
+• 관련: Q384(다른 노드 대체 프로세서), Q370(대체 라우팅), Q344(외부 위치)</div>`,
+reference:"CRM Chapter 4: High-Availability Network Resilience",
+keyConcepts:[
+"단일 사이트 클러스터링|SPOF — 환경적 재해에 취약",
+"지리적 분산|진정한 HA의 핵심 요소",
+"클러스터링 한계|장비 장애엔 효과적, 사이트 재해엔 무력"
+]
+},
+
+{
+id: 400,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `DR 테스트 중 IS 감사인이 DR 사이트 서버의 성능이 느린 것을 관찰했다. 근본 원인을 찾기 위해 가장 먼저 검토해야 할 것은?<br><small style="color:#94a3b8">DR site server performance is slow. IS auditor should FIRST review:</small>`,
+options: [
+"DR 사이트에서 생성된 이벤트 오류 로그<br><small style='color:#94a3b8'>event error log at the DR site</small>",
+"재해 복구 테스트 계획<br><small style='color:#94a3b8'>disaster recovery test plan</small>",
+"재해 복구 계획(DRP)<br><small style='color:#94a3b8'>disaster recovery plan (DRP)</small>",
+"주 사이트와 DR 사이트의 구성 및 정합성<br><small style='color:#94a3b8'>configurations and alignment of primary and DR sites</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 주/DR 사이트 구성 및 정합성</b></p>
+<p>성능 저하의 가장 가능성 높은 원인은 <b>구성 불일치</b>(하드웨어 사양·패치·튜닝 차이)다. 따라서 가장 먼저 양 사이트의 구성과 정합성을 검토해야 한다. 그 후에도 원인이 명확하지 않으면 이벤트 로그를 본다.</p>
+<table>
+<tr><th>옵션</th><th>순서</th></tr>
+<tr style="background:#dcfce7"><td><b>D. 구성/정합성</b></td><td>✅ 1순위 — 가장 가능성 높은 원인</td></tr>
+<tr><td>A. 이벤트 로그</td><td>2순위 — 구성 확인 후</td></tr>
+<tr><td>B. 테스트 계획</td><td>성능 이슈와 무관</td></tr>
+<tr><td>C. DRP</td><td>성능 정보 없음</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>가장 가능성 높은 원인부터 확인</b> (Occam's Razor)<br>
+• DR 사이트는 주 사이트와 동일 사양·구성 유지가 필수<br>
+• 정합성 표류(drift)는 성능·기능 이슈의 주범<br>
+• 관련: Q392(호환성 표류), Q389(DR 테스트 검토)</div>`,
+reference:"CRM Chapter 4: DR Site Configuration Management",
+keyConcepts:[
+"구성 정합성|주/DR 사이트의 동일성 유지가 성능 보장의 핵심",
+"근본 원인 분석 순서|가장 가능성 높은 원인부터",
+"구성 표류|시간 경과에 따른 환경 격차 — 정기 점검 필수"
+]
+},
+
+{
+id: 401,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `IS 감사인이 DRP를 검토할 때 주로 확인해야 할 것은?<br><small style="color:#94a3b8">IS auditor reviewing DRP should PRIMARILY verify that it is:</small>`,
+options: [
+"6개월마다 테스트됨<br><small style='color:#94a3b8'>tested every six months</small>",
+"정기적으로 검토·업데이트됨<br><small style='color:#94a3b8'>regularly reviewed and updated</small>",
+"CEO의 승인을 받음<br><small style='color:#94a3b8'>approved by the CEO</small>",
+"모든 부서장에게 전달됨<br><small style='color:#94a3b8'>communicated to every department head</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 정기적 검토·업데이트</b></p>
+<p>DRP는 시스템·인력 변화에 맞춰 <b>정기적으로 검토·업데이트되지 않으면 무용지물</b>이 된다. 테스트 주기·승인자·배포 범위는 상황에 따라 다르지만, 최신성 유지는 모든 DRP의 보편적 필수 요건이다.</p>
+<table>
+<tr><th>옵션</th><th>평가</th></tr>
+<tr><td>A. 6개월 테스트</td><td>주기는 조직별 상이 — 절대 기준 ❌</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 정기 검토·업데이트</b></td><td>✅ 최신성 = 효과성의 전제</td></tr>
+<tr><td>C. CEO 승인</td><td>적절 임원이면 충분</td></tr>
+<tr><td>D. 전 부서장 배포</td><td>DRP는 기술 문서 — IS/통신 인력만 관련</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>최신성이 효과성을 결정</b> — 오래된 DRP는 위험<br>
+• 테스트 주기는 조직 특성에 따라 다름<br>
+• DRP(기술) vs BCP(전사) — 배포 범위 차이<br>
+• 관련: Q373(BCP 최신성), Q400(구성 정합성)</div>`,
+reference:"CRM Chapter 4: DRP Maintenance",
+keyConcepts:[
+"DRP 최신성|정기 검토·업데이트가 효과성의 전제",
+"테스트 주기 상대성|조직 특성에 따라 결정",
+"DRP vs BCP 배포|DRP는 기술 문서로 제한적 배포"
+]
+},
+
+{
+id: 402,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `DRP가 마련된 경우 진행 중인 운영 비용은 DRP가 없을 때와 비교하여 어떻게 되는가?<br><small style="color:#94a3b8">Cost of ongoing operations with a DRP vs without a DRP will MOST likely:</small>`,
+options: [
+"증가<br><small style='color:#94a3b8'>increase</small>",
+"감소<br><small style='color:#94a3b8'>decrease</small>",
+"동일<br><small style='color:#94a3b8'>remain the same</small>",
+"예측 불가<br><small style='color:#94a3b8'>be unpredictable</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 증가</b></p>
+<p>DRP의 <b>테스트·유지보수·구현 비용</b>이 추가되므로 평상시(비재해 기간) 운영 비용은 항상 증가한다. 단, 이 증가분은 재해 발생 시의 잠재 손실에 비해 훨씬 작아 정당화된다.</p>
+<table>
+<tr><th>옵션</th><th>평가</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 증가</b></td><td>✅ 테스트·유지·인프라 비용 추가</td></tr>
+<tr><td>B. 감소</td><td>❌ DRP는 추가 비용 발생</td></tr>
+<tr><td>C. 동일</td><td>❌ 추가 비용 불가피</td></tr>
+<tr><td>D. 예측 불가</td><td>❌ DRP 비용은 비교적 예측 가능</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DRP = 평상시 비용 증가, 재해 시 손실 절감</b> (보험 성격)<br>
+• 추가 비용: 백업 사이트, 정기 테스트, 문서 유지, 인력<br>
+• DRP 비용 < 잠재 재해 손실 → 정당화<br>
+• 관련: Q381(DRP 최적화), Q395(다운타임 vs 복구 비용 트레이드오프)</div>`,
+reference:"CRM Chapter 4: DRP Cost Impact",
+keyConcepts:[
+"DRP 비용 증가|평상시 운영 비용은 항상 증가",
+"보험 성격|추가 비용으로 잠재 손실 회피",
+"예측 가능성|DRP 비용은 일관되고 예측 가능"
+]
+},
+
+{
+id: 403,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `시스템 충돌을 시뮬레이션하고 실제 자원을 사용하여 비용 효율적으로 계획의 효과성에 대한 증거를 얻는 연속성 계획 테스트는?<br><small style="color:#94a3b8">Continuity plan test that simulates a system crash and uses actual resources to cost-effectively obtain evidence?</small>`,
+options: [
+"종이 테스트<br><small style='color:#94a3b8'>Paper test</small>",
+"포스트 테스트<br><small style='color:#94a3b8'>Post-test</small>",
+"준비성 테스트<br><small style='color:#94a3b8'>Preparedness test</small>",
+"워크스루<br><small style='color:#94a3b8'>Walk-through</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. 준비성 테스트(Preparedness Test)</b></p>
+<p>준비성 테스트는 전체 테스트의 <b>국지화(localized)된 버전</b>으로, 시스템 충돌 시뮬레이션에 실제 자원을 동원한다. 계획의 다른 측면을 정기적으로 점진 검증하여 효과성 증거를 비용 효율적으로 얻는다.</p>
+<table>
+<tr><th>옵션</th><th>특성</th></tr>
+<tr><td>A. Paper test</td><td>문서 walk-through — 실제 자원 ❌</td></tr>
+<tr><td>B. Post-test</td><td>테스트 후 정리 단계 (자원 복귀 등)</td></tr>
+<tr style="background:#dcfce7"><td><b>C. Preparedness test</b></td><td>✅ 실제 자원 + 국지적 시뮬레이션</td></tr>
+<tr><td>D. Walk-through</td><td>인원 이해도 점검 — 실제 자원 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Preparedness = 부분 실제 동원 + 점진적 개선</b><br>
+• Paper/Walk-through = 자원 미동원 / Full = 전면 동원<br>
+• Post-test는 단계가 아니라 테스트 후 마무리 활동<br>
+• 관련: Q393(다지역 조직 비용 효율적 테스트=Preparedness), Q363(Paper)</div>`,
+reference:"CRM Chapter 4: Preparedness Test",
+keyConcepts:[
+"Preparedness Test|국지적 실제 자원 시뮬레이션 — 점진적 효과성 검증",
+"Post-test|테스트 후 정리/복귀 활동",
+"테스트 분류|실제 자원 동원 여부가 핵심 구분 기준"
+]
+},
+
+{
+id: 404,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `조직의 DRP는 무엇의 조기 복구를 다루어야 하는가?<br><small style="color:#94a3b8">DRP should address early recovery of:</small>`,
+options: [
+"모든 IS 프로세스<br><small style='color:#94a3b8'>all information systems processes</small>",
+"모든 재무 처리 애플리케이션<br><small style='color:#94a3b8'>all financial processing applications</small>",
+"IS 관리자가 지정한 애플리케이션만<br><small style='color:#94a3b8'>only those designated by the IS manager</small>",
+"비즈니스 경영진이 정의한 우선순위에 따른 처리<br><small style='color:#94a3b8'>processing in priority order, as defined by business management</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 비즈니스 경영진이 정의한 우선순위에 따른 처리</b></p>
+<p>복구 우선순위는 <b>비즈니스 경영진이 사전에 결정</b>해야 한다 — 재해 후에는 결정 시간이 없다. IS는 서비스 조직이며, 어떤 시스템이 핵심인지는 업무를 수행하는 비즈니스가 안다.</p>
+<table>
+<tr><th>옵션</th><th>평가</th></tr>
+<tr><td>A. 모든 IS 프로세스</td><td>❌ 우선순위 없이 불가능</td></tr>
+<tr><td>B. 모든 재무 앱</td><td>❌ 재무가 항상 핵심은 아님</td></tr>
+<tr><td>C. IS 관리자 지정</td><td>❌ 비즈니스가 결정해야 함</td></tr>
+<tr style="background:#dcfce7"><td><b>D. 비즈니스 우선순위</b></td><td>✅ 사전 결정·업무 지식 기반</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>복구 우선순위는 비즈니스 결정사항</b> (IS 결정 ❌)<br>
+• BIA 결과가 우선순위의 근거<br>
+• IS는 서비스 제공자 — 우선순위 따라 복구 실행<br>
+• 관련: Q353(BIA), Q361(프로세스 오너), Q382(사용자 부서 참여)</div>`,
+reference:"CRM Chapter 4: Recovery Prioritization",
+keyConcepts:[
+"비즈니스 우선순위|복구 순서는 업무 중요도 기반 — 비즈니스가 결정",
+"IS 역할|서비스 제공자 — 우선순위 따라 실행",
+"사전 결정|재해 후 결정 불가 — BIA로 사전 정의"
+]
+},
+
+{
+id: 405,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `DRP에 필요한 시스템 자원의 가용성을 결정할 때 가장 중요한 승인은?<br><small style="color:#94a3b8">MOST important approval when determining availability of system resources for the DRP?</small>`,
+options: [
+"임원 경영진<br><small style='color:#94a3b8'>Executive management</small>",
+"IT 관리<br><small style='color:#94a3b8'>IT management</small>",
+"이사회<br><small style='color:#94a3b8'>Board of directors</small>",
+"운영위원회<br><small style='color:#94a3b8'>Steering committee</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. IT 관리</b></p>
+<p>DRP는 IT 서비스의 복구·프로비저닝에 기반하므로, <b>시스템 자원의 가용성을 책임지는 IT 관리</b>의 승인이 가장 중요하다 — 재해 발생 시 자원이 실제로 가용함을 보증할 수 있는 주체이기 때문.</p>
+<table>
+<tr><th>역할</th><th>책임</th></tr>
+<tr><td>임원 경영진</td><td>전반적 승인 — 자원 가용성 직접 보증 ❌</td></tr>
+<tr style="background:#dcfce7"><td><b>IT 관리</b></td><td>✅ 시스템 자원 관리·가용성 보증</td></tr>
+<tr><td>이사회</td><td>최종 승인 — 운영적 가용성 ❌</td></tr>
+<tr><td>운영위원회</td><td>RTO/RPO 등 요구사항 결정</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"자원 가용성" 키워드 → IT 관리</b><br>
+• 운영위원회 = 요구사항 정의 / IT = 자원 보증 / 임원 = 전략 승인<br>
+• 질문의 구체적 측면(자원 가용성)에 직접 책임지는 주체 선택<br>
+• 관련: Q401(DRP 검토), Q404(우선순위는 비즈니스)</div>`,
+reference:"CRM Chapter 4: DRP Approval Roles",
+keyConcepts:[
+"IT 관리 책임|시스템 자원 가용성 보증",
+"역할 분담|운영위=요구사항, IT=실행, 임원=승인",
+"질문 키워드|승인 대상에 따라 적절한 주체 다름"
+]
+},
+
+{
+id: 406,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `재해 복구 노력의 성공을 가장 잘 보장하는 것은?<br><small style="color:#94a3b8">MOST likely ensure that a disaster recovery effort is successful?</small>`,
+options: [
+"테이블탑 테스트 수행<br><small style='color:#94a3b8'>Tabletop test was performed</small>",
+"데이터 복원 완료<br><small style='color:#94a3b8'>Data restoration was completed</small>",
+"복구 절차 승인<br><small style='color:#94a3b8'>Recovery procedures are approved</small>",
+"적절한 인력 자원 투입<br><small style='color:#94a3b8'>Appropriate staff resources are committed</small>"
+],
+correct: 1,
+explanation: `<p><b>정답: B. 데이터 복원 완료</b></p>
+<p>백업이 유효한지 확인하는 <b>가장 신뢰할 수 있는 방법은 실제로 시스템에 복원해 보는 것</b>이다. 데이터 복원 테스트는 최소 연 1회 수행해야 한다. 데이터 없이는 다른 어떤 요소도 복구를 성공시킬 수 없다.</p>
+<table>
+<tr><th>옵션</th><th>보장 수준</th></tr>
+<tr><td>A. 테이블탑</td><td>유용하나 실제 작동 미검증</td></tr>
+<tr style="background:#dcfce7"><td><b>B. 데이터 복원 완료</b></td><td>✅ 실제 작동 입증</td></tr>
+<tr><td>C. 절차 승인</td><td>문서적 준비 — 작동 미검증</td></tr>
+<tr><td>D. 인력 투입</td><td>필수 요소이나 데이터 없으면 무의미</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"백업이 작동한다"는 것은 복원해봐야 안다</b><br>
+• 백업 성공 ≠ 복원 성공 (검증 필수)<br>
+• 데이터는 복구의 가장 근본적 자산<br>
+• 관련: Q400(DR 사이트 성능), Q403(Preparedness test)</div>`,
+reference:"CRM Chapter 4: Backup Restoration Validation",
+keyConcepts:[
+"복원 테스트|백업 유효성 검증의 유일한 신뢰 방법",
+"백업 vs 복원|성공적 백업이 성공적 복원을 보장하지 않음",
+"데이터 우선|복구의 근본 자산 — 없으면 모든 것이 무의미"
+]
+},
+
+{
+id: 407,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `DRP의 비핵심 시스템 테스트를 BCP와 통합하는 가장 좋은 이유는?<br><small style="color:#94a3b8">BEST reason for integrating noncritical system DRP testing with BCP?</small>`,
+options: [
+"DRP를 BIA에 정렬시키기 위해<br><small style='color:#94a3b8'>To ensure DRPs aligned to BIA</small>",
+"인프라 복구 인력이 비즈니스 SME의 도움을 받을 수 있도록<br><small style='color:#94a3b8'>Infrastructure personnel can be assisted by business SMEs</small>",
+"BCP가 DRP에 없는 역량의 존재를 가정할 수 있기 때문<br><small style='color:#94a3b8'>BCPs may assume capabilities not in DRPs</small>",
+"비즈니스 임원에게 DR 역량에 대한 지식 제공<br><small style='color:#94a3b8'>Provide business executives with DR knowledge</small>"
+],
+correct: 2,
+explanation: `<p><b>정답: C. BCP가 DRP에 없는 역량의 존재를 가정할 수 있음</b></p>
+<p>BCP는 재택근무 등 <b>DRP에 포함되지 않은 역량</b>을 전제할 수 있고, IT가 그 역량(예: 대규모 재택 지원)을 충분히 준비하지 않았을 수 있다. 또한 외부 온라인 시스템 같은 비핵심 시스템도 비즈니스 핵심 프로세스에 사용되면 테스트가 필요한데 DRP 범위 밖일 수 있다 → 통합 테스트로 격차 발견.</p>
+<table>
+<tr><th>옵션</th><th>평가</th></tr>
+<tr><td>A. BIA 정렬</td><td>맞지만 비핵심 통합 테스트와 무관</td></tr>
+<tr><td>B. SME 지원</td><td>인프라 복구는 SME 불필요</td></tr>
+<tr style="background:#dcfce7"><td><b>C. BCP-DRP 격차</b></td><td>✅ 가정과 실제 역량의 불일치 발견</td></tr>
+<tr><td>D. 임원 인식</td><td>테스트의 주 목적이 아님</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BCP 가정 ≠ DRP 실제 역량</b> — 통합 테스트로 격차 노출<br>
+• 비핵심 IT 시스템도 핵심 비즈니스 프로세스 지원 가능<br>
+• BCP/DRP 분리 운영의 위험: 가정의 불일치<br>
+• 관련: Q386(IR-BC 정합성), Q387(부분 라이브 테스트)</div>`,
+reference:"CRM Chapter 4: Integrated BCP/DRP Testing",
+keyConcepts:[
+"BCP-DRP 격차|BCP가 가정한 역량이 DRP에 없을 수 있음",
+"통합 테스트 필요성|가정과 실제 역량의 불일치 노출",
+"비핵심 시스템 중요성|핵심 비즈니스 프로세스 지원 가능"
+]
+},
+
+{
+id: 408,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `재해 복구 감사 수행 시 IS 감사인이 가장 중요하게 검토할 사항은?<br><small style="color:#94a3b8">MOST important to review when conducting a disaster recovery audit?</small>`,
+options: [
+"필요 시 핫사이트가 계약·이용 가능<br><small style='color:#94a3b8'>Hot site contracted and available</small>",
+"BC 매뉴얼이 이용 가능·최신 상태<br><small style='color:#94a3b8'>BC manual available and current</small>",
+"보험 보장이 충분·보험료 최신<br><small style='color:#94a3b8'>Insurance coverage adequate, premiums current</small>",
+"데이터 백업이 적시 수행·외부 저장<br><small style='color:#94a3b8'>Data backups performed timely and stored offsite</small>"
+],
+correct: 3,
+explanation: `<p><b>정답: D. 데이터 백업 적시 수행·외부 저장</b></p>
+<p>처리할 <b>데이터가 없으면 다른 모든 복구 요소는 무가치</b>하다. 핫사이트·매뉴얼·보험이 모두 갖춰져 있어도 데이터가 없으면 복구 자체가 불가능하다. 계획이 없어도 데이터만 있으면 어떤 형태의 복구라도 가능.</p>
+<table>
+<tr><th>옵션</th><th>중요도</th></tr>
+<tr><td>A. 핫사이트</td><td>중요하나 데이터 없으면 무용</td></tr>
+<tr><td>B. BC 매뉴얼</td><td>권장이지만 DR 감사 핵심 ❌</td></tr>
+<tr><td>C. 보험</td><td>재무 보호 — 후순위</td></tr>
+<tr style="background:#dcfce7"><td><b>D. 데이터 백업</b></td><td>✅ 모든 복구의 전제 조건</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>데이터 = 복구의 절대 전제</b> (인프라보다 우선)<br>
+• Q380(BCP 감사)에서는 "인명 안전" 정답 → 인명 옵션 부재 시 데이터<br>
+• 우선순위: 인명 > 데이터 > 인프라 > 재무 보호<br>
+• 관련: Q380(BCP 감사=인명), Q406(데이터 복원 검증)</div>`,
+reference:"CRM Chapter 4: DR Audit Priorities",
+keyConcepts:[
+"데이터 우선|모든 복구 활동의 절대 전제",
+"DR vs BCP 감사|DR=데이터 백업, BCP=인명 안전",
+"외부 저장|현장 동시 손실 방지를 위한 필수 요건"
+]
+},
+
+{
+id: 409,
+domain: "4",
+ks: "4B5 Disaster Recovery Plans",
+question: `DRP를 효과적으로 실행하기 위해 가장 중요한 요소는?<br><small style="color:#94a3b8">MOST critical element to execute a DRP effectively?</small>`,
+options: [
+"백업 데이터의 외부 저장<br><small style='color:#94a3b8'>Offsite storage of backup data</small>",
+"주요 DR 연락처의 최신 목록<br><small style='color:#94a3b8'>Up-to-date list of key DR contacts</small>",
+"대체 데이터 센터의 가용성<br><small style='color:#94a3b8'>Availability of a replacement data center</small>",
+"명확히 정의된 RTO<br><small style='color:#94a3b8'>Clearly defined RTO</small>"
+],
+correct: 0,
+explanation: `<p><b>정답: A. 백업 데이터의 외부 저장</b></p>
+<p>시스템 복원을 위해서는 <b>백업 데이터에 대한 접근</b>이 필수다. 외부 저장이 없으면 현장 재해 시 백업도 함께 손실된다. 다른 모든 요소(연락처·대체 센터·RTO)는 데이터 없이는 무의미하다.</p>
+<table>
+<tr><th>옵션</th><th>중요도</th></tr>
+<tr style="background:#dcfce7"><td><b>A. 외부 백업 저장</b></td><td>✅ 복원의 절대 전제</td></tr>
+<tr><td>B. 연락처 목록</td><td>중요하나 데이터 없으면 무용</td></tr>
+<tr><td>C. 대체 센터</td><td>한 옵션 — 모바일·상호협정 대체 가능</td></tr>
+<tr><td>D. RTO 정의</td><td>BCP 핵심 — DR 실행의 본질 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DR 핵심 = 데이터 복원</b> → 외부 백업이 절대 요건<br>
+• 대체 센터는 여러 솔루션 중 하나일 뿐<br>
+• RTO는 계획 요소 — 실행 요소 아님<br>
+• 관련: Q406(데이터 복원), Q408(DR 감사 우선순위)</div>`,
+reference:"CRM Chapter 4: DR Critical Elements",
+keyConcepts:[
+"외부 백업 저장|현장 재해 시 동시 손실 방지 — DR 실행의 절대 전제",
+"실행 vs 계획|RTO는 계획, 백업은 실행",
+"대체 솔루션|데이터 센터·모바일·상호협정·아웃소싱"
+]
+},
+
+{
+id:410,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"To ensure structured disaster recovery, it is MOST important that the business continuity plan (BCP) and disaster recovery plan (DRP) are:",
+questionKo:"구조적인 재해 복구를 보장하기 위해 BCP와 DRP에 가장 중요한 것은?",
+options:[
+"stored at an alternate location.",
+"communicated to all users.",
+"tested regularly.",
+"updated regularly."
+],
+optionsKo:[
+"대체 위치에 보관된다.",
+"모든 사용자에게 전달된다.",
+"정기적으로 테스트된다.",
+"정기적으로 갱신된다."
+],
+correct:2,
+explanation:`<b>정답: C. 정기적으로 테스트된다</b><br><br>
+<b>핵심:</b> 테스트되지 않은 BCP/DRP는 실제 재해 상황에서 무용지물이다. 보관·전달·갱신 모두 테스트 없이는 구조적 복구를 보장할 수 없다.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 대체 위치 보관</td><td>전제 조건일 뿐 — 실제 작동 검증 ❌</td></tr>
+<tr><td>B. 사용자 전달</td><td>인지만으로는 실행 불가 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 정기 테스트</b></td><td><b>✅ 팀이 절차를 숙지·검증 → 구조적 복구 가능</b></td></tr>
+<tr><td>D. 정기 갱신</td><td>최신 상태라도 검증 안 되면 무용 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>테스트 = BCP/DRP 신뢰성의 본질</b><br>
+• 갱신·보관·전달은 테스트의 보조 요건<br>
+• 관련: Q393(준비도 테스트), Q403(시뮬레이션), Q401(검토), Q407(BCP-DRP 통합 테스트)</div>`,
+reference:"CRM Chapter 4: BCP/DRP Testing",
+keyConcepts:[
+"정기 테스트|BCP/DRP의 구조적 복구 보장 핵심",
+"테스트 vs 갱신|갱신만으로는 실전 작동 미검증",
+"통합 검증|BCP·DRP 팀 절차 숙지 효과"
+]
+},
+
+{
+id:411,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"Which of the following provides the BEST evidence of an organization's disaster recovery capability readiness?",
+questionKo:"조직의 재해 복구 역량 준비도에 대한 가장 좋은 증거는?",
+options:[
+"Disaster recovery plan (DRP)",
+"Customer references for the alternate site provider",
+"Processes for maintaining the DRP",
+"Results of tests and exercises"
+],
+optionsKo:[
+"재해 복구 계획(DRP)",
+"대체 사이트 공급자에 대한 고객 참조",
+"DRP 유지관리 프로세스",
+"테스트 및 훈련 결과"
+],
+correct:3,
+explanation:`<b>정답: D. 테스트 및 훈련 결과</b><br><br>
+<b>핵심:</b> 계획·유지관리·공급자 평판은 모두 보조 증거. 오직 실제 테스트 결과만이 DR 역량의 적정성을 입증한다.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. DRP 문서</td><td>존재만으로는 효과성 미검증 ❌</td></tr>
+<tr><td>B. 공급자 고객 참조</td><td>사이트 선정 보조 — 계획 효과성 무관 ❌</td></tr>
+<tr><td>C. DRP 유지 프로세스</td><td>최신성 보장 — 작동 보장 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 테스트·훈련 결과</b></td><td><b>✅ 적정성 입증 + 합리적 준비도 보증</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>증거 = 결과</b> → 문서·프로세스가 아니라 실측<br>
+• 테스트 없는 DRP는 가설일 뿐<br>
+• 관련: Q410(정기 테스트), Q393(준비도 테스트), Q403(시뮬레이션), Q401(검토)</div>`,
+reference:"CRM Chapter 4: DR Readiness Evidence",
+keyConcepts:[
+"테스트 결과|DR 준비도의 유일한 객관적 증거",
+"문서 vs 실증|DRP 존재 ≠ DRP 작동",
+"감사 증거 우선순위|훈련 결과 > 유지관리 > 문서"
+]
+},
+
+{
+id:412,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"After a disaster declaration, the media creation date at a warm recovery site is based on the:",
+questionKo:"재해 선언 후 웜 복구 사이트의 미디어 생성일은 무엇에 기반하는가?",
+options:[
+"recovery point objective (RPO)",
+"recovery time objective (RTO)",
+"service delivery objective (SDO)",
+"maximum tolerable outage (MTO)"
+],
+optionsKo:[
+"복구 시점 목표(RPO)",
+"복구 시간 목표(RTO)",
+"서비스 제공 목표(SDO)",
+"최대 허용 중단 시간(MTO)"
+],
+correct:0,
+explanation:`<b>정답: A. RPO</b><br><br>
+<b>핵심:</b> 미디어 생성일 = 데이터 복원 기준점 = RPO. RPO는 허용 가능한 데이터 손실량을 정의하므로 복원 미디어가 얼마나 최신이어야 하는지 결정한다.<br><br>
+<table class="cmp">
+<tr><th>지표</th><th>의미</th><th>미디어 생성일과의 관계</th></tr>
+<tr style="background:#d4edda"><td><b>A. RPO</b></td><td><b>허용 데이터 손실량</b></td><td><b>✅ 복원 시점 = 미디어 생성일</b></td></tr>
+<tr><td>B. RTO</td><td>복구까지 허용 시간</td><td>시간 측정 — 데이터 시점 무관 ❌</td></tr>
+<tr><td>C. SDO</td><td>대체 모드 서비스 수준</td><td>운영 품질 지표 ❌</td></tr>
+<tr><td>D. MTO</td><td>대체 모드 최대 지속 시간</td><td>대체 운영 한도 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>RPO ↔ 데이터 / RTO ↔ 시간</b><br>
+• 미디어 생성일이 RPO보다 오래되면 손실 허용 한도 초과<br>
+• 관련: Q394(백업 주기 ≤ RPO), Q396(RPO=0 동기 복제)</div>`,
+reference:"CRM Chapter 4: RPO and Backup Media",
+keyConcepts:[
+"RPO|데이터 손실 허용 기준 — 미디어 생성일 결정",
+"RTO|복구 시간 — 미디어 시점과 무관",
+"SDO/MTO|대체 운영 품질·지속 한도"
+]
+},
+
+{
+id:413,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"An information systems (IS) auditor is performing a review of the disaster recovery hot site used by a financial institution. Which of the following is the GREATEST concern?",
+questionKo:"금융기관의 재해 복구 핫사이트 검토 시 가장 큰 우려 사항은?",
+options:[
+"System administrators use shared accounts which never expire at the hot site.",
+"Disk space utilization data are not kept current.",
+"Physical security controls at the hot site are less robust than at the main site.",
+"Servers at the hot site do not have the same specifications as at the main site."
+],
+optionsKo:[
+"핫사이트의 시스템 관리자들이 만료되지 않는 공유 계정을 사용한다.",
+"디스크 공간 사용량 데이터가 최신 상태로 유지되지 않는다.",
+"핫사이트의 물리적 보안 통제가 본사이트보다 덜 견고하다.",
+"핫사이트 서버 사양이 본사이트와 동일하지 않다."
+],
+correct:1,
+explanation:`<b>정답: B. 디스크 사용량 데이터 미최신</b><br><br>
+<b>핵심:</b> 디스크 공간 부족 = 재해 시 복구 자체 실패. 다른 우려는 정책·절차로 보완 가능하지만 용량 부족은 복구 불가로 직결.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 공유·무만료 계정</td><td>보안 관행 문제 — 정책으로 보완 가능 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 디스크 사용량 미파악</b></td><td><b>✅ 용량 부족 시 복구 자체 실패</b></td></tr>
+<tr><td>C. 물리 보안 약함</td><td>인력·절차로 보완 가능 ❌</td></tr>
+<tr><td>D. 서버 사양 차이</td><td>필수 프로그램 구동 가능하면 무방 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>복구 가능성 자체를 위협</b> > 보안·성능 이슈<br>
+• 핫사이트 용량 모니터링은 DR 운영의 기본<br>
+• 관련: Q400(DR 사이트 성능), Q406(데이터 복원), Q409(외부 백업)</div>`,
+reference:"CRM Chapter 4: Hot Site Audit",
+keyConcepts:[
+"용량 모니터링|디스크 부족 시 복구 자체 실패",
+"우선순위|복구 실현 가능성 > 보안·성능 미세조정",
+"보완 가능성|정책·인력으로 해결 가능한 이슈는 차순위"
+]
+},
+
+{
+id:414,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"Which of the following disaster recovery testing techniques is the MOST efficient way to determine the effectiveness of the plan?",
+questionKo:"DR 계획의 효과성을 결정하는 가장 효율적인 테스트 기법은?",
+options:[
+"Preparedness tests",
+"Paper tests",
+"Full operational tests",
+"Actual service disruption"
+],
+optionsKo:[
+"준비도 테스트",
+"문서(페이퍼) 테스트",
+"전체 운영 테스트",
+"실제 서비스 중단"
+],
+correct:0,
+explanation:`<b>정답: A. 준비도 테스트</b><br><br>
+<b>핵심:</b> 준비도 테스트는 전체 환경을 단계적으로 시뮬레이션 → 비교적 낮은 비용으로 효과성 검증. 효율(비용·리스크 대비 학습) 관점에서 최적.<br><br>
+<table class="cmp">
+<tr><th>기법</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 준비도 테스트</b></td><td><b>✅ 단계별 시뮬레이션 — 저비용·고학습</b></td></tr>
+<tr><td>B. 페이퍼 테스트</td><td>시뮬레이션 없음 — 학습·증거 부족 ❌</td></tr>
+<tr><td>C. 전체 운영 테스트</td><td>승인·비용 부담 + 실제 재해 유발 위험 ❌</td></tr>
+<tr><td>D. 실제 서비스 중단</td><td>규제·정책 강제 외 비권장 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>효율성 = 비용 대비 효과성 검증력</b><br>
+• 준비도 테스트 = 실자원 사용 + 단계적 = 균형점<br>
+• 관련: Q393(비용효율 준비도), Q403(시뮬레이션), Q410(정기 테스트), Q411(테스트 결과 증거)</div>`,
+reference:"CRM Chapter 4: DR Test Techniques",
+keyConcepts:[
+"준비도 테스트|단계적 환경 시뮬레이션 — 효율 최적",
+"페이퍼 vs 운영|학습 부족 ↔ 비용·위험 과다",
+"DR 테스트 효율성|비용·리스크 대비 검증력"
+]
+},
+
+{
+id:415,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"Which of the following scenarios provides the BEST disaster recovery plan (DRP) to implement for critical applications?",
+questionKo:"중요 애플리케이션에 가장 좋은 DR 시나리오는?",
+options:[
+"Daily data backups that are stored offsite and a hot site located 140 km from the main data center.",
+"Daily data backups that are stored onsite in a fireproof safe.",
+"Real-time data replication between the main data center and the hot site located 500 m from the main site.",
+"Daily data backups that are stored offsite with a warm site located 70 km from the main data center."
+],
+optionsKo:[
+"외부 보관 일일 백업 + 본 데이터센터에서 140km 떨어진 핫사이트",
+"내화 금고에 보관되는 내부 일일 백업",
+"본 사이트에서 500m 떨어진 핫사이트와 실시간 데이터 복제",
+"외부 보관 일일 백업 + 본 데이터센터에서 70km 떨어진 웜사이트"
+],
+correct:0,
+explanation:`<b>정답: A. 외부 백업 + 140km 핫사이트</b><br><br>
+<b>핵심:</b> 핫사이트는 본사이트에서 충분히 떨어져야(광역 재해 회피) 하며, 외부 백업과 결합되어야 함. 500m는 동일 재해 영향권, 웜사이트는 복구 시간 부족.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 외부 백업 + 140km 핫사이트</b></td><td><b>✅ 지리적 분산 + 즉시 복구 가능</b></td></tr>
+<tr><td>B. 내부 내화 금고</td><td>복제 사이트 부재 — 중요 앱 부적합 ❌</td></tr>
+<tr><td>C. 500m 핫사이트 + 실시간</td><td>지리적 분산 부족 — 광역 재해 동반 손실 ❌</td></tr>
+<tr><td>D. 70km 웜사이트</td><td>복구에 며칠 소요 — 중요 앱 부적합 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>지리적 분산 + 사이트 등급</b> 둘 다 충족 필요<br>
+• 핫사이트는 광역 재해 회피 위해 충분한 거리<br>
+• 관련: Q399(단일 사이트 클러스터링), Q398(콜드사이트), Q396(RPO/RTO)</div>`,
+reference:"CRM Chapter 4: DR Site Selection",
+keyConcepts:[
+"지리적 분산|광역 재해 시 동반 손실 방지",
+"사이트 등급|중요 앱 = 핫사이트, 웜은 복구 시간 부족",
+"외부 백업|복원 데이터 가용성 보장"
+]
+},
+
+{
+id:416,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"An IS auditor discovers that the DRP does not include a critical application hosted in the cloud. Management states the cloud vendor is responsible for DR and DR testing. What is the NEXT course of action?",
+questionKo:"DRP에 클라우드 호스팅 중요 앱이 누락. 경영진은 클라우드 벤더가 DR 책임이라고 답변. 다음 조치는?",
+options:[
+"Plan an audit of the cloud vendor.",
+"Review the vendor contract to determine its DR capabilities.",
+"Review an independent auditor's report of the cloud vendor.",
+"Request a copy of the DRP from the cloud vendor."
+],
+optionsKo:[
+"클라우드 벤더 감사 계획",
+"DR 역량 확인 위해 벤더 계약서 검토",
+"클라우드 벤더의 독립 감사 보고서 검토",
+"클라우드 벤더로부터 DRP 사본 요청"
+],
+correct:1,
+explanation:`<b>정답: B. 벤더 계약서 검토</b><br><br>
+<b>핵심:</b> 벤더의 DR 책임은 계약서에 명시되어야만 강제 가능. 계약 조항 확인이 모든 후속 조치의 전제 — 감사·보고서·DRP 요청은 계약 명시 후에 의미 있음.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정·순서</th></tr>
+<tr><td>A. 벤더 감사</td><td>계약 명시 후에만 의미 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 계약서 검토</b></td><td><b>✅ NEXT — DR 의무·RTO/RPO 명시 확인</b></td></tr>
+<tr><td>C. 독립 감사 보고서</td><td>계약 명시 후 후속 검증 단계 ❌</td></tr>
+<tr><td>D. DRP 사본 요청</td><td>계약 명시 후 적정성 검토 단계 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>계약 = DR 책임의 법적 기반</b><br>
+• 계약 미명시 시 벤더는 DR 제공 의무 없음<br>
+• 관련: Q411(테스트 결과 증거), Q413(핫사이트 감사)</div>`,
+reference:"CRM Chapter 4: Cloud DR Audit",
+keyConcepts:[
+"계약 우선|DR 책임은 계약 명시로만 강제",
+"NEXT 절차|계약 검토 → 보고서 → DRP → 감사",
+"클라우드 책임 분담|RTO/RPO 명시 필수"
+]
+},
+
+{
+id:417,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"There are several methods of providing telecommunication continuity. The method of routing traffic through split-cable or duplicate-cable facilities is called:",
+questionKo:"분할 케이블 또는 이중 케이블 시설을 통해 트래픽을 라우팅하는 통신 연속성 기법은?",
+options:[
+"alternative routing.",
+"diverse routing.",
+"long-haul network diversity.",
+"last-mile circuit protection."
+],
+optionsKo:[
+"대체 라우팅(alternative routing)",
+"다양 라우팅(diverse routing)",
+"장거리 네트워크 다양성",
+"라스트마일 회선 보호"
+],
+correct:1,
+explanation:`<b>정답: B. Diverse routing</b><br><br>
+<b>핵심:</b> Diverse routing = 분할/이중 케이블 시설로 라우팅. Alternative는 다른 매체(구리↔광)·네트워크 사용. 두 개념 자주 혼동.<br><br>
+<table class="cmp">
+<tr><th>기법</th><th>정의</th></tr>
+<tr><td>A. Alternative routing</td><td>다른 매체·회선·종단점 사용 (구리↔광) ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Diverse routing</b></td><td><b>✅ 분할/이중 케이블 시설 라우팅</b></td></tr>
+<tr><td>C. Long-haul diversity</td><td>장거리 캐리어 간 패킷 스위칭 다양화 ❌</td></tr>
+<tr><td>D. Last-mile protection</td><td>로컬 루프 이중화(T-1·마이크로파·동축) ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Diverse = 케이블 시설 이중화</b> (동일 도관 가능 → 한계 존재)<br>
+• <b>Alternative = 매체·네트워크 변경</b><br>
+• Long-haul = 장거리, Last-mile = 로컬 루프</div>`,
+reference:"CRM Chapter 4: Telecommunications Continuity",
+keyConcepts:[
+"Diverse routing|분할/이중 케이블 시설",
+"Alternative routing|다른 매체·네트워크",
+"Long-haul vs Last-mile|장거리 캐리어 ↔ 로컬 루프"
+]
+},
+
+{
+id:418,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"In which of the following situations is it MOST appropriate to implement data mirroring as the recovery strategy?",
+questionKo:"데이터 미러링을 복구 전략으로 구현하기에 가장 적절한 상황은?",
+options:[
+"Disaster tolerance is high.",
+"The recovery time objective (RTO) is high.",
+"The recovery point objective (RPO) is low.",
+"The RPO is high."
+],
+optionsKo:[
+"재해 허용도가 높다.",
+"RTO가 높다.",
+"RPO가 낮다.",
+"RPO가 높다."
+],
+correct:2,
+explanation:`<b>정답: C. RPO가 낮다</b><br><br>
+<b>핵심:</b> 데이터 미러링 = 데이터 손실 최소화 기법 → RPO가 낮을(=손실 허용 최소) 때 적합. RTO나 재해 허용도와는 직접 관계 없음.<br><br>
+<table class="cmp">
+<tr><th>상황</th><th>판정</th></tr>
+<tr><td>A. 재해 허용도 높음</td><td>RTO 영역 — 미러링 무관 ❌</td></tr>
+<tr><td>B. RTO 높음</td><td>복구 시간 여유 — 미러링 불필요 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. RPO 낮음</b></td><td><b>✅ 손실 최소화 → 미러링 필수</b></td></tr>
+<tr><td>D. RPO 높음</td><td>저비용 백업으로 충분 — 미러링 과잉 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>미러링 ↔ RPO</b> (데이터), 사이트·복구속도 ↔ RTO (시간)<br>
+• RPO=0 → 동기 미러링, RPO 낮음 → 미러링 일반<br>
+• 관련: Q394(백업주기 ≤ RPO), Q396(RPO=0 동기), Q412(미디어 생성일=RPO)</div>`,
+reference:"CRM Chapter 4: Data Mirroring and RPO",
+keyConcepts:[
+"미러링|데이터 손실 최소화 — RPO 낮을 때",
+"RPO vs RTO|데이터 시점 ↔ 복구 시간",
+"비용 효율|RPO 높으면 저비용 백업 충분"
+]
+},
+
+{
+id:419,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"An IS auditor is performing an audit in the data center when the fire alarm begins sounding. Which of the following is the MOST important action for the data center staff to complete?",
+questionKo:"데이터센터 감사 중 화재 경보. 데이터센터 직원이 가장 먼저 완료해야 할 조치는?",
+options:[
+"Notify the local fire department of the alarm condition.",
+"Prepare to activate the fire suppression system.",
+"Ensure all persons in the data center are evacuated.",
+"Remove all backups from the data center."
+],
+optionsKo:[
+"지역 소방서에 경보 상태 통보",
+"화재 진압 시스템 활성화 준비",
+"데이터센터 내 모든 인원 대피 보장",
+"데이터센터에서 모든 백업 매체 반출"
+],
+correct:2,
+explanation:`<b>정답: C. 인원 대피</b><br><br>
+<b>핵심:</b> 인명 안전이 항상 최우선. 데이터·자산은 후순위, 진압 시스템은 자동화, 백업은 외부 보관으로 대체 가능.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 소방서 통보</td><td>대부분 자동 통보 ❌</td></tr>
+<tr><td>B. 진압 시스템 활성화</td><td>대피 전 활성화 시 위험 — 자동 작동 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 인원 대피</b></td><td><b>✅ 인명 안전 = 절대 우선</b></td></tr>
+<tr><td>D. 백업 매체 반출</td><td>대피 지연 + 외부 보관으로 대체 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Life safety first</b> — CISA 절대 원칙<br>
+• 자산 보호 > 인명 보호는 항상 오답<br>
+• 관련: Q380(BCP 감사=인명), Q409(외부 백업)</div>`,
+reference:"CRM Chapter 4: Life Safety Priority",
+keyConcepts:[
+"인명 우선|모든 비상 상황의 절대 1순위",
+"자동화 의존|진압·통보 시스템은 자동 작동",
+"백업 대체성|외부 보관으로 데이터 손실 위험 완화"
+]
+},
+
+{
+id:420,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"The MAIN purpose for periodically testing offsite disaster recovery facilities is to:",
+questionKo:"외부 DR 시설을 주기적으로 테스트하는 주요 목적은?",
+options:[
+"protect the integrity of the data in the database.",
+"eliminate the need to develop detailed contingency plans.",
+"ensure the continued compatibility of the contingency facilities.",
+"ensure that program and system documentation remains current."
+],
+optionsKo:[
+"데이터베이스 데이터 무결성 보호",
+"상세한 비상 계획 개발 필요성 제거",
+"비상 시설의 지속적 호환성 보장",
+"프로그램·시스템 문서의 최신성 보장"
+],
+correct:2,
+explanation:`<b>정답: C. 비상 시설의 지속적 호환성 보장</b><br><br>
+<b>핵심:</b> 외부 시설 테스트의 본질은 본 사이트와 DR 사이트 간 하드웨어·소프트웨어 호환성 검증. 실제 재해 시 계획이 작동함을 보증.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. DB 무결성 보호</td><td>백업 유효성 ≠ 무결성 보호 ❌</td></tr>
+<tr><td>B. 상세 계획 불필요</td><td>테스트는 계획 검증이지 대체 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 호환성 보장</b></td><td><b>✅ 본↔DR 사이트 작동 보증</b></td></tr>
+<tr><td>D. 문서 최신화</td><td>부수적 효과 — 주 목적 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>호환성 = 환경 변화 시 DR 작동의 핵심</b><br>
+• 본 사이트 변경 시 DR 사이트 동기화 검증<br>
+• 관련: Q400(DR 사이트 성능), Q411(테스트 결과 증거), Q413(핫사이트 감사)</div>`,
+reference:"CRM Chapter 4: Offsite Facility Testing",
+keyConcepts:[
+"호환성 검증|본↔DR 사이트 환경 일치 확인",
+"테스트 본질|계획 작동 보증, 계획 대체 아님",
+"환경 변화 추적|본 사이트 변경 시 DR 동기화"
+]
+},
+
+{
+id:421,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"A hot site should be implemented as a recovery strategy when the:",
+questionKo:"핫사이트를 복구 전략으로 구현해야 하는 경우는?",
+options:[
+"disaster downtime tolerance is low.",
+"recovery point objective (RPO) is high.",
+"recovery time objective (RTO) is high.",
+"maximum tolerable downtime is long."
+],
+optionsKo:[
+"재해 다운타임 허용도가 낮다.",
+"RPO가 높다.",
+"RTO가 높다.",
+"최대 허용 다운타임이 길다."
+],
+correct:0,
+explanation:`<b>정답: A. 다운타임 허용도가 낮다</b><br><br>
+<b>핵심:</b> 핫사이트는 즉시 복구 가능 → 다운타임 허용도가 낮을 때 필수. RTO/MTD가 길거나 RPO가 높으면 웜·콜드사이트가 비용효율적.<br><br>
+<table class="cmp">
+<tr><th>상황</th><th>적합 사이트</th></tr>
+<tr style="background:#d4edda"><td><b>A. 다운타임 허용도 낮음</b></td><td><b>✅ 핫사이트 — 즉시 복구</b></td></tr>
+<tr><td>B. RPO 높음</td><td>데이터 손실 허용 — 미러링 불필요 ❌</td></tr>
+<tr><td>C. RTO 높음</td><td>웜·콜드사이트 가능 ❌</td></tr>
+<tr><td>D. MTD 김</td><td>웜·콜드사이트 비용효율적 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>핫사이트 = 짧은 RTO/낮은 다운타임 허용</b><br>
+• 사이트 등급 ↔ 시간 지표(RTO/MTD), 미러링 ↔ 데이터 지표(RPO)<br>
+• 관련: Q398(콜드사이트), Q415(140km 핫사이트), Q418(미러링/RPO)</div>`,
+reference:"CRM Chapter 4: Recovery Site Selection",
+keyConcepts:[
+"핫사이트|즉시 복구 — 다운타임 허용 낮을 때",
+"사이트 등급 ↔ 시간|RTO·MTD 짧을수록 핫",
+"비용 효율|허용 시간 길면 웜·콜드"
+]
+},
+
+{
+id:422,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"A large chain of shops with EFT POS devices has a central communications processor for connecting to the banking network. Which of the following is the BEST DRP for the communications processor?",
+questionKo:"EFT POS 매장 체인의 은행 네트워크 연결용 중앙 통신 프로세서에 가장 좋은 DRP는?",
+options:[
+"Offsite storage of daily backups",
+"Alternative standby processor onsite",
+"Installation of duplex communication links",
+"Alternative standby processor at another network node"
+],
+optionsKo:[
+"외부 보관 일일 백업",
+"내부 대체 대기 프로세서",
+"이중 통신 회선 설치",
+"다른 네트워크 노드의 대체 대기 프로세서"
+],
+correct:3,
+explanation:`<b>정답: D. 다른 네트워크 노드의 대기 프로세서</b><br><br>
+<b>핵심:</b> 중앙 프로세서 장애는 장비·전원·통신 모든 원인으로 발생 가능. 다른 노드의 대기 프로세서만이 모든 장애 유형을 커버.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 외부 백업</td><td>온라인 EFT — 백업으로 프로세서 대체 불가 ❌</td></tr>
+<tr><td>B. 내부 대기 프로세서</td><td>장비 장애만 대응 — 전원·통신 장애 무력 ❌</td></tr>
+<tr><td>C. 이중 통신 회선</td><td>회선 장애만 대응 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 타 노드 대기 프로세서</b></td><td><b>✅ 장비·전원·통신 모두 커버</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>지리적 분산 + 기능 이중화</b> 결합이 핵심<br>
+• 단일 사이트 이중화는 동반 장애 취약<br>
+• 관련: Q399(단일 사이트 클러스터링), Q415(140km 핫사이트), Q417(diverse routing)</div>`,
+reference:"CRM Chapter 4: Communications DR",
+keyConcepts:[
+"지리적 분산|단일 사이트 장애 회피",
+"포괄 커버|장비·전원·통신 모든 장애 유형 대응",
+"온라인 처리|백업 ≠ 실시간 가용성"
+]
+},
+
+{
+id:423,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"Which of the following statements is useful while drafting a disaster recovery plan (DRP)?",
+questionKo:"DRP 작성 시 유용한 진술은?",
+options:[
+"Downtime costs decrease as the recovery point objective (RPO) increases.",
+"Downtime costs increase with time.",
+"Recovery costs are independent of time.",
+"Recovery costs can only be controlled on a short-term basis."
+],
+optionsKo:[
+"RPO가 증가하면 다운타임 비용이 감소한다.",
+"다운타임 비용은 시간이 지남에 따라 증가한다.",
+"복구 비용은 시간과 무관하다.",
+"복구 비용은 단기적으로만 통제 가능하다."
+],
+correct:1,
+explanation:`<b>정답: B. 다운타임 비용은 시간에 따라 증가</b><br><br>
+<b>핵심:</b> 다운타임 비용(매출 손실·유휴 자원·인건비)은 시간 경과에 따라 증가. 복구 비용은 허용 시간이 짧을수록 높음 → 두 곡선의 교차점이 최적 RTO.<br><br>
+<table class="cmp">
+<tr><th>진술</th><th>판정</th></tr>
+<tr><td>A. 다운타임 ↔ RPO</td><td>RPO는 복구 비용 영역 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 다운타임 ↑ with time</b></td><td><b>✅ 손실 누적 — DRP 핵심 가정</b></td></tr>
+<tr><td>C. 복구 비용 시간 무관</td><td>복구 시간 짧을수록 비용 증가 ❌</td></tr>
+<tr><td>D. 단기 통제만</td><td>좋은 계획으로 예측·통제 가능 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>다운타임 비용 ↑ vs 복구 비용 ↓</b> 교차점 = 최적 전략<br>
+• DRP 본질 = 불확실성 최소화·예측성 증가<br>
+• 관련: Q395(Plan A vs B 비용), Q402(DRP 운영 비용)</div>`,
+reference:"CRM Chapter 4: DR Cost Analysis",
+keyConcepts:[
+"다운타임 비용|시간 경과에 따라 누적 증가",
+"복구 비용|허용 시간 짧을수록 증가",
+"최적 RTO|두 곡선 교차점 — 비용 균형"
+]
+},
+
+{
+id:424,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"An IS auditor is conducting a review of the disaster recovery procedures for a data center. Which of the following indicators BEST shows that the procedures meet the requirements?",
+questionKo:"데이터센터 DR 절차 검토 시 요건 충족을 가장 잘 보여주는 지표는?",
+options:[
+"Documented procedures were approved by management.",
+"Procedures were reviewed and compared with industry good practices.",
+"A tabletop exercise using the procedures was conducted.",
+"Recovery teams and their responsibilities are documented."
+],
+optionsKo:[
+"문서화된 절차가 경영진 승인됨",
+"절차가 업계 모범 사례와 비교 검토됨",
+"절차를 사용한 테이블탑 훈련이 수행됨",
+"복구 팀과 책임이 문서화됨"
+],
+correct:2,
+explanation:`<b>정답: C. 테이블탑 훈련 수행</b><br><br>
+<b>핵심:</b> 테이블탑 훈련은 책임자들이 절차를 직접 검토하며 누락·오류를 발견 → 요건 충족 여부의 가장 강력한 검증.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 경영진 승인</td><td>절차 적정성 미검증 ❌</td></tr>
+<tr><td>B. 모범 사례 비교</td><td>유용하나 실제 검증 부족 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 테이블탑 훈련</b></td><td><b>✅ 책임자 참여 — 누락·오류 식별</b></td></tr>
+<tr><td>D. 팀·책임 문서화</td><td>절차 일부 — 정확성·완전성 미증명 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>실제 사용해본 절차만이 요건 충족 입증</b><br>
+• 테이블탑 = 페이퍼 테스트 + 책임자 참여<br>
+• 관련: Q411(테스트 결과 증거), Q414(준비도 테스트), Q420(외부 시설 테스트)</div>`,
+reference:"CRM Chapter 4: DR Procedure Validation",
+keyConcepts:[
+"테이블탑 훈련|책임자 참여 절차 검토 — 누락 식별",
+"승인 vs 검증|경영진 승인 ≠ 절차 적정성",
+"문서화 vs 작동|문서 존재 ≠ 요건 충족"
+]
+},
+
+{
+id:425,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"What component requires frequent updating to ensure the continued effectiveness of a disaster recovery plan (DRP)?",
+questionKo:"DRP의 지속적 효과성을 위해 자주 갱신해야 하는 요소는?",
+options:[
+"Contact information of key personnel",
+"Server inventory documentation",
+"Individual roles and responsibilities",
+"Procedures for declaring a disaster"
+],
+optionsKo:[
+"핵심 인력 연락처 정보",
+"서버 인벤토리 문서",
+"개별 역할과 책임",
+"재해 선언 절차"
+],
+correct:0,
+explanation:`<b>정답: A. 핵심 인력 연락처</b><br><br>
+<b>핵심:</b> 인력 연락처는 가장 빈번히 변경(이직·번호 변경)되며, 재해 시 즉시 필요. 다른 요소는 상대적으로 안정적이거나 보완 가능.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 핵심 인력 연락처</b></td><td><b>✅ 가장 빈번한 변경 — 즉시 필요</b></td></tr>
+<tr><td>B. 서버 인벤토리</td><td>변경관리 연계 — 인력 있으면 보완 가능 ❌</td></tr>
+<tr><td>C. 역할·책임</td><td>경험 있는 인력이 다른 역할 수행 가능 ❌</td></tr>
+<tr><td>D. 재해 선언 절차</td><td>중요하나 인력 가용성보다 후순위 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>People first</b> — 사람 없으면 어떤 절차도 무용</br>
+• 연락처는 변경 빈도 최고 — 정기 갱신 필수<br>
+• 관련: Q401(DRP 검토·갱신), Q410(정기 테스트)</div>`,
+reference:"CRM Chapter 4: DRP Maintenance",
+keyConcepts:[
+"연락처 갱신|변경 빈도 최고 — 재해 시 즉시 필요",
+"인력 우선|사람 가용성이 절차·인벤토리보다 우선",
+"DRP 유지관리|동적 요소 식별이 핵심"
+]
+},
+
+{
+id:426,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"When developing a disaster recovery plan (DRP), what criteria should be considered when determining the acceptable downtime?",
+questionKo:"DRP 개발 시 허용 가능한 다운타임을 결정할 때 고려해야 할 기준은?",
+options:[
+"Annual loss expectancy",
+"Service delivery objective",
+"Quantity of orphan data",
+"Maximum tolerable outage (MTO)"
+],
+optionsKo:[
+"연간 손실 예상치(ALE)",
+"서비스 제공 목표(SDO)",
+"고아 데이터 양",
+"최대 허용 중단 시간(MTO)"
+],
+correct:3,
+explanation:`<b>정답: D. MTO</b><br><br>
+<b>핵심:</b> MTO = 시스템·프로세스가 재해 후 재개되기까지 조직이 허용 가능한 최대 시간. RTO는 MTO를 기반으로 결정.<br><br>
+<table class="cmp">
+<tr><th>지표</th><th>판정</th></tr>
+<tr><td>A. ALE</td><td>위험관리 계산 — DR 무관 ❌</td></tr>
+<tr><td>B. SDO</td><td>대체 운영 서비스 수준 ❌</td></tr>
+<tr><td>C. 고아 데이터</td><td>BCP 관련 — 다운타임과 무관 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. MTO</b></td><td><b>✅ 허용 다운타임의 직접 기준</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>MTO = 다운타임 한도, RTO = 그 안에 복구 목표</b><br>
+• MTO ≥ RTO (RTO는 MTO 내에서 설정)<br>
+• 관련: Q412(RPO/RTO/MTO/SDO 비교), Q421(다운타임 허용도)</div>`,
+reference:"CRM Chapter 4: MTO and RTO",
+keyConcepts:[
+"MTO|허용 다운타임의 절대 한도",
+"RTO ⊆ MTO|RTO는 MTO 내 설정",
+"DR 지표 구분|ALE는 위험 측정, SDO는 서비스 수준"
+]
+},
+
+{
+id:427,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"An IS auditor is auditing an IT DRP. The IS auditor should PRIMARILY ensure that the plan covers:",
+questionKo:"IT DRP 감사 시 IS 감사인이 가장 우선적으로 확인해야 할 사항은?",
+options:[
+"a resilient IT infrastructure.",
+"alternate site information.",
+"documented disaster recovery test results.",
+"analysis and prioritization of business functions."
+],
+optionsKo:[
+"복원력 있는 IT 인프라",
+"대체 사이트 정보",
+"문서화된 DR 테스트 결과",
+"비즈니스 기능 분석 및 우선순위"
+],
+correct:3,
+explanation:`<b>정답: D. 비즈니스 기능 분석·우선순위</b><br><br>
+<b>핵심:</b> DRP는 비즈니스 요구사항과 정렬되어야 함. 인프라·사이트·테스트 모두 비즈니스 기능 우선순위에 기반해 결정.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 복원력 인프라</td><td>모든 기능에 필요한 것 아님 ❌</td></tr>
+<tr><td>B. 대체 사이트 정보</td><td>우선순위 후의 결정 사항 ❌</td></tr>
+<tr><td>C. 테스트 결과</td><td>유지관리 단계 — 정렬 후 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 비즈니스 기능 우선순위</b></td><td><b>✅ DRP의 출발점 — 비즈니스 정렬</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Business-driven DR</b> — IT 결정은 비즈니스 우선순위에서 파생<br>
+• BIA → 우선순위 → RTO → 인프라·사이트<br>
+• 관련: Q404(복구 우선순위는 비즈니스 결정), Q415(사이트 선정), Q426(MTO)</div>`,
+reference:"CRM Chapter 4: Business-Aligned DRP",
+keyConcepts:[
+"비즈니스 우선순위|DRP의 출발점",
+"BIA 기반 DR|기능 중요도 → 복구 전략",
+"감사 우선|정렬 검증이 인프라·사이트 검증보다 우선"
+]
+},
+
+{
+id:428,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"When reviewing a disaster recovery plan, an IS auditor should be MOST concerned with the lack of:",
+questionKo:"DRP 검토 시 IS 감사인이 가장 우려해야 할 결여 사항은?",
+options:[
+"process owner involvement.",
+"well-documented testing procedures.",
+"an alternate processing facility.",
+"a well-documented data classification scheme."
+],
+optionsKo:[
+"프로세스 소유자 참여",
+"잘 문서화된 테스트 절차",
+"대체 처리 시설",
+"잘 문서화된 데이터 분류 체계"
+],
+correct:0,
+explanation:`<b>정답: A. 프로세스 소유자 참여</b><br><br>
+<b>핵심:</b> 프로세스 소유자는 BIA의 핵심 — 우선순위·중요 요소 검증의 유일한 출처. 참여 없으면 DRP 정당성 자체가 무너짐.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 프로세스 소유자 참여</b></td><td><b>✅ BIA 정당성 — 우선순위 검증의 본질</b></td></tr>
+<tr><td>B. 테스트 절차 문서화</td><td>소유자 참여 없으면 절차 자체 무의미 ❌</td></tr>
+<tr><td>C. 대체 시설</td><td>BIA 결과에 따라 결정 — 후순위 ❌</td></tr>
+<tr><td>D. 데이터 분류</td><td>일반 통제 — DR 정렬과 거리 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BIA 출발점 = 프로세스 소유자</b><br>
+• 비즈니스 정렬 결여는 모든 후속 요소를 무력화<br>
+• 관련: Q404(비즈니스가 우선순위 결정), Q427(비즈니스 기능 정렬)</div>`,
+reference:"CRM Chapter 4: BIA and DRP",
+keyConcepts:[
+"프로세스 소유자|BIA·우선순위 검증의 본질",
+"비즈니스 정렬|결여 시 모든 DR 요소 무력화",
+"감사 우려 우선순위|정렬 결여 > 시설·문서 결여"
+]
+},
+
+{
+id:429,
+domain:"4",
+ks:"4B5 Disaster Recovery Plans",
+question:"Which of the following BEST helps define disaster recovery strategies?",
+questionKo:"DR 전략을 정의하는 데 가장 도움이 되는 것은?",
+options:[
+"Annual loss expectancy and exposure factor",
+"Maximum tolerable downtime and data loss",
+"Existing server and network redundancies",
+"Data backup and offsite storage requirements"
+],
+optionsKo:[
+"연간 손실 예상치(ALE)와 노출 계수",
+"최대 허용 다운타임과 데이터 손실",
+"기존 서버·네트워크 이중화",
+"데이터 백업 및 외부 저장 요건"
+],
+correct:1,
+explanation:`<b>정답: B. 최대 허용 다운타임·데이터 손실 (RTO·RPO)</b><br><br>
+<b>핵심:</b> RTO·RPO는 BIA의 핵심 산출물 → DR 전략 설계의 직접 입력값. 다른 요소는 부수적이거나 일반 위험 측정.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. ALE·노출 계수</td><td>일반 위험 측정 — DR 무관 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. MTD·데이터 손실 (RTO·RPO)</b></td><td><b>✅ BIA 산출물 — DR 전략 직접 결정</b></td></tr>
+<tr><td>C. 기존 이중화</td><td>현황 — 전략 정의 입력 부족 ❌</td></tr>
+<tr><td>D. 백업·저장 요건</td><td>BCP 일부 — 단독으로 전략 정의 불가 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>BIA → RTO/RPO → DR 전략</b> (필수 흐름)<br>
+• 시간 한도 + 데이터 한도 = 전략 선택의 양대 축<br>
+• 관련: Q426(MTO), Q427(비즈니스 정렬), Q418(미러링/RPO)</div>`,
+reference:"CRM Chapter 4: BIA Outputs and DR Strategy",
+keyConcepts:[
+"RTO·RPO|DR 전략의 두 핵심 입력",
+"BIA 산출물|MTD·데이터 손실 한도",
+"전략 vs 현황|현존 이중화는 입력 자료에 불과"
+]
+},
+
+{
+id:430,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Enterprise governance of IT frameworks MAINLY helps organizations address business issues by:",
+questionKo:"엔터프라이즈 IT 거버넌스(EGIT) 프레임워크가 비즈니스 이슈를 해결하는 주요 방식은?",
+options:[
+"aligning high-level strategic objectives with operational-level objectives, followed by direct work outcomes.",
+"establishing a risk management capability to address business issues and preserve the value delivered to stakeholders.",
+"developing a roadmap to help fill in the gap between the current state (as-is) and the desired state (to-be).",
+"conducting multiple meetings with different stakeholder groups to learn about their expectations."
+],
+optionsKo:[
+"고위 전략 목표와 운영 목표를 정렬하고 직접적 작업 결과로 연결",
+"비즈니스 이슈 대응 및 이해관계자 가치 보존을 위한 위험관리 역량 수립",
+"as-is와 to-be 간 격차 해소를 위한 로드맵 개발",
+"이해관계자 그룹과의 다중 회의로 기대치 파악"
+],
+correct:0,
+explanation:`<b>정답: A. 전략·운영 목표 정렬</b><br><br>
+<b>핵심:</b> EGIT의 본질 = 비즈니스 전략과 IT 전략의 정렬. 위험관리·로드맵·이해관계자 회의는 모두 정렬 이후에 의미 있음.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정·순서</th></tr>
+<tr style="background:#d4edda"><td><b>A. 전략 정렬</b></td><td><b>✅ EGIT 본질 — 가치 전달의 출발점</b></td></tr>
+<tr><td>B. 위험관리 수립</td><td>정렬 후 효과적 ❌</td></tr>
+<tr><td>C. 로드맵 개발</td><td>정렬 후 단계 ❌</td></tr>
+<tr><td>D. 이해관계자 회의</td><td>전략 이해 도구 — 정렬에 종속 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Strategic alignment = EGIT 1순위 가치</b><br>
+• 비즈니스 ↔ IT 정렬 → 가치 전달·합리적 비용<br>
+• COBIT 등 EGIT 프레임워크 핵심 원칙</div>`,
+reference:"CRM Chapter 5: EGIT Frameworks",
+keyConcepts:[
+"전략 정렬|EGIT의 1순위 가치",
+"가치 전달|정렬 통한 합리적 비용 달성",
+"COBIT 원칙|비즈니스↔IT 목표 연결"
+]
+},
+
+{
+id:431,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Which of the following is the MOST important input for defining an information security framework for an enterprise?",
+questionKo:"기업 정보보안 프레임워크 정의 시 가장 중요한 입력은?",
+options:[
+"Information security policies",
+"Regulatory compliance requirements",
+"Risk assessment results",
+"Global security standards"
+],
+optionsKo:[
+"정보보안 정책",
+"규제 준수 요건",
+"위험평가 결과",
+"글로벌 보안 표준"
+],
+correct:3,
+explanation:`<b>정답: D. 글로벌 보안 표준</b><br><br>
+<b>핵심:</b> 글로벌 표준(ISO 27001, NIST 등)은 고수준 필수 통제를 제공 → 프레임워크 정의의 출발점. 정책·위험평가는 프레임워크의 산출물·구성요소.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 보안 정책</td><td>프레임워크의 산출물 — 후속 단계 ❌</td></tr>
+<tr><td>B. 규제 준수</td><td>프레임워크 정의를 강제하지 않음 ❌</td></tr>
+<tr><td>C. 위험평가</td><td>프레임워크의 구성 요소 — 입력 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 글로벌 표준</b></td><td><b>✅ 고수준 통제 제공 — 프레임워크 출발점</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>표준 → 프레임워크 → 정책·통제·위험평가</b><br>
+• ISO 27001/NIST CSF/COBIT가 대표 표준<br>
+• 관련: Q430(EGIT 정렬)</div>`,
+reference:"CRM Chapter 5: Security Frameworks",
+keyConcepts:[
+"글로벌 표준|프레임워크 정의의 입력",
+"정책·위험평가|프레임워크의 산출물·구성요소",
+"표준 계층|표준 → 프레임워크 → 정책 → 절차"
+]
+},
+
+{
+id:432,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"An enterprise can ensure that the recipients of emails from its employees can authenticate the identity of the sender by:",
+questionKo:"수신자가 이메일 발신자의 신원을 인증할 수 있도록 보장하는 방법은?",
+options:[
+"digitally signing all email messages.",
+"encrypting all email messages.",
+"compressing all email messages.",
+"password protecting all email messages."
+],
+optionsKo:[
+"모든 이메일 디지털 서명",
+"모든 이메일 암호화",
+"모든 이메일 압축",
+"모든 이메일 비밀번호 보호"
+],
+correct:0,
+explanation:`<b>정답: A. 디지털 서명</b><br><br>
+<b>핵심:</b> 디지털 서명 = 발신자 인증 + 무결성. 암호화는 기밀성, 압축은 크기, 비밀번호는 접근통제 — 모두 인증과 무관.<br><br>
+<table class="cmp">
+<tr><th>방법</th><th>제공 보안 속성</th></tr>
+<tr style="background:#d4edda"><td><b>A. 디지털 서명</b></td><td><b>✅ 발신자 인증 + 무결성 + 부인방지</b></td></tr>
+<tr><td>B. 암호화</td><td>기밀성 — 인증 없음 ❌</td></tr>
+<tr><td>C. 압축</td><td>크기 절감 — 보안 무관 ❌</td></tr>
+<tr><td>D. 비밀번호 보호</td><td>접근통제 — 인증 없음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>인증 = 디지털 서명</b>, 기밀성 = 암호화 (구분 필수)<br>
+• 디지털 서명 = 송신자 개인키 → 수신자 공개키로 검증<br>
+• PKI 기반 부인방지 핵심 메커니즘</div>`,
+reference:"CRM Chapter 5: Digital Signatures",
+keyConcepts:[
+"디지털 서명|발신자 인증·무결성·부인방지",
+"보안 속성 구분|인증 ≠ 기밀성 ≠ 접근통제",
+"PKI|개인키 서명 ↔ 공개키 검증"
+]
+},
+
+{
+id:433,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"To ensure compliance with a security policy requiring that passwords be a combination of letters and numbers, an IS auditor should recommend that:",
+questionKo:"비밀번호가 문자·숫자 조합이어야 한다는 보안 정책 준수를 위해 IS 감사인이 권고할 사항은?",
+options:[
+"the enterprise policy be changed.",
+"passwords are periodically changed.",
+"an automated password management tool be used.",
+"security awareness training is delivered."
+],
+optionsKo:[
+"기업 정책 변경",
+"비밀번호 정기 변경",
+"자동화된 비밀번호 관리 도구 사용",
+"보안 인식 교육 제공"
+],
+correct:2,
+explanation:`<b>정답: C. 자동화된 비밀번호 관리 도구</b><br><br>
+<b>핵심:</b> 자동 도구는 구문 규칙을 강제(예방통제) → 정책 준수 보장. 정책 변경·교육은 강제력 부족.<br><br>
+<table class="cmp">
+<tr><th>선택지</th><th>판정</th></tr>
+<tr><td>A. 정책 변경</td><td>정책은 적절 — 변경 불필요 ❌</td></tr>
+<tr><td>B. 정기 변경</td><td>좋은 관행 — 조합 규칙 강제 안 함 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 자동 관리 도구</b></td><td><b>✅ 예방통제 — 구문 규칙 강제</b></td></tr>
+<tr><td>D. 보안 교육</td><td>인식 향상 — 강제력 없음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>준수 강제 = 자동화된 예방통제</b><br>
+• 교육·정책은 보조 — 기술적 강제 우선<br>
+• 통제 분류: 예방(자동 도구) > 탐지·교정</div>`,
+reference:"CRM Chapter 5: Password Controls",
+keyConcepts:[
+"자동 강제|예방통제 — 정책 준수의 가장 확실한 방법",
+"기술 vs 인식|기술적 통제가 교육보다 강력",
+"비밀번호 도구|구문·반복·재사용 모두 통제"
+]
+},
+
+{
+id:434,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"The implementation of access controls FIRST requires:",
+questionKo:"접근통제 구현 시 가장 먼저 필요한 것은?",
+options:[
+"a classification of information systems (IS) resources.",
+"the labeling of IS resources.",
+"the creation of an access control list.",
+"an inventory of IS resources."
+],
+optionsKo:[
+"IS 자원 분류",
+"IS 자원 라벨링",
+"접근통제 목록(ACL) 생성",
+"IS 자원 인벤토리"
+],
+correct:3,
+explanation:`<b>정답: D. IS 자원 인벤토리</b><br><br>
+<b>핵심:</b> 인벤토리 → 소유권·분류 → 라벨링 → ACL. 무엇이 있는지 모르면 분류·통제 자체가 불가능.<br><br>
+<table class="cmp">
+<tr><th>단계</th><th>순서</th></tr>
+<tr style="background:#d4edda"><td><b>D. 인벤토리</b></td><td><b>✅ 1단계 — 모든 후속 단계의 기반</b></td></tr>
+<tr><td>A. 분류</td><td>2단계 — 인벤토리 후</td></tr>
+<tr><td>B. 라벨링</td><td>3단계 — 분류 후</td></tr>
+<tr><td>C. ACL 생성</td><td>4단계 — 분류·소유권 확정 후</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>You can't protect what you don't know exists</b><br>
+• 인벤토리 → 분류 → 라벨 → 통제 (정통 순서)<br>
+• 자산관리 = 모든 보안 통제의 출발점</div>`,
+reference:"CRM Chapter 5: Access Control Implementation",
+keyConcepts:[
+"인벤토리|접근통제의 1단계 — 자산 식별",
+"통제 순서|인벤토리 → 분류 → 라벨 → ACL",
+"자산관리|모든 보안 통제의 전제"
+]
+},
+
+{
+id:435,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"From a control perspective, the PRIMARY objective of classifying information assets is to:",
+questionKo:"통제 관점에서 정보자산을 분류하는 <b>주된 목적</b>은?",
+options:[
+"A. Establish guidelines for the level of access controls that should be assigned.",
+"B. Ensure access controls are assigned to all information assets.",
+"C. Assist management and auditors in risk assessment.",
+"D. Identify which assets need to be insured against losses."
+],
+optionsKo:[
+"A. 부여할 접근통제 수준에 대한 지침 수립",
+"B. 모든 정보자산에 접근통제 적용 보장",
+"C. 경영진과 감사인의 위험평가 지원",
+"D. 손실 보험이 필요한 자산 식별"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 접근통제 수준 지침 ✅</td><td>민감도·중요도 등급 → 등급별 접근통제 가이드라인 도출 — 분류의 핵심 목적</td></tr>
+<tr><td>B. 모든 자산에 통제</td><td>모든 정보에 접근통제를 적용하면 과잉보호 → 비용 낭비</td></tr>
+<tr><td>C. 위험평가 지원</td><td>분류는 위험평가 결과를 기반으로 수행 (순서 반대)</td></tr>
+<tr><td>D. 보험 대상 식별</td><td>유효하나 분류의 주된 목적이 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 정보자산 분류 흐름</b><br>
+위험평가 → 민감도/중요도 등급 부여 → <mark>등급별 접근통제 지침</mark> → 통제 구현<br><br>
+<b>🔗 관련 문제:</b> Q434(접근통제 순서: 인벤토리→분류→라벨→ACL) · Q430(EGIT 프레임워크) · Q431(보안 프레임워크 입력)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Information Classification",
+keyConcepts:[
+"정보분류|민감도·중요도에 따라 등급 부여 → 접근통제 수준 결정",
+"과잉보호 방지|모든 자산에 동일 통제 적용은 비효율적",
+"분류 vs 위험평가|위험평가가 분류의 입력, 분류가 위험평가의 입력이 아님"
+]
+},
+
+{
+id:436,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Which of the following is the BEST audit procedure to determine if a firewall is configured in compliance with the enterprise security policy?",
+questionKo:"방화벽이 기업 보안 정책에 부합하게 구성되었는지 확인하기 위한 <b>최선의 감사 절차</b>는?",
+options:[
+"A. Review the parameter settings.",
+"B. Interview the firewall administrator.",
+"C. Review the actual procedures.",
+"D. Review the device's log file for recent attacks."
+],
+optionsKo:[
+"A. 매개변수(파라미터) 설정 검토",
+"B. 방화벽 관리자 인터뷰",
+"C. 실제 운영 절차 검토",
+"D. 최근 공격에 대한 장비 로그 파일 검토"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 파라미터 설정 검토 ✅</td><td>실제 구성과 보안 정책을 직접 비교 가능 — 감사 증거 문서화에 최적</td></tr>
+<tr><td>B. 관리자 인터뷰</td><td>구두 확인만으로는 실제 구성의 정확성을 보장할 수 없음</td></tr>
+<tr><td>C. 운영 절차 검토</td><td>절차가 정책과 일치해도 실제 규칙이 정확히 반영되었는지 확인 불가</td></tr>
+<tr><td>D. 로그 파일 검토</td><td>공격 탐지에는 유용하나 구성의 정책 준수 여부를 입증하지 못함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 감사 증거 강도</b><br>
+<mark>직접 검토(파라미터)</mark> > 절차 문서 검토 > 인터뷰 > 간접 로그 분석<br>
+실제 설정값과 정책을 1:1 대조하는 것이 가장 강력한 감사 증거<br><br>
+<b>🔗 관련 문제:</b> Q435(정보분류→접근통제 지침) · Q434(접근통제 구현 순서) · Q431(보안 프레임워크)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Firewalls and Network Security",
+keyConcepts:[
+"파라미터 검토|실제 구성 vs 정책 직접 비교 — 최선의 감사 증거",
+"감사 증거 계층|직접 검토 > 문서 > 인터뷰 > 간접 분석",
+"방화벽 감사|규칙·설정이 보안 정책과 일치하는지 확인이 핵심"
+]
+},
+
+{
+id:437,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Which of the following methods BEST mitigates the risk of disclosing confidential information through the use of social networking sites?",
+questionKo:"소셜 네트워킹 사이트를 통한 기밀정보 유출 위험을 <b>가장 잘 완화</b>하는 방법은?",
+options:[
+"A. Providing security awareness training",
+"B. Requiring a signed acceptable use policy",
+"C. Monitoring the use of social media",
+"D. Blocking access to social media"
+],
+optionsKo:[
+"A. 보안 인식 교육 제공",
+"B. 서명된 이용 허용 정책(AUP) 요구",
+"C. 소셜 미디어 사용 모니터링",
+"D. 소셜 미디어 접근 차단"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 보안 인식 교육 ✅</td><td>모바일·가정 PC 등 대체 접속 수단까지 포괄 — 사용자 행동 자체를 변화시키는 유일한 통제</td></tr>
+<tr><td>B. AUP 서명</td><td>좋은 통제이나, 사용자가 위험을 인식하지 못하면 정책만으로 효과 제한적</td></tr>
+<tr><td>C. 사용 모니터링</td><td>사내 네트워크만 감시 가능 — 모바일·가정 접속은 추적 불가</td></tr>
+<tr><td>D. 접근 차단</td><td>사내 네트워크만 차단 가능 — 모바일·가정 접속은 통제 불가</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 핵심 논리</b><br>
+기술적 통제(차단·모니터링)는 <u>사내 네트워크</u>에만 유효<br>
+모바일·가정 PC 등 대체 경로가 존재하므로 <mark>사용자 인식 변화(교육)</mark>가 가장 효과적<br><br>
+<b>🔗 관련 문제:</b> Q433(비밀번호 정책 준수 — 자동화 도구) · Q435(정보분류 목적) · Q436(방화벽 정책 준수 감사)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Security Awareness Training",
+keyConcepts:[
+"보안 인식 교육|기술적 통제의 한계를 보완하는 가장 효과적 수단",
+"대체 접속 경로|모바일·가정 PC로 인해 네트워크 통제만으로는 불충분",
+"소셜 미디어 위험|기밀정보 유출의 주요 채널 — 사용자 행동 변화가 핵심"
+]
+},
+
+{
+id:438,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Users are issued security tokens to be used in combination with a personal identification number (PIN) to access the enterprise virtual private network. Regarding the PIN, what is the MOST important rule to be included in a security policy?",
+questionKo:"사용자에게 보안 토큰과 PIN을 조합하여 기업 VPN에 접속하도록 발급하였다. PIN과 관련하여 보안 정책에 포함할 <b>가장 중요한 규칙</b>은?",
+options:[
+"A. Users should not leave tokens where they can be stolen.",
+"B. Users must never keep the token in the same bag as their laptop computer.",
+"C. Users should select a PIN that is completely random, with no repeating digits.",
+"D. Users should never write down their PIN."
+],
+optionsKo:[
+"A. 토큰을 도난 가능한 곳에 방치하지 말 것",
+"B. 토큰을 노트북과 같은 가방에 보관하지 말 것",
+"C. PIN은 반복 숫자 없이 완전히 무작위로 선택할 것",
+"D. PIN을 절대 기록하지 말 것"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 토큰 방치 금지</td><td>토큰만으로는 접근 불가 — PIN 없이는 무용</td></tr>
+<tr><td>B. 토큰·노트북 분리</td><td>토큰만으로는 접근 불가 — PIN 없이는 무용</td></tr>
+<tr><td>C. 무작위 PIN</td><td>PIN은 비밀 유지가 핵심이지 복잡성이 아님</td></tr>
+<tr class="correct-row"><td>D. PIN 기록 금지 ✅</td><td>PIN을 적어두면 토큰+메모+PC로 네트워크 접근 가능 → 2FA 무력화</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 2요소 인증(2FA) 보안 원리</b><br>
+소유(토큰) + 지식(PIN) → 두 요소가 <u>분리</u>되어야 보안 유지<br>
+PIN을 기록하면 지식 요소가 소유 요소로 전환 → <mark>단일 요소로 격하</mark><br><br>
+<b>🔗 관련 문제:</b> Q433(비밀번호 정책 준수) · Q437(보안 인식 교육) · Q432(디지털 서명 — 인증)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Access Control and Authentication",
+keyConcepts:[
+"2FA 원리|소유(토큰) + 지식(PIN) — 두 요소의 분리가 핵심",
+"PIN 비밀 유지|기록하면 지식→소유로 전환되어 2FA 무력화",
+"토큰 단독 무용|PIN 없이 토큰만으로는 인증 불가"
+]
+},
+
+{
+id:439,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"In an enterprise where an IT security baseline has been defined, an information systems (IS) auditor should FIRST ensure:",
+questionKo:"IT 보안 기준선(baseline)이 정의된 기업에서 IS 감사인이 <b>가장 먼저</b> 확인해야 할 사항은?",
+options:[
+"A. Implementation",
+"B. Compliance",
+"C. Documentation",
+"D. Sufficiency"
+],
+optionsKo:[
+"A. 구현 여부",
+"B. 준수 여부",
+"C. 문서화 여부",
+"D. 충분성(적정성)"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>순서</th><th>설명</th></tr>
+<tr class="correct-row"><td>D. 충분성 ✅</td><td>1단계</td><td>기준선이 보안 요구사항을 충족하는지 먼저 평가 — 잘못된 기준선 구현은 무의미</td></tr>
+<tr><td>C. 문서화</td><td>2단계</td><td>적정한 기준선이 문서화되었는지 확인</td></tr>
+<tr><td>A. 구현</td><td>3단계</td><td>적정하고 문서화된 기준선이 실제 구현되었는지 확인</td></tr>
+<tr><td>B. 준수</td><td>4단계</td><td>구현된 기준선에 대한 준수 여부 측정</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 보안 기준선 감사 순서</b><br>
+<mark>충분성(적정성)</mark> → 문서화 → 구현 → 준수<br>
+부적절한 기준선을 구현·준수해도 보안 목표 달성 불가<br><br>
+<b>🔗 관련 문제:</b> Q436(방화벽 정책 준수 감사) · Q435(정보분류 목적) · Q431(보안 프레임워크 입력)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Security Baselines and Standards",
+keyConcepts:[
+"기준선 충분성|감사의 최우선 — 기준선이 보안 요구사항에 적정한지 평가",
+"감사 순서|충분성 → 문서화 → 구현 → 준수",
+"부적정 기준선 위험|잘못된 기준선의 구현·준수는 보안 목표 미달성"
+]
+},
+
+{
+id:440,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Enterprise requirements for complying with adopted global security standards is PRIMARILY determined by:",
+questionKo:"채택된 글로벌 보안 표준 준수에 대한 기업 요구사항은 <b>주로</b> 무엇에 의해 결정되는가?",
+options:[
+"A. Internal compliance",
+"B. Legal compliance",
+"C. Regulatory compliance",
+"D. Contractual compliance"
+],
+optionsKo:[
+"A. 내부 준수(Internal compliance)",
+"B. 법적 준수(Legal compliance)",
+"C. 규제 준수(Regulatory compliance)",
+"D. 계약 준수(Contractual compliance)"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 내부 준수 ✅</td><td>글로벌 보안 표준 채택은 기업의 자발적 내부 결정 — 내부 준수 요구사항이 주된 동인</td></tr>
+<tr><td>B. 법적 준수</td><td>법률이 글로벌 보안 표준 채택을 요구하지는 않음</td></tr>
+<tr><td>C. 규제 준수</td><td>일부 규제기관이 요구할 수 있으나 전 세계적 요구는 아님</td></tr>
+<tr><td>D. 계약 준수</td><td>계약 상대방이 요구할 수 있으나 보편적 요구는 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 글로벌 보안 표준 채택 동인</b><br>
+글로벌 표준(ISO 27001 등) 채택 = <mark>기업의 자발적 내부 결정</mark><br>
+법·규제·계약은 특정 상황에서 요구할 수 있으나 보편적(primary) 동인은 아님<br><br>
+<b>🔗 관련 문제:</b> Q430(EGIT 프레임워크 — 전략적 정렬) · Q431(보안 프레임워크 입력) · Q439(보안 기준선 충분성)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Global Security Standards",
+keyConcepts:[
+"내부 준수|글로벌 보안 표준 채택의 주된 동인 — 자발적 내부 결정",
+"법·규제·계약|특정 상황에서 표준 준수를 요구할 수 있으나 보편적이지 않음",
+"글로벌 표준|ISO 27001 등 — 채택 여부는 기업 내부 정책에 의해 결정"
+]
+},
+
+{
+id:441,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"Which of the following is the MOST effective method for disposing of magnetic media that contains confidential information?",
+questionKo:"기밀정보가 포함된 자기 매체를 폐기하는 <b>가장 효과적인</b> 방법은?",
+options:[
+"A. Degaussing",
+"B. Defragmenting",
+"C. Erasing",
+"D. Destroying"
+],
+optionsKo:[
+"A. 디가우싱(소자)",
+"B. 조각 모음(디프래그)",
+"C. 삭제(Erasing)",
+"D. 물리적 파괴(Destroying)"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>효과</th><th>설명</th></tr>
+<tr><td>A. 디가우싱</td><td>부분적</td><td>자기장 제거로 데이터 소거 — 그러나 고도 기밀 정보의 완전 제거를 보장하지 못함</td></tr>
+<tr><td>B. 조각 모음</td><td>없음</td><td>파일 시스템 효율화 목적 — 정보 제거와 무관</td></tr>
+<tr><td>C. 삭제</td><td>미미</td><td>파일 인덱스만 변경 — 실제 데이터는 매체에 잔존하여 복구 가능</td></tr>
+<tr class="correct-row"><td>D. 물리적 파괴 ✅</td><td>완전</td><td>매체 자체를 파괴 — 기밀정보 복구가 불가능한 유일한 방법</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 매체 폐기 강도 순서</b><br>
+삭제(인덱스만) < 디가우싱(자기장 제거) < <mark>물리적 파괴(유일한 완전 보장)</mark><br>
+조각 모음은 폐기 방법이 아님<br><br>
+<b>🔗 관련 문제:</b> Q435(정보분류 → 통제 수준) · Q434(접근통제 순서) · Q438(PIN 비밀 유지)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Media Disposal and Sanitization",
+keyConcepts:[
+"물리적 파괴|기밀 자기매체 폐기의 유일한 완전 보장 방법",
+"디가우싱 한계|고도 기밀 정보의 완전 제거를 보장하지 못함",
+"삭제 vs 파괴|삭제는 인덱스만 변경, 데이터 잔존 → 복구 가능"
+]
+},
+
+{
+id:442,
+domain:"5",
+ks:"5A1 Information Asset Security Policies, Frameworks, Standards, and Guidelines",
+question:"An enterprise has created a policy that defines the types of websites that users are forbidden to access. What is the MOST effective technology to enforce this policy?",
+questionKo:"사용자가 접근 금지된 웹사이트 유형을 정의한 정책을 수립하였다. 이 정책을 시행하기 위한 <b>가장 효과적인</b> 기술은?",
+options:[
+"A. Stateful inspection firewall",
+"B. Web content filter",
+"C. Web cache server",
+"D. Proxy server"
+],
+optionsKo:[
+"A. 상태 기반 검사 방화벽(Stateful inspection)",
+"B. 웹 콘텐츠 필터",
+"C. 웹 캐시 서버",
+"D. 프록시 서버"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 상태 기반 방화벽</td><td>패킷 상태 추적 — 웹사이트 콘텐츠·분류를 검토하지 않음</td></tr>
+<tr class="correct-row"><td>B. 웹 콘텐츠 필터 ✅</td><td>URL 블랙리스트·사이트 분류 기반으로 웹 통신을 허용/차단 — 정책 시행에 최적</td></tr>
+<tr><td>C. 웹 캐시 서버</td><td>자주 방문하는 페이지의 속도 향상 목적 — 접근 통제 기능 없음</td></tr>
+<tr><td>D. 프록시 서버</td><td>클라이언트 요청을 전달하는 중개자 — 모든 프록시가 콘텐츠 필터링 기능을 갖추지는 않음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 프록시 vs 웹 콘텐츠 필터</b><br>
+프록시 서버 ≠ 웹 콘텐츠 필터 (흔한 오해)<br>
+프록시는 요청 전달이 주 기능, <mark>콘텐츠 필터</mark>는 URL 분류·블랙리스트 기반 차단이 주 기능<br><br>
+<b>🔗 관련 문제:</b> Q436(방화벽 정책 준수 감사) · Q437(소셜미디어 — 기술적 통제 한계) · Q439(보안 기준선 충분성)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Web Content Filtering",
+keyConcepts:[
+"웹 콘텐츠 필터|URL 블랙리스트·분류 기반 접근 차단 — 웹 정책 시행에 최적",
+"프록시 vs 필터|프록시는 요청 전달, 콘텐츠 필터링은 별도 기능",
+"상태 기반 방화벽|패킷 수준 검사 — 웹 콘텐츠 분류·필터링 불가"
+]
+},
+
+{
+id:443,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"An information systems (IS) auditor is reviewing the network infrastructure of a call center and determines that the internal telephone system is based on Voice-over Internet Protocol (VoIP) technology. Which of the following is the GREATEST concern?",
+questionKo:"IS 감사인이 콜센터의 네트워크 인프라를 검토한 결과 내부 전화 시스템이 VoIP 기술 기반임을 확인하였다. <b>가장 큰 우려 사항</b>은?",
+options:[
+"A. Voice communication uses the same equipment that is used for data communication.",
+"B. Ethernet switches are not protected by uninterrupted power supply units.",
+"C. Voice communication is not encrypted on the local network.",
+"D. The team that supports the data network also is responsible for the telephone system."
+],
+optionsKo:[
+"A. 음성 통신이 데이터 통신과 동일한 장비를 사용함",
+"B. 이더넷 스위치가 UPS로 보호되지 않음",
+"C. 로컬 네트워크에서 음성 통신이 암호화되지 않음",
+"D. 데이터 네트워크 지원 팀이 전화 시스템도 담당함"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 장비 공유</td><td>VoIP의 본질적 특성이자 장점(배선 비용 절감) — 우려 사항이 아님</td></tr>
+<tr class="correct-row"><td>B. 스위치 UPS 미보호 ✅</td><td>순간 정전에도 전화 송수신 불가 — 콜센터에서 가용성이 치명적</td></tr>
+<tr><td>C. 음성 미암호화</td><td>VoIP는 로컬 네트워크에서 통상 암호화하지 않음 — 일반적 관행이므로 우려 아님</td></tr>
+<tr><td>D. 동일 팀 운영</td><td>VoIP가 LAN 인프라를 사용하므로 동일 팀이 지원하는 것이 자연스러움</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 VoIP + 콜센터 핵심 위험</b><br>
+VoIP = LAN 의존 → 스위치 정전 = 전화 마비<br>
+서버·핵심 장비에는 UPS가 있지만 <mark>LAN 스위치에는 통상 UPS 미적용</mark><br>
+콜센터 업무 특성상 전화 가용성이 최우선 → UPS 미보호가 가장 큰 우려<br><br>
+<b>🔗 관련 문제:</b> Q419(데이터센터 화재 경보) · Q436(방화벽 감사) · Q442(웹 콘텐츠 필터)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Physical and Environmental Controls",
+keyConcepts:[
+"VoIP 가용성|LAN 스위치 정전 시 전화 마비 — 콜센터에 치명적",
+"UPS 범위|서버는 보호되나 LAN 스위치는 통상 UPS 미적용",
+"VoIP 특성|장비 공유·팀 공유·로컬 미암호화는 일반적 관행"
+]
+},
+
+{
+id:444,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"Which of the following is the MOST effective control over visitor access to a data center?",
+questionKo:"데이터센터 방문자 접근에 대한 <b>가장 효과적인</b> 통제는?",
+options:[
+"A. Visitors are escorted.",
+"B. Visitor badges are required.",
+"C. Visitors sign in.",
+"D. Visitors are spot-checked by operators."
+],
+optionsKo:[
+"A. 방문자를 에스코트(동행)함",
+"B. 방문자 배지 착용 요구",
+"C. 방문자 서명 기록",
+"D. 운영자가 방문자를 불시 점검"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 강도</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 에스코트 ✅</td><td>최고</td><td>방문자를 항상 동행 → 허용된 구역만 접근 보장, 지속적 감시</td></tr>
+<tr><td>B. 배지 착용</td><td>중간</td><td>좋은 관행이나 배지만으로 비인가 구역 접근 방지 불가</td></tr>
+<tr><td>C. 서명 기록</td><td>낮음</td><td>입장 기록만 남길 뿐, 건물 내 이동을 통제하지 못함</td></tr>
+<tr><td>D. 불시 점검</td><td>낮음</td><td>간헐적 점검 — 점검 사이 비인가 접근 가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 물리적 방문자 통제 강도</b><br>
+<mark>에스코트(상시 동행)</mark> > 배지 > 서명 > 불시 점검<br>
+에스코트 = 지속적·실시간 통제, 나머지는 간접적·간헐적 통제<br><br>
+<b>🔗 관련 문제:</b> Q443(VoIP 콜센터 — 물리적 통제) · Q438(2FA PIN 보호) · Q434(접근통제 순서)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Physical Access Controls",
+keyConcepts:[
+"에스코트|방문자 통제의 최고 수준 — 상시 동행으로 비인가 접근 방지",
+"배지·서명 한계|간접적 통제 — 건물 내 이동을 실시간 통제하지 못함",
+"물리적 접근통제|데이터센터는 가장 엄격한 물리적 통제 필요"
+]
+},
+
+{
+id:445,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"An information systems (IS) auditor inspected a windowless room containing phone switching and networking equipment and documentation binders. The room was equipped with two handheld fire extinguishers—one filled with carbon dioxide (CO2) and the other filled with halon gas. Which of the following should be given the HIGHEST priority in the IS auditor's report?",
+questionKo:"IS 감사인이 창문 없는 장비실(전화 교환·네트워크 장비, 문서 바인더 보관)을 점검하였다. CO2 소화기와 할론 소화기가 각 1대씩 비치되어 있었다. 감사 보고서에서 <b>가장 높은 우선순위</b>를 부여할 사항은?",
+options:[
+"A. The halon extinguisher should be removed because halon has a negative impact on the atmospheric ozone layer.",
+"B. Both fire suppression systems present a risk of suffocation when used in a closed room.",
+"C. The CO2 extinguisher should be removed because CO2 is ineffective for suppressing fires involving solid combustibles (paper).",
+"D. The documentation binders should be removed from the equipment room to reduce potential risk."
+],
+optionsKo:[
+"A. 할론 소화기는 오존층 파괴 물질이므로 제거해야 함",
+"B. 두 소화 시스템 모두 밀폐된 공간에서 사용 시 질식 위험이 있음",
+"C. CO2 소화기는 종이 등 고체 가연물 화재에 비효과적이므로 제거해야 함",
+"D. 문서 바인더를 장비실에서 제거하여 잠재적 위험을 줄여야 함"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 할론 오존층 파괴</td><td>몬트리올 의정서는 기존 설치 유지 허용 — 최우선 사항은 아님</td></tr>
+<tr class="correct-row"><td>B. 질식 위험 ✅</td><td>CO2·할론 모두 산소 비율 감소 → 창문 없는 밀폐 공간에서 인명 위험 — 최우선</td></tr>
+<tr><td>C. CO2 비효과적</td><td>CO2는 대부분의 화재 유형에 사용 가능 — 전제가 틀림</td></tr>
+<tr><td>D. 문서 제거</td><td>위험 감소에 도움되나 최우선 사항은 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 화재 진압의 최우선 원칙</b><br>
+<mark>인명 안전 > 장비 보호 > 환경 영향</mark><br>
+CO2와 할론 모두 산소 농도를 낮춰 화재 진압 → 밀폐 공간에서 질식 위험<br>
+창문 없는 방 + 가스 소화기 = 인명 위험이 가장 큰 우려<br><br>
+<b>🔗 관련 문제:</b> Q419(데이터센터 화재 경보) · Q443(VoIP UPS — 환경 통제) · Q444(방문자 에스코트)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Fire Suppression Systems",
+keyConcepts:[
+"인명 최우선|화재 진압에서 인명 안전이 항상 최고 우선순위",
+"CO2·할론 질식 위험|산소 비율 감소 → 밀폐 공간에서 인명 위험",
+"몬트리올 의정서|기존 할론 설치 유지 허용 — 신규 설치·충전은 제한"
+]
+},
+
+{
+id:446,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"Which of the following exposures associated with the spooling of sensitive reports for offline printing should an information systems (IS) auditor consider to be the MOST serious?",
+questionKo:"민감한 보고서의 오프라인 인쇄를 위한 스풀링과 관련하여 IS 감사인이 <b>가장 심각하게</b> 고려해야 할 노출은?",
+options:[
+"A. Sensitive data might be read by operators.",
+"B. Data might be amended without authorization.",
+"C. Unauthorized report copies might be printed.",
+"D. Output might be lost in the event of system failure."
+],
+optionsKo:[
+"A. 민감한 데이터가 운영자에 의해 열람될 수 있음",
+"B. 데이터가 무단으로 수정될 수 있음",
+"C. 비인가 보고서 사본이 인쇄될 수 있음",
+"D. 시스템 장애 시 출력물이 손실될 수 있음"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 운영자 열람</td><td>운영자는 업무상 높은 접근권한 보유 — 스풀링 고유 위험이 아님</td></tr>
+<tr><td>B. 무단 수정</td><td>스풀 파일이 다른 파일보다 수정하기 쉽지 않음</td></tr>
+<tr class="correct-row"><td>C. 비인가 사본 인쇄 ✅</td><td>스풀링 → 오프라인 인쇄 시 보상 통제 없이 추가 사본 인쇄 가능 — 기밀성 위협</td></tr>
+<tr><td>D. 출력 손실</td><td>스풀러 수준의 데이터 손실은 재인쇄로 해결 가능 — 경미</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 스풀링의 고유 위험</b><br>
+스풀 = 인쇄 대기열에 데이터 저장 → <mark>추가 사본 무단 인쇄</mark> 가능<br>
+민감 보고서의 비인가 복제는 기밀성에 직접적 위협<br>
+보상 통제: 인쇄 로그, 접근 제한, 즉시 삭제 정책 등<br><br>
+<b>🔗 관련 문제:</b> Q441(매체 폐기 — 기밀성) · Q435(정보분류 → 통제 수준) · Q444(물리적 접근통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Output Controls",
+keyConcepts:[
+"스풀링 위험|오프라인 인쇄 대기열에서 비인가 사본 인쇄 가능",
+"기밀성 위협|민감 보고서의 무단 복제가 가장 심각한 노출",
+"보상 통제|인쇄 로그·접근 제한·즉시 삭제로 스풀링 위험 완화"
+]
+},
+
+{
+id:447,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"Which of the following environmental controls is appropriate to protect computer equipment against short-term reductions in electrical power?",
+questionKo:"단기적인 전력 감소로부터 컴퓨터 장비를 보호하기에 적합한 환경 통제는?",
+options:[
+"A. Power-line conditioners",
+"B. Surge-protection devices",
+"C. Alternative power supplies",
+"D. Interruptible power supplies"
+],
+optionsKo:[
+"A. 전력선 조정기(Power-line conditioner)",
+"B. 서지 보호 장치",
+"C. 대체 전원 공급 장치",
+"D. 인터럽터블 전원 공급 장치"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>보호 대상</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 전력선 조정기 ✅</td><td>단기 전압 변동</td><td>전력의 피크·밸리를 보상 — 저장된 전력으로 골(valley)을 메워 단기 감소 대응</td></tr>
+<tr><td>B. 서지 보호</td><td>고전압 돌발</td><td>전압 급등(서지)으로부터 보호 — 전력 감소와는 반대 상황</td></tr>
+<tr><td>C. 대체 전원</td><td>장기 정전</td><td>장기간 전력 장애용 — UPS와 연계하여 전환 시간 동안 보호</td></tr>
+<tr><td>D. 인터럽터블 전원</td><td>해당 없음</td><td>정전 시 장비 중단 — 보호 기능 없음 (UPS와 혼동 주의)</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 전력 보호 장치 구분</b><br>
+전압 감소(단기) → <mark>전력선 조정기</mark><br>
+전압 급등 → 서지 보호 장치<br>
+완전 정전(단기) → UPS(무정전 전원)<br>
+완전 정전(장기) → 대체 전원(발전기 등)<br><br>
+<b>🔗 관련 문제:</b> Q443(VoIP 스위치 UPS 미보호) · Q445(밀폐 공간 화재 진압) · Q419(데이터센터 환경 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Power Supply Protection",
+keyConcepts:[
+"전력선 조정기|전압 피크·밸리 보상 — 단기 전력 감소 대응",
+"전력 보호 계층|조정기(변동) → 서지보호(급등) → UPS(단기정전) → 발전기(장기정전)",
+"인터럽터블 vs UPS|interruptible은 정전 시 중단, uninterruptible(UPS)은 연속 공급"
+]
+},
+
+{
+id:448,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"An enterprise is proposing to establish a wireless local area network (WLAN). Management asks the information systems (IS) auditor to recommend security controls for the WLAN. Which of the following is the MOST appropriate recommendation?",
+questionKo:"기업이 무선 LAN(WLAN) 구축을 제안하고 있다. 경영진이 IS 감사인에게 WLAN 보안 통제를 권고해 달라고 요청하였다. <b>가장 적절한</b> 권고는?",
+options:[
+"A. Physically secure wireless access points to prevent tampering.",
+"B. Use service set identifiers that clearly identify the enterprise.",
+"C. Encrypt traffic using the wired equivalent privacy (WEP) mechanism.",
+"D. Implement the Simple Network Management Protocol (SNMP) to allow active monitoring."
+],
+optionsKo:[
+"A. 무선 액세스 포인트를 물리적으로 보호하여 변조 방지",
+"B. 기업을 명확히 식별하는 SSID 사용",
+"C. WEP(유선 동등 프라이버시) 메커니즘으로 트래픽 암호화",
+"D. SNMP를 구현하여 능동 모니터링 허용"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. AP 물리적 보호 ✅</td><td>AP에 물리적으로 접근하면 기본 비밀번호 복원·암호화 제거 가능 → 물리적 보안이 기본</td></tr>
+<tr><td>B. 기업명 SSID</td><td>기업 식별 SSID는 해커에게 공격 동기·정보 제공 — 오히려 위험 증가</td></tr>
+<tr><td>C. WEP 암호화</td><td>WEP는 이미 취약점이 입증됨 — WPA2/WPA3를 사용해야 함</td></tr>
+<tr><td>D. SNMP 모니터링</td><td>SNMP 자체가 보안 취약점 → 사용 시 최소 SNMPv3 필요</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 WLAN 보안 핵심</b><br>
+물리적 보호: AP 변조 방지가 <mark>모든 논리적 통제의 전제</mark><br>
+SSID: 기업명 노출 금지 → 브로드캐스트 비활성화 권장<br>
+암호화: WEP ✗ → WPA2/WPA3 ✓<br>
+모니터링: SNMP v1/v2 ✗ → SNMPv3 ✓<br><br>
+<b>🔗 관련 문제:</b> Q443(VoIP 환경 통제) · Q444(데이터센터 물리적 접근) · Q447(전력 보호)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Wireless Network Security",
+keyConcepts:[
+"AP 물리적 보호|변조 시 인증·암호화 무력화 가능 → 물리적 보안이 전제",
+"WEP 취약성|이미 취약점 입증 — WPA2/WPA3로 대체 필요",
+"SSID 관리|기업 식별 정보 노출 금지 — 공격 동기 부여 위험"
+]
+},
+
+{
+id:449,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"An information systems (IS) auditor is reviewing the physical security measures of an enterprise. Regarding the access card system, the IS auditor should be MOST concerned that:",
+questionKo:"IS 감사인이 기업의 물리적 보안 조치를 검토하고 있다. 출입카드 시스템과 관련하여 감사인이 <b>가장 우려</b>해야 할 사항은?",
+options:[
+"A. Nonpersonalized access cards are given to the cleaning staff, who use a sign-in sheet but show no proof of identity.",
+"B. Access cards are not labeled with the enterprise's name and address to facilitate easy return of a lost card.",
+"C. Card issuance and rights administration for the cards are done by different departments, causing unnecessary lead time for new cards.",
+"D. The computer system used for programming the cards can only be replaced after three weeks in the event of a system failure."
+],
+optionsKo:[
+"A. 비개인화 출입카드가 청소 직원에게 지급되며, 서명 기록만 하고 신원 증명은 없음",
+"B. 출입카드에 기업명·주소가 표시되지 않아 분실 카드 반환이 어려움",
+"C. 카드 발급과 권한 관리가 다른 부서에서 수행되어 신규 카드 발급에 시간이 소요됨",
+"D. 카드 프로그래밍 시스템 장애 시 교체에 3주가 소요됨"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 신원 미확인 출입 ✅</td><td>외부인이 신원 증명 없이 서명만으로 출입 — 물리적 보안의 근본 목적(신원 확인) 훼손</td></tr>
+<tr><td>B. 기업명 미표시</td><td>오히려 기업명·주소 표시가 위험 — 분실 카드로 악용 가능</td></tr>
+<tr><td>C. 부서 분리 발급</td><td>직무 분리(SoD)의 올바른 적용 — 리드타임은 불편이지 위험이 아님</td></tr>
+<tr><td>D. 프로그래밍 시스템 3주</td><td>기존 카드·리더기는 정상 작동 — 신규 발급만 지연되어 경미한 문제</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 물리적 보안의 핵심 원칙</b><br>
+물리적 접근통제 = <mark>누가 들어오는지 확인(신원 식별)</mark><br>
+서명 기록만으로는 허위 기재 가능 — 신분증·운전면허증 등 증빙 필요<br>
+비개인화 카드 + 신원 미확인 = 가장 심각한 물리적 보안 취약점<br><br>
+<b>🔗 관련 문제:</b> Q444(방문자 에스코트) · Q448(AP 물리적 보호) · Q438(2FA PIN 보호)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Physical Access Controls",
+keyConcepts:[
+"신원 확인|물리적 보안의 근본 — 모든 출입자의 신원 증명 필수",
+"비개인화 카드 위험|개인 특정 불가 + 신원 미확인 = 최대 취약점",
+"카드 발급 SoD|발급과 권한 관리의 분리는 올바른 직무 분리"
+]
+},
+
+{
+id:450,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"An information systems (IS) auditor is reviewing an enterprise's network operations center (NOC). Which of the following choices is of the GREATEST concern? The use of:",
+questionKo:"IS 감사인이 기업의 네트워크 운영 센터(NOC)를 검토하고 있다. 다음 중 <b>가장 큰 우려 사항</b>은?",
+options:[
+"A. A wet pipe-based fire suppression system.",
+"B. A rented rack space in the NOC.",
+"C. A carbon-dioxide-based fire suppression system.",
+"D. An uninterrupted power supply with 10 minutes of backup power."
+],
+optionsKo:[
+"A. 습식 배관(wet pipe) 기반 화재 진압 시스템",
+"B. NOC 내 임대 랙 공간",
+"C. 이산화탄소(CO2) 기반 화재 진압 시스템",
+"D. 10분 백업 전력의 무정전 전원장치(UPS)"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 습식 배관</td><td>장비 손상 가능성 있으나 인명에는 안전 — CO2보다 위험도 낮음</td></tr>
+<tr><td>B. 임대 랙 공간</td><td>보안 통제가 유지되면 문제 없음 — 대부분의 조직이 랙 공간 임대</td></tr>
+<tr class="correct-row"><td>C. CO2 화재 진압 ✅</td><td>사람이 있는 공간에서 CO2 사용 시 질식 사망 위험 — 인명 안전 최우선</td></tr>
+<tr><td>D. UPS 10분</td><td>정상 종료에 충분할 수 있음 — CO2의 인명 위험에 비해 경미</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 화재 진압 — 인명 안전 최우선</b><br>
+NOC = 사람이 상주하는 공간 → <mark>CO2 사용 금지</mark>(질식 위험)<br>
+습식 배관: 장비 손상 ○ / 인명 위험 ✗<br>
+CO2: 장비 손상 ✗ / 인명 위험 ○ → 더 큰 우려<br><br>
+<b>🔗 관련 문제:</b> Q445(밀폐 공간 CO2·할론 질식 위험) · Q443(VoIP UPS) · Q447(전력 보호 장치)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Fire Suppression Systems",
+keyConcepts:[
+"CO2 질식 위험|사람이 있는 공간에서 CO2 화재 진압 사용 금지",
+"인명 > 장비|화재 진압 선택 시 인명 안전이 항상 최우선",
+"습식 vs 가스|습식 = 장비 손상 가능하나 인명 안전, 가스(CO2) = 장비 안전하나 인명 위험"
+]
+},
+
+{
+id:451,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"An information systems (IS) auditor is reviewing the physical security controls of a data center and notices several areas for concern. Which of the following areas is the MOST important?",
+questionKo:"IS 감사인이 데이터센터의 물리적 보안 통제를 검토하면서 여러 우려 사항을 발견하였다. <b>가장 중요한</b> 사항은?",
+options:[
+"A. The emergency power off button cover is missing.",
+"B. Scheduled maintenance of the fire suppression system was not performed.",
+"C. There are no security cameras inside the data center.",
+"D. The emergency exit door is blocked."
+],
+optionsKo:[
+"A. 비상 전원 차단 버튼 커버가 분실됨",
+"B. 화재 진압 시스템의 정기 유지보수가 수행되지 않음",
+"C. 데이터센터 내부에 보안 카메라가 없음",
+"D. 비상 출구가 차단되어 있음"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 전원 버튼 커버 분실</td><td>중요한 우려 사항이나 인명 안전보다 우선하지 않음</td></tr>
+<tr><td>B. 화재 진압 미유지보수</td><td>우려 사항이나 시스템 미작동을 의미하지는 않음</td></tr>
+<tr><td>C. 보안 카메라 없음</td><td>중요한 우려 사항이나 인명 안전에 비해 덜 심각</td></tr>
+<tr class="correct-row"><td>D. 비상 출구 차단 ✅</td><td>인명 안전이 항상 최우선 — 비상 시 대피 불가는 가장 심각한 문제</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 물리적 보안 우선순위</b><br>
+<mark>인명 안전(Life Safety)</mark> > 장비 보호 > 데이터 보호 > 보안 감시<br>
+비상 출구 차단 = 화재·재해 시 대피 불가 → 인명 피해 직결<br><br>
+<b>🔗 관련 문제:</b> Q445(CO2·할론 질식 위험 — 인명 최우선) · Q450(NOC CO2 사용 우려) · Q419(데이터센터 화재 경보)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Data Center Physical Security",
+keyConcepts:[
+"인명 안전 최우선|Life Safety가 모든 물리적 보안의 최고 우선순위",
+"비상 출구|항상 개방·접근 가능 상태 유지 필수",
+"물리적 보안 계층|인명 > 장비 > 데이터 > 감시"
+]
+},
+
+{
+id:452,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"When auditing security for a data center, an information systems (IS) auditor should look for the presence of a voltage regulator to ensure that the:",
+questionKo:"데이터센터 보안 감사 시 IS 감사인이 전압 조정기(voltage regulator)의 존재를 확인하는 이유는?",
+options:[
+"A. Hardware is protected against power surges.",
+"B. Integrity is maintained if the main power is interrupted.",
+"C. Immediate power will be available if the main power is lost.",
+"D. Hardware is protected against long-term power fluctuations."
+],
+optionsKo:[
+"A. 하드웨어가 전력 서지(급등)로부터 보호됨",
+"B. 주 전력이 중단되어도 무결성이 유지됨",
+"C. 주 전력 상실 시 즉시 전력이 공급됨",
+"D. 하드웨어가 장기 전력 변동으로부터 보호됨"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 전력 서지 보호 ✅</td><td>전압 조정기 = 단기 전력 변동(서지) 보호 — 전압을 안정적 범위로 유지</td></tr>
+<tr><td>B. 전력 중단 시 무결성</td><td>전압 조정기는 전력 중단을 보상하지 못함 — UPS의 역할</td></tr>
+<tr><td>C. 즉시 전력 공급</td><td>전력 상실 시 전력 공급은 UPS의 역할</td></tr>
+<tr><td>D. 장기 전력 변동</td><td>전압 조정기는 단기 변동 보호 — 장기 변동은 대체 전원(발전기)의 영역</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 전력 보호 장치 비교 (Q447 복습)</b><br>
+<mark>전압 조정기</mark> = 단기 전압 변동·서지 보호<br>
+전력선 조정기 = 단기 전력 감소(피크·밸리) 보상<br>
+UPS = 단기 정전 시 연속 전력 공급<br>
+발전기 = 장기 정전 대응<br><br>
+<b>🔗 관련 문제:</b> Q447(전력선 조정기 — 단기 전력 감소) · Q443(VoIP UPS 미보호) · Q450(NOC 환경 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Power Supply Protection",
+keyConcepts:[
+"전압 조정기|단기 전력 변동(서지) 보호 — 전압을 안정적 범위로 유지",
+"전력 보호 구분|조정기(서지) vs UPS(정전) vs 발전기(장기 정전)",
+"단기 vs 장기|voltage regulator는 단기 변동, 장기는 대체 전원 필요"
+]
+},
+
+{
+id:453,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"When reviewing the procedures for the disposal of computers, which of the following should be the GREATEST concern for the information systems (IS) auditor?",
+questionKo:"컴퓨터 폐기 절차를 검토할 때 IS 감사인이 <b>가장 우려</b>해야 할 사항은?",
+options:[
+"A. Hard disks are overwritten several times at the sector level but are not reformatted before leaving the enterprise.",
+"B. All files and folders on hard disks are separately deleted, and the hard disks are formatted before leaving the enterprise.",
+"C. Hard disks are rendered unreadable by hole-punching through the platters at specific positions before leaving the enterprise.",
+"D. The transport of hard disks is escorted by internal security staff to a nearby metal recycling enterprise, where the hard disks are registered and then shredded."
+],
+optionsKo:[
+"A. 하드디스크를 섹터 수준에서 여러 번 덮어쓰기 하였으나 포맷은 하지 않고 반출",
+"B. 하드디스크의 모든 파일·폴더를 개별 삭제하고 포맷한 후 반출",
+"C. 플래터의 특정 위치에 구멍을 뚫어 읽기 불능 상태로 만든 후 반출",
+"D. 내부 보안 직원이 하드디스크 운반을 호위하여 금속 재활용 업체에서 등록 후 파쇄"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>데이터 복구</th><th>설명</th></tr>
+<tr><td>A. 다중 덮어쓰기</td><td>극히 어려움</td><td>섹터 수준 덮어쓰기로 데이터·인덱스·MFT 완전 파괴 — 포맷 불필요</td></tr>
+<tr class="correct-row"><td>B. 삭제+포맷 ✅</td><td>용이</td><td>삭제·포맷은 섹터를 '사용 가능'으로 표시할 뿐 — 공개 도구로 복구 가능</td></tr>
+<tr><td>C. 구멍 뚫기</td><td>극히 비쌈</td><td>디스크 사용 불가 — 클린룸 분석 필요, 단시간 내만 가능</td></tr>
+<tr><td>D. 호위 운반+파쇄</td><td>불가능</td><td>파쇄 후 다른 금속과 혼합 — 복구 불가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 디스크 폐기 방법 안전성 순서</b><br>
+파쇄(D) > 구멍 뚫기(C) > 다중 덮어쓰기(A) > <mark>삭제+포맷(B) ← 가장 취약</mark><br>
+삭제·포맷 = 인덱스만 변경, 실제 데이터 잔존 → 공개 도구로 복구 가능<br><br>
+<b>🔗 관련 문제:</b> Q441(자기매체 폐기 — 물리적 파괴 최선) · Q435(정보분류 → 통제 수준) · Q446(스풀링 기밀성)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Media Disposal and Sanitization",
+keyConcepts:[
+"삭제+포맷 위험|섹터를 '사용 가능'으로 표시할 뿐 — 데이터 잔존, 복구 용이",
+"덮어쓰기 vs 삭제|섹터 수준 덮어쓰기는 실제 파괴, 삭제는 인덱스만 변경",
+"폐기 안전성|파쇄 > 구멍 뚫기 > 다중 덮어쓰기 > 삭제+포맷"
+]
+},
+
+{
+id:454,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"Which of the following is BEST prevented by a raised floor in the computer machine room?",
+questionKo:"컴퓨터 장비실의 이중 바닥(raised floor)으로 <b>가장 잘 예방</b>할 수 있는 것은?",
+options:[
+"A. Damage of wires around computers and servers",
+"B. A power failure from static electricity",
+"C. Shocks from earthquakes",
+"D. Water flood damage"
+],
+optionsKo:[
+"A. 컴퓨터·서버 주변 배선의 손상",
+"B. 정전기로 인한 전력 장애",
+"C. 지진 충격",
+"D. 수해(침수) 피해"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 배선 손상 방지 ✅</td><td>이중 바닥의 주 목적 — 환기·전력·데이터 케이블을 바닥 아래 설치하여 안전·손상 위험 제거</td></tr>
+<tr><td>B. 정전기 방지</td><td>정전기 방지는 특수 카펫·신발 등이 적합 — 이중 바닥의 목적이 아님</td></tr>
+<tr><td>C. 지진 충격</td><td>지진 대응은 내진 설계(antiseismic architecture) 필요</td></tr>
+<tr><td>D. 수해 방지</td><td>이중 바닥은 상부 수도관 누수로부터 장비를 보호하지 못함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 이중 바닥(Raised Floor)의 기능</b><br>
+<mark>주 목적: 케이블 관리</mark> — 전력·데이터·환기 배관을 바닥 하부에 정리<br>
+부수 효과: 공기 순환(냉각) 지원<br>
+이중 바닥 ≠ 정전기 방지, 내진, 방수<br><br>
+<b>🔗 관련 문제:</b> Q447(전력 보호 장치) · Q452(전압 조정기) · Q451(비상 출구 — 물리적 보안)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Data Center Physical Design",
+keyConcepts:[
+"이중 바닥|주 목적은 케이블(전력·데이터·환기) 정리 및 손상 방지",
+"정전기 방지|특수 카펫·신발 등 별도 대책 필요 — 이중 바닥과 무관",
+"내진 설계|지진 대응은 antiseismic architecture로 별도 구현"
+]
+},
+
+{
+id:455,
+domain:"5",
+ks:"5A2 Physical and Environmental Controls",
+question:"Electromagnetic emissions from a terminal represent a risk because they:",
+questionKo:"단말기에서 발생하는 전자기 방출(electromagnetic emissions)이 위험한 이유는?",
+options:[
+"A. Can damage or erase nearby storage media.",
+"B. Can disrupt processor functions.",
+"C. Can have adverse health effects on personnel.",
+"D. Can be detected and displayed."
+],
+optionsKo:[
+"A. 인근 저장 매체를 손상·삭제할 수 있음",
+"B. 프로세서 기능을 방해할 수 있음",
+"C. 인력에게 건강상 악영향을 줄 수 있음",
+"D. 탐지·표시될 수 있음"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 저장매체 손상</td><td>단말기는 방출을 제한하도록 설계 — 일반적 우려 아님</td></tr>
+<tr><td>B. 프로세서 방해</td><td>전자기 방출이 CPU 기능을 방해하지 않음</td></tr>
+<tr><td>C. 건강 악영향</td><td>대부분 저수준 방출 — 유의미한 건강 위험 없음</td></tr>
+<tr class="correct-row"><td>D. 탐지·표시 가능 ✅</td><td>정교한 장비로 방출을 가로채 데이터 복원 → 비인가 접근 위험 (TEMPEST)</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 TEMPEST</b><br>
+의도치 않은 전자기 방출(compromising emanations)을 가로채 분석하는 기술<br>
+<mark>단말기 화면 내용을 원격에서 재현</mark> 가능 → 기밀성 위협<br>
+대응: 차폐(shielding), TEMPEST 인증 장비, 패러데이 케이지 등<br><br>
+<b>🔗 관련 문제:</b> Q441(매체 폐기 기밀성) · Q446(스풀링 비인가 출력) · Q448(WLAN 보안)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — TEMPEST and Emanation Security",
+keyConcepts:[
+"TEMPEST|전자기 방출을 가로채 정보를 복원하는 도청 기술",
+"기밀성 위협|단말기 방출로 화면 내용이 원격 재현될 수 있음",
+"차폐 대책|shielding, 패러데이 케이지, TEMPEST 인증 장비"
+]
 }
 
 ];
