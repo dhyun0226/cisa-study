@@ -532,6 +532,7 @@ constructor(){
     this.wl=JSON.parse(localStorage.getItem('cisaW4'))||[];
     this.todaySt=JSON.parse(localStorage.getItem('cisaToday'))||{date:'',solved:0};
     this.lang=localStorage.getItem('cisaLang')||'ko';
+    this.targetRounds=parseInt(localStorage.getItem('cisaRounds'))||3;
     this.ci=0;this.flt='all';this.fq=[...this.qs];this.ans=false;
     this.activeTab='quiz';
     this.checkToday();
@@ -543,16 +544,59 @@ save(){
     localStorage.setItem('cisaSt4',JSON.stringify(this.st));
     localStorage.setItem('cisaW4',JSON.stringify(this.wl));
     localStorage.setItem('cisaToday',JSON.stringify(this.todaySt));
+    localStorage.setItem('cisaRounds',this.targetRounds);
 }
 checkToday(){
     const td=new Date().toISOString().slice(0,10);
     if(this.todaySt.date!==td){this.todaySt={date:td,solved:0};this.save();}
 }
+setRounds(n){
+    this.targetRounds=Math.max(1,Math.min(5,n));
+    this.save();this.uBanner();if(this.activeTab==='dash')this.rDash();
+}
+getRoundStats(){
+    const total=this.qs.length;
+    const totalAttempts=this.qs.reduce((s,q)=>s+(q.attempts||0),0);
+    const currentRound=total>0?Math.floor(totalAttempts/total)+1:1;
+    const currentRoundSeen=totalAttempts%total;
+    const currentRoundPct=total>0?Math.round(currentRoundSeen/total*100):0;
+    const rounds=[];
+    for(let r=1;r<=Math.min(currentRound,this.targetRounds);r++){
+        const qsInRound=this.qs.filter(q=>(q.attempts||0)>=r);
+        const corInRound=this.qs.reduce((s,q)=>{
+            const att=q.attempts||0,cor=q.correctCount||0,wrg=q.wrongCount||0;
+            if(att<r)return s;
+            return s+Math.min(cor,r)-Math.min(cor,r-1>0?r-1:0);
+        },0);
+        rounds.push({round:r,seen:qsInRound.length,total,pct:Math.round(qsInRound.length/total*100),correct:corInRound});
+    }
+    return {currentRound:Math.min(currentRound,this.targetRounds),totalAttempts,rounds,currentRoundPct};
+}
 dailyTarget(){
-    const unseen=this.qs.filter(q=>!q.attempts).length;
+    const total=this.qs.length;
+    const totalNeeded=total*this.targetRounds;
+    const totalDone=this.qs.reduce((s,q)=>s+Math.min(q.attempts||0,this.targetRounds),0);
+    const remaining=totalNeeded-totalDone;
     const d=dday();
-    if(d<=0)return unseen;
-    return Math.max(5,Math.ceil(unseen/d));
+    if(d<=0)return Math.max(remaining,0);
+    return Math.max(5,Math.ceil(remaining/d));
+}
+getSmartQueue(){
+    const now=Date.now();
+    const scored=this.qs.map(q=>{
+        let score=0;
+        const att=q.attempts||0;
+        if(att===0)score+=100;
+        else if(att<this.targetRounds)score+=80;
+        if(this.wl.includes(q.id))score+=50;
+        const age=att>0&&q.lastSeen?(now-q.lastSeen)/86400000:999;
+        score+=Math.min(age*5,60);
+        const wrongR=(q.wrongCount||0)/Math.max(att,1);
+        score+=wrongR*40;
+        return {q,score};
+    });
+    scored.sort((a,b)=>b.score-a.score);
+    return scored.map(s=>s.q);
 }
 
 toggleLang(){
@@ -579,11 +623,13 @@ uBanner(){
     const target=this.dailyTarget();
     const solved=this.todaySt.solved;
     const pct=Math.min(100,Math.round(solved/target*100));
+    const rs=this.getRoundStats();
+    const roundLabel=`${rs.currentRound}/${this.targetRounds}회독`;
     const el=document.getElementById('dailyBanner');
     if(solved>=target){
-        el.innerHTML=`<div class="db-left"><div class="db-icon">🎉</div><div><div class="db-text">오늘 목표 달성!</div><div class="db-sub">${solved}문제 풀이 완료</div></div></div><div class="db-progress"><div class="db-fill" style="width:100%;background:var(--success)"></div></div>`;
+        el.innerHTML=`<div class="db-left"><div class="db-icon">🎉</div><div><div class="db-text">오늘 목표 달성! (${roundLabel})</div><div class="db-sub">${solved}문제 풀이 완료</div></div></div><div class="db-progress"><div class="db-fill" style="width:100%;background:var(--success)"></div></div>`;
     }else{
-        el.innerHTML=`<div class="db-left"><div class="db-icon">📖</div><div><div class="db-text">오늘 목표: ${solved} / ${target}문제</div><div class="db-sub">시험까지 하루 ${target}문제씩 풀면 모든 문제 커버</div></div></div><div class="db-progress"><div class="db-fill" style="width:${pct}%"></div></div>`;
+        el.innerHTML=`<div class="db-left"><div class="db-icon">📖</div><div><div class="db-text">${roundLabel} · 오늘 목표: ${solved} / ${target}문제</div><div class="db-sub">${this.targetRounds}회독 완료까지 하루 ${target}문제</div></div></div><div class="db-progress"><div class="db-fill" style="width:${pct}%"></div></div>`;
     }
 }
 
@@ -602,7 +648,7 @@ initTabs(){
 
 initFilter(){
     const b=document.getElementById('fbar');
-    let h='<div class="fchip on" data-d="all">전체</div><div class="fchip" data-d="unseen">안 푼 문제</div><div class="fchip" data-d="starred">★ 즐겨찾기</div><div class="fchip" data-d="wrong">오답만</div>';
+    let h='<div class="fchip on" data-d="all">전체</div><div class="fchip" data-d="smart">🧠 스마트복습</div><div class="fchip" data-d="unseen">안 푼 문제</div><div class="fchip" data-d="starred">★ 즐겨찾기</div><div class="fchip" data-d="wrong">오답만</div><div class="fchip" data-d="review">🔄 회독 미완료</div>';
     for(const k of Object.keys(DN))h+=`<div class="fchip" data-d="${k}">D${k}</div>`;
     b.innerHTML=h;
     b.querySelectorAll('.fchip').forEach(c=>{c.onclick=()=>{
@@ -612,9 +658,11 @@ initFilter(){
 }
 applyF(){
     if(this.flt==='all')this.fq=[...this.qs];
+    else if(this.flt==='smart')this.fq=this.getSmartQueue();
     else if(this.flt==='starred')this.fq=this.qs.filter(q=>q.starred);
     else if(this.flt==='unseen')this.fq=this.qs.filter(q=>!q.attempts);
     else if(this.flt==='wrong')this.fq=this.qs.filter(q=>this.wl.includes(q.id));
+    else if(this.flt==='review')this.fq=this.qs.filter(q=>(q.attempts||0)<this.targetRounds);
     else this.fq=this.qs.filter(q=>q.domain===this.flt);
     this.ci=0;this.rQuiz();
 }
@@ -638,12 +686,14 @@ rQuiz(){
     const isKo=this.lang==='ko';
     const qTxt=isKo&&q.questionKo?q.questionKo:q.question;
     const opts=isKo&&q.optionsKo?q.optionsKo:q.options;
-    const unseenBadge=!q.attempts?'<span class="bg" style="background:#e0f2fe;color:#0284c7;border:1px solid #7dd3fc">NEW</span>':'';
+    const att=q.attempts||0;
+    const unseenBadge=att===0?'<span class="bg" style="background:#e0f2fe;color:#0284c7;border:1px solid #7dd3fc">NEW</span>':'';
+    const roundBadge=att>0?`<span class="bg" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac">${Math.min(att,this.targetRounds)}/${this.targetRounds}회독</span>`:'';
     a.innerHTML=`<div class="card"><div class="meta">
         <span class="bg bg-id">Q${q.id}</span>
         <span class="bg bg-d">D${q.domain}</span>
         ${q.ks?`<span class="bg bg-k">${q.ks}</span>`:''}
-        ${unseenBadge}
+        ${unseenBadge}${roundBadge}
         ${q.wrongCount>0?`<span class="bg bg-w">X ${q.wrongCount}회</span>`:''}
         <span class="bg bg-s" onclick="A.star(${q.id})">${q.starred?'★ 즐겨찾기':'☆'}</span>
     </div>
@@ -660,7 +710,7 @@ pick(i){
     const q=this.fq[this.ci],opts=document.querySelectorAll('.opt');
     opts.forEach(o=>o.classList.add('dis'));
     const rq=this.qs.find(x=>x.id===q.id);
-    rq.attempts=(rq.attempts||0)+1;this.st.t++;this.todaySt.solved++;
+    rq.attempts=(rq.attempts||0)+1;rq.lastSeen=Date.now();this.st.t++;this.todaySt.solved++;
     if(i===q.correct){opts[i].classList.add('ok');rq.correctCount=(rq.correctCount||0)+1;this.st.c++;}
     else{opts[i].classList.add('no');opts[q.correct].classList.add('ok');rq.wrongCount=(rq.wrongCount||0)+1;if(!this.wl.includes(q.id))this.wl.push(q.id);}
     document.getElementById('expl').classList.add('show');
@@ -685,12 +735,16 @@ rDash(){
     const target=this.dailyTarget();
     const todaySolved=this.todaySt.solved;
 
-    // Estimated completion date
-    let estDays=target>0?Math.ceil(unseen/target):999;
+    // Estimated completion date (based on rounds)
+    const totalNeeded=total*this.targetRounds;
+    const totalDone=this.qs.reduce((s,q)=>s+Math.min(q.attempts||0,this.targetRounds),0);
+    const remaining=totalNeeded-totalDone;
+    let estDays=target>0?Math.ceil(remaining/target):999;
     let estDate=new Date();estDate.setDate(estDate.getDate()+estDays);
     const estStr=estDate.toLocaleDateString('ko-KR',{month:'long',day:'numeric'});
     const onTrack=estDate<=EXAM_DATE;
 
+    const rs=this.getRoundStats();
     let h=`
     <div class="dash-hero">
         <div class="dash-hero-top">
@@ -699,7 +753,7 @@ rDash(){
                 <small>시험일 2026. 6. 26.</small>
             </div>
             <div class="dash-exam">
-                진도율 <strong>${seen}/${total}</strong> (${Math.round(seen/total*100)}%)<br>
+                ${rs.currentRound}/${this.targetRounds}회독 진행 중<br>
                 오늘 ${todaySolved}문제 풀이${todaySolved>=target?' ✅':''}
             </div>
         </div>
@@ -711,12 +765,43 @@ rDash(){
         </div>
     </div>`;
 
+    // 회독 설정
+    h+=`<div style="background:#fff;border-radius:var(--radius);border:1.5px solid var(--border2);padding:1.25rem;margin-bottom:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <h3 style="font-size:1rem;font-weight:700;margin:0;color:var(--text)">회독 목표 설정</h3>
+            <div style="display:flex;gap:.5rem;align-items:center">
+                ${[1,2,3,4,5].map(n=>`<button onclick="A.setRounds(${n})" style="width:36px;height:36px;border-radius:8px;border:2px solid ${this.targetRounds===n?'var(--primary)':'var(--border2)'};background:${this.targetRounds===n?'var(--primary)':'#fff'};color:${this.targetRounds===n?'#fff':'var(--text)'};font-weight:700;font-size:.9rem;cursor:pointer">${n}</button>`).join('')}
+            </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.75rem">
+            ${rs.rounds.map(r=>{
+                const rRate=r.seen>0?Math.round((r.correct||0)/r.seen*100):0;
+                const barColor=r.pct>=100?'var(--success)':r.pct>=50?'var(--primary)':'var(--warn)';
+                return `<div style="text-align:center;padding:.75rem;background:${r.round===rs.currentRound?'var(--primary-light)':'#f9fafb'};border-radius:8px;border:1px solid ${r.round===rs.currentRound?'var(--primary-mid)':'var(--border2)'}">
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">${r.round}회독</div>
+                    <div style="font-size:1.3rem;font-weight:800;color:var(--text)">${r.pct}%</div>
+                    <div style="width:100%;height:6px;background:#e5e7eb;border-radius:3px;margin:.4rem 0;overflow:hidden"><div style="width:${r.pct}%;height:100%;background:${barColor};border-radius:3px"></div></div>
+                    <div style="font-size:.7rem;color:var(--muted)">${r.seen}/${r.total}문제</div>
+                </div>`;
+            }).join('')}
+            ${Array.from({length:Math.max(0,this.targetRounds-rs.rounds.length)},(_,i)=>{
+                const rn=rs.rounds.length+i+1;
+                return `<div style="text-align:center;padding:.75rem;background:#f9fafb;border-radius:8px;border:1px dashed var(--border2)">
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">${rn}회독</div>
+                    <div style="font-size:1.3rem;font-weight:800;color:#d1d5db">0%</div>
+                    <div style="width:100%;height:6px;background:#e5e7eb;border-radius:3px;margin:.4rem 0"></div>
+                    <div style="font-size:.7rem;color:var(--muted)">0/${total}문제</div>
+                </div>`;
+            }).join('')}
+        </div>
+    </div>`;
+
     h+=`<div class="dash-plan">
         <div class="plan-card">
             <div class="plan-icon">🎯</div>
             <div class="plan-val">${target}</div>
             <div class="plan-label">일일 목표 (문제)</div>
-            <div class="plan-sub">남은 문제 ÷ 남은 일수</div>
+            <div class="plan-sub">${this.targetRounds}회독 기준</div>
         </div>
         <div class="plan-card">
             <div class="plan-icon">📅</div>
@@ -764,6 +849,32 @@ rDash(){
             </div>`;
         });
     }
+
+    // Gist Sync
+    const hasToken=!!localStorage.getItem('cisaGistToken');
+    const gistId=localStorage.getItem('cisaGistId')||'';
+    const lastSync=localStorage.getItem('cisaLastSync');
+    const syncInfo=lastSync?new Date(parseInt(lastSync)).toLocaleString('ko-KR'):'동기화한 적 없음';
+    h+=`<div style="background:#fff;border-radius:var(--radius);border:1.5px solid var(--border2);padding:1.25rem;margin-top:1.5rem">
+        <h3 style="font-size:1rem;font-weight:700;margin:0 0 .75rem;color:var(--text)">클라우드 동기화</h3>
+        <p style="font-size:.78rem;color:var(--muted);margin:0 0 1rem">GitHub Gist로 학습 데이터를 저장하고, 다른 기기에서 불러올 수 있습니다.</p>
+        ${!hasToken?`
+            <div style="display:flex;gap:.5rem;margin-bottom:.75rem">
+                <input type="password" id="gistTokenInput" placeholder="GitHub Personal Access Token (gist 권한)" style="flex:1;padding:.5rem .75rem;border:1.5px solid var(--border2);border-radius:8px;font-size:.82rem">
+                <button onclick="A.saveToken()" style="padding:.5rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.82rem;white-space:nowrap">토큰 저장</button>
+            </div>
+            <div style="font-size:.72rem;color:var(--muted)">GitHub → Settings → Developer settings → Personal access tokens → <strong>gist</strong> 권한만 체크</div>
+        `:`
+            <div style="display:flex;gap:.5rem;margin-bottom:.75rem">
+                <button onclick="A.gistSave()" id="gistSaveBtn" style="flex:1;padding:.6rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.88rem">☁ 저장</button>
+                <button onclick="A.gistLoad()" id="gistLoadBtn" style="flex:1;padding:.6rem;background:#fff;color:var(--primary);border:2px solid var(--primary);border-radius:8px;font-weight:700;cursor:pointer;font-size:.88rem">☁ 불러오기</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="font-size:.72rem;color:var(--muted)">마지막 동기화: ${syncInfo}</span>
+                <button onclick="A.clearToken()" style="font-size:.7rem;color:var(--danger);background:none;border:none;cursor:pointer;text-decoration:underline">토큰 초기화</button>
+            </div>
+        `}
+    </div>`;
 
     a.innerHTML=h;
 }
@@ -845,6 +956,86 @@ rCheat(){
         a.innerHTML=h;
     }else{
         a.innerHTML='<div class="empty">치트시트 데이터가 아직 없습니다.</div>';
+    }
+}
+
+// ===== GIST SYNC =====
+saveToken(){
+    const t=document.getElementById('gistTokenInput').value.trim();
+    if(!t){alert('토큰을 입력하세요.');return;}
+    localStorage.setItem('cisaGistToken',t);
+    this.rDash();
+}
+clearToken(){
+    if(!confirm('토큰을 삭제하시겠습니까?'))return;
+    localStorage.removeItem('cisaGistToken');
+    localStorage.removeItem('cisaGistId');
+    this.rDash();
+}
+_gistData(){
+    const progress=this.qs.map(q=>({id:q.id,attempts:q.attempts||0,correctCount:q.correctCount||0,wrongCount:q.wrongCount||0,starred:!!q.starred,lastSeen:q.lastSeen||0}));
+    return {progress,st:this.st,wl:this.wl,todaySt:this.todaySt,targetRounds:this.targetRounds,savedAt:Date.now()};
+}
+async gistSave(){
+    const token=localStorage.getItem('cisaGistToken');
+    if(!token){alert('토큰이 없습니다.');return;}
+    const btn=document.getElementById('gistSaveBtn');
+    btn.textContent='저장 중...';btn.disabled=true;
+    try{
+        const body={description:'CISA Study Progress',public:false,files:{'cisa-progress.json':{content:JSON.stringify(this._gistData())}}};
+        const gistId=localStorage.getItem('cisaGistId');
+        let res;
+        if(gistId){
+            res=await fetch('https://api.github.com/gists/'+gistId,{method:'PATCH',headers:{'Authorization':'token '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
+        }else{
+            res=await fetch('https://api.github.com/gists',{method:'POST',headers:{'Authorization':'token '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
+        }
+        if(!res.ok)throw new Error(res.status+' '+res.statusText);
+        const data=await res.json();
+        localStorage.setItem('cisaGistId',data.id);
+        localStorage.setItem('cisaLastSync',Date.now().toString());
+        btn.textContent='저장 완료!';btn.style.background='var(--success)';
+        setTimeout(()=>{btn.textContent='☁ 저장';btn.style.background='var(--primary)';btn.disabled=false;this.rDash();},1500);
+    }catch(e){
+        alert('저장 실패: '+e.message);btn.textContent='☁ 저장';btn.disabled=false;
+    }
+}
+async gistLoad(){
+    const token=localStorage.getItem('cisaGistToken');
+    const gistId=localStorage.getItem('cisaGistId');
+    if(!token){alert('토큰이 없습니다.');return;}
+    if(!gistId){
+        const id=prompt('Gist ID를 입력하세요.\n(다른 기기에서 저장한 Gist의 URL 마지막 부분)');
+        if(!id)return;
+        localStorage.setItem('cisaGistId',id.trim());
+    }
+    const btn=document.getElementById('gistLoadBtn');
+    btn.textContent='불러오는 중...';btn.disabled=true;
+    try{
+        const id=localStorage.getItem('cisaGistId');
+        const res=await fetch('https://api.github.com/gists/'+id,{headers:{'Authorization':'token '+token}});
+        if(!res.ok)throw new Error(res.status+' '+res.statusText);
+        const data=await res.json();
+        const file=data.files['cisa-progress.json'];
+        if(!file)throw new Error('cisa-progress.json 파일이 없습니다.');
+        const saved=JSON.parse(file.content);
+        if(!confirm(`불러올 데이터: ${saved.progress.length}문제 진도\n저장 시각: ${new Date(saved.savedAt).toLocaleString('ko-KR')}\n\n현재 데이터를 덮어씁니다. 계속할까요?`)){
+            btn.textContent='☁ 불러오기';btn.disabled=false;return;
+        }
+        saved.progress.forEach(p=>{
+            const q=this.qs.find(x=>x.id===p.id);
+            if(q){q.attempts=p.attempts;q.correctCount=p.correctCount;q.wrongCount=p.wrongCount;q.starred=p.starred;q.lastSeen=p.lastSeen;}
+        });
+        this.st=saved.st||this.st;
+        this.wl=saved.wl||this.wl;
+        this.todaySt=saved.todaySt||this.todaySt;
+        this.targetRounds=saved.targetRounds||this.targetRounds;
+        this.save();
+        localStorage.setItem('cisaLastSync',Date.now().toString());
+        btn.textContent='불러오기 완료!';btn.style.background='var(--success)';btn.style.color='#fff';btn.style.borderColor='var(--success)';
+        setTimeout(()=>{location.reload();},1000);
+    }catch(e){
+        alert('불러오기 실패: '+e.message);btn.textContent='☁ 불러오기';btn.disabled=false;
     }
 }
 

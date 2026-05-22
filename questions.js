@@ -16666,6 +16666,10080 @@ keyConcepts:[
 "기밀성 위협|단말기 방출로 화면 내용이 원격 재현될 수 있음",
 "차폐 대책|shielding, 패러데이 케이지, TEMPEST 인증 장비"
 ]
+},
+
+{
+id:456,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"The BEST overall quantitative measure of the performance of biometric control devices is:",
+questionKo:"생체인식 제어 장치의 성능을 나타내는 <b>가장 좋은 종합적 정량 지표</b>는?",
+options:[
+"A. False-rejection rate (FRR).",
+"B. False-acceptance rate (FAR).",
+"C. Equal error rate (EER).",
+"D. Estimated-error rate."
+],
+optionsKo:[
+"A. 오거부율(FRR)",
+"B. 오인식율(FAR)",
+"C. 동일 오류율(EER)",
+"D. 추정 오류율"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 오거부율(FRR)</td><td>인가된 사용자가 거부되는 비율만 측정 → 한쪽 지표만 반영</td></tr>
+<tr><td>B. 오인식율(FAR)</td><td>비인가자가 승인되는 비율만 측정 → 한쪽 지표만 반영</td></tr>
+<tr class="correct-row"><td>C. 동일 오류율(EER) ✅</td><td>FRR과 FAR이 같아지는 지점의 백분율. 낮을수록 우수한 장비</td></tr>
+<tr><td>D. 추정 오류율</td><td>유효한 생체인식 용어가 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 생체인식 성능 지표</b><br>
+• <b>FRR</b> (Type I Error): 정당한 사용자를 거부 → 편의성 저하<br>
+• <b>FAR</b> (Type II Error): 부당한 사용자를 허용 → 보안 위협<br>
+• <b>EER</b>: FRR = FAR 되는 교차점 → 종합 성능 비교 기준<br>
+• EER이 <b>낮을수록</b> 더 정확한 생체인식 장치<br><br>
+<b>🔗 관련 문제:</b> Q438 · Q444 · Q449
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Biometric Controls",
+keyConcepts:[
+"EER(동일 오류율)|FRR과 FAR이 같아지는 지점으로 생체인식 장치의 종합 성능 지표",
+"FRR(오거부율)|인가된 사용자를 잘못 거부하는 비율 (Type I Error)",
+"FAR(오인식율)|비인가자를 잘못 허용하는 비율 (Type II Error)"
+]
+},
+
+{
+id:457,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor reviewing the authentication controls of an enterprise should be MOST concerned if:",
+questionKo:"기업의 인증 통제를 검토하는 IS 감사인이 <b>가장 우려해야 할</b> 상황은?",
+options:[
+"A. User accounts are not locked out after five failed attempts.",
+"B. Passwords can be reused by employees within a defined time frame.",
+"C. System administrators use shared login credentials.",
+"D. Password expiration is not automated."
+],
+optionsKo:[
+"A. 5회 실패 후 사용자 계정이 잠기지 않음",
+"B. 일정 기간 내 비밀번호 재사용이 허용됨",
+"C. 시스템 관리자가 공유 로그인 자격증명을 사용",
+"D. 비밀번호 만료가 자동화되지 않음"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 계정 잠금 미설정</td><td>무차별 공격 위험이 있으나, 일반 사용자는 제한된 접근 권한만 보유</td></tr>
+<tr><td>B. 비밀번호 재사용</td><td>위험 요소이나, 관리자 공유 자격증명보다 심각도가 낮음</td></tr>
+<tr class="correct-row"><td>C. 관리자 공유 자격증명 ✅</td><td>특권 계정의 책임 추적(accountability)이 불가능해지는 가장 심각한 위험</td></tr>
+<tr><td>D. 비밀번호 만료 미자동화</td><td>정기 변경이 안 될 수 있으나, 공유 자격증명보다 덜 심각</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 특권 계정 관리 원칙</b><br>
+• 관리자 계정 공유 → <b>책임 추적 불가</b>(accountability 상실)가 핵심 위험<br>
+• 특권 계정은 일반 계정보다 접근 범위가 넓어 위험 영향이 큼<br>
+• 개인별 관리자 계정 발급 + 활동 로깅이 필수<br>
+• 인증 통제 심각도: 공유 자격증명 > 잠금 미설정 > 재사용 허용 > 만료 미자동화<br><br>
+<b>🔗 관련 문제:</b> Q438 · Q449 · Q456
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Authentication Controls",
+keyConcepts:[
+"공유 자격증명|관리자가 같은 계정을 공유하면 개별 행위 추적이 불가능",
+"책임 추적성(Accountability)|누가 무엇을 했는지 식별할 수 있어야 하는 보안 원칙",
+"특권 계정 관리|관리자 계정은 개인별 발급·모니터링·감사가 필수"
+]
+},
+
+{
+id:458,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor discovers that the configuration settings for password controls are more stringent for business users than for IT developers. Which of the following is the BEST action for the IS auditor to take?",
+questionKo:"IS 감사인이 비밀번호 통제 설정이 IT 개발자보다 <b>업무 사용자에게 더 엄격</b>하다는 것을 발견했다. 감사인의 <b>가장 적절한 조치</b>는?",
+options:[
+"A. Determine whether this is a policy violation and document it.",
+"B. Document the observation as an exception.",
+"C. Recommend that all password configuration settings be identical.",
+"D. Recommend that logs of IT developer access are reviewed periodically."
+],
+optionsKo:[
+"A. 정책 위반 여부를 판단하고 문서화한다",
+"B. 관찰 사항을 예외로 문서화한다",
+"C. 모든 비밀번호 설정을 동일하게 권고한다",
+"D. IT 개발자 접근 로그를 주기적으로 검토하도록 권고한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 정책 위반 여부 판단 ✅</td><td>정책에 차등 설정이 승인되어 있을 수 있음 → 먼저 정책 확인이 우선</td></tr>
+<tr><td>B. 예외로 문서화</td><td>정책에 따른 절차라면 예외가 아님 → 성급한 판단</td></tr>
+<tr><td>C. 동일 설정 권고</td><td>차등 설정에 타당한 이유가 있을 수 있음 → 정책 확인 전 권고는 부적절</td></tr>
+<tr><td>D. 로그 검토 권고</td><td>좋은 보완 통제이나, 정책 준수 확인이 더 중요한 선행 조치</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 감사인의 판단 원칙</b><br>
+• 이상 징후 발견 시 <b>즉시 권고가 아닌 정책 확인이 우선</b><br>
+• 차등 통제는 승인된 정책에 근거할 수 있음 (예: 개발자의 업무 특성)<br>
+• 감사인 역할: 정책 존재 여부 → 정책 준수 여부 → 문서화 순서<br>
+• 정책 위반이 확인되면 그때 발견사항(finding)으로 보고<br><br>
+<b>🔗 관련 문제:</b> Q439 · Q440 · Q457
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Password Policy and Audit Procedures",
+keyConcepts:[
+"감사 절차|이상 발견 시 정책 확인 → 준수 여부 판단 → 문서화 순서로 진행",
+"차등 통제|역할·업무 특성에 따라 다른 보안 설정이 정책적으로 승인될 수 있음",
+"정책 기반 감사|감사인은 주관적 판단이 아닌 승인된 정책 대비 준수 여부를 평가"
+]
+},
+
+{
+id:459,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following is the BEST control to prevent the deletion of audit logs by unauthorized individuals in an enterprise?",
+questionKo:"기업에서 <b>비인가자의 감사 로그 삭제를 방지</b>하는 가장 적절한 통제는?",
+options:[
+"A. Actions performed on log files should be tracked in a separate log.",
+"B. Write access to audit logs should be disabled.",
+"C. Only select personnel should have rights to view or delete audit logs.",
+"D. Backups of audit logs should be performed periodically."
+],
+optionsKo:[
+"A. 로그 파일에 대한 작업을 별도 로그에 추적한다",
+"B. 감사 로그에 대한 쓰기 권한을 비활성화한다",
+"C. 선별된 인원만 감사 로그 열람·삭제 권한을 갖는다",
+"D. 감사 로그를 주기적으로 백업한다"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 별도 로그 추적</td><td>탐지 통제(detective)일 뿐, 원본 삭제 자체를 방지하지 못함</td></tr>
+<tr><td>B. 쓰기 권한 비활성화</td><td>서버·애플리케이션이 로그를 기록하려면 쓰기 권한이 필요 → 운영 불가</td></tr>
+<tr class="correct-row"><td>C. 선별 인원만 권한 부여 ✅</td><td>접근 제한으로 비인가 삭제를 예방하는 가장 효과적인 통제</td></tr>
+<tr><td>D. 주기적 백업</td><td>복구는 가능하나 삭제 자체를 방지하지는 못함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 감사 로그 보호 원칙</b><br>
+• <b>예방 통제</b>: 접근 권한 제한 (시스템 관리자·보안 관리자만)<br>
+• <b>탐지 통제</b>: 로그 활동 모니터링, 별도 추적 로그<br>
+• <b>복구 통제</b>: 백업 → 삭제 후 복원은 가능하나 예방이 아님<br>
+• 쓰기 비활성화는 현실적으로 불가 (시스템이 로그를 기록해야 함)<br><br>
+<b>🔗 관련 문제:</b> Q457 · Q458 · Q435
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Audit Log Management",
+keyConcepts:[
+"감사 로그 접근 제한|선별된 관리자만 열람·삭제 권한을 부여하여 무결성 보호",
+"예방 vs 탐지 통제|접근 제한(예방)이 추적 로그(탐지)보다 삭제 방지에 효과적",
+"최소 권한 원칙|감사 로그에도 need-to-know 기반 접근 통제 적용"
+]
+},
+
+{
+id:460,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following should an information systems (IS) auditor be MOST concerned about in a financial application?",
+questionKo:"재무 애플리케이션에서 IS 감사인이 <b>가장 우려해야 할</b> 사항은?",
+options:[
+"A. Programmers have access to source code in the user acceptance testing environment.",
+"B. Secondary controls are documented for identified role conflicts.",
+"C. The information security officer does not authorize all application changes.",
+"D. Programmers have access to the production database."
+],
+optionsKo:[
+"A. 프로그래머가 UAT 환경의 소스코드에 접근할 수 있다",
+"B. 식별된 역할 충돌에 대해 보완 통제가 문서화되어 있다",
+"C. 정보보안 책임자가 모든 애플리케이션 변경을 승인하지 않는다",
+"D. 프로그래머가 운영 데이터베이스에 접근할 수 있다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. UAT 소스코드 접근</td><td>프로그래머는 업무상 소스코드 접근 필요. UAT는 운영 환경과 분리됨</td></tr>
+<tr><td>B. 보완 통제 문서화</td><td>역할 충돌 시 보완 통제는 적절한 조치 → 우려 사항이 아님</td></tr>
+<tr><td>C. ISO가 모든 변경 미승인</td><td>정보보안 책임자가 모든 변경을 승인할 필요는 없음</td></tr>
+<tr class="correct-row"><td>D. 운영 DB 접근 ✅</td><td>직무 분리(SoD) 위반 — 프로그래머가 운영 데이터를 직접 수정할 수 있는 위험</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 직무 분리(Segregation of Duties)</b><br>
+• 개발자는 <b>운영 환경</b>(프로덕션)에 접근해서는 안 됨<br>
+• 개발 → 테스트 → 운영 환경을 분리하여 무단 변경 방지<br>
+• 특히 <b>재무 애플리케이션</b>은 데이터 무결성이 핵심 → SoD 위반 영향이 큼<br>
+• UAT 환경 접근은 업무상 필요하므로 문제가 아님<br><br>
+<b>🔗 관련 문제:</b> Q457 · Q459 · Q458
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Segregation of Duties in Access Control",
+keyConcepts:[
+"직무 분리(SoD)|개발·테스트·운영 환경 접근 권한을 분리하여 무단 변경 방지",
+"운영 환경 접근 제한|프로그래머는 운영 DB에 직접 접근하면 안 됨 (SoD 위반)",
+"보완 통제|SoD 충돌이 불가피할 때 모니터링·로깅 등 추가 통제로 위험 완화"
+]
+},
+
+{
+id:461,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An enterprise uses a biometric control system for managing access. Which of the following indicates the MOST effective biometric control system?",
+questionKo:"기업이 접근 관리를 위해 생체인식 통제 시스템을 사용한다. <b>가장 효과적인</b> 생체인식 통제 시스템을 나타내는 것은?",
+options:[
+"A. The highest equal error rate (EER)",
+"B. The lowest EER",
+"C. A false-rejection rate (FRR) equal to the false-acceptance rate (FAR)",
+"D. A FRR equal to the failure-to-enroll rate (FER)"
+],
+optionsKo:[
+"A. 가장 높은 동일 오류율(EER)",
+"B. 가장 낮은 EER",
+"C. 오거부율(FRR)이 오인식율(FAR)과 같은 경우",
+"D. FRR이 등록 실패율(FER)과 같은 경우"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 가장 높은 EER</td><td>EER이 높을수록 오류가 많음 → 가장 비효과적인 장치</td></tr>
+<tr class="correct-row"><td>B. 가장 낮은 EER ✅</td><td>EER이 낮을수록 FAR·FRR 모두 낮음 → 가장 효과적인 장치</td></tr>
+<tr><td>C. FRR = FAR</td><td>이것은 EER의 정의 자체이며, 높고 낮음을 판단하지 않음</td></tr>
+<tr><td>D. FRR = FER</td><td>FER은 등록 실패율로 FRR의 집계 지표 → 효과성 판단 기준이 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 EER 복습 — Q456과 함께 정리</b><br>
+• <b>EER</b> = FRR과 FAR이 같아지는 교차점 (%)<br>
+• EER이 <b>낮을수록</b> → 더 정확하고 효과적인 생체인식 장치<br>
+• EER이 <b>높을수록</b> → 오류가 많은 비효과적 장치<br>
+• <b>FER</b>(등록 실패율): 생체 정보 등록 자체가 안 되는 비율<br><br>
+<b>🔗 관련 문제:</b> Q456(EER 정의) · Q438 · Q449
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Biometric Controls Effectiveness",
+keyConcepts:[
+"EER과 효과성|EER이 낮을수록 생체인식 장치가 더 정확하고 효과적",
+"FER(등록 실패율)|생체 정보를 시스템에 등록하지 못하는 비율",
+"EER 정의|FAR = FRR이 되는 교차점의 백분율"
+]
+},
+
+{
+id:462,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Web and email filtering tools are valuable to an enterprise PRIMARILY because they:",
+questionKo:"웹 및 이메일 필터링 도구가 기업에 가치가 있는 <b>주된 이유</b>는?",
+options:[
+"A. Protect the enterprise from viruses and nonbusiness materials.",
+"B. Maximize employee performance.",
+"C. Safeguard the enterprise's image.",
+"D. Assist the enterprise in preventing legal issues."
+],
+optionsKo:[
+"A. 바이러스와 비업무 자료로부터 기업을 보호한다",
+"B. 직원 성과를 극대화한다",
+"C. 기업 이미지를 보호한다",
+"D. 법적 문제 예방을 지원한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 바이러스·비업무 자료 보호 ✅</td><td>바이러스, 스팸, 체인메일, 유해 웹사이트 차단이 필터링의 핵심 목적</td></tr>
+<tr><td>B. 직원 성과 극대화</td><td>부수적 효과. 인식 교육과 병행 시 효과적이나 주된 이유는 아님</td></tr>
+<tr><td>C. 기업 이미지 보호</td><td>이차적 이점</td></tr>
+<tr><td>D. 법적 문제 예방</td><td>중요하나 필터링 투자의 주된 이유는 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 웹/이메일 필터링의 가치</b><br>
+• <b>1차 목적</b>: 바이러스·스팸·악성코드·비업무 콘텐츠 차단 (보안 위험 감소)<br>
+• <b>2차 이점</b>: 직원 생산성 향상, 기업 이미지 보호, 법적 리스크 감소<br>
+• Q442의 웹 콘텐츠 필터와 연결 — 정책 기반 접근 차단 기술<br><br>
+<b>🔗 관련 문제:</b> Q442(웹 콘텐츠 필터) · Q437(소셜미디어 보안 인식) · Q435
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Web and Email Filtering Controls",
+keyConcepts:[
+"웹/이메일 필터링|바이러스·스팸·비업무 콘텐츠 차단이 주된 투자 목적",
+"보안 vs 생산성|필터링의 1차 목적은 보안, 생산성 향상은 부수적 효과",
+"다층 방어|필터링은 네트워크 보안의 한 계층으로 방화벽·IDS와 함께 운용"
+]
+},
+
+{
+id:463,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"During a logical access controls review, an information systems (IS) auditor observes that user accounts are shared. The GREATEST risk resulting from this situation is that:",
+questionKo:"논리적 접근 통제 검토 중 IS 감사인이 사용자 계정이 공유되고 있음을 발견했다. 이 상황의 <b>가장 큰 위험</b>은?",
+options:[
+"A. An unauthorized user may use a shared ID to gain access.",
+"B. User access management is time consuming.",
+"C. User accountability is not established.",
+"D. Passwords are easily guessed."
+],
+optionsKo:[
+"A. 비인가 사용자가 공유 ID로 접근할 수 있다",
+"B. 사용자 접근 관리가 시간이 많이 소요된다",
+"C. 사용자 책임 추적성이 확립되지 않는다",
+"D. 비밀번호가 쉽게 추측된다"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 비인가자 접근</td><td>공유 ID든 개별 ID든 비인가 접근 위험은 동일</td></tr>
+<tr><td>B. 접근 관리 소요 시간</td><td>공유 ID와 관리 복잡도는 직접적 관련이 없음</td></tr>
+<tr class="correct-row"><td>C. 책임 추적성 미확립 ✅</td><td>누가 해당 ID로 접근했는지 식별 불가 → accountability 상실</td></tr>
+<tr><td>D. 비밀번호 추측 용이</td><td>공유 ID가 반드시 쉬운 비밀번호를 의미하지는 않음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 계정 공유의 핵심 위험 = Accountability 상실</b><br>
+• Q457(관리자 공유 자격증명)과 동일한 원칙<br>
+• 공유 계정 → 누가 무엇을 했는지 추적 불가<br>
+• 감사 추적(audit trail)의 의미가 없어짐<br>
+• 해결책: 개인별 고유 ID 발급 + 활동 로깅<br><br>
+<b>🔗 관련 문제:</b> Q457(관리자 공유 자격증명) · Q459(감사 로그 보호) · Q460(SoD)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — User Account Management and Accountability",
+keyConcepts:[
+"책임 추적성(Accountability)|개별 사용자의 행위를 식별·추적할 수 있어야 하는 원칙",
+"계정 공유 금지|공유 계정은 감사 추적을 무력화시키는 가장 큰 위험 요소",
+"고유 ID 원칙|모든 사용자에게 개별 ID를 부여하여 행위 추적 가능성 확보"
+]
+},
+
+{
+id:464,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following is an effective preventive control to ensure that a database administrator (DBA) complies with the custodianship of the enterprise's data?",
+questionKo:"데이터베이스 관리자(DBA)가 기업 데이터의 수탁 책임을 준수하도록 보장하는 효과적인 <b>예방 통제</b>는?",
+options:[
+"A. Exception reports",
+"B. Separation of duties (SoD)",
+"C. Review of access logs and activities",
+"D. Management supervision"
+],
+optionsKo:[
+"A. 예외 보고서",
+"B. 직무 분리(SoD)",
+"C. 접근 로그 및 활동 검토",
+"D. 경영진 감독"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>설명</th></tr>
+<tr><td>A. 예외 보고서</td><td>탐지 통제</td><td>비인가 활동을 사후에 발견하는 통제</td></tr>
+<tr class="correct-row"><td>B. 직무 분리(SoD) ✅</td><td>예방 통제</td><td>DBA 활동을 제한하여 한 사람이 단독으로 완료할 수 없게 함</td></tr>
+<tr><td>C. 접근 로그 검토</td><td>탐지 통제</td><td>DBA의 활동을 사후에 탐지하는 통제</td></tr>
+<tr><td>D. 경영진 감독</td><td>탐지 통제</td><td>비인가 DBA 활동을 감독으로 탐지</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 예방 vs 탐지 통제 구분</b><br>
+• <b>예방 통제</b>: 직무 분리, 접근 제한, 승인 절차 → 사전에 위반 차단<br>
+• <b>탐지 통제</b>: 예외 보고서, 로그 검토, 감독 → 사후에 위반 발견<br>
+• 문제에서 "preventive control"을 묻고 있으므로 SoD가 정답<br>
+• DBA의 SoD: 데이터 소유자(owner)의 승인 없이 단독 작업 불가<br><br>
+<b>🔗 관련 문제:</b> Q460(SoD 위반) · Q459(로그 보호-예방 vs 탐지) · Q463
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — DBA Controls and Separation of Duties",
+keyConcepts:[
+"직무 분리(SoD)|예방 통제로서 한 사람이 단독으로 중요 작업을 완료하지 못하게 제한",
+"예방 vs 탐지 통제|SoD는 예방, 로그 검토·예외 보고서·감독은 탐지 통제",
+"DBA 수탁 책임|데이터 소유자(owner)가 승인한 범위 내에서만 DBA가 활동해야 함"
+]
+},
+
+{
+id:465,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor is reviewing access controls for a manufacturing organization. During the review, the IS auditor discovers that data owners can change access controls for a low-risk application. The BEST course of action for the IS auditor is to:",
+questionKo:"IS 감사인이 제조 기업의 접근 통제를 검토 중 데이터 소유자가 저위험 애플리케이션의 접근 통제를 변경할 수 있음을 발견했다. 감사인의 <b>가장 적절한 조치</b>는?",
+options:[
+"A. Recommend that mandatory access control be implemented.",
+"B. Report this as a finding to upper management.",
+"C. Report this to the data owners to determine whether it is an exception.",
+"D. Not report this issue because discretionary access controls are in place."
+],
+optionsKo:[
+"A. 강제적 접근 통제(MAC) 구현을 권고한다",
+"B. 상위 경영진에게 발견사항으로 보고한다",
+"C. 데이터 소유자에게 예외 여부를 확인한다",
+"D. 임의적 접근 통제(DAC)가 적용되어 있으므로 보고하지 않는다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. MAC 권고</td><td>저위험 애플리케이션에 MAC는 과도한 통제 — DAC가 적절</td></tr>
+<tr><td>B. 발견사항 보고</td><td>DAC는 정상적 접근 통제 모델 → 문제가 아닐 수 있음</td></tr>
+<tr><td>C. 소유자에게 확인</td><td>감사인이 피감사자에게 의존하여 이슈 여부를 판단해서는 안 됨</td></tr>
+<tr class="correct-row"><td>D. 보고 불필요 ✅</td><td>DAC에서 데이터 소유자의 접근 권한 변경은 정상적 절차</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 접근 통제 모델 비교</b><br>
+• <b>DAC(임의적)</b>: 데이터 소유자가 접근 권한을 직접 관리 → 저위험 환경에 적합<br>
+• <b>MAC(강제적)</b>: 보안 레이블 기반, 시스템이 접근 결정 → 고위험/기밀 환경에 적합<br>
+• <b>RBAC(역할 기반)</b>: 역할에 따라 접근 부여 → 중간 수준 통제<br>
+• 위험 수준에 맞는 접근 통제 모델 선택이 중요<br><br>
+<b>🔗 관련 문제:</b> Q458(정책 확인 우선) · Q460(SoD) · Q464(DBA 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Discretionary vs Mandatory Access Control",
+keyConcepts:[
+"DAC(임의적 접근 통제)|데이터 소유자가 접근 권한을 직접 설정·변경할 수 있는 모델",
+"MAC(강제적 접근 통제)|보안 레이블 기반으로 시스템이 접근을 결정하는 엄격한 모델",
+"위험 기반 통제 선택|저위험 환경엔 DAC, 고위험·기밀 환경엔 MAC가 적절"
+]
+},
+
+{
+id:466,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor evaluating logical access controls should FIRST:",
+questionKo:"논리적 접근 통제를 평가하는 IS 감사인이 <b>가장 먼저</b> 해야 할 것은?",
+options:[
+"A. Document the controls applied to the potential access paths to the system.",
+"B. Test controls over the access paths to determine if they are functional.",
+"C. Evaluate the security environment in relation to written policies and practices.",
+"D. Obtain an understanding of the security risk to information processing."
+],
+optionsKo:[
+"A. 시스템 접근 경로에 적용된 통제를 문서화한다",
+"B. 접근 경로의 통제가 작동하는지 테스트한다",
+"C. 문서화된 정책·관행 대비 보안 환경을 평가한다",
+"D. 정보 처리에 대한 보안 위험을 이해한다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>순서</th><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>1단계</td><td>D. 보안 위험 이해 ✅</td><td>위험 평가를 통해 통제의 필요성과 적정성 판단 기준 수립</td></tr>
+<tr><td>2단계</td><td>A. 통제 문서화</td><td>접근 경로별 적용된 통제를 파악하고 문서화</td></tr>
+<tr><td>3단계</td><td>B. 통제 테스트</td><td>문서화된 통제가 실제로 작동하는지 검증</td></tr>
+<tr><td>4단계</td><td>C. 보안 환경 평가</td><td>위험·통제·테스트 결과를 종합하여 정책 대비 적정성 평가</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 논리적 접근 통제 감사 절차</b><br>
+① <b>위험 이해</b> → ② 통제 문서화 → ③ 통제 테스트 → ④ 환경 평가<br>
+• 위험을 먼저 파악해야 통제의 <b>적정성(adequacy)</b>을 판단할 수 있음<br>
+• Q439(보안 기준선 감사)와 유사 — 감사는 항상 위험/현황 파악부터 시작<br><br>
+<b>🔗 관련 문제:</b> Q439(감사 첫 단계) · Q458(정책 확인 우선) · Q465(DAC/MAC)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Logical Access Control Audit Process",
+keyConcepts:[
+"위험 기반 감사|논리적 접근 통제 평가는 보안 위험 이해가 첫 번째 단계",
+"감사 절차 순서|위험 이해 → 통제 문서화 → 통제 테스트 → 환경 평가",
+"통제 적정성|위험 수준을 먼저 파악해야 통제가 충분한지 판단 가능"
+]
+},
+
+{
+id:467,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"The review of router access control lists should be conducted during:",
+questionKo:"라우터 접근 통제 목록(ACL) 검토는 어떤 검토에서 수행해야 하는가?",
+options:[
+"A. An environmental review.",
+"B. A network security review.",
+"C. A business continuity review.",
+"D. A data integrity review."
+],
+optionsKo:[
+"A. 환경 검토",
+"B. 네트워크 보안 검토",
+"C. 업무 연속성 검토",
+"D. 데이터 무결성 검토"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 환경 검토</td><td>전력, 물리적 접근 등 물리적 보안을 검토 → 라우터 ACL과 무관</td></tr>
+<tr class="correct-row"><td>B. 네트워크 보안 검토 ✅</td><td>라우터 ACL, 포트 스캐닝, 내·외부 연결 등을 검토하는 영역</td></tr>
+<tr><td>C. 업무 연속성 검토</td><td>BCP 최신성·적정성·테스트 여부 검토 → 라우터 ACL과 무관</td></tr>
+<tr><td>D. 데이터 무결성 검토</td><td>데이터 정확성·부적절한 변경 방지 검토 → 라우터 ACL과 무관</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 감사 검토 영역별 범위</b><br>
+• <b>네트워크 보안 검토</b>: 라우터 ACL, 방화벽 규칙, 포트 스캐닝, 내·외부 연결<br>
+• <b>환경 검토</b>: 전력, 온습도, 물리적 접근 통제<br>
+• <b>업무 연속성 검토</b>: BCP/DRP 적정성, 테스트 결과<br>
+• <b>데이터 무결성 검토</b>: 입력·처리·출력 데이터 정확성 검증<br><br>
+<b>🔗 관련 문제:</b> Q436(방화벽 감사) · Q442(웹 필터) · Q466(접근 통제 감사)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Security Review",
+keyConcepts:[
+"라우터 ACL|네트워크 트래픽 허용·차단 규칙으로 네트워크 보안 검토 대상",
+"네트워크 보안 검토|ACL, 방화벽, 포트 스캐닝, 연결 구성 등을 포함하는 감사 영역",
+"감사 영역 구분|네트워크 보안·환경·업무 연속성·데이터 무결성은 각각 다른 검토 범위"
+]
+},
+
+{
+id:468,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"While auditing an internally developed web application, an information systems (IS) auditor determines that all business users share a common access profile. Which of the following is the MOST relevant recommendation to prevent the risk of unauthorized data modification?",
+questionKo:"내부 개발 웹 애플리케이션 감사 중 모든 업무 사용자가 <b>동일한 접근 프로파일</b>을 공유하고 있음을 발견했다. 비인가 데이터 수정 위험을 방지하기 위한 <b>가장 적절한 권고</b>는?",
+options:[
+"A. Enable detailed logging of user actions.",
+"B. Customize user access profiles per job responsibility.",
+"C. Enforce a strong password policy for all accounts.",
+"D. Implement regular access rights review."
+],
+optionsKo:[
+"A. 사용자 행동의 상세 로깅을 활성화한다",
+"B. 직무 책임에 따라 접근 프로파일을 개별화한다",
+"C. 모든 계정에 강력한 비밀번호 정책을 시행한다",
+"D. 정기적 접근 권한 검토를 시행한다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 상세 로깅</td><td>탐지 통제 → 예방 통제가 불가할 때 차선책</td></tr>
+<tr class="correct-row"><td>B. 직무별 접근 프로파일 ✅</td><td>직무에 맞는 권한만 부여하는 자동화된 예방 통제 — 가장 효과적</td></tr>
+<tr><td>C. 강력한 비밀번호 정책</td><td>예방 통제이나, 과도한 접근 권한 자체를 제거하지는 못함</td></tr>
+<tr><td>D. 정기 접근 권한 검토</td><td>모든 프로파일이 동일하므로 검토해도 차이를 발견할 수 없음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 접근 프로파일과 최소 권한 원칙</b><br>
+• 모든 사용자가 동일 프로파일 → <b>과도한 권한</b> 부여 위험<br>
+• <b>직무 기반 접근 통제(RBAC)</b>: 직무별로 필요한 권한만 부여<br>
+• 예방 통제 > 탐지 통제: 로깅보다 권한 제한이 우선<br>
+• 비밀번호 강화는 인증 통제 — 접근 범위와는 별개의 문제<br><br>
+<b>🔗 관련 문제:</b> Q465(DAC/MAC) · Q464(SoD 예방 통제) · Q460(SoD 위반)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Role-Based Access Control",
+keyConcepts:[
+"직무 기반 접근 프로파일|직무 책임에 따라 접근 권한을 차등 부여하는 예방 통제",
+"최소 권한 원칙|업무 수행에 필요한 최소한의 권한만 부여해야 함",
+"공통 프로파일 위험|모든 사용자에게 동일 권한 부여 시 비인가 데이터 수정 위험 증가"
+]
+},
+
+{
+id:469,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"During a logical access controls review, an information systems (IS) auditor observes that user accounts are shared. The GREATEST risk resulting from this situation is that:",
+questionKo:"논리적 접근 통제 검토 중 IS 감사인이 사용자 계정이 공유되고 있음을 발견했다. 이 상황의 <b>가장 큰 위험</b>은?",
+options:[
+"A. An unauthorized user may use the ID to gain access.",
+"B. User access management is time consuming.",
+"C. Passwords are easily guessed.",
+"D. User accountability may not be established."
+],
+optionsKo:[
+"A. 비인가 사용자가 해당 ID로 접근할 수 있다",
+"B. 사용자 접근 관리가 시간이 많이 소요된다",
+"C. 비밀번호가 쉽게 추측된다",
+"D. 사용자 책임 추적성이 확립되지 않을 수 있다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 비인가자 접근</td><td>공유 ID가 개별 ID보다 오용 가능성은 높으나, 개별 ID도 항상 위험 존재</td></tr>
+<tr><td>B. 접근 관리 소요 시간</td><td>공유 ID 사용이 관리 복잡도를 증가시키지 않음</td></tr>
+<tr><td>C. 비밀번호 추측 용이</td><td>공유 ID가 반드시 쉬운 비밀번호를 의미하지 않음</td></tr>
+<tr class="correct-row"><td>D. 책임 추적성 미확립 ✅</td><td>여러 사람이 같은 ID 사용 → 누가 접근했는지 식별 불가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 계정 공유 = Accountability 상실 (반복 출제)</b><br>
+• Q463과 동일 핵심 — CISA 시험에서 <b>자주 출제</b>되는 주제<br>
+• 공유 계정 → 감사 추적(audit trail) 무력화<br>
+• 핵심 원칙: <b>1인 1계정</b>으로 개별 행위 추적 보장<br>
+• 비인가 접근보다 accountability 상실이 더 큰 위험으로 평가됨<br><br>
+<b>🔗 관련 문제:</b> Q463(동일 주제) · Q457(관리자 공유 자격증명) · Q459(감사 로그 보호)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — User Account Sharing and Accountability",
+keyConcepts:[
+"책임 추적성(Accountability)|공유 계정의 가장 큰 위험은 개별 행위 추적 불가",
+"1인 1계정 원칙|모든 사용자에게 고유 ID를 부여하여 감사 추적 가능성 확보",
+"감사 추적 무력화|공유 ID는 audit trail의 신뢰성을 근본적으로 훼손"
+]
+},
+
+{
+id:470,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An accuracy measure for a biometric system is:",
+questionKo:"생체인식 시스템의 <b>정확도 측정 지표</b>는?",
+options:[
+"A. System response time.",
+"B. Registration time.",
+"C. Input file size.",
+"D. False-acceptance rate (FAR)."
+],
+optionsKo:[
+"A. 시스템 응답 시간",
+"B. 등록 시간",
+"C. 입력 파일 크기",
+"D. 오인식율(FAR)"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. 시스템 응답 시간</td><td>처리 속도 지표 → 생산성 영향이나 정확도 측정이 아님</td></tr>
+<tr><td>B. 등록 시간</td><td>사용자 등록에 소요되는 시간 → 정확도 측정이 아님</td></tr>
+<tr><td>C. 입력 파일 크기</td><td>생체 정보 저장 용량 → 솔루션 유형에 따라 다르며 정확도와 무관</td></tr>
+<tr class="correct-row"><td>D. 오인식율(FAR) ✅</td><td>비인가자를 잘못 허용하는 비율 → 3대 정확도 지표 중 하나</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 생체인식 3대 정확도 지표</b><br>
+• <b>FRR</b> (오거부율): 정당한 사용자를 잘못 거부하는 비율<br>
+• <b>FAR</b> (오인식율): 비인가자를 잘못 허용하는 비율<br>
+• <b>CER/EER</b> (교차 오류율): FRR = FAR이 되는 교차점<br>
+• 응답 시간, 등록 시간, 파일 크기는 운영 지표이지 정확도 지표가 아님<br><br>
+<b>🔗 관련 문제:</b> Q456(EER 정의) · Q461(낮은 EER = 효과적) · Q438
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Biometric Accuracy Measures",
+keyConcepts:[
+"생체인식 정확도 3대 지표|FRR(오거부율), FAR(오인식율), CER/EER(교차 오류율)",
+"FAR(오인식율)|비인가자를 정당한 사용자로 잘못 허용하는 비율",
+"CER = EER|Cross-Error Rate와 Equal Error Rate는 동일 개념 (FRR = FAR 교차점)"
+]
+},
+
+{
+id:471,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following is the BEST access control procedure?",
+questionKo:"다음 중 <b>가장 적절한</b> 접근 통제 절차는?",
+options:[
+"A. The data owner formally authorizes access and an administrator implements the user authorization tables.",
+"B. Authorized staff implements the user authorization tables and the data owner approves them.",
+"C. The data owner and an information systems (IS) manager jointly create and update the user authorization tables.",
+"D. The data owner creates and updates the user authorization tables."
+],
+optionsKo:[
+"A. 데이터 소유자가 공식 승인하고, 관리자가 사용자 권한 테이블을 구현한다",
+"B. 권한 있는 직원이 권한 테이블을 구현하고, 데이터 소유자가 승인한다",
+"C. 데이터 소유자와 IS 관리자가 공동으로 권한 테이블을 생성·갱신한다",
+"D. 데이터 소유자가 직접 권한 테이블을 생성·갱신한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 소유자 승인 → 관리자 구현 ✅</td><td>소유자가 접근 규칙 결정, 관리자가 기술적 구현 — 직무 분리 충족</td></tr>
+<tr><td>B. 구현 후 승인</td><td>구현 전에 승인을 받아야 함 — 순서가 역전</td></tr>
+<tr><td>C. 공동 생성·갱신</td><td>접근 권한 책임은 데이터 소유자에게 있음. IT는 구현만 담당</td></tr>
+<tr><td>D. 소유자 직접 구현</td><td>데이터 소유자는 승인 권한은 있으나 직접 테이블을 관리하지 않음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 접근 통제의 역할 분리</b><br>
+• <b>데이터 소유자(Owner)</b>: 접근 권한을 공식 승인하는 책임<br>
+• <b>IS 관리자(Administrator)</b>: 소유자의 지시에 따라 기술적으로 구현<br>
+• 핵심: <b>승인(소유자) → 구현(관리자)</b> 순서가 올바른 절차<br>
+• 구현 후 승인(B)은 순서 역전, 직접 구현(D)은 역할 혼재<br><br>
+<b>🔗 관련 문제:</b> Q464(DBA 수탁 책임) · Q465(DAC) · Q460(SoD)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Access Control Authorization Process",
+keyConcepts:[
+"데이터 소유자 역할|접근 권한의 공식 승인 권한과 책임을 보유",
+"승인 후 구현 원칙|소유자가 먼저 승인 → 관리자가 기술적으로 구현하는 순서",
+"접근 통제 직무 분리|승인(소유자)과 구현(관리자)을 분리하여 통제 강화"
+]
+},
+
+{
+id:472,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"A new business application was designed in a large, complex enterprise, and the business owner requested that the various reports be viewed on a need-to-know basis. Which of the following access control methods is the BEST method to achieve this requirement?",
+questionKo:"대규모 복잡한 기업에서 새 업무 애플리케이션이 설계되었고, 업무 소유자가 각종 보고서를 <b>알 필요가 있는 사람만(need-to-know)</b> 열람하도록 요청했다. <b>가장 적절한</b> 접근 통제 방법은?",
+options:[
+"A. Mandatory",
+"B. Role-based",
+"C. Discretionary",
+"D. Single sign-on (SSO)"
+],
+optionsKo:[
+"A. 강제적 접근 통제(MAC)",
+"B. 역할 기반 접근 통제(RBAC)",
+"C. 임의적 접근 통제(DAC)",
+"D. 단일 인증(SSO)"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr><td>A. MAC(강제적)</td><td>대규모 복잡한 기업에서 구현·유지가 비싸고 어려움</td></tr>
+<tr class="correct-row"><td>B. RBAC(역할 기반) ✅</td><td>직무 역할에 따라 접근 제한 → need-to-know 기반 보고서 열람에 최적</td></tr>
+<tr><td>C. DAC(임의적)</td><td>소유자가 접근 결정 → 이 시나리오에 충분히 구체적이지 않음</td></tr>
+<tr><td>D. SSO(단일 인증)</td><td>다중 시스템 접근 기술이지 접근 권한 제어 방법이 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 접근 통제 모델 비교 정리</b><br>
+• <b>MAC</b>: 보안 레이블 기반, 고비용 → 군사/기밀 환경 적합<br>
+• <b>RBAC</b>: 직무 역할 기반 → 대규모 기업의 need-to-know 구현에 최적<br>
+• <b>DAC</b>: 소유자 재량 기반 → 저위험 환경에 적합 (Q465)<br>
+• <b>SSO</b>: 인증 기술이지 접근 권한 통제 모델이 아님<br><br>
+<b>🔗 관련 문제:</b> Q465(DAC 저위험) · Q468(직무별 프로파일) · Q435(정보 분류)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Access Control Models",
+keyConcepts:[
+"RBAC(역할 기반 접근 통제)|직무 역할에 따라 접근을 제한하여 need-to-know 원칙 구현",
+"접근 통제 모델 선택|환경 규모·복잡도·위험 수준에 맞는 모델 선택이 중요",
+"Need-to-know 원칙|업무 수행에 필요한 정보만 접근 허용하는 보안 원칙"
+]
+},
+
+{
+id:473,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An organization with extremely high security requirements is evaluating the effectiveness of biometric systems. Which of the following performance indicators is MOST important?",
+questionKo:"<b>극도로 높은 보안 요구사항</b>을 가진 조직이 생체인식 시스템의 효과성을 평가하고 있다. <b>가장 중요한</b> 성능 지표는?",
+options:[
+"A. False-acceptance rate (FAR)",
+"B. Equal-error rate (EER)",
+"C. False-rejection rate (FRR)",
+"D. False-identification rate (FIR)"
+],
+optionsKo:[
+"A. 오인식율(FAR)",
+"B. 동일 오류율(EER)",
+"C. 오거부율(FRR)",
+"D. 오식별율(FIR)"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. FAR(오인식율) ✅</td><td>비인가자를 허용하는 비율 — 고보안 환경에서 가장 중요</td></tr>
+<tr><td>B. EER(동일 오류율)</td><td>종합 정확도 측정 기준이나, 고보안 환경에선 FAR이 더 중요</td></tr>
+<tr><td>C. FRR(오거부율)</td><td>인가자 거부는 불편하지만, 비인가자 허용보다 덜 위험</td></tr>
+<tr><td>D. FIR(오식별율)</td><td>인가자에게 잘못된 ID가 부여되는 확률 — 핵심 보안 지표가 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 보안 수준별 생체인식 지표 우선순위</b><br>
+• <b>고보안 환경</b>: FAR이 가장 중요 (비인가자 허용 차단이 최우선)<br>
+• <b>종합 성능 비교</b>: EER이 가장 중요 (Q456, Q461)<br>
+• <b>편의성 중시</b>: FRR이 중요 (정당한 사용자 거부 최소화)<br>
+• 원칙: 비인가자 허용(FAR) > 인가자 거부(FRR) — 보안이 편의보다 우선<br><br>
+<b>🔗 관련 문제:</b> Q456(EER 정의) · Q461(낮은 EER) · Q470(정확도 지표)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Biometric Performance in High-Security Environments",
+keyConcepts:[
+"FAR 우선순위|고보안 환경에서는 비인가자 허용(FAR) 최소화가 최우선",
+"FAR vs FRR|비인가자 허용이 인가자 거부보다 보안 위험이 큼",
+"FIR(오식별율)|인가된 사용자에게 잘못된 ID가 부여되는 확률"
+]
+},
+
+{
+id:474,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"There is a concern that the risk of unauthorized access may increase after implementing a single sign-on (SSO) process. To prevent unauthorized access, the MOST important action is to:",
+questionKo:"SSO(단일 인증) 구현 후 비인가 접근 위험이 증가할 우려가 있다. 비인가 접근을 <b>방지</b>하기 위한 <b>가장 중요한 조치</b>는?",
+options:[
+"A. Monitor failed authentication attempts.",
+"B. Review log files regularly.",
+"C. Deactivate unused accounts promptly.",
+"D. Mandate a strong password policy."
+],
+optionsKo:[
+"A. 인증 실패 시도를 모니터링한다",
+"B. 로그 파일을 정기적으로 검토한다",
+"C. 미사용 계정을 즉시 비활성화한다",
+"D. 강력한 비밀번호 정책을 의무화한다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>설명</th></tr>
+<tr><td>A. 인증 실패 모니터링</td><td>탐지 통제</td><td>실패 시도를 감지하나 접근 자체를 방지하지 못함</td></tr>
+<tr><td>B. 로그 파일 검토</td><td>탐지 통제</td><td>비인가 접근을 탐지할 수 있으나 방지는 아님</td></tr>
+<tr><td>C. 미사용 계정 비활성화</td><td>예방 통제</td><td>중요하나, 사용 중인 계정을 통한 비인가 접근은 차단 불가</td></tr>
+<tr class="correct-row"><td>D. 강력한 비밀번호 정책 ✅</td><td>예방 통제</td><td>SSO에서 하나의 비밀번호로 모든 시스템 접근 → 강력한 비밀번호가 핵심</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 SSO 환경의 보안 특성</b><br>
+• SSO: 한 번 인증으로 <b>모든 시스템에 접근</b> → 비밀번호 탈취 시 피해 범위 극대화<br>
+• 따라서 강력한 비밀번호 정책이 <b>가장 넓은 예방 효과</b>를 제공<br>
+• 모니터링·로그 검토는 탐지 통제 → "방지(prevent)"를 묻는 문제에 부적합<br>
+• 미사용 계정 비활성화는 범위가 제한적<br><br>
+<b>🔗 관련 문제:</b> Q472(SSO는 접근 기술) · Q457(인증 통제) · Q438(PIN 보안)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Single Sign-On Security",
+keyConcepts:[
+"SSO 위험|단일 인증 실패 시 모든 연결 시스템이 동시에 노출",
+"강력한 비밀번호 정책|SSO 환경에서 가장 넓은 예방 효과를 제공하는 통제",
+"예방 vs 탐지|비인가 접근 방지를 묻는 문제에서는 예방 통제가 정답"
+]
+},
+{
+id:475,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"The information systems (IS) auditor is reviewing the implementation of a storage area network (SAN). The SAN administrator indicates that logging and monitoring is active, hard zoning is used to isolate data belonging to different business units and all unused SAN ports are disabled. The administrator implemented the system, performed and documented security testing during implementation and is the only user with administrative rights to the system. What should the IS auditor's initial determination be?",
+questionKo:"IS 감사인이 SAN(스토리지 영역 네트워크) 구현을 검토하고 있다. SAN 관리자는 로깅과 모니터링이 활성화되어 있고, 하드 조닝으로 사업부 간 데이터를 격리하며, 미사용 SAN 포트는 모두 비활성화했다고 밝혔다. 관리자는 시스템을 직접 구현하고, 구현 중 보안 테스트를 수행·문서화했으며, 시스템에 대한 관리 권한을 가진 <b>유일한 사용자</b>이다. IS 감사인의 <b>초기 판단</b>은?",
+options:[
+"A. There is no significant potential risk.",
+"B. Soft zoning presents a potential risk.",
+"C. Disabling unused ports presents a potential risk.",
+"D. The SAN administrator presents a potential risk."
+],
+optionsKo:[
+"A. 중대한 잠재적 위험은 없다",
+"B. 소프트 조닝이 잠재적 위험을 야기한다",
+"C. 미사용 포트 비활성화가 잠재적 위험을 야기한다",
+"D. SAN 관리자가 잠재적 위험을 야기한다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 위험 없음</td><td>오답</td><td>기술적 통제는 적절하나 인적 위험이 존재함</td></tr>
+<tr><td>B. 소프트 조닝</td><td>오답</td><td>실제로는 더 안전한 <b>하드 조닝</b>을 사용 중</td></tr>
+<tr><td>C. 포트 비활성화</td><td>오답</td><td>미사용 포트 비활성화는 보안을 <b>강화</b>하는 조치</td></tr>
+<tr class="correct-row"><td>D. SAN 관리자 ✅</td><td>정답</td><td>단일 관리자 = 단일 장애점(SPOF) + 직무 분리 위반</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 SAN 관리자가 위험인 이유</b><br>
+• <b>단일 장애점(SPOF)</b>: 유일한 관리자가 갑자기 부재 시 SAN 관리 불가<br>
+• <b>직무 분리(SoD) 위반</b>: 구현·보안 테스트·운영·검증을 한 사람이 모두 수행<br>
+• 보안 통제를 <b>탐지 없이 수정·제거</b>할 수 있는 권한 집중<br>
+• 기술적 통제(로깅, 하드 조닝, 포트 비활성화)는 모두 적절한 조치<br><br>
+<b>📝 Hard Zoning vs Soft Zoning</b><br>
+• <b>Hard Zoning</b>: 물리적 포트 기반 격리 → 더 안전<br>
+• <b>Soft Zoning</b>: WWN(World Wide Name) 기반 → 스푸핑 가능성 있음<br><br>
+<b>🔗 관련 문제:</b> Q457(접근 통제) · Q474(SSO 보안) · Q438(인증 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — SAN Security and Separation of Duties",
+keyConcepts:[
+"직무 분리(SoD)|구현·테스트·운영·검증을 동일인이 수행하면 통제 우회 위험",
+"단일 장애점(SPOF)|유일한 관리자 부재 시 시스템 관리 불가능한 운영 위험",
+"Hard Zoning vs Soft Zoning|물리적 포트 기반(Hard)이 WWN 기반(Soft)보다 안전"
+]
+},
+{
+id:476,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which is the MOST important step an auditor should consider while developing an audit plan based on a risk-based approach?",
+questionKo:"위험 기반 접근법으로 감사 계획을 수립할 때, 감사인이 고려해야 할 <b>가장 중요한 단계</b>는?",
+options:[
+"A. Inventory the information systems in use in the enterprise and categorize them.",
+"B. Assess what risk affect systems and the severity of the impact on the business.",
+"C. Determine which systems impact critical enterprise functions and how close to real time they operate.",
+"D. Rank the systems based on risk assessment and decide the audit priority, resources, schedule and frequency."
+],
+optionsKo:[
+"A. 기업에서 사용 중인 정보 시스템을 목록화하고 분류한다",
+"B. 시스템에 영향을 미치는 위험과 비즈니스 영향의 심각도를 평가한다",
+"C. 어떤 시스템이 핵심 기업 기능에 영향을 미치는지, 실시간에 얼마나 가까운지 파악한다",
+"D. 위험 평가에 따라 시스템을 순위화하고 감사 우선순위·자원·일정·빈도를 결정한다"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 시스템 목록화·분류</td><td>필요하나 불충분</td><td>목록만으로는 핵심 기능과의 관련성을 평가할 수 없음</td></tr>
+<tr><td>B. 위험·영향도 평가</td><td>중요하나 최선 아님</td><td>위험 평가 시 고유 위험, 통제 위험, 탐지 위험을 포함해야 함</td></tr>
+<tr class="correct-row"><td>C. 핵심 기능·실시간성 파악 ✅</td><td>정답</td><td>핵심 시스템과 실시간 운영 여부를 알아야 위험 판단 가능</td></tr>
+<tr><td>D. 순위화·감사 계획 수립</td><td>후속 단계</td><td>핵심 시스템 파악 후에야 우선순위를 정할 수 있음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 위험 기반 감사 계획의 핵심</b><br>
+• <b>핵심 시스템 식별이 먼저</b>: 어떤 시스템이 비즈니스 핵심 기능을 지원하는지 파악해야 위험 판단 가능<br>
+• <b>실시간 근접도</b>: 실시간에 가까울수록 장애 시 비즈니스 영향이 즉각적<br>
+• 모든 시스템이 감사 계획에 포함될 필요는 없음 — 비핵심 시스템이 핵심보다 높은 순위일 수도 있음<br>
+• 감사 위험 = <b>고유 위험(Inherent) × 통제 위험(Control) × 탐지 위험(Detection)</b><br><br>
+<b>📝 감사 계획 수립 순서</b><br>
+1. 시스템 목록화·분류 (A)<br>
+2. <b>핵심 기능 영향·실시간성 파악 (C) ← 가장 중요</b><br>
+3. 위험·영향도 평가 (B)<br>
+4. 순위화·감사 계획 확정 (D)<br><br>
+<b>🔗 관련 문제:</b> Q475(SAN 감사) · Q457(접근 통제 감사)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Risk-Based Audit Planning",
+keyConcepts:[
+"위험 기반 감사|핵심 비즈니스 기능에 영향을 미치는 시스템을 우선 식별하는 접근법",
+"감사 위험 구성|고유 위험(Inherent) × 통제 위험(Control) × 탐지 위험(Detection)",
+"실시간 근접도|실시간에 가까운 시스템일수록 장애 시 즉각적 비즈니스 영향 발생"
+]
+},
+{
+id:477,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following groups would create the MOST concern to an information systems (IS) auditor if the group has full access to the production database?",
+questionKo:"다음 중 운영(프로덕션) 데이터베이스에 대한 전체 접근 권한을 가진 경우, IS 감사인에게 <b>가장 큰 우려</b>를 야기하는 그룹은?",
+options:[
+"A. Application developers",
+"B. System administrators",
+"C. Business users",
+"D. Information security team"
+],
+optionsKo:[
+"A. 애플리케이션 개발자",
+"B. 시스템 관리자",
+"C. 비즈니스 사용자",
+"D. 정보보안팀"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>위험 수준</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 애플리케이션 개발자 ✅</td><td>가장 높음</td><td>변경 배포에 집중 → QA 통제 우회하여 결함 있는 변경을 운영 환경에 설치할 위험</td></tr>
+<tr><td>B. 시스템 관리자</td><td>허용 가능</td><td>관리 업무상 전체 접근이 필요할 수 있음 (비인가 활동 모니터링 필요)</td></tr>
+<tr><td>C. 비즈니스 사용자</td><td>우려됨</td><td>전체 접근은 부적절하나(부정 위험), 개발자만큼 높은 우려는 아님</td></tr>
+<tr><td>D. 정보보안팀</td><td>낮음</td><td>DB 전체 복구 가능성 확보를 위해 접근이 필요할 수 있음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 개발자의 운영 DB 접근이 가장 위험한 이유</b><br>
+• <b>직무 분리(SoD) 위반</b>: 개발자가 운영 환경에 직접 접근 → 개발·테스트·배포 통제 우회 가능<br>
+• 변경 배포 압박으로 인해 <b>품질보증(QA) 절차를 생략</b>하는 경향<br>
+• 결함 있는 코드나 미승인 변경을 <b>직접 운영 환경에 반영</b>할 수 있음<br>
+• 시스템 관리자는 업무 특성상 운영 접근이 필요하므로 상대적으로 낮은 우려<br><br>
+<b>📝 운영 환경 접근 통제 원칙</b><br>
+• 개발자 → 개발/테스트 환경만 접근<br>
+• 운영 환경 배포 → 별도의 <b>변경 관리 절차</b>를 통해 수행<br>
+• 시스템 관리자 → 운영 접근 허용하되 <b>활동 모니터링</b> 필수<br><br>
+<b>🔗 관련 문제:</b> Q475(SAN 관리자 직무 분리) · Q476(위험 기반 감사)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Access Control and Separation of Duties",
+keyConcepts:[
+"개발자 운영 접근 금지|개발자가 운영 DB에 접근하면 QA 통제 우회·미승인 변경 위험 최대",
+"직무 분리(SoD)|개발·테스트·운영 환경 간 접근 권한을 분리하는 핵심 통제",
+"시스템 관리자 접근|업무상 운영 접근 필요하나 비인가 활동 모니터링이 필수"
+]
+},
+{
+id:478,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Authorizing access to application data is the responsibility of the:",
+questionKo:"애플리케이션 데이터에 대한 접근을 <b>인가(승인)</b>하는 것은 누구의 책임인가?",
+options:[
+"A. Data custodian.",
+"B. Application administrator.",
+"C. Data owner.",
+"D. Security administrator."
+],
+optionsKo:[
+"A. 데이터 관리인(Custodian)",
+"B. 애플리케이션 관리자",
+"C. 데이터 소유자(Owner)",
+"D. 보안 관리자"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>역할</th><th>책임</th><th>설명</th></tr>
+<tr><td>A. Data Custodian</td><td>보관·보호</td><td>데이터 소유자의 지시에 따라 데이터를 저장·보호하는 역할</td></tr>
+<tr><td>B. Application Admin</td><td>앱 관리</td><td>애플리케이션 자체를 관리, 데이터 접근 인가 권한 없음</td></tr>
+<tr class="correct-row"><td>C. Data Owner ✅</td><td>접근 인가</td><td>데이터·애플리케이션에 대한 접근 권한을 부여하거나 거부할 권한 보유</td></tr>
+<tr><td>D. Security Admin</td><td>정책 구현·유지</td><td>보안 정책 구현·유지 및 조사 주도, 접근 인가 권한은 없음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 데이터 관련 역할 구분</b><br>
+• <b>Data Owner(소유자)</b>: 데이터 접근 권한을 <b>승인/거부</b>하는 최종 권한자 (보통 경영진/부서장)<br>
+• <b>Data Custodian(관리인)</b>: 소유자 지시에 따라 데이터를 <b>저장·백업·보호</b> (보통 IT 부서)<br>
+• <b>Security Admin(보안 관리자)</b>: 보안 정책을 <b>구현·운영</b>하나 접근 인가는 소유자 결정<br>
+• <b>Application Admin</b>: 애플리케이션 운영·유지 관리<br><br>
+<b>📝 접근 통제 프로세스</b><br>
+1. <b>Data Owner</b>가 접근 권한을 승인<br>
+2. <b>Security Admin</b>이 승인된 권한을 시스템에 구현<br>
+3. <b>Data Custodian</b>이 데이터를 안전하게 보관·보호<br><br>
+<b>🔗 관련 문제:</b> Q477(운영 DB 접근 통제) · Q475(직무 분리)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Data Ownership and Access Authorization",
+keyConcepts:[
+"Data Owner|데이터 접근 권한을 부여·거부하는 최종 권한자",
+"Data Custodian|소유자 지시에 따라 데이터를 저장·백업·보호하는 역할",
+"접근 인가 프로세스|소유자 승인 → 보안 관리자 구현 → 관리인 보관·보호"
+]
+},
+{
+id:479,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"The responsibility for authorizing access to a business application system belongs to the:",
+questionKo:"비즈니스 애플리케이션 시스템에 대한 접근을 <b>인가(승인)</b>하는 책임은 누구에게 있는가?",
+options:[
+"A. Data owner.",
+"B. Security administrator.",
+"C. IT security manager.",
+"D. Requestor's immediate supervisor."
+],
+optionsKo:[
+"A. 데이터 소유자(Data Owner)",
+"B. 보안 관리자(Security Administrator)",
+"C. IT 보안 관리자(IT Security Manager)",
+"D. 요청자의 직속 상관"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. Data Owner ✅</td><td>정답</td><td>애플리케이션 및 백엔드 DB 접근 인가의 최종 책임자</td></tr>
+<tr><td>B. Security Administrator</td><td>오답</td><td>비즈니스 애플리케이션 접근 인가 책임 없음</td></tr>
+<tr><td>C. IT Security Manager</td><td>오답</td><td>비즈니스 애플리케이션 접근 인가 책임 없음</td></tr>
+<tr><td>D. 직속 상관</td><td>부분적</td><td>접근 승인에 참여할 수 있으나 <b>최종 책임</b>은 Data Owner</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Data Owner의 접근 인가 책임</b><br>
+• 비즈니스 애플리케이션 개발 시 <b>정보/데이터 소유자를 지정</b>하는 것이 모범 사례<br>
+• Data Owner는 애플리케이션 자체 및 <b>백엔드 DB 쿼리 접근</b>을 인가할 책임<br>
+• 직속 상관은 사용자 접근 승인에 참여할 수 있으나, <b>최종 책임은 Data Owner</b><br>
+• Security Admin / IT Security Manager는 정책 구현·운영 역할이지 인가 권한자가 아님<br><br>
+<b>⚠️ Q478과 비교</b><br>
+• Q478: 애플리케이션 <b>데이터</b> 접근 인가 → Data Owner<br>
+• Q479: 비즈니스 <b>애플리케이션 시스템</b> 접근 인가 → Data Owner<br>
+• 둘 다 <b>Data Owner가 최종 인가 권한자</b>라는 동일한 원칙<br><br>
+<b>🔗 관련 문제:</b> Q478(데이터 접근 인가) · Q477(운영 DB 접근 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Data Ownership and Access Authorization",
+keyConcepts:[
+"Data Owner 인가 책임|애플리케이션 및 백엔드 DB 접근 권한의 최종 승인 권한자",
+"직속 상관 역할|접근 승인에 참여 가능하나 최종 책임은 Data Owner에게 귀속",
+"보안 관리자 vs 소유자|보안 관리자는 정책 구현, 소유자는 접근 인가 담당"
+]
+},
+{
+id:480,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"A key IT systems developer has suddenly resigned from an enterprise. Which of the following will be the MOST important action?",
+questionKo:"핵심 IT 시스템 개발자가 갑자기 사직했다. 다음 중 <b>가장 중요한 조치</b>는?",
+options:[
+"A. Set up an exit interview with human resources.",
+"B. Initiate the handover process to ensure continuity of the project.",
+"C. Terminate the developer's logical access to IT resources.",
+"D. Ensure that management signs off on the termination paperwork."
+],
+optionsKo:[
+"A. 인사부서와 퇴직 면담을 설정한다",
+"B. 프로젝트 연속성을 위해 인수인계 절차를 시작한다",
+"C. 개발자의 IT 자원에 대한 논리적 접근을 종료한다",
+"D. 경영진이 퇴직 서류에 서명하도록 한다"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>중요도</th><th>설명</th></tr>
+<tr><td>A. 퇴직 면담</td><td>중요하나 2차</td><td>마지막 근무일까지 진행하면 되며, 접근 종료보다 우선순위 낮음</td></tr>
+<tr><td>B. 인수인계</td><td>중요하나 2차</td><td>마지막 근무일까지 진행하면 문제 없음</td></tr>
+<tr class="correct-row"><td>C. 논리적 접근 종료 ✅</td><td>가장 중요</td><td>IT 자산 보호를 위해 즉시 수행해야 할 최우선 조치</td></tr>
+<tr><td>D. 퇴직 서류 서명</td><td>중요하나 2차</td><td>행정 절차로, IT 시스템 접근 종료만큼 긴급하지 않음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 갑작스런 퇴직 시 최우선 조치</b><br>
+• <b>"갑자기(suddenly)" 사직</b> → IT 자산 보호가 최우선<br>
+• 핵심 개발자는 시스템에 대한 <b>깊은 지식과 접근 권한</b>을 보유<br>
+• 경영진이 퇴직 의사를 확인한 즉시 <b>논리적 접근을 종료</b>해야 함<br>
+• 퇴직 면담·인수인계·서류 처리는 모두 중요하나, 마지막 근무일까지 처리 가능<br><br>
+<b>📝 퇴직 시 접근 통제 절차</b><br>
+1. <b>즉시</b>: 논리적 접근(계정·권한) 종료<br>
+2. <b>즉시</b>: 물리적 접근(출입증·열쇠) 회수<br>
+3. <b>마지막 근무일까지</b>: 인수인계·퇴직 면담·서류 처리<br><br>
+<b>🔗 관련 문제:</b> Q477(운영 DB 접근 통제) · Q475(단일 관리자 위험)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Employee Termination and Access Control",
+keyConcepts:[
+"퇴직 시 접근 종료|사직 확인 즉시 논리적·물리적 접근을 종료하는 것이 최우선",
+"핵심 개발자 위험|시스템에 대한 깊은 지식과 접근 권한 보유 → 즉각적 접근 차단 필요",
+"퇴직 절차 우선순위|접근 종료 > 인수인계 > 퇴직 면담 > 서류 처리"
+]
+},
+{
+id:481,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor is reviewing system access and discovers an excessive number of users with privileged access. The IS auditor discusses the situation with the system administrator, who states that some personnel in other departments need privileged access and management has approved the access. Which of the following is the BEST course of action for the IS auditor?",
+questionKo:"IS 감사인이 시스템 접근을 검토하던 중 과도한 수의 사용자가 특권 접근 권한을 보유하고 있음을 발견했다. 시스템 관리자는 다른 부서 인원이 특권 접근이 필요하며 경영진이 이를 승인했다고 말한다. 감사인의 <b>최선의 조치</b>는?",
+options:[
+"A. Determine whether compensating controls are in place.",
+"B. Document the issue in the audit report.",
+"C. Recommend an update to the procedures.",
+"D. Discuss the issue with senior management."
+],
+optionsKo:[
+"A. 보상 통제(compensating controls)가 있는지 확인한다",
+"B. 감사 보고서에 이슈를 기록한다",
+"C. 절차 업데이트를 권고한다",
+"D. 고위 경영진과 이슈를 논의한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 보상 통제 확인 ✅</td><td>정답</td><td>과도한 특권 접근이 반드시 문제는 아님 — 보상 통제 여부를 먼저 확인</td></tr>
+<tr><td>B. 보고서 기록</td><td>시기상조</td><td>추가 정보를 수집한 후에 보고서에 포함해야 함</td></tr>
+<tr><td>C. 절차 업데이트 권고</td><td>부적절</td><td>논리적 보안 약점을 해결하지 못하며, 업무상 필요한 접근일 수 있음</td></tr>
+<tr><td>D. 경영진 논의</td><td>시기상조</td><td>추가 정보를 수집한 후에 보고해야 함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 감사인의 접근 방식</b><br>
+• 경영진이 승인한 특권 접근 → 즉시 문제로 보고하기 전에 <b>추가 조사 필요</b><br>
+• <b>보상 통제(Compensating Controls)</b> 예시:<br>
+&nbsp;&nbsp;- 특권 접근 활동 로깅·모니터링<br>
+&nbsp;&nbsp;- 정기적 접근 권한 검토(Access Review)<br>
+&nbsp;&nbsp;- 직무 분리(SoD) 적용<br>
+&nbsp;&nbsp;- 특권 세션 기록·감사<br>
+• 보상 통제가 적절하면 과도한 특권 접근도 수용 가능한 위험일 수 있음<br><br>
+<b>📝 감사인 판단 원칙</b><br>
+• <b>결론 내리기 전에 충분한 증거 수집</b> — 성급한 보고는 부적절<br>
+• 경영진 승인이 있더라도 <b>통제 적절성을 독립적으로 평가</b><br>
+• 보상 통제가 없다면 그때 보고서에 기록하고 경영진과 논의<br><br>
+<b>🔗 관련 문제:</b> Q478(접근 인가 책임) · Q477(운영 DB 접근) · Q480(접근 종료)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Privileged Access and Compensating Controls",
+keyConcepts:[
+"보상 통제|주요 통제가 부족할 때 위험을 완화하는 대체 통제 수단",
+"특권 접근 관리|과도한 특권 접근 시 로깅·모니터링·정기 검토 등 보상 통제 필요",
+"감사 증거 수집|결론 전 충분한 증거를 수집하는 것이 감사인의 기본 원칙"
+]
+},
+{
+id:482,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following findings is of GREATEST concern to an information systems (IS) auditor during a review of logical access to an application?",
+questionKo:"애플리케이션의 논리적 접근을 검토하는 중, IS 감사인에게 <b>가장 큰 우려</b>가 되는 발견 사항은?",
+options:[
+"A. Some developers have update access to production data.",
+"B. Developers can run a debugging tool in the production environment.",
+"C. The change control team has knowledge of the application ID password.",
+"D. The application does not enforce the use of strong passwords."
+],
+optionsKo:[
+"A. 일부 개발자가 운영 데이터에 대한 수정 권한을 가지고 있다",
+"B. 개발자가 운영 환경에서 디버깅 도구를 실행할 수 있다",
+"C. 변경 통제팀이 애플리케이션 ID 비밀번호를 알고 있다",
+"D. 애플리케이션이 강력한 비밀번호 사용을 강제하지 않는다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>위험 수준</th><th>설명</th></tr>
+<tr><td>A. 개발자 운영 데이터 수정 권한</td><td>우려됨</td><td>경영진 승인·검토가 있으면 수용 가능한 위험</td></tr>
+<tr class="correct-row"><td>B. 운영 환경 디버깅 도구 ✅</td><td>가장 높음</td><td>프로그램을 단계별 실행하며 <b>실행 중 데이터를 수정</b>할 수 있음</td></tr>
+<tr><td>C. 변경 통제팀의 앱 ID 비밀번호 인지</td><td>낮음</td><td>변경 통제와 개발 간 적절한 SoD가 있으면 큰 우려 아님</td></tr>
+<tr><td>D. 강력한 비밀번호 미적용</td><td>우려됨</td><td>계정 탈취 위험이 있으나, 앱 ID 비밀번호 탈취보다 추적 가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 디버깅 도구가 가장 위험한 이유</b><br>
+• 디버깅 도구: 프로그램 <b>단계별 실행(step-by-step)</b> + <b>실행 중 데이터 수정</b> 가능<br>
+• 운영 환경에서 사용 시 → <b>비인가 운영 데이터 변조</b>가 가능<br>
+• 일반적인 데이터 수정 권한(A)보다 훨씬 광범위하고 통제하기 어려운 접근<br>
+• 변경 사항이 <b>정상적인 변경 관리 절차를 우회</b>할 수 있음<br><br>
+<b>📝 선택지 간 위험 비교</b><br>
+• A(개발자 운영 수정): 승인·검토 시 수용 가능 → Q477 참조<br>
+• B(디버깅 도구): 실행 중 데이터 수정 → <b>통제 불가능한 위험</b><br>
+• C(앱 ID 비밀번호): SoD가 있으면 관리 가능<br>
+• D(약한 비밀번호): 개인 계정은 추적 가능, 앱 ID는 추적 불가<br><br>
+<b>🔗 관련 문제:</b> Q477(개발자 운영 접근) · Q481(특권 접근·보상 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Logical Access Controls and Development Tools",
+keyConcepts:[
+"디버깅 도구 위험|운영 환경에서 실행 중 데이터를 수정할 수 있어 가장 높은 위험",
+"개발자 운영 접근|제한된 수정 권한은 경영진 승인·검토 시 수용 가능",
+"애플리케이션 ID|개인 계정과 달리 추적성(traceability)이 없어 탈취 시 위험 큼"
+]
+},
+{
+id:483,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which stage of a biometrics system operation should the information systems (IS) auditor review FIRST?",
+questionKo:"생체 인식(Biometrics) 시스템 운영의 어떤 단계를 IS 감사인이 <b>가장 먼저</b> 검토해야 하는가?",
+options:[
+"A. Enrollment",
+"B. Identification",
+"C. Verification",
+"D. Storage"
+],
+optionsKo:[
+"A. 등록(Enrollment)",
+"B. 식별(Identification)",
+"C. 검증(Verification)",
+"D. 저장(Storage)"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>단계</th><th>순서</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. Enrollment ✅</td><td>1단계</td><td>사용자를 생체 인식 장치에 최초 등록하는 단계 — 모든 후속 단계의 기반</td></tr>
+<tr><td>B. Identification</td><td>2단계</td><td>물리적/행동적 특성을 캡처하고 고유 특징을 추출하여 숫자 문자열로 변환</td></tr>
+<tr><td>C. Verification</td><td>3단계</td><td>접근 요청 시 저장된 등록 값과 대조하여 본인 확인</td></tr>
+<tr><td>D. Storage</td><td>보안 요소</td><td>민감한 개인 정보이므로 안전하게 저장해야 하나, 등록 후의 단계</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 생체 인식 시스템 운영 순서</b><br>
+1. <b>Enrollment(등록)</b>: 사용자의 생체 정보를 최초로 캡처·등록 ← <b>감사인이 가장 먼저 검토</b><br>
+2. <b>Identification(식별)</b>: 생체 특성 캡처 → 고유 특징 추출 → 알고리즘으로 숫자 템플릿 변환<br>
+3. <b>Storage(저장)</b>: 템플릿을 안전하게 저장<br>
+4. <b>Verification(검증)</b>: 접근 시 저장된 템플릿과 매칭<br><br>
+<b>📝 등록이 가장 중요한 이유</b><br>
+• 등록 단계에서 부정확하거나 부적절한 등록이 이루어지면 <b>전체 시스템의 신뢰성이 훼손</b><br>
+• "FIRST" 문제 → 시스템 운영의 <b>첫 번째 단계</b>부터 검토하는 것이 논리적<br>
+• 등록 없이는 식별·검증·저장이 불가능<br><br>
+<b>🔗 관련 문제:</b> Q478(접근 인가) · Q481(특권 접근 관리)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Biometric Systems",
+keyConcepts:[
+"생체 인식 등록(Enrollment)|모든 후속 단계의 기반이 되는 최초 생체 정보 등록 단계",
+"생체 인식 운영 순서|Enrollment → Identification → Storage → Verification",
+"생체 정보 보안|민감한 개인 정보로 안전한 저장과 전송이 필수"
+]
+},
+{
+id:484,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"During an access control review for a mainframe application, an information systems (IS) auditor discovers user security groups without designated owners. The PRIMARY reason that this is a concern to the IS auditor is that, without ownership, there is no one with clear responsibility for:",
+questionKo:"메인프레임 애플리케이션의 접근 통제 검토 중, IS 감사인이 지정된 소유자가 없는 사용자 보안 그룹을 발견했다. 소유자가 없으면 다음 중 어떤 책임이 명확하지 않아 감사인에게 <b>가장 큰 우려</b>가 되는가?",
+options:[
+"A. Updating group metadata.",
+"B. Reviewing existing user access.",
+"C. Approval of user access.",
+"D. Removing terminated users."
+],
+optionsKo:[
+"A. 그룹 메타데이터 업데이트",
+"B. 기존 사용자 접근 권한 검토",
+"C. 사용자 접근 승인",
+"D. 퇴직자 접근 권한 제거"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>설명</th></tr>
+<tr><td>A. 메타데이터 업데이트</td><td>관리적</td><td>비인가 접근에 비해 우려 수준이 낮음</td></tr>
+<tr><td>B. 기존 접근 권한 검토</td><td>탐지 통제</td><td>좋은 관행이나, 비인가 접근을 <b>사후에</b> 발견하는 것</td></tr>
+<tr class="correct-row"><td>C. 사용자 접근 승인 ✅</td><td>예방 통제</td><td>소유자 없으면 비인가 사용자가 그룹에 접근할 수 있음</td></tr>
+<tr><td>D. 퇴직자 제거</td><td>탐지/보상 통제</td><td>정상 퇴직 절차의 보상 통제이며 탐지 성격</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 그룹 소유자 부재가 위험한 이유</b><br>
+• 소유자 없음 → 접근 <b>승인 권한자가 없음</b> → 비인가 사용자가 그룹에 추가될 수 있음<br>
+• 그룹의 권한 범위 내 <b>민감한 데이터에 비인가 접근</b> 가능<br>
+• <b>예방 통제 > 탐지 통제</b>: 비인가 접근을 사전에 차단하는 것이 사후 탐지보다 중요<br><br>
+<b>📝 예방 vs 탐지 통제 비교</b><br>
+• <b>예방(C)</b>: 접근 승인 → 비인가 접근 자체를 방지<br>
+• <b>탐지(B)</b>: 접근 권한 검토 → 이미 부여된 비인가 접근을 사후 발견<br>
+• <b>탐지/보상(D)</b>: 퇴직자 제거 → 정상 퇴직 프로세스의 보완 수단<br><br>
+<b>🔗 관련 문제:</b> Q478(데이터 소유자 인가) · Q479(애플리케이션 접근 인가) · Q481(특권 접근)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Security Group Ownership and Access Approval",
+keyConcepts:[
+"보안 그룹 소유자|그룹 접근 권한을 승인·거부하는 책임자 — 부재 시 비인가 접근 위험",
+"예방 vs 탐지 통제|접근 승인(예방)이 접근 검토(탐지)보다 우선적으로 중요",
+"접근 승인 프로세스|소유자가 접근을 승인해야 비인가 사용자의 민감 데이터 접근을 방지"
+]
+},
+{
+id:485,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor reviewing access controls for a client-server environment should FIRST:",
+questionKo:"클라이언트-서버 환경의 접근 통제를 검토하는 IS 감사인이 <b>가장 먼저</b> 해야 할 것은?",
+options:[
+"A. Evaluate the encryption technique.",
+"B. Identify the network access points.",
+"C. Review the identity management system.",
+"D. Review the application-level access controls."
+],
+optionsKo:[
+"A. 암호화 기법을 평가한다",
+"B. 네트워크 접근 지점을 식별한다",
+"C. 신원 관리(Identity Management) 시스템을 검토한다",
+"D. 애플리케이션 수준 접근 통제를 검토한다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>검토 순서</th><th>설명</th></tr>
+<tr><td>A. 암호화 기법 평가</td><td>후속 단계</td><td>접근 지점 식별 후에 수행하는 세부 검토</td></tr>
+<tr class="correct-row"><td>B. 네트워크 접근 지점 식별 ✅</td><td>최우선</td><td>클라이언트-서버 환경의 모든 접근 지점을 먼저 파악해야 함</td></tr>
+<tr><td>C. Identity Management 검토</td><td>후속 단계</td><td>접근 지점 식별 후에 수행하는 세부 검토</td></tr>
+<tr><td>D. 애플리케이션 접근 통제 검토</td><td>후속 단계</td><td>접근 지점 식별 후에 수행하는 세부 검토</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 클라이언트-서버 환경의 특성</b><br>
+• 여러 접근 지점(access points) 존재 + 분산 처리 기법 사용<br>
+• 접근 지점이 많을수록 <b>비인가 접근 위험이 증가</b><br>
+• 모든 접근 지점을 <b>먼저 식별</b>해야 → 이후 각 지점별 통제를 평가 가능<br><br>
+<b>📝 접근 통제 검토 순서</b><br>
+1. <b>네트워크 접근 지점 식별</b> ← 최우선<br>
+2. 각 지점의 접근 통제 메커니즘 평가<br>
+3. Identity Management / 암호화 / 애플리케이션 통제 검토<br><br>
+<b>⚠️ "FIRST" 문제 풀이 팁</b><br>
+• 세부 통제를 검토하기 전에 <b>범위(scope)를 먼저 파악</b>하는 것이 원칙<br>
+• "어디를 보호해야 하는지" 알아야 → "어떻게 보호하는지" 평가 가능<br><br>
+<b>🔗 관련 문제:</b> Q484(보안 그룹 소유자) · Q481(특권 접근) · Q476(위험 기반 감사)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Client-Server Access Control Review",
+keyConcepts:[
+"네트워크 접근 지점 식별|클라이언트-서버 환경에서 접근 통제 검토의 첫 번째 단계",
+"클라이언트-서버 위험|다수의 접근 지점과 분산 처리로 비인가 접근 위험 증가",
+"감사 검토 순서|범위 파악(접근 지점 식별) → 세부 통제 평가(암호화·IAM·앱 통제)"
+]
+},
+{
+id:486,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"In an online banking application, which of the following would BEST protect against identity theft?",
+questionKo:"온라인 뱅킹 애플리케이션에서 신원 도용(identity theft)으로부터 <b>가장 잘 보호</b>하는 방법은?",
+options:[
+"A. Encryption of personal password",
+"B. Restricting the user to a specific terminal",
+"C. Multifactor authentication (MFA)",
+"D. Periodic review of access logs"
+],
+optionsKo:[
+"A. 개인 비밀번호 암호화",
+"B. 사용자를 특정 단말기로 제한",
+"C. 다중 요소 인증(MFA)",
+"D. 접근 로그 정기 검토"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>설명</th></tr>
+<tr><td>A. 비밀번호 암호화</td><td>예방 통제</td><td>단일 요소 인증 — 추측·해킹 가능</td></tr>
+<tr><td>B. 특정 단말기 제한</td><td>예방 통제</td><td>온라인 앱에서는 비실용적 — 여러 기기에서 접속 필요</td></tr>
+<tr class="correct-row"><td>C. MFA ✅</td><td>예방 통제</td><td>2개 이상 독립적 인증 요소 → 신원 도용을 가장 어렵게 만듦</td></tr>
+<tr><td>D. 접근 로그 검토</td><td>탐지 통제</td><td>사후 탐지이며 신원 도용 자체를 방지하지 못함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 MFA(다중 요소 인증)의 3가지 요소</b><br>
+• <b>Something you know</b> (지식): 비밀번호, PIN<br>
+• <b>Something you have</b> (소유): 토큰, 스마트카드, OTP 기기<br>
+• <b>Something you are</b> (생체): 지문, 홍채, 얼굴 인식<br><br>
+<b>📝 MFA가 신원 도용을 방지하는 이유</b><br>
+• 비밀번호만으로는 단일 요소 → 탈취 시 즉시 도용 가능<br>
+• MFA는 <b>2개 이상의 독립적 요소</b>를 요구 → 모든 요소를 동시에 탈취해야 함<br>
+• 온라인 뱅킹처럼 <b>고위험 환경</b>에서 특히 중요<br><br>
+<b>⚠️ 예방 vs 탐지</b><br>
+• 로그 검토(D)는 탐지 통제 → "protect against"를 묻는 문제에 부적합<br>
+• Q484와 동일 원칙: 예방 통제가 탐지 통제보다 우선<br><br>
+<b>🔗 관련 문제:</b> Q483(생체 인식) · Q474(SSO 보안) · Q484(접근 승인)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Multifactor Authentication",
+keyConcepts:[
+"MFA 3요소|지식(know) · 소유(have) · 생체(are) — 2개 이상 조합하여 인증",
+"MFA와 신원 도용|여러 독립적 요소를 동시에 탈취해야 하므로 도용 난이도 대폭 증가",
+"단일 요소 인증 한계|비밀번호만으로는 추측·해킹·피싱에 취약"
+]
+},
+{
+id:487,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"The implementation of which of the following would MOST effectively prevent unauthorized access to a system administration account on a web server?",
+questionKo:"웹 서버의 시스템 관리 계정에 대한 비인가 접근을 <b>가장 효과적으로 방지</b>하는 것은?",
+options:[
+"A. Host intrusion detection software installed on the server",
+"B. Password expiration and lockout policy",
+"C. Password complexity rules",
+"D. Two-factor authentication"
+],
+optionsKo:[
+"A. 서버에 설치된 호스트 침입 탐지 소프트웨어(HIDS)",
+"B. 비밀번호 만료 및 잠금 정책",
+"C. 비밀번호 복잡성 규칙",
+"D. 이중 인증(Two-factor authentication)"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>설명</th></tr>
+<tr><td>A. HIDS</td><td>탐지 통제</td><td>비인가 접근을 <b>탐지</b>하나 <b>방지</b>하지 못함</td></tr>
+<tr><td>B. 비밀번호 만료·잠금</td><td>예방 통제</td><td>중요하나, 비밀번호 기반 인증만으로는 보안 부족</td></tr>
+<tr><td>C. 비밀번호 복잡성</td><td>예방 통제</td><td>중요하나, 탈취·유출된 자격증명에는 무력</td></tr>
+<tr class="correct-row"><td>D. 이중 인증 ✅</td><td>예방 통제</td><td>비밀번호 + 추가 인증 요소 → 탈취·유출 위험 가장 효과적으로 감소</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 이중 인증이 가장 효과적인 이유</b><br>
+• 비밀번호만으로는 <b>도난·추측·피싱</b>에 취약 → 단일 요소 인증의 한계<br>
+• 이중 인증: 비밀번호 + <b>쉽게 도난·추측 불가한 추가 요소</b> 조합<br>
+• 예: <b>OTP 토큰</b>(일회용 비밀번호) + <b>생체 인증</b> 시스템<br>
+• 특히 <b>시스템 관리 계정</b>처럼 고위험 계정에 필수적<br><br>
+<b>📝 비밀번호 통제 vs 이중 인증</b><br>
+• 복잡성(C) + 만료·잠금(B) = 비밀번호 보안 강화 → 하지만 여전히 <b>단일 요소</b><br>
+• 이중 인증(D) = 자격증명 탈취·유출 위험을 <b>가장 효과적으로 감소</b><br>
+• HIDS(A)는 탐지 통제 → "prevent"를 묻는 문제에 부적합<br><br>
+<b>🔗 관련 문제:</b> Q486(MFA와 신원 도용) · Q474(SSO 비밀번호 정책)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Two-Factor Authentication for Privileged Accounts",
+keyConcepts:[
+"이중 인증(2FA)|비밀번호 + 추가 요소로 탈취된 자격증명의 위험을 가장 효과적으로 감소",
+"관리 계정 보호|고위험 시스템 관리 계정에는 이중 인증이 필수적",
+"HIDS 한계|침입을 탐지하나 방지하지 못하는 탐지 통제"
+]
+},
+{
+id:488,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Due to resource constraints, a developer requires full access to production data to support certain problems reported by production users. Which of the following choices is a good compensating control for controlling unauthorized changes in production?",
+questionKo:"자원 제약으로 개발자가 운영 사용자가 보고한 문제를 지원하기 위해 운영 데이터에 대한 전체 접근 권한이 필요하다. 운영 환경에서 비인가 변경을 통제하기 위한 <b>좋은 보상 통제</b>는?",
+options:[
+"A. Provide and monitor separate developer login IDs for programming and for production support.",
+"B. Capture activities of the developer in the production environment by enabling detailed audit trails.",
+"C. Back up all affected records before allowing the developer to make production changes.",
+"D. Ensure that all changes are approved by the change manager prior to implementation."
+],
+optionsKo:[
+"A. 프로그래밍용과 운영 지원용 별도 로그인 ID를 제공하고 모니터링한다",
+"B. 상세 감사 추적을 활성화하여 개발자의 운영 환경 활동을 기록한다",
+"C. 개발자가 운영 변경을 하기 전에 영향받는 모든 레코드를 백업한다",
+"D. 모든 변경이 구현 전에 변경 관리자의 승인을 받도록 한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 별도 ID + 모니터링 ✅</td><td>정답</td><td>필요 시에만 특권 접근 제공 + 활동 모니터링·감독</td></tr>
+<tr><td>B. 감사 추적 기록</td><td>불완전</td><td>기록만으로는 불충분 — <b>정기적 검토</b>가 없으면 효과 없음</td></tr>
+<tr><td>C. 사전 백업</td><td>불충분</td><td>오류 시 롤백은 가능하나, 비인가 변경을 <b>방지·탐지</b>하지 못함</td></tr>
+<tr><td>D. 변경 관리자 승인</td><td>우회 가능</td><td>전체 접근 권한이 있는 개발자가 <b>쉽게 우회</b> 가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 별도 로그인 ID가 효과적인 이유</b><br>
+• <b>프로그래밍용 ID</b>: 개발·테스트 환경 접근<br>
+• <b>운영 지원용 ID</b>: 필요 시에만 운영 환경 특권 접근 부여<br>
+• 별도 ID + <b>모니터링·감독</b> = 접근 범위 제한 + 활동 추적<br>
+• 핵심: ID 분리만으로는 부족 → 반드시 <b>모니터링이 수반</b>되어야 함<br><br>
+<b>📝 보상 통제의 요건</b><br>
+• 원래 통제(직무 분리)를 적용할 수 없을 때 대체 수단<br>
+• <b>예방 + 탐지</b> 요소를 모두 갖춰야 효과적<br>
+• B는 탐지만(검토 없으면 무용), C는 복구만, D는 우회 가능<br>
+• A는 예방(ID 분리) + 탐지(모니터링) 모두 포함<br><br>
+<b>🔗 관련 문제:</b> Q477(개발자 운영 접근) · Q482(디버깅 도구) · Q481(보상 통제)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Compensating Controls for Developer Production Access",
+keyConcepts:[
+"별도 로그인 ID|프로그래밍용과 운영 지원용을 분리하여 필요 시에만 특권 접근 부여",
+"보상 통제 요건|예방(접근 제한) + 탐지(모니터링) 요소를 모두 갖춰야 효과적",
+"감사 추적의 한계|기록만으로는 불충분 — 정기적 검토가 수반되어야 탐지 통제로서 유효"
+]
+},
+{
+id:489,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"An information systems (IS) auditor is assessing a biometric system used to protect physical access to a data center containing regulated data. Which of the following observations is the GREATEST concern to the auditor?",
+questionKo:"IS 감사인이 규제 대상 데이터가 있는 데이터 센터의 물리적 접근을 보호하는 생체 인식 시스템을 평가하고 있다. 다음 중 감사인에게 <b>가장 큰 우려</b>가 되는 관찰 사항은?",
+options:[
+"A. Administrative access to the biometric scanners or the access control system is permitted over a virtual private network.",
+"B. Biometric scanners are not installed in restricted areas.",
+"C. Data transmitted between the biometric scanners and the access control system do not use a securely encrypted tunnel.",
+"D. Biometric system risk analysis was last conducted three years ago."
+],
+optionsKo:[
+"A. 생체 인식 스캐너 또는 접근 통제 시스템에 대한 관리 접근이 VPN을 통해 허용된다",
+"B. 생체 인식 스캐너가 제한 구역에 설치되어 있지 않다",
+"C. 생체 인식 스캐너와 접근 통제 시스템 간 전송 데이터가 암호화된 터널을 사용하지 않는다",
+"D. 생체 인식 시스템 위험 분석이 3년 전에 마지막으로 수행되었다"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>우려 수준</th><th>설명</th></tr>
+<tr><td>A. VPN 통한 관리 접근</td><td>낮음</td><td>VPN은 안전한 터널을 제공 — 원격 관리에 적합</td></tr>
+<tr><td>B. 제한 구역 외 설치</td><td>중간</td><td>변조 방지를 위해 제한 구역이 이상적이나, <b>CCTV가 대안적 통제</b></td></tr>
+<tr class="correct-row"><td>C. 비암호화 전송 ✅</td><td>가장 높음</td><td>생체 데이터의 기밀성 보호 실패 → 도청·변조 위험</td></tr>
+<tr><td>D. 3년 전 위험 분석</td><td>낮음</td><td>정기적 재수행이 바람직하나, 3년이 반드시 부적절한 것은 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 비암호화 전송이 가장 위험한 이유</b><br>
+• 생체 데이터 = <b>민감한 개인 정보</b> → 기밀성 보호가 필수<br>
+• 스캐너 ↔ 접근 통제 시스템 간 <b>암호화 없는 전송</b> → 도청·가로채기·변조 가능<br>
+• 생체 데이터는 비밀번호와 달리 <b>변경 불가</b> → 유출 시 영구적 위험<br>
+• 규제 대상 데이터 보호 목적의 시스템이므로 전송 보안이 더욱 중요<br><br>
+<b>📝 생체 인식 시스템 보안 요소</b><br>
+• <b>전송 보안</b>: 스캐너 ↔ 서버 간 암호화 터널 필수 ← 가장 중요<br>
+• <b>물리적 보안</b>: 스캐너를 제한 구역에 설치 또는 CCTV 감시<br>
+• <b>저장 보안</b>: 생체 템플릿을 안전하게 저장·보호<br>
+• <b>관리 접근</b>: VPN 등 안전한 채널을 통한 원격 관리<br><br>
+<b>🔗 관련 문제:</b> Q483(생체 인식 등록) · Q486(MFA) · Q487(2FA)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Biometric System Security",
+keyConcepts:[
+"생체 데이터 전송 보안|스캐너와 접근 통제 시스템 간 암호화 터널이 필수",
+"생체 정보 특성|변경 불가능한 개인 정보 → 유출 시 영구적 위험",
+"생체 인식 물리적 보안|제한 구역 설치가 이상적이나 CCTV가 대안적 통제 가능"
+]
+},
+{
+id:490,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following is the MOST effective control when granting temporary access to vendors?",
+questionKo:"벤더에게 임시 접근 권한을 부여할 때 <b>가장 효과적인 통제</b>는?",
+options:[
+"A. Vendor access corresponds to the service level agreement (SLA).",
+"B. User accounts are created with expiration dates and are based on services provided.",
+"C. Administrator access is provided for a limited period.",
+"D. User IDs are deleted when the work is completed."
+],
+optionsKo:[
+"A. 벤더 접근이 서비스 수준 협약(SLA)에 부합한다",
+"B. 만료일이 설정되고 제공 서비스에 기반한 사용자 계정을 생성한다",
+"C. 제한된 기간 동안 관리자 접근을 제공한다",
+"D. 작업 완료 시 사용자 ID를 삭제한다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. SLA에 부합</td><td>통제가 아님</td><td>SLA는 접근 필요성을 정의할 뿐, 통제 자체는 아님</td></tr>
+<tr class="correct-row"><td>B. 만료일 + 서비스 기반 계정 ✅</td><td>가장 효과적</td><td>자동 만료 + 최소 권한 원칙 = 가장 강력한 통제</td></tr>
+<tr><td>C. 제한적 관리자 접근</td><td>위험</td><td>최소 권한에 따라 접근 수준 설정 + 모니터링 필요</td></tr>
+<tr><td>D. 완료 시 ID 삭제</td><td>불완전</td><td>수동 삭제는 누락 가능 — 자동 만료가 더 효과적</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 벤더 임시 접근의 핵심 원칙</b><br>
+• <b>만료일(Expiration Date)</b>: 자동화된 만료가 가장 효과적 — 수동 삭제 누락 방지<br>
+• <b>서비스 기반 접근</b>: 제공하는 서비스 범위에 맞춰 <b>최소 권한(Least Privilege)</b> 적용<br>
+• <b>고유 ID</b>: 각 벤더에 고유 ID를 부여하여 활동 추적·책임 추적 가능<br>
+• Identity Management 시스템으로 임시·영구 접근을 일원화 관리<br><br>
+<b>📝 선택지 간 비교</b><br>
+• A(SLA): 접근 필요성 정의 ≠ 접근 통제<br>
+• B(만료일+서비스 기반): <b>예방(자동 만료) + 최소 권한</b> = 가장 효과적<br>
+• C(관리자 접근): 최소 권한 위반 가능성 → 필요한 수준만 부여해야 함<br>
+• D(수동 삭제): 자동화되지 않으면 누락 위험 → B의 자동 만료가 우월<br><br>
+<b>🔗 관련 문제:</b> Q480(퇴직 시 접근 종료) · Q481(보상 통제) · Q488(별도 ID)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Vendor Access Management",
+keyConcepts:[
+"벤더 임시 접근|만료일 설정 + 서비스 기반 최소 권한으로 계정 생성이 가장 효과적",
+"자동 만료 vs 수동 삭제|자동화된 만료가 수동 삭제보다 누락 위험이 낮아 더 효과적",
+"최소 권한 원칙|벤더에게 제공 서비스 범위에 필요한 최소한의 접근만 부여"
+]
+},
+{
+id:491,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"When reviewing an enterprise's logical access security to its remote systems, which of the following would be of GREATEST concern to an information systems (IS) auditor?",
+questionKo:"기업의 원격 시스템에 대한 논리적 접근 보안을 검토할 때, IS 감사인에게 <b>가장 큰 우려</b>가 되는 것은?",
+options:[
+"A. Passwords are shared.",
+"B. Unencrypted passwords are used.",
+"C. Redundant logon IDs exist.",
+"D. Third-party users possess administrator access."
+],
+optionsKo:[
+"A. 비밀번호가 공유되고 있다",
+"B. 암호화되지 않은 비밀번호가 사용된다",
+"C. 중복된 로그온 ID가 존재한다",
+"D. 제3자 사용자가 관리자 접근 권한을 보유하고 있다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>우려 수준</th><th>설명</th></tr>
+<tr><td>A. 비밀번호 공유</td><td>우려됨</td><td>공유는 부적절하나, 암호화 미적용보다 낮은 위험</td></tr>
+<tr class="correct-row"><td>B. 비암호화 비밀번호 ✅</td><td>가장 높음</td><td>원격 접근 = 비신뢰 네트워크 → 비밀번호 도청·탈취 가능</td></tr>
+<tr><td>C. 중복 로그온 ID</td><td>중간</td><td>필수 점검 사항이나, 암호화보다 우선순위 낮음</td></tr>
+<tr><td>D. 제3자 관리자 접근</td><td>상황에 따라</td><td>계약자 등 업무상 필요할 수 있어 반드시 문제는 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 원격 시스템에서 비암호화 비밀번호가 가장 위험한 이유</b><br>
+• <b>원격 접근 = 비신뢰 네트워크(untrusted network)</b> 경유 가정<br>
+• 암호화되지 않은 비밀번호 → 네트워크상에서 <b>도청(sniffing)으로 탈취</b> 가능<br>
+• 비밀번호 파일이 암호화되지 않으면 <b>저장 시에도 평문 노출</b><br>
+• 공유(A)·중복 ID(C)보다 암호화 미적용이 더 근본적이고 광범위한 위험<br><br>
+<b>📝 원격 접근 보안 원칙</b><br>
+• 비밀번호는 <b>전송 시(in transit) + 저장 시(at rest)</b> 모두 암호화 필수<br>
+• 원격 접근에는 가능하면 <b>MFA/2FA</b>를 적용 (Q486, Q487 참조)<br>
+• 제3자 접근은 업무상 필요 시 허용 가능하나 모니터링 필요<br><br>
+<b>🔗 관련 문제:</b> Q489(생체 데이터 비암호화 전송) · Q487(2FA) · Q474(SSO 비밀번호)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Remote Access and Password Security",
+keyConcepts:[
+"비밀번호 암호화|원격 접근 시 비신뢰 네트워크를 경유하므로 암호화가 필수",
+"전송 중 보안|비암호화 비밀번호는 네트워크 도청(sniffing)으로 탈취 가능",
+"원격 접근 위험|비신뢰 네트워크 경유를 가정 → 암호화·MFA 등 강화된 통제 필요"
+]
+},
+{
+id:492,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"A business application system accesses an enterprise database using a single ID and password embedded in a program. Which of the following would provide efficient access control over the enterprise data?",
+questionKo:"비즈니스 애플리케이션이 프로그램에 내장된 단일 ID와 비밀번호로 기업 데이터베이스에 접근한다. 기업 데이터에 대해 <b>효율적인 접근 통제</b>를 제공하는 것은?",
+options:[
+"A. Introduce a secondary authentication method such as card swipe.",
+"B. Apply role-based permissions within the application system.",
+"C. Have users input the ID and password for each database transaction.",
+"D. Set an expiration period for the database password embedded in the program."
+],
+optionsKo:[
+"A. 카드 스와이프와 같은 보조 인증 방법을 도입한다",
+"B. 애플리케이션 시스템 내에서 역할 기반 권한을 적용한다",
+"C. 사용자가 각 DB 트랜잭션마다 ID와 비밀번호를 입력하게 한다",
+"D. 프로그램에 내장된 DB 비밀번호에 만료 기간을 설정한다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 보조 인증 도입</td><td>부적절</td><td>문제는 인증이 아니라 <b>사용자 권한(permission)</b> — 강한 인증 추가로 해결 안 됨</td></tr>
+<tr class="correct-row"><td>B. 역할 기반 권한(RBAC) ✅</td><td>가장 효율적</td><td>애플리케이션 수준에서 사용자 역할에 따라 데이터 접근을 통제</td></tr>
+<tr><td>C. 매 트랜잭션 인증</td><td>비효율적</td><td>추적성은 향상되나, 매번 인증은 <b>효율성이 크게 저하</b></td></tr>
+<tr><td>D. 비밀번호 만료 설정</td><td>비실용적</td><td>프로그램 내장 비밀번호는 만료 시 시스템 중단 위험 → 보통 만료 미설정</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 내장 ID/비밀번호 환경의 접근 통제</b><br>
+• 애플리케이션이 단일 ID로 DB에 접근하는 것은 <b>일반적인 구조</b><br>
+• 이 경우 DB 수준이 아닌 <b>애플리케이션 수준</b>에서 접근을 통제해야 함<br>
+• <b>RBAC(Role-Based Access Control)</b>: 사용자 역할에 따라 데이터 접근 범위를 제한<br>
+• 인증(authentication) ≠ 권한 부여(authorization) — 이 문제의 핵심은 <b>권한 부여</b><br><br>
+<b>📝 효율성 vs 보안 균형</b><br>
+• C(매 트랜잭션 인증): 보안은 향상되나 <b>비효율적</b> → "efficient" 조건 미충족<br>
+• B(RBAC): 보안 + 효율성 <b>모두 충족</b> → 사용자 경험 저해 없이 통제 가능<br>
+• 문제에서 "efficient"를 명시 → 효율성도 고려해야 함<br><br>
+<b>🔗 관련 문제:</b> Q477(운영 DB 접근) · Q488(별도 로그인 ID) · Q484(접근 승인)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Application-Level Access Control and RBAC",
+keyConcepts:[
+"RBAC(역할 기반 접근 통제)|사용자 역할에 따라 애플리케이션 수준에서 데이터 접근을 제한",
+"인증 vs 권한 부여|인증(authentication)은 신원 확인, 권한 부여(authorization)는 접근 범위 결정",
+"내장 비밀번호|애플리케이션-DB 간 단일 ID 사용 시 애플리케이션 수준 통제가 핵심"
+]
+},
+{
+id:493,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"With the help of a security officer, granting access to data is the responsibility of:",
+questionKo:"보안 담당자의 도움을 받아 데이터에 대한 접근을 부여하는 것은 누구의 책임인가?",
+options:[
+"A. Data owners.",
+"B. Programmers.",
+"C. System analysts.",
+"D. Librarians."
+],
+optionsKo:[
+"A. 데이터 소유자(Data Owners)",
+"B. 프로그래머",
+"C. 시스템 분석가",
+"D. 라이브러리안(Librarians)"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>역할</th><th>접근 통제 관련 책임</th></tr>
+<tr class="correct-row"><td>A. Data Owners ✅</td><td>데이터 접근·사용에 대한 <b>최종 책임</b> — 접근 규칙 결정 및 서면 승인</td></tr>
+<tr><td>B. Programmers</td><td>접근 통제 <b>소프트웨어 개발</b> (수정·읽기·삭제 등 방식) — 누가 접근할지는 결정 안 함</td></tr>
+<tr><td>C. System Analysts</td><td>소유자가 정한 규칙에 따라 접근 통제를 <b>설계</b></td></tr>
+<tr><td>D. Librarians</td><td>주어진 접근 통제 절차를 <b>시행</b> — 접근 대상을 결정하지 않음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 접근 통제 역할 분담</b><br>
+• <b>Data Owner</b>: 누가 접근할 수 있는지 <b>결정·승인</b> (서면 인가 제공)<br>
+• <b>Security Officer/Admin</b>: 소유자 승인에 따라 접근 규칙을 <b>시스템에 설정</b><br>
+• <b>Programmers</b>: 접근 통제 소프트웨어(방식)를 <b>개발</b><br>
+• <b>System Analysts</b>: 소유자 규칙에 따라 통제를 <b>설계</b><br>
+• <b>Librarians</b>: 접근 통제 절차를 <b>집행</b><br><br>
+<b>⚠️ Q478·Q479와 동일한 원칙</b><br>
+• Q478: 애플리케이션 데이터 접근 인가 → Data Owner<br>
+• Q479: 비즈니스 앱 시스템 접근 인가 → Data Owner<br>
+• Q493: 보안 담당자 도움으로 데이터 접근 부여 → Data Owner<br>
+• <b>핵심: 접근 인가의 최종 책임은 항상 Data Owner</b><br><br>
+<b>🔗 관련 문제:</b> Q478(데이터 접근 인가) · Q479(앱 접근 인가) · Q484(그룹 소유자)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Data Ownership and Access Control Roles",
+keyConcepts:[
+"Data Owner 접근 인가|데이터 접근 대상을 결정·승인하는 최종 책임자",
+"보안 담당자 역할|소유자 승인에 따라 접근 규칙을 시스템에 설정하는 실행자",
+"접근 통제 역할 분담|Owner(결정) → Security(설정) → Programmer(개발) → Analyst(설계) → Librarian(집행)"
+]
+},
+{
+id:494,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"Which of the following is a form of two-factor user authentication?",
+questionKo:"다음 중 이중 요소(two-factor) 사용자 인증에 해당하는 것은?",
+options:[
+"A. A smart card and personal identification number",
+"B. A unique User ID and complex, nondictionary password",
+"C. An iris scan and a fingerprint scan",
+"D. A magnetic-strip card and a proximity badge"
+],
+optionsKo:[
+"A. 스마트카드와 개인 식별 번호(PIN)",
+"B. 고유 사용자 ID와 복잡한 비사전 비밀번호",
+"C. 홍채 스캔과 지문 스캔",
+"D. 마그네틱 카드와 근접 배지"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>인증 요소</th><th>이중 요소 여부</th></tr>
+<tr class="correct-row"><td>A. 스마트카드 + PIN ✅</td><td>소유(Have) + 지식(Know)</td><td>✅ 서로 다른 2개 요소</td></tr>
+<tr><td>B. ID + 비밀번호</td><td>지식(Know) + 지식(Know)</td><td>❌ 동일 요소 — 단일 요소 인증</td></tr>
+<tr><td>C. 홍채 + 지문</td><td>생체(Are) + 생체(Are)</td><td>❌ 동일 요소 — 단일 요소 인증</td></tr>
+<tr><td>D. 마그네틱 카드 + 근접 배지</td><td>소유(Have) + 소유(Have)</td><td>❌ 동일 요소 — 단일 요소 인증</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 인증의 3가지 요소</b><br>
+• <b>Something you know (지식)</b>: 비밀번호, PIN, 보안 질문<br>
+• <b>Something you have (소유)</b>: 스마트카드, 토큰, OTP 기기, 근접 배지<br>
+• <b>Something you are (생체)</b>: 지문, 홍채, 얼굴, 음성<br><br>
+<b>📝 이중 요소 인증의 핵심 조건</b><br>
+• <b>서로 다른 카테고리</b>에서 2개 이상의 요소를 조합해야 함<br>
+• 같은 카테고리에서 2개를 사용하면 → <b>여전히 단일 요소 인증</b><br>
+• 복잡한 비밀번호(B)라도 ID와 같은 "지식" 카테고리 → 단일 요소<br>
+• 생체 2개(C)를 사용해도 같은 "생체" 카테고리 → 단일 요소<br><br>
+<b>🔗 관련 문제:</b> Q486(MFA 3요소) · Q487(2FA 관리 계정) · Q483(생체 인식)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Two-Factor Authentication",
+keyConcepts:[
+"이중 요소 인증 조건|서로 다른 카테고리(지식·소유·생체)에서 2개 이상 요소를 조합",
+"동일 카테고리 함정|같은 유형 2개(비밀번호+PIN, 지문+홍채)는 단일 요소 인증",
+"스마트카드 + PIN|소유(Have) + 지식(Know)의 대표적 이중 요소 인증 사례"
+]
+},
+{
+id:495,
+domain:"5",
+ks:"5A3 Identity and Access Management",
+question:"A data center has a badge-entry system. Which of the following is MOST important to protect the computing assets in the center?",
+questionKo:"데이터 센터에 배지 출입 시스템이 있다. 센터의 컴퓨팅 자산을 보호하기 위해 <b>가장 중요한</b> 것은?",
+options:[
+"A. Badge readers are installed in locations where tampering would be noticed.",
+"B. The computer that controls the badge system is backed up frequently.",
+"C. A process for promptly deactivating lost or stolen badges is followed.",
+"D. All badge entry attempts are logged, whether or not they succeed."
+],
+optionsKo:[
+"A. 배지 리더기가 변조가 눈에 띄는 위치에 설치되어 있다",
+"B. 배지 시스템을 제어하는 컴퓨터가 자주 백업된다",
+"C. 분실·도난 배지를 즉시 비활성화하는 절차가 준수된다",
+"D. 성공 여부와 관계없이 모든 배지 출입 시도가 기록된다"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 리더기 설치 위치</td><td>무관</td><td>배지 리더기를 변조해도 문을 열 수 없음</td></tr>
+<tr><td>B. 시스템 빈번한 백업</td><td>불필요</td><td>시스템 설정이 자주 변경되지 않아 빈번한 백업 불필요</td></tr>
+<tr class="correct-row"><td>C. 분실·도난 배지 즉시 비활성화 ✅</td><td>가장 중요</td><td>비인가자의 물리적 접근을 방지하는 핵심 예방 통제</td></tr>
+<tr><td>D. 모든 출입 시도 기록</td><td>중요하나 2차</td><td>탐지 통제 — 분실 배지 비활성화(예방)가 더 우선</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 분실·도난 배지 비활성화가 가장 중요한 이유</b><br>
+• 최대 위험: <b>비인가자가 데이터 센터에 물리적으로 진입</b>하는 것<br>
+• 분실·도난 배지가 활성 상태이면 → 누구든 데이터 센터에 접근 가능<br>
+• <b>즉시 비활성화</b>가 비인가 물리적 접근을 방지하는 가장 직접적인 통제<br>
+• 로깅(D)은 사후 탐지 — 이미 진입한 후에는 자산이 위험에 노출<br><br>
+<b>📝 물리적 접근 통제 원칙</b><br>
+• <b>예방</b>: 배지 비활성화, 출입 제한, 잠금 장치<br>
+• <b>탐지</b>: 출입 로그, CCTV, 경보 시스템<br>
+• <b>예방 > 탐지</b>: 물리적 접근은 일단 허용되면 피해 범위가 큼<br><br>
+<b>🔗 관련 문제:</b> Q480(퇴직자 접근 종료) · Q490(벤더 계정 만료) · Q489(데이터 센터 보안)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Physical Access Control for Data Centers",
+keyConcepts:[
+"분실·도난 배지 관리|즉시 비활성화하여 비인가 물리적 접근을 방지하는 핵심 통제",
+"물리적 접근 위험|데이터 센터 진입이 허용되면 컴퓨팅 자산에 직접적 위험 초래",
+"예방 vs 탐지(물리적)|배지 비활성화(예방)가 출입 로깅(탐지)보다 우선"
+]
+},
+{
+id:496,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following MOST effectively enhances the security of a challenge-response based authentication system?",
+questionKo:"다음 중 챌린지-응답(challenge-response) 기반 인증 시스템의 보안을 <b>가장 효과적으로 강화</b>하는 것은?",
+options:[
+"A. Selecting a more robust algorithm to generate challenge strings",
+"B. Implementing measures to prevent session hijacking attacks",
+"C. Increasing the frequency of associated password changes",
+"D. Increasing the length of authentication strings"
+],
+optionsKo:[
+"A. 챌린지 문자열 생성을 위해 더 강력한 알고리즘을 선택한다",
+"B. 세션 하이재킹 공격을 방지하는 조치를 구현한다",
+"C. 관련 비밀번호 변경 빈도를 높인다",
+"D. 인증 문자열의 길이를 늘린다"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 강력한 알고리즘</td><td>도움되나 부족</td><td>보안 강화에 기여하나, 중간자 공격 대비 위험 완화 효과가 낮음</td></tr>
+<tr class="correct-row"><td>B. 세션 하이재킹 방지 ✅</td><td>가장 효과적</td><td>챌린지-응답의 핵심 취약점인 세션 하이재킹·중간자 공격을 직접 대응</td></tr>
+<tr><td>C. 비밀번호 변경 빈도 증가</td><td>좋은 관행</td><td>통신 경로의 위험이 더 큰 위협</td></tr>
+<tr><td>D. 인증 문자열 길이 증가</td><td>불충분</td><td>중간자 공격이나 세션 하이재킹을 방지하지 못함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 챌린지-응답 인증의 핵심 취약점</b><br>
+• <b>세션 하이재킹(Session Hijacking)</b>: 인증된 세션을 가로채어 비인가 접근<br>
+• <b>중간자 공격(Man-in-the-Middle)</b>: 통신 경로에서 인증 데이터를 가로채거나 변조<br>
+• 알고리즘 강화(A)·문자열 길이(D)는 이러한 공격을 방지하지 못함<br><br>
+<b>📝 세션 하이재킹 방지 조치 예시</b><br>
+• <b>주기적 재인증(Periodic Re-authentication)</b>: 세션 중 정기적으로 신원 재확인<br>
+• <b>세션 타임아웃</b>: 비활동 시간 초과 시 세션 종료<br>
+• <b>암호화된 통신 채널</b>: TLS/SSL로 통신 경로 보호<br>
+• <b>세션 토큰 관리</b>: 예측 불가능한 세션 ID 사용<br><br>
+<b>🔗 관련 문제:</b> Q491(비암호화 비밀번호) · Q489(비암호화 전송) · Q487(2FA)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Challenge-Response Authentication Security",
+keyConcepts:[
+"챌린지-응답 취약점|세션 하이재킹과 중간자(MITM) 공격에 취약한 인증 방식",
+"세션 하이재킹 방지|주기적 재인증·세션 타임아웃·암호화 채널로 대응",
+"통신 경로 위험|알고리즘·문자열 길이 강화보다 통신 경로 보호가 더 효과적"
+]
+},
+{
+id:497,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following types of firewalls provide the GREATEST degree and granularity of control?",
+questionKo:"다음 중 <b>가장 높은 수준과 세밀한(granularity)</b> 통제를 제공하는 방화벽 유형은?",
+options:[
+"A. Screening router",
+"B. Packet filter",
+"C. Application gateway",
+"D. Circuit gateway"
+],
+optionsKo:[
+"A. 스크리닝 라우터",
+"B. 패킷 필터",
+"C. 애플리케이션 게이트웨이",
+"D. 서킷 게이트웨이"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>방화벽 유형</th><th>OSI 계층</th><th>통제 수준</th></tr>
+<tr><td>A. Screening Router</td><td>Layer 3-4</td><td>프로토콜·서비스·포트 수준 필터링</td></tr>
+<tr><td>B. Packet Filter</td><td>Layer 3-4</td><td>낮은 수준 — 세밀한 통제 불가</td></tr>
+<tr class="correct-row"><td>C. Application Gateway ✅</td><td>Layer 3-4-5-7</td><td>IP·포트 + <b>각 서비스별 명령어까지</b> 검사</td></tr>
+<tr><td>D. Circuit Gateway</td><td>Layer 3-4 + 일부 상위</td><td>프록시 기반 이중 연결, 상위 프로토콜 일부 검사</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 애플리케이션 게이트웨이가 가장 세밀한 이유</b><br>
+• <b>서비스별 전용 프록시</b>: 웹(HTTP), FTP, SMTP 등 각 서비스에 특화된 프록시 보유<br>
+• IP 주소(Layer 3) + 포트(Layer 4) + <b>애플리케이션 명령어(Layer 5, 7)</b>까지 검사<br>
+• 예: HTTP 프록시는 모든 <b>HTTP 명령어(GET, POST 등)</b>를 개별 검사<br>
+• 다른 방화벽들보다 <b>훨씬 상세한(granular)</b> 통제 가능<br><br>
+<b>📝 방화벽 유형별 비교</b><br>
+• <b>Packet Filter / Screening Router</b>: Layer 3-4만 → 빠르지만 세밀도 낮음<br>
+• <b>Circuit Gateway</b>: 프록시(중간자) 역할, 이중 연결 → Layer 3-4 + 일부 상위<br>
+• <b>Application Gateway</b>: 서비스별 프록시 → <b>Layer 7까지 검사 = 최고 세밀도</b><br><br>
+<b>⚠️ 세밀도 순서</b><br>
+Packet Filter < Screening Router < Circuit Gateway < <b>Application Gateway</b><br><br>
+<b>🔗 관련 문제:</b> Q485(네트워크 접근 지점) · Q496(세션 하이재킹)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Firewall Types and OSI Layers",
+keyConcepts:[
+"Application Gateway|서비스별 전용 프록시로 Layer 7까지 검사하여 최고 세밀도의 통제 제공",
+"방화벽 세밀도 순서|Packet Filter < Screening Router < Circuit Gateway < Application Gateway",
+"OSI 계층과 방화벽|상위 계층까지 검사할수록 더 세밀한(granular) 통제가 가능"
+]
+},
+{
+id:498,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The PRIMARY goal of a website certificate is:",
+questionKo:"웹사이트 인증서의 <b>주요 목적</b>은?",
+options:[
+"A. Authentication of the website that will be surfed.",
+"B. Authentication of the user who surfs through that site.",
+"C. Preventing surfing of the website by hackers.",
+"D. The same purpose as that of a digital certificate."
+],
+optionsKo:[
+"A. 접속할 웹사이트의 인증",
+"B. 해당 사이트를 이용하는 사용자의 인증",
+"C. 해커에 의한 웹사이트 접근 방지",
+"D. 디지털 인증서와 동일한 목적"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 웹사이트 인증 ✅</td><td>정답</td><td>사용자가 접속하는 웹사이트가 정당한 사이트인지 <b>확인</b></td></tr>
+<tr><td>B. 사용자 인증</td><td>오답</td><td>사용자 인증은 비밀번호 등으로 수행, 웹사이트 인증서의 목적이 아님</td></tr>
+<tr><td>C. 해커 접근 방지</td><td>오답</td><td>사이트 인증서는 해킹을 방지하지 않음</td></tr>
+<tr><td>D. 디지털 인증서와 동일</td><td>부분적</td><td>유사한 목적일 수 있으나, 인증서의 <b>목표는 인증</b>이라고 명확히 해야 함</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 웹사이트 인증서의 역할</b><br>
+• <b>웹사이트 신원 확인</b>: 사용자가 접속하는 사이트가 정당한 사이트임을 보장<br>
+• <b>피싱 방지</b>: 가짜 사이트가 아닌 진짜 사이트인지 검증<br>
+• CA(인증 기관)가 발급하여 <b>사이트의 신뢰성</b>을 보증<br>
+• 부수적으로 HTTPS 암호화 통신을 가능하게 하지만, <b>주요 목적은 인증</b><br><br>
+<b>📝 인증 방향 구분</b><br>
+• <b>웹사이트 인증서</b>: 서버 → 클라이언트 방향 (사이트가 자신을 증명)<br>
+• <b>사용자 인증</b>: 클라이언트 → 서버 방향 (비밀번호·MFA 등)<br>
+• 두 방향은 서로 다른 통제 메커니즘<br><br>
+<b>🔗 관련 문제:</b> Q486(MFA) · Q491(비밀번호 암호화) · Q496(세션 보안)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Website Certificates and Authentication",
+keyConcepts:[
+"웹사이트 인증서|접속할 웹사이트가 정당한 사이트인지 확인하는 것이 주요 목적",
+"서버 vs 사용자 인증|웹사이트 인증서는 서버 인증, 사용자 인증은 비밀번호·MFA로 수행",
+"CA(인증 기관)|웹사이트 인증서를 발급하여 사이트의 신뢰성을 보증하는 제3자"
+]
+},
+{
+id:499,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"In transport mode, the use of the encapsulation security payload (ESP), protocol is advantageous over the authentication header protocol because it provides:",
+questionKo:"전송 모드(Transport Mode)에서 ESP(Encapsulation Security Payload) 프로토콜이 AH(Authentication Header) 프로토콜보다 유리한 점은?",
+options:[
+"A. Connectionless integrity.",
+"B. Data origin authentication.",
+"C. Antireplay service.",
+"D. Confidentiality."
+],
+optionsKo:[
+"A. 비연결형 무결성",
+"B. 데이터 출처 인증",
+"C. 재전송 방지 서비스",
+"D. 기밀성"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>기능</th><th>AH</th><th>ESP</th><th>ESP만의 장점?</th></tr>
+<tr><td>A. 비연결형 무결성</td><td>✅</td><td>✅</td><td>❌ 둘 다 제공</td></tr>
+<tr><td>B. 데이터 출처 인증</td><td>✅</td><td>✅</td><td>❌ 둘 다 제공</td></tr>
+<tr><td>C. 재전송 방지</td><td>✅</td><td>✅</td><td>❌ 둘 다 제공 (타임스탬프 사용)</td></tr>
+<tr class="correct-row"><td>D. 기밀성(암호화) ✅</td><td>❌</td><td>✅</td><td>✅ <b>ESP만 제공</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 IPSec의 두 프로토콜: AH vs ESP</b><br>
+• <b>AH(Authentication Header)</b>: 무결성 + 인증 + 재전송 방지 → <b>암호화 없음</b><br>
+• <b>ESP(Encapsulation Security Payload)</b>: 무결성 + 인증 + 재전송 방지 + <b>기밀성(암호화)</b><br>
+• ESP가 AH보다 유리한 유일한 차이점 = <b>기밀성(Confidentiality)</b><br><br>
+<b>📝 IPSec 모드</b><br>
+• <b>Transport Mode</b>: 페이로드만 암호화/인증 — 호스트 간 직접 통신<br>
+• <b>Tunnel Mode</b>: 전체 IP 패킷을 암호화/인증 — VPN 게이트웨이 간 통신<br><br>
+<b>📝 공통 기능 vs ESP 고유 기능</b><br>
+• 공통: 비연결형 무결성, 데이터 출처 인증, 재전송 방지<br>
+• ESP만: <b>기밀성(암호화를 통한 데이터 보호)</b><br><br>
+<b>🔗 관련 문제:</b> Q491(암호화 중요성) · Q489(비암호화 전송 위험) · Q497(방화벽)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — IPSec Protocols (AH vs ESP)",
+keyConcepts:[
+"ESP vs AH|ESP만이 기밀성(암호화)을 제공 — AH와의 유일한 차이점",
+"IPSec 공통 기능|비연결형 무결성, 데이터 출처 인증, 재전송 방지는 AH·ESP 모두 제공",
+"IPSec 모드|Transport(페이로드만) vs Tunnel(전체 패킷) 암호화/인증"
+]
+},
+{
+id:500,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following types of firewalls would BEST protect a network from an Internet attack?",
+questionKo:"다음 중 <b>인터넷 공격</b>으로부터 네트워크를 <b>가장 잘 보호</b>할 수 있는 방화벽 유형은?",
+options:[
+"A. Screened subnet firewall",
+"B. Application filtering gateway",
+"C. Packet filtering router",
+"D. Circuit-level gateway"
+],
+optionsKo:[
+"A. 스크린드 서브넷 방화벽(DMZ 구조)",
+"B. 애플리케이션 필터링 게이트웨이",
+"C. 패킷 필터링 라우터",
+"D. 서킷 레벨 게이트웨이"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>계층/구조</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. Screened Subnet ✅</td><td>DMZ + 2중 라우터</td><td>정답</td><td>인터넷 트래픽을 <b>DMZ로 격리</b>하여 내부망과 분리 — <b>네트워크 방어에 최적</b></td></tr>
+<tr><td>B. Application Gateway</td><td>L7 (프록시)</td><td>오답</td><td><b>애플리케이션</b> 보호에는 최고이지만, 네트워크 전체 방어 구조는 아님</td></tr>
+<tr><td>C. Packet Filtering Router</td><td>L3/L4</td><td>오답</td><td>헤더만 검사하는 <b>저수준 통제</b> — 가장 기본적, 단독 방어력 약함</td></tr>
+<tr><td>D. Circuit-level Gateway</td><td>L5 (SOCKS 등)</td><td>오답</td><td>사용자 보호용 프록시 — 네트워크 최선 방어는 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Screened Subnet Firewall (DMZ 방화벽)</b><br>
+• <b>구조</b>: 외부 라우터 → <b>DMZ(스크린드 서브넷)</b> → 내부 라우터 → 내부망<br>
+• 외부 라우터: 인터넷과 DMZ 사이 트래픽 필터링<br>
+• 내부 라우터: DMZ와 내부망 사이 트래픽 필터링<br>
+• 공개 서버(웹/메일 등)는 DMZ에 배치 → 침투되어도 내부망은 안전<br>
+• <b>인터넷 기반 트래픽을 기업 네트워크 전체로부터 격리</b><br><br>
+<b>📝 방화벽 유형별 비교</b><br>
+• <b>Packet Filtering Router</b>: L3/L4 헤더(주소·포트·프로토콜) 검사 → 가장 단순·빠름, 방어력 약함<br>
+• <b>Circuit-level Gateway</b>: L5 세션 수립 시 검증 (예: SOCKS) → 사용자 프록시 역할<br>
+• <b>Application Gateway(Proxy)</b>: L7 애플리케이션 내용 검사 → <b>애플리케이션</b> 보호 최강<br>
+• <b>Screened Subnet(DMZ)</b>: 다계층 방어 구조 → <b>네트워크</b> 보호 최강<br><br>
+<b>💡 문제 키워드 구분</b><br>
+• "protect a <b>network</b>" → <b>Screened Subnet</b> ✅<br>
+• "protect an <b>application</b>" → Application Gateway<br>
+• "protect a <b>user</b>" → Circuit-level Gateway<br><br>
+<b>🔗 관련 문제:</b> Q497(방화벽 계층) · Q499(IPSec)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Firewall Types (Screened Subnet / DMZ)",
+keyConcepts:[
+"Screened Subnet Firewall|외부 라우터-DMZ-내부 라우터 3단 구조, 인터넷 트래픽을 DMZ로 격리하여 네트워크 전체 방어에 최적",
+"DMZ(Demilitarized Zone)|인터넷과 내부망 사이의 완충 구간, 공개 서버 배치 영역",
+"방화벽 계층별 비교|Packet Filter(L3/L4) < Circuit Gateway(L5) < Application Gateway(L7), 단 네트워크 구조적 방어는 Screened Subnet이 최강",
+"문제 키워드 주의|'network 보호' → Screened Subnet, 'application 보호' → Application Gateway로 구분"
+]
+},
+{
+id:501,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following types of transmission media provide the BEST security against unauthorized access?",
+questionKo:"다음 중 <b>무단 접근</b>에 대해 <b>가장 좋은 보안</b>을 제공하는 전송 매체는?",
+options:[
+"A. Copper wire",
+"B. Shielded twisted pair",
+"C. Fiber-optic cables",
+"D. Coaxial cables"
+],
+optionsKo:[
+"A. 구리선(Copper wire)",
+"B. 차폐 연선(STP, Shielded Twisted Pair)",
+"C. 광섬유 케이블(Fiber-optic)",
+"D. 동축 케이블(Coaxial)"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>매체 종류</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. Copper wire</td><td>금속(전기 신호)</td><td>오답</td><td>저렴한 장비로 <b>쉽게 도청 가능</b> (전자기 유도)</td></tr>
+<tr><td>B. Shielded Twisted Pair</td><td>금속(차폐 구리)</td><td>오답</td><td>차폐는 <b>간섭(EMI) 방지</b>용 — 무단 접근 방어에는 도움 안 됨</td></tr>
+<tr class="correct-row"><td>C. Fiber-optic ✅</td><td>광(빛 신호)</td><td>정답</td><td><b>도청(tap)이 매우 어려움</b>, 전자기 방출 없음 — 보안성 최고</td></tr>
+<tr><td>D. Coaxial cable</td><td>금속(동축 구리)</td><td>오답</td><td>상대적으로 <b>쉽게 모니터링</b> 가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Fiber-optic Cable (광섬유 케이블) 보안 우수성</b><br>
+• <b>빛 신호 전송</b>: 전기 신호가 아니므로 <b>전자기 방출(EM emanation) 없음</b><br>
+• <b>도청 어려움</b>: 물리적으로 절단/접속해야 tap 가능 → 즉시 탐지됨<br>
+• <b>간섭 면역</b>: EMI(전자기 간섭) / RFI(무선 간섭) 영향 없음<br>
+• <b>장거리·고속</b>: 감쇠 적고 대역폭 큼<br>
+• <b>단점</b>: 비용 높고 설치 어려움, 구부림에 약함<br><br>
+<b>📝 전송 매체별 보안 비교</b><br>
+• <b>Copper wire(UTP)</b>: 전자기 유도로 <b>비접촉 도청</b> 가능 — 가장 취약<br>
+• <b>STP(Shielded Twisted Pair)</b>: 차폐는 <b>EMI 방지</b> 목적 → 보안 강화 효과 미미<br>
+• <b>Coaxial</b>: 절연체로 감싸 있지만 저렴한 장비로 tap 가능<br>
+• <b>Fiber-optic</b>: 전기적 방출 없음 → <b>도청 가장 어려움</b> ✅<br><br>
+<b>💡 함정 주의</b><br>
+• "Shielded"라는 단어는 <b>보안(security) ≠ 차폐(shielding)</b><br>
+• 차폐는 <b>신호 품질</b>(간섭 방지) 향상 목적이며, <b>무단 접근 방어와 무관</b><br>
+• "BEST security against unauthorized access" → <b>Fiber-optic</b> 단일 정답<br><br>
+<b>🔗 관련 문제:</b> Q497(방화벽 계층) · Q500(Screened Subnet Firewall)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Transmission Media Security",
+keyConcepts:[
+"광섬유 케이블 보안|빛 신호 전송으로 전자기 방출 없음, 물리적 tap이 어려워 무단 접근 방어에 최적",
+"EMI 차폐 vs 보안|Shielded는 전자기 간섭(EMI) 방지용이며, 무단 접근 방어(security)와는 무관",
+"구리 기반 매체 취약성|UTP/STP/Coaxial 모두 전자기 유도로 비접촉 도청 가능, 저렴한 장비로 모니터링됨",
+"매체 보안 순위|Fiber-optic > Coaxial > STP > UTP/Copper wire (무단 접근 방어 기준)"
+]
+},
+{
+id:502,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following provides the MOST relevant information for proactively strengthening security settings?",
+questionKo:"다음 중 <b>선제적(proactive)으로 보안 설정을 강화</b>하기 위한 <b>가장 관련성 높은 정보</b>를 제공하는 것은?",
+options:[
+"A. Bastion host",
+"B. Intrusion detection system (IDS)",
+"C. Honeypot",
+"D. Intrusion prevention system (IPS)"
+],
+optionsKo:[
+"A. 배스천 호스트(Bastion host)",
+"B. 침입 탐지 시스템(IDS)",
+"C. 허니팟(Honeypot)",
+"D. 침입 방지 시스템(IPS)"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>역할</th><th>대응 방식</th><th>평가</th></tr>
+<tr><td>A. Bastion Host</td><td>강화된 공개 서버</td><td>방어(hardening)</td><td>오답 — 공격 정보를 제공하지 않음</td></tr>
+<tr><td>B. IDS</td><td>침입 탐지</td><td><b>반응적(Reactive)</b></td><td>오답 — 진행 중 공격 탐지·중단 목적</td></tr>
+<tr class="correct-row"><td>C. Honeypot ✅</td><td>공격자 유인 함정</td><td><b>선제적(Proactive)</b></td><td>정답 — 공격자 수법/전략 정보 수집</td></tr>
+<tr><td>D. IPS</td><td>침입 차단</td><td><b>반응적(Reactive)</b></td><td>오답 — 진행 중 공격 자동 차단</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Honeypot (허니팟)</b><br>
+• <b>목적</b>: 공격자를 <b>의도적으로 유인</b>하여 공격 행위를 관찰·기록<br>
+• <b>특징</b>: 공격이 <b>계속 진행되도록 허용</b>하여 공격 수법(TTPs)·도구·목표 정보 수집<br>
+• <b>가치</b>: 수집된 정보로 실제 보안 설정을 <b>선제적으로 강화</b> 가능<br>
+• <b>배치</b>: DMZ 또는 격리된 네트워크에 가짜 서버/데이터로 구성<br>
+• <b>Honeynet</b>: 여러 허니팟을 네트워크로 묶은 확장 형태<br><br>
+<b>📝 Proactive vs Reactive 보안 통제</b><br>
+• <b>Proactive(선제적)</b>: Honeypot, 위협 인텔리전스, 취약점 스캔, 모의해킹 → <b>사전 예방</b><br>
+• <b>Reactive(반응적)</b>: IDS, IPS, SIEM 알림, 포렌식 → <b>사후 대응</b><br>
+• Honeypot만이 공격자의 <b>실제 행동 패턴</b>을 수집해 선제적 강화에 활용<br><br>
+<b>💡 IDS vs IPS vs Honeypot 핵심 구분</b><br>
+• <b>IDS(탐지)</b>: 공격 감지 → 알람 (차단 X)<br>
+• <b>IPS(방지)</b>: 공격 감지 → 즉시 차단<br>
+• <b>Honeypot(유인)</b>: 공격 허용 → <b>정보 수집</b> → 방어 전략 수립<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "MOST relevant for <b>proactively strengthening</b>" → Honeypot ✅<br>
+• "detect and stop attack in progress" → IDS/IPS<br>
+• IDS와 IPS는 둘 다 <b>반응적</b>이므로 함께 오답 — 하나만 답이 될 수 없음<br><br>
+<b>🔗 관련 문제:</b> Q500(Screened Subnet) · Q501(Fiber-optic 매체)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Honeypot / Network Security Monitoring",
+keyConcepts:[
+"Honeypot|공격자를 유인해 수법·전략을 관찰·기록, 수집된 정보로 보안 설정을 선제적(proactive)으로 강화",
+"Proactive vs Reactive|Honeypot은 proactive(사전 정보 수집), IDS/IPS는 reactive(진행 중 공격 대응)",
+"IDS vs IPS vs Honeypot|IDS 탐지·알람, IPS 탐지·차단, Honeypot 유인·정보수집",
+"Bastion Host|하드닝된 공개 서비스 호스트, 방어 목적이며 공격 정보 수집 기능 없음"
+]
+},
+{
+id:503,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following line media would provide the BEST security for a telecommunication network?",
+questionKo:"다음 중 통신 네트워크에 <b>가장 좋은 보안</b>을 제공하는 회선 매체는?",
+options:[
+"A. Broadband network digital transmission",
+"B. Baseband network",
+"C. Dialup",
+"D. Dedicated lines"
+],
+optionsKo:[
+"A. 광대역(Broadband) 디지털 전송망",
+"B. 베이스밴드(Baseband) 네트워크",
+"C. 전화접속(Dialup)",
+"D. 전용회선(Dedicated lines)"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>공유 여부</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. Broadband</td><td>공유 가능</td><td>오답</td><td>타 사용자와 공유 여부·암호화·중단 위험에 좌우됨</td></tr>
+<tr><td>B. Baseband</td><td>다수 공유</td><td>오답</td><td>보통 <b>다수와 공유</b>, 암호화해도 <b>트래픽 분석</b>에 노출</td></tr>
+<tr><td>C. Dialup</td><td>개인 전용(일시)</td><td>오답</td><td>사설 연결로 꽤 안전하나 <b>속도 느려</b> 상용 부적합</td></tr>
+<tr class="correct-row"><td>D. Dedicated Lines ✅</td><td><b>전용(단독)</b></td><td>정답</td><td>공유·중간 진입점 없어 <b>가로채기·중단 위험 최저</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Dedicated Lines (전용회선)</b><br>
+• <b>정의</b>: 특정 사용자/조직만을 위해 <b>단독 할당된 회선</b> (Leased Line)<br>
+• <b>구조</b>: 두 지점 간 상시 연결, <b>공유되지 않음</b><br>
+• <b>보안 이점</b>:<br>
+&nbsp;&nbsp;- 공유 없음 → <b>도청 경로 차단</b><br>
+&nbsp;&nbsp;- 중간 진입점 없음 → <b>가로채기(interception) 위험 최소</b><br>
+&nbsp;&nbsp;- 트래픽 분석(Traffic Analysis) 어려움<br>
+&nbsp;&nbsp;- 서비스 중단 위험 낮음<br>
+• <b>단점</b>: 비용 높음, 설치 시간 필요<br><br>
+<b>📝 회선 매체별 보안 비교</b><br>
+• <b>Broadband(광대역)</b>: 공유망, 암호화·보안 설정 의존적<br>
+• <b>Baseband(베이스밴드)</b>: <b>단일 채널 공유</b> → 암호화해도 트래픽 분석 가능<br>
+• <b>Dialup</b>: PSTN 기반, 일시적 사설 연결 — 안전하나 느림<br>
+• <b>Dedicated Line</b>: <b>단독 할당</b> → <b>보안·안정성 최상</b> ✅<br><br>
+<b>💡 Broadband vs Baseband 용어</b><br>
+• <b>Baseband</b>: 하나의 채널을 <b>한 번에 한 사용자</b>만 사용 (예: 이더넷)<br>
+• <b>Broadband</b>: 하나의 매체에 <b>다중 채널 동시 전송</b> (예: 케이블 인터넷)<br>
+• 둘 다 <b>공유 네트워크</b>라는 점에서 전용회선보다 보안 취약<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "BEST security" + "telecommunication network" → <b>Dedicated Lines</b> ✅<br>
+• Dialup도 private이지만 <b>속도·상용성 문제</b>로 best 아님<br><br>
+<b>🔗 관련 문제:</b> Q500(Screened Subnet) · Q501(Fiber-optic) · Q502(Honeypot)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Telecommunication Line Media",
+keyConcepts:[
+"Dedicated Lines|특정 사용자 전용 단독 회선(Leased Line), 공유·중간 진입점 없어 가로채기·중단 위험 최저",
+"Baseband vs Broadband|Baseband는 단일 채널 공유, Broadband는 다중 채널 공유 — 둘 다 공유망이라 전용회선 대비 보안 취약",
+"Dialup 회선|PSTN 기반 일시 사설 연결, 보안성은 양호하나 속도 문제로 상용 부적합",
+"회선 보안 순위|Dedicated > Dialup > Baseband > Broadband (공유·진입점·트래픽 분석 노출도 기준)"
+]
+},
+{
+id:504,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The reason a certification and accreditation process is performed on critical systems is to ensure that:",
+questionKo:"<b>중요 시스템</b>에 대해 <b>인증 및 승인(C&A) 프로세스</b>를 수행하는 이유는 다음을 보장하기 위함이다:",
+options:[
+"A. security compliance has been technically evaluated.",
+"B. data have been encrypted and are ready to be stored.",
+"C. the systems have been tested to run on different platforms.",
+"D. the systems have followed the phases of a waterfall model."
+],
+optionsKo:[
+"A. <b>보안 준수 사항이 기술적으로 평가</b>되었음",
+"B. 데이터가 암호화되어 저장 준비가 완료되었음",
+"C. 시스템이 다양한 플랫폼에서 실행되도록 테스트되었음",
+"D. 시스템이 폭포수 모델의 단계를 따랐음"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>관련 영역</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 보안 준수 기술적 평가 ✅</td><td>C&A 본질</td><td>정답</td><td>인증·승인 시스템은 <b>특정 환경·구성</b>에서 보안 준수가 기술적으로 평가됨</td></tr>
+<tr><td>B. 데이터 암호화</td><td>보안 기능 일부</td><td>오답</td><td>필요 시 암호화도 테스트되지만 <b>C&A의 주요 목적 아님</b></td></tr>
+<tr><td>C. 다양한 플랫폼 테스트</td><td>호환성 테스트</td><td>오답</td><td>인증된 시스템은 <b>특정 환경에서만</b> 실행되도록 평가됨 — 반대</td></tr>
+<tr><td>D. 폭포수 모델</td><td>SDLC 방법론</td><td>오답</td><td>소프트웨어 개발 방법론 — C&A와 무관</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Certification & Accreditation (C&A) 프로세스</b><br>
+• <b>목적</b>: 시스템이 <b>특정 환경·구성</b>에서 <b>보안 요구사항을 충족</b>함을 공식 확인<br>
+• <b>Certification (인증)</b>: 시스템의 보안 기능이 <b>기술적으로 평가</b>됨 (Technical)<br>
+• <b>Accreditation (승인)</b>: 경영진이 잔여 위험을 수용하고 <b>운영을 공식 승인</b>함 (Management)<br>
+• 주로 <b>정부·군·중요 인프라</b> 시스템에서 요구됨 (예: FISMA, DIACAP, RMF)<br><br>
+<b>📝 C&A 프로세스 단계</b><br>
+1. <b>Initiation</b>: 시스템 범위·보안 목표 정의<br>
+2. <b>Security Certification</b>: 보안 통제 기술적 평가·테스트<br>
+3. <b>Security Accreditation</b>: 경영진 위험 수용 결정<br>
+4. <b>Continuous Monitoring</b>: 지속적 보안 상태 감시<br><br>
+<b>💡 Certification vs Accreditation 핵심 구분</b><br>
+• <b>Certification</b>: <b>기술적(Technical)</b> 평가 — "보안 기능이 제대로 작동하는가?"<br>
+• <b>Accreditation</b>: <b>관리적(Management)</b> 승인 — "경영진이 잔여 위험을 수용하는가?"<br>
+• 둘 다 <b>특정 환경·구성</b>에 대한 평가 (환경 바뀌면 재인증 필요)<br><br>
+<b>⚠️ 함정 주의</b><br>
+• C&A 주 목적 = <b>보안 준수의 기술적 평가</b> ✅ (A)<br>
+• 암호화(B)는 C&A에서 평가될 수 있는 <b>하나의 요소</b>일 뿐 주 목적 아님<br>
+• C&A는 <b>특정 환경 전용</b> — 다양한 플랫폼 호환성(C)과 반대 개념<br>
+• 폭포수(D)는 개발 방법론으로 C&A와 무관<br><br>
+<b>🔗 관련 문제:</b> Q500(Screened Subnet) · Q502(Honeypot) · Q503(Dedicated Lines)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Certification and Accreditation Process",
+keyConcepts:[
+"C&A 프로세스|시스템이 특정 환경·구성에서 보안 준수를 기술적으로 평가받고 경영진의 공식 승인을 얻는 프로세스",
+"Certification vs Accreditation|Certification은 기술적 평가(보안 기능 검증), Accreditation은 관리적 승인(잔여 위험 수용)",
+"C&A 적용 대상|정부·군·중요 인프라 시스템 (FISMA, DIACAP, RMF 등)",
+"환경 종속성|C&A는 특정 환경·구성 전용이며 환경 변경 시 재인증 필요 — 다양한 플랫폼 호환성과 반대"
+]
+},
+{
+id:505,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following is the MOST secure and economical method for connecting a private network over the Internet in a small- to medium-sized enterprise?",
+questionKo:"중소기업이 <b>인터넷을 통해 사설 네트워크를 연결</b>할 때 <b>가장 안전하고 경제적</b>인 방법은?",
+options:[
+"A. Virtual private network (VPN)",
+"B. Dedicated line",
+"C. Leased line",
+"D. Integrated services digital network"
+],
+optionsKo:[
+"A. 가상 사설망(VPN)",
+"B. 전용회선(Dedicated line)",
+"C. 임대회선(Leased line)",
+"D. 종합정보통신망(ISDN)"
+],
+correct:0,
+optionsEvaluation:[
+{option:"A", evaluation:"정답", reason:"<b>암호화 + 인증 + 터널링</b>으로 공용 인터넷 위에서 보안 연결 구축, 별도 회선 불필요 → <b>경제적</b>"},
+{option:"B", evaluation:"오답", reason:"전용회선은 <b>매우 비쌈</b>, 특수 기밀성·가용성이 필요한 경우에만 사용"},
+{option:"C", evaluation:"오답", reason:"임대회선은 <b>비싼 사설 옵션</b>, 오늘날 선호되지 않음"},
+{option:"D", evaluation:"오답", reason:"ISDN은 <b>암호화 미적용</b>, 추가 보안 수단 필요"}
+],
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>보안</th><th>비용</th><th>평가</th></tr>
+<tr class="correct-row"><td>A. VPN ✅</td><td>높음(암호화)</td><td><b>저렴</b></td><td>정답 — 인터넷 위 암호화 터널, 보안·경제성 겸비</td></tr>
+<tr><td>B. Dedicated Line</td><td>높음</td><td>매우 비쌈</td><td>오답 — 특수 기밀성·가용성 요구 시만 사용</td></tr>
+<tr><td>C. Leased Line</td><td>높음</td><td>비쌈</td><td>오답 — 사설이지만 현재 거의 사용 안 함</td></tr>
+<tr><td>D. ISDN</td><td><b>낮음</b>(미암호화)</td><td>중간</td><td>오답 — 암호화 없어 추가 보안 필요</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Virtual Private Network (VPN)</b><br>
+• <b>개념</b>: <b>공용 인터넷</b> 위에 <b>사설 네트워크처럼 작동하는 가상 터널</b> 구성<br>
+• <b>3대 보안 요소</b>:<br>
+&nbsp;&nbsp;- <b>Encryption(암호화)</b>: 터널 내 데이터 암호화 (기밀성)<br>
+&nbsp;&nbsp;- <b>Authentication(인증)</b>: 양단 신원 확인 (무결성)<br>
+&nbsp;&nbsp;- <b>Tunneling(터널링)</b>: 패킷을 캡슐화해 전송<br>
+• <b>경제성</b>: 별도 회선 불필요, <b>기존 인터넷 활용</b> → 중소기업에 최적<br>
+• <b>프로토콜</b>: IPSec, SSL/TLS, L2TP, PPTP(구형)<br><br>
+<b>📝 연결 방식별 비교</b><br>
+• <b>VPN</b>: 공용 인터넷 + 암호화 → <b>보안 O, 저렴 O</b> ✅<br>
+• <b>Dedicated Line</b>: 단독 물리 회선 → 보안 O, <b>매우 비쌈</b><br>
+• <b>Leased Line</b>: 임대 사설 회선 → 보안 O, 비쌈<br>
+• <b>ISDN</b>: 디지털 전화망 → <b>암호화 없음</b>, 추가 보안 필요<br><br>
+<b>💡 "가장 안전하고 경제적" 핵심 해석</b><br>
+• 보안만 최고 → Dedicated/Leased Line<br>
+• 경제성만 최고 → 일반 인터넷 (보안 없음)<br>
+• <b>보안 + 경제성 균형</b> → VPN ✅<br>
+• 특히 <b>중소기업(SME)</b> 맥락에서는 VPN이 사실상 유일한 합리적 선택<br><br>
+<b>⚠️ 함정 주의</b><br>
+• Dedicated/Leased Line은 <b>보안은 높지만 비용 문제</b>로 "경제적" 조건 탈락<br>
+• ISDN은 자체 암호화 없으므로 "안전" 조건 탈락<br>
+• Q503(Dedicated Lines)와 구분: Q503은 보안만 비교, Q505는 <b>보안+경제성</b> 동시 고려<br><br>
+<b>🔗 관련 문제:</b> Q499(IPSec) · Q503(Dedicated Lines) · Q504(C&A)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Virtual Private Network (VPN)",
+keyConcepts:[
+"VPN 3대 요소|암호화(Encryption) + 인증(Authentication) + 터널링(Tunneling)으로 공용 인터넷 위에 안전한 사설 연결 구축",
+"VPN 경제성|별도 물리 회선 없이 기존 인터넷 활용, 중소기업에 가장 적합한 보안 연결 방식",
+"Dedicated vs Leased vs VPN|Dedicated/Leased는 보안 높지만 비쌈, VPN은 보안+경제성 균형",
+"ISDN 보안 한계|ISDN 자체에 암호화 기능 없어 보안 연결로 부적합, 추가 보안 계층 필요"
+]
+},
+{
+id:506,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An information systems (IS) auditor performing an audit of the newly installed Voice-over Internet Protocol system is inspecting the wiring closets on each floor of a building. What would be the GREATEST concern?",
+questionKo:"신규 설치된 <b>VoIP 시스템</b>을 감사하는 IS 감사인이 각 층의 <b>배선실(wiring closet)</b>을 점검 중이다. <b>가장 큰 우려사항</b>은?",
+options:[
+"A. The local area network (LAN) switches are not connected to uninterruptible power supply units.",
+"B. Network cabling is disorganized and not properly labeled.",
+"C. The telephones are using the same cable used for LAN connections.",
+"D. The wiring closet also contains power lines and breaker panels."
+],
+optionsKo:[
+"A. <b>LAN 스위치가 UPS(무정전 전원장치)에 연결되어 있지 않음</b>",
+"B. 네트워크 케이블이 정리되지 않고 라벨이 부적절함",
+"C. 전화기가 LAN 연결과 동일한 케이블을 사용함",
+"D. 배선실에 전력선과 차단기 패널이 함께 있음"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>위험도</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. LAN 스위치 UPS 미연결 ✅</td><td><b>매우 높음</b></td><td>정답</td><td>정전 시 <b>PoE 전원 차단</b> → VoIP 전화 불통 → <b>긴급 통화 불가</b></td></tr>
+<tr><td>B. 케이블 정리/라벨 불량</td><td>중간</td><td>오답</td><td>신뢰성·유지보수 문제 유발하나 <b>즉각적 가용성 위협 아님</b></td></tr>
+<tr><td>C. 전화기가 LAN 케이블 공유</td><td>낮음</td><td>오답</td><td>VoIP의 <b>본래 장점</b> — 우려사항 아님</td></tr>
+<tr><td>D. 전력선·차단기 병존</td><td>낮음</td><td>오답</td><td>분리만 되어 있으면 <b>유의미한 위험 아님</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 VoIP (Voice-over IP) 핵심 특징</b><br>
+• <b>음성을 IP 패킷으로 전송</b> (전통 PSTN 대체)<br>
+• <b>표준 네트워크 케이블 사용</b>: PC와 동일한 UTP·스위치 인프라<br>
+• <b>PoE (Power over Ethernet)</b>: 이더넷 케이블로 데이터+전원 동시 공급<br>
+• 전화기는 <b>배선실 스위치의 전력</b>에 의존 → 스위치 꺼지면 전화도 꺼짐<br><br>
+<b>📝 VoIP vs 전통 PSTN 전원 구조</b><br>
+• <b>전통 PSTN 전화</b>: 전화국에서 전원 공급 → 정전 시에도 통화 가능 (line power)<br>
+• <b>VoIP 전화</b>: <b>건물 내 네트워크 스위치</b>에서 PoE로 전원 공급<br>
+&nbsp;&nbsp;→ 건물 정전 시 <b>스위치 다운 = 전화 불통</b><br>
+&nbsp;&nbsp;→ <b>UPS 필수</b>! (특히 <b>긴급 통화(E911)</b> 대응)<br><br>
+<b>💡 VoIP 감사 핵심 체크 포인트</b><br>
+• <b>UPS/백업 전원</b>: LAN 스위치·PoE 장비에 UPS 연결 필수 ✅<br>
+• <b>QoS</b>: 음성 패킷 우선순위 보장<br>
+• <b>VLAN 분리</b>: 음성망과 데이터망 논리적 분리<br>
+• <b>암호화</b>: SRTP(음성 암호화), TLS(시그널링 암호화)<br>
+• <b>긴급 통화(E911)</b>: 위치 정보·가용성 보장<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "GREATEST concern" → <b>가용성·안전(긴급 통화) 직결</b>되는 UPS 미연결 ✅<br>
+• B(케이블 정리)는 운영 문제이지 보안 긴급 위협 아님<br>
+• C(케이블 공유)는 VoIP의 <b>설계상 장점</b> — 비용 절감 효과<br>
+• D(전력선 병존)는 물리적으로 분리되어 있다면 무방<br><br>
+<b>🔗 관련 문제:</b> Q500(Screened Subnet) · Q503(Dedicated Lines) · Q505(VPN)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — VoIP Security / Power Protection",
+keyConcepts:[
+"VoIP 전원 구조|VoIP 전화기는 PoE로 배선실 스위치에서 전원 공급받으므로 스위치에 UPS 필수",
+"VoIP vs PSTN 가용성|PSTN은 전화국 자체 전원으로 정전에도 동작, VoIP는 건물 내 스위치 의존 — UPS 없으면 정전 시 긴급 통화 불가",
+"VoIP 감사 체크|UPS 백업, QoS, VLAN 분리, SRTP/TLS 암호화, E911 긴급 통화 보장",
+"VoIP 케이블 공유|LAN과 같은 케이블·스위치 사용은 VoIP의 장점(비용 절감)이지 우려사항 아님"
+]
+},
+{
+id:507,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An information systems (IS) auditor finds that conference rooms have active network ports. Which of the following prevents this from being of any concern for the enterprise?",
+questionKo:"IS 감사인이 <b>회의실에 활성화된 네트워크 포트</b>가 있음을 발견했다. 이것이 기업에 <b>우려사항이 되지 않게</b> 하는 것은?",
+options:[
+"A. The enterprise network is using an intrusion prevention system (IPS).",
+"B. The conference rooms part of the network is isolated from the enterprise network.",
+"C. A single sign-on (SSO) has been implemented in the enterprise network.",
+"D. Antivirus software is in place to protect the enterprise network."
+],
+optionsKo:[
+"A. 기업 네트워크가 침입방지시스템(IPS)을 사용 중임",
+"B. <b>회의실 네트워크 부분이 기업 네트워크와 격리</b>되어 있음",
+"C. 기업 네트워크에 SSO(단일 로그인)가 구현됨",
+"D. 안티바이러스 소프트웨어가 기업 네트워크를 보호함"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. IPS</td><td>탐지·차단(반응적)</td><td>오답</td><td>공격을 막을 수 있으나 <b>접근 자체를 차단</b>하는 것이 더 근본적</td></tr>
+<tr class="correct-row"><td>B. 네트워크 격리 ✅</td><td><b>예방적 분리</b></td><td>정답</td><td>회의실망을 기업망과 <b>물리/논리적 격리</b> → 무단 접속 원천 차단</td></tr>
+<tr><td>C. SSO</td><td>접근통제(인증)</td><td>오답</td><td>인증 수단일 뿐, <b>물리적 네트워크 접근 위험</b> 자체를 제거 못 함</td></tr>
+<tr><td>D. Antivirus</td><td>악성코드 방어</td><td>오답</td><td>바이러스만 방어, <b>무단 접근 위험</b>은 그대로 남음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 회의실 활성 네트워크 포트 위험</b><br>
+• <b>위험 시나리오</b>: 외부 방문객이 회의실에서 랜선 연결 → <b>기업 내부망 접근</b><br>
+• <b>위협</b>: 무단 접근, 내부 자원 스캐닝, 데이터 유출, 악성코드 전파<br>
+• <b>근본 해결</b>: <b>회의실망과 기업망을 분리</b> → 물리적·논리적 격리<br><br>
+<b>📝 네트워크 격리(Network Segmentation) 방법</b><br>
+• <b>물리적 분리</b>: 별도 스위치·케이블·ISP 회선 사용<br>
+• <b>논리적 분리</b>: VLAN 분할 + 방화벽으로 트래픽 제어<br>
+• <b>게스트 VLAN</b>: 회의실·방문객 전용 VLAN → 인터넷만 허용, 내부망 차단<br>
+• <b>NAC(Network Access Control)</b>: 802.1X 기반 포트 인증<br><br>
+<b>💡 선택지별 통제 계층 비교</b><br>
+• <b>B. 격리</b>: <b>예방적(Preventive) 통제</b> → 접근 자체 차단 ✅<br>
+• <b>A. IPS</b>: 반응적(Reactive) 통제 → 공격 후 대응<br>
+• <b>C. SSO</b>: 접근통제지만 <b>물리적 네트워크 접근</b>엔 무효<br>
+• <b>D. Antivirus</b>: 악성코드만 대응, 접근 통제 아님<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "prevents from being a concern" → <b>위험의 근본 원인을 제거</b>하는 것<br>
+• IPS/SSO/Antivirus는 <b>후속 통제</b> — 접근 허용을 전제로 함<br>
+• 격리(Isolation)만이 <b>무단 접근 가능성 자체를 없앰</b><br>
+• 보안 원칙: <b>"Defense in Depth"</b>에서도 <b>1차 방어는 접근 차단</b><br><br>
+<b>🔗 관련 문제:</b> Q500(Screened Subnet) · Q502(Honeypot) · Q506(VoIP UPS)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Segmentation / Guest Network Isolation",
+keyConcepts:[
+"회의실 포트 위험|활성화된 네트워크 포트는 외부인이 내부망에 무단 접속할 수 있는 물리적 취약점",
+"네트워크 격리(Segmentation)|VLAN·방화벽·물리 분리로 회의실·게스트 네트워크를 기업망과 분리해야 함",
+"예방적 vs 반응적 통제|격리는 예방적(접근 차단), IPS/Antivirus는 반응적(공격 후 대응)",
+"접근통제의 한계|SSO·인증은 네트워크 접근 후 자원 통제 수단이며, 물리적 네트워크 접근 자체를 막지 못함"
+]
+},
+{
+id:508,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An enterprise is implementing a Dynamic Host Configuration Protocol (DHCP). Which of the following conditions represents the GREATEST concern?",
+questionKo:"기업이 <b>DHCP(동적 호스트 구성 프로토콜)</b>를 구현하고 있다. <b>가장 큰 우려사항</b>을 나타내는 조건은?",
+options:[
+"A. Most employees use laptops.",
+"B. A packet filtering firewall is used.",
+"C. The internet protocol (IP) address space is smaller than the number of PCs.",
+"D. Access to a network port is not restricted."
+],
+optionsKo:[
+"A. 대부분의 직원이 노트북을 사용함",
+"B. 패킷 필터링 방화벽이 사용됨",
+"C. IP 주소 공간이 PC 수보다 적음",
+"D. <b>네트워크 포트 접근이 제한되지 않음</b>"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>DHCP 관계</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 노트북 사용</td><td>이동성 편의</td><td>오답</td><td>DHCP의 <b>이점</b> — 노트북 사용자에게 자동 IP 할당 편리</td></tr>
+<tr><td>B. 패킷 필터링 방화벽</td><td>보안 강화</td><td>오답</td><td>보안 통제 수단, <b>정상적인 보안 조치</b>이지 우려 아님</td></tr>
+<tr><td>C. IP 주소 부족</td><td>주소 관리</td><td>오답</td><td>NAT나 서브넷 IP 증설로 해결 가능 — <b>기술적 관리 이슈</b></td></tr>
+<tr class="correct-row"><td>D. 네트워크 포트 미제한 ✅</td><td><b>물리 접근 통제</b></td><td>정답</td><td>DHCP와 결합 시 <b>무단 사용자에 자동 IP 할당</b> → 내부망 즉시 접속</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 DHCP + 개방된 네트워크 포트 결합 위험</b><br>
+• <b>DHCP</b>: 연결되는 모든 기기에 <b>자동으로 IP 할당</b><br>
+• <b>개방 포트</b>: 누구나 랜선만 꽂으면 물리적 연결 가능<br>
+• <b>결합 시나리오</b>:<br>
+&nbsp;&nbsp;1. 외부인이 회의실·로비 포트에 랜선 연결<br>
+&nbsp;&nbsp;2. DHCP 서버가 <b>자동으로 유효한 IP 할당</b><br>
+&nbsp;&nbsp;3. 내부망 리소스에 즉시 접속 가능 — <b>인증·검증 없음</b><br>
+• DHCP 자체가 <b>공격자에게 네트워크 진입 편의성</b> 제공<br><br>
+<b>📝 DHCP 보안 위험 완화 방법</b><br>
+• <b>802.1X (NAC)</b>: 포트 기반 인증 — 인증된 기기만 IP 할당<br>
+• <b>MAC 주소 필터링</b>: 등록된 MAC만 DHCP 응답<br>
+• <b>DHCP Snooping</b>: 승인된 DHCP 서버만 허용 (Rogue DHCP 방지)<br>
+• <b>포트 보안(Port Security)</b>: 스위치 포트당 MAC 제한<br>
+• <b>VLAN 분리</b>: 게스트·방문객 VLAN 격리<br>
+• <b>물리적 잠금</b>: 미사용 포트 비활성화<br><br>
+<b>💡 선택지별 상세 분석</b><br>
+• <b>A(노트북)</b>: DHCP가 해결하려는 <b>이동성 요구</b> — 기능이지 위험 아님<br>
+• <b>B(방화벽)</b>: 보안 <b>강화</b> 요소<br>
+• <b>C(IP 부족)</b>: <b>기술적·운영적 문제</b>일 뿐 보안 위협 아님 (NAT로 해결)<br>
+• <b>D(포트 미제한)</b>: <b>무단 물리 접근 → DHCP 자동 할당 → 내부망 접속</b> 치명적 위협<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "GREATEST concern" → <b>가장 큰 보안 위협</b>을 찾을 것<br>
+• Q507(회의실 포트)과 유사: <b>물리적 접근 통제 부재</b>가 핵심 위협<br>
+• DHCP는 중립적 기술 — <b>포트 통제 없이 DHCP 단독 운영</b>이 위험<br><br>
+<b>🔗 관련 문제:</b> Q500(Screened Subnet) · Q502(Honeypot) · Q507(회의실 포트)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — DHCP Security / Network Access Control",
+keyConcepts:[
+"DHCP 자동 IP 할당 위험|개방된 포트와 결합 시 무단 사용자에게 유효한 IP가 자동 부여되어 내부망 즉시 접속 가능",
+"DHCP 보안 통제|802.1X NAC, MAC 필터링, DHCP Snooping, 포트 보안, 미사용 포트 비활성화",
+"물리 접근 통제 중요성|DHCP·VLAN 등 논리 통제도 물리적 포트 접근이 제한되지 않으면 무력화됨",
+"DHCP Snooping|스위치에서 승인된 DHCP 서버만 응답 허용해 Rogue DHCP 공격 방지"
+]
+},
+{
+id:509,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The IT team of an enterprise informs the information systems (IS) auditor of a concern that some users might be loading illegal software packages onto a network. Which of the following should the IS auditor recommend for identifying if the concern is valid?",
+questionKo:"IT팀이 IS 감사인에게 <b>일부 사용자가 불법 소프트웨어 패키지를 네트워크에 로드</b>할 수 있다는 우려를 알렸다. 감사인은 이 우려가 <b>실제로 유효한지 식별</b>하기 위해 무엇을 권고해야 하는가?",
+options:[
+"A. Use of diskless workstations",
+"B. Periodic checking of hard drives",
+"C. Use of current antivirus software",
+"D. Policies that result in instant dismissal if violated"
+],
+optionsKo:[
+"A. 디스크리스 워크스테이션 사용",
+"B. <b>하드 드라이브에 대한 주기적 점검</b>",
+"C. 최신 안티바이러스 소프트웨어 사용",
+"D. 위반 시 즉시 해고되는 정책"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 디스크리스 WS</td><td><b>예방적(Preventive)</b></td><td>오답</td><td>로컬 저장 차단하지만 <b>네트워크 접근은 못 막음</b> — 식별 목적에도 부적합</td></tr>
+<tr class="correct-row"><td>B. HDD 주기 점검 ✅</td><td><b>탐지적(Detective)</b></td><td>정답</td><td>설치된 <b>불법 SW 실제 존재 확인</b> — 우려 유효성 식별에 최적</td></tr>
+<tr><td>C. Antivirus</td><td>탐지적(악성코드)</td><td>오답</td><td>바이러스만 탐지, <b>바이러스 없는 불법 SW는 식별 못 함</b></td></tr>
+<tr><td>D. 해고 정책</td><td>예방적(Preventive)</td><td>오답</td><td>규정 제시만 할 뿐 <b>실제 발생 여부 탐지 불가</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "식별(identify)" 요구</b><br>
+• 질문은 우려가 <b>실제로 유효한지 확인</b>할 방법을 묻고 있음<br>
+• 즉 <b>탐지적(Detective) 통제</b>가 필요 (예방이 아님)<br>
+• <b>HDD 주기 점검</b>: 설치된 SW 목록 스캔 → 불법 SW 실존 여부 <b>직접 확인</b><br><br>
+<b>📝 통제 유형별 분류</b><br>
+• <b>Preventive(예방)</b>: 사건 발생 자체를 막음<br>
+&nbsp;&nbsp;- 디스크리스 WS, 정책, USB 차단, 설치 권한 제한<br>
+• <b>Detective(탐지)</b>: 발생한 사건을 <b>발견</b><br>
+&nbsp;&nbsp;- <b>HDD 검사</b>, SW 인벤토리 스캔, 감사 로그 리뷰<br>
+• <b>Corrective(교정)</b>: 발생 후 복구<br>
+&nbsp;&nbsp;- 불법 SW 제거, 징계 조치<br><br>
+<b>💡 불법 SW 탐지 실무 방법</b><br>
+• <b>SW 자산 관리 도구</b>: 설치된 프로그램 인벤토리 수집 (SCCM, GLPI 등)<br>
+• <b>라이선스 감사</b>: 구매 라이선스 vs 설치 수 대조<br>
+• <b>해시 비교</b>: 승인 SW 화이트리스트와 대조<br>
+• <b>엔드포인트 스캔</b>: EDR·구성 관리 도구 활용<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "identifying if concern is valid" = <b>탐지(Detection)</b> 키워드<br>
+• 예방 통제(A, D)는 <b>미래 차단용</b>이지 현재 상태 확인 못 함<br>
+• Antivirus(C)는 탐지지만 <b>바이러스 한정</b> — 일반 불법 SW 못 잡음<br>
+• HDD 점검(B)만이 <b>실제 설치된 불법 SW 존재 여부</b>를 직접 확인<br><br>
+<b>🔗 관련 문제:</b> Q502(Honeypot - proactive) · Q507(회의실 포트) · Q508(DHCP)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Software Asset Management / Detective Controls",
+keyConcepts:[
+"탐지적 통제(Detective)|사건 발생 후 이를 발견하는 통제 — HDD 점검·감사 로그 리뷰·SW 인벤토리 스캔 등",
+"불법 SW 식별 방법|주기적 HDD 점검, SW 자산 관리 도구, 라이선스 감사, 화이트리스트 해시 비교",
+"예방 vs 탐지 통제|정책·디스크리스 WS는 예방적(사건 차단), HDD 점검은 탐지적(사건 발견)",
+"Antivirus 한계|바이러스 서명이 없는 일반 불법/해적판 SW는 안티바이러스로 탐지되지 않음"
+]
+},
+{
+id:510,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following is an example of the defense in-depth security principle?",
+questionKo:"다음 중 <b>심층 방어(Defense in-Depth)</b> 보안 원칙의 예시는 무엇인가?",
+options:[
+"A. Using two firewalls to consecutively check the incoming network traffic",
+"B. Using a firewall as well as logical access controls on the hosts to control incoming network traffic",
+"C. Lack of physical signs on the outside of a computer center building",
+"D. Using two firewalls in parallel to check different types of incoming traffic"
+],
+optionsKo:[
+"A. 두 개의 방화벽을 <b>연속(직렬)</b>으로 배치하여 수신 트래픽을 검사",
+"B. <b>방화벽과 호스트 논리적 접근통제</b>를 함께 사용하여 수신 트래픽을 통제",
+"C. 전산센터 건물 외부에 물리적 표식을 두지 않음",
+"D. 두 개의 방화벽을 <b>병렬</b>로 배치해 서로 다른 유형의 트래픽을 검사"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>구성</th><th>계층성</th><th>평가</th></tr>
+<tr><td>A. 방화벽 2대 직렬</td><td>동일 유형 연속</td><td>단일 계층(동일 메커니즘)</td><td>오답 — 같은 취약점 공유 시 <b>동일 공격으로 둘 다 우회</b></td></tr>
+<tr class="correct-row"><td>B. 방화벽 + 호스트 ACL ✅</td><td><b>서로 다른 메커니즘</b></td><td><b>다계층 방어</b></td><td>정답 — 방화벽 통과해도 호스트 통제가 <b>2차 방어선</b></td></tr>
+<tr><td>C. 외부 표식 없음</td><td>은폐(obscurity)</td><td>단일 조치</td><td>오답 — <b>Security by Obscurity</b>, 심층 방어 아님</td></tr>
+<tr><td>D. 방화벽 2대 병렬</td><td>트래픽 분담</td><td>이중화(redundancy)</td><td>오답 — <b>단일 메커니즘</b>, 심층 방어 효과 없음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 Defense in-Depth(심층 방어) 핵심</b><br>
+• <b>서로 다른 유형</b>의 보안 메커니즘을 <b>여러 계층</b>으로 쌓아 상호 보완<br>
+• 한 계층이 뚫려도 <b>다음 계층이 백업</b>으로 방어<br>
+• 핵심 조건: <b>① 다계층(Multi-layered)</b> + <b>② 이질적 메커니즘(Diverse)</b><br><br>
+<b>📝 올바른 심층 방어 예시</b><br>
+• <b>네트워크</b>: 방화벽 + IDS/IPS + 세그먼테이션<br>
+• <b>호스트</b>: OS 강화 + HIDS + 안티멀웨어<br>
+• <b>접근</b>: 물리적 통제 + 논리적 통제(ACL·MFA) + 응용 인증<br>
+• <b>데이터</b>: 암호화 + DLP + 백업<br><br>
+<b>⚠️ 심층 방어가 아닌 것 (시험 함정)</b><br>
+• <b>같은 제품 직렬 배치</b>(A): 동일 취약점 → 같은 공격으로 관통<br>
+&nbsp;&nbsp;→ 단, <b>서로 다른 벤더</b>의 방화벽 2대는 심층 방어 될 수 있음<br>
+• <b>병렬 이중화</b>(D): 가용성/부하분산용, 보안 계층 증가 아님<br>
+• <b>Security by Obscurity</b>(C): 숨기는 것은 방어 아님<br>
+• <b>동일 유형 반복</b>: 같은 메커니즘의 중복은 단일 통제와 동일<br><br>
+<b>💡 CISA 판정 기준</b><br>
+• "서로 다른(different) 보안 메커니즘" 키워드 확인<br>
+• "back up each other(상호 백업)" 개념이 있는지<br>
+• 선지에 <b>이질적 계층(네트워크+호스트, 물리+논리)</b> 조합이 있으면 정답 후보<br><br>
+<b>🔗 관련 개념:</b> Layered Security · Redundancy vs Diversity · Obscurity 한계
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Defense in-Depth / Layered Security",
+keyConcepts:[
+"Defense in-Depth|서로 다른 유형의 보안 메커니즘을 다계층으로 구성하여 한 계층이 뚫려도 다음 계층이 방어하도록 하는 원칙",
+"다계층 방어 조건|① 여러 계층(Multi-layered) + ② 이질적 메커니즘(Diverse) — 동일 제품 중복은 심층 방어 아님",
+"Security by Obscurity|시스템을 숨기거나 표식을 없애 보안을 기대하는 방식 — 단일 조치이며 심층 방어와 무관",
+"Redundancy vs Defense in-Depth|병렬 이중화(가용성 목적) ≠ 심층 방어(계층적 보안) — 같은 메커니즘의 중복은 단일 통제",
+"심층 방어 실무 예시|방화벽+호스트 ACL, 물리통제+논리통제, 네트워크 IDS+호스트 HIDS, 암호화+접근통제 등 이질적 계층 조합"
+]
+},
+{
+id:511,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The information systems (IS) management of a multinational enterprise is considering upgrading its existing virtual private network (VPN) to support Voice-over Internet Protocol (VoIP) communication via tunneling. Which of the following considerations should be PRIMARILY addressed?",
+questionKo:"다국적 기업의 IS 관리부서가 기존 <b>VPN</b>을 업그레이드하여 <b>터널링을 통한 VoIP 통신</b>을 지원하려 한다. <b>가장 우선적으로</b> 고려해야 할 사항은?",
+options:[
+"A. Reliability and quality of service",
+"B. Means of authentication",
+"C. Privacy of voice transmissions",
+"D. Confidentiality of data transmissions"
+],
+optionsKo:[
+"A. <b>신뢰성 및 서비스 품질(QoS)</b>",
+"B. 인증 수단",
+"C. 음성 전송의 프라이버시",
+"D. 데이터 전송의 기밀성"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>해당 요구사항</th><th>기존 VPN 제공 여부</th><th>평가</th></tr>
+<tr class="correct-row"><td>A. 신뢰성·QoS ✅</td><td><b>음성 통신 고유 요구</b></td><td><b>미제공</b> — 신규 추가 필요</td><td>정답 — VoIP 본질적 신규 요구</td></tr>
+<tr><td>B. 인증 수단</td><td>접속자 신원 확인</td><td>✅ 터널링으로 이미 구현</td><td>오답 — 기존 VPN이 이미 처리</td></tr>
+<tr><td>C. 음성 프라이버시</td><td>도청 방지</td><td>✅ VPN 프로토콜이 보장</td><td>오답 — VPN 암호화로 이미 확보</td></tr>
+<tr><td>D. 데이터 기밀성</td><td>암호화</td><td>✅ VPN 터널링으로 제공</td><td>오답 — 이미 구현됨</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "기존 VPN 위에 VoIP 추가"</b><br>
+• 기존 VPN이 이미 <b>인증·기밀성·프라이버시</b>를 제공하고 있음<br>
+• 따라서 <b>VoIP 추가로 새로 필요해지는 요구사항</b>을 찾는 문제<br>
+• 정답: <b>QoS/신뢰성</b> — 음성은 지연·지터·패킷 손실에 민감<br><br>
+<b>📝 VoIP 고유 요구사항 (QoS 관점)</b><br>
+• <b>Latency(지연)</b>: 편도 150ms 이하 권장<br>
+• <b>Jitter(지터)</b>: 30ms 이하 — 음성 끊김 방지<br>
+• <b>Packet Loss(패킷 손실)</b>: 1% 이하 필요<br>
+• <b>Bandwidth(대역폭)</b>: 코덱별 고정 대역 보장<br>
+• <b>CoS/QoS 마킹</b>: DSCP·802.1p로 음성 우선순위 보장<br><br>
+<b>💡 VPN + VoIP 결합 시 과제</b><br>
+• VPN 암호화 오버헤드 → <b>추가 지연 발생</b><br>
+• 터널링 헤더 추가 → 대역폭 증가 · MTU 이슈<br>
+• 따라서 <b>QoS 설계가 최우선</b> — 보안은 이미 해결된 상태<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "Primarily(최우선)" 키워드 — <b>이미 해결된 것은 답이 아님</b><br>
+• B/C/D는 모두 VPN이 <b>이미 제공</b>하는 기능<br>
+• 새 요구사항만 남으면 → 음성 품질 = QoS 하나뿐<br>
+• "multinational(다국적)" 힌트: 글로벌 네트워크에서 <b>지연·품질 변동성 큼</b><br><br>
+<b>🔗 관련 문제:</b> Q443·Q506(VoIP UPS/가용성) · Q507(VoIP 배선 감사)
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — VoIP over VPN / QoS",
+keyConcepts:[
+"VoIP QoS 요구사항|Latency ≤150ms, Jitter ≤30ms, Packet Loss ≤1% — 음성 품질 보장 핵심 지표",
+"Class of Service(CoS)|DSCP·802.1p 등으로 음성 패킷 우선순위 마킹하여 네트워크 장비에서 우선 처리",
+"VPN + VoIP 결합 과제|기존 VPN은 암호화·인증 이미 제공 → VoIP 추가 시 QoS/신뢰성이 신규 핵심 과제",
+"VPN 터널링 기본 제공|인증(Authentication), 기밀성(Confidentiality), 프라이버시는 VPN 프로토콜이 기본 보장",
+"\"Primarily\" 문제 접근법|이미 해결된 요구사항은 답이 아님 — 새 서비스가 추가로 요구하는 고유 특성을 찾음"
+]
+},
+{
+id:512,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The BEST filter rule for protecting a network from being used as an amplifier in a denial-of-service attack is to deny all:",
+questionKo:"<b>서비스 거부(DoS) 공격의 증폭기(amplifier)</b>로 자사 네트워크가 악용되지 않도록 보호하는 <b>최선의 필터 규칙</b>은 다음 중 무엇을 모두 차단하는 것인가?",
+options:[
+"A. outgoing traffic with source addresses external to the network.",
+"B. incoming traffic with discernible spoofed internet protocol (IP) source addresses.",
+"C. incoming traffic that includes options set in the Internet Protocol.",
+"D. incoming traffic whose destination address belongs to critical hosts."
+],
+optionsKo:[
+"A. <b>출발지 주소가 내부 대역 밖</b>인 <b>외부(outgoing)</b> 트래픽",
+"B. 위조(spoofed)된 IP 출발지 주소가 식별되는 <b>수신(incoming)</b> 트래픽",
+"C. IP 옵션이 설정된 수신(incoming) 트래픽",
+"D. 중요 호스트로 향하는 수신(incoming) 트래픽"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>방향</th><th>효과</th><th>평가</th></tr>
+<tr class="correct-row"><td>A. 외부 출발지 IP의 송신 ✅</td><td><b>Egress(송신)</b></td><td><b>내부 감염 호스트가 위조 송신 불가</b></td><td>정답 — BCP 38 Egress Filtering</td></tr>
+<tr><td>B. 위조 출발지 수신 차단</td><td>Ingress(수신)</td><td>자사가 피해자 되는 걸 막음</td><td>오답 — <b>증폭기 악용 방지와 무관</b></td></tr>
+<tr><td>C. IP 옵션 수신 차단</td><td>Ingress</td><td>정상 트래픽도 차단</td><td>오답 — IP 옵션은 정상 조건</td></tr>
+<tr><td>D. 중요 호스트 수신 차단</td><td>Ingress</td><td>정당한 트래픽 차단</td><td>오답 — 서비스 자체 마비</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "증폭기(Amplifier) 악용 방지"</b><br>
+• "amplifier" = 자사 네트워크가 <b>타인을 공격하는 도구</b>로 사용되는 상황<br>
+• 즉 <b>내부 → 외부</b> 방향의 악성 트래픽을 막아야 함 → <b>Egress(송신) 필터</b><br>
+• 내부 감염 호스트가 <b>피해자 IP로 위조</b>하여 외부로 요청 송신 시 차단<br><br>
+<b>📝 BCP 38 / RFC 2827 — Egress Filtering</b><br>
+• ISP·기업 네트워크 경계에서 <b>출발지 IP가 내부 대역이 아닌 송신 패킷 차단</b><br>
+• Spoofed 패킷의 <b>근본 차단 기법</b> — DRDoS·Smurf·DNS Amp 예방<br>
+• 반대 개념: <b>Ingress Filtering</b>(수신 시 위조 차단 — 피해자 관점)<br><br>
+<b>💡 DoS 증폭 공격 메커니즘</b><br>
+• 공격자가 <b>피해자 IP로 위조</b>한 요청을 증폭 서버(DNS·NTP·Memcached 등)에 송신<br>
+• 서버는 <b>피해자에게 대량 응답</b> 반송 → 대역폭 고갈<br>
+• 증폭기 역할 차단하려면 <b>자기 네트워크에서 위조 송신이 나가지 못하게</b> 해야 함<br><br>
+<b>⚠️ 함정 주의: "증폭기 vs 피해자"</b><br>
+• <b>A (Egress)</b>: 우리 네트워크가 <b>증폭기/공격 근원지</b> 되는 것 차단 → <b>정답</b><br>
+• <b>B (Ingress)</b>: 우리가 <b>피해자</b> 되는 것 차단 → 문제 요지와 다름<br>
+• 질문이 "being used as an amplifier" = 가해자 역할 방지이므로 반드시 <b>Egress</b><br>
+• 관점의 차이가 정답/오답을 가르는 전형적 CISA 문제<br><br>
+<b>🔗 관련 개념:</b> BCP 38 · Smurf Attack · DRDoS · DNS/NTP Amplification · uRPF
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Security / BCP 38 Egress Filtering",
+keyConcepts:[
+"Egress Filtering(BCP 38/RFC 2827)|송신 패킷 중 출발지 IP가 내부 대역이 아닌 것 차단 — 자기 네트워크가 증폭/스푸핑 공격 근원지로 악용되는 것 방지",
+"Ingress vs Egress|Ingress=수신 필터(피해자 관점 보호), Egress=송신 필터(가해자 역할 차단) — 문제의 관점에 따라 정답 달라짐",
+"DoS Amplification Attack|공격자가 피해자 IP로 위조 요청 → 증폭 서버(DNS·NTP·Memcached 등)가 대량 응답을 피해자에게 반송",
+"IP Spoofing 차단 전략|출발지 주소 검증(uRPF), Egress Filtering, BCP 38 적용으로 위조 패킷의 인터넷 진입 원천 차단",
+"\"amplifier 악용\" 키워드|자사가 공격 도구가 되는 시나리오 — 반드시 송신(outbound/egress) 방향 통제가 정답"
+]
+},
+{
+id:513,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"To prevent internet protocol (IP) spoofing attacks, a firewall should be configured to drop a packet for which the sender of a packet:",
+questionKo:"<b>IP 스푸핑 공격</b>을 예방하기 위해, 방화벽은 다음 중 어떤 조건의 패킷을 차단하도록 구성되어야 하는가? 송신자가:",
+options:[
+"A. specifies the route that a packet should take through the network (the source routing field is enabled).",
+"B. puts multiple destination hosts (the destination field has a broadcast address).",
+"C. indicates that the computer should immediately stop using the transmission control protocol (TCP) connection (a reset flag is turned on).",
+"D. allows use of dynamic routing instead of static routing (Open Shortest Path First protocol is enabled)."
+],
+optionsKo:[
+"A. 패킷이 네트워크를 통과할 <b>경로를 직접 지정</b>한 경우 (<b>Source Routing 필드 활성화</b>)",
+"B. 목적지를 <b>브로드캐스트 주소</b>로 지정한 경우",
+"C. TCP 연결을 즉시 종료하도록 <b>RST 플래그</b>를 설정한 경우",
+"D. 정적 라우팅 대신 <b>동적 라우팅(OSPF)</b>을 사용한 경우"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>IP 스푸핑 관련성</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. Source Routing ✅</td><td><b>직접적</b></td><td>정답</td><td>공격자가 <b>위조 출발지 IP + 복귀 경로 지정</b>으로 응답 가로채기 가능</td></tr>
+<tr><td>B. 브로드캐스트 목적지</td><td>무관</td><td>오답</td><td>Smurf 공격 등과 관련되나 <b>스푸핑 자체와 직접 무관</b></td></tr>
+<tr><td>C. RST 플래그</td><td>무관</td><td>오답</td><td>TCP 연결 <b>정상 종료 절차</b>의 일부</td></tr>
+<tr><td>D. OSPF 동적 라우팅</td><td>무관</td><td>오답</td><td>라우팅 방식 선택은 <b>스푸핑과 무관</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "IP Spoofing과 Source Routing의 관계"</b><br>
+• <b>IP Spoofing</b>: 출발지 IP를 위조하여 송신<br>
+• 일반적으로 위조하면 <b>응답이 공격자에게 돌아가지 않음</b> (맹목적 공격)<br>
+• <b>Source Routing</b> 활성화 시 → 공격자가 <b>응답 경로까지 직접 지정</b><br>
+&nbsp;&nbsp;→ 위조 IP로도 <b>응답을 자기에게 돌려받을 수 있음</b> = 양방향 스푸핑 가능<br>
+• 즉 Source Routing은 <b>IP 스푸핑을 실전에서 실행 가능하게 하는 핵심 메커니즘</b><br><br>
+<b>📝 Source Routing 유형</b><br>
+• <b>LSR (Loose Source Routing)</b>: 통과해야 할 일부 경유지 지정<br>
+• <b>SSR (Strict Source Routing)</b>: 모든 홉(hop) 경로 명시적 지정<br>
+• 두 경우 모두 라우터의 <b>정상 라우팅 결정을 우회</b><br>
+• IP 헤더의 <b>Options 필드</b>에 경로 정보 포함 (IP Option 0x83/0x89)<br><br>
+<b>💡 보안 권고사항 (RFC 6274 등)</b><br>
+• 경계 라우터·방화벽에서 <b>Source-Routed 패킷 전면 차단</b> 권장<br>
+• Cisco IOS: <code>no ip source-route</code> 설정<br>
+• Linux: <code>net.ipv4.conf.all.accept_source_route=0</code><br>
+• 최신 OS·라우터는 <b>기본값으로 비활성화</b>되어 있음<br><br>
+<b>⚠️ 함정 주의 (오답 분석)</b><br>
+• <b>B (브로드캐스트)</b>: Smurf·DoS 공격 방지에 유효하나 <b>스푸핑 방지 직접 수단 아님</b><br>
+• <b>C (RST 플래그)</b>: TCP 정상 절차 — 차단 시 연결 종료 불가<br>
+• <b>D (OSPF)</b>: 내부 라우팅 프로토콜 선택, 스푸핑과 무관<br>
+• 질문이 "To prevent IP spoofing" → <b>스푸핑 공격 실행 조건을 직접 제거</b>하는 것이 정답<br><br>
+<b>🔗 관련 개념:</b> IP Options Field · Loose/Strict Source Routing · Q512(Egress Filtering) · uRPF
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — IP Spoofing / Source Routing",
+keyConcepts:[
+"Source Routing|IP 헤더 Options 필드로 패킷 경로를 송신자가 직접 지정하는 기능 — LSR(느슨)/SSR(엄격) 두 유형, 현대 네트워크에서는 기본 비활성화",
+"IP Spoofing + Source Routing|출발지 IP 위조 시 응답을 받지 못하는 한계를 Source Routing으로 극복 → 양방향 스푸핑 실현, 방화벽에서 반드시 차단",
+"IP Spoofing 방어 계층|① Ingress/Egress Filtering(BCP 38) ② Source Routing 차단 ③ uRPF ④ 인증·암호화(IPsec)",
+"Source Routing 차단 설정|Cisco: no ip source-route, Linux: accept_source_route=0 — 경계 라우터·방화벽 필수 하드닝 항목",
+"RST 플래그 역할|TCP 연결 강제 종료 신호 — 정상 절차의 일부로 차단 대상 아님"
+]
+},
+{
+id:514,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An information systems (IS) auditor performing detailed network assessments and access control reviews should FIRST:",
+questionKo:"<b>상세 네트워크 평가 및 접근통제 검토</b>를 수행하는 정보시스템(IS) 감사인은 <b>가장 먼저</b> 무엇을 해야 하는가?",
+options:[
+"A. determine the points of entry into the network.",
+"B. evaluate users' access authorization.",
+"C. assess users' identification and authorization.",
+"D. evaluate the domain-controlling server configuration."
+],
+optionsKo:[
+"A. 네트워크의 <b>진입점(Points of Entry)</b>을 파악한다",
+"B. 사용자의 <b>접근 권한(Access Authorization)</b>을 평가한다",
+"C. 사용자의 <b>식별 및 인증(Identification & Authorization)</b>을 평가한다",
+"D. <b>도메인 컨트롤러 서버 설정</b>을 평가한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>감사 단계</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 진입점 파악 ✅</td><td><b>1단계 (범위 정의)</b></td><td>정답</td><td>네트워크 감사의 <b>출발점</b> — 어디를 보호할지 식별해야 나머지 통제를 평가 가능</td></tr>
+<tr><td>B. 접근 권한 평가</td><td>후속 단계</td><td>오답</td><td>진입점에 대한 <b>통제 구현 이슈</b> — 범위 확정 후 평가</td></tr>
+<tr><td>C. 식별·인증 평가</td><td>후속 단계</td><td>오답</td><td>진입점 별 <b>인증 메커니즘</b> 구현 이슈 — 범위 확정 후 평가</td></tr>
+<tr><td>D. 도메인 컨트롤러 설정</td><td>후속 단계</td><td>오답</td><td>특정 자산 설정 검토 — 진입점 식별 <b>이후</b> 수행</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "감사 순서 — 무엇을 FIRST 해야 하는가"</b><br>
+• 네트워크 감사는 <b>범위 정의 → 통제 평가</b> 순서로 진행<br>
+• <b>진입점(Entry Points) 식별 = 감사 범위(Scope) 결정</b>의 본질<br>
+• 진입점을 모르면 → 어떤 통제를 평가할지 결정 불가<br>
+• 따라서 <b>진입점 파악이 모든 세부 평가의 선행 조건</b><br><br>
+<b>📝 네트워크 진입점(Entry Points) 예시</b><br>
+• <b>인터넷 연결</b>: ISP 링크, VPN 게이트웨이, 원격 접속<br>
+• <b>무선 AP</b>: Wi-Fi, 게스트 네트워크<br>
+• <b>WAN/지사 연결</b>: MPLS, 전용선, SD-WAN<br>
+• <b>파트너/공급업체 연결</b>: Extranet, B2B VPN<br>
+• <b>모뎀·다이얼업</b>: 구형 관리 접속 (여전히 잔존)<br>
+• <b>USB/이동식 매체 포트</b>: 물리적 엔드포인트 진입<br><br>
+<b>💡 IS 감사 일반 원칙: "범위 먼저, 깊이는 나중"</b><br>
+• 감사 프로세스: ① <b>Scope 정의</b> → ② Risk Assessment → ③ Control Identification → ④ Control Testing → ⑤ 보고<br>
+• <b>진입점 파악 = ① 단계</b>의 핵심 활동<br>
+• 진입점 누락 시 → 감사 <b>완전성(Completeness) 훼손</b><br>
+• "Shadow IT", 비인가 무선 AP, 테스트 포트 등 <b>숨겨진 진입점</b>도 필수 식별<br><br>
+<b>⚠️ 함정 주의 — "FIRST" 유형 문제 풀이법</b><br>
+• B·C·D는 모두 <b>합법적 감사 활동</b>이나, A 이후에 의미 있음<br>
+• CISA 시험에서 "FIRST/NEXT/LAST" 문제 → <b>논리적 선후관계</b>를 묻는 것<br>
+• 원칙: <b>Scope/Planning → Execution → Reporting</b> 순서<br>
+• 유사 패턴: 위험평가 전에 <b>자산 식별</b>, BCP 수립 전에 <b>BIA</b>, 복구 전에 <b>영향 분석</b><br><br>
+<b>🔗 관련 개념:</b> Audit Scoping · Network Perimeter · Attack Surface · Risk-Based Auditing
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Security Audit Methodology",
+keyConcepts:[
+"네트워크 감사 FIRST 단계|진입점(Points of Entry) 식별 — 감사 범위(Scope) 정의의 핵심, 이후 모든 통제 평가의 선행 조건",
+"진입점(Entry Points) 유형|인터넷 링크·VPN·무선 AP·WAN·파트너 연결·모뎀·이동식 매체 등 내·외부 경계 통과 지점 모두 포함",
+"IS 감사 순서 원칙|Scope → Risk Assessment → Control ID → Control Testing → Reporting — 범위 먼저, 깊이는 나중",
+"FIRST 유형 문제 접근법|선택지가 모두 합법적 활동일 때 → 논리적 선후관계(Planning→Execution) 기준으로 판단",
+"Attack Surface 관점|진입점 = 공격 표면(Attack Surface) — 미식별 진입점(Shadow IT, 비인가 AP)은 감사 완전성 훼손"
+]
+},
+{
+id:515,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"What is the MOST prevalent security risk when an organization implements remote virtual private network (VPN) access to its network?",
+questionKo:"조직이 <b>원격 VPN 접속</b>을 네트워크에 도입할 때 <b>가장 빈번한(MOST prevalent)</b> 보안 위험은 무엇인가?",
+options:[
+"A. Malicious code can be spread across the network.",
+"B. The VPN logon can be spoofed.",
+"C. Traffic can be sniffed and decrypted.",
+"D. The VPN gateway can be compromised."
+],
+optionsKo:[
+"A. <b>악성 코드</b>가 네트워크 전반으로 확산될 수 있다",
+"B. VPN 로그온이 <b>스푸핑(Spoofing)</b>될 수 있다",
+"C. 트래픽이 <b>스니핑되어 복호화</b>될 수 있다",
+"D. <b>VPN 게이트웨이</b>가 침해될 수 있다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>발생 빈도</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 악성코드 확산 ✅</td><td><b>매우 높음</b></td><td>정답</td><td>감염된 원격 클라이언트 → VPN 통해 내부망 직접 연결 → <b>방화벽 우회</b> 확산</td></tr>
+<tr><td>B. VPN 로그온 스푸핑</td><td>낮음</td><td>오답</td><td><b>2FA 적용 시 거의 차단</b> — 성숙한 VPN은 강력한 인증 제공</td></tr>
+<tr><td>C. 트래픽 스니핑·복호화</td><td>매우 낮음</td><td>오답</td><td>VPN의 <b>강력한 암호화(IPsec/TLS)</b> — 복호화는 현실적으로 불가</td></tr>
+<tr><td>D. VPN 게이트웨이 침해</td><td>낮음</td><td>오답</td><td>VPN 기술 성숙 + <b>보안 서브넷 배치</b>로 위험 감소</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "VPN 도입 시 가장 흔한 실제 위험"</b><br>
+• <b>VPN 기술 자체는 성숙·견고</b> — 암호화·인증은 잘 작동<br>
+• 문제는 <b>"엔드포인트" 보안</b> — 집 PC, 노트북, BYOD는 통제 약함<br>
+• 감염된 원격 클라이언트가 VPN 터널로 연결 → <b>신뢰된 내부 세그먼트 진입</b><br>
+• VPN 트래픽은 <b>암호화된 상태로 방화벽 통과</b> → 방화벽이 내용 검사 불가<br>
+• 결과: <b>악성코드가 경계 방어를 우회해 내부망 확산</b><br><br>
+<b>📝 왜 "가장 빈번(MOST prevalent)"한가</b><br>
+• 원격근무·BYOD 확산 → 비관리 엔드포인트 증가<br>
+• 랜섬웨어·웜의 <b>주요 확산 경로</b>로 지목됨<br>
+• 재택 Wi-Fi, 가족 공용 PC, 미패치 OS가 감염 벡터<br>
+• <b>VPN 터널 = 암호화된 고속도로</b> → 위협도 똑같이 빠르게 이동<br><br>
+<b>💡 완화 대책 (Defense in-Depth)</b><br>
+• <b>엔드포인트 보안 준수(Endpoint Compliance/Posture Check)</b>: AV·패치·방화벽 검증 후 접속 허용 (NAC)<br>
+• <b>Split Tunneling 비활성화</b>: 모든 트래픽을 기업 방화벽 경유<br>
+• <b>VPN 종단을 DMZ/검사 구간에 배치</b>: 방화벽·IPS로 복호화 후 검사<br>
+• <b>Zero Trust Network Access (ZTNA)</b>: VPN 대체, 애플리케이션 단위 접근<br>
+• <b>2FA/MFA</b>: 로그온 스푸핑(B) 방지<br>
+• <b>EDR + 네트워크 세그멘테이션</b>: 확산 차단<br><br>
+<b>⚠️ 함정 주의 — "VPN 위험" 문제 유형</b><br>
+• VPN 자체(프로토콜·암호화)를 공격하는 것은 <b>드문 위험</b><br>
+• 실제 사고 통계 → <b>엔드포인트 기인 악성코드 확산</b>이 압도적<br>
+• CISA는 "MOST prevalent(가장 흔한)" = <b>실무 발생 빈도 기준</b> 판단<br>
+• 기술적으로 가능한 위협(B·C·D) vs 실제 자주 발생(A) — <b>후자 우선</b><br><br>
+<b>🔗 관련 개념:</b> Split Tunneling · NAC (Network Access Control) · ZTNA · Endpoint Posture · BYOD Risk
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Remote Access / VPN Security",
+keyConcepts:[
+"VPN 핵심 위험|감염된 원격 클라이언트를 통한 악성코드 내부 확산 — 암호화된 VPN 트래픽이 방화벽 검사를 우회하는 구조적 문제",
+"VPN vs 엔드포인트 보안|VPN 기술(암호·인증)은 견고하나 연결하는 엔드포인트(BYOD·재택 PC) 보안이 최약점",
+"Split Tunneling 위험|원격 PC가 인터넷과 기업망 동시 연결 시 감염 경로 발생 — 기업 VPN은 Full Tunnel 권장",
+"VPN 보안 강화 계층|NAC(Posture Check) + 2FA + EDR + DMZ 종단 + IPS 검사 + 세그멘테이션 + ZTNA",
+"MOST prevalent 해석|기술적 가능성이 아닌 실제 사고 발생 빈도 — 엔드포인트 기인 위협이 VPN 프로토콜 공격보다 압도적"
+]
+},
+{
+id:516,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following would be the BEST overall control for an Internet business looking for confidentiality, reliability and integrity of data?",
+questionKo:"데이터의 <b>기밀성(Confidentiality), 신뢰성(Reliability), 무결성(Integrity)</b>을 확보하려는 인터넷 비즈니스에 가장 적합한 <b>전반적(overall) 통제</b>는?",
+options:[
+"A. Transport Layer Security (TLS)",
+"B. Intrusion detection system (IDS)",
+"C. Public key infrastructure",
+"D. Virtual private network (VPN)"
+],
+optionsKo:[
+"A. <b>전송 계층 보안(TLS)</b>",
+"B. <b>침입탐지시스템(IDS)</b>",
+"C. <b>공개키 기반구조(PKI)</b>",
+"D. <b>가상사설망(VPN)</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>기밀성</th><th>무결성</th><th>신뢰성(인증)</th><th>평가</th></tr>
+<tr class="correct-row"><td>A. TLS ✅</td><td>✅ 대칭+비대칭 암호화</td><td>✅ HMAC</td><td>✅ 인증서 기반</td><td>정답 — 세 가지 모두 내장 제공</td></tr>
+<tr><td>B. IDS</td><td>❌</td><td>❌</td><td>❌</td><td>오답 — <b>탐지</b> 도구, 보호 기능 없음</td></tr>
+<tr><td>C. PKI</td><td>간접</td><td>간접</td><td>✅</td><td>오답 — TLS의 <b>구성 요소</b>이지 독립 제어 아님</td></tr>
+<tr><td>D. VPN</td><td>선택적</td><td>선택적</td><td>선택적</td><td>오답 — 구현에 따라 <b>암호화 없을 수도</b>, 포괄적 용어</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "인터넷 비즈니스 / CIA 세 요소 동시 만족"</b><br>
+• 질문은 <b>전자상거래(ecommerce)</b> 맥락 — 웹 기반 클라이언트-서버 통신<br>
+• <b>TLS</b>는 웹에서 <b>사실상의 표준</b> (HTTPS = HTTP over TLS)<br>
+• 세 가지 보안 속성을 <b>하나의 프로토콜로 통합 제공</b>:<br>
+&nbsp;&nbsp;- <b>기밀성</b>: 공개키(핸드셰이크) + 대칭키(세션) 하이브리드 암호화<br>
+&nbsp;&nbsp;- <b>무결성</b>: HMAC으로 메시지 변조 탐지<br>
+&nbsp;&nbsp;- <b>신뢰성/인증</b>: X.509 인증서로 서버(선택적으로 클라이언트) 인증<br><br>
+<b>📝 오답 심층 분석</b><br>
+• <b>B (IDS)</b>: 네트워크 활동을 <b>로깅·탐지</b>만 — 암호화·무결성 제공 ❌<br>
+&nbsp;&nbsp;→ 사건 발생 "후" 알려줄 뿐, 데이터 보호 불가<br>
+• <b>C (PKI)</b>: 인증서 발급·관리 <b>기반 인프라</b> — 단독으로는 통신 보호 안 됨<br>
+&nbsp;&nbsp;→ TLS가 PKI를 <b>활용</b>하는 관계 (부분집합)<br>
+• <b>D (VPN)</b>: <b>일반(generic)</b> 터널링 용어 — 구현·계층 다양<br>
+&nbsp;&nbsp;→ 암호화 없는 VPN도 존재 (예: GRE, PPTP without MPPE)<br>
+&nbsp;&nbsp;→ SSL/TLS VPN은 TLS의 한 응용 — <b>TLS가 상위 개념</b><br><br>
+<b>💡 TLS 보안 속성 매핑</b><br>
+<table style="margin-top:6px">
+<tr><th>CIA 요소</th><th>TLS 구현 메커니즘</th></tr>
+<tr><td>Confidentiality</td><td>RSA/ECDHE 키교환 + AES/ChaCha20 세션 암호화</td></tr>
+<tr><td>Integrity</td><td>HMAC-SHA256 / AEAD (GCM, Poly1305)</td></tr>
+<tr><td>Reliability / Authentication</td><td>X.509 인증서 + CA 체인 검증</td></tr>
+<tr><td>Forward Secrecy</td><td>Ephemeral DH (TLS 1.3 필수)</td></tr>
+</table><br>
+<b>⚠️ 함정 주의 — "Overall(전반적)" 키워드</b><br>
+• "overall" = <b>포괄적·통합된 단일 통제</b> 선호<br>
+• TLS는 세 가지 속성을 <b>즉시·완전히</b> 제공 → 단일 표준 통제<br>
+• PKI/VPN은 <b>부분 제공</b> 또는 <b>구성 요소</b><br>
+• IDS는 <b>Detective</b> 통제로 <b>Preventive</b> 요구와 불일치<br>
+• Ecommerce·Internet Business 문제 → <b>TLS/HTTPS</b>가 거의 항상 정답<br><br>
+<b>🔗 관련 개념:</b> SSL/TLS Handshake · X.509 · HMAC · HTTPS · Hybrid Cryptosystem · AEAD
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Cryptographic Controls / TLS",
+keyConcepts:[
+"TLS 통합 보안|하나의 프로토콜로 기밀성(하이브리드 암호화)+무결성(HMAC)+인증(X.509 인증서) 동시 제공 — 인터넷 비즈니스 표준",
+"TLS vs PKI 관계|PKI는 인증서 발급·관리 인프라, TLS는 PKI를 활용하는 프로토콜 — TLS ⊃ PKI 활용, 독립 통제는 TLS",
+"TLS vs VPN 구분|VPN은 포괄 용어로 암호화 없는 구현도 존재, TLS는 암호화·무결성·인증 필수 내장 — SSL VPN은 TLS의 응용",
+"IDS 역할 한계|Detective 통제 — 탐지·로깅만 수행, 기밀성/무결성 보호 기능 없음 → 데이터 보호 요구에 부적합",
+"Overall/BEST 통제 선택|여러 보안 요구를 단일 통제로 통합 제공하는 것 우선 — 부분 제공(PKI)·탐지(IDS)·포괄 용어(VPN)보다 TLS"
+]
+},
+{
+id:517,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"In a small enterprise, an employee performs computer operations and, when the situation demands, the program modifications. Considering the lack of separation of duties in the IT environment, which of the following should the information systems (IS) auditor recommend to the IT management to mitigate the risk?",
+questionKo:"소규모 기업에서 한 직원이 <b>전산 운영(Operations)과 프로그램 수정(Program Modification)</b>을 겸하고 있다. IT 환경의 <b>직무분리(SoD) 부재</b> 위험을 완화하기 위해 IS 감사인은 무엇을 권고해야 하는가?",
+options:[
+"A. Automated logging of changes to development libraries",
+"B. Additional staff to provide segregation/separation of duties (SoD)",
+"C. Procedures that verify that only approved program changes are implemented",
+"D. Access controls to prevent the operator from making program modifications"
+],
+optionsKo:[
+"A. 개발 라이브러리 변경사항의 <b>자동 로깅</b>",
+"B. <b>직무분리(SoD)</b>를 위한 추가 인력 채용",
+"C. <b>승인된 프로그램 변경</b>만 구현되었는지 검증하는 절차",
+"D. 운영자가 프로그램을 수정하지 못하도록 <b>접근 통제</b>"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>성격</th><th>소규모 기업 현실성</th><th>평가</th></tr>
+<tr><td>A. 자동 로깅</td><td>탐지 통제</td><td>△ 관리자가 로그 조작 가능</td><td>오답 — 불충분한 통제</td></tr>
+<tr><td>B. 추가 인력 채용 (SoD)</td><td>예방 통제 (이상적)</td><td>❌ 예산·인력 제약으로 불가</td><td>오답 — 비현실적</td></tr>
+<tr class="correct-row"><td>C. 승인된 변경만 구현 검증 ✅</td><td><b>보완 통제(Compensating)</b></td><td>✅ 제3자 정기 검토 가능</td><td>정답 — 현실적·효과적</td></tr>
+<tr><td>D. 수정 접근 차단</td><td>예방 통제</td><td>❌ 긴급 수정 불가 → 업무 마비</td><td>오답 — 업무 불가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "SoD 불가 시 → 보완 통제(Compensating Control) 도입"</b><br>
+• 소규모 기업 현실: 한 명이 <b>운영 + 개발</b> 겸임 불가피<br>
+• 이상적(SoD) 해결책은 현실적 제약으로 불가 → <b>차선책 필요</b><br>
+• IS 감사인 역할: <b>현실적이고 효과적인 보완 통제</b> 권고<br>
+• <b>변경관리(Change Management) 프로세스</b>가 핵심 대안:<br>
+&nbsp;&nbsp;- 모든 프로그램 변경 사전 <b>승인(Approval)</b> 절차<br>
+&nbsp;&nbsp;- 구현 후 <b>실제 코드와 승인 문서 대조(Code Comparison)</b><br>
+&nbsp;&nbsp;- <b>제3자(경영진·감사·외부)</b>의 정기 검토<br>
+&nbsp;&nbsp;- 승인되지 않은 변경 <b>탐지·회수</b><br><br>
+<b>📝 선택지별 한계 분석</b><br>
+• <b>A (자동 로깅)</b>: 겸직자가 <b>시스템 관리자 권한</b>도 보유 → 로그 삭제·조작 가능<br>
+&nbsp;&nbsp;→ 로깅만으로는 자기 감독(self-audit) 딜레마 미해결<br>
+• <b>B (추가 채용)</b>: 정답처럼 보이나 <b>"small enterprise"</b> 전제와 충돌<br>
+&nbsp;&nbsp;→ 감사인은 <b>비즈니스 현실</b>을 고려한 권고를 해야 함<br>
+• <b>D (접근 차단)</b>: 긴급 프로그램 수정 필요 시 <b>대응 불가</b><br>
+&nbsp;&nbsp;→ 소규모 기업에서 유일한 기술자를 배제하면 운영 마비<br>
+&nbsp;&nbsp;→ "상황이 요구할 때 수정"이라는 <b>업무 필수성</b>과 충돌<br><br>
+<b>💡 보완 통제(Compensating Control) 개념</b><br>
+• 정의: 이상적 통제(Primary Control)가 <b>불가능·비현실적</b>일 때 도입하는 대안<br>
+• 목적: 같은 <b>통제 목적(Control Objective)</b> 달성<br>
+• 예시 (SoD 대안):<br>
+&nbsp;&nbsp;- 독립적 <b>사후 검토(Post-facto Review)</b><br>
+&nbsp;&nbsp;- <b>승인 기반 변경관리</b> (Request → Approve → Implement → Verify)<br>
+&nbsp;&nbsp;- <b>경영진 감독(Management Supervision)</b><br>
+&nbsp;&nbsp;- <b>정기 회전(Job Rotation)</b> · <b>강제 휴가(Mandatory Vacation)</b><br>
+&nbsp;&nbsp;- <b>외부 감사·코드 리뷰</b><br><br>
+<b>⚠️ 함정 주의 — "Small Enterprise" 유형 문제</b><br>
+• "Small/Limited resources" 키워드 등장 → <b>이상론 배제</b><br>
+• 추가 채용·전담 부서 신설 등 <b>자원 요구형 답안은 오답</b> 경향<br>
+• <b>절차·검토·감독</b> 등 <b>프로세스 기반 보완 통제</b>가 정답 경향<br>
+• CISA 관점: 감사인은 <b>실행 가능한(Actionable)</b> 권고를 제시해야 함<br><br>
+<b>🔗 관련 개념:</b> Compensating Control · Change Management · Code Comparison · Management Oversight · Job Rotation · Mandatory Vacation
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Segregation of Duties / Compensating Controls",
+keyConcepts:[
+"보완 통제(Compensating Control)|이상적 통제(SoD) 불가 시 동일 통제 목적을 달성하는 대안 — 승인 기반 변경관리·사후 검토·경영진 감독·Job Rotation",
+"SoD 부재 시 대안|승인된 변경만 구현되었는지 검증하는 절차 + 제3자 정기 리뷰 + 코드 비교 — 로깅 단독보다 효과적",
+"로깅의 한계|겸직자가 관리자 권한 보유 시 로그 조작 가능 — Detective 통제는 자기 감독 딜레마 해결 불가",
+"Small Enterprise 문제 풀이|추가 채용·이상적 SoD는 현실성 부족으로 오답 경향 → 프로세스·절차 기반 보완 통제 선택",
+"감사인 권고 원칙|실행 가능(Actionable)·현실적(Realistic)·비용효과적(Cost-effective) 권고 — 업무 마비 유발하는 강한 통제는 부적절"
+]
+},
+{
+id:518,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An enterprise provides information to its supply chain partners and customers through an extranet infrastructure. Which of the following should be the GREATEST concern to an information systems (IS) auditor reviewing the firewall security architecture?",
+questionKo:"엔터프라이즈가 <b>엑스트라넷(Extranet)</b>을 통해 공급망 파트너와 고객에게 정보를 제공한다. <b>방화벽 보안 아키텍처</b> 검토 시 IS 감사인이 <b>가장 크게 우려</b>해야 할 사항은?",
+options:[
+"A. A secure sockets layer (SSL) has been implemented for user authentication and remote administration of the firewall.",
+"B. Firewall policies are updated based on changing requirements.",
+"C. Inbound traffic is blocked unless the traffic type and connections have been specifically permitted.",
+"D. The firewall is placed on top of the commercial operating system (OS) with all default installation options."
+],
+optionsKo:[
+"A. 방화벽 사용자 인증 및 원격 관리에 <b>SSL이 적용</b>되어 있다",
+"B. 요구사항 변화에 따라 <b>방화벽 정책이 업데이트</b>된다",
+"C. <b>인바운드 트래픽은 명시적으로 허용된 경우</b>에만 통과시킨다 (기본 차단)",
+"D. 방화벽이 <b>상용 OS 위에</b> 설치되어 있으며 <b>모든 기본 설치 옵션</b>이 유지되어 있다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>보안 성격</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. SSL 적용</td><td>✅ 바람직</td><td>오답</td><td>관리 채널 암호화는 <b>필수 모범 사례</b> — 우려 없음</td></tr>
+<tr><td>B. 정책 지속 업데이트</td><td>✅ 바람직</td><td>오답</td><td>변화하는 위협·요구에 대응 — <b>정상적 운영</b></td></tr>
+<tr><td>C. Default Deny (기본 차단)</td><td>✅ 바람직</td><td>오답</td><td><b>방화벽 설계의 핵심 원칙</b> — 최소권한 구현</td></tr>
+<tr class="correct-row"><td>D. OS 기본 설치 옵션 ✅</td><td><b>❌ 심각한 취약</b></td><td>정답</td><td>불필요 서비스·기본 계정·패치 누락 → <b>OS 취약점이 방화벽 자체를 우회</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "방화벽은 그 자체가 견고해야 한다 (Host Hardening)"</b><br>
+• 방화벽이 아무리 <b>정책이 좋아도</b> → 설치된 <b>호스트 OS가 취약</b>하면 무력화<br>
+• <b>실제 방화벽 침해 사례 대부분</b> → 방화벽 엔진이 아닌 <b>기저 OS 취약점</b> 악용<br>
+• "기본 설치 옵션" = 불필요한 서비스·기본 계정·샘플 파일·미사용 포트 모두 노출<br>
+• <b>공격 표면(Attack Surface) 극대화</b> 상태<br><br>
+<b>📝 Default Installation의 위험 요소</b><br>
+• <b>불필요한 서비스 활성화</b>: Telnet, FTP, RPC, 샘플 웹앱<br>
+• <b>기본 계정·비밀번호</b>: admin/admin, root/root (자동화 공격 1순위)<br>
+• <b>미사용 프로토콜</b>: NetBIOS, SNMP v1/v2 (커뮤니티 스트링 노출)<br>
+• <b>샘플/문서 파일</b>: IIS 샘플, Apache manual → 경로 노출<br>
+• <b>디버그 모드·자세한 오류 메시지</b>: 버전 정보 유출<br>
+• <b>미적용 패치</b>: 알려진 CVE 공격 즉시 가능<br><br>
+<b>💡 방화벽 호스트 하드닝(Bastion Host) 원칙</b><br>
+• <b>Minimal Installation</b>: 방화벽 기능에 필요한 최소 구성만 설치<br>
+• <b>Disable Unnecessary Services</b>: 모든 비필수 서비스 중지<br>
+• <b>Remove Default Accounts</b>: 기본 계정 삭제 또는 이름 변경 + 강력 비밀번호<br>
+• <b>Patch Management</b>: OS/방화벽 소프트웨어 최신 패치 유지<br>
+• <b>Host-Based IDS</b>: 방화벽 자체에 대한 공격 탐지<br>
+• <b>Dedicated Appliance 선호</b>: 범용 OS 대신 <b>전용 펌웨어 기반 어플라이언스</b><br>
+• <b>Minimal User Accounts</b>: 방화벽 관리자만 접근<br><br>
+<b>⚠️ 함정 주의 — GREATEST concern 유형</b><br>
+• A·B·C는 모두 <b>바람직한 실무</b> → 우려할 사유 없음<br>
+• D만 <b>명백한 보안 위반</b> → 유일한 정답<br>
+• CISA 패턴: "GREATEST concern" = <b>다른 통제를 무력화</b>하는 근본적 결함 선택<br>
+• 아무리 좋은 정책·로깅·SSL도 <b>침해된 OS 위에서는 무의미</b><br>
+• Defense in-Depth 실패 케이스: 최하위 계층(호스트) 취약 → 상위 통제 모두 우회<br><br>
+<b>🔗 관련 개념:</b> Bastion Host · Host Hardening · Attack Surface Reduction · Patch Management · Dedicated Firewall Appliance · Secure Baseline
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Firewall Architecture / Host Hardening",
+keyConcepts:[
+"방화벽 호스트 하드닝|방화벽 OS 자체가 견고해야 함 — 기본 설치 옵션은 불필요 서비스·기본 계정·미적용 패치로 공격 표면 극대화",
+"실제 방화벽 침해 경로|정책 결함보다 기저 OS 취약점 악용이 압도적 — 방화벽 엔진 우회가 아닌 OS 직접 공격",
+"Bastion Host 원칙|최소 설치·비필수 서비스 중지·기본 계정 제거·패치 최신화·전용 어플라이언스 선호",
+"GREATEST concern 풀이법|다른 보기가 모두 모범 사례일 때 명백한 위반 사항 선택 — 근본 통제를 무력화하는 결함 우선",
+"Default Deny 원칙|엑스트라넷 방화벽의 기본 구성 — 명시적 허용 외 모든 인바운드 차단, Least Privilege 구현"
+]
+},
+{
+id:519,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Enterprise XYZ has outsourced production support to service provider ABC located in another country. The ABC service provider personnel remotely connect to the enterprise network of the XYZ outsourcing entity over the Internet. Which of the following would provide the BEST assurance that only authorized users of ABC connect over the Internet for production support to XYZ?",
+questionKo:"기업 XYZ는 해외에 있는 서비스 제공업체 ABC에게 <b>운영 지원(Production Support)을 아웃소싱</b>하였다. ABC 인력은 <b>인터넷을 통해 원격으로</b> XYZ의 기업 네트워크에 접속한다. ABC의 <b>인가된 사용자만</b> 인터넷을 통해 XYZ 운영 지원에 접속하도록 보장하는 <b>가장 좋은 방법</b>은?",
+options:[
+"A. Single sign-on (SSO) authentication",
+"B. Password complexity requirements",
+"C. Multifactor authentication (MFA)",
+"D. Internet Protocol (IP) address restrictions"
+],
+optionsKo:[
+"A. <b>싱글 사인온(SSO)</b> 인증",
+"B. <b>비밀번호 복잡성</b> 요구사항",
+"C. <b>다중 인증(MFA)</b>",
+"D. <b>IP 주소 제한</b>"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 성격</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. SSO 인증</td><td>편의성 중심</td><td>오답</td><td>여러 시스템에 <b>단일 접근점</b> 제공 — 단일 자격증명 탈취 시 전체 노출, 인증 강도 자체를 높이지 않음</td></tr>
+<tr><td>B. 비밀번호 복잡성</td><td>단일 요소</td><td>오답</td><td>무단 접근 방지에 도움되나 <b>단일 요소(what you know)</b>에 의존 — 탈취·피싱·키로거 취약</td></tr>
+<tr class="correct-row"><td>C. 다중 인증(MFA) ✅</td><td><b>다중 요소 결합</b></td><td>정답</td><td><b>소유(OTP 기기)·생체(biometric)·지식(PIN/비밀번호)</b> 중 2개 이상 결합 — 인터넷 원격 접속에 최적</td></tr>
+<tr><td>D. IP 주소 제한</td><td>네트워크 계층</td><td>오답</td><td>IP는 <b>변경·스푸핑 가능</b> — 국가 간 원격 접속에서 동적 IP 환경 많음, 인증 수단으로 부적합</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "인터넷 원격 접속 → MFA가 표준"</b><br>
+• <b>시나리오 조건</b>: 해외 아웃소싱 + 인터넷 경유 + 운영 환경 접근<br>
+• <b>최고 위험</b>: 인증 탈취·피싱·스푸핑 → 단일 요소로는 방어 불가<br>
+• <b>MFA</b>: 공격자가 여러 독립 채널을 동시에 침해해야 성공 → 인증 강도 기하급수적 증가<br><br>
+<b>📝 MFA 3요소 (Authentication Factors)</b><br>
+• <b>What you know (지식)</b>: 비밀번호, PIN, 보안 질문<br>
+• <b>What you have (소유)</b>: OTP 토큰, 스마트카드, 휴대폰 앱(Authenticator), USB 키<br>
+• <b>What you are (생체)</b>: 지문, 홍채, 얼굴, 음성<br>
+• <b>추가 요소</b>: Where you are (위치), What you do (행동 패턴)<br>
+• <b>MFA 정의</b>: 위 요소 중 <b>서로 다른 범주에서 2개 이상</b> 결합 — 비밀번호 2개는 MFA 아님<br><br>
+<b>💡 왜 다른 선택지는 약한가</b><br>
+• <b>A. SSO</b>: 사용자 편의성·관리 효율이 목적 — <b>인증 강도</b>는 SSO 자체로 보장 안 됨 (SSO + MFA 병행이 이상적)<br>
+• <b>B. 비밀번호 복잡성</b>: 여전히 "아는 것" 하나 — 탈취되면 즉시 침투 (피싱·크레덴셜 스터핑·키로거 취약)<br>
+• <b>D. IP 제한</b>: <b>스푸핑·VPN 우회 가능</b> + 해외 아웃소싱 환경에서 동적 IP 일반적 — 합법 사용자가 차단당하거나 공격자가 우회<br><br>
+<b>⚠️ 함정 주의 — "BEST" 유형 문제 풀이</b><br>
+• 모든 보기가 <b>부분적으로 도움</b>이 될 수 있으나 <b>가장 강력한 통제</b> 선택<br>
+• <b>원격·인터넷·아웃소싱·제3자</b> 키워드 → <b>MFA가 거의 항상 정답</b><br>
+• IP 제한은 <b>보조적(compensating)</b> 통제일 뿐 — 단독으로 "BEST assurance" 될 수 없음<br>
+• SSO는 <b>접근 편의성</b> 통제, <b>인증 보증</b> 통제가 아님 — 개념 혼동 주의<br><br>
+<b>🔗 관련 개념:</b> Multi-Factor Authentication · Strong Authentication · Remote Access Security · Third-Party Access Control · Zero Trust · Defense in Depth · Credential Stuffing
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Identification and Authentication / Remote Access Controls",
+keyConcepts:[
+"다중 인증(MFA) 원칙|지식·소유·생체 중 서로 다른 2개 이상 결합 — 한 요소 탈취되어도 나머지로 방어, 인터넷 원격 접속의 표준",
+"인증 요소 3범주|What you know(비밀번호/PIN)·What you have(OTP/토큰)·What you are(생체) — 같은 범주 2개는 MFA 아님",
+"SSO vs MFA 구분|SSO는 접근 편의성(단일 로그인), MFA는 인증 강도(다중 요소) — 목적이 다르며 병행 가능",
+"IP 제한의 한계|스푸핑·VPN·동적 IP로 우회 가능 — 보조 통제일 뿐 주 인증 수단 부적합, 특히 해외 접속 환경",
+"원격/아웃소싱 접근 통제|제3자 인터넷 접속 시 MFA + 암호화 채널(VPN/TLS) + 로깅/모니터링 + 최소 권한 병행 필요",
+"BEST assurance 풀이법|모든 보기가 부분적으로 유효할 때 가장 강력·근본적 통제 선택 — 원격 인증 시나리오는 MFA 우선"
+]
+},
+{
+id:520,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An IT auditor completed the fieldwork phase of a network security review and is preparing the initial draft of the audit report. Which of the following findings would be the BIGGEST risk to the enterprise?",
+questionKo:"IT 감사인이 <b>네트워크 보안 검토의 현장 작업(Fieldwork) 단계를 완료</b>하고 감사 보고서 초안을 준비 중이다. 다음 발견사항 중 기업에 <b>가장 큰 리스크</b>가 되는 것은?",
+options:[
+"A. Network penetration tests are performed by an internal team.",
+"B. Network firewall rules are not approved by the chief information security officer (CISO) before implementation.",
+"C. Network penetration tests are not performed.",
+"D. The inventory of network devices was last updated two years ago."
+],
+optionsKo:[
+"A. 네트워크 <b>침투 테스트를 내부 팀이 수행</b>하고 있다",
+"B. 네트워크 방화벽 규칙이 구현 전에 <b>CISO의 승인을 받지 않는다</b>",
+"C. 네트워크 <b>침투 테스트를 전혀 수행하지 않는다</b>",
+"D. 네트워크 장비 <b>인벤토리가 2년 전에 마지막으로 업데이트</b>되었다"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>리스크 수준</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 내부 팀 침투 테스트</td><td>낮음</td><td>오답</td><td><b>수정 활동이 제대로 추적</b>되면 내부 수행 가능 — 독립성 부족은 보완 통제로 해결</td></tr>
+<tr><td>B. CISO 미승인 방화벽 규칙</td><td>중간</td><td>오답</td><td>CISO 승인이 <b>항상 필수는 아님</b> — 비즈니스 요구를 이해하는 담당자가 승인 가능</td></tr>
+<tr><td>C. 침투 테스트 미수행</td><td>높음</td><td>오답</td><td>보안 리스크이나 <b>인벤토리 부재보다는 작음</b> — 무엇을 테스트할지 알아야 테스트 가능</td></tr>
+<tr class="correct-row"><td>D. 2년 전 인벤토리 ✅</td><td><b>최고</b></td><td>정답</td><td><b>완전한 자산 인벤토리 + 중요도 분류</b>가 모든 보안 통제의 전제 — 없으면 리스크 평가 자체 불가</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "자산 인벤토리는 모든 보안의 전제조건"</b><br>
+• <b>알 수 없는 자산은 보호할 수 없다</b> (You can't protect what you don't know exists)<br>
+• <b>자산 인벤토리 → 리스크 평가 → 통제 설계 → 모니터링</b> 의 시작점<br>
+• 인벤토리 부재 시 → <b>모든 하위 보안 활동이 불완전</b><br>
+• 2년 경과 = 수많은 장비 추가/제거/변경 → <b>Shadow IT·고아 자산·미관리 장비</b> 대량 존재 가능<br><br>
+<b>📝 자산 인벤토리의 중요성 (CIS Control #1·#2)</b><br>
+• <b>CIS Control 1</b>: Inventory and Control of Enterprise Assets — <b>최상위 1순위</b><br>
+• <b>CIS Control 2</b>: Inventory and Control of Software Assets<br>
+• NIST CSF의 <b>Identify(식별) 기능</b>의 핵심 — Protect 이전 단계<br>
+• <b>ISO 27001 A.8.1</b>: 자산 관리는 모든 ISMS의 기초<br>
+• 자산 중요도(Criticality) 분류 없이는 <b>비용효과적 통제 배분 불가</b><br><br>
+<b>💡 인벤토리 부재가 유발하는 연쇄 실패</b><br>
+• <b>리스크 평가 불완전</b>: 대상이 없으면 위협·취약점 분석 자체 불가<br>
+• <b>패치 관리 실패</b>: 미식별 장비 = 미패치 장비 = EoL(End-of-Life) 장비 방치<br>
+• <b>사고 대응 지연</b>: 침해 발생 시 영향 범위·중요도 파악 불가 → 대응 시간 폭증<br>
+• <b>접근 통제 누락</b>: 모르는 장비에 대한 방화벽·세그멘테이션 규칙 부재<br>
+• <b>컴플라이언스 위반</b>: PCI DSS·HIPAA·SOX 모두 자산 목록 요구<br>
+• <b>침투 테스트·취약점 스캔 범위 결함</b>: 스캔 대상 목록부터 부실 → Scope Creep 또는 Gap<br><br>
+<b>⚠️ 함정 주의 — "BIGGEST risk" 풀이법</b><br>
+• A·B·C는 <b>특정 보안 활동의 결함</b> → 국소적 리스크<br>
+• D는 <b>모든 보안 활동의 기반</b> 붕괴 → 시스템적 리스크<br>
+• CISA 원칙: <b>근본적·광범위한(pervasive) 결함이 특정 결함보다 우선</b><br>
+• "인벤토리·자산 목록·분류·중요도" 키워드 → <b>거의 항상 최우선 답</b><br>
+• C(침투 테스트 미수행)에 끌리기 쉬우나 → <b>무엇을 테스트할지 모르면 테스트 무의미</b><br><br>
+<b>📊 감사 보고 관점</b><br>
+• 감사인은 <b>리스크 기반 우선순위</b>로 findings 보고<br>
+• 시정권고 순서: 자산 인벤토리 현행화 → 중요도 분류 → 리스크 평가 → 통제 재설계<br>
+• 인벤토리 갱신은 <b>자동화(NAC·자산관리 도구·CMDB)</b>로 상시 유지가 모범 사례<br><br>
+<b>🔗 관련 개념:</b> Asset Inventory · Asset Classification · CIS Controls · NIST CSF Identify · CMDB · Shadow IT · Configuration Management · Risk Assessment Foundation
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Asset Management / Risk Assessment Foundations",
+keyConcepts:[
+"자산 인벤토리의 우선성|모든 보안 통제의 전제 — 인벤토리 없이는 리스크 평가·패치·사고 대응·접근 통제 모두 불완전, CIS Control #1",
+"인벤토리 노후화 리스크|2년 경과 시 Shadow IT·고아 자산·EoL 장비 대량 존재 → 공격 표면 파악 불가, 침해 시 영향 범위 산정 실패",
+"자산 중요도 분류|인벤토리 + Criticality 판정 → 비용효과적 통제 배분 가능, 분류 없이는 통제가 부적절(inadequate)해짐",
+"BIGGEST risk 풀이법|국소적 결함(특정 활동 누락)보다 근본적·광범위 결함(기반 붕괴)이 우선 — 자산 목록 부재는 시스템적 리스크",
+"침투 테스트 내부 수행|독립성 부족하나 시정활동 추적되면 허용 — 절대적 결격 사유 아님, 제3자 테스트는 권고 수준",
+"CISO 방화벽 승인|항상 필수는 아님 — 비즈니스 요구 이해자가 승인 가능, 변경관리 프로세스 준수가 본질",
+"리스크 평가 전제조건|자산 식별 → 중요도 분류 → 위협·취약점 분석 → 리스크 산정 — 첫 단계 실패 시 이하 모두 무효"
+]
+},
+{
+id:521,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The technique used to ensure security in virtual private networks is called:",
+questionKo:"<b>가상 사설망(VPN)</b>의 보안을 보장하기 위해 사용되는 기법은?",
+options:[
+"A. data encapsulation.",
+"B. data wrapping.",
+"C. data transformation.",
+"D. data hashing."
+],
+optionsKo:[
+"A. <b>데이터 캡슐화(Encapsulation)</b>",
+"B. <b>데이터 래핑(Wrapping)</b>",
+"C. <b>데이터 변환(Transformation)</b>",
+"D. <b>데이터 해싱(Hashing)</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>용도</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 캡슐화(Encapsulation) ✅</td><td><b>VPN 터널링 핵심</b></td><td>정답</td><td>=<b>터널링(Tunneling)</b> — 암호화된 페이로드를 다른 프로토콜로 감싸 비신뢰 네트워크를 안전하게 통과</td></tr>
+<tr><td>B. 래핑(Wrapping)</td><td>패킷 포장(일반)</td><td>오답</td><td>원본 패킷을 다른 패킷으로 감싸지만 <b>보안과 직접 관련 없음</b> — VPN 보안 기법 용어 아님</td></tr>
+<tr><td>C. 변환(Transformation)</td><td>상태 변경(일반)</td><td>오답</td><td>통신 상태를 변환·변경하는 것은 <b>보안 용도가 아님</b></td></tr>
+<tr><td>D. 해싱(Hashing)</td><td>무결성 검증</td><td>오답</td><td>VPN에서 사용되지만 <b>무결성(Integrity)</b> 보장용 — 기밀성·터널링 자체는 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "VPN = 캡슐화(터널링) + 암호화"</b><br>
+• <b>VPN의 본질</b>: 공용 인터넷(비신뢰망) 위에 <b>가상의 사설 터널</b> 생성<br>
+• <b>터널링 = 캡슐화</b>: 원본 패킷을 <b>암호화</b>하여 새 헤더로 감싸 전송<br>
+• 외부에서 보면 VPN 헤더만 보이고 <b>내부 페이로드는 암호문</b> → 도청·변조 방어<br><br>
+<b>📝 VPN 터널링 프로토콜</b><br>
+• <b>IPsec</b>: Layer 3 — 가장 널리 사용, Site-to-Site·Remote Access 지원<br>
+  - <b>AH(Authentication Header)</b>: 무결성·인증 (기밀성 X)<br>
+  - <b>ESP(Encapsulating Security Payload)</b>: 무결성·인증·<b>기밀성(암호화)</b><br>
+  - <b>Transport Mode</b>: 페이로드만 암호화 / <b>Tunnel Mode</b>: IP 헤더 포함 전체 암호화<br>
+• <b>SSL/TLS VPN</b>: Layer 4~7 — 웹 브라우저 기반, 설치 불필요<br>
+• <b>L2TP</b>: Layer 2 — IPsec과 결합해 보안 강화(L2TP/IPsec)<br>
+• <b>PPTP</b>: 레거시, <b>취약 — 사용 금지</b><br>
+• <b>GRE</b>: 터널링은 되나 <b>암호화 없음</b> → IPsec과 결합 필요<br>
+• <b>WireGuard</b>: 최신, 경량, ChaCha20 기반<br><br>
+<b>💡 VPN 보안 3요소 (CIA)</b><br>
+• <b>기밀성(Confidentiality)</b>: 대칭키 암호화 (AES 등) — 도청 방지<br>
+• <b>무결성(Integrity)</b>: <b>해싱/HMAC(SHA-256 등)</b> — 변조 탐지 ← D 선지가 여기 해당<br>
+• <b>인증(Authentication)</b>: 사전공유키(PSK)·인증서(PKI)·EAP — 신원 확인<br>
+• <b>Anti-Replay</b>: 시퀀스 번호로 재전송 공격 방지<br><br>
+<b>⚠️ 함정 주의 — Encapsulation vs Hashing 구분</b><br>
+• <b>Encapsulation(A)</b>: VPN의 <b>근본 메커니즘</b> — 터널 자체를 만드는 기법<br>
+• <b>Hashing(D)</b>: VPN에서 <b>사용되지만 역할이 다름</b> — 무결성 검증 보조<br>
+• 문제가 "VPN의 보안을 보장하기 위한 <b>기법</b>" → <b>주 메커니즘</b> 묻는 것 → 캡슐화<br>
+• 해싱은 <b>단독으로 VPN을 구성할 수 없음</b> — 터널이 있어야 해싱도 의미 있음<br><br>
+<b>🔗 관련 개념:</b> Tunneling · IPsec(AH/ESP) · SSL/TLS VPN · L2TP · Tunnel Mode · Transport Mode · HMAC · Message Integrity · PKI Authentication
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — VPN and Secure Communications",
+keyConcepts:[
+"캡슐화(Encapsulation)=터널링|원본 패킷을 암호화 후 새 헤더로 감싸 비신뢰망 전송 — VPN의 근본 메커니즘, 터널링과 동의어",
+"VPN 보안 3요소|기밀성(암호화)·무결성(해싱/HMAC)·인증(PSK/인증서) — 해싱은 무결성 담당, 터널링 자체는 아님",
+"IPsec 프로토콜 구조|AH(무결성·인증) + ESP(기밀성·무결성·인증), Transport Mode(페이로드) vs Tunnel Mode(전체 IP)",
+"VPN 터널링 프로토콜 비교|IPsec(L3 표준)·SSL/TLS(L4-7 웹 기반)·L2TP/IPsec·WireGuard(최신) — PPTP는 취약 금지",
+"Encapsulation vs Hashing|캡슐화는 터널 생성(주 기법), 해싱은 무결성 검증(보조) — 문제가 VPN 보안 기법 물으면 캡슐화 우선",
+"GRE 단독 한계|캡슐화는 되나 암호화 없음 → IPsec과 결합해야 보안 터널 성립"
+]
+},
+{
+id:522,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following is the BEST way to minimize unauthorized access to unattended end-user PC systems?",
+questionKo:"<b>자리를 비운(unattended) 최종 사용자 PC</b>에 대한 무단 접근을 최소화하는 <b>가장 좋은 방법</b>은?",
+options:[
+"A. Enforce the use of a password-protected screen saver.",
+"B. Implement a proximity-based authentication system.",
+"C. Terminate the user session at predefined intervals.",
+"D. Adjust power management settings so the monitor screen is blank."
+],
+optionsKo:[
+"A. <b>암호로 보호된 화면보호기</b> 사용을 강제한다",
+"B. <b>근접 기반 인증 시스템(Proximity-based)</b>을 구현한다",
+"C. <b>사전 정의된 간격</b>으로 사용자 세션을 종료한다",
+"D. <b>전원 관리 설정</b>을 조정해 모니터 화면을 꺼지게 한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>효과</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 암호 화면보호기 ✅</td><td><b>최적(BEST)</b></td><td>정답</td><td>적절한 시간 간격 설정 → <b>자동 잠금 + 암호 재입력</b> — 비용 효율적·범용 적용 가능, 인식 교육으로 강화</td></tr>
+<tr><td>B. 근접 기반 인증</td><td>우수하나 고비용</td><td>오답</td><td>스마트카드·추가 HW 필요 → <b>비용 ↑</b> — 효과는 좋으나 "BEST"는 비용효과 고려</td></tr>
+<tr><td>C. 세션 강제 종료</td><td>부분적</td><td>오답</td><td>원격 로그인·웹/서버 세션에 적합 — <b>워크스테이션 잠금 미해결</b>, 세션 종료 후에도 PC는 로그인 상태</td></tr>
+<tr><td>D. 모니터 끄기</td><td>무효</td><td>오답</td><td>모니터만 꺼질 뿐 <b>PC는 로그인 상태</b> — 켜면 즉시 접근 가능, 보안 통제 아님</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "자리 비움(Unattended) = 세션 잠금 필요"</b><br>
+• <b>공격 시나리오</b>: Tailgating·Shoulder Surfing 후 빈 자리 접근 → 무단 데이터 접근·악성코드 설치<br>
+• <b>핵심 방어</b>: 물리적 자리 비움 ≠ 논리적 세션 유지 → <b>자동 잠금</b>으로 세션 차단<br>
+• <b>비용 효과 최고</b>: OS 내장 기능으로 <b>추가 비용 없음</b> + GPO로 전사 강제 가능<br><br>
+<b>📝 Clear Screen Policy (ISO 27001 A.7.7)</b><br>
+• <b>화면보호기 + 암호</b>: OS 표준 기능, Windows GPO·macOS Profile·Linux 스크립트로 강제<br>
+• <b>권장 Timeout</b>: 5~15분 (민감 환경 3~5분)<br>
+• <b>수동 잠금 단축키</b>: Win+L(Windows)·Ctrl+Cmd+Q(macOS)·Ctrl+Alt+L(Linux)<br>
+• <b>Clear Desk Policy</b>와 함께 운영 — 책상 위 민감 문서·매체 제거<br>
+• <b>인식 교육</b>: "자리 뜰 때 반드시 잠그기" — 기술 통제 + 절차 통제 결합<br><br>
+<b>💡 왜 A가 BEST인가 — 비용효과 관점</b><br>
+• <b>B(근접 인증)</b>: 기술적으로 최상이나 <b>스마트카드·RFID 리더·소프트웨어 라이선스</b> 필요<br>
+  - 예: 배지 멀어지면 자동 잠금 (Near Field Communication)<br>
+  - 특수 환경(병원·금융)에서 채택하나 <b>일반 기업엔 과도</b><br>
+• <b>A는 0원·즉시 배포·전 직원 적용 가능</b> → BEST 기준 충족<br>
+• CISA "BEST" = <b>효과성 × 비용효율성 × 실행가능성</b> 종합<br><br>
+<b>⚠️ 함정 주의 — 세션 종료 vs 화면 잠금</b><br>
+• <b>C(세션 종료)</b>: 원격·웹 세션에는 적절 — 자리 비움 대응은 아님<br>
+  - 세션이 종료되어도 <b>로그인된 데스크톱 자체</b>는 공격자가 즉시 접근<br>
+• <b>D(모니터 끄기)</b>: <b>통제가 전혀 아님</b> — 화면 꺼짐 ≠ 잠금, 이동식 키보드·마우스로 바로 활성화<br>
+• 문제 키워드 "unattended PC" → <b>Local Console</b> 보호 문제 → 화면보호기 암호 잠금<br><br>
+<b>📊 관련 기술 통제</b><br>
+• <b>GPO 설정</b>: Screen Saver Timeout + Password Protect 강제<br>
+• <b>Inactivity Lock</b>: OS 레벨 자동 잠금 (Windows: Screen Saver·Dynamic Lock / macOS: Screen Saver Password)<br>
+• <b>Smart Card Removal Policy</b>: CAC/PIV 카드 제거 시 즉시 잠금<br>
+• <b>Windows Hello for Business</b>: 근접 센서·블루투스 기반 잠금 — B 선지 해당<br><br>
+<b>🔗 관련 개념:</b> Clear Screen Policy · Clear Desk Policy · Session Lock · Inactivity Timeout · Tailgating · Physical Security · ISO 27001 A.7.7 · GPO Enforcement
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — End-Point Security / Clear Screen Policy",
+keyConcepts:[
+"Clear Screen Policy|자리 비움 시 자동 세션 잠금 — 암호 화면보호기가 가장 비용효과적, ISO 27001 A.7.7 요구사항",
+"세션 잠금 vs 세션 종료|화면 잠금=로컬 PC 무단 접근 방지 / 세션 종료=원격·웹 세션 재인증 — 목적·적용 대상 다름",
+"근접 기반 인증 한계|효과는 우수하나 스마트카드·RFID 등 추가 HW·라이선스 필요 — BEST 선정 시 비용효과 함께 고려",
+"모니터 끄기 오답 이유|화면만 꺼질 뿐 로그인 세션 유지 — 모니터 재점등 즉시 접근 가능, 보안 통제 아님",
+"BEST 풀이법 (비용효과)|효과성만 아니라 비용·실행가능성·범용성 종합 — OS 내장 기능으로 전사 적용 가능한 통제 우선",
+"기술+절차 통제 결합|화면보호기 강제(기술) + 인식 교육·잠금 습관화(절차) → 효과 극대화, 단일 통제보다 방어심층화"
+]
+},
+{
+id:523,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An information systems (IS) auditor performing a telecommunication access control review should be concerned PRIMARILY with the:",
+questionKo:"<b>통신(Telecommunication) 접근통제 검토</b>를 수행하는 IS 감사인이 <b>가장 우선적으로(PRIMARILY)</b> 관심을 가져야 할 것은?",
+options:[
+"A. maintenance of access logs of usage of various system resources.",
+"B. authorization and authentication of the user prior to granting access to system resources.",
+"C. adequate protection of stored data on servers by encryption or other means.",
+"D. accountability system and the ability to identify any terminal accessing system resources."
+],
+optionsKo:[
+"A. 각종 시스템 자원 사용에 대한 <b>접근 로그의 유지</b>",
+"B. 시스템 자원 접근 허용 <b>이전(prior to)</b>에 사용자에 대한 <b>인가(Authorization)와 인증(Authentication)</b>",
+"C. 서버에 저장된 데이터를 <b>암호화 등으로 적절히 보호</b>하는 것",
+"D. <b>책임추적성(Accountability) 시스템</b>과 시스템 자원에 접근하는 <b>단말기(terminal)</b>를 식별하는 능력"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 접근 로그 유지</td><td><b>탐지(Detective)</b></td><td>오답</td><td>사고 <b>사후</b> 추적용 — 예방이 먼저, 로그는 보완 수단</td></tr>
+<tr class="correct-row"><td>B. 사용자 인가·인증 ✅</td><td><b>예방(Preventive)</b></td><td>정답</td><td><b>접근 허용 이전</b> 차단 — 이 단계 약하면 모든 후속 보안 무력화 (1차 방어선)</td></tr>
+<tr><td>C. 저장 데이터 암호화</td><td>예방(데이터 보호)</td><td>오답</td><td>저장 데이터 보호 문제 — <b>통신 접근통제 범주 아님</b> (Data-at-rest ≠ Network Access)</td></tr>
+<tr><td>D. 단말기 식별(Node Auth)</td><td>예방(약함)</td><td>오답</td><td><b>노드 인증</b>은 누가 앉아있는지 모름 — 사용자 인증보다 약함 (단말 도난·공유 시 무력)</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "PRIMARILY" = 예방통제가 탐지통제보다 우선</b><br>
+• <b>통신 접근통제 1차 관심사</b>: 자원 접근 <b>"이전"</b> 단계 — 누가(Who)+무엇을(What) 통제<br>
+• <b>인가·인증 실패 시</b>: 로그·암호화·노드 식별 모두 <b>사후 보완책</b>에 불과<br>
+• <b>감사 우선순위</b>: Preventive > Detective > Corrective (동일 조건 시)<br><br>
+<b>📝 AAA 프레임워크 (Authentication · Authorization · Accounting)</b><br>
+• <b>Authentication(인증)</b>: "<b>누구인가?</b>" — 신원 확인 (ID/PW, MFA, 생체, 인증서)<br>
+• <b>Authorization(인가)</b>: "<b>무엇을 할 수 있는가?</b>" — 권한 부여 (RBAC, ACL, Policy)<br>
+• <b>Accounting(감사)</b>: "<b>무엇을 했는가?</b>" — 활동 기록 (로그·감사 추적)<br>
+• 순서: <b>Authn → Authz → Access → Accounting</b><br><br>
+<b>💡 왜 B가 PRIMARY인가 — 통제 계층 관점</b><br>
+• <b>1차 방어선(Preventive)</b>: 인가·인증 → <b>사고 자체를 차단</b><br>
+• <b>2차 방어선(Detective)</b>: 로그·모니터링 → 사고 <b>발견</b><br>
+• <b>3차 방어선(Corrective)</b>: 복구·대응 → 사고 <b>수습</b><br>
+• 1차가 약하면 2·3차가 아무리 강해도 <b>이미 침해 발생</b> 후 대응<br><br>
+<b>⚠️ 함정 주의 — Node Authentication vs User Authentication</b><br>
+• <b>Node Authentication(D)</b>: 단말기·장비 식별 (MAC, 디바이스 인증서) — <b>물리 장치 신원</b><br>
+  - 한계: 단말 도난·공유·스푸핑 시 무력 — <b>실제 사용자는 알 수 없음</b><br>
+  - 예: 802.1X 디바이스 인증, NAC<br>
+• <b>User Authentication(B)</b>: <b>사람</b>의 신원 확인 — 더 강력<br>
+  - Best Practice: <b>User + Node 이중 인증</b> (다요소)<br>
+• CISA 시험에서 "단말 식별만"은 <b>항상 사용자 인증보다 약함</b><br><br>
+<b>🔐 Telecommunication Access Control 구성요소</b><br>
+• <b>Authentication Mechanism</b>: RADIUS, TACACS+, Kerberos, LDAP, SAML<br>
+• <b>Authorization Policy</b>: RBAC, ABAC, MAC, DAC<br>
+• <b>Access Control Matrix</b>: Subject × Object × Operation<br>
+• <b>Network Access Control(NAC)</b>: 802.1X + EAP<br>
+• <b>Remote Access</b>: VPN + MFA 필수<br><br>
+<b>📊 감사인의 검토 우선순위 (Telecom Access Control)</b><br>
+1. <b>인증 강도</b>: 비밀번호 정책·MFA 적용 여부<br>
+2. <b>인가 체계</b>: 최소권한·업무분리·Need-to-Know 준수<br>
+3. <b>접근 요청·승인 프로세스</b>: 공식 절차 존재·문서화<br>
+4. <b>주기적 권한 검토</b>: 이직·퇴직자 계정 즉시 회수<br>
+5. <b>로그·모니터링</b>: 예방통제 검토 후 <b>보완</b>으로 확인<br><br>
+<b>🔗 관련 개념:</b> AAA Framework · Preventive vs Detective Control · User vs Node Authentication · RADIUS · TACACS+ · Access Control Matrix · Least Privilege · 802.1X · NAC
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Logical Access Controls / Authentication & Authorization",
+keyConcepts:[
+"예방통제 우선 원칙|접근 허용 '이전' 인가·인증이 1차 방어 — 로그(탐지)는 사후 보완, PRIMARILY는 예방통제 선택",
+"AAA 프레임워크|Authentication(누구)→Authorization(무엇)→Accounting(했는가) 순서 — 인증·인가가 Accounting보다 선행",
+"User vs Node Authentication|사용자 인증(B)>단말 인증(D) — 노드 식별은 누가 앉았는지 모름, 단말 도난·공유 시 무력",
+"통신 접근통제 범위|네트워크 접근 경로 통제 — 저장 데이터 암호화(C)는 Data-at-rest 범주로 분리",
+"통제 계층|1차 예방(차단)>2차 탐지(발견)>3차 교정(복구) — 1차 약하면 후속 통제는 침해 후 대응에 불과",
+"감사 검토 관점|약한 인가·인증 = 모든 후속 보안 무력화 — 감사인은 가장 근본적인 예방통제부터 확인"
+]
+},
+{
+id:524,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Java applets and Active X controls are distributed programs that execute in the background of a client web browser. This practice is considered reasonable when:",
+questionKo:"Java 애플릿과 ActiveX 컨트롤은 클라이언트 웹 브라우저의 <b>백그라운드에서 실행</b>되는 분산 프로그램이다. 이 관행이 <b>합리적(reasonable)</b>이라고 간주되는 경우는?",
+options:[
+"A. a firewall exists.",
+"B. a secure web connection is used.",
+"C. the source of the executable file is certain.",
+"D. the host website is part of the enterprise."
+],
+optionsKo:[
+"A. <b>방화벽(Firewall)</b>이 존재할 때",
+"B. <b>보안 웹 연결(HTTPS 등)</b>이 사용될 때",
+"C. <b>실행 파일의 출처(source)가 확실</b>할 때",
+"D. <b>호스트 웹사이트가 해당 기업의 일부</b>일 때"
+],
+correct:2,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>보호 범위</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 방화벽 존재</td><td>네트워크 경계</td><td>오답</td><td>인터넷 연결엔 <b>항상</b> 방화벽 있어야 — 기본 전제일 뿐, <b>악성 코드 판별 불가</b></td></tr>
+<tr><td>B. 보안 웹 연결</td><td>전송 기밀성</td><td>오답</td><td>HTTPS는 <b>기밀성</b>만 제공 — 실행파일이 <b>우호적인지 적대적인지 식별 못 함</b></td></tr>
+<tr class="correct-row"><td>C. 출처 확실 ✅</td><td>신뢰 기반</td><td>정답</td><td><b>확립된 신뢰(Established Trust)</b> — 서명된 코드·알려진 게시자만 허용 → 적대적 애플릿 차단</td></tr>
+<tr><td>D. 기업 자체 호스팅</td><td>원산지 통제</td><td>오답</td><td><b>비현실적</b> — 모든 애플릿을 자사에서 호스팅 불가, 클라이언트는 파라미터 설정대로 수용</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: Active Content = 출처 신뢰가 핵심</b><br>
+• <b>Java Applet·ActiveX 특성</b>: 클라이언트 브라우저에서 <b>자동 실행</b> → 로컬 자원 접근 위험<br>
+• <b>방화벽·HTTPS 한계</b>: 전송 경로만 보호, <b>코드 자체의 악성 여부 판별 불가</b><br>
+• <b>핵심 통제</b>: <b>코드 서명(Code Signing)</b> — 신뢰할 수 있는 출처에서 온 것만 실행 허용<br><br>
+<b>📝 Active Content (능동 콘텐츠) 위험</b><br>
+• <b>Java Applet</b>: JVM 샌드박스 실행 — 그러나 <b>서명된 애플릿</b>은 샌드박스 탈출 가능<br>
+• <b>ActiveX Control</b>: <b>샌드박스 없음</b> — 풀 권한 OS 접근, 레지스트리·파일시스템 수정<br>
+• <b>공격 시나리오</b>: 드라이브-바이 다운로드 → 백도어·키로거·랜섬웨어 설치<br>
+• <b>Hostile Applet</b>: 정상 사이트 가장 또는 합법 사이트 해킹 후 삽입<br><br>
+<b>💡 왜 C가 정답인가 — 신뢰 모델 관점</b><br>
+• <b>Code Signing 원리</b>: 개발자 개인키 서명 → 클라이언트가 공개키로 검증 → <b>출처·무결성 확인</b><br>
+• <b>CA(Certificate Authority)</b>: 신뢰할 수 있는 제3자가 개발자 신원 보증<br>
+• <b>Authenticode(MS)</b>: ActiveX 서명 표준 — 서명 없으면 경고·차단<br>
+• <b>출처 확실 → 수용</b>, <b>출처 불확실 → 거부</b> (White-list 접근)<br><br>
+<b>⚠️ 함정 주의 — 방화벽·HTTPS는 보호 못함</b><br>
+• <b>방화벽(A)</b>: 허용된 포트(80/443) 통과 트래픽의 <b>페이로드 검사 안 함</b> — 악성 애플릿 통과<br>
+• <b>HTTPS(B)</b>: <b>정상 사이트도 해킹 가능</b> — 해킹된 사이트는 HTTPS 유지하면서 악성 코드 배포<br>
+  - 예: Watering Hole 공격, 공급망 공격<br>
+• <b>자체 호스팅(D)</b>: 외부 벤더·오픈소스 라이브러리 사용 불가 → <b>현실적 불가능</b><br><br>
+<b>🔐 Active Content 보안 통제 (계층별)</b><br>
+• <b>Layer 1 — 브라우저 설정</b>: ActiveX 실행 차단·Java 플러그인 비활성화 (최신 브라우저 기본)<br>
+• <b>Layer 2 — Code Signing 검증</b>: 서명 없거나 만료된 코드 거부<br>
+• <b>Layer 3 — Whitelist</b>: 허용된 게시자 인증서만 실행<br>
+• <b>Layer 4 — 샌드박싱</b>: Java 보안 매니저, 브라우저 샌드박스<br>
+• <b>Layer 5 — EDR·안티멀웨어</b>: 실행 시점 행위 기반 탐지<br><br>
+<b>📊 현대적 맥락 (2025 기준)</b><br>
+• <b>Java Applet</b>: 2017년 Java 9부터 <b>Deprecated</b>, 주요 브라우저 지원 중단<br>
+• <b>ActiveX</b>: Edge·Chrome 미지원, IE 전용 → IE 2022년 서비스 종료<br>
+• <b>대체 기술</b>: WebAssembly, JavaScript, Progressive Web Apps (모두 샌드박스 강화)<br>
+• <b>CISA 시험 관점</b>: 레거시 개념이지만 <b>"Active Content 신뢰 모델"</b> 원리 유효<br><br>
+<b>🔗 관련 개념:</b> Code Signing · Authenticode · Certificate Authority · Sandbox · Active Content · Trust Model · Hostile Applet · Watering Hole · Whitelist · Mobile Code Security
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Mobile Code & Active Content Security",
+keyConcepts:[
+"Active Content 신뢰 모델|Java Applet·ActiveX는 출처(Source) 신뢰가 핵심 — Code Signing으로 검증된 코드만 실행 허용",
+"방화벽·HTTPS 한계|네트워크 경계·전송 기밀성만 제공 — 코드 자체의 악성 여부는 판별 불가, 페이로드 내부 통제 필요",
+"Code Signing 원리|개발자 서명 + CA 인증서 검증 → 출처·무결성 확인 — Authenticode(MS) 표준, 서명 없으면 차단",
+"ActiveX vs Java Applet|ActiveX=샌드박스 없음(풀 권한), Java=JVM 샌드박스 — 서명된 Java는 샌드박스 탈출 가능, 모두 출처 신뢰 중요",
+"Hostile Applet 위험|정상 사이트 해킹·가장 → 악성 코드 삽입 — HTTPS 유지해도 악성 가능, 출처 검증이 유일한 방어",
+"자체 호스팅 비현실성|외부 벤더·오픈소스 사용 불가 → 모든 Active Content 자사 호스팅 불가능, 신뢰 기반 수용이 현실적 해법"
+]
+},
+{
+id:525,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following preventive controls BEST helps secure a web application?",
+questionKo:"다음 중 웹 애플리케이션을 보호하는 데 <b>가장 도움이 되는 예방통제(Preventive Control)</b>는?",
+options:[
+"A. Password masking",
+"B. Developer training",
+"C. Use of encryption",
+"D. Vulnerability testing"
+],
+optionsKo:[
+"A. <b>비밀번호 마스킹(Password Masking)</b>",
+"B. <b>개발자 교육(Developer Training)</b>",
+"C. <b>암호화 사용(Use of Encryption)</b>",
+"D. <b>취약점 테스트(Vulnerability Testing)</b>"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 단계</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 비밀번호 마스킹</td><td>출력 시점</td><td>오답</td><td>필요한 예방통제이나 <b>국소적</b> — 숄더 서핑 방지만, 코드 전반 보안 X</td></tr>
+<tr class="correct-row"><td>B. 개발자 교육 ✅</td><td><b>설계·구현 시점</b></td><td>정답</td><td><b>안전한 코드 작성</b> 근본 해결 — Shift-Left, 취약점 <b>원천 차단</b></td></tr>
+<tr><td>C. 암호화 사용</td><td>데이터 보호</td><td>오답</td><td>데이터 보호만 — <b>코딩 결함(Injection·XSS 등)</b>은 암호화로 방어 불가</td></tr>
+<tr><td>D. 취약점 테스트</td><td><b>개발 후(탐지)</b></td><td>오답</td><td>테스트는 <b>사후 발견</b> — 이미 만들어진 결함 찾기, 예방보다 탐지 성격</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "BEST 예방통제" = 결함 생성 자체를 막는 것</b><br>
+• <b>Shift-Left 원칙</b>: 결함을 <b>가장 이른 단계</b>에서 차단 — 개발 초기 방지 > 출시 후 패치<br>
+• <b>개발자 교육</b>: 설계·코딩 단계에서 <b>취약점 자체가 만들어지지 않도록</b> 예방<br>
+• <b>나머지 선택지</b>: 국소적(A), 부분적(C), 사후적(D) — 근본 예방 못 함<br><br>
+<b>📝 예방통제 vs 탐지통제 vs 교정통제</b><br>
+• <b>Preventive(예방)</b>: 사고 <b>발생 차단</b> — 개발자 교육·코딩 표준·안전한 설계<br>
+• <b>Detective(탐지)</b>: 사고 <b>발견</b> — 취약점 스캔·코드 리뷰·로그 모니터링<br>
+• <b>Corrective(교정)</b>: 사고 <b>복구</b> — 패치·WAF·긴급 수정<br>
+• <b>우선순위</b>: Preventive > Detective > Corrective (비용·영향 관점)<br><br>
+<b>💡 왜 B가 BEST인가 — 결함 비용 곡선 (1-10-100 Rule)</b><br>
+• <b>요구사항·설계</b>: 1배 (교육·보안 요구사항 정의로 차단)<br>
+• <b>구현(코딩)</b>: 10배 (코드 리뷰·SAST로 차단)<br>
+• <b>테스트</b>: 100배 (DAST·취약점 스캐너로 발견)<br>
+• <b>운영(출시 후)</b>: <b>1,000배 이상</b> (침해·평판 손실·규제 벌금)<br>
+• <b>개발자 교육</b> = 1배 단계에서 차단 → <b>최대 ROI</b><br><br>
+<b>🎓 Secure Coding Training 커리큘럼 (OWASP 기반)</b><br>
+• <b>OWASP Top 10</b>: Injection·Broken Auth·XSS·IDOR·XXE 등 취약점 원리·방어<br>
+• <b>Input Validation</b>: Whitelist·Sanitization·Parameterized Query<br>
+• <b>Output Encoding</b>: HTML·JavaScript·URL·CSS 컨텍스트별 인코딩<br>
+• <b>인증·세션 관리</b>: Secure Cookie·CSRF Token·Session Timeout<br>
+• <b>Error Handling</b>: 민감 정보 노출 금지·일반화된 오류 메시지<br>
+• <b>암호학 활용</b>: 올바른 알고리즘 선택·키 관리·솔트 해싱<br><br>
+<b>⚠️ 함정 주의 — 탐지 vs 예방 구분</b><br>
+• <b>Vulnerability Testing(D)</b>: 취약점 <b>발견</b> → 엄밀히는 <b>탐지통제</b><br>
+  - Pentesting·SAST·DAST·IAST는 모두 "이미 존재하는 결함 찾기"<br>
+  - 테스트 결과 → 수정 필요 → <b>사후 대응</b><br>
+• <b>개발자 교육(B)</b>: 결함 <b>생성 차단</b> → 진정한 예방통제<br>
+• CISA 시험: "BEST preventive"는 항상 <b>가장 근본적·선제적</b> 통제 선택<br><br>
+<b>🔐 Secure SDLC (SSDLC) 단계별 예방통제</b><br>
+• <b>요구사항</b>: 보안 요구사항 정의·Threat Modeling (STRIDE, DREAD)<br>
+• <b>설계</b>: 보안 아키텍처 리뷰·Secure Design Patterns<br>
+• <b>구현</b>: <b>Secure Coding(개발자 교육)</b>·SAST·Peer Review<br>
+• <b>테스트</b>: DAST·IAST·Pentesting·Fuzzing<br>
+• <b>배포</b>: 보안 구성 베이스라인·Hardening<br>
+• <b>운영</b>: WAF·로그 모니터링·Incident Response<br><br>
+<b>📊 개발자 교육 효과 (업계 통계)</b><br>
+• <b>OWASP 연구</b>: Secure Coding 교육받은 개발자는 취약점 <b>50-70% 감소</b><br>
+• <b>IBM 보고서</b>: 설계 단계 결함 수정 비용 vs 운영 단계 = <b>1:100</b><br>
+• <b>NIST</b>: SSDLC 도입 시 Post-Release 결함 <b>85% 감소</b><br>
+• <b>경영진 관점</b>: 교육 비용 << 침해 비용 (보험·규제·평판)<br><br>
+<b>🔗 관련 개념:</b> Secure Coding · Shift-Left · SSDLC · OWASP Top 10 · Threat Modeling · 1-10-100 Rule · Preventive vs Detective Control · Developer Awareness · SAST/DAST · Secure by Design
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Secure Software Development / Application Security",
+keyConcepts:[
+"Shift-Left 원칙|개발 초기 단계 보안 적용이 가장 비용효과적 — 개발자 교육으로 결함 생성 자체 차단, 출시 후 패치보다 100배 저렴",
+"예방 vs 탐지 구분|개발자 교육=예방(결함 생성 차단) / 취약점 테스트=탐지(이미 있는 결함 발견) — BEST preventive는 근본 예방 선택",
+"1-10-100 Rule|결함 수정 비용: 요구사항 1배→구현 10배→테스트 100배→운영 1000배 — 조기 예방이 최대 ROI",
+"Secure Coding 핵심|OWASP Top 10·Input Validation·Output Encoding·인증 관리·Error Handling — 개발자가 알아야 할 최소 지식",
+"암호화 한계|암호화는 데이터 보호만 — Injection·XSS 등 코딩 결함은 암호화로 방어 불가, 안전한 설계가 선행",
+"SSDLC 단계별 통제|요구사항→설계→구현→테스트→배포→운영 각 단계 예방통제 — 개발자 교육은 모든 단계 기반",
+"BEST 풀이법|예방통제 중 가장 근본적·선제적·광범위 효과 선택 — 국소적(마스킹)·부분적(암호화)·사후적(테스트) 제외"
+]
+},
+{
+id:526,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Validated digital signatures in an email software application will:",
+questionKo:"이메일 소프트웨어 애플리케이션에서 <b>검증된 디지털 서명(Validated Digital Signatures)</b>은:",
+options:[
+"A. help detect unauthorized email.",
+"B. provide confidentiality.",
+"C. add to the workload of gateway servers.",
+"D. significantly reduce available bandwidth."
+],
+optionsKo:[
+"A. <b>인가되지 않은 이메일(unauthorized email) 탐지</b>에 도움을 준다",
+"B. <b>기밀성(Confidentiality)</b>을 제공한다",
+"C. <b>게이트웨이 서버의 작업 부하</b>를 가중시킨다",
+"D. <b>가용 대역폭(bandwidth)</b>을 크게 감소시킨다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>서명의 효과</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 인가되지 않은 이메일 탐지 ✅</td><td><b>진위 확인</b></td><td>정답</td><td><b>송신자 추적·부인방지</b> 가능 → 특정 발신자 자동 삭제 설정 가능, 스푸핑 탐지</td></tr>
+<tr><td>B. 기밀성 제공</td><td>무관</td><td>오답</td><td><b>기밀성은 암호화</b>가 제공 — 서명은 <b>무결성·부인방지·인증</b>만 제공</td></tr>
+<tr><td>C. 게이트웨이 부하 가중</td><td>미미</td><td>오답</td><td>필터 없이는 부하 증가 없음 — 필터 적용해도 <b>안티바이러스보다 오버헤드 적음</b></td></tr>
+<tr><td>D. 대역폭 크게 감소</td><td>무시할 수준</td><td>오답</td><td>서명은 <b>수 바이트</b> 크기 — CRL 조회해도 오버헤드 미미, 대역폭 영향 없음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: 디지털 서명 = 기밀성 X, 진위·무결성·부인방지 O</b><br>
+• <b>검증된(Validated) 서명</b>: CA가 발급한 <b>자격 인증서(Qualified Certificate)</b> 기반 — 키 위조·재현 불가<br>
+• <b>등록기관(RA)</b>을 통해 <b>신원 증명</b> 후 발급 → 송신자 특정 가능<br>
+• <b>이메일 적용 효과</b>: <b>스푸핑 이메일 탐지</b>, 특정 발신자 자동 필터링·삭제<br><br>
+<b>📝 디지털 서명이 제공하는 것 vs 제공하지 않는 것</b><br>
+• <b>제공 ✅</b>:<br>
+  - <b>무결성(Integrity)</b>: 메시지 변조 탐지 (해시 비교)<br>
+  - <b>인증(Authentication)</b>: 송신자 신원 확인 (공개키 검증)<br>
+  - <b>부인방지(Non-repudiation)</b>: 송신 사실 부인 불가<br>
+• <b>제공 X ❌</b>:<br>
+  - <b>기밀성(Confidentiality)</b>: 메시지는 평문 — <b>암호화 별도 필요</b><br>
+  - <b>가용성(Availability)</b>: 무관<br><br>
+<b>💡 왜 A가 정답인가 — 이메일 보안 맥락</b><br>
+• <b>Unauthorized Email 유형</b>:<br>
+  - <b>Spoofing</b>: 송신자 가장 (CEO Fraud, BEC)<br>
+  - <b>Phishing</b>: 피싱 이메일<br>
+  - <b>Spam</b>: 스팸 메일<br>
+• <b>서명 검증 실패</b> → 인가되지 않은 이메일로 판정 → <b>자동 필터링·격리·삭제</b><br>
+• 수신자는 이메일 클라이언트·서버에서 <b>필터 규칙</b> 설정 가능<br><br>
+<b>🔐 이메일 디지털 서명 표준</b><br>
+• <b>S/MIME</b>: X.509 인증서 기반, 기업 환경 주류 (Outlook·Gmail 지원)<br>
+• <b>PGP/OpenPGP</b>: Web of Trust, 개인 사용자 선호<br>
+• <b>DKIM</b>: 도메인 레벨 서명 — 송신 도메인 검증 (발신 서버 기반)<br>
+• <b>SPF</b>: 허용된 IP 주소 검증 (서명 아닌 IP 화이트리스트)<br>
+• <b>DMARC</b>: SPF + DKIM 정책 — 실패 시 처리 지침<br><br>
+<b>⚠️ 함정 주의 — 서명 vs 암호화</b><br>
+• <b>Digital Signature</b>: <b>개인키로 서명 → 공개키로 검증</b><br>
+  - 목적: 인증·무결성·부인방지<br>
+  - 메시지 내용: <b>평문 유지</b> (누구나 읽을 수 있음)<br>
+• <b>Encryption</b>: <b>공개키로 암호화 → 개인키로 복호화</b><br>
+  - 목적: 기밀성<br>
+  - 메시지 내용: <b>암호문</b> (지정 수신자만 읽음)<br>
+• <b>완전한 보안</b>: 서명 + 암호화 조합 (S/MIME Signed and Encrypted)<br><br>
+<b>📊 서명 검증 프로세스 (수신 측)</b><br>
+1. 수신자가 이메일 수신<br>
+2. 서명의 해시값 복호화 (송신자 공개키 사용)<br>
+3. 메시지 본문 해시 재계산<br>
+4. 두 해시 비교 → 일치하면 <b>무결성·진위 확인</b><br>
+5. 인증서 체인 검증 (CA 신뢰 체인·CRL·OCSP 조회)<br>
+6. 검증 실패 → <b>Unauthorized로 분류·차단</b><br><br>
+<b>🚫 오답 상세 분석</b><br>
+• <b>B (기밀성)</b>: CISA 단골 함정 — 서명과 암호화 혼동 유발<br>
+  - "서명으로 기밀 보호" = <b>항상 오답</b><br>
+• <b>C (부하)</b>: 서명 검증은 <b>CPU 연산 수 ms</b> — 안티바이러스 스캔보다 훨씬 가벼움<br>
+• <b>D (대역폭)</b>: 서명 크기 <b>256~512 바이트</b> — 일반 이메일(KB~MB) 대비 무시 수준<br><br>
+<b>🔗 관련 개념:</b> Digital Signature · S/MIME · PGP · DKIM · DMARC · Non-repudiation · Certificate Authority · Qualified Certificate · Email Spoofing · BEC · Signature vs Encryption · Hash Function
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Cryptography / Digital Signature / Email Security",
+keyConcepts:[
+"디지털 서명 효과|인증·무결성·부인방지 제공 — 이메일 적용 시 스푸핑 탐지·송신자 추적, 인가되지 않은 이메일 자동 필터링 가능",
+"서명 ≠ 암호화|서명은 기밀성 제공 X — 메시지는 평문 유지, 기밀성 필요 시 암호화 별도 적용 (S/MIME Signed and Encrypted)",
+"Validated Signature|CA 발급 자격 인증서 기반 — RA 신원 증명 후 발급, 키 위조·재현 불가 → 법적 효력",
+"이메일 서명 표준|S/MIME(기업)·PGP(개인)·DKIM(도메인)·SPF(IP)·DMARC(정책) — 각기 다른 계층 보호",
+"서명 오버헤드|서명 크기 수백 바이트, 검증 수 ms — 대역폭·서버 부하 영향 미미, 안티바이러스보다 가벼움",
+"부인방지 원리|개인키 = 송신자만 보유 → 서명 = 송신 사실 증명 → 법정 증거 능력 보유",
+"검증 프로세스|해시 재계산 + 공개키 복호화 + 인증서 체인·CRL/OCSP 검증 → 실패 시 Unauthorized 분류"
+]
+},
+{
+id:527,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An organization requests that an information systems (IS) auditor provide a recommendation to enhance the security and reliability of its Voice-over Internet Protocol (VoIP) system and data traffic. Which of the following meets this objective?",
+questionKo:"어떤 조직이 IS 감사인에게 <b>VoIP 시스템 및 데이터 트래픽의 보안과 신뢰성(security and reliability)</b>을 향상시키기 위한 권고안을 요청하였다. 다음 중 이 목표를 충족하는 것은?",
+options:[
+"A. VoIP infrastructure needs to be segregated using virtual local area networks.",
+"B. Buffers need to be introduced at the VoIP endpoints.",
+"C. Ensure that end-to-end encryption is enabled in the VoIP system.",
+"D. Ensure that emergency backup power is available for all parts of the VoIP infrastructure."
+],
+optionsKo:[
+"A. VoIP 인프라를 <b>VLAN(가상 LAN)</b>을 사용하여 <b>분리(segregate)</b>해야 한다",
+"B. VoIP 엔드포인트에 <b>버퍼(Buffer)</b>를 도입해야 한다",
+"C. VoIP 시스템에서 <b>종단간(End-to-End) 암호화</b>를 활성화해야 한다",
+"D. VoIP 인프라의 모든 부분에 대해 <b>비상 백업 전원</b>이 가용하도록 해야 한다"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>목적</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. VLAN 분리 ✅</td><td><b>보안+신뢰성</b> 동시 해결</td><td>정답</td><td>네트워크 기반 공격·도청 차단 + 음성 트래픽 우선순위 보장 → <b>가동시간(uptime) 확보</b></td></tr>
+<tr><td>B. 엔드포인트 버퍼</td><td>통화 품질 유지</td><td>오답</td><td><b>QoS 기법</b>(지터 버퍼) — 보안 방법 아님, 품질 개선에만 기여</td></tr>
+<tr><td>C. 종단간 암호화</td><td>기밀성</td><td>오답</td><td><b>인터넷 경유 시</b> 필요 — LAN 내부는 물리 보안·VLAN으로 충분, 여기선 과도</td></tr>
+<tr><td>D. 비상 전원</td><td>가용성(부분)</td><td>오답</td><td>가용성 일부 기여 — <b>네트워크 설계·VLAN 구현이 더 중요</b>, 보안 기여 없음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "보안 + 신뢰성" 동시 충족 = VLAN 분리</b><br>
+• <b>VLAN 분리 효과</b>:<br>
+  - <b>보안</b>: 데이터망으로부터 격리 → 도청·패킷 스니핑·DoS 공격 차단<br>
+  - <b>신뢰성</b>: 음성 트래픽 분리 → 데이터 트래픽과 경합 방지, QoS 우선순위 적용<br>
+• 두 목표를 <b>단일 통제</b>로 달성 — CISA "BEST/meets objective" 기준 충족<br><br>
+<b>📝 VoIP VLAN 설계 — Voice VLAN</b><br>
+• <b>Voice VLAN (VVLAN)</b>: 음성 트래픽 전용 가상 LAN 분리<br>
+• <b>Data VLAN</b>: 데이터 트래픽 별도 VLAN<br>
+• <b>CDP/LLDP-MED</b>: IP폰 자동 Voice VLAN 할당<br>
+• <b>802.1Q Tagging</b>: VLAN ID로 트래픽 구분·격리<br>
+• <b>효과</b>: Broadcast Domain 분리 → 스니핑·ARP Spoofing 범위 축소<br><br>
+<b>💡 왜 A가 정답인가 — 보안·품질·신뢰성 통합</b><br>
+<b>🛡️ 보안 이점</b>:<br>
+• <b>도청 방지</b>: 데이터망 사용자가 음성 패킷 스니핑 불가<br>
+• <b>공격 면적 축소</b>: 음성망 접근 경로 제한<br>
+• <b>ARP Spoofing·MITM 차단</b>: VLAN 경계로 레이어2 공격 격리<br>
+• <b>DHCP Spoofing 방지</b>: Voice VLAN 전용 DHCP 서버<br>
+<br>
+<b>⚡ 신뢰성·품질 이점</b>:<br>
+• <b>QoS 적용 용이</b>: 음성 VLAN에 DSCP EF(46) 우선순위 부여<br>
+• <b>지터·지연 최소화</b>: 데이터 트래픽 폭주 시에도 음성 보호<br>
+• <b>대역폭 보장</b>: 음성 트래픽 최소 대역폭 예약<br>
+• <b>장애 격리</b>: 데이터망 장애 시에도 음성 서비스 유지<br><br>
+<b>⚠️ 함정 주의 — 각 선택지 실제 용도</b><br>
+• <b>B (버퍼/Jitter Buffer)</b>: <b>QoS 기법</b> — 패킷 도착 지연·순서 변경 보정<br>
+  - 보안과 무관, 통화 품질 개선 목적<br>
+  - 과도한 버퍼 → 지연 증가 → 통화 품질 역효과<br>
+• <b>C (종단간 암호화)</b>: <b>SRTP·ZRTP·TLS</b><br>
+  - 인터넷 경유 시 필수 (SIP Trunk, Remote Softphone)<br>
+  - LAN 내부는 물리 보안·VLAN으로 충분 — CISA 관점<br>
+  - 암호화는 기밀성만 제공, <b>신뢰성(uptime) 개선 X</b><br>
+• <b>D (비상 전원/UPS)</b>: 가용성 <b>부분</b> 기여<br>
+  - 정전 시 통화 유지 (E911 규정 고려)<br>
+  - 보안과 무관 — <b>네트워크 설계 결함이 더 큰 위협</b><br><br>
+<b>🔐 VoIP 보안 계층별 통제</b><br>
+• <b>Layer 1 (Physical)</b>: 배선실 접근 통제, 케이블 보호<br>
+• <b>Layer 2 (Data Link)</b>: <b>VLAN 분리</b>, Port Security, DHCP Snooping<br>
+• <b>Layer 3 (Network)</b>: ACL, Firewall, Anti-Spoofing<br>
+• <b>Layer 4+ (Transport/App)</b>: SRTP·TLS·SIPS, 인증<br>
+• <b>Endpoint</b>: IP폰 펌웨어 관리, 관리자 암호 변경<br><br>
+<b>📊 VoIP 주요 위협 → VLAN 대응</b><br>
+• <b>Eavesdropping(도청)</b>: RTP 패킷 스니핑 → <b>VLAN 격리로 차단</b><br>
+• <b>Vishing(보이스 피싱)</b>: SIP INVITE 조작 → VLAN + 인증<br>
+• <b>Toll Fraud(과금 사기)</b>: 외부 침입 후 국제전화 → VLAN + Firewall<br>
+• <b>DoS</b>: SIP Flood → VLAN + Rate Limit<br>
+• <b>Call Hijacking</b>: 세션 탈취 → VLAN + SRTP<br><br>
+<b>🔗 관련 개념:</b> Voice VLAN · 802.1Q · QoS · DSCP EF · Jitter Buffer · SRTP · TLS/SIPS · Network Segmentation · Defense in Depth · CDP/LLDP-MED · Eavesdropping · VoIP Security
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Security / VoIP Security / VLAN Segmentation",
+keyConcepts:[
+"Voice VLAN 핵심|보안+신뢰성 동시 충족 — 음성 트래픽 격리로 도청·스니핑 차단 + 데이터 트래픽과 경합 방지로 QoS 보장",
+"VLAN 분리 효과|Broadcast Domain 분리 → ARP Spoofing·MITM·DHCP Spoofing 등 레이어2 공격 범위 축소",
+"Jitter Buffer 목적|통화 품질 유지(QoS) — 패킷 지연·순서 변경 보정, 보안 기법 아님, 과도하면 지연 증가 역효과",
+"종단간 암호화 적용|인터넷 경유 VoIP에 필요 — LAN 내부는 물리 보안·VLAN으로 충분, 기밀성만 제공(신뢰성 X)",
+"비상 전원 한계|가용성 부분 기여 — 네트워크 설계·VLAN 구현이 더 중요, 보안과 무관",
+"QoS 우선순위|Voice VLAN + DSCP EF(46) → 데이터 트래픽 폭주 시에도 음성 대역폭 보장·지연 최소화",
+"단일 통제로 복수 목표|VLAN은 보안·품질·신뢰성을 하나로 해결 — CISA 'meets objective'는 통합 효과 선택"
+]
+},
+{
+id:528,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An enterprise has established a guest network for visitor access. Which of the following should be of GREATEST concern to an information systems (IS) auditor?",
+questionKo:"어떤 기업이 방문자 접근을 위해 <b>게스트 네트워크(Guest Network)</b>를 구축했다. 다음 중 IS 감사인이 <b>가장 크게 우려(GREATEST concern)</b>해야 할 사항은?",
+options:[
+"A. A login screen is not displayed for guest users.",
+"B. The guest network is not segregated from the production network.",
+"C. Guest users who are logged in are not isolated from each other.",
+"D. A single-factor authentication technique is used to grant access."
+],
+optionsKo:[
+"A. 게스트 사용자에게 <b>로그인 화면이 표시되지 않음</b>",
+"B. 게스트 네트워크가 <b>운영(Production) 네트워크와 분리되어 있지 않음</b>",
+"C. 로그인한 게스트 사용자들이 <b>서로 격리되지 않음</b>",
+"D. 접근 허용에 <b>단일 요소 인증(Single-Factor Authentication)</b>을 사용함"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>위험 수준</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 로그인 화면 없음</td><td>중간</td><td>오답</td><td>Captive Portal 부재 — 인증·책임추적성 부족, 그러나 네트워크 격리보다 영향 작음</td></tr>
+<tr class="correct-row"><td>B. 운영망 미분리 ✅</td><td><b>최고</b></td><td>정답</td><td><b>신뢰 불가 사용자가 기업망 접근</b> → 악성코드 유입·민감 시스템·데이터 부적절 접근 위험</td></tr>
+<tr><td>C. 게스트 간 미격리</td><td>낮음</td><td>오답</td><td>일부 플랫폼은 <b>허용 가능</b> — 정책·경고로 대응 가능, 운영망 침해보다 영향 작음</td></tr>
+<tr><td>D. 단일 요소 인증</td><td>낮음</td><td>오답</td><td>MFA 선호되나 <b>적절히 구현된 SFA면 충분</b> — 게스트망 용도에 맞음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: 게스트망의 존재 이유 = "운영망 격리"</b><br>
+• <b>게스트망의 목적</b>: 방문자에게 인터넷만 제공 + 기업 내부망 차단<br>
+• <b>미분리 시 위험</b>: 신뢰할 수 없는 외부인이 <b>내부망 자원 접근</b> 가능<br>
+  - 악성코드 유입 (감염된 노트북·스마트폰)<br>
+  - 내부 서버·DB·공유 드라이브 접근<br>
+  - 민감 정보 유출·측면 이동(Lateral Movement) 교두보<br>
+• <b>GREATEST concern</b>: 네트워크 경계 통제 실패 = 가장 근본적 실패<br><br>
+<b>📝 게스트망 분리 베스트 프랙티스</b><br>
+• <b>물리적 분리</b>: 별도 스위치·AP·회선 (가장 강력)<br>
+• <b>논리적 분리(VLAN)</b>: 802.1Q VLAN + ACL로 내부망 차단<br>
+• <b>SSID 분리</b>: Guest-SSID vs Corporate-SSID (암호 정책 분리)<br>
+• <b>Firewall Rule</b>: Guest → Internet만 허용, Guest → Internal 차단<br>
+• <b>DHCP 분리</b>: Guest 전용 DHCP Scope<br>
+• <b>Bandwidth Limit</b>: 게스트망 대역폭 제한 (DoS 방지)<br><br>
+<b>💡 왜 B가 GREATEST인가 — 위험 영향도 비교</b><br>
+• <b>B (미분리)</b>: <b>전체 기업 자산</b> 위험 → <b>조직 레벨 침해</b><br>
+  - 영향: 기밀성·무결성·가용성 모두 훼손<br>
+  - 규제 위반 (GDPR·HIPAA·PCI-DSS 등)<br>
+  - 평판·재무 손실<br>
+• <b>A·C·D</b>: 게스트망 내부 통제 약점 → <b>국소적 영향</b><br>
+  - 책임추적성 부족·게스트 간 간섭 등<br>
+• CISA 원칙: <b>가장 광범위·심각한 영향</b>이 GREATEST<br><br>
+<b>⚠️ 함정 주의 — 각 선택지의 실제 위험</b><br>
+• <b>A (로그인 화면 없음)</b>: Captive Portal 부재<br>
+  - 약점: 사용자 식별·AUP 동의·로그 추적 불가<br>
+  - 그러나 <b>네트워크 자체가 격리되면</b> 피해 제한적<br>
+• <b>C (게스트 간 미격리)</b>: Client Isolation 부재<br>
+  - 약점: 게스트끼리 P2P 공격·스니핑<br>
+  - <b>CISA 공식 해설</b>: 일부 플랫폼은 허용 가능 + 정책·경고로 대응 가능<br>
+  - 실무에서는 권장되지만 "선택적" 통제<br>
+• <b>D (단일 요소 인증)</b>: MFA 아님<br>
+  - 게스트망은 <b>낮은 위험 환경</b> — SFA로도 충분<br>
+  - 공유 비밀번호·SMS OTP·이메일 인증 등<br><br>
+<b>🔐 게스트망 보안 아키텍처 (권장)</b><br>
+• <b>Layer 1</b>: 별도 AP·SSID (또는 동일 AP + 별도 SSID)<br>
+• <b>Layer 2</b>: VLAN 분리 + Client Isolation 활성화<br>
+• <b>Layer 3</b>: Firewall ACL — Guest VLAN → Internal 차단, Internet만 허용<br>
+• <b>Layer 4</b>: Captive Portal (로그인·AUP·식별)<br>
+• <b>Layer 5</b>: Bandwidth·세션 시간 제한, URL 필터링<br>
+• <b>Layer 6</b>: 로그 수집·이상 행위 탐지<br><br>
+<b>📊 GREATEST Concern 판단 기준</b><br>
+• <b>영향 범위</b>: 전사 vs 국소 — <b>전사가 더 큼</b><br>
+• <b>자산 가치</b>: 운영망(핵심 자산) vs 게스트망(인터넷만) — <b>운영망이 훨씬 중요</b><br>
+• <b>공격 용이성</b>: 네트워크 접근만 되면 내부 취약점 악용 가능<br>
+• <b>복구 난이도</b>: 침해 발생 시 복구·조사 비용 막대<br>
+• <b>규제 위반</b>: 개인정보·금융·의료 정보 노출 → 법적 책임<br><br>
+<b>🚫 실제 사례 — 미분리 게스트망 침해</b><br>
+• <b>2013 Target 침해</b>: HVAC 협력사 계정 → 내부망 이동 → POS 감염<br>
+  - 교훈: <b>네트워크 세분화(Segmentation)</b> 필수<br>
+• <b>Wi-Fi Pineapple 공격</b>: 게스트망 통해 내부망 스캔·취약점 악용<br>
+• <b>BYOD 감염</b>: 방문자 노트북 랜섬웨어 → 공유 폴더로 확산<br><br>
+<b>🔗 관련 개념:</b> Network Segmentation · Guest VLAN · Captive Portal · Client Isolation · SSID · AUP · Defense in Depth · Zero Trust · Lateral Movement · BYOD Security · Firewall ACL
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Security / Network Segmentation / Wireless Security",
+keyConcepts:[
+"게스트망 분리 원칙|신뢰 불가 사용자 접근 경로는 반드시 운영망과 분리 — 미분리 시 악성코드 유입·내부망 침해 가능",
+"GREATEST 판단 기준|영향 범위(전사>국소)·자산 가치(운영망>게스트망)·공격 용이성·복구 난이도 종합 — 가장 광범위 영향 선택",
+"Captive Portal 역할|사용자 식별·AUP 동의·로그 추적 — 네트워크 격리 전제 하의 보조 통제, 단독으로는 불충분",
+"Client Isolation|게스트 간 P2P 통신 차단 — 권장되나 선택적, 운영망 분리보다 낮은 우선순위",
+"게스트망 SFA 허용|낮은 위험 환경이므로 적절히 구현된 SFA 충분 — MFA 부재가 GREATEST는 아님",
+"Target 침해 교훈|협력사 VPN 통해 내부망 이동 → POS 감염 → 네트워크 세분화 중요성 각인",
+"게스트망 Firewall 규칙|Guest→Internet 허용, Guest→Internal 차단 — 기본 정책, 미구현 시 모든 방어 무력화"
+]
+},
+{
+id:529,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An organization is considering connecting a critical PC-based system to the Internet. Which of the following provides the BEST protection against hacking?",
+questionKo:"어떤 조직이 <b>중요한 PC 기반 시스템을 인터넷에 연결</b>하려고 한다. 다음 중 해킹으로부터 <b>가장 좋은 보호(BEST protection)</b>를 제공하는 것은?",
+options:[
+"A. Application-level gateway",
+"B. Remote access server",
+"C. Proxy server",
+"D. Port scanning"
+],
+optionsKo:[
+"A. <b>애플리케이션 레벨 게이트웨이(Application-Level Gateway)</b>",
+"B. <b>원격 접속 서버(Remote Access Server)</b>",
+"C. <b>프록시 서버(Proxy Server)</b>",
+"D. <b>포트 스캐닝(Port Scanning)</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>OSI 계층</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. Application Gateway ✅</td><td><b>Layer 1-7 전체</b></td><td>정답</td><td>상세 규칙으로 사용자·연결 유형 통제 — <b>HTTP·FTP·SNMP 등 명령어 수준까지 검사</b></td></tr>
+<tr><td>B. Remote Access Server</td><td>Layer 3-4</td><td>오답</td><td>ID/PW 인증만 — <b>인터넷에서 스캔·매핑 가능</b>, 보안 노출 위험</td></tr>
+<tr><td>C. Proxy Server</td><td>Layer 3-7 (타입별)</td><td>오답</td><td>우수하나 Application Gateway만큼 정밀 검사 X — 포트별 우회 가능, 전문 인력 필요</td></tr>
+<tr><td>D. Port Scanning</td><td>취약점 탐지</td><td>오답</td><td><b>방어 도구 아님</b> — 취약점·열린 포트 <b>발견</b>용, 통제 기능 없음</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "BEST protection" = 가장 정밀한 계층별 검사</b><br>
+• <b>Application-Level Gateway(ALG)</b>: OSI <b>7계층 전체</b> 검사<br>
+  - Layer 1-4: 패킷 헤더·포트·IP<br>
+  - <b>Layer 5-7</b>: 세션·프로토콜 명령어·페이로드 내용<br>
+• 중요 시스템 인터넷 노출 = 최대한 정밀한 방어 필요<br><br>
+<b>📝 방화벽 유형별 비교 (계층 관점)</b><br>
+• <b>Packet Filter(Layer 3-4)</b>: IP·포트만 검사 — 가장 단순, 가장 약함<br>
+• <b>Stateful Inspection(Layer 3-4)</b>: 연결 상태 추적 — Packet Filter 강화판<br>
+• <b>Circuit-Level Gateway(Layer 5)</b>: 세션 수립 검증 — SOCKS<br>
+• <b>Application-Level Gateway(Layer 7)</b>: <b>프로토콜·명령어·데이터 검사</b> — 최강<br>
+  - HTTP GET/POST 메서드·URL·헤더 검사<br>
+  - FTP 명령어(USER·PASS·PUT·GET) 제어<br>
+  - SNMP Community·OID 검증<br>
+  - SQL Injection·XSS 등 앱 공격 탐지<br>
+• <b>Next-Generation Firewall(NGFW)</b>: ALG + IPS + DPI + 사용자 식별 통합<br><br>
+<b>💡 왜 A가 BEST인가 — 심층 검사 능력</b><br>
+• <b>ALG 특징</b>:<br>
+  - 각 애플리케이션 프로토콜별 <b>전용 프록시 모듈</b><br>
+  - 프로토콜 규격 위반 탐지 (비정상 HTTP 요청 등)<br>
+  - 악성 페이로드·명령어 차단<br>
+  - 사용자 인증·세부 ACL 적용 가능<br>
+• <b>공격 방어 예시</b>:<br>
+  - SQL Injection: HTTP Body 내 'UNION SELECT' 탐지·차단<br>
+  - Command Injection: URL 파라미터 내 'cmd.exe' 차단<br>
+  - Buffer Overflow: 비정상 긴 헤더·파라미터 차단<br>
+  - Protocol Tunneling: HTTP 내 숨은 SSH 등 탐지<br><br>
+<b>⚠️ 함정 주의 — 각 선택지 정확한 용도</b><br>
+• <b>B (Remote Access Server)</b>: RAS<br>
+  - 외부 사용자 내부망 접근 용도 (VPN·Dial-up)<br>
+  - <b>인증은 있으나 공격 검사 X</b><br>
+  - 인터넷에서 탐지 가능 → 공격 대상<br>
+  - 해킹 <b>방어가 아닌 접근 제공</b>이 주 기능<br>
+• <b>C (Proxy Server)</b>: 웹 프록시<br>
+  - 일반 프록시는 URL·Host 기반 필터<br>
+  - <b>Reverse Proxy</b>는 강력하나 타입별 능력 차이<br>
+  - ALG는 사실상 Proxy의 특수 형태 (프로토콜 인식 프록시)<br>
+  - CISA 관점: ALG > 일반 Proxy<br>
+• <b>D (Port Scanning)</b>: <b>공격 도구이자 취약점 진단 도구</b><br>
+  - 방어가 아닌 <b>탐지·정찰</b> 용도<br>
+  - Nmap·Masscan 등 — 자산 상태 파악<br>
+  - 해커도 동일 도구로 공격 대상 식별<br><br>
+<b>🔐 Application-Level Gateway 구성</b><br>
+• <b>프로토콜별 프록시</b>: HTTP Proxy·FTP Proxy·SMTP Proxy·DNS Proxy<br>
+• <b>Deep Packet Inspection(DPI)</b>: 페이로드 내용 분석<br>
+• <b>Content Filtering</b>: URL·파일 형식·키워드 필터<br>
+• <b>Protocol Anomaly Detection</b>: RFC 위반 탐지<br>
+• <b>User Authentication</b>: LDAP·RADIUS·SSO 연동<br>
+• <b>Logging·Audit</b>: 모든 애플리케이션 요청·응답 기록<br><br>
+<b>📊 계층별 보호 범위 비교</b><br>
+• <b>Packet Filter</b>: IP 5-tuple — SQL Injection <b>탐지 불가</b><br>
+• <b>Stateful</b>: 연결 추적 — 앱 공격 탐지 불가<br>
+• <b>Proxy</b>: URL 필터 가능하나 프로토콜별 심층 검사 제한<br>
+• <b>ALG</b>: 프로토콜 명령어·페이로드 전면 검사<br>
+• <b>WAF(Web Application Firewall)</b>: ALG의 웹 특화 버전<br><br>
+<b>🔗 관련 개념:</b> Application Gateway · Deep Packet Inspection · WAF · NGFW · OSI 7 Layers · Proxy · Stateful Inspection · Protocol Anomaly · SQL Injection Defense · RAS · Port Scanning
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Firewalls / Application Gateway / Network Perimeter Security",
+keyConcepts:[
+"Application Gateway 우위|OSI 1-7계층 전체 검사 — HTTP·FTP·SNMP 명령어·페이로드까지 분석, 가장 정밀한 방어",
+"방화벽 계층별 비교|Packet Filter(3-4)<Stateful(3-4+)<Circuit(5)<Application(7)<NGFW(통합) — 계층 높을수록 강력",
+"Proxy vs ALG|Proxy는 일반 필터링, ALG는 프로토콜 인식 심층 검사 — ALG는 Proxy의 특수·강화 형태",
+"Remote Access Server 한계|외부 접근 제공이 주 기능 — 인증은 있으나 공격 검사 없음, 인터넷 노출 위험",
+"Port Scanning 역할|방어 도구 아님 — 취약점·열린 포트 탐지용, 해커도 동일 도구 사용",
+"ALG 방어 예시|SQL Injection(UNION SELECT 탐지)·Command Injection(cmd.exe 차단)·Buffer Overflow(비정상 길이 차단)·Protocol Tunneling 탐지",
+"중요 시스템 노출|인터넷 연결 시 최대한 심층 검사 필요 — ALG+WAF+IPS 조합으로 방어 심층화"
+]
+},
+{
+id:530,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Enterprise XYZ has outsourced production support to service provider ABC, located in another country. The ABC service provider personnel remotely connect to the enterprise network of the XYZ outsourcing entity over the Internet. Which of the following would BEST provide assurance that transmission of information is secure while the production support team at ABC is providing support to XYZ?",
+questionKo:"기업 XYZ는 해외에 있는 서비스 제공업체 ABC에게 운영 지원을 아웃소싱하였다. ABC 인력은 인터넷을 통해 원격으로 XYZ 네트워크에 접속한다. ABC의 운영 지원팀이 XYZ에 지원을 제공하는 동안 <b>정보의 전송(transmission)이 안전하다는 것</b>을 <b>가장 잘 보증</b>하는 것은?",
+options:[
+"A. Secret key encryption",
+"B. Dynamic internet protocol (IP) address and port",
+"C. Hash functions",
+"D. Virtual private network (VPN) tunnel"
+],
+optionsKo:[
+"A. <b>비밀키 암호화(Secret Key Encryption)</b>",
+"B. <b>동적 IP 주소와 포트(Dynamic IP and Port)</b>",
+"C. <b>해시 함수(Hash Functions)</b>",
+"D. <b>가상 사설망(VPN) 터널</b>"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>제공하는 보안 속성</th><th>평가</th><th>설명</th></tr>
+<tr><td>A. 비밀키 암호화</td><td>기밀성(부분)</td><td>오답</td><td>양쪽에 <b>동일 키 공유</b> 필요 + 각 끝단 암·복호화 단계 추가 — <b>시나리오상 실행 불가능</b></td></tr>
+<tr><td>B. 동적 IP·포트</td><td>난독화(무효)</td><td>오답</td><td>공격자는 <b>DNS로 새 주소 쉽게 발견</b> — 효과적 통제 아님 (Security by Obscurity)</td></tr>
+<tr><td>C. 해시 함수</td><td>무결성만</td><td>오답</td><td>데이터 파일 무결성 검증용 — <b>원격 지원 연결에 부적합</b>, 기밀성 제공 X</td></tr>
+<tr class="correct-row"><td>D. VPN 터널 ✅</td><td><b>기밀성+무결성+인증</b></td><td>정답</td><td>인터넷(신뢰 불가망) 위에 <b>암호화 터널 구성</b> → 전송 전 구간 보호</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "인터넷 경유 전송 보안" = VPN</b><br>
+• <b>시나리오</b>: 해외 서비스 제공업체가 <b>인터넷(Untrusted Network)</b> 통해 원격 연결<br>
+• <b>위협</b>: 도청·중간자 공격·패킷 스니핑·세션 하이재킹<br>
+• <b>해결책</b>: <b>암호화된 VPN 터널</b> — End-to-End 보안 채널<br><br>
+<b>📝 VPN이 제공하는 CIA 속성</b><br>
+• <b>기밀성(Confidentiality)</b>: IPsec ESP·TLS 암호화 — AES-256 등<br>
+• <b>무결성(Integrity)</b>: HMAC·AH — 변조 탐지<br>
+• <b>인증(Authentication)</b>: 인증서·Pre-shared Key·IKE<br>
+• <b>재전송 방지</b>: Sequence Number·Anti-replay Window<br><br>
+<b>💡 왜 D가 BEST인가 — 전송 보안 요구사항 종합</b><br>
+• VPN = <b>단일 통제로 CIA 3대 속성 모두 제공</b><br>
+• 기존 애플리케이션 수정 불필요 — <b>투명한 보안 계층</b><br>
+• 표준 프로토콜·상용 솔루션 성숙 — 구현·운영 용이<br>
+• 감사·로그 집중 관리 가능<br><br>
+<b>🔐 VPN 주요 유형 및 프로토콜</b><br>
+• <b>Site-to-Site VPN</b>: 두 네트워크 간 상시 터널 (본사-지사·본사-협력사)<br>
+  - IPsec(IKEv2) 주류<br>
+• <b>Remote Access VPN</b>: 개별 사용자 → 기업망<br>
+  - SSL/TLS VPN (OpenVPN·AnyConnect·GlobalProtect)<br>
+  - IPsec Client (StrongSwan·Windows 내장)<br>
+• <b>Zero Trust Network Access(ZTNA)</b>: 차세대 VPN — 애플리케이션 단위 접근<br><br>
+<b>⚠️ 함정 주의 — 각 선택지 상세 분석</b><br>
+• <b>A (Secret Key Encryption / 대칭키)</b>:<br>
+  - 암호화 가능하나 <b>키 배포 문제</b> — 해외 ABC와 안전한 키 교환 어려움<br>
+  - <b>애플리케이션 수정 필요</b> — 기존 지원 도구 사용 불가<br>
+  - VPN은 내부적으로 대칭키 사용하되 <b>IKE로 자동 교환</b><br>
+• <b>B (Dynamic IP·Port)</b>: <b>Security by Obscurity</b><br>
+  - DNS 조회·포트 스캔으로 쉽게 발견<br>
+  - 전송 <b>내용 자체는 평문</b> — 도청 무방비<br>
+  - CISA 원칙: 난독화는 보안 통제 아님<br>
+• <b>C (Hash Function)</b>: <b>무결성 검증만</b><br>
+  - SHA-256·MD5 등은 단방향 함수<br>
+  - 데이터 변조 탐지 O, <b>기밀성 제공 X</b><br>
+  - 원격 지원 세션에 부적합<br><br>
+<b>📊 VPN 프로토콜 비교</b><br>
+• <b>IPsec</b>: Layer 3, 강력·표준, 설정 복잡<br>
+  - ESP(암호화+무결성) vs AH(무결성만)<br>
+  - Tunnel Mode(전체 패킷) vs Transport Mode(페이로드만)<br>
+• <b>SSL/TLS VPN</b>: Layer 5-7, 브라우저 기반, 방화벽 우회 쉬움<br>
+  - HTTPS(443) 사용 → 대부분 환경에서 동작<br>
+• <b>WireGuard</b>: 최신·경량·고성능<br>
+• <b>PPTP</b>: <b>사용 금지</b> (암호학적 취약)<br>
+• <b>L2TP/IPsec</b>: 레거시 호환용<br><br>
+<b>🚫 공급업체 원격 접속 보안 체크리스트</b><br>
+• <b>VPN 터널</b>: 필수 — 암호화·무결성·인증<br>
+• <b>MFA</b>: VPN 접속 시 다중 인증 (ID 519 관련)<br>
+• <b>최소 권한</b>: 지원 업무에 필요한 자원만 접근<br>
+• <b>세션 기록</b>: 모든 원격 세션 로깅·녹화<br>
+• <b>Jump Server</b>: 중간 경유 서버로 접근 제어 집중화<br>
+• <b>시간 기반 접근</b>: 업무 시간 외 차단<br>
+• <b>계약상 보안 의무</b>: SLA·보안 조항 명시<br><br>
+<b>🔗 관련 개념:</b> VPN · IPsec · SSL/TLS VPN · ZTNA · Encryption Tunnel · CIA Triad · Third-Party Access · Untrusted Network · IKE · ESP · AH · Site-to-Site · Remote Access
+</div>
+`,
+reference:"CRM Chapter 5: Protection of Information Assets — Secure Communications / VPN / Third-Party Remote Access",
+keyConcepts:[
+"인터넷 전송 보안|Untrusted Network 경유 시 VPN 터널 필수 — 단일 통제로 기밀성·무결성·인증 CIA 3속성 제공",
+"VPN 유형|Site-to-Site(IPsec 주류)·Remote Access(SSL/TLS VPN)·ZTNA(차세대) — 용도별 선택",
+"대칭키 암호화 한계|키 배포 문제·애플리케이션 수정 필요 — VPN은 내부적으로 IKE로 자동 교환",
+"동적 IP·포트 오답|Security by Obscurity — DNS·포트 스캔으로 발견, 전송 내용 평문 유지",
+"해시 함수 용도|무결성 검증만 — 기밀성 제공 X, 원격 지원 연결에 부적합, 파일 변조 탐지용",
+"제3자 원격 접속 보안|VPN + MFA + 최소권한 + 세션 로깅 + Jump Server + 계약상 의무 — 심층 방어 필수",
+"IPsec vs SSL VPN|IPsec(L3 강력·표준)·SSL VPN(L5-7 브라우저·방화벽 우회) — 환경에 따라 선택"
+]
+},
+{
+id:531,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following functions is performed by a virtual private network (VPN)?",
+questionKo:"다음 중 <b>가상 사설망(VPN)이 수행하는 기능</b>은 무엇인가?",
+options:[
+"A. Hiding information from sniffers on the net",
+"B. Enforcing security policies",
+"C. Detecting misuse or mistakes",
+"D. Regulating access"
+],
+optionsKo:[
+"A. <b>네트워크상의 스니퍼로부터 정보 은닉</b>",
+"B. <b>보안 정책 집행(Enforcing Security Policies)</b>",
+"C. <b>오용 또는 실수 탐지(Detecting Misuse or Mistakes)</b>",
+"D. <b>접근 통제(Regulating Access)</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>실제 기능 주체</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 스니퍼로부터 정보 은닉 ✅</td><td><b>VPN</b></td><td>정답</td><td>터널링+암호화로 <b>전송 중 데이터 보호</b> — VPN의 <b>본질적 목적</b></td></tr>
+<tr><td>B. 보안 정책 집행</td><td>방화벽·IPS·IAM</td><td>오답</td><td>VPN은 <b>보안 통신 관련 정책</b>만 지원 — 주목적 아님 (정책 집행은 방화벽 역할)</td></tr>
+<tr><td>C. 오용·실수 탐지</td><td>IDS·IPS·SIEM</td><td>오답</td><td>VPN은 <b>패킷 내용 검사 안 함</b> — 탐지 기능 없음 (암호화된 트래픽 통과)</td></tr>
+<tr><td>D. 접근 통제</td><td>ACL·IAM·NAC</td><td>오답</td><td>VPN 접속 시 로그인 필요할 수 있으나 <b>접근 통제는 VPN의 목적 아님</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "VPN의 주 기능 = 전송 데이터 보호(기밀성)"</b><br>
+• <b>VPN 본질</b>: <b>Encapsulation + Encryption</b>으로 인터넷 위 <b>가상 전용선</b> 구축<br>
+• <b>핵심 가치</b>: 공용망(인터넷) = 신뢰 불가 → <b>암호화 터널</b>로 도청 차단<br>
+• <b>보호 대상</b>: <b>전송 중(In-Transit) 데이터</b> — Sniffer·MITM으로부터 은닉<br><br>
+<b>📝 VPN의 2대 핵심 기술</b><br>
+• <b>Encapsulation(캡슐화)</b>: 원본 패킷을 새 헤더로 감쌈 — 터널링<br>
+  - 예: IP-in-IP, GRE, L2TP, IPsec<br>
+• <b>Encryption(암호화)</b>: 캡슐화된 페이로드 암호화 — 기밀성<br>
+  - IPsec ESP, TLS, AES-256<br><br>
+<b>💡 왜 A가 정답인가 — VPN의 주목적</b><br>
+• VPN = <b>Virtual Private Network</b> — "공용망 위 사설망처럼 안전하게"<br>
+• 주목적: <b>데이터 기밀성(Confidentiality)</b> 보장<br>
+• 스니퍼(Wireshark·tcpdump 등)가 캡처해도 <b>암호화되어 해독 불가</b><br>
+• 부가 기능: 무결성(HMAC), 인증(인증서·PSK) — 그러나 주목적은 아님<br><br>
+<b>🔐 오답 선택지의 실제 수행 통제</b><br>
+• <b>보안 정책 집행(B)</b> → <b>방화벽</b>(Rule-Based), <b>NGFW</b>, <b>IPS</b><br>
+• <b>오용·실수 탐지(C)</b> → <b>IDS/IPS</b>(시그니처·이상행위), <b>SIEM</b>(로그 상관분석), <b>DLP</b><br>
+• <b>접근 통제(D)</b> → <b>ACL</b>(라우터·방화벽), <b>IAM</b>(RBAC·ABAC), <b>NAC</b>(802.1X)<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "<b>VPN도 인증하지 않나?</b>" → Yes, but <b>사용자 인증은 VPN 접속 조건일 뿐 주기능 아님</b><br>
+• "<b>VPN이 보안 정책을 적용하지 않나?</b>" → <b>통신 보안 정책만 지원</b> — 전사 보안정책 집행은 방화벽 몫<br>
+• "<b>VPN도 로그 남기지 않나?</b>" → 로그는 <b>부산물</b>, 탐지·분석은 별도 도구 담당<br><br>
+<b>📋 VPN 주요 프로토콜 및 용도</b><br>
+• <b>IPsec</b>: L3 네트워크 계층 — Site-to-Site·Remote Access (IKEv2+ESP)<br>
+• <b>SSL/TLS VPN</b>: L5-7 — 브라우저 기반·방화벽 우회 용이 (OpenVPN)<br>
+• <b>WireGuard</b>: 최신 경량 VPN — 단순·고속·커널 모듈<br>
+• <b>L2TP/IPsec</b>: L2 터널링 + IPsec 암호화<br>
+• <b>PPTP</b>: <b>사용 금지</b> — MS-CHAPv2 취약<br><br>
+<b>🎯 CISA 출제 포인트 — VPN vs 기타 보안 통제</b><br>
+• <b>전송 중 기밀성 = VPN</b><br>
+• <b>저장 중 기밀성 = 디스크 암호화(BitLocker·LUKS)</b><br>
+• <b>정책 집행 = 방화벽</b><br>
+• <b>이상행위 탐지 = IDS/IPS·SIEM</b><br>
+• <b>사용자 신원 확인 = IAM·MFA</b><br>
+• <b>네트워크 분리 = VLAN·서브넷·DMZ</b><br><br>
+<b>🔑 핵심 암기</b><br>
+• VPN = <b>Tunneling + Encryption</b> — 공용망 위 안전한 가상 전용선<br>
+• <b>주기능 = 기밀성(Hiding from Sniffers)</b> ✅<br>
+• 부가: 무결성·인증 제공 가능하지만 <b>목적은 전송 보호</b><br>
+• 정책 집행·탐지·접근 통제는 <b>각각 별도 통제</b>(방화벽·IDS·IAM)가 담당
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Virtual Private Network (VPN)",
+keyConcepts:[
+"VPN 주기능|스니퍼로부터 전송 데이터 은닉 — Tunneling + Encryption으로 기밀성 보장",
+"VPN 2대 기술|Encapsulation(캡슐화·터널링) + Encryption(암호화) — 공용망 위 가상 전용선",
+"VPN의 CIA 제공|기밀성(주) + 무결성(HMAC) + 인증(인증서·PSK) — 주목적은 기밀성",
+"VPN ≠ 정책 집행|보안 통신 정책만 지원 — 전사 보안정책 집행은 방화벽·NGFW·IPS 역할",
+"VPN ≠ 탐지|패킷 내용 검사 안 함 — 오용·실수 탐지는 IDS·IPS·SIEM·DLP 담당",
+"VPN ≠ 접근통제|로그인은 VPN 접속 조건 — 접근 통제는 ACL·IAM·NAC 역할",
+"주요 VPN 프로토콜|IPsec(L3)·SSL/TLS VPN(L5-7)·WireGuard(경량)·L2TP/IPsec·PPTP(금지)",
+"전송 vs 저장 암호화|전송(VPN·TLS)·저장(BitLocker·LUKS) — 보호 대상에 따라 구분",
+"함정 포인트|VPN이 인증·정책·로그 부가기능 제공하나 목적은 전송 보호 — 주기능 구분 필수"
+]
+},
+{
+id:532,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following is the GREATEST concern associated with the use of peer-to-peer computing?",
+questionKo:"다음 중 <b>P2P(Peer-to-Peer) 컴퓨팅 사용</b>과 관련하여 <b>가장 큰 우려</b>는 무엇인가?",
+options:[
+"A. Virus infection",
+"B. Data leakage",
+"C. Network performance issues",
+"D. Unauthorized software usage"
+],
+optionsKo:[
+"A. <b>바이러스 감염(Virus Infection)</b>",
+"B. <b>데이터 유출(Data Leakage)</b>",
+"C. <b>네트워크 성능 문제(Network Performance Issues)</b>",
+"D. <b>비인가 소프트웨어 사용(Unauthorized Software Usage)</b>"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>위험 유형</th><th>심각도</th><th>설명</th></tr>
+<tr><td>A. 바이러스 감염</td><td>악성코드</td><td>중간</td><td>P2P가 감염 경로지만 <b>AV·EDR로 완화 가능</b> — 데이터 유출보다 덜 심각</td></tr>
+<tr class="correct-row"><td>B. 데이터 유출 ✅</td><td><b>기밀성 침해</b></td><td><b>최고</b></td><td>P2P는 <b>사용자 하드디스크 공유</b> — 지적재산·기밀 정보 <b>인터넷 전면 노출</b></td></tr>
+<tr><td>C. 네트워크 성능</td><td>가용성</td><td>낮음</td><td>대역폭 소모 문제 — <b>QoS·트래픽 셰이핑</b>으로 완화 가능</td></tr>
+<tr><td>D. 비인가 소프트웨어</td><td>규정 위반</td><td>중간</td><td>P2P로 불법 SW 다운로드 가능하나 <b>SW 자산관리·엔드포인트 통제</b>로 방지 가능</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "P2P 최대 위험 = 데이터 유출"</b><br>
+• <b>P2P 본질</b>: 사용자 PC의 <b>특정 폴더를 인터넷에 공유</b> — 중앙 서버 없이 peer 간 직접 통신<br>
+• <b>핵심 위협</b>: <b>의도치 않은 폴더 공유 설정</b> → 민감정보 전 세계 노출<br>
+• <b>대표 사례</b>: LimeWire·Kazaa·eMule·BitTorrent — 문서·DB·이메일 유출 사고<br><br>
+<b>📝 P2P 컴퓨팅 개요</b><br>
+• <b>정의</b>: Client-Server 모델과 달리 <b>각 노드가 Client이자 Server</b>인 분산 네트워크<br>
+• <b>용도</b>: 파일 공유(BitTorrent), 메신저, VoIP(초기 Skype), 암호화폐(비트코인)<br>
+• <b>특징</b>: 중앙 통제 없음 → <b>보안 통제 적용 어려움</b><br><br>
+<b>💡 왜 B가 GREATEST인가 — 위험 비교</b><br>
+• <b>데이터 유출</b>: <b>복구 불가</b> — 한 번 공개되면 회수 불가능<br>
+  - 영향: 지적재산 손실·영업비밀 유출·GDPR 위반·주가 하락·소송<br>
+• 바이러스 감염(A): <b>복구 가능</b> — 백신·재설치로 해결<br>
+• 성능 문제(C): <b>일시적</b> — 대역폭 확장·QoS로 해결<br>
+• 비인가 SW(D): <b>정책 위반</b>이지만 데이터 손실보다 경미<br><br>
+<b>🔐 P2P 데이터 유출 메커니즘</b><br>
+• <b>폴더 공유 오설정</b>: "My Documents" 전체 공유 → 민감파일 노출<br>
+• <b>자동 업로드</b>: 다운로드한 파일 자동 재공유 → 기업 문서 유출<br>
+• <b>인덱싱</b>: P2P 검색엔진에 파일명·내용 인덱싱 → Google처럼 검색 가능<br>
+• <b>추적 불가</b>: 분산 네트워크 → <b>유출 경로 파악·회수 불가</b><br><br>
+<b>⚠️ 실제 사고 사례</b><br>
+• <b>미국 연방기관 기밀 유출</b>: P2P 통해 대통령 전용기 설계도·NSA 문서 유출<br>
+• <b>병원 환자 기록 유출</b>: HIPAA 위반 — P2P 공유 PC에서 환자 DB 노출<br>
+• <b>금융사 고객 정보</b>: 직원 PC에 설치된 P2P → 수만 명 개인정보 유출<br><br>
+<b>🛡️ P2P 통제 방안</b><br>
+• <b>예방</b>: 엔드포인트 보안(EDR)으로 P2P 클라이언트 설치 차단<br>
+• <b>네트워크</b>: 방화벽·NGFW로 P2P 포트·프로토콜 차단, DPI로 트래픽 탐지<br>
+• <b>DLP</b>: 민감정보 유출 탐지·차단<br>
+• <b>정책</b>: AUP(Acceptable Use Policy)에 P2P 사용 금지 명시<br>
+• <b>교육</b>: 사용자 인식 제고 — P2P 위험성 교육<br>
+• <b>탐지</b>: SIEM·IDS로 P2P 시그니처·비정상 트래픽 모니터링<br><br>
+<b>🎯 CISA 출제 포인트 — GREATEST 판단 기준</b><br>
+• CISA는 <b>비즈니스 영향도(Business Impact)</b> 관점에서 판단<br>
+• <b>복구 가능성</b>: 복구 불가 > 복구 가능<br>
+• <b>데이터 민감도</b>: 기밀·PII > 일반 데이터<br>
+• <b>재무·법적 영향</b>: 규제 위반·소송 > 운영 효율<br>
+• P2P 문제에서 <b>"기밀성"</b> 관련 답이 정답일 가능성 높음<br><br>
+<b>🔑 핵심 암기</b><br>
+• P2P = <b>분산 공유 네트워크</b> — 중앙 통제 없음<br>
+• <b>최대 위협 = 데이터 유출(Data Leakage)</b> ✅<br>
+• 이유: <b>의도치 않은 폴더 공유 + 복구 불가 + 지적재산 손실</b><br>
+• 나머지 위험(바이러스·성능·비인가 SW)은 <b>통제·복구 가능</b>
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Peer-to-Peer Computing Risks",
+keyConcepts:[
+"P2P 최대 위험|데이터 유출(Data Leakage) — 사용자 하드디스크 공유로 기밀·지적재산 노출",
+"P2P 정의|Client-Server 없이 각 노드가 Peer로 직접 통신하는 분산 네트워크 — 중앙 통제 부재",
+"유출 메커니즘|폴더 오설정·자동 재공유·P2P 인덱싱 → 민감정보 인터넷 전면 노출",
+"복구 불가성|한 번 유출되면 분산 네트워크 특성상 회수·추적 불가 — 영구적 손실",
+"위험 비교|데이터 유출(복구불가) > 바이러스·성능·비인가SW(통제·복구 가능)",
+"대표 P2P SW|LimeWire·Kazaa·eMule·BitTorrent — 과거 대규모 유출사고 원인",
+"P2P 통제|EDR 설치차단·방화벽 포트차단·DPI·DLP·AUP 정책·사용자 교육·SIEM 모니터링",
+"실제 사고|미국 연방기관·병원 HIPAA·금융사 고객정보 유출 — P2P 통한 대규모 침해사례",
+"CISA 판단기준|GREATEST = 비즈니스 영향도 최대 — 복구불가·기밀성 침해·법적 책임 우선"
+]
+},
+{
+id:533,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An enterprise stores and transmits sensitive customer information within a secure wired network. It has implemented an additional wireless local area network (WLAN) to support general-purpose staff computing needs. A few employees with WLAN access have legitimate business reasons for also accessing customer information. Which of the following represents the BEST control to ensure separation of the two networks?",
+questionKo:"기업이 <b>안전한 유선 네트워크</b>에서 민감한 고객정보를 저장·전송한다. 일반 업무용으로 <b>WLAN(무선망)</b>을 추가 구축했다. WLAN 접속자 중 <b>일부 직원은 정당한 업무 사유로 고객정보에도 접근</b>해야 한다. 두 네트워크의 <b>분리를 보장하는 가장 적절한 통제</b>는?",
+options:[
+"A. Establish two physically separate networks.",
+"B. Implement virtual local area network (VLAN) segmentation.",
+"C. Install a dedicated router between the two networks.",
+"D. Install a firewall between the networks."
+],
+optionsKo:[
+"A. <b>물리적으로 분리된 두 개의 네트워크 구축</b>",
+"B. <b>VLAN 세그멘테이션 구현</b>",
+"C. <b>전용 라우터 설치</b>",
+"D. <b>두 네트워크 사이에 방화벽 설치</b>"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>접근 허용</th><th>보안 수준</th><th>평가</th></tr>
+<tr><td>A. 물리적 분리</td><td><b>불가능</b></td><td>최고</td><td>오답 — 완전 분리 시 <b>정당한 접근 필요자도 차단</b>, 업무 요구사항 미충족</td></tr>
+<tr><td>B. VLAN 세그멘테이션</td><td>가능</td><td>중간</td><td>오답 — <b>VLAN Hopping·Double Tagging</b> 공격으로 분리 우회 가능, L2 통제만</td></tr>
+<tr><td>C. 전용 라우터</td><td>가능</td><td>약함</td><td>오답 — 라우팅만 수행, <b>상태 추적·정책 기반 필터링 부재</b> → 방화벽보다 약함</td></tr>
+<tr class="correct-row"><td>D. 방화벽 ✅</td><td>가능(정책 기반)</td><td><b>강력</b></td><td>정답 — <b>인가된 WLAN 사용자만</b> 유선망 접근 허용, Stateful·ACL·로깅</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "분리 + 선별적 접근 허용" = 방화벽</b><br>
+• <b>요구사항 1</b>: 두 네트워크 분리 (보안) — 기본 격리<br>
+• <b>요구사항 2</b>: <b>정당한 사유 직원은 접근 가능</b> — 선별적 허용<br>
+• <b>해결</b>: <b>방화벽 정책</b>으로 <b>인가된 트래픽만</b> 통과 + 나머지 차단<br><br>
+<b>📝 왜 D가 BEST인가 — 방화벽의 2중 기능</b><br>
+• <b>Separation(분리)</b>: 기본 정책은 "Deny All" — 두 네트워크 격리<br>
+• <b>Controlled Access(통제된 접근)</b>: 예외 규칙으로 인가자만 허용<br>
+  - 예: "WLAN의 특정 IP/사용자만 유선망 DB 서버 접근 가능"<br>
+• <b>Stateful Inspection</b>: 연결 상태 추적 → 응답 패킷만 리턴 허용<br>
+• <b>로깅·감사</b>: 모든 교차 트래픽 기록 — 감사 추적 가능<br><br>
+<b>💡 오답 상세 분석</b><br>
+<b>A. 물리적 분리 — "가장 안전하지만 요구사항 미충족"</b><br>
+• 완전 격리 → 접근 필요 직원도 차단<br>
+• <b>BEST ≠ SAFEST</b> — 비즈니스 요구사항 고려 필수<br>
+• 에어갭(Air Gap)은 기밀정보 전용 환경에만 적합<br><br>
+<b>B. VLAN — "L2 분리, 우회 가능"</b><br>
+• VLAN = 논리적 분리 — 스위치 포트 그룹핑<br>
+• <b>공격 기법</b>:<br>
+  - <b>VLAN Hopping</b>: Switch Spoofing·Double Tagging으로 타 VLAN 침투<br>
+  - <b>Native VLAN 취약점</b>: Trunk 포트 오설정 시 무단 접근<br>
+• 적절한 L3 필터링 없이 VLAN만으로는 <b>신뢰할 수 있는 격리 X</b><br><br>
+<b>C. 전용 라우터 — "포워딩만, 보안 없음"</b><br>
+• 라우터 기본 기능: <b>IP 패킷 라우팅</b>만 수행<br>
+• ACL 지원하나 <b>정적·단순</b> — 세션 상태 추적 없음<br>
+• <b>방화벽 vs 라우터</b>: 방화벽이 보안 특화, 라우터는 연결성 특화<br><br>
+<b>🔐 방화벽의 세부 유형 및 이 문제의 적용</b><br>
+• <b>Packet Filter</b>: 헤더 기반 필터링 (IP·Port) — 기본 수준<br>
+• <b>Stateful Firewall</b>: 연결 상태 추적 — <b>이 문제에 적합</b><br>
+• <b>Application Gateway(Proxy)</b>: L7 검사 — 특정 서비스 보호<br>
+• <b>NGFW(Next-Gen Firewall)</b>: DPI·IPS·사용자 인식 — 최적<br><br>
+<b>🎯 CISA 출제 포인트 — "BEST" 판단 원칙</b><br>
+• CISA에서 <b>"BEST"</b> = "보안 + 비즈니스 요구사항 둘 다 충족"<br>
+• <b>SAFEST ≠ BEST</b>: 완벽한 보안이 업무 마비시키면 BEST 아님<br>
+• 이 문제: "접근 필요 있는 직원도 있다" → <b>선별적 허용 가능한 통제</b>가 정답<br>
+• 물리적 분리는 <b>요구사항 무시 → 오답</b><br><br>
+<b>📋 네트워크 분리 통제 비교표</b><br>
+• <b>Air Gap</b>: 완전 물리 분리 — 최고 보안, 유연성 Zero<br>
+• <b>Firewall</b>: 논리 분리 + 정책 기반 허용 — <b>보안+유연성 균형</b><br>
+• <b>VLAN</b>: L2 논리 분리 — 우회 가능, 관리 편의<br>
+• <b>Router ACL</b>: L3 필터링 — 정적·단순<br>
+• <b>DMZ</b>: 공개망과 내부망 사이 완충 — 웹서버 등<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "물리적 분리가 제일 안전" → <b>업무 접근 필요성 간과 → 오답</b><br>
+• "VLAN으로 충분" → <b>VLAN Hopping 취약점</b> 간과<br>
+• "라우터만 있으면 됨" → <b>상태 추적·보안 정책 부재</b><br><br>
+<b>🔑 핵심 암기</b><br>
+• 분리 + 선별적 접근 = <b>방화벽</b> ✅<br>
+• 완전 분리 = 물리적 분리 (접근 완전 차단)<br>
+• 논리 분리 = VLAN·Subnet (우회 가능성)<br>
+• 방화벽 = <b>보안 특화 + 정책 기반 교차 허용</b> — BEST<br>
+• BEST ≠ SAFEST — 비즈니스 요구사항 충족 필수
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Firewall Network Segmentation",
+keyConcepts:[
+"BEST 통제|방화벽 — 분리+선별적 접근 허용 둘 다 충족 (정책 기반 Stateful Inspection)",
+"물리적 분리 한계|최고 보안이나 정당한 업무 접근 차단 — BEST ≠ SAFEST",
+"VLAN 취약점|VLAN Hopping·Double Tagging·Native VLAN 공격으로 L2 우회 가능",
+"라우터 한계|라우팅만 수행 — 상태 추적·동적 정책 부재로 방화벽보다 약함",
+"방화벽 2중 기능|기본 Deny All(분리) + 예외 규칙(인가자 허용) — 보안+유연성 균형",
+"Stateful Inspection|연결 상태 추적·응답 패킷 자동 허용 — 단순 Packet Filter 대비 강력",
+"방화벽 유형|Packet Filter·Stateful·ALG(Proxy)·NGFW — 이 문제는 Stateful 이상 적합",
+"CISA BEST 원칙|보안+비즈니스 요구사항 모두 충족 — SAFEST가 아닌 최적 균형점",
+"함정 포인트|'가장 안전'에 현혹 금지 — 요구사항(선별적 접근) 명시 시 유연성 통제 선택"
+]
+},
+{
+id:534,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"A characteristic of User Datagram Protocol (UDP) in network communications is:",
+questionKo:"네트워크 통신에서 <b>UDP(User Datagram Protocol)의 특성</b>은?",
+options:[
+"A. packets may arrive out of order.",
+"B. increased communication latency.",
+"C. incompatibility with packet broadcast.",
+"D. error correction may slow down processing."
+],
+optionsKo:[
+"A. <b>패킷이 순서 없이 도착할 수 있다</b>",
+"B. <b>통신 지연(Latency) 증가</b>",
+"C. <b>패킷 브로드캐스트와 호환 불가</b>",
+"D. <b>오류 수정으로 인해 처리 속도가 느려질 수 있다</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>실제 UDP 특성</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 순서 없이 도착 ✅</td><td><b>Unreliable</b></td><td>정답</td><td>Handshaking·순서보장 없음 → <b>순서뒤바뀜·중복·손실 가능</b></td></tr>
+<tr><td>B. 지연 증가</td><td>지연 감소</td><td>오답</td><td>오류 검사 없음 → <b>Low Latency</b> — 실시간 스트리밍에 유리</td></tr>
+<tr><td>C. 브로드캐스트 불가</td><td>브로드캐스트·멀티캐스트 지원</td><td>오답</td><td>UDP는 <b>Broadcast(LAN 전체) + Multicast(가입자)</b> 모두 호환</td></tr>
+<tr><td>D. 오류수정으로 느림</td><td>오류수정 없음</td><td>오답</td><td>UDP는 <b>오류 검사·수정 수행 안 함</b> — 애플리케이션 계층에 위임</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "UDP = 비신뢰성·저지연·연결없음"</b><br>
+• <b>UDP 설계 철학</b>: <b>Simplicity over Reliability</b> — 단순·빠름 우선<br>
+• <b>Handshaking 없음</b>: 연결 수립·종료 절차 생략<br>
+• <b>순서 보장 없음</b>: 각 데이터그램 독립 전송 → <b>out-of-order 가능</b><br>
+• <b>중복·손실 허용</b>: 재전송·확인응답 없음<br><br>
+<b>📝 UDP vs TCP 비교</b><br>
+<table>
+<tr><th>속성</th><th>TCP</th><th>UDP</th></tr>
+<tr><td>연결 방식</td><td>Connection-Oriented (3-way Handshake)</td><td><b>Connectionless</b></td></tr>
+<tr><td>신뢰성</td><td>Reliable (ACK·재전송)</td><td><b>Unreliable</b></td></tr>
+<tr><td>순서 보장</td><td>Sequenced</td><td><b>No Ordering</b></td></tr>
+<tr><td>오류 검사</td><td>Checksum+재전송</td><td>Checksum만 (수정 X)</td></tr>
+<tr><td>흐름 제어</td><td>Window·Slow Start</td><td><b>없음</b></td></tr>
+<tr><td>혼잡 제어</td><td>Congestion Avoidance</td><td><b>없음</b></td></tr>
+<tr><td>속도</td><td>느림 (오버헤드)</td><td><b>빠름</b></td></tr>
+<tr><td>헤더 크기</td><td>20~60 bytes</td><td><b>8 bytes</b></td></tr>
+<tr><td>브로드캐스트</td><td>지원 안 함</td><td><b>지원</b></td></tr>
+<tr><td>멀티캐스트</td><td>지원 안 함</td><td><b>지원</b></td></tr>
+</table><br>
+<b>💡 왜 A가 정답인가 — UDP의 본질적 한계</b><br>
+• UDP는 <b>"Fire and Forget"</b> 방식 — 보낸 후 확인 안 함<br>
+• 각 데이터그램은 <b>독립적 라우팅</b> → 서로 다른 경로로 이동 가능<br>
+• 도착 시점·순서 예측 불가 → <b>순서 뒤바뀜·중복·누락 정상적 현상</b><br>
+• 순서 복원·재전송은 <b>애플리케이션 책임</b><br><br>
+<b>🔐 UDP 주요 사용처</b><br>
+• <b>DNS</b> (UDP 53): 빠른 이름 해석 — 재시도로 충분<br>
+• <b>DHCP</b> (UDP 67/68): 브로드캐스트 기반 IP 할당<br>
+• <b>SNMP</b> (UDP 161/162): 네트워크 관리·모니터링<br>
+• <b>TFTP</b> (UDP 69): 간단 파일 전송<br>
+• <b>VoIP·화상회의</b>: SIP(5060)·RTP — <b>실시간성 > 완전성</b><br>
+• <b>스트리밍</b>: 넷플릭스·유튜브 일부 — 지연보다 누락 감수<br>
+• <b>온라인 게임</b>: FPS·MMORPG — 최신 상태 > 과거 패킷<br>
+• <b>NTP</b> (UDP 123): 시간 동기화<br>
+• <b>QUIC</b> (UDP 443): HTTP/3 기반 프로토콜<br><br>
+<b>🎯 CISA 출제 포인트 — UDP 보안 특성</b><br>
+• <b>UDP Flood 공격</b>: DDoS 유형 — 대량 UDP 패킷 전송으로 대역폭 고갈<br>
+  - Amplification 가능: DNS·NTP·Memcached 응답 증폭 공격<br>
+• <b>스푸핑 취약</b>: 연결 없음 → <b>Source IP 위조 쉬움</b> (TCP는 3-way로 방지)<br>
+• <b>방화벽 검사 어려움</b>: Stateless → <b>상태 기반 필터링 제한적</b><br>
+• <b>감사 로깅</b>: 세션 개념 없음 → <b>추적 난이도 높음</b><br><br>
+<b>📋 UDP가 적합한 시나리오 판단 기준</b><br>
+• ✅ <b>실시간성이 중요</b>: VoIP, 스트리밍, 게임<br>
+• ✅ <b>손실 허용 가능</b>: 일부 패킷 누락 무방<br>
+• ✅ <b>브로드캐스트·멀티캐스트 필요</b>: DHCP, 네트워크 검색<br>
+• ✅ <b>단순 요청-응답</b>: DNS 쿼리<br>
+• ❌ <b>파일 전송·이메일</b>: 완전성 필요 → TCP<br>
+• ❌ <b>금융 거래</b>: 손실 불허 → TCP<br><br>
+<b>⚠️ 함정 포인트</b><br>
+• "UDP는 느리다" → <b>오답</b>, UDP는 TCP보다 <b>빠름</b> (오버헤드 없음)<br>
+• "UDP는 브로드캐스트 불가" → <b>오답</b>, DHCP가 UDP 브로드캐스트 사용<br>
+• "UDP는 오류 수정한다" → <b>오답</b>, Checksum만 있고 수정은 안 함<br><br>
+<b>🔑 핵심 암기</b><br>
+• UDP = <b>Connectionless + Unreliable + Fast</b><br>
+• <b>순서 보장 X → Out-of-Order 도착 가능</b> ✅<br>
+• Latency <b>감소</b> (오류검사 없음)<br>
+• Broadcast·Multicast <b>지원</b><br>
+• Error Correction <b>없음</b> (애플리케이션 위임)<br>
+• 보안 관점: <b>UDP Flood·Amplification·Spoofing 취약</b>
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — TCP/UDP Protocol Characteristics",
+keyConcepts:[
+"UDP 핵심 특성|Connectionless·Unreliable·Fast — Handshaking 없음, 순서·신뢰성 보장 X",
+"UDP 데이터그램|독립 전송·독립 라우팅 → 순서 뒤바뀜·중복·손실 모두 정상 현상",
+"UDP vs TCP|UDP 8바이트 헤더·3-way 없음·ACK 없음 vs TCP 신뢰성·순서·흐름제어",
+"UDP Latency|오류검사·재전송 없음 → Low Latency — 실시간 스트리밍·VoIP에 유리",
+"UDP 브로드캐스트|Broadcast·Multicast 모두 지원 — DHCP·SNMP·DNS가 대표적 사용",
+"UDP 주요 포트|DNS(53)·DHCP(67/68)·SNMP(161)·TFTP(69)·NTP(123)·QUIC(443)",
+"UDP 보안 취약|UDP Flood·Amplification(DNS·NTP·Memcached)·Source IP Spoofing",
+"UDP 적합성|실시간성·손실 허용·브로드캐스트 필요 시 / 완전성 필요 업무는 TCP",
+"함정 포인트|UDP 느리지 않음·브로드캐스트 가능·오류수정 안 함 — TCP 특성과 혼동 주의"
+]
+},
+{
+id:535,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"When planning an audit of a network setup, an information systems (IS) auditor should give highest priority to obtaining which of the following network documentation?",
+questionKo:"네트워크 설정(Network Setup)에 대한 감사를 계획할 때, IS 감사인이 <b>가장 우선적으로 확보</b>해야 할 네트워크 문서는?",
+options:[
+"A. Wiring and schematic diagram",
+"B. Users' lists and responsibilities",
+"C. Application lists and their details",
+"D. Backup and recovery procedures"
+],
+optionsKo:[
+"A. <b>배선도 및 개략도(Wiring and Schematic Diagram)</b>",
+"B. <b>사용자 목록 및 책임(Users' Lists and Responsibilities)</b>",
+"C. <b>애플리케이션 목록 및 상세(Application Lists and Details)</b>",
+"D. <b>백업 및 복구 절차(Backup and Recovery Procedures)</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>감사 범위 적합성</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 배선도·개략도 ✅</td><td><b>네트워크 설정 직접 관련</b></td><td>정답</td><td>장비·연결·IP·토폴로지 파악 — <b>네트워크 감사의 필수 전제</b></td></tr>
+<tr><td>B. 사용자 목록</td><td>접근 통제 감사용</td><td>오답</td><td>사용자 감사·IAM 감사에 필요 — <b>네트워크 설정 감사와 무관</b></td></tr>
+<tr><td>C. 애플리케이션 목록</td><td>애플리케이션 감사용</td><td>오답</td><td>애플리케이션 감사에 필요 — 네트워크 <b>구성(Configuration) 감사와 무관</b></td></tr>
+<tr><td>D. 백업·복구 절차</td><td>BCP·DR 감사용</td><td>오답</td><td>중요하나 <b>네트워크 설정 감사의 우선순위 아님</b> — 별도 감사 영역</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "감사 대상 = 네트워크 설정(Setup)"</b><br>
+• <b>감사 범위</b>: 네트워크 <b>구성·토폴로지·장비</b> 자체<br>
+• <b>필요 정보</b>: 물리·논리적 연결, IP 할당, VLAN, 방화벽 위치<br>
+• <b>우선순위 원칙</b>: <b>감사 대상에 가장 직접적인 문서 먼저</b><br><br>
+<b>📝 배선도·개략도에 포함되는 정보</b><br>
+• <b>물리적 배선도(Wiring Diagram)</b><br>
+  - 케이블 경로·패치 패널·랙 배치<br>
+  - 장비 간 물리 연결 (UTP·광섬유·동축)<br>
+  - 전원·냉각 배선<br>
+• <b>논리적 개략도(Schematic/Logical Diagram)</b><br>
+  - 네트워크 토폴로지 (스타·버스·링·메시)<br>
+  - IP 주소 체계·서브넷·VLAN<br>
+  - 라우터·스위치·방화벽·IDS 배치<br>
+  - DMZ·내부망·Wi-Fi 세그먼트<br>
+  - WAN 연결·인터넷 게이트웨이<br><br>
+<b>💡 왜 A가 Highest Priority인가</b><br>
+• <b>Scoping(범위 설정)의 전제</b>: 네트워크 구조 모르면 감사 불가<br>
+• <b>위험 평가 기반</b>: 토폴로지 기반 취약점·공격 경로 식별<br>
+• <b>통제 매핑</b>: 방화벽·IDS 위치 확인 → 적절성 평가<br>
+• <b>감사 계획 수립</b>: 어디를 집중 점검할지 결정<br>
+• 다른 문서는 <b>감사 진행 중 필요 시 추가 확보</b>하면 됨<br><br>
+<b>🔐 네트워크 감사에서 확인할 핵심 사항</b><br>
+• <b>경계 보안</b>: 인터넷-내부망 경계 방화벽·DMZ 구성<br>
+• <b>세그멘테이션</b>: 중요 시스템 분리 여부<br>
+• <b>접근 경로</b>: 원격 접속 VPN·Jump Server 위치<br>
+• <b>비인가 연결</b>: Shadow IT·비인가 AP·모뎀 유무<br>
+• <b>Single Point of Failure</b>: 가용성 취약점<br>
+• <b>IP·VLAN 설계</b>: 적절한 분리·주소 할당<br><br>
+<b>🎯 CISA 출제 포인트 — 감사 계획의 기본 원칙</b><br>
+• <b>Top-Down 접근</b>: 큰 그림(토폴로지) → 세부(장비 설정)<br>
+• <b>Scope First</b>: 감사 범위·대상 명확화가 최우선<br>
+• <b>Documentation Review</b>: 현장 점검 전 문서 검토 필수<br>
+• <b>Evidence 확보</b>: 배선도·개략도 = 기본 증거 자료<br><br>
+<b>📋 감사 유형별 우선 확보 문서 비교</b><br>
+• <b>네트워크 감사</b>: 배선도·개략도·장비 목록·방화벽 규칙<br>
+• <b>접근통제 감사</b>: 사용자 목록·권한 매트릭스·역할 정의<br>
+• <b>애플리케이션 감사</b>: 애플리케이션 목록·SDLC 문서·소스코드<br>
+• <b>BCP/DR 감사</b>: 백업·복구 절차·RTO/RPO·BIA 결과<br>
+• <b>보안 정책 감사</b>: 정책 문서·표준·지침<br><br>
+<b>⚠️ 함정 주의</b><br>
+• 다른 선택지도 모두 <b>중요한 문서</b>이지만 <b>해당 감사의 우선순위가 아님</b><br>
+• 문제의 <b>"network setup"</b> 키워드 주목 — 네트워크 구성 자체가 대상<br>
+• CISA는 항상 <b>"대상에 가장 직접적인 것"</b>이 정답<br>
+• "중요한 것"과 "우선순위가 높은 것"은 다름<br><br>
+<b>🔑 핵심 암기</b><br>
+• 네트워크 감사 계획 = <b>배선도·개략도 최우선 확보</b> ✅<br>
+• 이유: <b>토폴로지·연결·IP·장비 위치 파악 = 감사 범위 설정의 전제</b><br>
+• 사용자 목록 → 접근통제 감사<br>
+• 애플리케이션 목록 → 애플리케이션 감사<br>
+• 백업 절차 → BCP/DR 감사<br>
+• <b>CISA 원칙</b>: 감사 유형에 맞는 핵심 문서 먼저 확보
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Network Audit Planning",
+keyConcepts:[
+"네트워크 감사 최우선|배선도·개략도 — 토폴로지·장비·IP·연결 파악이 감사 범위 설정 전제",
+"배선도 포함 정보|물리 배선(케이블·랙)·논리 토폴로지·VLAN·서브넷·방화벽·IDS 위치",
+"감사 계획 원칙|Top-Down 접근 — 큰 그림(토폴로지) → 세부(장비 설정) 순서",
+"Scope First|감사 범위 명확화가 최우선 — 문서 검토 후 현장 점검",
+"감사 유형별 문서|네트워크(배선도)·접근통제(사용자목록)·앱(앱목록)·BCP(백업절차)",
+"오답 이유|사용자·앱·백업 모두 중요하나 네트워크 설정 감사의 우선순위 아님",
+"CISA Highest Priority|감사 대상에 가장 직접적인 문서 — '중요'와 '우선순위'는 다름",
+"함정 포인트|모든 선택지가 유의미한 문서 — 감사 대상(network setup) 키워드로 선별",
+"네트워크 감사 점검|경계 방화벽·세그멘테이션·원격 접속·Shadow IT·SPoF·IP/VLAN 설계"
+]
+},
+{
+id:536,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following is a passive attack to a network?",
+questionKo:"다음 중 <b>네트워크에 대한 수동적(Passive) 공격</b>은?",
+options:[
+"A. Message modification",
+"B. Masquerading",
+"C. Denial-of-service",
+"D. Traffic analysis"
+],
+optionsKo:[
+"A. <b>메시지 수정(Message Modification)</b>",
+"B. <b>가장(Masquerading)</b>",
+"C. <b>서비스 거부(Denial-of-Service)</b>",
+"D. <b>트래픽 분석(Traffic Analysis)</b>"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>공격 유형</th><th>시스템 변경</th><th>설명</th></tr>
+<tr><td>A. 메시지 수정</td><td><b>Active</b></td><td>예</td><td>오답 — 메시지 <b>캡처·변경·삭제·순서변경·지연</b> 수행 → <b>무결성 침해 능동 공격</b></td></tr>
+<tr><td>B. Masquerading</td><td><b>Active</b></td><td>예</td><td>오답 — 타인 신원 도용·가장 → <b>인증 우회 능동 공격</b> (Spoofing)</td></tr>
+<tr><td>C. DoS</td><td><b>Active</b></td><td>예</td><td>오답 — 서버에 대량 요청·패킷 → <b>가용성 침해 능동 공격</b></td></tr>
+<tr class="correct-row"><td>D. 트래픽 분석 ✅</td><td><b>Passive</b></td><td>아니오</td><td>정답 — 트래픽 흐름 관찰만 — <b>개입·변경 없이 기밀성 침해</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "Passive Attack = 관찰만, 변경 없음"</b><br>
+• <b>Passive(수동적) 공격</b>: 데이터·시스템에 <b>영향을 주지 않고 관찰·수집</b><br>
+  - 목적: <b>기밀성(Confidentiality) 침해</b><br>
+  - 특징: 탐지 어려움, 흔적 남지 않음<br>
+• <b>Active(능동적) 공격</b>: 데이터·시스템을 <b>변경·파괴·방해</b><br>
+  - 목적: 무결성·가용성·인증 침해<br>
+  - 특징: 탐지 상대적 용이, 흔적 발생<br><br>
+<b>📝 Passive vs Active 공격 분류</b><br>
+<table>
+<tr><th>Passive Attacks (수동적)</th><th>Active Attacks (능동적)</th></tr>
+<tr><td><b>Traffic Analysis</b> (트래픽 분석)</td><td>Masquerading (가장·스푸핑)</td></tr>
+<tr><td><b>Eavesdropping</b> (도청·스니핑)</td><td>Message Modification (메시지 변조)</td></tr>
+<tr><td><b>Shoulder Surfing</b></td><td>Replay Attack (재전송 공격)</td></tr>
+<tr><td><b>Dumpster Diving</b></td><td>Denial-of-Service (DoS·DDoS)</td></tr>
+<tr><td><b>Network Sniffing</b> (내용 안 봄)</td><td>Session Hijacking</td></tr>
+<tr><td>Wiretapping (수동)</td><td>Man-in-the-Middle (MITM)</td></tr>
+<tr><td>Port Scanning (논란 있음)</td><td>Malware·Virus·Worm</td></tr>
+<tr><td>정보 수집·정찰(Reconnaissance)</td><td>SQL Injection·XSS</td></tr>
+</table><br>
+<b>💡 왜 D가 정답인가 — Traffic Analysis 심층 분석</b><br>
+• <b>정의</b>: 트래픽의 <b>패턴·양·빈도·출발지·목적지</b>를 관찰하여 정보 추론<br>
+• <b>목적</b>: 통신 내용 자체가 아닌 <b>메타데이터(Metadata)</b> 획득<br>
+• <b>암호화된 트래픽도 위험</b>: 내용은 못 봐도 <b>누가·언제·얼마나</b>는 파악 가능<br>
+• <b>추론 가능 정보</b>:<br>
+  - 통신 당사자 (Source/Dest IP)<br>
+  - 통신 시점·빈도 (패턴 분석)<br>
+  - 데이터 양 (대용량 이동 = 중요 파일)<br>
+  - 프로토콜·포트 (서비스 유형 추정)<br>
+  - 지리적 위치 (IP 지오로케이션)<br><br>
+<b>🔐 Traffic Analysis 실제 시나리오</b><br>
+• <b>기업 M&A 탐지</b>: 두 회사 간 이메일 급증 → 합병 추측<br>
+• <b>군사 정보 수집</b>: 지휘부 통신 패턴 → 작전 시점 예측<br>
+• <b>익명 네트워크 공격</b>: Tor 트래픽 분석 → 사용자 식별<br>
+• <b>지능형 지속 공격(APT)</b>: 타겟 정찰 단계에서 활용<br><br>
+<b>🎯 CISA 출제 포인트 — 공격 분류 판단 기준</b><br>
+• <b>판단 질문</b>: "공격자가 데이터·시스템을 <b>변경</b>하는가?"<br>
+  - Yes → <b>Active</b><br>
+  - No (관찰만) → <b>Passive</b><br>
+• <b>CIA 침해 유형</b>:<br>
+  - Passive → 주로 <b>Confidentiality(기밀성)</b><br>
+  - Active → 주로 <b>Integrity(무결성) + Availability(가용성)</b><br><br>
+<b>📋 오답 선택지 심층 분석</b><br>
+<b>A. Message Modification — Active (무결성 침해)</b><br>
+• 메시지 중간 탈취 → 수정·삭제·순서 변경·지연<br>
+• 대응: <b>디지털 서명·HMAC·MAC</b><br>
+<b>B. Masquerading — Active (인증 침해)</b><br>
+• 타인 신원·IP·MAC·세션 토큰 도용<br>
+• 예: IP Spoofing, MAC Spoofing, Session Hijacking<br>
+• 대응: <b>MFA·상호 인증·인증서</b><br>
+<b>C. DoS — Active (가용성 침해)</b><br>
+• 리소스 고갈 공격 — SYN Flood, UDP Flood, HTTP Flood<br>
+• DDoS = Distributed DoS<br>
+• 대응: <b>트래픽 필터링·Rate Limiting·CDN·Anti-DDoS</b><br><br>
+<b>🛡️ Passive Attack 방어 전략</b><br>
+• <b>암호화(Encryption)</b>: 내용 보호 — TLS·IPsec·VPN<br>
+• <b>트래픽 패딩(Traffic Padding)</b>: 더미 트래픽 추가 → 패턴 은폐<br>
+• <b>양파 라우팅(Onion Routing)</b>: Tor — 경로 은닉<br>
+• <b>통신 시간·빈도 무작위화</b><br>
+• <b>물리적 보안</b>: 무단 회선 탭 방지<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "DoS는 눈에 띄니까 Active" ✅ 정답 — 리소스 공격은 Active<br>
+• "Masquerading은 몰래 하니까 Passive?" → <b>오답</b> — 신원 도용은 Active<br>
+• "Message Modification은 그냥 보는 것?" → <b>오답</b> — 수정하므로 Active<br>
+• <b>판단 기준은 '변경 여부'</b>이지 '탐지 가능성'이 아님<br><br>
+<b>🔑 핵심 암기</b><br>
+• <b>Passive</b> = <b>관찰·수집만</b> (변경 없음) → Traffic Analysis·Eavesdropping·Sniffing<br>
+• <b>Active</b> = <b>변경·파괴·방해</b> → Modification·Masquerade·DoS·MITM·Replay<br>
+• Passive → <b>기밀성 침해</b>, 탐지 어려움 → <b>예방(암호화) 중심</b><br>
+• Active → <b>무결성·가용성 침해</b>, 탐지 가능 → <b>탐지·대응 중심</b>
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Passive vs Active Attacks",
+keyConcepts:[
+"Passive 공격 정의|시스템·데이터 변경 없이 관찰·수집만 — 기밀성 침해, 탐지 어려움",
+"Active 공격 정의|시스템·데이터 변경·파괴·방해 — 무결성·가용성 침해, 탐지 가능",
+"Passive 예시|Traffic Analysis·Eavesdropping·Sniffing·Shoulder Surfing·Dumpster Diving",
+"Active 예시|Masquerading·Modification·DoS·MITM·Replay·Session Hijacking·Malware",
+"Traffic Analysis|메타데이터(IP·시점·양·패턴) 관찰 → 통신 내용 추론 — 암호화도 우회",
+"판단 기준|공격자가 데이터·시스템을 변경하는가? Yes=Active, No=Passive",
+"Passive 방어|암호화(TLS·VPN)·Traffic Padding·Onion Routing(Tor)·경로 은닉",
+"Active 방어|디지털서명·MFA·Rate Limiting·IDS/IPS·접근통제",
+"함정 포인트|탐지 가능성 아닌 '변경 여부'가 분류 기준 — Masquerading·DoS는 Active"
+]
+},
+{
+id:537,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"The potential for unauthorized system access by way of terminals or workstations within an enterprise's facility is increased when:",
+questionKo:"기업 시설 내 단말기·워크스테이션을 통한 <b>비인가 시스템 접근 가능성이 증가</b>하는 경우는?",
+options:[
+"A. connecting points are available in the facility to connect laptops to the network.",
+"B. users take precautions to keep their passwords confidential.",
+"C. terminals with password protection are located in insecure locations.",
+"D. terminals are located within the facility in small clusters under the supervision of an administrator."
+],
+optionsKo:[
+"A. <b>시설 내 랩톱을 네트워크에 연결할 수 있는 접속 포인트가 있을 때</b>",
+"B. <b>사용자가 암호를 기밀로 유지하기 위해 주의를 기울일 때</b>",
+"C. <b>암호 보호된 단말기가 비보안 위치에 있을 때</b>",
+"D. <b>관리자 감독 하에 단말기가 작은 그룹으로 배치될 때</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 유형</th><th>위험 증가/감소</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. 접속 포인트 노출 ✅</td><td><b>통제 부재</b></td><td><b>위험 증가</b></td><td>정답 — 외부인도 랩톱 연결 가능 → <b>비인가 네트워크 접근</b> 허용</td></tr>
+<tr><td>B. 암호 기밀 유지</td><td>예방 통제</td><td>위험 감소</td><td>오답 — 사용자 보안 의식 = 침입자 <b>추측 필요 → 시간·난이도 증가</b></td></tr>
+<tr><td>C. 암호 보호 단말기</td><td>예방 통제</td><td>위험 감소</td><td>오답 — 위치가 비보안이어도 <b>암호 보호 = 비인가 사용 차단</b></td></tr>
+<tr><td>D. 감독 하 배치</td><td>탐지·예방 통제</td><td>위험 감소</td><td>오답 — 관리자 감독 = <b>매우 효과적인 모니터링 통제</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "통제 부재 상황 = 위험 증가"</b><br>
+• <b>B, C, D는 모두 통제 메커니즘</b> → 위험 <b>감소</b> 요인<br>
+• <b>A만이 통제 부재</b> → 위험 <b>증가</b> 요인<br>
+• CISA는 "위험 증가 상황"을 묻는 문제에서 <b>통제 공백</b>을 찾아야 함<br><br>
+<b>📝 왜 A가 정답인가 — 개방된 네트워크 포인트의 위험</b><br>
+• <b>시나리오</b>: 회의실·로비·공용 구역의 <b>활성화된 네트워크 잭(Ethernet Port)</b><br>
+• <b>위협</b>: 방문자·외부인·내부 위협자가 <b>개인 장비 연결</b> 가능<br>
+• <b>공격 경로</b>:<br>
+  - <b>네트워크 스니핑</b>: ARP Spoofing·MITM 공격<br>
+  - <b>DHCP 획득</b>: 내부 IP 할당받고 정찰 시작<br>
+  - <b>측면 이동(Lateral Movement)</b>: 취약 시스템 공격<br>
+  - <b>데이터 유출</b>: 내부 서버 접근 후 외부 전송<br>
+  - <b>Rogue AP 설치</b>: 무선 백도어 구축<br><br>
+<b>💡 오답 분석 — 모두 위험 감소 통제</b><br>
+<b>B. 암호 기밀 유지</b><br>
+• 사용자 보안 의식 교육 성공 → <b>예방 통제 강화</b><br>
+• 침입자는 <b>Brute Force·Dictionary Attack 필요</b> → 시간·리소스 증가<br>
+<b>C. 암호 보호된 단말기</b><br>
+• 물리적으로 노출되어도 <b>로그인 없이는 사용 불가</b><br>
+• <b>Screen Lock + BIOS Password + Full Disk Encryption</b>으로 강화<br>
+<b>D. 감독 하 배치</b><br>
+• <b>Supervision</b> = 효과적인 <b>탐지·예방 복합 통제</b><br>
+• 의심스러운 행동 실시간 발견·개입 가능<br>
+• 소규모 그룹 = 관리자 시야 내 모두 확인 가능<br><br>
+<b>🔐 Open Network Port의 주요 위협 및 대응</b><br>
+• <b>위협 1: 비인가 장치 접속</b> → <b>NAC(Network Access Control)</b>로 차단<br>
+• <b>위협 2: 방문자 내부망 접근</b> → <b>게스트 네트워크 분리·802.1X</b> 인증<br>
+• <b>위협 3: 내부 정보 노출</b> → <b>VLAN 분리·세그멘테이션</b><br>
+• <b>위협 4: 무단 장비 설치</b> → <b>포트 비활성화·MAC 제한</b><br><br>
+<b>🛡️ Open Port 관리 Best Practices</b><br>
+• <b>미사용 포트 비활성화</b>: 스위치 포트 Shutdown<br>
+• <b>802.1X 인증</b>: 장치 인증 없이 네트워크 접근 불가<br>
+• <b>Port Security</b>: MAC 주소 바인딩·제한<br>
+• <b>NAC 솔루션</b>: 장비 상태·보안 검증 후 접근 허용<br>
+• <b>DHCP Snooping·Dynamic ARP Inspection</b>: 스푸핑 방지<br>
+• <b>물리 보안</b>: 회의실·공용 공간 포트 잠금·케이블 관리<br>
+• <b>게스트 VLAN</b>: 방문자용 격리된 네트워크 제공<br>
+• <b>로깅·모니터링</b>: 포트 연결·해제 이벤트 추적<br><br>
+<b>🎯 CISA 출제 포인트 — "위험 증가" 유형 문제</b><br>
+• 질문이 <b>"risk increases when..."</b> 또는 <b>"greatest concern"</b>일 때<br>
+• 선택지 중 <b>유일하게 통제가 부재</b>하거나 <b>반대로 작동</b>하는 상황 찾기<br>
+• 나머지는 모두 <b>적절한 통제 적용</b> 시나리오<br>
+• 본 문제: B·C·D 모두 통제 적용, A만 통제 공백<br><br>
+<b>📋 물리·네트워크 접근 통제 계층</b><br>
+• <b>건물 출입 통제</b>: 출입증·생체인식·방문자 등록 (1차)<br>
+• <b>구역 분리</b>: 공용·업무·보안 구역 (2차)<br>
+• <b>네트워크 분리</b>: 게스트·업무·관리 VLAN (3차)<br>
+• <b>장치 인증</b>: 802.1X·NAC (4차)<br>
+• <b>사용자 인증</b>: ID/PW·MFA·생체인식 (5차)<br>
+• <b>세션 보안</b>: Screen Lock·타임아웃·활동 로깅 (6차)<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "암호 보호되어 있는데 위치가 나빠도 안전한가?" → <b>Yes, C는 감소 요인</b><br>
+• "감독자 있어도 위험?" → <b>No, D는 효과적 통제</b><br>
+• "접속 포인트 있는 게 뭐가 문제?" → <b>인증 없는 포트 = 침입자의 문</b><br><br>
+<b>🔑 핵심 암기</b><br>
+• 위험 증가 시나리오 = <b>통제 부재·우회 가능</b> 상황<br>
+• <b>개방된 네트워크 잭 = 물리 침투 후 즉시 접근 허용</b><br>
+• 대응: <b>NAC·802.1X·Port Security·VLAN·DHCP Snooping</b><br>
+• <b>CISA 원칙</b>: "risk increases when"은 <b>통제 없는 상황</b> 선택<br>
+• 나머지 선택지가 모두 통제라면 <b>통제 없는 것이 정답</b>
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Physical Network Access Control",
+keyConcepts:[
+"위험 증가 상황|통제 부재·우회 가능 상황 — 개방된 네트워크 접속 포인트는 침입 경로",
+"Open Port 위협|비인가 장치 연결·스니핑·MITM·측면이동·Rogue AP 설치 가능",
+"NAC 통제|Network Access Control — 장치 인증·보안 상태 검증 후 접근 허용",
+"802.1X 인증|포트 기반 네트워크 접근 통제 — 인증 전 트래픽 차단",
+"Port Security|MAC 주소 바인딩·제한·미사용 포트 Shutdown — 스위치 수준 통제",
+"감독(Supervision)|탐지·예방 복합 통제 — 관리자 시야 내 이상 행동 즉시 개입",
+"암호 보호|물리 노출되어도 로그인 전 사용 불가 — Screen Lock·BIOS PW·FDE",
+"CISA 판단원칙|risk increases = 통제 부재 선택 / 나머지가 통제면 통제 없는 것이 정답",
+"계층 방어|건물→구역→네트워크→장치→사용자→세션 — 다층 접근통제 필수"
+]
+},
+{
+id:538,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An organization has experienced a large amount of traffic being re-routed from its Voice-over Internet Protocol packet network. The organization believes it is a victim of eavesdropping. Which of the following can result in eavesdropping of Voice-over Internet Protocol (VoIP) traffic?",
+questionKo:"한 조직이 <b>VoIP 패킷 네트워크</b>에서 <b>대량의 트래픽이 재-라우팅</b>되는 상황을 겪었고 <b>도청(Eavesdropping) 피해자</b>라고 판단한다. 다음 중 <b>VoIP 트래픽 도청</b>을 유발할 수 있는 원인은?",
+options:[
+"A. Corruption of the Address Resolution Protocol cache in Ethernet switches",
+"B. Use of a default administrator password on the analog phone switch",
+"C. Deploying virtual local area networks VLANs without enabling encryption",
+"D. End users having access to software tools such as packet sniffer applications"
+],
+optionsKo:[
+"A. <b>이더넷 스위치의 ARP 캐시 손상(ARP Cache Corruption)</b>",
+"B. <b>아날로그 전화 스위치의 기본 관리자 암호 사용</b>",
+"C. <b>암호화 없이 VLAN 배포</b>",
+"D. <b>일반 사용자가 패킷 스니퍼 같은 소프트웨어 도구에 접근 가능</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>도청 가능성</th><th>평가</th><th>설명</th></tr>
+<tr class="correct-row"><td>A. ARP 캐시 손상 ✅</td><td><b>가능</b></td><td>정답</td><td>ARP Poisoning → 스위치가 <b>모든 포트로 트래픽 Flooding</b> → 전체 포트에서 VoIP 패킷 가로채기 가능</td></tr>
+<tr><td>B. 아날로그 기본 암호</td><td>무관</td><td>오답</td><td><b>VoIP는 아날로그 스위치 사용 안 함</b> — 시나리오와 무관</td></tr>
+<tr><td>C. 암호화 없는 VLAN</td><td>매우 낮음</td><td>오답</td><td>LAN 내 VoIP는 일반적으로 암호화 안 함 — <b>VLAN 통제만으로 적정</b></td></tr>
+<tr><td>D. 스니퍼 도구 접근</td><td>낮음</td><td>오답</td><td>스니퍼는 <b>스위치 VLAN 설정 변경 불가</b> — 타 포트 트래픽 안 보임</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "ARP Poisoning → 스위치 Flooding → VoIP 도청"</b><br>
+• <b>시나리오 단서</b>: "트래픽이 <b>재-라우팅</b>됨" → <b>ARP Spoofing</b>의 전형적 증상<br>
+• <b>공격 기법</b>: ARP 캐시 조작으로 스위치가 <b>모든 포트로 패킷 전송</b><br>
+• <b>결과</b>: 공격자 포트에서도 VoIP 음성 패킷 수신 → <b>통화 도청</b><br><br>
+<b>📝 ARP(Address Resolution Protocol) 기본</b><br>
+• <b>목적</b>: IP 주소(L3) ↔ MAC 주소(L2) 매핑<br>
+• <b>동작</b>: "192.168.1.10의 MAC 주소는?" 브로드캐스트 → 응답 수신 → 캐시 저장<br>
+• <b>캐시 저장</b>: 호스트·스위치 모두 ARP 테이블 유지<br>
+• <b>취약점</b>: <b>인증 없음</b> — 위조된 ARP 응답도 그대로 수용<br><br>
+<b>💡 ARP Poisoning / ARP Spoofing 공격 원리</b><br>
+• <b>단계 1</b>: 공격자가 <b>위조 ARP Reply</b> 대량 전송<br>
+  - 예: "기본 게이트웨이 IP = 공격자 MAC"<br>
+• <b>단계 2</b>: 피해자·스위치 ARP 캐시 오염<br>
+• <b>단계 3</b>: 트래픽이 <b>공격자에게 잘못 전달</b><br>
+• <b>단계 4</b>: 공격자가 <b>관찰 후 원본 목적지로 포워딩</b> (MITM)<br><br>
+<b>🔐 왜 ARP Poisoning이 VoIP 도청을 가능하게 하는가</b><br>
+• <b>정상 스위치</b>: <b>MAC 테이블 기반 선택적 전송</b> — 해당 포트만 패킷 수신<br>
+• <b>ARP 캐시 손상 시</b>: 일부 스위치는 <b>모든 포트로 Flooding</b> (Fail-Open)<br>
+  - 이유: MAC 주소 조회 실패 시 Broadcast처럼 처리<br>
+• <b>결과</b>: 공격자는 자신의 포트만으로 <b>전체 VLAN 트래픽 모니터링</b><br>
+• <b>VoIP 패킷 캡처</b>: Wireshark 등으로 <b>SIP·RTP 패킷 추출</b><br>
+• <b>음성 복원</b>: RTP 페이로드 디코딩 → <b>.wav·.mp3 저장</b> → 재생<br><br>
+<b>🎯 실제 공격 도구 및 기법</b><br>
+• <b>Cain & Abel</b>: Windows 기반 ARP Poisoning + VoIP 캡처<br>
+• <b>Ettercap</b>: MITM 프레임워크 — ARP Spoof·DNS Spoof<br>
+• <b>Wireshark</b>: 캡처된 RTP 스트림 → Telephony → RTP Player로 재생<br>
+• <b>VOMIT(Voice over Misconfigured IP Telephones)</b>: VoIP 특화 도구<br>
+• <b>SIPDump / SIPCrack</b>: SIP 인증 정보 추출·크랙<br><br>
+<b>📋 오답 상세 분석</b><br>
+<b>B. 아날로그 스위치 기본 암호</b><br>
+• <b>VoIP는 디지털 IP 기반</b> — 아날로그 스위치 사용 안 함<br>
+• PBX(Private Branch Exchange) 아날로그 시대 유물<br>
+• 문제 시나리오와 <b>기술적으로 무관</b><br>
+<b>C. 암호화 없는 VLAN</b><br>
+• <b>LAN 내 VoIP</b>는 일반적으로 <b>암호화 미적용</b> (성능·지연 이유)<br>
+• <b>VLAN 분리 + 물리 보안</b>만으로도 통상 적정 수준<br>
+• 고보안 환경에서만 <b>SRTP(Secure RTP)·SIPS(TLS)</b> 사용<br>
+<b>D. 패킷 스니퍼 도구 접근</b><br>
+• 스니퍼는 <b>수동적 도구</b> — 스위치 설정 변경 불가<br>
+• 정상 스위치 환경에서 자신의 포트 트래픽만 수신<br>
+• <b>VLAN·포트 보안 우회 불가</b><br><br>
+<b>🛡️ ARP Poisoning / VoIP 도청 대응책</b><br>
+• <b>DAI(Dynamic ARP Inspection)</b>: 스위치에서 ARP 패킷 검증·차단<br>
+• <b>DHCP Snooping</b>: IP-MAC 바인딩 테이블 유지 → DAI와 연동<br>
+• <b>정적 ARP 엔트리</b>: 중요 호스트·게이트웨이 정적 설정<br>
+• <b>Port Security</b>: MAC 주소 제한·스티키 학습<br>
+• <b>Private VLAN(PVLAN)</b>: 포트 간 통신 격리<br>
+• <b>SRTP(Secure RTP)</b>: VoIP 음성 패킷 암호화<br>
+• <b>SIPS(SIP over TLS)</b>: 시그널링 암호화<br>
+• <b>IDS/IPS</b>: ARP 이상 패턴 탐지<br>
+• <b>ArpON·XArp</b>: ARP 공격 탐지 도구<br><br>
+<b>🎯 CISA 출제 포인트 — VoIP 보안 위협 분류</b><br>
+• <b>기밀성 침해</b>: Eavesdropping·Toll Fraud·Caller ID Spoofing<br>
+• <b>무결성 침해</b>: Voice Alteration·SIP Message Tampering<br>
+• <b>가용성 침해</b>: DoS(SIP Flood·RTP Flood)·Service Disruption<br>
+• <b>인증 침해</b>: Registration Hijacking·Session Replay<br><br>
+<b>⚠️ 시나리오 단서 해석법</b><br>
+• "<b>트래픽 재-라우팅</b>" = 라우팅 경로 변경 = <b>ARP Spoofing</b> 또는 <b>DNS Hijacking</b><br>
+• "<b>도청(Eavesdropping)</b>" = 기밀성 침해 = 트래픽 <b>가로채기·관찰</b><br>
+• 두 단서 결합 → <b>L2 공격(ARP)</b>가 가장 적합<br><br>
+<b>🔑 핵심 암기</b><br>
+• VoIP 도청 원인 = <b>ARP Poisoning → 스위치 Flooding → 패킷 캡처</b> ✅<br>
+• 정상 스위치는 선택적 전송, <b>ARP 오염 시 Broadcast화</b><br>
+• 대응: <b>DAI + DHCP Snooping + SRTP + VoIP VLAN 분리</b><br>
+• 아날로그 스위치·VLAN 암호화·스니퍼 권한은 <b>직접적 도청 원인 아님</b>
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — VoIP Eavesdropping via ARP Poisoning",
+keyConcepts:[
+"VoIP 도청 메커니즘|ARP Poisoning → 스위치 ARP 캐시 손상 → 전 포트 Flooding → 패킷 캡처",
+"ARP 취약점|인증 없는 프로토콜 — 위조 ARP Reply로 IP-MAC 매핑 조작 가능",
+"MITM 공격|공격자가 게이트웨이 가장 → 모든 트래픽 중계 → 관찰 후 포워딩",
+"스위치 Fail-Open|MAC 조회 실패 시 Broadcast처럼 전 포트 전송 → 공격자 포트서 가로채기",
+"VoIP 도청 도구|Cain & Abel·Ettercap·Wireshark(RTP Player)·VOMIT·SIPDump",
+"ARP 방어책|DAI(Dynamic ARP Inspection)·DHCP Snooping·정적 ARP·Port Security·PVLAN",
+"VoIP 암호화|SRTP(음성 패킷)·SIPS/TLS(시그널링) — 고보안 환경 필수",
+"시나리오 단서|'트래픽 재-라우팅'+'도청' = L2 공격(ARP Poisoning) 전형적 증상",
+"오답 분석|아날로그 스위치(VoIP 미사용)·VLAN 미암호화(통상 적정)·스니퍼(수동 도구)는 직접 원인 아님"
+]
+},
+{
+id:539,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"Which of the following will BEST maintain the integrity of a firewall log?",
+questionKo:"다음 중 <b>방화벽 로그의 무결성(Integrity)을 가장 잘 유지</b>하는 것은?",
+options:[
+"A. Granting access to log information only to administrators",
+"B. Capturing log events in the operating system (OS) layer",
+"C. Writing dual logs onto separate storage media",
+"D. Sending log information to a dedicated third-party log server"
+],
+optionsKo:[
+"A. <b>관리자에게만 로그 접근 권한 부여</b>",
+"B. <b>운영체제 계층에서 로그 이벤트 캡처</b>",
+"C. <b>별도의 저장 매체에 이중 로그 기록</b>",
+"D. <b>전용 제3자 로그 서버로 로그 정보 전송</b>"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>보장 속성</th><th>무결성 기여</th><th>설명</th></tr>
+<tr><td>A. 관리자 전용 접근</td><td><b>기밀성</b></td><td>간접</td><td>오답 — SoD 위반 (관리자는 로그 접근 금지가 원칙) → <b>기밀성 기여, 무결성 X</b></td></tr>
+<tr><td>B. OS 계층 캡처</td><td>캡처 방법</td><td>없음</td><td>오답 — App·Network·OS 어디서 캡처하든 <b>무결성 이점 없음</b></td></tr>
+<tr><td>C. 이중 로그</td><td><b>가용성</b></td><td>제한적</td><td>오답 — 저장 매체 장애 대비 → <b>가용성 기여, 무결성은 아님</b></td></tr>
+<tr class="correct-row"><td>D. 전용 로그 서버 ✅</td><td><b>무결성</b></td><td>최고</td><td>정답 — 물리·논리적 분리 + 독립 접근 통제 → <b>비인가 변조 방지</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "로그 무결성 = 독립된 로그 서버"</b><br>
+• <b>핵심 원리</b>: 로그 생성 시스템과 <b>저장 시스템 분리</b><br>
+• <b>위협 시나리오</b>: 공격자가 방화벽 침투 후 <b>증거 인멸 위해 로그 삭제·변조</b><br>
+• <b>대응</b>: <b>중앙집중 로그 서버(Central Log Server)</b> — 방화벽 침해와 독립<br>
+• <b>결과</b>: 방화벽이 뚫려도 로그 서버는 <b>원본 그대로 보존</b><br><br>
+<b>📝 CIA 관점에서 선택지 분류</b><br>
+<table>
+<tr><th>선택지</th><th>보호 속성</th><th>설명</th></tr>
+<tr><td>A. 관리자만 접근</td><td><b>Confidentiality</b></td><td>무단 열람 방지</td></tr>
+<tr><td>B. OS 계층 캡처</td><td>-</td><td>어느 계층이든 무결성 차이 없음</td></tr>
+<tr><td>C. 이중 로그</td><td><b>Availability</b></td><td>한쪽 손실 시에도 다른 쪽 유지</td></tr>
+<tr><td>D. 전용 로그 서버 ✅</td><td><b>Integrity</b></td><td>분리 저장으로 변조 방지</td></tr>
+</table><br>
+<b>💡 왜 D가 BEST인가 — 중앙 로그 서버의 무결성 효과</b><br>
+• <b>물리적 분리</b>: 방화벽 침해 시에도 로그는 별도 시스템에 보존<br>
+• <b>SoD(직무 분리)</b>: 방화벽 관리자 ≠ 로그 관리자 → 상호 견제<br>
+• <b>독립된 접근 통제</b>: 로그 서버 전용 계정·권한 매트릭스<br>
+• <b>단방향 전송(WORM)</b>: Write-Once Read-Many → <b>변조 불가</b><br>
+• <b>무결성 검증</b>: 해시·디지털 서명 적용 가능<br>
+• <b>감사 추적</b>: 모든 로그 변경 시도 자체가 로깅됨<br><br>
+<b>🔐 중앙 로그 서버 구성 Best Practices</b><br>
+• <b>Syslog / Rsyslog / Syslog-ng</b>: 표준 로그 전송 프로토콜<br>
+• <b>SIEM</b>(Splunk·QRadar·ArcSight·ELK): 수집·상관분석·경보<br>
+• <b>전용 VLAN·관리망</b>: 로그 트래픽 격리 (관리 전용 네트워크)<br>
+• <b>암호화 전송</b>: TLS(Syslog-TLS)·IPsec — 중간 도청·변조 방지<br>
+• <b>서명·해싱</b>: HMAC-SHA256 — 수신된 로그 검증<br>
+• <b>WORM Storage</b>: 일회 기록 전용 매체·Immutable Storage<br>
+• <b>백업·아카이빙</b>: 법적 보존 기간 준수 (규제별 1~7년)<br>
+• <b>시간 동기화</b>: NTP — 타임스탬프 신뢰성 확보<br><br>
+<b>📋 오답 상세 분석</b><br>
+<b>A. 관리자만 접근 — 기밀성 통제</b><br>
+• <b>SoD 위반</b>: 관리자가 자신의 활동 로그에 접근하면 <b>증거 인멸 가능</b><br>
+• 원칙: <b>관리자는 로그 읽기만, 삭제·수정 권한 분리</b><br>
+• 기여: 비인가 열람 방지 → <b>Confidentiality</b>, 무결성 아님<br>
+<b>B. OS 계층 캡처</b><br>
+• 로그 캡처 위치 선택일 뿐 — <b>무결성과 직접 관련 없음</b><br>
+• 오히려 Application·Network·OS 다층 수집이 <b>더 완전</b><br>
+<b>C. 이중 로그</b><br>
+• 동일 시스템 내 이중화는 <b>동시 변조 가능</b><br>
+• 저장 매체 장애 시 복구용 → <b>Availability</b> 강화<br>
+• 공격자가 시스템 권한 얻으면 <b>두 복사본 모두 조작 가능</b><br><br>
+<b>🎯 CISA 출제 포인트 — 로그 관리 3대 원칙</b><br>
+• <b>Separation(분리)</b>: 생성 시스템 ≠ 저장 시스템<br>
+• <b>Immutability(불변성)</b>: 생성 후 변경 불가 — WORM·서명<br>
+• <b>Independence(독립성)</b>: 관리자 권한 분리 — SoD<br>
+• <b>→ Integrity 확보의 3대 축</b><br><br>
+<b>🛡️ 로그 무결성 위협 및 대응</b><br>
+• <b>위협 1: 공격자 증거 인멸</b> → <b>실시간 원격 전송</b>·WORM<br>
+• <b>위협 2: 내부자 은폐</b> → <b>SoD + 접근 로그</b><br>
+• <b>위협 3: 변조 후 재전송</b> → <b>디지털 서명·체인 무결성</b><br>
+• <b>위협 4: 시간 조작</b> → <b>NTP 동기화·타임스탬프 서명</b><br>
+• <b>위협 5: 로그 유실·삭제</b> → <b>백업·아카이브 + 무결성 해시</b><br><br>
+<b>🔑 핵심 암기</b><br>
+• 로그 <b>무결성 = 전용 제3자 로그 서버 + 독립 접근 통제</b> ✅<br>
+• 로그 <b>기밀성 = 접근 제한·암호화</b><br>
+• 로그 <b>가용성 = 이중화·백업·아카이빙</b><br>
+• <b>CISA 판단</b>: CIA 속성별로 통제 매핑 → 문제에서 요구하는 속성 선택<br>
+• 무결성 요구 시 → <b>"분리(Separation)"</b> 키워드 포함된 답 선택
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Log Integrity and Central Log Server",
+keyConcepts:[
+"로그 무결성 BEST|전용 제3자 로그 서버 — 생성·저장 시스템 분리로 변조 방지",
+"CIA 매핑|관리자 전용(기밀성)·이중로그(가용성)·전용서버(무결성)·OS계층(무관)",
+"중앙 로그 서버 효과|물리·논리 분리·독립 접근통제·단방향 전송(WORM)·무결성 검증 가능",
+"Syslog·SIEM|표준 전송 프로토콜(Syslog/Syslog-TLS) + 수집·상관분석(Splunk·ELK·QRadar)",
+"로그 무결성 3대 원칙|Separation(분리)·Immutability(불변)·Independence(독립) — SoD 포함",
+"SoD 원칙|관리자는 자기 로그 삭제·수정 불가 — 증거 인멸 방지, 상호 견제",
+"무결성 기술|HMAC·디지털 서명·해시 체인·WORM Storage·NTP 시간동기화",
+"로그 위협|증거 인멸·내부자 은폐·변조 후 재전송·시간 조작·유실 — 각각 별도 통제 필요",
+"CISA 판단원칙|문제에서 요구하는 CIA 속성 확인 후 매칭 — 무결성=분리 키워드"
+]
+},
+{
+id:540,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"After reviewing its business processes, a large enterprise is deploying a new web application based on Voice-over Internet Protocol (VoIP) technology. Which of the following is the MOST appropriate approach for implementing access control that will facilitate security management of the VoIP web application?",
+questionKo:"업무 프로세스 검토 후 <b>대규모 기업</b>이 VoIP 기반의 <b>새로운 웹 애플리케이션</b>을 배포한다. VoIP 웹 애플리케이션의 <b>보안 관리를 용이하게 하는 접근 통제 구현</b>으로 <b>가장 적절한 방식</b>은?",
+options:[
+"A. Fine-grained access control",
+"B. Role-based access control",
+"C. Access control lists",
+"D. Network/service access control"
+],
+optionsKo:[
+"A. <b>세분화된 접근 통제(Fine-Grained Access Control)</b>",
+"B. <b>역할 기반 접근 통제(RBAC)</b>",
+"C. <b>접근 통제 목록(ACL)</b>",
+"D. <b>네트워크/서비스 접근 통제</b>"
+],
+correct:1,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>관리 기준</th><th>대규모 확장성</th><th>평가</th></tr>
+<tr><td>A. Fine-Grained</td><td>개별 사용자·권한 단위</td><td><b>확장성 낮음</b></td><td>오답 — 사용자마다 개별 권한 설정 → <b>관리 부담 폭증</b></td></tr>
+<tr class="correct-row"><td>B. RBAC ✅</td><td><b>직무 역할(Role) 단위</b></td><td><b>확장성 높음</b></td><td>정답 — 역할별 권한 매핑 → <b>대규모 환경 최적</b>·관리 용이</td></tr>
+<tr><td>C. ACL</td><td>개별 사용자·리소스 단위</td><td>확장성 낮음</td><td>오답 — 사용자×리소스 엔트리 증가 → <b>스케일 불가능</b></td></tr>
+<tr><td>D. Network/Service</td><td>네트워크·포트 단위</td><td>가용성만</td><td>오답 — <b>가용성·네트워크 수준</b>만 다룸 — 애플리케이션 인가 미해결</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "대규모 + 웹 애플리케이션 + 보안 관리 용이 = RBAC"</b><br>
+• <b>핵심 키워드</b>: <b>Large Enterprise</b> + <b>Facilitate Security Management</b><br>
+• <b>요구사항</b>: 확장성·관리 효율·애플리케이션 수준 인가<br>
+• <b>해답</b>: <b>RBAC(Role-Based Access Control)</b> — 직무 역할 기반 통제<br><br>
+<b>📝 왜 B가 MOST APPROPRIATE인가</b><br>
+• <b>확장성</b>: 사용자 1만명 → 역할 50개 → 관리 부담 1/200로 감소<br>
+• <b>일관성</b>: 동일 역할 사용자는 <b>동일 권한</b> 자동 적용<br>
+• <b>직무 변경 용이</b>: 부서 이동 시 <b>역할만 변경</b>하면 권한 자동 조정<br>
+• <b>감사 용이</b>: 역할별 권한 매트릭스로 <b>감사 보고 간편</b><br>
+• <b>SoD 구현</b>: 상충 역할 분리 규칙 정의 가능<br>
+• <b>Provisioning 자동화</b>: HR 시스템 연동 → 온보딩·오프보딩 자동화<br><br>
+<b>💡 RBAC 구조</b><br>
+<table>
+<tr><th>요소</th><th>설명</th><th>예시</th></tr>
+<tr><td>User</td><td>시스템 사용자</td><td>홍길동</td></tr>
+<tr><td>Role</td><td>직무 역할</td><td>영업담당자·관리자·감사인</td></tr>
+<tr><td>Permission</td><td>리소스 접근 권한</td><td>통화기록 조회·발신 등록</td></tr>
+<tr><td>Session</td><td>사용자-역할 활성화</td><td>로그인 세션</td></tr>
+</table>
+• <b>관계</b>: User → Role → Permission (N:M 매핑)<br>
+• <b>User Assignment(UA)</b>: 사용자에게 역할 부여<br>
+• <b>Permission Assignment(PA)</b>: 역할에 권한 부여<br><br>
+<b>🔐 오답 상세 분석</b><br>
+<b>A. Fine-Grained Access Control</b><br>
+• <b>개별 사용자·속성·권한 단위 세밀 통제</b><br>
+• 예: "홍길동은 2026-04-24 14:00에만 서울 IP에서 VoIP 통화록 다운로드 가능"<br>
+• <b>장점</b>: 최고의 보안 수준<br>
+• <b>단점</b>: <b>관리 복잡도 폭증</b> — 대규모 환경 스케일 불가능<br>
+• 고보안 특수 환경에만 적합<br>
+<b>C. Access Control List(ACL)</b><br>
+• <b>리소스별로 접근 가능 사용자 목록 유지</b><br>
+• DAC(Discretionary Access Control)의 구현 방식<br>
+• <b>문제점</b>: 사용자 증가 시 <b>각 리소스마다 ACL 갱신 필요</b><br>
+• <b>확장성 한계</b>: 1만 사용자 × 1만 리소스 = 1억 엔트리<br>
+• 파일 시스템·네트워크 장비에는 적합하나 <b>엔터프라이즈 웹앱에는 부적합</b><br>
+<b>D. Network/Service Access Control</b><br>
+• <b>네트워크·서비스 포트·IP 수준 통제</b><br>
+• 예: VoIP 포트(SIP 5060·RTP 16384-32767) 접근 제한<br>
+• <b>역할</b>: VoIP 가용성·네트워크 보안<br>
+• <b>한계</b>: <b>애플리케이션 수준 권한 부여 불가</b> — "누가 무엇을 할 수 있는지" 결정 못 함<br>
+• 보완 통제이지 핵심 인가 메커니즘 아님<br><br>
+<b>🎯 CISA 출제 포인트 — 접근통제 모델 선택 기준</b><br>
+• <b>조직 규모</b>: 대규모 → RBAC, 소규모 → DAC·ACL<br>
+• <b>관리 효율성</b>: 중앙 집중 → RBAC<br>
+• <b>확장성 요구</b>: 높음 → RBAC, 낮음 → Fine-Grained<br>
+• <b>규제 준수</b>: SoD 필요 → RBAC<br>
+• <b>동적 속성 기반</b>: ABAC(Attribute-Based Access Control)<br>
+• <b>최고 보안</b>: MAC(Mandatory Access Control) — 군·정부<br><br>
+<b>📋 접근통제 모델 비교</b><br>
+<table>
+<tr><th>모델</th><th>기준</th><th>적용 환경</th></tr>
+<tr><td>DAC</td><td>소유자 재량</td><td>파일 시스템·소규모</td></tr>
+<tr><td><b>RBAC</b></td><td>직무 역할</td><td><b>엔터프라이즈·대규모</b></td></tr>
+<tr><td>MAC</td><td>보안 라벨</td><td>군·정부·고보안</td></tr>
+<tr><td>ABAC</td><td>속성(시간·위치·속성)</td><td>동적·클라우드</td></tr>
+<tr><td>ACL</td><td>리소스별 목록</td><td>네트워크 장비·파일</td></tr>
+</table><br>
+<b>🛡️ VoIP 웹 애플리케이션에서 RBAC 적용 예시</b><br>
+• <b>Role: VoIP 사용자</b> → 발신·수신·본인 통화기록 조회<br>
+• <b>Role: 팀 리더</b> → 팀원 통화기록 조회·리포트 생성<br>
+• <b>Role: VoIP 관리자</b> → 사용자 관리·정책 설정<br>
+• <b>Role: 보안 감사인</b> → 전체 로그 조회 (Read-Only)<br>
+• <b>Role: 콜센터 상담원</b> → 큐 접근·고객 이력 조회<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "Fine-Grained가 더 보안성 높지 않나?" → Yes, but <b>대규모 환경에서 관리 불가</b><br>
+• "ACL이 가장 기본적이지 않나?" → 기본이지만 <b>확장성 부족</b><br>
+• "네트워크 통제가 제일 먼저 아닌가?" → 보완 통제, <b>애플리케이션 인가 대체 불가</b><br>
+• CISA 문제에서 <b>"Large Enterprise + Facilitate Management"</b> 키워드 = <b>RBAC</b><br><br>
+<b>🔑 핵심 암기</b><br>
+• VoIP 웹앱 + 대규모 + 관리 용이 = <b>RBAC</b> ✅<br>
+• RBAC 3요소: <b>User + Role + Permission</b><br>
+• 장점: <b>확장성·일관성·직무변경 용이·감사 편의·SoD 구현</b><br>
+• Fine-Grained: 최고 보안, 관리 부담 — 특수 환경<br>
+• ACL: 리소스별 목록 — 네트워크·파일 시스템<br>
+• Network/Service: 가용성·네트워크 수준 — 애플리케이션 인가 아님
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — RBAC for VoIP Web Applications",
+keyConcepts:[
+"대규모 엔터프라이즈 접근통제|RBAC — 직무 역할 기반으로 확장성·관리 효율성 최적",
+"RBAC 3요소|User·Role·Permission — N:M 매핑으로 관리 단순화",
+"RBAC 장점|확장성·일관성·직무변경 용이·감사 편의·SoD 구현·Provisioning 자동화",
+"Fine-Grained 한계|개별 사용자·속성 단위 세밀 통제 — 대규모 환경 관리 불가",
+"ACL 한계|리소스별 사용자 목록 — 사용자×리소스 증가 시 스케일 불가능",
+"Network/Service AC|네트워크·포트 수준 통제 — 가용성·보완 통제, 애플리케이션 인가 불가",
+"접근통제 모델|DAC(소유자)·RBAC(역할)·MAC(라벨)·ABAC(속성)·ACL(목록) — 환경별 선택",
+"CISA 판단기준|Large Enterprise + Facilitate Management 키워드 = RBAC",
+"VoIP RBAC 예시|사용자·팀리더·관리자·감사인·상담원 역할별 권한 차등 부여"
+]
+},
+{
+id:541,
+domain:"5",
+ks:"5A4 Network and End-Point Security",
+question:"An information systems (IS) auditor is reviewing a manufacturing enterprise and finds that mainframe users at a remote site connect to the mainframe at headquarters over the Internet via Telnet. Which of the following offers the STRONGEST security?",
+questionKo:"IS 감사인이 제조기업을 검토하던 중, 원격지의 메인프레임 사용자들이 <b>인터넷을 통해 Telnet으로 본사 메인프레임에 접속</b>하고 있음을 발견했다. 다음 중 <b>가장 강력한 보안</b>을 제공하는 것은?",
+options:[
+"A. Use of a point-to-point leased line",
+"B. Use of a firewall rule to allow only the internet protocol (IP) address of the remote site",
+"C. Use of two-factor authentication",
+"D. Use of a nonstandard port for Telnet"
+],
+optionsKo:[
+"A. <b>전용 임대회선(Point-to-Point Leased Line) 사용</b>",
+"B. <b>원격지 IP만 허용하는 방화벽 규칙 사용</b>",
+"C. <b>2단계 인증(Two-Factor Authentication) 사용</b>",
+"D. <b>Telnet에 비표준 포트 사용</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>통제 범위</th><th>Telnet 취약점 해결</th><th>평가</th></tr>
+<tr class="correct-row"><td>A. Leased Line ✅</td><td><b>전송 채널 자체</b></td><td><b>완전 해결</b></td><td>정답 — 인터넷 우회·전용 회선 → <b>도청·스니핑 근본 차단</b></td></tr>
+<tr><td>B. 방화벽 IP 제한</td><td>접근 소스</td><td>부분 해결</td><td>오답 — 연결 출처만 제한 — <b>인터넷 경유 평문 전송 문제 유지</b></td></tr>
+<tr><td>C. 2FA</td><td>사용자 인증</td><td>로그인만 강화</td><td>오답 — 인증 후 세션 <b>여전히 평문</b> — 전송 채널 미보호</td></tr>
+<tr><td>D. 비표준 포트</td><td>난독화</td><td>효과 제한적</td><td>오답 — Security by Obscurity — <b>스니핑 시 내용 그대로 노출</b></td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "Telnet 평문 전송 문제 = 전송 채널 분리가 근본 해결"</b><br>
+• <b>Telnet의 근본 취약점</b>: <b>평문(Plain Text) 전송</b> — 모든 데이터·암호 노출<br>
+• <b>인터넷 경유</b>: 중간 어느 지점에서든 <b>패킷 스니핑·MITM 가능</b><br>
+• <b>해결 방향</b>: <b>전송 채널 자체를 신뢰 가능한 망으로 교체</b><br>
+• <b>최선의 답</b>: <b>전용 임대회선</b> — 인터넷 회피<br><br>
+<b>📝 왜 A가 STRONGEST인가</b><br>
+• <b>Leased Line 특성</b>: 본사-원격지 간 <b>전용 회선</b> — 타 사용자 공유 X<br>
+• <b>물리적 분리</b>: 인터넷 경로 완전 회피 → <b>도청 기회 자체 제거</b><br>
+• <b>네트워크 확장</b>: 본사 LAN이 원격지까지 <b>투명하게 확장</b><br>
+• <b>평문 Telnet 허용</b>: 회선 자체가 안전하므로 내부망과 동일 취급<br>
+• <b>가용성</b>: ISP 서비스 계약으로 SLA 보장<br>
+• <b>단점</b>: 비용 높음 — 하지만 <b>보안만 따진다면 최강</b><br><br>
+<b>💡 오답 상세 분석</b><br>
+<b>B. 방화벽 IP 제한 — "출처 필터만 됨"</b><br>
+• 원격지 IP 주소에서만 Telnet 연결 허용<br>
+• <b>개선</b>: 무관한 공격자 연결 시도 차단<br>
+• <b>한계</b>: <b>인터넷 경로 상 패킷은 여전히 평문</b> — 중간 도청·스푸핑 가능<br>
+• IP 스푸핑으로 <b>우회 가능</b><br>
+<b>C. 2FA — "로그인만 강화"</b><br>
+• OTP·스마트카드·생체인식 등 추가 인증<br>
+• <b>개선</b>: 암호 탈취·무차별 공격 방어<br>
+• <b>한계</b>: 인증 <b>이후 세션은 여전히 평문</b> — 세션 데이터·명령어·응답 노출<br>
+• 세션 하이재킹 가능<br>
+<b>D. 비표준 포트 — "단순 은폐"</b><br>
+• Telnet 기본 포트 23 대신 다른 포트 사용<br>
+• <b>개선</b>: 포트 스캔 자동 공격 약간 회피<br>
+• <b>한계</b>: <b>Security by Obscurity</b> — 발견되면 동일 문제<br>
+• nmap·Shodan으로 쉽게 식별<br>
+• 내용은 여전히 평문<br><br>
+<b>🔐 Telnet의 보안 문제점 심층</b><br>
+• <b>평문 전송</b>: 사용자명·암호·명령어·데이터 모두 노출<br>
+• <b>인증 정보 탈취</b>: Wireshark로 간단히 캡처<br>
+• <b>세션 하이재킹</b>: 활성 세션 가로채기<br>
+• <b>무결성 보장 없음</b>: 중간자가 명령어 변조 가능<br>
+• <b>MITM 공격 취약</b>: ARP Poisoning과 결합 시 완전 장악<br><br>
+<b>🎯 CISA 출제 포인트 — STRONGEST 판단 원칙</b><br>
+• "Strongest Security" = <b>근본 문제 해결</b>하는 것<br>
+• Telnet의 근본 문제: <b>평문 전송</b><br>
+• 근본 해결책:<br>
+  1. <b>전송 채널 분리</b>(Leased Line) — 이 문제의 답 ✅<br>
+  2. <b>SSH 대체</b> — 제시되지 않은 선택지<br>
+  3. <b>VPN 터널</b> — 제시되지 않은 선택지<br>
+• 부분 통제(IP 제한·2FA·포트 변경) < 근본 통제<br><br>
+<b>📋 Telnet 보안 강화 방안 (참고)</b><br>
+• <b>Best: SSH(Secure Shell) 사용</b> — Telnet 대체·암호화<br>
+  - TCP 22·대칭키 암호화·공개키 인증<br>
+• <b>VPN 터널</b>: IPsec·SSL VPN으로 Telnet 감싸기<br>
+• <b>Leased Line</b>: 전용 회선으로 인터넷 회피 ✅ (이 문제의 답)<br>
+• <b>TLS 터널</b>: stunnel 등으로 Telnet 세션 암호화<br>
+• <b>Kerberos Telnet</b>: 인증·암호화 추가<br><br>
+<b>🛡️ 전용 회선의 유형</b><br>
+• <b>T1/T3·E1/E3</b>: 전통적 디지털 전용회선<br>
+• <b>MPLS(Multi-Protocol Label Switching)</b>: 현대 표준 — 비용·성능 균형<br>
+• <b>Metro Ethernet</b>: 광섬유 기반 고속 전용회선<br>
+• <b>SD-WAN</b>: 소프트웨어 정의 WAN — 유연성<br>
+• <b>Dark Fiber</b>: 미사용 광섬유 임대 — 최대 대역폭<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "2FA가 가장 강력한 보안 아닌가?" → <b>인증만 강화</b>, 전송 채널 문제 미해결<br>
+• "방화벽이 모든 것 해결?" → 접근 통제만, <b>평문 전송은 그대로</b><br>
+• "비표준 포트로 숨기면?" → <b>Security by Obscurity</b>는 실질 보안 아님<br>
+• CISA는 <b>근본 원인 해결</b>이 최우선 — Telnet 문제는 <b>채널 보안</b>이 근본<br><br>
+<b>🔑 핵심 암기</b><br>
+• Telnet 최강 보안 = <b>전용 임대회선</b>으로 인터넷 회피 ✅<br>
+• Telnet 근본 문제 = <b>평문 전송</b> — 채널 보안으로 해결<br>
+• 현실적 대안: <b>SSH > VPN > Leased Line</b> (이 문제 선택지 중엔 Leased Line)<br>
+• 부분 통제: IP 제한·2FA·포트 변경 → 유용하나 근본 해결 아님<br>
+• <b>CISA 원칙</b>: STRONGEST = 근본 원인 해결하는 통제
+</div>`,
+reference:"CRM Chapter 5: Network and End-Point Security — Telnet Security and Dedicated Lines",
+keyConcepts:[
+"Telnet 근본 문제|평문 전송으로 사용자명·암호·명령어·응답 모두 노출 — MITM·스니핑 취약",
+"STRONGEST 해결책|전용 임대회선(Leased Line) — 인터넷 회피로 채널 자체 보안",
+"Leased Line 특성|본사-원격지 전용회선 — 타 사용자 공유 X·물리적 분리·LAN 확장 효과",
+"부분 통제 한계|IP 제한·2FA·비표준 포트 — 각각 접근/인증/난독화만 강화, 평문 전송 미해결",
+"Security by Obscurity|비표준 포트 사용은 실질 보안 아님 — nmap·Shodan으로 쉽게 발견",
+"Telnet 대안|SSH(TCP 22)·VPN 터널·Leased Line·TLS Stunnel·Kerberos Telnet",
+"전용회선 유형|T1/T3·MPLS(현대표준)·Metro Ethernet·SD-WAN·Dark Fiber",
+"CISA STRONGEST 원칙|근본 원인(평문 전송) 해결하는 통제 선택 — 부분 통제 < 근본 통제",
+"계층적 보안|채널(Leased/VPN) > 프로토콜(SSH) > 인증(2FA) > 접근(IP제한) > 은폐(포트) 순 강도"
+]
+},
+{
+id:542,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"An alert raised from a data loss prevention (DLP) solution about sensitive data in transit is BEST investigated and resolved by:",
+questionKo:"<b>전송 중 민감 데이터(Sensitive Data in Transit)</b>에 대해 <b>DLP 솔루션에서 경보(Alert)</b>가 발생했을 때, <b>가장 적절하게 조사·해결할 주체</b>는?",
+options:[
+"A. the security officer.",
+"B. the data loss prevention (DLP) administrator.",
+"C. the incident response team.",
+"D. the data owner."
+],
+optionsKo:[
+"A. <b>보안 책임자(Security Officer)</b>",
+"B. <b>DLP 관리자(DLP Administrator)</b>",
+"C. <b>사고대응팀(Incident Response Team)</b>",
+"D. <b>데이터 소유자(Data Owner)</b>"
+],
+correct:3,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>주체</th><th>데이터 이해도</th><th>의사결정 권한</th><th>평가</th></tr>
+<tr><td>A. Security Officer</td><td>낮음</td><td>정책 수립</td><td>오답 — 데이터 성격 미파악 → <b>완전한 정보 기반 판단 불가</b></td></tr>
+<tr><td>B. DLP 관리자</td><td>낮음</td><td>운영만</td><td>오답 — 경보 해결 권한 없음 — <b>소유자 결정 실행만 담당</b></td></tr>
+<tr><td>C. Incident Response</td><td>중간</td><td>사고 처리</td><td>오답 — <b>유출 확인 전까지 사고 아님</b> → IR 팀 개입 불필요</td></tr>
+<tr class="correct-row"><td>D. Data Owner ✅</td><td><b>최고</b></td><td><b>최종 책임</b></td><td>정답 — 데이터 <b>중요도·허용 전송 여부</b> 판단 가능 — 의사결정권자</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "DLP 경보 해결 = Data Owner의 의사결정"</b><br>
+• <b>DLP 경보 본질</b>: 민감정보 전송 <b>시도 탐지</b> — 정당성은 미판단<br>
+• <b>필요 판단</b>: "이 데이터가 정말 민감한가? 전송이 정당한가?"<br>
+• <b>유일한 판단자</b>: <b>Data Owner</b> — 데이터 분류·사용 규칙 수립자<br>
+• <b>다른 주체</b>: 운영·실행 지원만 가능<br><br>
+<b>📝 왜 D가 BEST인가 — Data Owner의 역할</b><br>
+• <b>데이터 분류 책임</b>: Public·Internal·Confidential·Restricted 지정<br>
+• <b>사용 정책 수립</b>: 누가·언제·어디로 전송 가능한지 결정<br>
+• <b>예외 승인</b>: 비정형 전송 요청 검토·승인/거부<br>
+• <b>비즈니스 맥락</b>: 전송 사유의 정당성 판단 가능<br>
+• <b>영향도 평가</b>: 유출 시 비즈니스 영향 평가 가능<br>
+• <b>최종 책임</b>: 데이터 기밀성·무결성·가용성에 대한 오너십<br><br>
+<b>💡 DLP 경보 처리 워크플로우</b><br>
+• <b>1단계: 탐지</b> → DLP 솔루션 자동 경보<br>
+• <b>2단계: 1차 검토</b> → DLP 관리자 기술적 분석(False Positive 여부)<br>
+• <b>3단계: 에스컬레이션</b> → <b>Data Owner에게 통보</b> ✅<br>
+• <b>4단계: 의사결정</b> → Data Owner가 <b>정당성·조치 결정</b><br>
+• <b>5단계: 실행</b> → DLP 관리자가 결정 사항 실행<br>
+  - 허용: 화이트리스트 추가<br>
+  - 차단: 전송 중단·사용자 경고<br>
+  - 유출 확인: Incident Response 에스컬레이션<br>
+• <b>6단계: 문서화</b> → 결정 근거·조치 내역 기록<br><br>
+<b>🔐 오답 상세 분석</b><br>
+<b>A. Security Officer</b><br>
+• <b>역할</b>: 조직 전반 보안 정책·거버넌스<br>
+• <b>한계</b>: 특정 데이터의 <b>내용·중요도 미파악</b><br>
+• <b>예</b>: 회계 데이터의 정당한 외부 전송 여부는 재무 부서 몫<br>
+• 정책 수립·감독에는 관여하나 <b>개별 경보 판단자 아님</b><br>
+<b>B. DLP 관리자</b><br>
+• <b>역할</b>: DLP 솔루션 설정·운영·규칙 관리<br>
+• <b>한계</b>: 기술 운영자 — <b>업무적 판단 권한 없음</b><br>
+• Data Owner의 결정을 <b>실행하는 역할</b><br>
+• 예: 오탐(False Positive) 필터링·규칙 튜닝<br>
+<b>C. Incident Response Team</b><br>
+• <b>역할</b>: 실제 보안 사고 대응·봉쇄·복구<br>
+• <b>한계</b>: <b>아직 사고 아님</b> — 경보 단계<br>
+• 데이터 <b>유출 확인 시에만</b> 투입<br>
+• 불필요한 투입은 <b>오버리액션</b>·리소스 낭비<br><br>
+<b>🎯 CISA 출제 포인트 — 역할·책임 매트릭스</b><br>
+<table>
+<tr><th>역할</th><th>책임</th><th>DLP 경보 시</th></tr>
+<tr><td><b>Data Owner</b></td><td>데이터 분류·사용 규칙·최종 책임</td><td><b>경보 조사·해결 결정</b> ✅</td></tr>
+<tr><td>Data Custodian</td><td>기술적 보호·백업·접근통제 구현</td><td>소유자 결정 실행</td></tr>
+<tr><td>Security Officer</td><td>보안 정책·거버넌스·감독</td><td>정책 수립·감독</td></tr>
+<tr><td>DLP Admin</td><td>DLP 운영·규칙 관리</td><td>1차 검토·실행</td></tr>
+<tr><td>Incident Response</td><td>사고 대응·봉쇄·복구</td><td>유출 확인 시 투입</td></tr>
+<tr><td>Data User</td><td>승인된 사용</td><td>사용 목적 소명</td></tr>
+</table><br>
+<b>📋 DLP 주요 개념</b><br>
+• <b>DLP 3대 보호 대상</b><br>
+  - <b>Data in Use</b>: 엔드포인트에서 사용 중 (복사·인쇄·클립보드)<br>
+  - <b>Data in Transit</b>: 네트워크 전송 중 (이메일·웹·파일전송)<br>
+  - <b>Data at Rest</b>: 저장소에 저장 중 (파일서버·DB·백업)<br>
+• <b>DLP 탐지 기법</b>:<br>
+  - <b>Regular Expression</b>: 주민번호·카드번호 패턴 매칭<br>
+  - <b>Keyword Matching</b>: 민감 키워드 탐지<br>
+  - <b>Data Fingerprinting</b>: 원본 문서 해시 기반<br>
+  - <b>Machine Learning</b>: 문맥 기반 분류<br>
+  - <b>Exact Data Matching(EDM)</b>: 고객 DB 일치 확인<br><br>
+<b>🛡️ DLP 대응 액션</b><br>
+• <b>Monitor</b>: 로깅만 — 탐지·분석<br>
+• <b>Notify</b>: 사용자·관리자 경고<br>
+• <b>Block</b>: 전송 차단<br>
+• <b>Quarantine</b>: 격리 저장소 이동<br>
+• <b>Encrypt</b>: 자동 암호화 후 전송<br>
+• <b>Redact</b>: 민감 부분 마스킹<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "보안 책임자가 최상위 아닌가?" → <b>정책 담당</b>이지 <b>데이터 소유자 아님</b><br>
+• "DLP가 탐지했으니 DLP 관리자가 해결?" → <b>기술 운영자</b> — 업무 판단권 없음<br>
+• "경보 = 사고 = IR팀?" → <b>경보는 사고 전 단계</b> — 확인 전 IR 투입 과잉<br>
+• CISA는 <b>"Business Decision Maker = Data Owner"</b> 원칙 일관<br><br>
+<b>🔑 핵심 암기</b><br>
+• DLP 경보 의사결정 = <b>Data Owner</b> ✅<br>
+• 이유: <b>데이터 분류·사용 규칙 최종 책임자</b><br>
+• 워크플로우: DLP Admin(1차 검토) → Data Owner(결정) → DLP Admin(실행)<br>
+• IR 팀은 <b>유출 확인 후</b> 투입 (사전 개입 X)<br>
+• Security Officer는 <b>정책 수준</b>에서 관여<br>
+• <b>CISA 원칙</b>: 데이터 관련 업무 의사결정은 항상 Data Owner
+</div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — DLP Alert Governance and Data Owner Responsibilities",
+keyConcepts:[
+"DLP 경보 해결|Data Owner — 데이터 중요도·전송 정당성 판단 가능한 유일한 의사결정자",
+"Data Owner 역할|데이터 분류·사용 정책·예외 승인·최종 책임 — 비즈니스 맥락 이해",
+"DLP 워크플로우|탐지→1차 검토(DLP Admin)→Data Owner 결정→실행→(유출 시) IR 에스컬레이션",
+"역할 책임 매트릭스|Data Owner(결정)·Custodian(구현)·Security Officer(정책)·DLP Admin(운영)",
+"DLP 3대 보호 대상|Data in Use(엔드포인트)·in Transit(네트워크)·at Rest(저장소)",
+"DLP 탐지 기법|Regex·Keyword·Data Fingerprinting·ML·Exact Data Matching",
+"DLP 대응 액션|Monitor·Notify·Block·Quarantine·Encrypt·Redact — 정책별 선택",
+"IR 팀 투입 시점|유출 확인 후 — 경보 단계에서 과잉 대응 금지",
+"CISA 원칙|데이터 관련 의사결정 = Data Owner 일관 — 비즈니스 오너십 기반"
+]
+},
+{
+id:543,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following types of risk is BEST represented by an enterprise using manual controls instead of automated controls for data loss prevention?",
+questionKo:"DLP(데이터 손실 방지)를 위해 <b>자동화된 통제 대신 수동 통제</b>를 사용하는 기업이 <b>가장 잘 대표하는 위험 유형</b>은?",
+options:[
+"A. Control risk",
+"B. Inherent risk",
+"C. Detection risk",
+"D. Sampling risk"
+],
+optionsKo:[
+"A. <b>통제 위험(Control Risk)</b>",
+"B. <b>고유 위험(Inherent Risk)</b>",
+"C. <b>발견 위험(Detection Risk)</b>",
+"D. <b>표본 위험(Sampling Risk)</b>"
+],
+correct:0,
+explanation:`
+<div class="comparison-table">
+<table>
+<tr><th>선택지</th><th>정의</th><th>시나리오 적합성</th><th>평가</th></tr>
+<tr class="correct-row"><td>A. Control Risk ✅</td><td><b>통제가 오류를 예방·탐지 못할 위험</b></td><td><b>완전 일치</b></td><td>정답 — 수동 통제 = <b>자동 대비 효과성 낮음</b> → 통제 위험 증가</td></tr>
+<tr><td>B. Inherent Risk</td><td>통제 적용 전 본래 위험</td><td>부적합</td><td>오답 — <b>통제와 무관</b>하게 존재 — 통제 유형 변경으로 영향받지 않음</td></tr>
+<tr><td>C. Detection Risk</td><td>감사인이 문제 발견 못할 위험</td><td>부적합</td><td>오답 — <b>감사인 관점 위험</b> — 운영 통제 유형과 무관</td></tr>
+<tr><td>D. Sampling Risk</td><td>샘플이 모집단 대표 못할 위험</td><td>부적합</td><td>오답 — <b>감사 표본 추출 오류</b> — 이 시나리오와 무관</td></tr>
+</table>
+</div>
+<div class="sbox">
+<b>📌 문제 핵심: "통제 효과성 저하 = Control Risk"</b><br>
+• <b>시나리오</b>: DLP에 <b>수동 통제</b> 사용 → <b>자동 통제보다 효과성 낮음</b><br>
+• <b>영향</b>: 오류·누락·지연 발생 가능성 증가<br>
+• <b>결과</b>: <b>통제 위험(Control Risk) 증가</b><br><br>
+<b>📝 감사 위험 모델(Audit Risk Model)</b><br>
+• <b>공식</b>: <b>AR = IR × CR × DR</b><br>
+  - AR(Audit Risk): 감사 의견 오류 위험<br>
+  - IR(Inherent Risk): 고유 위험<br>
+  - CR(Control Risk): 통제 위험<br>
+  - DR(Detection Risk): 발견 위험<br>
+• <b>관계</b>: AR = 목표치 고정 → IR·CR 높을수록 DR 낮춰야 (더 많은 감사 절차)<br><br>
+<b>💡 4대 위험 유형 심층 비교</b><br>
+<table>
+<tr><th>유형</th><th>정의</th><th>원인</th><th>예시</th></tr>
+<tr><td><b>Inherent Risk (고유)</b></td><td>통제 없을 때 본래 위험</td><td>업무 성격·환경</td><td>현금 취급·복잡한 거래·대규모 데이터</td></tr>
+<tr><td><b>Control Risk (통제)</b></td><td>통제가 오류 방지·탐지 못함</td><td>통제 설계·운영 미흡</td><td>수동 통제·SoD 미흡·통제 우회</td></tr>
+<tr><td><b>Detection Risk (발견)</b></td><td>감사인이 오류 미탐지</td><td>감사 절차·기간·샘플링</td><td>부적절한 감사 기법·숙련도 부족</td></tr>
+<tr><td><b>Sampling Risk (표본)</b></td><td>샘플이 모집단 미대표</td><td>샘플 크기·선택 방법</td><td>편향 샘플링·작은 표본</td></tr>
+</table><br>
+<b>💡 왜 A가 정답인가 — Control Risk 심층 분석</b><br>
+• <b>정의</b>: <b>내부 통제가 중요한 오류를 예방·적시 탐지하지 못할 위험</b><br>
+• <b>수동 통제의 한계</b>:<br>
+  - <b>인적 오류</b>: 피로·주의력·오판<br>
+  - <b>지연성</b>: 실시간 대응 불가<br>
+  - <b>일관성 부재</b>: 담당자별 차이<br>
+  - <b>대량 처리 한계</b>: 확장성 부족<br>
+  - <b>회피 가능</b>: 담당자 공모·누락<br>
+  - <b>증거 부족</b>: 로그·감사추적 미흡<br>
+• <b>자동 통제의 장점</b>:<br>
+  - <b>일관성</b>: 동일 규칙 반복 적용<br>
+  - <b>속도</b>: 실시간 처리<br>
+  - <b>확장성</b>: 대량 트랜잭션 처리<br>
+  - <b>감사 추적</b>: 자동 로그<br>
+  - <b>정확성</b>: 인적 오류 배제<br><br>
+<b>🔐 오답 상세 분석</b><br>
+<b>B. Inherent Risk — "통제 이전의 본래 위험"</b><br>
+• 업무의 <b>성격·환경</b>에서 비롯 — 통제 적용 전 수준<br>
+• 예: 현금 취급 업무는 <b>본질적으로</b> 분실·도난 위험 높음<br>
+• <b>통제 유형 변경으로 감소되지만</b>, Inherent Risk 자체는 업무 성격의 속성<br>
+• 수동/자동 선택은 <b>Control Risk에 영향</b> — Inherent Risk는 동일<br>
+<b>C. Detection Risk — "감사인의 발견 실패"</b><br>
+• 감사인이 <b>감사 절차로 중요 오류를 발견하지 못할</b> 위험<br>
+• 원인: 감사 범위 부족·샘플링·숙련도·절차 한계<br>
+• <b>감사 수행 측면</b>의 위험 — 운영 통제와 다름<br>
+<b>D. Sampling Risk — "샘플의 대표성 오류"</b><br>
+• 감사인이 <b>일부 샘플을 기반으로 전체 모집단 판단 시</b> 오류<br>
+• Detection Risk의 하위 개념 — 감사 기법 관련<br>
+• 이 문제는 <b>운영 통제 품질</b>에 관한 것 — 샘플링과 무관<br><br>
+<b>🎯 CISA 출제 포인트 — 위험 유형 식별</b><br>
+• <b>시나리오 키워드 → 위험 유형 매핑</b><br>
+  - "통제가 효과적이지 않다" → <b>Control Risk</b><br>
+  - "업무 자체가 위험하다" → <b>Inherent Risk</b><br>
+  - "감사인이 놓쳤다" → <b>Detection Risk</b><br>
+  - "샘플이 부적절하다" → <b>Sampling Risk</b><br>
+• 이 문제: "수동 통제 사용" → <b>통제 효과성 저하</b> = Control Risk<br><br>
+<b>📋 DLP 수동 vs 자동 통제 비교</b><br>
+<table>
+<tr><th>측면</th><th>수동 DLP</th><th>자동 DLP</th></tr>
+<tr><td>탐지 속도</td><td>분·시간 단위</td><td>밀리초 단위</td></tr>
+<tr><td>커버리지</td><td>선택적 검토</td><td>전수 검사</td></tr>
+<tr><td>일관성</td><td>담당자별 차이</td><td>규칙 기반 일관</td></tr>
+<tr><td>인적 오류</td><td>있음</td><td>없음</td></tr>
+<tr><td>대응 속도</td><td>사후 발견 많음</td><td>실시간 차단</td></tr>
+<tr><td>확장성</td><td>제한적</td><td>거의 무제한</td></tr>
+<tr><td>로그·감사</td><td>부분적</td><td>완전 자동 기록</td></tr>
+<tr><td><b>Control Risk</b></td><td><b>높음</b></td><td><b>낮음</b></td></tr>
+</table><br>
+<b>🛡️ 통제 자동화 Best Practices</b><br>
+• <b>High-Risk 우선</b>: 고위험 영역부터 자동화 (DLP·이상거래·접근통제)<br>
+• <b>Hybrid 접근</b>: 자동 + 수동 검토 조합 (복잡 사례)<br>
+• <b>지속적 모니터링</b>: 자동화 통제 자체의 정상 작동 확인<br>
+• <b>SoD 유지</b>: 자동화에도 상호 견제 구조 필요<br>
+• <b>예외 처리</b>: 자동화 실패 시 수동 백업 절차<br>
+• <b>정기 검증</b>: 자동 통제 규칙·임계값 재검토<br><br>
+<b>⚠️ 함정 주의</b><br>
+• "수동 통제니까 고유 위험(Inherent) 아닌가?" → <b>오답</b>, 고유 위험은 통제 이전 업무 속성<br>
+• "통제가 효과적이지 않으니 감사인이 못 봐서 Detection?" → <b>오답</b>, Detection은 감사 수행 측면<br>
+• CISA 원칙: <b>"통제 효과성" 언급 시 Control Risk</b><br><br>
+<b>🔑 핵심 암기</b><br>
+• 수동 통제 = 자동 대비 효과성 낮음 = <b>Control Risk 증가</b> ✅<br>
+• Audit Risk 공식: <b>AR = IR × CR × DR</b><br>
+• <b>위험 유형별 키워드</b>:<br>
+  - IR = 업무 성격·환경 (통제 이전)<br>
+  - CR = 통제 효과성 (설계·운영)<br>
+  - DR = 감사 절차 (감사인 관점)<br>
+  - SR = 표본 대표성<br>
+• <b>DLP 자동화 권장</b>: 속도·일관성·확장성 우위 → Control Risk 최소화
+</div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Control Risk and Manual vs Automated Controls",
+keyConcepts:[
+"Control Risk 정의|통제가 중요 오류를 예방·적시 탐지 못할 위험 — 통제 설계·운영 미흡",
+"수동 통제 한계|인적 오류·지연·일관성 부족·확장성 한계·회피 가능 → Control Risk 증가",
+"자동 통제 장점|일관성·실시간·확장성·감사추적·인적오류 배제 → Control Risk 감소",
+"Audit Risk 모델|AR = IR × CR × DR — 통제위험 증가 시 감사 절차 강화 필요",
+"Inherent Risk|통제 이전 업무 본래 위험 — 업무 성격·환경에서 비롯, 통제 유형과 무관",
+"Detection Risk|감사인이 감사 절차로 중요 오류 미발견 — 감사 수행 측면의 위험",
+"Sampling Risk|샘플이 모집단 대표성 부족 — Detection Risk 하위, 감사 기법 관련",
+"위험 유형 매핑|키워드별: 업무성격=IR / 통제효과=CR / 감사인발견=DR / 표본대표=SR",
+"DLP 자동화 권장|속도·일관성·확장성·완전 로그 — Control Risk 최소화 최선"
+]
+}
+,
+{
+id:544,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following BEST helps in controlling false-positive alerts received during the implementation of a data loss prevention (DLP) solution?",
+questionKo:"데이터 손실 방지(DLP) 솔루션 구현 중 수신되는 <b>오탐(false-positive) 경보를 통제</b>하는 데 가장 도움이 되는 것은?",
+options:[
+"A. Implement the data loss prevention (DLP) solution in monitor-mode.",
+"B. Plan data loss prevention (DLP) implementation in a phased manner.",
+"C. Appoint an external expert to define rules for the data loss prevention (DLP) solution.",
+"D. Perform data classification before implementing the data loss prevention (DLP) solution."
+],
+optionsKo:[
+"A. DLP 솔루션을 <b>모니터 모드</b>로 구현한다.",
+"B. DLP 구현을 <b>단계적(phased)</b>으로 계획한다.",
+"C. DLP 솔루션 규칙을 정의할 <b>외부 전문가</b>를 임명한다.",
+"D. DLP 구현 전에 <b>데이터 분류</b>를 수행한다."
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>오탐 통제 효과</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>모니터 모드 구현</td><td>차단 대신 관찰만 수행 — <b>차단에 의한 업무 중단은 예방</b>하지만 규칙 자체의 오탐률은 낮추지 못함</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>단계적(phased) 구현</b></td><td class="correct-cell">제한된 장치·연결 대상 파일럿 → 실제 데이터로 <b>규칙 튜닝</b>·임계값 조정 → 단계적으로 확대 → <b>오탐률을 지속적으로 최적화</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>외부 전문가로 규칙 정의</td><td>규칙 수립에 도움은 되지만, <b>어떤 데이터를 어떻게 보호할지는 내부 사용자·Data Owner가 가장 잘 정의</b> — 외부 전문가만으로는 오탐 최소화 한계</td><td>부적합</td></tr><tr><td><b>D</b></td><td>DLP 구현 전 데이터 분류</td><td>DLP 성공의 <b>전제조건(prerequisite)</b>이지만, 분류 자체가 규칙 오탐률을 직접 통제하지는 않음</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — DLP 오탐(False Positive) 통제 전략</h4><p><b>오탐(False Positive)</b>이란 정상적인 데이터 전송이 DLP 규칙에 의해 <b>민감 데이터 유출로 잘못 식별</b>되어 차단·경보되는 상황이다. 오탐이 많으면 ① 정상 업무 방해, ② 운영자의 경보 피로(alert fatigue), ③ 진짜 위협을 놓치는 False Negative로 이어진다.</p><h4>단계적(Phased) DLP 구현의 오탐 통제 메커니즘</h4><ul><li><b>파일럿 단계</b>: 소수 부서·시스템·데이터 유형에 한정 → 실제 트래픽·사용자 행동 패턴 수집</li><li><b>규칙 정제(Rule Tuning)</b>: 오탐 패턴 분석 → 정규식·임계값·예외 조건 조정 → 정확도 향상</li><li><b>기준선(Baseline) 확립</b>: 정상 업무 흐름의 데이터 이동 패턴 학습 → 이상 탐지 기준 수립</li><li><b>점진적 확대</b>: 검증된 규칙을 다음 단계로 확산 → 전사 롤아웃 시점에는 오탐률 충분히 낮아진 상태</li><li><b>피드백 루프</b>: 각 단계에서 Data Owner·업무 담당자 피드백을 규칙에 반영</li></ul><h4>함정 포인트 — 모니터 모드 vs 단계적 구현</h4><ul><li><b>모니터 모드(A)</b>는 "차단하지 않고 로그만" — <b>오탐의 업무 영향을 완화</b>하지만 <b>오탐 자체를 줄이지는 못함</b></li><li><b>단계적 구현(B)</b>은 모니터 모드를 <b>포함</b>할 수 있으면서 추가로 규칙 튜닝을 통해 <b>오탐률 자체를 낮춤</b></li><li>질문이 "<b>오탐 통제(controlling false-positive alerts)</b>"이므로 오탐 발생률을 실제로 줄이는 B가 정답</li><li>CISA 관점: 모니터 모드 = 배포 옵션 / 단계적 접근 = <b>전략적 구현 방법론</b>으로 더 포괄적</li></ul><h4>데이터 분류와 DLP의 관계</h4><ul><li>데이터 분류는 DLP <b>대상 정의의 전제조건</b>이지만, 분류 후에도 규칙 설계에 따라 오탐은 발생</li><li>"공개(Public)·내부(Internal)·기밀(Confidential)·극비(Restricted)" 구분만으로는 특정 문서의 맥락·송수신자·채널 오탐 해결 불가</li><li>따라서 D는 <b>필수이지만 충분하지 않음</b></li></ul><h4>외부 전문가의 역할 한계</h4><ul><li>외부 전문가는 <b>기술적 규칙 설계·툴 운영 노하우</b> 제공 가능</li><li>그러나 "어떤 데이터가 중요한가, 어떤 전송이 정상인가"는 <b>내부 Data Owner·업무 전문가가 가장 잘 안다</b></li><li>외부 전문가에만 의존하면 조직 특성 반영 부족 → 오탐·미탐 모두 증가 가능</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DLP 오탐 통제 최선책</b> = <b>단계적 구현 + 규칙 튜닝 + 내부 피드백</b></li><li>모니터 모드 = 배포 형태(차단 여부) / 단계적 접근 = 구현 방법론(규모·속도)</li><li>데이터 분류 = DLP 전제조건 / 외부 전문가 = 보조 자원</li><li>순서: <b>데이터 분류 → 파일럿(모니터 모드) → 규칙 튜닝 → 단계적 확대 → 차단 모드 전환</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — False Positive Management and Phased Implementation",
+keyConcepts:[
+"오탐(False Positive) 정의|정상 데이터를 민감 데이터로 오인 → 차단·경보 → 업무 방해·경보 피로·False Negative 유발",
+"단계적 구현 핵심|소규모 파일럿 → 규칙 튜닝 → 기준선 학습 → 점진적 확대 → 오탐률 최적화",
+"규칙 튜닝|실제 트래픽으로 정규식·임계값·예외 조건 조정 → 정확도 향상",
+"모니터 모드 vs 단계적 접근|모니터 모드는 차단만 없앰(영향 완화) / 단계적은 오탐 자체 감소",
+"데이터 분류 역할|DLP 전제조건(대상 정의)이지만 규칙 오탐률을 직접 통제하지 못함",
+"외부 전문가 한계|기술 규칙 설계는 가능하나 내부 Data Owner 지식 대체 불가",
+"DLP 구현 순서|데이터 분류 → 파일럿(모니터) → 규칙 튜닝 → 단계적 확대 → 차단 전환",
+"경보 피로(Alert Fatigue)|오탐 과다 시 운영자 무감각 → 진짜 위협 놓침 → 보안 효과 저하",
+"Data Owner 책임|데이터 민감도·정상 업무 흐름 정의 → DLP 규칙 정확도의 핵심 입력"
+]
+}
+,
+{
+id:545,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following methods can BEST help prevent inadvertent data loss in an enterprise?",
+questionKo:"기업 내 <b>부주의(inadvertent) 데이터 손실을 예방</b>하는 데 가장 도움이 되는 방법은?",
+options:[
+"A. Employee training",
+"B. Encryption",
+"C. Firewall",
+"D. Antivirus software"
+],
+optionsKo:[
+"A. <b>직원 교육</b>",
+"B. 암호화",
+"C. 방화벽",
+"D. 백신(Antivirus) 소프트웨어"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>부주의 데이터 손실 예방 효과</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>직원 교육(Employee Training)</b></td><td class="correct-cell"><b>인적 오류(human error) 근본 원인에 직접 대응</b> — 데이터 취급 책임·위협 인식·정책 이해도 향상 → 부주의 손실 발생 확률 자체를 감소</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>암호화(Encryption)</td><td>손실·탈취 시 <b>무단 접근을 방지</b>(기밀성) — 데이터 <b>손실 자체를 예방하지는 못함</b>. 사후 영향 완화 통제</td><td>부적합</td></tr><tr><td><b>C</b></td><td>방화벽(Firewall)</td><td>외부 무단 <b>네트워크 접근 차단</b> — 부주의에 의한 내부 사용자의 데이터 유출 행동 예방과 직접 연관 없음</td><td>부적합</td></tr><tr><td><b>D</b></td><td>백신(Antivirus)</td><td><b>악성코드 탐지·차단</b> — 데이터 손실 예방 자체가 주 목적이 아니며 부주의 오류 통제와 무관</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 부주의(Inadvertent) 데이터 손실</h4><p><b>Inadvertent Data Loss</b>란 악의 없는 <b>인적 실수·부주의</b>로 민감 데이터가 유출·손실되는 상황이다. 대표 사례:</p><ul><li>잘못된 수신자에게 이메일 발송 ("Reply All", 오타 수신자)</li><li>민감 파일을 공개 클라우드 스토리지에 업로드</li><li>USB·노트북 분실</li><li>피싱 이메일 클릭, 악성 첨부파일 실행</li><li>불필요한 데이터 공유, 잘못된 권한 부여</li><li>쓰레기통에 민감 문서 폐기(shredding 미수행)</li></ul><h4>직원 교육이 가장 효과적인 이유</h4><ul><li><b>근본 원인 대응</b>: 부주의 손실의 <b>원인은 사람</b> — 기술적 통제는 증상 완화, 교육은 원인 제거</li><li><b>예방적(Preventive) 통제</b>: 사건 발생 이전 단계에 개입 → 비용 효과 최고</li><li><b>행동 변화 유도</b>: 정책 인지 → 위협 인식 → 올바른 데이터 처리 습관 형성</li><li><b>문화 형성</b>: 보안 인식 문화 정착 → 동료 간 자정·지속적 개선</li><li><b>"Security is only as strong as the weakest link"</b> — 인간이 가장 취약 → 교육이 가장 큰 투자수익</li></ul><h4>함정 포인트 — 암호화와의 비교</h4><ul><li>암호화는 <b>손실이 발생한 뒤</b> 데이터를 <b>읽을 수 없게</b> 함 → 기밀성 보호</li><li>그러나 암호화는 "<b>손실 자체의 예방</b>"이 아니라 "<b>손실 이후 영향 최소화</b>"</li><li>질문이 "<b>prevent inadvertent data loss</b>"이므로 손실 <b>발생 확률</b>을 줄이는 A가 정답</li><li>암호화는 <b>상호보완적</b>(defense in depth)이지만 단독으로는 부주의 손실 예방 불가</li></ul><h4>통제 유형 분류</h4><ul><li><b>예방(Preventive)</b>: 직원 교육(A), 접근 통제, DLP 차단 규칙</li><li><b>탐지(Detective)</b>: DLP 경보, 로그 모니터링, 침입 탐지</li><li><b>교정(Corrective)</b>: 사고 대응, 복구, 법적 조치</li><li><b>완화(Compensating)</b>: 암호화(B) — 손실 시 <b>피해 축소</b></li><li>부주의 오류의 예방은 <b>A(교육) + 기술적 통제(DLP·접근제어) 결합</b>이 이상적</li></ul><h4>보안 인식 교육(Security Awareness Training) 프로그램</h4><ul><li><b>대상</b>: 전 직원(신입·기존·임원 포함) — 업무별 맞춤 과정</li><li><b>주기</b>: 연 1회 이상 정기 + 신규 입사자 즉시 + 사건 발생 시 특별 교육</li><li><b>내용</b>: 데이터 분류, 피싱 인식, 비밀번호 관리, 모바일·재택근무, 클린 데스크</li><li><b>평가</b>: 피싱 모의훈련, 사전·사후 테스트, 사고 건수 추이</li><li><b>CISA 감사 포인트(Task 41)</b>: 교육 이수율, 콘텐츠 최신성, 효과성 측정 지표</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li>"<b>BEST prevent inadvertent data loss</b>" = <b>직원 교육</b> — 인적 오류가 주 원인이므로</li><li>암호화·방화벽·백신은 보완적 기술 통제일 뿐 부주의 오류 예방의 주 수단 아님</li><li>가장 강력한 보안 = <b>People · Process · Technology</b> 통합 — 그 중 People 층에 해당</li><li>유사 출제: "greatest risk = human error" → "best mitigation = awareness training"</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Security Awareness Training and Inadvertent Loss",
+keyConcepts:[
+"부주의 데이터 손실 정의|악의 없는 인적 실수로 민감 데이터 유출 — 오발송·공개 업로드·분실·피싱 클릭",
+"직원 교육 우위|인적 오류 근본 원인에 직접 대응 → 예방적(Preventive) 통제로 비용 효과 최고",
+"암호화의 한계|손실 이후 기밀성 보호(완화 통제) — 손실 발생 자체는 예방 못함",
+"방화벽·백신 역할|외부 위협·악성코드 차단 — 내부 부주의 오류와 직접 연관 없음",
+"통제 유형 분류|예방(교육) · 탐지(DLP 경보) · 교정(복구) · 완화(암호화)",
+"보안 인식 프로그램|연 1회 이상 정기 + 신규자 즉시 + 피싱 모의훈련·사전사후 테스트",
+"교육 효과성 지표|이수율·사고 건수 추이·피싱 클릭률·정책 준수 감사 결과",
+"People·Process·Technology|통합 보안 — 교육은 People 층 핵심, 단독 기술 통제는 한계",
+"Weakest Link 원칙|사람이 가장 취약 → 교육 투자 ROI 최고, 인적 통제 없이 기술만으로는 불충분"
+]
+}
+,
+{
+id:546,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"An enterprise allows for the use of universal serial bus drives to transfer operational data between offices. Which of the following is the GREATEST risk associated with the use of these devices?",
+questionKo:"기업이 사무소 간 운영 데이터 전송에 <b>USB 드라이브</b> 사용을 허용한다. 이러한 장치 사용과 관련된 <b>가장 큰 위험</b>은?",
+options:[
+"A. Files not backed up",
+"B. Theft of the devices",
+"C. Use of the devices for personal purposes",
+"D. Introduction of malware into the network"
+],
+optionsKo:[
+"A. 파일이 <b>백업되지 않음</b>",
+"B. 장치의 <b>도난(Theft)</b>",
+"C. 장치의 <b>개인 용도</b> 사용",
+"D. 네트워크로의 <b>악성코드 유입</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>위험 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>파일 미백업</td><td>가용성 위험이긴 하나, <b>암호화되지 않은 장치의 도난이 훨씬 큰 위험</b> — 백업 부재는 복원 어려움이나 기밀성·데이터 유출 없음</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>장치의 도난·분실</b></td><td class="correct-cell">USB는 <b>작고 휴대성이 높아</b> 도난·분실 가능성이 가장 큼 — 암호화되지 않은 경우 <b>기밀성 침해·규제 위반·평판 손상</b> 동시 발생. 데이터 유출의 가장 큰 원인</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>개인 용도 사용</td><td>기업 정책 위반이나, 도난·분실에 의한 외부 유출보다 영향 범위가 제한적</td><td>부적합</td></tr><tr><td><b>D</b></td><td>악성코드 유입</td><td>견고한 환경에서는 <b>삽입 시 자동 스캔·AutoRun 비활성화</b> 등 IT 통제로 완화 가능 → 도난 위험보다 낮음</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — USB 드라이브의 보안 위험</h4><p>USB 드라이브는 <b>편리성</b>과 <b>보안 위험</b>이 공존하는 이동식 저장매체다. 주요 위험:</p><ul><li><b>물리적 도난·분실</b>: 크기가 작고 휴대성 높음 → 호주머니·가방에서 떨어짐, 택시·공항에서 분실</li><li><b>기밀성 침해</b>: 암호화 미적용 시 습득자가 데이터 열람 가능 → 개인정보·영업비밀 유출</li><li><b>악성코드 전파</b>: AutoRun 공격, USB Rubber Ducky 등</li><li><b>데이터 밀반출(Exfiltration)</b>: 내부자가 민감 데이터 반출 수단으로 악용</li><li><b>버전 관리 문제</b>: 여러 복사본 존재 → 최신 파일 혼동</li></ul><h4>도난이 가장 큰 위험인 이유</h4><ul><li><b>발생 확률 높음</b>: 수많은 USB 분실 사고 보고(정부·의료·금융 기관 사고 다수)</li><li><b>영향 범위 넓음</b>: 한 번의 분실이 <b>수천~수십만 건의 개인정보 유출</b>로 이어질 수 있음</li><li><b>규제 위반</b>: GDPR·HIPAA·PCI-DSS 등 <b>즉각적 법적·금전적 제재</b></li><li><b>평판 손상</b>: 언론 보도·고객 이탈·신뢰 저하 → 장기적 비용</li><li><b>회복 어려움</b>: 이미 유출된 데이터는 회수 불가 → 완화만 가능</li><li>반면 악성코드는 <b>탐지·차단·복구 가능</b>, 개인 용도 사용은 <b>정책 집행</b>으로 통제 가능</li></ul><h4>USB 도난 위험 완화 통제</h4><ul><li><b>하드웨어 암호화 USB</b>: FIPS 140-2 인증 장치, PIN 입력·자동 삭제 기능</li><li><b>소프트웨어 암호화</b>: BitLocker To Go, VeraCrypt — 전체 볼륨 암호화</li><li><b>DLP 통합</b>: 민감 데이터 복사 시 자동 암호화·차단</li><li><b>엔드포인트 통제</b>: USB 포트 차단·허용 목록·읽기 전용 정책</li><li><b>자산 관리</b>: USB 등록·추적·분실 신고 절차</li><li><b>원격 삭제(Remote Wipe)</b>: 분실 시 원격 데이터 삭제 기능</li></ul><h4>함정 포인트 — 악성코드 vs 도난</h4><ul><li><b>악성코드(D)</b>는 <b>일반 IT 통제</b>(AV 스캔·AutoRun 비활성)로 상당 부분 완화 가능</li><li><b>도난(B)</b>은 물리적 사건이므로 완화는 <b>암호화·DLP로 사후 영향 제한</b>만 가능</li><li>발생 가능성·영향도·통제 난이도 모두 도난이 더 큼 → GREATEST risk</li><li>CISA 시험 관점: "<b>암호화되지 않은 이동식 매체의 분실·도난</b>"은 전통적 최대 DLP 위험</li></ul><h4>백업 부재(A)와의 비교</h4><ul><li>백업 미실시는 <b>가용성</b> 위험 — 데이터 손실은 있으나 <b>외부 유출은 없음</b></li><li>도난은 <b>기밀성 + 가용성</b> 동시 침해 → 영향 범위가 더 큼</li><li>일반적으로 <b>기밀성 침해(유출)</b>가 <b>가용성 침해(복구 가능)</b>보다 심각</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li>USB 드라이브 <b>GREATEST risk = 도난·분실</b> (암호화 미적용 전제)</li><li>완화 최선책: <b>전체 장치 암호화 + DLP + 엔드포인트 통제 + 사용자 교육</b></li><li>우선순위: Theft(B) > Malware(D) > Personal use(C) > No backup(A)</li><li>규제 관점: 이동식 매체 분실은 <b>"Reportable Data Breach"</b>로 즉시 신고 의무 발생</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Removable Media and Physical Theft Risks",
+keyConcepts:[
+"USB 최대 위험|도난·분실 — 작고 휴대성 높아 발생 확률 최고, 암호화 미적용 시 기밀성 침해",
+"도난 영향|규제 위반(GDPR·HIPAA) + 평판 손상 + 회복 불가 → 영향 범위·지속성 최대",
+"백업 미실시 vs 도난|백업 부재는 가용성만, 도난은 기밀성+가용성 동시 침해 → 도난이 더 큼",
+"악성코드 완화|AV 스캔·AutoRun 비활성 등 일반 IT 통제로 통제 가능 → 도난보다 관리 용이",
+"개인 용도 사용|정책 위반이나 외부 유출 영향보다 제한적",
+"USB 완화 통제|하드웨어 암호화·BitLocker To Go·DLP·엔드포인트 포트 통제·원격 삭제",
+"이동식 매체 분류|USB·외장 HDD·SD카드·CD/DVD — 모두 동일한 분실·도난 위험 프로파일",
+"Reportable Breach|암호화되지 않은 이동식 매체 분실 = 즉시 규제 신고 의무 발생",
+"기밀성 우선|기밀성 침해(유출)는 회수 불가, 가용성 침해(복구 가능)보다 심각"
+]
+}
+,
+{
+id:547,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following would the auditor consider MOST important for effective data protection using a data loss prevention (DLP) solution?",
+questionKo:"DLP 솔루션을 사용한 <b>효과적인 데이터 보호</b>를 위해 감사인이 <b>가장 중요</b>하다고 여기는 것은?",
+options:[
+"A. Ensuring that a single administrator maintains the DLP to prevent data disclosures",
+"B. Ensuring that the DLP solution is properly configured and implemented",
+"C. Ensuring the effectiveness of the enterprise's DLP policies and procedures",
+"D. Ensuring the effectiveness of the encryption and de-identification technologies"
+],
+optionsKo:[
+"A. 데이터 유출 방지를 위해 <b>단일 관리자</b>가 DLP를 유지하도록 보장",
+"B. DLP 솔루션이 <b>적절히 구성(configured)·구현(implemented)</b>되도록 보장",
+"C. 기업의 <b>DLP 정책·절차</b>의 효과성 보장",
+"D. <b>암호화·비식별화(de-identification)</b> 기술의 효과성 보장"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>감사 관점 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>단일 관리자 유지</td><td><b>직무 분리(SoD) 원칙 위배</b> — 단일 관리자는 오히려 부정·오류·단일 장애점(SPOF) 위험 증가. DLP는 다양한 통제 조합으로 운영</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>적절한 구성·구현</b></td><td class="correct-cell">DLP는 <b>구성·구현 품질만큼만 효과적</b> — 부적절한 구성은 민감 데이터 탐지·차단 실패 → 정책·절차가 아무리 훌륭해도 <b>실제 집행은 구성에 달림</b>. 감사인 최대 관심사</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>정책·절차 효과성</td><td>정책·절차는 <b>필수 기반(foundation)</b>이나, 기술적 집행이 없으면 <b>문서에 그침</b> — B의 전제조건이지 목표 자체가 아님</td><td>부적합</td></tr><tr><td><b>D</b></td><td>암호화·비식별화</td><td>암호화·비식별화는 <b>DLP의 주된 목적이 아님</b> — DLP는 탐지·차단·모니터링 중심. 암호화는 <b>보완적 통제</b></td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — DLP 감사의 최우선 관심사</h4><p>DLP 솔루션은 <b>정책·기술·운영</b> 3층 구조로 동작한다:</p><ul><li><b>정책(Policy)</b>: 어떤 데이터를 보호할지, 어떤 채널·조건에서 차단할지 규정</li><li><b>구성(Configuration)</b>: 정책을 기술 규칙(정규식·키워드·지문·분류)로 변환</li><li><b>구현(Implementation)</b>: 엔드포인트·네트워크·클라우드 전 영역에 배포·통합</li></ul><p>감사인의 <b>MOST important</b> 관심사는 정책이 <b>실제로 기술로 집행되는지</b> — 즉 <b>구성·구현의 적절성</b>이다.</p><h4>구성·구현(B)이 최우선인 이유</h4><ul><li><b>집행의 실질</b>: 정책은 의도이나, 구성·구현은 <b>실제 통제 작동</b> — 감사는 통제 효과성 확인이 목적</li><li><b>"Design vs Operating Effectiveness"</b>: 감사는 설계와 운영 양쪽을 평가, 그 중 <b>운영 효과성은 구성·구현에서 결정</b></li><li><b>가장 큰 실패 지점</b>: 부적절한 구성 → 오탐 과다·미탐 누락 → DLP 무력화</li><li><b>정책·기술 간극</b>: 정책에 "민감 데이터 외부 전송 차단" 명시해도 구성이 없으면 차단 실패</li><li><b>감사 증거</b>: 구성 스크린샷·규칙 목록·로그·테스트 결과로 확인 가능</li></ul><h4>함정 포인트 — B vs C 구별</h4><ul><li><b>C(정책·절차 효과성)</b>는 "정책 문서가 잘 만들어졌는가" — 정책이 <b>포괄적·최신·승인됨</b>을 확인</li><li><b>B(구성·구현)</b>는 "정책이 실제 시스템에 반영되었는가" — <b>정책 → 기술 변환</b>이 정확한지 확인</li><li>CISA 관점: 정책은 <b>전제조건</b>, 구현은 <b>실행</b> — 문제에 "effective data protection using DLP"라면 <b>실행이 핵심</b></li><li>정책만 있고 구현 없는 경우 = <b>"paper DLP"</b> — 실질 보호 없음</li></ul><h4>A·D가 부적합한 이유</h4><ul><li><b>A(단일 관리자)</b>: 보안 원칙 위반 — SoD·백업 관리자·최소권한 원칙과 충돌. DLP는 <b>다중 역할 관리</b> 필요</li><li><b>D(암호화·비식별화)</b>: DLP의 핵심 기능이 아님 — DLP는 <b>탐지(detection)·차단(blocking)·모니터링</b>이 주 기능. 암호화는 <b>데이터 보호의 다른 통제</b></li></ul><h4>DLP 감사 체크리스트</h4><ul><li>① 정책 검토: 승인·최신·포괄성</li><li>② <b>규칙 구성 검토: 정규식·키워드·분류 정확성</b></li><li>③ <b>배포 범위 검토: 엔드포인트·네트워크·클라우드·이메일 포함 여부</b></li><li>④ 모니터링·대응: 경보 처리·에스컬레이션·사후 조치</li><li>⑤ 테스트: <b>민감 데이터 시나리오로 실제 탐지·차단 검증</b></li><li>⑥ 로그 무결성: WORM·중앙 로그 서버·접근 통제</li><li>⑦ 역할·책임: 관리자 SoD·백업 관리자 존재</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DLP 감사 최대 관심사 = 구성·구현의 적절성</b> (정책이 기술로 정확히 변환·집행되는지)</li><li>정책 효과성은 필수 기반이나, 구현 없이는 <b>문서만 존재</b></li><li>DLP 주 기능 = 탐지·차단·모니터링 / 암호화·비식별화는 <b>보완 통제</b></li><li>단일 관리자 = SoD 위반 → 오히려 위험 증가</li><li>"<b>paper DLP vs operational DLP</b>" — 감사는 operational 측면에 집중</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Audit of DLP Configuration and Implementation",
+keyConcepts:[
+"DLP 감사 최우선|구성·구현 적절성 — 정책이 기술로 정확히 변환·집행되는지가 핵심",
+"Design vs Operating Effectiveness|설계(정책)와 운영(구성·구현) 양쪽 평가 — 운영 효과성은 구성에서 결정",
+"Paper DLP|정책은 있으나 구현 없음 → 실질 보호 없음 → 감사 실패",
+"정책 vs 구현|정책은 의도·전제조건, 구현은 실행·통제 작동 — 감사는 통제 효과성 확인",
+"단일 관리자 문제|SoD 위반·SPOF·부정 위험 — DLP는 다중 역할 관리 필요",
+"DLP 주 기능|탐지(detection)·차단(blocking)·모니터링 — 암호화·비식별화는 별도 통제",
+"DLP 감사 체크리스트|정책·규칙·배포범위·모니터링·테스트·로그·역할 7단계 검토",
+"구성 실패 영향|오탐 과다(업무 방해) + 미탐 누락(유출 허용) → DLP 무력화",
+"민감 데이터 테스트|실제 시나리오로 탐지·차단 검증 → 운영 효과성 증거 확보"
+]
+}
+,
+{
+id:548,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following measures is the MOST effective method for preventing data exfiltration?",
+questionKo:"<b>데이터 밀반출(exfiltration)</b>을 방지하는 데 <b>가장 효과적인 방법</b>은?",
+options:[
+"A. Disabling antivirus software on all devices",
+"B. Implementing network segmentation",
+"C. Allowing unrestricted USB device usage",
+"D. Using default security configurations"
+],
+optionsKo:[
+"A. 모든 장치에서 <b>백신 소프트웨어 비활성화</b>",
+"B. <b>네트워크 세그먼테이션(network segmentation)</b> 구현",
+"C. <b>USB 장치 무제한 사용</b> 허용",
+"D. <b>기본 보안 구성(default configuration)</b> 사용"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>데이터 밀반출 방지 효과</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>백신 비활성화</td><td><b>정반대의 조치</b> — 악성코드 탐지·차단 기능 제거 → 데이터 탈취 악성코드 유입 허용, 밀반출 위험 <b>증가</b></td><td>오히려 위험</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>네트워크 세그먼테이션</b></td><td class="correct-cell">민감 데이터를 <b>격리된 네트워크 구간</b>에 배치 → 인가 사용자만 접근 → <b>측면 이동(lateral movement)</b> 차단 → 공격자·악성코드가 민감 데이터 영역 도달 자체를 방지 → <b>밀반출 경로 차단</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>USB 무제한 허용</td><td><b>내부자가 민감 데이터 복사·반출</b> 가능 → 의도적·부주의한 밀반출 경로 열어줌</td><td>오히려 위험</td></tr><tr><td><b>D</b></td><td>기본 보안 구성</td><td>기본 비밀번호·알려진 취약점 노출 → 공격자가 쉽게 침투·데이터 탈취 → <b>밀반출 방지 역할 못함</b></td><td>오히려 위험</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 데이터 밀반출(Data Exfiltration)</h4><p><b>Data Exfiltration</b>이란 민감 데이터가 조직 외부로 <b>무단 전송·복사·반출</b>되는 것이다. 주요 경로:</p><ul><li><b>네트워크 채널</b>: HTTP/HTTPS·DNS 터널링·이메일·클라우드 업로드</li><li><b>이동식 매체</b>: USB·외장 HDD·SD카드</li><li><b>물리적 반출</b>: 출력물·사진 촬영</li><li><b>클라우드 스토리지</b>: 개인 Dropbox·Google Drive 업로드</li><li><b>메신저·SNS</b>: Slack·Telegram·카카오톡 파일 전송</li></ul><h4>네트워크 세그먼테이션이 가장 효과적인 이유</h4><ul><li><b>접근 경로 차단</b>: 민감 데이터 구간을 <b>별도 VLAN·서브넷</b>으로 분리 → 비인가 영역에서 접근 불가</li><li><b>측면 이동 차단</b>: 공격자가 한 세그먼트 침투해도 <b>다른 세그먼트로 확산 불가</b></li><li><b>Zero Trust 원칙</b>: 세그먼트 경계에서 <b>모든 트래픽 검증</b> → 민감 데이터 유출 시도 탐지</li><li><b>포괄적 보호</b>: 내부·외부 위협 모두 대응 — 악성코드·내부자·APT 공격</li><li><b>구조적 통제</b>: 단일 설정이 아닌 <b>아키텍처 기반 방어</b> → 지속적이고 우회 어려움</li><li><b>규제 준수</b>: PCI-DSS·HIPAA 등 민감 데이터 세그먼테이션을 요구</li></ul><h4>네트워크 세그먼테이션 구현 기술</h4><ul><li><b>물리적 분리</b>: 완전 격리된 네트워크(Air Gap) — 최고 보안, 운영 불편</li><li><b>VLAN</b>: L2 논리적 분리 — 가장 일반적</li><li><b>서브넷·라우터 ACL</b>: L3 분리 — 세그먼트 간 트래픽 제어</li><li><b>Microsegmentation</b>: 워크로드 단위 세밀한 분리 (SDN·가상화)</li><li><b>방화벽·NGFW</b>: 세그먼트 경계에서 DPI·애플리케이션 제어</li><li><b>Zero Trust Network Access (ZTNA)</b>: 사용자·디바이스별 동적 세그먼트</li></ul><h4>함정 포인트 — A·C·D의 "반대 조치" 패턴</h4><ul><li>질문이 "<b>MOST effective method for preventing</b>"이지만 A·C·D는 오히려 <b>위험을 증가시키는 조치</b></li><li><b>A(백신 비활성)</b>: 보안 기능 제거 = 보호 약화</li><li><b>C(USB 무제한)</b>: 통제 부재 = 밀반출 경로 허용</li><li><b>D(기본 구성)</b>: 하드닝 부재 = 알려진 취약점 노출</li><li>CISA 시험에서 이런 "명백히 잘못된 보기" 패턴은 <b>정답이 유일함을 알려주는 단서</b></li></ul><h4>네트워크 세그먼테이션 vs DLP</h4><ul><li><b>세그먼테이션</b>: <b>구조적 예방</b> — 접근·이동 자체를 차단</li><li><b>DLP</b>: <b>콘텐츠 기반 탐지·차단</b> — 민감 데이터 전송 시도 식별</li><li>두 통제는 <b>상호보완</b> — 세그먼테이션은 경로 차단, DLP는 콘텐츠 검사</li><li>심층 방어(Defense in Depth): 세그먼테이션 + DLP + 암호화 + 접근제어 + 모니터링</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>데이터 밀반출 방지 최선 = 네트워크 세그먼테이션</b> — 구조적·아키텍처 기반 통제</li><li>세그먼테이션은 <b>예방(Preventive) + 억제(Deterrent)</b> 통제 역할</li><li>측면 이동(Lateral Movement) 차단이 핵심 효과 → APT·랜섬웨어 대응에 필수</li><li>오답 패턴: 보안을 <b>약화시키는 조치</b>(A·C·D)는 항상 오답</li><li>실제 구축: VLAN + 방화벽 + ACL + Microsegmentation + ZTNA 조합</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Network Segmentation and Data Exfiltration Prevention",
+keyConcepts:[
+"데이터 밀반출 정의|민감 데이터를 조직 외부로 무단 전송·복사·반출 — 네트워크·USB·클라우드·출력 경로",
+"네트워크 세그먼테이션 원리|민감 데이터 구간 격리 → 접근 경로·측면 이동 차단 → 구조적 예방",
+"측면 이동(Lateral Movement)|공격자가 침투 후 내부 확산 — 세그먼테이션이 가장 효과적 차단 수단",
+"세그먼테이션 기술|물리적 분리·VLAN·서브넷·Microsegmentation·NGFW·ZTNA",
+"Zero Trust 연계|세그먼트 경계에서 모든 트래픽 검증 → 암묵적 신뢰 제거",
+"규제 요구|PCI-DSS(카드 데이터 세그먼테이션)·HIPAA(PHI 격리) 등이 직접 요구",
+"세그먼테이션 vs DLP|세그먼테이션=경로 차단·구조적 / DLP=콘텐츠 탐지·차단 — 상호보완",
+"오답 패턴 식별|보안 약화 조치(백신 비활성·USB 무제한·기본 구성)는 항상 오답",
+"Defense in Depth|세그먼테이션 + DLP + 암호화 + 접근제어 + 모니터링 다층 방어"
+]
+}
+,
+{
+id:549,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following measures is an effective method to deal with a data loss event experienced by an enterprise?",
+questionKo:"기업이 경험한 <b>데이터 손실 사건에 대처</b>하는 효과적인 방법은?",
+options:[
+"A. Sharing sensitive data via unencrypted email",
+"B. Allowing unrestricted access to sensitive data",
+"C. Implementing regular data backups",
+"D. Using weak passwords for user accounts"
+],
+optionsKo:[
+"A. <b>암호화되지 않은 이메일</b>로 민감 데이터 공유",
+"B. 민감 데이터에 대한 <b>무제한 접근</b> 허용",
+"C. <b>정기적인 데이터 백업</b> 구현",
+"D. 사용자 계정에 <b>약한 비밀번호</b> 사용"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>데이터 손실 사건 대처 효과</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>비암호화 이메일 공유</td><td>이메일은 도청·무단 접근에 취약 → <b>손실·노출 위험 증가</b>. 손실 대처가 아닌 <b>원인 제공</b></td><td>오히려 위험</td></tr><tr><td><b>B</b></td><td>무제한 접근 허용</td><td>접근 통제 부재 → 침해·무단 접근 위험 증가 → 손실 확대</td><td>오히려 위험</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>정기 데이터 백업</b></td><td class="correct-cell"><b>손실 발생 시 이전 상태로 복원</b> → 우발적 삭제·하드웨어 장애·랜섬웨어·침해 사고 모두 대처 가능. 가용성 회복의 핵심 통제</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>약한 비밀번호</td><td>추측·브루트포스 공격에 취약 → 무단 접근 허용 → 손실 원인 제공</td><td>오히려 위험</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 데이터 손실 사건 대처(Deal with Data Loss Event)</h4><p>"<b>deal with</b>"는 손실 <b>예방</b>이 아닌 <b>대처·복구</b>를 포함하는 개념이다. 데이터 손실 사건 유형:</p><ul><li><b>우발적 삭제</b>: 사용자 실수, 잘못된 명령 실행</li><li><b>하드웨어 장애</b>: 디스크 고장, RAID 실패</li><li><b>소프트웨어 오류</b>: 버그·패치 실패·DB 손상</li><li><b>랜섬웨어·악성코드</b>: 데이터 암호화·삭제</li><li><b>사이버 공격</b>: 침해·내부자 위협</li><li><b>자연재해</b>: 화재·홍수·지진</li></ul><h4>정기 백업이 효과적인 이유</h4><ul><li><b>복구 가능성</b>: 손실 발생 후 <b>이전 상태로 원상 복구</b> → 가용성 회복</li><li><b>포괄적 대응</b>: 원인 불문(삭제·장애·랜섬웨어·침해) 모든 손실 시나리오 대처</li><li><b>랜섬웨어 방어</b>: 복구 가능한 백업이 있으면 <b>몸값 지불 불필요</b></li><li><b>회복성(Resilience) 기반</b>: BCP·DRP의 핵심 통제</li><li><b>규제 준수</b>: 금융·의료 등 백업·보관 의무</li></ul><h4>백업 전략 요소</h4><ul><li><b>3-2-1 규칙</b>: <b>3개 복사본 + 2개 다른 매체 + 1개 오프사이트</b></li><li><b>백업 유형</b>: Full(전체) · Incremental(증분) · Differential(차등)</li><li><b>주기</b>: RPO(Recovery Point Objective)에 따라 일·시간·분 단위</li><li><b>보관 장소</b>: 온사이트(신속 복구) + 오프사이트(재해 대비) + 클라우드</li><li><b>암호화</b>: 백업 매체 자체도 암호화 (도난 시 유출 방지)</li><li><b>무결성 검증</b>: 주기적 <b>복원 테스트</b>로 실제 복구 가능성 확인</li><li><b>불변 백업(Immutable Backup)</b>: 랜섬웨어가 백업까지 암호화하지 못하도록 WORM 저장</li><li><b>에어갭(Air-gapped) 백업</b>: 네트워크 분리된 백업 — 고급 랜섬웨어 방어</li></ul><h4>함정 포인트 — 예방 vs 대처</h4><ul><li><b>예방(Preventive)</b>: 암호화·접근통제·교육·DLP 차단 → 손실 <b>발생 자체</b>를 막음</li><li><b>대처·복구(Corrective)</b>: <b>백업·DRP·사고 대응</b> → 손실 <b>이후</b> 영향 최소화·복구</li><li>질문이 "<b>deal with a data loss event</b>"이므로 <b>사후 복구</b> 통제인 백업이 정답</li><li>A·B·D는 예방조차 못하는 <b>보안 약화 조치</b> → 명백히 오답</li></ul><h4>백업 vs 기타 DLP 통제</h4><ul><li><b>DLP(차단)</b>: 유출 시도 <b>탐지·차단</b> — 예방 중심</li><li><b>암호화</b>: 유출 시 <b>기밀성 보호</b> — 완화 통제</li><li><b>접근 통제</b>: 인가자만 접근 — 예방 중심</li><li><b>백업</b>: <b>가용성 회복</b> — 복구 중심 (본 문제 핵심)</li><li>포괄 전략: 예방(암호화·접근·DLP) + 탐지(모니터링) + 복구(백업·DRP)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>데이터 손실 사건 대처 = 정기 백업</b> — 사후 복구의 핵심 통제</li><li>3-2-1 규칙 + 주기적 복원 테스트 + 불변·오프사이트 백업이 모범</li><li>예방(encryption·access control·DLP)과 대처(backup)는 <b>상호보완</b></li><li>랜섬웨어 시대: <b>불변·에어갭·격리 백업</b>이 필수</li><li>Task Statement 17: <b>저장·백업·복원 정책·프로세스 평가</b>가 감사 영역</li></ul></div>`,
+reference:"CRM Chapter 5: Storage, Backup and Restoration — Data Loss Recovery",
+keyConcepts:[
+"데이터 손실 사건 대처|예방이 아닌 사후 복구 — 백업이 핵심 통제",
+"백업의 포괄성|삭제·장애·랜섬웨어·침해·재해 모든 원인에 대응 가능",
+"3-2-1 규칙|3개 복사본 + 2개 매체 + 1개 오프사이트 — 표준 백업 전략",
+"백업 유형|Full(전체)·Incremental(증분)·Differential(차등) — RPO·복구시간 고려 조합",
+"복원 테스트|주기적 복원 훈련 없으면 백업 존재해도 실제 복구 실패 가능",
+"불변 백업(Immutable)|WORM 저장 — 랜섬웨어가 백업까지 암호화 못하게 방지",
+"Air-gapped 백업|네트워크 분리 — 고급 랜섬웨어·APT 방어",
+"예방 vs 대처|예방(암호화·접근·DLP) + 대처(백업·DRP) 상호보완",
+"Task Statement 17|저장·백업·복원 정책·프로세스 평가 — CISA 감사 범위"
+]
+}
+,
+{
+id:550,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"An information systems (IS) auditor is performing a review of a network. Users report that the network is slow and web pages periodically time out. The IS auditor confirms the users' feedback and reports the findings to the network manager. The most appropriate action for the network management team should be to FIRST:",
+questionKo:"IS 감사인이 네트워크를 검토 중이다. 사용자들은 네트워크가 <b>느리고 웹 페이지가 주기적으로 타임아웃</b>된다고 보고한다. 감사인이 사용자 피드백을 확인하고 네트워크 관리자에게 결과를 보고했다. 네트워크 관리팀이 <b>가장 먼저(FIRST)</b> 해야 할 적절한 조치는?",
+options:[
+"A. use a protocol analyzer to perform network analysis and review error logs of local area network (LAN) equipment.",
+"B. take steps to increase the bandwidth of the connection to the Internet.",
+"C. create a baseline using a protocol analyzer and implement quality of service to ensure that critical business applications work as intended.",
+"D. implement virtual local area networks (VLANs) to segment the network and ensure performance."
+],
+optionsKo:[
+"A. <b>프로토콜 분석기(protocol analyzer)</b>로 네트워크 분석을 수행하고 LAN 장비의 <b>오류 로그를 검토</b>한다.",
+"B. 인터넷 연결의 <b>대역폭을 증설</b>하는 조치를 취한다.",
+"C. 프로토콜 분석기로 <b>기준선(baseline)</b>을 생성하고 중요 업무 애플리케이션이 의도대로 작동하도록 <b>QoS를 구현</b>한다.",
+"D. <b>VLAN</b>을 구현하여 네트워크를 세그먼트화하고 성능을 확보한다."
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>"FIRST" 관점 분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>프로토콜 분석기 + 장비 로그 검토</b></td><td class="correct-cell"><b>원인 식별이 최우선</b> — 트래픽 분석과 스위치·라우터 로그 검토로 <b>구성 오류·하드웨어 오작동·트래픽 이상</b> 여부 파악. 문제 진단 없이는 올바른 해결책 선택 불가</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>인터넷 대역폭 증설</td><td>원인이 <b>대역폭 부족이 아닌 경우 무의미</b>한 투자 — 구성 오류·장비 장애면 증설해도 해결 안 됨. 진단 없이 성급한 조치</td><td>부적합</td></tr><tr><td><b>C</b></td><td>기준선 생성 + QoS 구현</td><td>중요 업무 보호에는 유효하나, <b>문제 원인이 오작동·오구성</b>이면 QoS로 해결 불가. 원인 파악 이후 단계</td><td>부적합</td></tr><tr><td><b>D</b></td><td>VLAN 세그먼트 구현</td><td>성능·보안 모범 사례이나 <b>현재 문제 원인과 직접 연관 없을 수 있음</b>. 원인 진단 전 구조 변경은 위험</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 네트워크 성능 문제 해결 순서</h4><p>네트워크 성능 저하 대응은 <b>의사·엔지니어 접근법</b>과 동일: <b>증상 → 진단 → 원인 식별 → 해결</b>. "FIRST" 유형 문제에서는 <b>진단(diagnosis)</b>이 항상 우선이다.</p><h4>프로토콜 분석기(Protocol Analyzer)의 역할</h4><ul><li><b>패킷 캡처·분석</b>: Wireshark, tcpdump 등으로 실제 트래픽 내용·패턴 확인</li><li><b>트래픽 이상 탐지</b>: 브로드캐스트 스톰·루프·비정상 트래픽·대역폭 점유자 식별</li><li><b>응답 지연 분석</b>: RTT·재전송·손실률 측정</li><li><b>프로토콜 오류 식별</b>: ARP·DNS·TCP 이상, 잘못된 핸드셰이크</li><li><b>보안 이슈 탐지</b>: 악성 트래픽·데이터 유출 징후</li></ul><h4>LAN 장비 로그 검토의 중요성</h4><ul><li><b>하드웨어 오작동</b>: 포트 오류, CRC 에러, 링크 플랩(Flap)</li><li><b>구성 오류</b>: 듀플렉스 불일치(Duplex Mismatch), VLAN 오구성, STP 이슈</li><li><b>용량 문제</b>: CPU·메모리·버퍼 오버플로</li><li><b>보안 이벤트</b>: 비인가 접근 시도, 포트 보안 위반</li><li><b>환경 문제</b>: 온도·전원 경보, 팬 고장</li></ul><h4>함정 포인트 — "조치 전 진단" 원칙</h4><ul><li>B(대역폭 증설), C(QoS), D(VLAN)은 모두 <b>유효한 개선 조치</b>이나 <b>원인 기반 조치가 아님</b></li><li>원인 불명 상태에서 비용·시간을 투입하는 것은 <b>부적절한 관리</b></li><li>CISA 시험 관점: "FIRST" = <b>진단/평가/식별</b>이 거의 항상 정답</li><li>의사 비유: 환자가 머리가 아프다고 수술부터 하지 않고 <b>진단부터</b> 함</li></ul><h4>네트워크 장애 해결 프로세스</h4><ul><li>① <b>증상 확인</b>: 사용자 보고 재현, 영향 범위 파악 (완료)</li><li>② <b>진단</b>: 프로토콜 분석기 + 장비 로그 + 성능 지표 수집 ← <b>현 단계</b></li><li>③ <b>원인 분석</b>: 구성 오류·하드웨어·대역폭·트래픽 중 식별</li><li>④ <b>해결책 선정</b>: 원인에 맞는 조치 선택 (구성 수정·장비 교체·대역폭 증설·QoS·VLAN 중)</li><li>⑤ <b>구현·테스트</b>: 변경 관리 절차 따라 적용</li><li>⑥ <b>모니터링</b>: 재발 방지·기준선 갱신</li></ul><h4>일반적 네트워크 성능 저하 원인</h4><ul><li><b>구성 오류</b>: 듀플렉스 불일치, 잘못된 라우팅, MTU 문제</li><li><b>하드웨어 장애</b>: 포트 고장, 케이블 불량, 전원 문제</li><li><b>트래픽 과부하</b>: 브로드캐스트 스톰, 특정 사용자 대역폭 독점, 악성코드 활동</li><li><b>보안 공격</b>: DDoS, ARP Poisoning, 내부 스캐닝</li><li><b>애플리케이션 이슈</b>: 비효율적 쿼리, DNS 문제</li><li><b>대역폭 부족</b>: 실제 용량 한계 초과 (B가 맞는 경우)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li>"<b>FIRST</b>" 문제 패턴: <b>진단 → 분석 → 해결</b>, 진단이 항상 먼저</li><li>네트워크 성능 문제 = <b>프로토콜 분석기 + 장비 로그</b>로 원인 식별이 최우선</li><li>대역폭 증설·QoS·VLAN은 <b>원인 확인 후 해당 원인에 맞는 경우</b>에만 유효</li><li>"Shotgun troubleshooting"(원인 불명 상태 다발적 변경) = <b>부적절한 관리</b></li><li>CISA 관점: 증거 기반·근거 기반 조치 — 이는 감사인의 <b>합리적 확신(reasonable assurance)</b> 원칙과 동일</li></ul></div>`,
+reference:"CRM Chapter 5: Network Performance Troubleshooting — Diagnosis Before Remediation",
+keyConcepts:[
+"FIRST 원칙|증상 확인 후 해결책 적용 전 진단·원인 식별이 최우선 — CISA 시험 단골 패턴",
+"프로토콜 분석기 역할|패킷 캡처·트래픽 이상·응답 지연·프로토콜 오류·보안 이슈 식별 (Wireshark·tcpdump)",
+"LAN 장비 로그|하드웨어 오작동·구성 오류(Duplex Mismatch·STP)·용량·보안·환경 이벤트 확인",
+"진단 없는 조치 위험|B(대역폭)·C(QoS)·D(VLAN) 모두 유효한 조치이나 원인 불명 상태에서는 낭비",
+"네트워크 장애 프로세스|증상→진단→원인분석→해결책 선정→구현→모니터링 6단계",
+"일반 성능 저하 원인|구성 오류·하드웨어 장애·트래픽 과부하·보안 공격·앱 이슈·대역폭 부족",
+"Shotgun Troubleshooting|원인 불명 상태 다발적 변경 — 부적절한 관리 관행",
+"진단 도구 연계|프로토콜 분석기(트래픽) + SNMP/NetFlow(흐름) + 장비 로그(상태) 조합",
+"합리적 확신 원칙|감사인·네트워크 관리 모두 증거 기반 조치 — 추측이 아닌 데이터 기반"
+]
+}
+,
+{
+id:551,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following BEST describes the effect of adopting risk-based audit planning on audit resources? Risk-based auditing helps in:",
+questionKo:"<b>위험 기반 감사 계획(risk-based audit planning)</b> 채택이 감사 자원에 미치는 영향을 가장 잘 설명하는 것은? 위험 기반 감사는 다음에 도움이 된다:",
+options:[
+"A. increasing the frequency of internal audits.",
+"B. enabling control self-assessments to replace audits.",
+"C. reducing the level of detection risk.",
+"D. allocating audit resources to a higher risk area."
+],
+optionsKo:[
+"A. 내부 감사의 <b>빈도 증가</b>",
+"B. <b>통제 자가평가(CSA)</b>가 감사를 대체하도록 함",
+"C. <b>적발 위험(detection risk)</b> 수준 감소",
+"D. <b>고위험 영역에 감사 자원 배분</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>위험 기반 감사 관점 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>내부 감사 빈도 증가</td><td>위험 기반 접근은 <b>고위험 영역의 빈도는 증가</b>시키지만 <b>저위험 영역은 감소</b>시킴 → 전체적 "빈도 증가"로 단정할 수 없음. 부분적으로 맞지만 본질이 아님</td><td>부적합</td></tr><tr><td><b>B</b></td><td>CSA로 감사 대체</td><td>통제 자가평가(Control Self-Assessment)는 감사 <b>빈도 감소에 기여</b>하나 <b>감사를 대체하지는 않음</b> — 감사인의 독립성·객관성 유지 필요</td><td>부적합</td></tr><tr><td><b>C</b></td><td>적발 위험 감소</td><td>Detection Risk는 <b>감사 절차의 충실성·표본 크기·감사인 역량</b>에서 결정 — 위험 기반 계획 자체는 DR을 직접 줄이지 않음</td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>고위험 영역에 자원 배분</b></td><td class="correct-cell">위험 기반 감사의 <b>본질적 정의</b> — 제한된 감사 자원(인력·시간·예산)을 <b>위험 우선순위</b>에 따라 배분. 고위험 영역에 집중 투입, 저위험 영역은 경감 → 감사 효율성·효과성 극대화</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 위험 기반 감사(Risk-Based Auditing)</h4><p><b>위험 기반 감사</b>는 조직의 <b>위험 프로파일</b>에 따라 감사 자원(인력·시간·범위·빈도)을 <b>우선순위 기반</b>으로 배분하는 접근법이다. 전통적 주기 기반·순환 감사의 한계를 극복하기 위한 현대적 방법론.</p><h4>위험 기반 감사의 핵심 원리</h4><ul><li><b>위험 평가(Risk Assessment)</b>: 감사 대상(프로세스·시스템·부서)별 <b>내재 위험·통제 위험</b> 평가</li><li><b>우선순위 선정</b>: 위험 점수 높은 영역 = <b>감사 우선순위 상위</b></li><li><b>자원 배분</b>: 고위험 영역에 <b>깊이·빈도·전문가 집중</b> 투입</li><li><b>저위험 영역</b>: 경량 감사 또는 CSA·지속 모니터링으로 대체</li><li><b>동적 조정</b>: 환경·위험 변화에 따라 감사 계획 <b>지속 갱신</b></li></ul><h4>왜 D가 정답인가</h4><ul><li>"<b>effect on audit resources</b>" — 자원 배분에 초점</li><li>위험 기반 감사의 <b>정의 자체</b>가 위험 우선순위에 따른 자원 배분</li><li>A·B·C는 <b>부수 효과</b>이거나 <b>부정확한 주장</b></li><li>CISA 관점: "Risk-based = Resource allocation by risk priority"</li></ul><h4>A·B·C 오답 근거 상세</h4><ul><li><b>A(빈도 증가)</b>: 양방향 효과(고위험↑/저위험↓) — 단편적 설명, 본질 아님</li><li><b>B(CSA가 대체)</b>: CSA는 <b>보조 수단</b>이지 대체재 아님. 감사인 독립성·객관성 유지 필요, 규제·이해관계자 요구에도 부합 안 됨</li><li><b>C(DR 감소)</b>: DR은 <b>감사 실행 단계의 절차 품질</b>에 달림 — 계획 단계의 자원 배분이 직접 DR을 줄이지 않음. AR = IR × CR × DR 모델에서 위험 기반은 <b>계획</b>에 영향, DR은 <b>실행</b>에서 결정</li></ul><h4>위험 기반 감사 계획 프로세스</h4><ul><li>① <b>감사 가능 단위(Auditable Unit) 정의</b>: 부서·시스템·프로세스·지역별 분해</li><li>② <b>위험 요인 식별</b>: 재무·운영·IT·규제·평판 위험</li><li>③ <b>위험 점수 산정</b>: 영향도(Impact) × 발생가능성(Likelihood) × 통제 유효성</li><li>④ <b>우선순위 랭킹</b>: 고/중/저 분류</li><li>⑤ <b>자원 배분</b>: 고위험 = 빈번하고 깊은 감사, 저위험 = 간소한 검토</li><li>⑥ <b>연간 감사 계획 수립</b>: 자원·일정 최적화</li><li>⑦ <b>동적 재평가</b>: 분기·반기별 위험 환경 변화 반영</li></ul><h4>감사 위험 모델과의 관계</h4><ul><li><b>AR = IR × CR × DR</b> (Audit Risk = Inherent × Control × Detection Risk)</li><li>위험 기반 감사는 <b>IR과 CR이 높은 영역</b>을 식별 → 자원 집중 → 감사 효과성 향상</li><li>DR(적발 위험)은 감사 절차·표본·역량으로 관리 — 위험 기반 계획의 직접 효과 아님</li></ul><h4>위험 기반 감사의 이점</h4><ul><li><b>효율성</b>: 한정된 자원을 가장 가치 있는 영역에 배분</li><li><b>효과성</b>: 중대 위험 식별·대응 가능성 향상</li><li><b>가치 전달</b>: 경영진·이해관계자에게 유의미한 감사 결과</li><li><b>유연성</b>: 변화하는 위험에 적응</li><li><b>이해관계자 기대 충족</b>: 감사위원회·규제기관의 위험 중심 기대</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>Risk-based audit = 위험 우선순위에 따른 자원 배분</b></li><li>고위험 = 깊고 빈번하게 / 저위험 = 간소하게</li><li>CSA·지속 모니터링은 <b>보완 수단</b>, 감사 대체 불가</li><li>Detection Risk는 계획(위험 기반)이 아니라 <b>실행(절차 품질)</b>에서 관리</li><li>IIA Standards·ISACA IS Audit Standards에서 위험 기반 접근을 <b>필수 원칙</b>으로 규정</li></ul></div>`,
+reference:"CRM Chapter 1/5: Risk-Based Audit Planning — Resource Allocation by Risk Priority",
+keyConcepts:[
+"위험 기반 감사 정의|위험 우선순위에 따라 감사 자원(인력·시간·범위·빈도) 배분 — 현대 감사 표준 접근법",
+"핵심 효과|고위험 집중 + 저위험 경감 → 감사 효율성·효과성 극대화",
+"위험 기반 vs 주기 기반|주기 기반은 일률적 순환, 위험 기반은 가치 중심 선택적 투입",
+"CSA의 역할|Control Self-Assessment는 보조·빈도 조정 수단 — 감사 대체 불가(독립성·객관성 문제)",
+"Detection Risk 관리|절차 품질·표본·역량이 결정 — 위험 기반 계획은 IR·CR 영역 대응",
+"AR 모델|AR = IR × CR × DR — 위험 기반은 IR·CR 높은 영역 선별, DR은 실행 단계에서 관리",
+"계획 프로세스|Auditable Unit 정의→위험 점수→우선순위→자원 배분→계획→동적 재평가",
+"빈도 효과|고위험 빈도 ↑ / 저위험 빈도 ↓ — A처럼 일률적 증가가 아님",
+"표준 원칙|IIA Standards·ISACA Standards 모두 위험 기반 접근을 필수 요구"
+]
+}
+,
+{
+id:552,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following is the MOST effective way to prevent accidental data loss caused by employees?",
+questionKo:"직원에 의한 <b>우발적 데이터 손실(accidental data loss)</b>을 예방하는 데 가장 효과적인 방법은?",
+options:[
+"A. Blocking access to all external websites and email domains",
+"B. Encrypting all sensitive data on all storage devices within the enterprise",
+"C. Conducting regular user awareness training programs",
+"D. Implementing strict access controls to restrict employee access to sensitive data"
+],
+optionsKo:[
+"A. 모든 <b>외부 웹사이트·이메일 도메인 접근 차단</b>",
+"B. 기업 내 모든 저장장치의 민감 데이터 <b>전체 암호화</b>",
+"C. 정기적인 <b>사용자 인식 교육(awareness training)</b> 실시",
+"D. <b>엄격한 접근 통제</b>로 직원의 민감 데이터 접근 제한"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>우발적 데이터 손실 예방 효과</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>외부 웹·이메일 전면 차단</td><td><b>모든 우발적 손실 방지 불가</b> — 잘못된 절차의 백업, 내부 실수는 차단해도 발생. 업무·생산성에 <b>심각한 지장</b>. 과도한 통제</td><td>부적합</td></tr><tr><td><b>B</b></td><td>전체 민감 데이터 암호화</td><td>모든 저장장치 암호화는 <b>비현실적·불필요</b>할 수 있음. 암호화는 <b>유출 시 기밀성</b>을 보호하나 우발적 손실 자체는 예방 못함</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>정기 사용자 인식 교육</b></td><td class="correct-cell">우발적 손실의 <b>근본 원인은 인적 오류</b> — 교육이 역할·책임·절차·위협 인식·처리 방법을 전달하여 <b>실수 자체 감소</b>. 가장 효과적이고 지속 가능한 통제</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>엄격한 접근 통제</td><td>무단 접근은 방지하나 <b>인가된 사용자의 우발적 실수</b>는 막지 못함 — 접근 권한이 있는 사용자가 실수하는 것이 핵심 문제</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 우발적 데이터 손실의 본질</h4><p><b>Accidental Data Loss</b>는 <b>인가된 직원의 실수·부주의·지식 부족</b>으로 발생하는 손실이다. 기술적 통제(암호화·접근제어·차단)는 <b>인가된 사용자의 실수</b>를 막지 못함.</p><h4>인적 오류 대표 시나리오</h4><ul><li><b>이메일 오발송</b>: "Reply All"로 민감 정보 전체 발송, 잘못된 수신자 선택</li><li><b>잘못된 백업 절차</b>: 백업 대상·주기·보관 오설정</li><li><b>파일 실수 삭제·덮어쓰기</b>: 공유 드라이브에서 원본 삭제</li><li><b>공개 클라우드 업로드</b>: 민감 파일을 개인 Dropbox·Google Drive에 올림</li><li><b>권한 오설정</b>: 공유 폴더를 "전체 공개"로 설정</li><li><b>USB·노트북 분실</b>: 부주의한 관리</li><li><b>피싱 클릭</b>: 인식 부족으로 자격 증명 유출</li></ul><h4>교육이 가장 효과적인 이유</h4><ul><li><b>근본 원인 대응</b>: 손실 원인이 "사람"이므로 <b>사람의 행동·지식 변화</b>가 최선</li><li><b>예방적 통제</b>: 사건 발생 이전 개입 → 비용·영향 최소</li><li><b>포괄성</b>: 특정 기술·시스템에 국한되지 않고 <b>모든 시나리오 대응</b></li><li><b>문화 형성</b>: 보안 문화 정착 → 동료 간 자정·지속 개선</li><li><b>적응성</b>: 새로운 위협(피싱 기법 등)에 맞춰 <b>콘텐츠 갱신 가능</b></li><li><b>비용 효과</b>: 기술 투자 대비 ROI 매우 높음</li></ul><h4>함정 포인트 — 기술적 통제의 한계</h4><ul><li><b>A(전면 차단)</b>: 생산성 심각한 저하·비즈니스 붕괴 — <b>과도한 통제</b>는 우회 시도 유발</li><li><b>B(전체 암호화)</b>: 우발적 손실이 아닌 <b>유출 시 기밀성</b> 문제 대응 — 목적 상이</li><li><b>D(접근 통제)</b>: 인가되지 않은 접근 방지 → <b>인가된 사용자의 실수</b>는 못 막음</li><li>기술적 통제는 <b>악의·외부 위협</b>에 강하나, <b>우발적 인적 오류</b>에는 한계</li><li>CISA 관점: 사용자 문제는 <b>사용자 교육</b>으로 — 기술은 보완</li></ul><h4>보안 인식 교육 프로그램 설계</h4><ul><li><b>대상 맞춤화</b>: 신입·임원·기술직·일반직 별도 콘텐츠</li><li><b>주기</b>: 연간 정기 + 신규 입사자 즉시 + 사건 발생 특별 교육</li><li><b>방법</b>: 이러닝·집합교육·피싱 모의훈련·포스터·뉴스레터</li><li><b>핵심 주제</b>: 데이터 분류·피싱·비밀번호·이메일 예절·USB·모바일·재택근무·사회공학</li><li><b>실습</b>: 피싱 시뮬레이션·사건 시나리오 롤플레이</li><li><b>평가</b>: 이수율·사전사후 테스트·피싱 클릭률·사건 건수 추이</li><li><b>개선</b>: 평가 결과 → 콘텐츠 업데이트 → 다음 주기 반영</li></ul><h4>People · Process · Technology 관점</h4><ul><li><b>People(인적)</b>: 인식 교육·문화·책임 ← <b>우발적 손실 예방의 핵심</b></li><li><b>Process(절차)</b>: 정책·표준·가이드라인·변경 관리</li><li><b>Technology(기술)</b>: DLP·암호화·접근통제·모니터링</li><li>우발적 손실 = People 층 취약 → <b>교육으로 People 층 강화가 MOST effective</b></li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>Accidental data loss by employees = User Awareness Training이 MOST effective</b></li><li>인적 오류는 기술적 통제로 완전 방지 불가 → <b>행동 변화</b>가 유일한 근본 해법</li><li>A(전면 차단)은 <b>과도한 통제</b>로 생산성 피해, B(암호화)는 <b>유출 영향 완화</b>용, D(접근통제)는 <b>무단 접근 방지</b>용</li><li>Weakest Link: 기술이 아무리 강해도 사람이 실수하면 무력 → 교육이 최강 투자</li><li>유사 출제: Q545(inadvertent loss) — 동일 논리로 교육이 정답</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — User Awareness Training for Accidental Loss",
+keyConcepts:[
+"우발적 손실 정의|인가된 직원의 실수·부주의·지식 부족으로 발생 — 기술 통제가 미치지 않는 영역",
+"교육 우위 근거|근본 원인이 사람 → 행동·지식 변화가 유일한 근본 해법",
+"인적 오류 시나리오|이메일 오발송·잘못된 백업·공개 업로드·권한 오설정·피싱 클릭·USB 분실",
+"전면 차단 문제|과도한 통제로 생산성 저하·우회 시도 유발 — 부분적 방지에 그침",
+"전체 암호화 한계|유출 시 기밀성 보호 목적 — 우발적 손실 자체 예방 못함",
+"접근 통제 한계|무단 접근 방지 — 인가된 사용자의 실수는 못 막음",
+"People·Process·Technology|우발적 손실은 People 층 문제 → 교육이 MOST effective",
+"프로그램 설계|대상 맞춤·연간 정기·피싱 모의훈련·사전사후 평가·지속 갱신",
+"유사 문제 매핑|Q545(inadvertent) = Q552(accidental) — 모두 '교육'이 정답 패턴"
+]
+}
+,
+{
+id:553,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"An information systems (IS) auditor found that employees are emailing sensitive enterprise information to public web-based email domains. Which of the following is the BEST remediation option for the IS auditor to recommend?",
+questionKo:"IS 감사인이 직원들이 <b>민감한 기업 정보를 공개 웹 기반 이메일 도메인(예: Gmail·Naver)</b>으로 전송하는 것을 발견했다. 감사인이 권고할 <b>최선의 시정 방안</b>은?",
+options:[
+"A. Encrypted mail accounts",
+"B. Training and awareness",
+"C. Activity monitoring",
+"D. Data loss prevention"
+],
+optionsKo:[
+"A. <b>암호화 메일 계정</b>",
+"B. <b>교육 및 인식 제고</b>",
+"C. <b>활동 모니터링(Activity Monitoring)</b>",
+"D. <b>데이터 손실 방지(DLP)</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>공개 웹메일 전송 통제 효과</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>암호화 메일 계정</td><td>전송 중 <b>정보를 보호</b>하나, <b>비인가 수신자에게 보내는 행위 자체는 차단 못함</b> — 암호화된 상태로 외부로 전송됨</td><td>부적합</td></tr><tr><td><b>B</b></td><td>교육·인식 제고</td><td>직원 행동에 영향을 주나 <b>의도적 유출(intent to steal)</b>에는 효과 없음 — 예방 통제가 아님. 인식 부족뿐 아니라 고의 시나리오도 있음</td><td>부적합</td></tr><tr><td><b>C</b></td><td>활동 모니터링</td><td><b>탐지 통제(Detective)</b> — 전송 후 로그만 남김. 데이터가 네트워크를 떠나는 것을 <b>예방하지 못함</b></td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>데이터 손실 방지(DLP)</b></td><td class="correct-cell"><b>자동화 예방 도구</b> — 민감 정보가 네트워크를 떠나기 전 <b>차단</b>, 동시에 위반자를 <b>로깅</b>. 실수·의도 모두 동일하게 효과적. 교육·모니터링보다 우수</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 공개 웹메일을 통한 민감 정보 유출</h4><p>직원이 업무용 이메일이 아닌 <b>개인 Gmail·Naver·Hotmail·Yahoo</b> 등으로 민감 정보를 보내는 행위는 대표적 <b>Data Exfiltration</b> 시나리오다. 원인은 두 가지:</p><ul><li><b>무의도(Inadvertent)</b>: 편의를 위해 개인 이메일 사용, 정책 인식 부족</li><li><b>의도(Intentional)</b>: 데이터 탈취·경쟁사 이직 준비·악의적 반출</li></ul><h4>DLP가 최선인 이유</h4><ul><li><b>자동화 예방(Automated Preventive)</b>: 민감 데이터 포함 이메일을 <b>실시간 탐지·차단</b></li><li><b>콘텐츠 기반</b>: 정규식·지문·분류·키워드로 민감 정보 식별 → 대상과 무관하게 차단</li><li><b>의도 불문 효과</b>: 실수든 고의든 <b>동일하게 차단</b> → 교육의 한계 극복</li><li><b>증거 확보</b>: 위반 로그로 <b>사후 조사·법적 대응</b> 가능</li><li><b>정책 집행</b>: "사내 이메일 외 전송 불가" 정책을 <b>기술적으로 강제</b></li><li><b>확장성</b>: 이메일뿐 아니라 웹·클라우드·USB까지 포괄 가능</li></ul><h4>함정 포인트 — B(교육)이 아닌 이유</h4><ul><li>Q545·Q552는 "<b>accidental/inadvertent</b>" 손실 — <b>무의도</b>에 대한 교육 효과 강조</li><li>본 문제는 "<b>emailing to public web-based email</b>" — <b>의도적 유출 가능성 포함</b></li><li>의도적 유출자는 교육받아도 <b>고의로 위반</b> → 교육만으로 불충분</li><li>해설 원문: "<b>intentional exfiltration</b>"에 교육은 효과 없음 명시</li><li>따라서 <b>기술적 예방 통제 DLP</b>가 정답</li></ul><h4>통제 유형 분류</h4><ul><li><b>예방(Preventive)</b>: DLP(차단), 접근통제, 방화벽 ← <b>사건 발생 자체 방지</b></li><li><b>탐지(Detective)</b>: 활동 모니터링, IDS, 로그 분석 ← 발생 후 식별</li><li><b>교정(Corrective)</b>: 복구, 사고 대응, 징계</li><li><b>억제(Deterrent)</b>: 정책·처벌 경고·교육 ← 심리적 영향</li><li><b>완화(Compensating)</b>: 암호화 ← 발생 후 영향 축소</li><li>이 문제: "<b>prevent data from leaving</b>" 필요 → <b>Preventive(DLP)</b></li></ul><h4>A·B·C가 부적합한 이유 상세</h4><ul><li><b>A(암호화 메일)</b>: 전송 중 기밀성 보호 — 그러나 민감 정보를 외부로 보내는 <b>행위 자체</b>를 차단하지 못함. 암호화된 상태로도 비인가 수신자에게 도달 가능</li><li><b>B(교육)</b>: 무의도 대응은 가능하나 의도적 반출·정책 위반은 못 막음. <b>기술적 집행</b>이 없으면 정책 무력화</li><li><b>C(모니터링)</b>: <b>사후 탐지</b>만 — 이미 데이터가 외부로 나간 뒤 확인. 예방적 역할 없음</li></ul><h4>DLP의 이메일 통제 동작</h4><ul><li><b>발신 이메일 스캔</b>: 본문·첨부·제목·헤더 검사</li><li><b>민감 정보 탐지</b>: 주민번호·카드번호·기밀 태그·지문 매칭</li><li><b>수신 도메인 검사</b>: 승인된 도메인 외 차단</li><li><b>조치</b>: 차단·격리·경보·암호화·관리자 승인 요청</li><li><b>로깅</b>: 시도자·내용 요약·시점·채널 기록</li><li><b>피드백</b>: 사용자에게 차단 사유 통보 → 학습 효과</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>공개 웹메일로 민감 정보 전송 = DLP로 기술적 차단</b>이 BEST</li><li>교육은 <b>보조 수단</b>이지 의도적 유출 대응에는 불충분</li><li>암호화는 <b>기밀성 보호</b>이나 유출 행위 자체는 막지 못함</li><li>모니터링은 <b>탐지</b>이며 <b>예방</b>이 아님</li><li>CISA 원칙: "remediation"의 목표가 <b>재발 방지</b>라면 Preventive 통제 선호</li><li>유사 문제 매핑: Q552(인식 교육이 정답) vs Q553(DLP가 정답) — <b>의도 유무</b>가 결정적 차이</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Email Exfiltration and Automated Preventive Controls",
+keyConcepts:[
+"공개 웹메일 전송|대표적 Data Exfiltration 시나리오 — 무의도·의도적 유출 모두 가능",
+"DLP 우위|자동화 예방 통제 — 실수·고의 불문 동일하게 차단 + 위반자 로깅",
+"교육의 한계|의도적 유출(intentional exfiltration)에는 효과 없음 — 기술적 집행 필요",
+"암호화 vs DLP|암호화는 전송 중 기밀성 보호, DLP는 전송 자체 차단 — 목적 상이",
+"모니터링 한계|탐지 통제(Detective)로 사후 식별만 가능 — 예방 불가",
+"통제 유형 구분|Preventive(DLP)·Detective(모니터링)·Compensating(암호화)·Deterrent(교육)",
+"DLP 이메일 동작|본문·첨부·수신 도메인 스캔 → 차단·격리·암호화·관리자 승인",
+"의도 유무 판별|Q552=무의도(교육)·Q553=의도 포함(DLP) — 문제 문맥으로 구분",
+"Remediation 원칙|재발 방지 목표 → Preventive 통제 선호, Detective는 보완"
+]
+}
+,
+{
+id:554,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"A hard disk containing confidential data was damaged beyond repair. If the goal is to ensure with certainty that access to the data by anyone else is prevented, what should be done to the hard disk before it is discarded?",
+questionKo:"기밀 데이터가 담긴 하드디스크가 <b>복구 불가능하게 손상</b>되었다. <b>타인의 데이터 접근을 확실히 차단</b>하려면 폐기 전 하드디스크에 무엇을 해야 하는가?",
+options:[
+"A. Overwriting",
+"B. Low-level formatting",
+"C. Degaussing",
+"D. Destruction"
+],
+optionsKo:[
+"A. <b>덮어쓰기(Overwriting)</b>",
+"B. <b>저수준 포맷(Low-level formatting)</b>",
+"C. <b>소자(Degaussing)</b>",
+"D. <b>물리적 파괴(Destruction)</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>방법</th><th>손상된 HDD 적용성 · 확실성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>덮어쓰기(Overwriting)</td><td>HDD가 <b>손상되어 쓰기 동작 불가능</b> → 실행 자체 비현실적. 성공해도 잔류 자기(Data Remanence) 가능성 — 물리적 파괴보다 낮은 확신</td><td>부적합</td></tr><tr><td><b>B</b></td><td>저수준 포맷</td><td>HDD 손상으로 <b>포맷 실행 불가능</b>. 성공해도 복구 도구로 일부 복원 가능 — 물리적 파괴보다 낮은 확신</td><td>부적합</td></tr><tr><td><b>C</b></td><td>소자(Degaussing)</td><td>자기장을 이용해 데이터 제거 — <b>매우 효과적</b>이나 장비 필요·검증 어려움. 물리적 파괴보다 <b>확신(certainty) 낮음</b></td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>물리적 파괴(Destruction)</b></td><td class="correct-cell"><b>손상 여부 무관</b>하게 실행 가능 — 분쇄(shredding)·천공·용해 등으로 <b>복구 자체 불가능</b>. 가장 높은 확신 수준 제공</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 미디어 삭제(Sanitization) 방법론</h4><p>NIST SP 800-88 Guidelines for Media Sanitization은 매체 삭제를 3단계로 구분한다:</p><ul><li><b>Clear(삭제)</b>: 일반 소프트웨어 복구 방지 — <b>Overwriting</b>이 대표</li><li><b>Purge(정화)</b>: 실험실 수준 복구까지 방지 — <b>Degaussing·Secure Erase</b></li><li><b>Destroy(파괴)</b>: 매체 자체 파괴로 <b>모든 복구 불가능</b> — <b>Disintegration·Shredding·Melting·Incineration</b></li></ul><h4>시나리오 핵심 조건</h4><ul><li>① <b>HDD 손상 (damaged beyond repair)</b>: 전원·쓰기 동작 불가 → 소프트웨어 기반 삭제 <b>실행 불가</b></li><li>② <b>Ensure with certainty</b>: <b>최고 확신 수준</b> 요구 → 가장 강력한 방법</li><li>③ <b>Confidential data</b>: 실패 시 심각한 영향 → 보수적 선택</li><li>이 세 조건 모두 충족하는 유일한 옵션 = <b>물리적 파괴(D)</b></li></ul><h4>각 방법의 상세 분석</h4><h5>A·B(소프트웨어 기반): 실행 불가</h5><ul><li>손상된 HDD는 OS·펌웨어가 장치를 인식하지 못함 → 덮어쓰기·포맷 명령 <b>실행 자체 실패</b></li><li>성공하더라도 데이터 잔류(Data Remanence) 가능성 — 자기 매체 특성</li><li>검증(verification)이 어려워 CISA 원칙상 기밀 데이터에는 부적합</li></ul><h5>C(Degaussing): 효과적이나 한계</h5><ul><li>강력한 자기장으로 자기 기록 지움 — 소프트웨어 불필요, 손상 HDD에도 적용 가능</li><li>그러나 <b>현대 고밀도 HDD</b>는 degausser 강도 불충분 시 실패 가능</li><li><b>SSD·플래시 메모리에는 효과 없음</b>(자기 기록 방식 아님)</li><li>검증 방법 제한적 — 육안·기기로 확인 어려움</li><li>"ensure with certainty" 기준에서는 <b>물리적 파괴보다 한 단계 낮음</b></li></ul><h5>D(Destruction): 최고 확신</h5><ul><li>분쇄(Shredding)·천공(Drilling)·용해(Melting)·소각(Incineration)</li><li>매체가 <b>물리적으로 존재하지 않게 됨</b> → 복구 이론적으로 불가능</li><li>손상 여부 무관, SSD·HDD·테이프 등 모든 매체 적용 가능</li><li>눈으로 확인 가능 → <b>검증·증거 확보 용이</b></li><li>규제·기밀 데이터 처리 표준</li></ul><h4>함정 포인트 — C vs D</h4><ul><li>Degaussing도 매우 효과적이지만 본 해설 원문: "<b>offers less assurance than physical destruction</b>"</li><li>"<b>with certainty</b>"라는 절대적 확신 요구 → <b>가장 강한 통제</b> 선택</li><li>CISA 원칙: 기밀 데이터는 <b>보수적·최대 방어</b> 선택 — D가 안전</li><li>손상된 HDD라는 조건도 D를 지지 — 다른 방법은 실행·검증 어려움</li></ul><h4>Data Remanence(데이터 잔류)</h4><ul><li>삭제·포맷 후에도 <b>매체에 남아있는 데이터 흔적</b></li><li>자기 매체 특성상 완전 제거 어려움 — 고급 복구 도구로 일부 복원 가능</li><li>군·정보기관 표준: 기밀 데이터는 <b>물리적 파괴</b>만 허용</li><li>미국 DoD 5220.22-M: 최상위 기밀은 파괴 권고</li></ul><h4>매체별 권장 삭제 방법</h4><ul><li><b>HDD (정상)</b>: Overwriting(3~7회) 또는 Degaussing 또는 Destruction</li><li><b>HDD (손상)</b>: <b>Destruction</b> — 이 문제의 답</li><li><b>SSD</b>: Crypto Erase 또는 <b>Destruction</b> (Degaussing 무효)</li><li><b>Tape</b>: Degaussing 또는 Destruction</li><li><b>Optical (CD/DVD)</b>: <b>Destruction</b>(분쇄)</li><li><b>Paper</b>: Shredding(Cross-cut) 또는 Incineration</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>손상된 HDD + "with certainty" = Destruction(D)</b></li><li>NIST SP 800-88: Clear < Purge < <b>Destroy</b> 순으로 확신 수준 상승</li><li>SSD·손상 매체·최고 기밀 = <b>물리적 파괴</b> 권장</li><li>Degaussing은 HDD에 효과적이나 <b>파괴보다 확신 낮음</b></li><li>폐기 후 검증·증거 보관(Certificate of Destruction) 필수</li><li>유사 출제: "최고 확신" 키워드 나오면 거의 항상 <b>Destruction</b></li></ul></div>`,
+reference:"CRM Chapter 5: Media Sanitization and Disposal — NIST SP 800-88",
+keyConcepts:[
+"NIST SP 800-88 3단계|Clear(덮어쓰기)·Purge(Degaussing)·Destroy(파괴) — 확신 수준 상승순",
+"손상 HDD 조건|소프트웨어 삭제 실행 불가 → 물리적 방법만 유효",
+"With Certainty 키워드|최고 확신 요구 → Destruction이 항상 정답",
+"Destruction 방법|Shredding·Drilling·Melting·Incineration·Disintegration",
+"Data Remanence|삭제 후 남는 데이터 흔적 — 고급 도구로 복원 가능 → 기밀은 파괴 필요",
+"Degaussing 한계|자기 매체 전용(SSD 무효)·강도 부족 실패 가능·검증 어려움",
+"Overwriting 한계|3~7회 덮어쓰기 필요·손상 HDD 불가·잔류 가능성",
+"매체별 권장|HDD 정상(Overwrite/Degauss)·HDD 손상·SSD·기밀(Destruction)",
+"Certificate of Destruction|폐기 증거 — 제3자 업체 발행 문서로 규제 대응",
+"DoD 5220.22-M|최상위 기밀 = 물리적 파괴만 허용 — 군·정보기관 표준"
+]
+}
+,
+{
+id:555,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"The PRIMARY purpose of installing data leak prevention software is to:",
+questionKo:"<b>DLP(데이터 유출 방지) 소프트웨어</b> 설치의 <b>1차적 목적(PRIMARY purpose)</b>은?",
+options:[
+"A. restrict user access to confidential files stored on servers.",
+"B. detect attempts to destroy sensitive data in an internal network.",
+"C. block external systems from accessing internal resources.",
+"D. control confidential documents leaving the internal network."
+],
+optionsKo:[
+"A. 서버에 저장된 <b>기밀 파일에 대한 사용자 접근 제한</b>",
+"B. 내부 네트워크에서 <b>민감 데이터 파괴 시도 탐지</b>",
+"C. 외부 시스템이 <b>내부 자원에 접근하는 것 차단</b>",
+"D. 기밀 문서가 <b>내부 네트워크를 떠나는 것 통제</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>해당 통제 주체 / DLP와 관계</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>서버 기밀 파일 접근 제한</td><td><b>DRM(Digital Rights Management)</b>·ACL·RBAC의 역할 — DLP는 <b>접근 통제가 아닌 이동(egress) 통제</b></td><td>부적합</td></tr><tr><td><b>B</b></td><td>내부 데이터 파괴 시도 탐지</td><td><b>IDS/IPS</b>·시스템 자체 보안 통제의 역할 — DLP는 <b>파괴 탐지가 아닌 유출 차단</b>에 집중</td><td>부적합</td></tr><tr><td><b>C</b></td><td>외부의 내부 자원 접근 차단</td><td><b>방화벽(Firewall)</b>의 역할 — DLP는 들어오는 트래픽이 아닌 <b>나가는 민감 데이터</b>를 본다</td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>기밀 문서의 외부 반출 통제</b></td><td class="correct-cell">DLP의 <b>본질적 정의</b> — 사전 정의된 기준(정규식·지문·분류)으로 <b>나가는 데이터</b>를 검사하여 민감 정보 포함 시 차단·경보·암호화</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — DLP의 본질적 목적</h4><p><b>Data Loss/Leak Prevention</b>은 이름 그대로 <b>데이터가 조직 경계를 넘어가는(유출) 것을 막는</b> 기술이다. 핵심은 "<b>Egress Control(나가는 방향 통제)</b>".</p><h4>DLP 3대 영역</h4><ul><li><b>Data in Motion (이동 중)</b>: 네트워크·이메일·웹·클라우드 업로드 — <b>본 문제의 핵심 영역</b></li><li><b>Data in Use (사용 중)</b>: 엔드포인트에서 복사·인쇄·스크린샷·USB 쓰기</li><li><b>Data at Rest (저장)</b>: 서버·스토리지·DB에서 민감 데이터 스캔·분류</li></ul><h4>DLP 동작 원리</h4><ul><li><b>탐지 엔진</b>: 정규식(신용카드·주민번호)·지문(Fingerprinting)·분류 태그·머신러닝</li><li><b>정책 매칭</b>: "민감 데이터가 승인되지 않은 경로로 이동 중인가?" 판단</li><li><b>조치(Action)</b>: 차단(Block)·격리(Quarantine)·암호화(Encrypt)·경보(Alert)·사용자 승인 요청</li><li><b>로깅</b>: 시도자·내용·시점·채널 기록 → 감사 증거</li></ul><h4>함정 포인트 — 유사 기술과의 구분</h4><ul><li><b>DRM(A)</b>: <b>파일 수준 접근·사용 권한</b> 통제 — 누가 열람·편집·복사 가능한지</li><li><b>IDS/IPS(B)</b>: <b>네트워크 공격·침입</b> 탐지·차단 — 악성 트래픽 대상</li><li><b>Firewall(C)</b>: <b>경계 접근 통제</b> — 누가 내부로 들어올 수 있는지(inbound 중심)</li><li><b>DLP(D)</b>: <b>민감 데이터의 외부 이동</b> 통제 — 무엇이 나가는지(outbound 중심)</li><li>각 기술의 <b>통제 지점·목적·대상</b>이 명확히 구분됨</li></ul><h4>DLP vs Firewall 핵심 차이</h4><table><tr><th>구분</th><th>방화벽</th><th>DLP</th></tr><tr><td>방향</td><td>주로 Inbound(외부→내부)</td><td>주로 Outbound(내부→외부)</td></tr><tr><td>기준</td><td>IP·포트·프로토콜</td><td>데이터 콘텐츠(민감성)</td></tr><tr><td>통제 대상</td><td>네트워크 연결</td><td>데이터 자체</td></tr><tr><td>목적</td><td>비인가 접근 차단</td><td>민감 정보 유출 차단</td></tr></table><h4>DLP가 막는 대표 시나리오</h4><ul><li>이메일로 기밀 문서·개인정보 외부 전송</li><li>웹 업로드(Gmail·Dropbox·클라우드)로 민감 파일 반출</li><li>USB·외장 드라이브로 복사 반출</li><li>인쇄·스크린샷·화면 캡처로 유출</li><li>P2P·FTP·메신저·SNS로 전송</li><li>원격 데스크톱·VDI에서 복사</li></ul><h4>PRIMARY vs 부수 효과</h4><ul><li><b>PRIMARY(주 목적)</b>: 민감 데이터 외부 유출 방지 — D</li><li><b>부수 효과</b>:<ul><li>정책 위반 사용자 식별(감사·교육 대상)</li><li>민감 데이터 분포·흐름 가시성 확보</li><li>규제 준수 증거 확보(GDPR·HIPAA·PCI-DSS)</li><li>사고 대응 로그 제공</li></ul></li><li>CISA "PRIMARY purpose" 문제는 <b>기술의 본질 정의</b>를 묻는 것</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DLP의 PRIMARY purpose = 기밀 데이터의 외부 반출 통제(Egress Control)</b></li><li>접근 통제 ≠ DLP → DRM·ACL 영역</li><li>침입 탐지 ≠ DLP → IDS/IPS 영역</li><li>외부 접근 차단 ≠ DLP → Firewall 영역</li><li>각 보안 기술의 <b>고유 역할 구분</b>이 시험 빈출 주제</li><li>DLP 3대 영역: Motion(유출 차단) · Use(엔드포인트) · Rest(저장 스캔)</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Primary Purpose and Egress Control",
+keyConcepts:[
+"DLP PRIMARY 목적|민감 데이터의 외부 반출(Egress) 통제 — 나가는 방향 데이터 검사·차단",
+"DLP 3대 영역|Data in Motion(네트워크)·in Use(엔드포인트)·at Rest(저장) — Motion이 본 문제 핵심",
+"DLP 동작 원리|정규식·지문·분류 탐지 → 정책 매칭 → 차단·경보·암호화 → 로깅",
+"DRM vs DLP|DRM은 파일 접근·사용 권한, DLP는 데이터 이동 통제 — 역할 구분",
+"IDS/IPS vs DLP|IDS/IPS는 공격·침입 탐지, DLP는 유출 차단 — 대상 상이",
+"Firewall vs DLP|Firewall은 경계 접근(주로 Inbound), DLP는 데이터 콘텐츠(주로 Outbound)",
+"통제 지점|Firewall=연결 / DLP=데이터 / IDS=트래픽패턴 / DRM=사용권한 — 4가지 고유 역할",
+"DLP 차단 시나리오|이메일·웹업로드·USB·인쇄·스크린샷·P2P·메신저·RDP 다채널",
+"PRIMARY 질문 패턴|본질 정의 질문 — 부수 효과가 아닌 핵심 목적 선택"
+]
+}
+,
+{
+id:556,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following BEST describes the primary objective of a data loss prevention (DLP) solution?",
+questionKo:"DLP(데이터 유출 방지) 솔루션의 <b>1차 목표(primary objective)</b>를 가장 잘 설명하는 것은?",
+options:[
+"A. To prevent any data loss incidents within an enterprise",
+"B. To detect and respond to data loss incidents within an enterprise",
+"C. To mitigate the risk of data loss incidents within an enterprise",
+"D. To encrypt data within an enterprise to prevent unauthorized access"
+],
+optionsKo:[
+"A. 기업 내 <b>모든(any) 데이터 손실 사건을 예방</b>",
+"B. 기업 내 데이터 손실 사건을 <b>탐지·대응</b>",
+"C. 기업 내 데이터 손실 사건의 <b>위험 완화(mitigate)</b>",
+"D. 기업 내 데이터를 <b>암호화</b>하여 무단 접근 방지"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>DLP 목표 관점 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>모든 손실 예방</td><td><b>"any(모든)"</b>은 비현실적 — DLP 구현에도 <b>일부 손실은 여전히 발생</b> 가능. 절대적 예방은 달성 불가능한 목표</td><td>부적합</td></tr><tr><td><b>B</b></td><td>탐지·대응</td><td>DLP의 <b>부분적 기능</b>이나 전체 목표가 아님 — 예방·탐지·대응·영향 최소화를 모두 포함하는 <b>위험 완화</b>가 더 포괄적</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>위험 완화(Mitigate Risk)</b></td><td class="correct-cell">현실적 목표 — 예방(Preventive) + 탐지(Detective) + 대응(Corrective) 통제 조합으로 <b>발생 가능성·영향을 낮춤</b>. DLP의 종합적 목적</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>데이터 암호화</td><td>DLP는 <b>암호화 도구가 아님</b> — 암호화는 <b>별도 통제</b>. DLP는 민감 데이터 이동·사용 통제가 본질</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — DLP 목표의 현실적 범위</h4><p>보안에서 "<b>위험 제거(Eliminate)</b>"는 일반적으로 달성 불가능하며, 목표는 "<b>위험 완화(Mitigate)</b>"다. DLP도 마찬가지 — <b>수용 가능한 수준까지 위험을 낮추는 것</b>이 목표.</p><h4>왜 "Mitigate"가 정답인가</h4><ul><li><b>절대 예방 불가</b>: 어떤 보안 통제도 100% 완벽할 수 없음</li><li><b>잔여 위험(Residual Risk)</b>: DLP 구현 후에도 남는 위험 존재</li><li><b>포괄성</b>: Mitigate = 예방 + 탐지 + 대응 + 복구 + 영향 최소화 모두 포함</li><li><b>위험 관리 원칙</b>: Accept(수용)·Mitigate(완화)·Transfer(전가)·Avoid(회피) 중 Mitigate가 통제 구현의 목표</li><li>ISACA·NIST·ISO27001 공통 원칙 — <b>완전 예방은 목표가 아님</b></li></ul><h4>DLP가 수행하는 통제 유형</h4><ul><li><b>Preventive(예방)</b>: 민감 데이터 전송 실시간 <b>차단</b></li><li><b>Detective(탐지)</b>: 정책 위반 <b>경보·로깅</b></li><li><b>Corrective(교정)</b>: 격리·암호화·관리자 승인 요청</li><li><b>Deterrent(억제)</b>: 사용자에게 차단 사유 통보 → 행동 변화 유도</li><li>이 <b>다층 통제 조합</b>으로 위험을 <b>전방위적으로 완화</b></li></ul><h4>함정 포인트 — A·B 오답 구별</h4><ul><li><b>A(모든 예방)</b>: 절대적 표현("<b>any</b>") 주의 — 시험에서 "<b>all·every·any·always·never</b>" 류는 대개 오답</li><li><b>B(탐지·대응만)</b>: DLP의 <b>일부 기능</b> — 예방까지 포함하는 C가 더 포괄적</li><li>CISA 시험은 <b>가장 포괄적이고 현실적인 보기</b>를 정답으로 선호</li></ul><h4>D(암호화) 오답 이유</h4><ul><li>암호화는 <b>데이터 자체를 읽을 수 없게</b> 하는 <b>별개 통제</b></li><li>DLP는 암호화를 <b>트리거</b>할 수는 있어도 <b>암호화 도구 자체가 아님</b></li><li>DLP = <b>민감 데이터 식별 + 정책 기반 통제</b></li><li>기능 혼동 주의 — DLP·DRM·Encryption·IAM은 서로 다른 통제</li></ul><h4>위험 관리 프레임워크 관점</h4><ul><li><b>Threat(위협)</b>: 데이터 유출·손실 시도</li><li><b>Vulnerability(취약점)</b>: 정책·사용자·기술 간극</li><li><b>Risk(위험)</b>: 위협 × 취약점 × 영향</li><li><b>Control(통제)</b>: DLP = <b>예방·탐지·대응 복합 통제</b></li><li><b>Residual Risk(잔여 위험)</b>: DLP 후에도 남는 위험 → <b>보험·BCP·교육·다른 통제</b>로 추가 완화</li><li>DLP 목표 = <b>Inherent Risk를 Residual Risk로 낮추는 것</b> = Mitigate</li></ul><h4>Q555 vs Q556 비교</h4><ul><li><b>Q555 "PRIMARY purpose"</b>: 기능적 본질 → <b>Egress Control(외부 반출 통제)</b></li><li><b>Q556 "primary objective"</b>: 관리적 목표 → <b>Risk Mitigation(위험 완화)</b></li><li>purpose = 기술이 하는 일 / objective = 달성하려는 결과</li><li>둘 다 DLP 관련이지만 <b>초점이 다름</b></li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DLP 목표 = 위험 완화(Mitigate)</b> — 완전 예방 아님</li><li>절대적 표현("any", "all", "complete") 포함 보기는 대개 오답</li><li>보안 목표는 <b>Eliminate가 아닌 Mitigate</b> — ISACA·NIST 공통</li><li>DLP = 예방·탐지·대응 복합 통제 / 암호화 ≠ DLP</li><li>Inherent Risk → Control(DLP) → <b>Residual Risk</b> 구조 이해</li><li>유사 출제: Q555(purpose=Egress) vs Q556(objective=Mitigate) 구분</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Primary Objective and Risk Mitigation",
+keyConcepts:[
+"DLP 1차 목표|위험 완화(Mitigate) — 완전 예방이 아닌 수용 가능 수준까지 위험 감소",
+"절대 표현 오답 패턴|'any'·'all'·'every'·'always' 포함 보기는 대개 오답",
+"위험 처리 전략|Accept·Mitigate·Transfer·Avoid 4가지 — 통제 구현은 Mitigate에 해당",
+"DLP 통제 조합|Preventive(차단)·Detective(경보)·Corrective(격리)·Deterrent(억제)",
+"Residual Risk|통제 후 남는 위험 — 완전 제거 불가, 추가 통제·보험·BCP로 관리",
+"Inherent vs Residual|통제 이전 위험 → DLP → 감소된 잔여 위험 구조",
+"DLP ≠ 암호화|DLP는 식별·정책 통제 / 암호화는 별개 통제 — 혼동 주의",
+"Purpose vs Objective|Q555(purpose=Egress Control) vs Q556(objective=Mitigate) 구분",
+"포괄성 원칙|CISA는 가장 포괄적·현실적 보기 선호 — 부분적·절대적은 오답"
+]
+}
+,
+{
+id:557,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following is the MOST important factor for an enterprise considering implementing a data loss prevention (DLP) solution?",
+questionKo:"DLP 솔루션 구현을 검토하는 기업에게 <b>가장 중요한 요소(MOST important factor)</b>는?",
+options:[
+"A. Evaluating the features of different data loss prevention (DLP) products available",
+"B. Understanding the location and nature of sensitive data",
+"C. Educating users on the importance of data protection",
+"D. Determining action to be taken by data loss prevention (DLP) in case of alerts"
+],
+optionsKo:[
+"A. 이용 가능한 <b>DLP 제품들의 기능 평가</b>",
+"B. <b>민감 데이터의 위치와 특성 파악</b>",
+"C. 데이터 보호 중요성에 대한 <b>사용자 교육</b>",
+"D. 경보 발생 시 DLP가 <b>취할 조치 결정</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>DLP 구현 단계 · 우선순위</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>제품 기능 평가</td><td>도입(Acquisition) 단계 활동 — <b>무엇을 보호할지 모르면 제품 평가 기준도 없음</b>. B가 선행되어야 함</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>민감 데이터 위치·특성 파악</b></td><td class="correct-cell">DLP의 <b>대전제(Prerequisite)</b> — 보호 대상을 모르면 규칙 설계·제품 선택·교육·조치 결정 <b>모두 불가능</b>. 제품 선택과 무관하게 필수</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>사용자 교육</td><td>전사 보안 프로그램의 일부 — DLP에 국한되지 않음. 보호 대상 식별 후 <b>교육 내용 구체화</b> 가능</td><td>부적합</td></tr><tr><td><b>D</b></td><td>경보 시 조치 결정</td><td>민감 데이터가 식별·분류된 <b>이후에</b> 조치 규칙 정의 가능 — B에 종속</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — DLP 구현의 전제조건</h4><p>"<b>당신이 모르는 것은 보호할 수 없다(You can't protect what you don't know)</b>"는 보안의 오래된 격언이다. DLP 구현의 첫 단계는 <b>민감 데이터 식별·분류·위치 확인</b>.</p><h4>왜 B가 MOST important인가</h4><ul><li><b>보호 범위 정의</b>: 무엇이 민감 데이터인지 알아야 <b>DLP 규칙 대상</b>을 정할 수 있음</li><li><b>데이터 분류 기반</b>: Public·Internal·Confidential·Restricted 구분 → 각 단계별 보호 수준 설계</li><li><b>위치 파악</b>: 온프레미스·클라우드·엔드포인트·모바일·백업 — 어디에 있는지 알아야 <b>어떤 DLP 컴포넌트</b> 필요한지 결정</li><li><b>제품 선택의 전제</b>: "이메일·웹·엔드포인트·클라우드 중 어디를 보호?" → B에 따라 제품 요구사항 달라짐</li><li><b>노력 산정</b>: 민감 데이터 양·분포에 따라 예산·인력·시간 추정</li><li><b>규제 매핑</b>: GDPR·HIPAA·PCI-DSS 대상 데이터 식별 → 규제 대응 전략</li></ul><h4>DLP 구현 순서 (Best Practice)</h4><ul><li>① <b>데이터 식별·분류(B)</b>: 무엇이 민감한가? 어디에 있는가? ← <b>가장 먼저</b></li><li>② 데이터 흐름 분석: 어떻게 이동·사용·저장되는가?</li><li>③ 정책 정의: 각 민감도별 허용·금지 행위</li><li>④ 제품 평가(A): 정책을 실행할 <b>적합한 도구 선정</b></li><li>⑤ 파일럿·튜닝: 소규모 적용·규칙 정제</li><li>⑥ 조치 정의(D): 차단·경보·암호화·승인 조합</li><li>⑦ 사용자 교육(C): 정책·절차 전파</li><li>⑧ 전사 배포·운영: 모니터링·개선·감사</li></ul><h4>함정 포인트 — A(제품 평가) 오답 이유</h4><ul><li>제품 평가는 <b>중요한 단계</b>이나 B 없이는 평가 기준 수립 불가</li><li>"무엇을 보호할지" 모르면 Vendor A·B·C 중 선택 근거 없음</li><li>제품 주도(Product-led) 접근의 위험 — 조직 실제 요구와 불일치</li><li>CISA 원칙: <b>비즈니스·데이터 요구사항이 먼저</b>, 기술은 그 다음</li></ul><h4>C·D가 부적합한 이유</h4><ul><li><b>C(교육)</b>: 전사 보안 프로그램의 일부 — DLP 고유 요소 아님. 보호 대상 파악 후 <b>구체적 교육 내용</b> 설계 가능</li><li><b>D(조치 결정)</b>: "민감 데이터가 이동 시도하면 어떻게 할지"는 B에 <b>종속적</b> — 민감도·상황별 조치 매트릭스는 분류 이후 정의</li></ul><h4>데이터 식별·분류 방법론</h4><ul><li><b>데이터 검색(Discovery)</b>: 자동화 스캔 도구로 조직 내 민감 데이터 위치 식별</li><li><b>분류 체계(Classification Scheme)</b>: 기밀성 레벨 정의(Public·Internal·Confidential·Restricted)</li><li><b>태깅(Tagging)</b>: 문서·파일에 메타데이터 부여 → DLP 엔진이 인식</li><li><b>데이터 지문(Fingerprinting)</b>: 고유 문서·DB 내용을 해시화 → 정확 매칭</li><li><b>Data Owner 인터뷰</b>: 업무 지식 기반 분류 — 기술만으로 부족</li><li><b>지속 갱신</b>: 신규·변경 데이터 반영 → DLP 규칙 동기화</li></ul><h4>DLP 구현 실패 사례</h4><ul><li><b>실패 원인 1</b>: 데이터 식별 없이 제품부터 도입 → 규칙 설계 실패·오탐 과다</li><li><b>실패 원인 2</b>: 분류 미비 → 모든 데이터를 동일 보호 → 비용 폭증·성능 저하</li><li><b>실패 원인 3</b>: 위치 파악 부족 → 클라우드·엔드포인트 누락 → 사각지대</li><li>성공 요인: <b>B를 먼저 철저히</b> 수행 → 나머지 단계 자연스럽게 따라옴</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DLP 구현 MOST important = 민감 데이터 식별·분류·위치 파악</b></li><li>보호 대상 식별 = <b>모든 보안 프로그램의 1단계</b></li><li>"You can't protect what you don't know" 원칙</li><li>제품·교육·조치 모두 B에 <b>종속적</b>인 후속 단계</li><li>Task Statement 31: <b>데이터 분류 실무 평가</b>가 감사 영역</li><li>CIA·데이터 거버넌스 관점에서도 데이터 식별이 기초</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Sensitive Data Identification and Classification",
+keyConcepts:[
+"DLP 구현 MOST important|민감 데이터 위치·특성 파악 — 보호 대상 식별이 모든 단계의 전제",
+"You Can't Protect What You Don't Know|보안 기본 원칙 — 식별 없이는 보호 불가",
+"DLP 구현 순서|① 데이터 식별·분류 → ② 흐름 분석 → ③ 정책 → ④ 제품 선택 → ⑤ 파일럿 → ⑥ 조치 → ⑦ 교육 → ⑧ 배포",
+"분류 체계|Public·Internal·Confidential·Restricted — 각 단계별 보호 수준 차별화",
+"데이터 검색(Discovery)|자동 스캔으로 조직 내 민감 데이터 위치·양 식별",
+"위치 유형|온프레미스·클라우드·엔드포인트·모바일·백업 — 각 영역별 DLP 컴포넌트 필요",
+"Fingerprinting|고유 문서·DB 내용 해시화 → 정확한 민감 데이터 매칭",
+"제품 주도 접근 위험|요구사항 없이 제품 먼저 선택 → 조직 실제 요구와 불일치 실패",
+"Task Statement 31|데이터 분류 실무 평가 — CISA 감사 주요 영역",
+"Data Owner 역할|기술만으로 부족 — 업무 지식 기반 분류가 정확도의 핵심"
+]
+}
+,
+{
+id:558,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which control is the BEST way to ensure that the data in a file have not been changed during transmission?",
+questionKo:"파일의 데이터가 <b>전송 중 변경되지 않았음</b>을 보장하는 <b>가장 좋은 통제</b>는?",
+options:[
+"A. Reasonableness check",
+"B. Parity bits",
+"C. Hash values",
+"D. Check digits"
+],
+optionsKo:[
+"A. <b>합리성 검증(Reasonableness check)</b>",
+"B. <b>패리티 비트(Parity bits)</b>",
+"C. <b>해시 값(Hash values)</b>",
+"D. <b>체크 디지트(Check digits)</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>통제</th><th>무결성 검증 능력</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>합리성 검증</td><td>입력 데이터가 <b>예상 범위 내인지</b> 확인 — 전송 무결성이 아님. 변경된 데이터도 여전히 합리성 통과 가능</td><td>부적합</td></tr><tr><td><b>B</b></td><td>패리티 비트</td><td><b>약한 오류 탐지</b> — 단일 비트 오류만 탐지, 짝수 개 오류는 놓침. 해시에 비해 크게 뒤떨어짐</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>해시 값(Hash)</b></td><td class="correct-cell">파일 전체에 대한 <b>암호학적 지문</b> — 단 1비트 변경도 완전히 다른 해시 생성. <b>무결성 검증의 표준 방법</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>체크 디지트</td><td>계좌번호 등 <b>숫자 필드의 전사·교환 오류</b> 탐지 — 파일 전체 무결성 검증 도구가 아님</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 해시 함수(Hash Function)</h4><p><b>해시 함수</b>는 임의 크기의 입력을 <b>고정 크기 출력(해시 값·다이제스트)</b>으로 변환하는 일방향 함수다. 무결성 검증의 핵심 도구.</p><h4>해시의 핵심 특성</h4><ul><li><b>결정성(Deterministic)</b>: 동일 입력 → 항상 동일 출력</li><li><b>눈사태 효과(Avalanche Effect)</b>: 1비트 변경도 <b>완전히 다른 해시</b> 생성 → 변조 탐지 극히 민감</li><li><b>일방향성(One-way)</b>: 해시에서 원본 역산 불가</li><li><b>충돌 저항성(Collision Resistance)</b>: 동일 해시를 가진 다른 입력 찾기 어려움</li><li><b>고속 계산</b>: 큰 파일도 빠르게 해시 산출</li></ul><h4>대표 해시 알고리즘</h4><ul><li><b>MD5</b>: 128비트 — <b>충돌 취약 · 더 이상 권장되지 않음</b></li><li><b>SHA-1</b>: 160비트 — <b>충돌 공격 성공 · 사용 금지</b></li><li><b>SHA-2</b>: SHA-256·SHA-384·SHA-512 — <b>현재 표준</b></li><li><b>SHA-3</b>: 차세대 표준 — 다른 구조(Keccak)</li><li>현재 권장: <b>SHA-256 이상</b></li></ul><h4>전송 무결성 검증 절차</h4><ul><li>① 송신자: 파일에서 <b>해시 값 H1 계산</b> → 파일과 함께 H1 전송</li><li>② 수신자: 수신한 파일에서 <b>해시 값 H2 재계산</b></li><li>③ H1 == H2: <b>무결성 확인 ✓</b></li><li>④ H1 != H2: <b>파일이 변경됨 ✗</b></li><li>보안 강화: <b>HMAC</b>(키 기반 해시) 또는 <b>디지털 서명</b>으로 해시 자체 조작도 방지</li></ul><h4>함정 포인트 — 각 보기의 실제 용도</h4><ul><li><b>A(Reasonableness check)</b>: 입력 검증(Input Validation) — 예: 나이 필드가 0~120 사이인지. 무결성과 다른 목적</li><li><b>B(Parity bits)</b>: 메모리·직렬통신 저수준 오류 탐지 — 1비트 탐지만 가능, 현대 네트워크 무결성에 부적합</li><li><b>D(Check digits)</b>: 신용카드·IBAN 등 <b>단일 숫자 필드의 입력 오류</b> 탐지 — 파일 단위 아님</li><li>이들은 모두 <b>특정 목적의 제한적 통제</b>로 파일 전체 무결성에 부적합</li></ul><h4>해시 vs 다른 무결성 기법</h4><table><tr><th>기법</th><th>수준</th><th>용도</th></tr><tr><td>Parity</td><td>1비트 탐지</td><td>RAM·시리얼 포트</td></tr><tr><td>Checksum</td><td>단순 합계</td><td>네트워크 저수준 오류</td></tr><tr><td>CRC</td><td>다항식 기반</td><td>Ethernet·ZIP</td></tr><tr><td>Hash (MD5·SHA)</td><td>암호학적</td><td>파일 무결성</td></tr><tr><td>HMAC</td><td>키 기반 해시</td><td>메시지 인증</td></tr><tr><td>Digital Signature</td><td>PKI 기반</td><td>무결성 + 부인방지</td></tr></table><h4>CIA 트라이어드 관점</h4><ul><li><b>Confidentiality(기밀성)</b>: 암호화</li><li><b>Integrity(무결성)</b>: <b>해시·디지털 서명·HMAC</b> ← 본 문제 영역</li><li><b>Availability(가용성)</b>: 백업·이중화·DDoS 방어</li><li>해시는 <b>무결성의 표준 통제</b></li></ul><h4>실무 적용 예시</h4><ul><li><b>소프트웨어 다운로드</b>: 웹사이트에 SHA-256 해시 게시 → 사용자가 다운로드 후 검증</li><li><b>디지털 포렌식</b>: 증거 수집 시 해시로 <b>증거 무결성 입증</b> (chain of custody)</li><li><b>Git·Blockchain</b>: 모든 변경이 해시 체인으로 연결 → 변조 탐지</li><li><b>TLS/SSL</b>: 메시지 MAC에 HMAC 사용</li><li><b>코드 서명</b>: 개발자가 해시를 개인키로 서명 → 변조 방지</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>파일 전송 무결성 = 해시 값(Hash)</b> — 표준 답</li><li>눈사태 효과로 1비트 변경도 탐지 → 최고 민감도</li><li>MD5·SHA-1은 <b>더 이상 권장 안 됨</b> → SHA-256 이상 사용</li><li>해시 + 디지털 서명 = <b>무결성 + 부인방지</b></li><li>Parity·Checksum·Check digit은 <b>제한적·저수준</b> 오류 탐지</li><li>Reasonableness는 <b>입력 검증</b>으로 무결성과 무관</li></ul></div>`,
+reference:"CRM Chapter 5: Data Integrity — Hash Functions and Transmission Verification",
+keyConcepts:[
+"파일 무결성 표준|해시 값(Hash) — 전송 중 변경 탐지의 BEST 통제",
+"해시 핵심 특성|결정성·눈사태 효과·일방향성·충돌 저항성·고속 계산",
+"권장 알고리즘|SHA-256 이상 — MD5·SHA-1은 충돌 취약으로 사용 중단",
+"전송 검증 절차|송신자 해시 계산 → 수신자 재계산 → 비교 → 동일 시 무결성 확인",
+"HMAC·디지털 서명|해시 + 키/PKI → 무결성에 인증·부인방지 추가",
+"Parity 한계|1비트만 탐지, 짝수 비트 오류 놓침 — 현대 네트워크에 부적합",
+"Check Digit 용도|숫자 필드 전사 오류 탐지(계좌번호·IBAN) — 파일 단위 아님",
+"Reasonableness|입력 값 범위 검증 — 전송 무결성과 무관, 변경된 값도 통과 가능",
+"CIA 매핑|Integrity = Hash·HMAC·Digital Signature 중심 통제",
+"실무 적용|소프트웨어 배포·포렌식·Git·TLS·코드 서명 모두 해시 기반"
+]
+}
+,
+{
+id:559,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"Which of the following would be MOST appropriate for helping to detect sensitive information that is stored on the enterprise hard drive(s) with inappropriate authorization or security controls?",
+questionKo:"기업 <b>하드드라이브에 저장된 민감 정보</b>가 <b>부적절한 권한·보안 통제</b> 하에 있는 것을 탐지하는 데 가장 적합한 것은?",
+options:[
+"A. intrusion detection system (IDS)",
+"B. data loss prevention (DLP)",
+"C. intrusion prevention system (IPS)",
+"D. Transport Layer Security (TLS)"
+],
+optionsKo:[
+"A. <b>침입 탐지 시스템(IDS)</b>",
+"B. <b>데이터 손실 방지(DLP)</b>",
+"C. <b>침입 방지 시스템(IPS)</b>",
+"D. <b>전송 계층 보안(TLS)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>민감 정보 식별 능력</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>IDS(침입 탐지)</td><td>시그니처로 <b>일부 민감 정보 식별 가능</b>하나, <b>네트워크 침입 트래픽 탐지</b>가 주 목적 — 저장 매체 스캔이 전문 영역 아님. DLP보다 비효과적</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>DLP(데이터 손실 방지)</b></td><td class="correct-cell">엔드포인트·저장소에 저장된 민감 정보 식별이 <b>핵심 기능</b> — <b>Data at Rest 스캔</b>으로 위치·권한 확인. 이동 중 데이터까지 포괄</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>IPS(침입 방지)</td><td>시그니처 기반 민감 정보 차단 가능하나, <b>엔드포인트 저장 민감 정보 식별 능력 없음</b> — 트래픽 차단에 집중</td><td>부적합</td></tr><tr><td><b>D</b></td><td>TLS</td><td><b>네트워크 암호화 프로토콜</b> — 전송 중 데이터 보호용, 민감 정보 식별 능력 <b>전혀 없음</b></td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — DLP의 Data at Rest 기능</h4><p>DLP는 단순히 나가는 데이터 차단만이 아니라 <b>조직 내 어디에 민감 데이터가 저장되어 있는지 스캔·식별</b>하는 기능을 포함한다. 이것이 DLP의 3대 영역 중 <b>Data at Rest</b> 영역.</p><h4>DLP의 3대 영역 재정리</h4><ul><li><b>Data in Motion(이동)</b>: 네트워크 전송 중 민감 데이터 검사·차단</li><li><b>Data in Use(사용)</b>: 엔드포인트에서 복사·인쇄·USB 쓰기 통제</li><li><b>Data at Rest(저장)</b>: 서버·스토리지·엔드포인트 하드드라이브 <b>스캔·분류</b> ← <b>본 문제 영역</b></li></ul><h4>DLP의 Data at Rest 탐지 동작</h4><ul><li><b>엔드포인트·서버 스캔</b>: 에이전트가 파일시스템을 주기적 탐색</li><li><b>민감 정보 식별</b>: 정규식(주민번호·카드번호)·지문·키워드·분류 태그 매칭</li><li><b>권한 분석</b>: 해당 파일의 접근 권한이 <b>적절한지</b> 검증</li><li><b>위치 리포팅</b>: 어떤 서버·경로에 어떤 민감 정보가 있는지 맵핑</li><li><b>조치</b>: 격리·이동·권한 수정·암호화·삭제·관리자 경보</li></ul><h4>시나리오 맥락</h4><ul><li>"<b>하드드라이브에 저장된 민감 정보</b>" — 명백히 <b>Data at Rest</b> 영역</li><li>"<b>부적절한 권한·보안 통제</b>" — 예: HR 폴더의 급여 데이터가 전체 공개 설정</li><li>이런 상태를 발견하려면 <b>저장소 전체를 스캔하고 민감 정보와 권한을 매칭</b>할 수 있어야 함</li><li>이 작업은 <b>DLP의 전문 기능</b>이며 IDS·IPS·TLS는 원천적으로 수행 불가</li></ul><h4>함정 포인트 — 네트워크 보안 vs 데이터 보안</h4><ul><li><b>IDS/IPS(A·C)</b>: 네트워크 트래픽 중심 — <b>저장소 스캔 능력 없음</b></li><li><b>TLS(D)</b>: 전송 중 암호화 — <b>데이터 식별과 무관</b>, 오히려 콘텐츠를 숨김</li><li><b>DLP(B)</b>: <b>데이터 중심(Data-centric)</b> 보안 — 저장·이동·사용 전 영역</li><li>CISA 원칙: 문제가 "<b>저장된 데이터 식별</b>"이면 항상 DLP</li></ul><h4>IDS와 DLP의 미묘한 차이</h4><ul><li>IDS도 시그니처 기반으로 민감 정보 패턴 탐지 가능 — 그러나 <b>네트워크 트래픽</b>만 봄</li><li>IDS는 <b>저장소에 있는 파일</b>을 스캔하지 않음 → 하드드라이브 탐지 불가</li><li>DLP는 <b>에이전트가 엔드포인트에 설치</b>되어 파일시스템 스캔 가능</li><li>"일부 민감 정보 식별"은 IDS도 가능하지만 "<b>엔터프라이즈 하드드라이브 스캔</b>"은 DLP 전용</li></ul><h4>TLS가 명백히 오답인 이유</h4><ul><li>TLS는 <b>암호화 프로토콜</b>(HTTPS·이메일 STARTTLS·VPN)</li><li>기능: <b>기밀성·무결성</b> — 데이터 식별·분류 기능 <b>전무</b></li><li>오히려 TLS는 <b>데이터를 암호화하여 DLP의 가시성을 떨어뜨림</b>(SSL/TLS 복호화 필요)</li><li>본 시나리오와 완전히 다른 카테고리</li></ul><h4>DLP Discovery(저장소 스캔)의 구체적 가치</h4><ul><li><b>데이터 맵핑</b>: 조직 내 민감 데이터 <b>분포도</b> 작성</li><li><b>섀도우 IT 발견</b>: 예기치 못한 위치의 민감 데이터 식별</li><li><b>권한 감사</b>: 민감 파일의 접근 권한 점검 — <b>과권한·공개 설정</b> 발견</li><li><b>규제 준수</b>: GDPR·HIPAA에 필수 — 데이터 위치·보호 수준 증명</li><li><b>데이터 최소화</b>: 불필요한 민감 데이터 삭제·이관으로 <b>공격 표면 축소</b></li><li><b>사고 조사</b>: 특정 민감 데이터가 어디에 복제되어 있는지 추적</li></ul><h4>보안 기술 역할 매트릭스</h4><table><tr><th>기술</th><th>주 기능</th><th>Data at Rest 식별</th></tr><tr><td>IDS</td><td>네트워크 침입 탐지</td><td>제한적/불가</td></tr><tr><td>IPS</td><td>네트워크 침입 차단</td><td>불가</td></tr><tr><td>TLS</td><td>전송 암호화</td><td>불가</td></tr><tr><td><b>DLP</b></td><td><b>데이터 중심 통제</b></td><td><b>핵심 기능</b></td></tr></table><h4>CISA 시험 핵심 정리</h4><ul><li><b>저장된 민감 정보 + 권한 검증 = DLP(Data at Rest)</b></li><li>DLP는 <b>데이터 중심</b> / IDS·IPS는 <b>네트워크 중심</b> / TLS는 <b>전송 보호</b></li><li>기술의 <b>본질적 설계 목적</b>을 이해하고 시나리오 매칭</li><li>DLP Discovery는 데이터 거버넌스·GDPR 대응의 기반 활동</li><li>유사 출제: Q555(PRIMARY purpose=Egress) vs Q559(at Rest 탐지) — 동일 DLP의 <b>다른 측면</b> 물음</li></ul></div>`,
+reference:"CRM Chapter 5: Data Loss Prevention — Data at Rest Discovery and Classification",
+keyConcepts:[
+"저장 민감 정보 탐지|DLP의 Data at Rest 기능 — 파일시스템 스캔으로 민감 정보·권한 식별",
+"DLP 3대 영역 재확인|Motion(이동)·Use(엔드포인트)·Rest(저장) — 본 문제는 Rest",
+"DLP Discovery 기능|민감 데이터 분포 맵핑·섀도우 IT 발견·권한 감사·규제 준수 증명",
+"IDS/IPS 한계|네트워크 트래픽 중심 — 저장소 파일 스캔 능력 없음",
+"TLS 역할|네트워크 암호화 프로토콜 — 데이터 식별 기능 전무, 오히려 DLP 가시성 저하",
+"기술 역할 구분|DLP=데이터 중심 / IDS·IPS=네트워크 중심 / TLS=전송 보호",
+"데이터 중심 vs 네트워크 중심|현대 보안 트렌드는 데이터 중심 — 경계 방어만으로 불충분",
+"권한 감사 가치|과권한·공개 설정 발견 → 최소권한 원칙 강화",
+"섀도우 IT|예기치 못한 위치의 민감 데이터 → DLP Discovery로 식별",
+"규제 대응|GDPR·HIPAA는 데이터 위치·보호 수준 증명 요구 → DLP Discovery 필수"
+]
+}
+,
+{
+id:560,
+domain:"5",
+ks:"5A5 Data Loss Prevention",
+question:"A cyclic redundancy check is commonly used to determine the:",
+questionKo:"<b>순환 중복 검사(CRC, Cyclic Redundancy Check)</b>가 일반적으로 확인하는 것은?",
+options:[
+"A. accuracy of data input.",
+"B. integrity of a downloaded program.",
+"C. adequacy of encryption.",
+"D. validity of data transfer."
+],
+optionsKo:[
+"A. 데이터 <b>입력의 정확성</b>",
+"B. 다운로드된 프로그램의 <b>무결성</b>",
+"C. <b>암호화의 적절성</b>",
+"D. <b>데이터 전송의 유효성</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>대상</th><th>실제 통제 수단 / CRC와 관계</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>데이터 입력 정확성</td><td><b>입력 검증 통제</b>(드롭다운·Cross check·Reasonableness·Control total·허용 문자 검사)의 영역 — CRC는 입력 단계 사용 안 함</td><td>부적합</td></tr><tr><td><b>B</b></td><td>다운로드 프로그램 무결성</td><td><b>Checksum·해시·디지털 서명</b>의 영역 — 암호학적 무결성 검증에 CRC 사용 안 함(충돌 취약)</td><td>부적합</td></tr><tr><td><b>C</b></td><td>암호화의 적절성</td><td><b>데이터 민감도·알고리즘 강도·키 길이</b>로 결정 — CRC와 무관</td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>데이터 전송의 유효성</b></td><td class="correct-cell">CRC의 <b>설계 목적</b> — 블록 단위 데이터 전송(Ethernet·ZIP·디스크 I/O 등)에서 <b>전송 오류 탐지</b>에 사용</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — CRC(Cyclic Redundancy Check)</h4><p><b>CRC</b>는 다항식 나눗셈을 이용해 데이터 블록에서 <b>짧은 체크 값</b>을 생성하는 <b>오류 탐지 코드</b>다. 주로 <b>통신·저장·전송</b> 과정에서 발생하는 <b>비트 오류</b>를 탐지.</p><h4>CRC의 동작 원리</h4><ul><li>① 송신자: 데이터 블록을 다항식으로 취급 → 생성다항식으로 나누어 <b>나머지(CRC 값)</b> 계산</li><li>② 데이터와 CRC 값을 함께 전송</li><li>③ 수신자: 동일 다항식으로 재계산 → 전송받은 CRC와 비교</li><li>④ 일치 → 전송 유효 / 불일치 → <b>전송 오류 발생</b> → 재전송 요청</li></ul><h4>CRC 사용 사례</h4><ul><li><b>Ethernet</b>: 프레임 끝에 CRC-32(Frame Check Sequence) 부착</li><li><b>Wi-Fi (802.11)</b>: 프레임 무결성 검증</li><li><b>ZIP·RAR·PNG</b>: 압축 파일 무결성 확인</li><li><b>저장 장치</b>: 하드디스크·SSD 섹터 전송 검증</li><li><b>시리얼 통신·모뎀</b>: 전송 오류 탐지</li><li><b>CAN 버스·USB</b>: 산업·주변기기 프로토콜</li></ul><h4>CRC vs Hash(암호학적) 차이점</h4><table><tr><th>구분</th><th>CRC</th><th>해시(SHA-256 등)</th></tr><tr><td>목적</td><td>전송 <b>오류 탐지</b></td><td><b>무결성·위변조 탐지</b></td></tr><tr><td>보안성</td><td>공격 방어 안 함(의도 변조 쉬움)</td><td>암호학적 충돌 저항성</td></tr><tr><td>속도</td><td>매우 빠름 — 하드웨어 구현</td><td>상대적으로 느림</td></tr><tr><td>출력 크기</td><td>16·32·64비트 짧음</td><td>128~512비트 김</td></tr><tr><td>사용처</td><td>네트워크·저장·통신 저수준</td><td>소프트웨어 배포·서명·보안</td></tr></table><h4>함정 포인트 — CRC vs Checksum vs Hash</h4><ul><li><b>A(입력 정확성)</b>: Reasonableness check·Picklist 같은 <b>애플리케이션 레벨 검증</b>의 영역 — CRC 아님</li><li><b>B(프로그램 무결성)</b>: 해시·디지털 서명이 적합 — CRC는 <b>의도적 변조에 취약</b>해 다운로드 무결성 검증에 부적합</li><li><b>C(암호화 적절성)</b>: 알고리즘 선택·키 관리 문제 — CRC와 완전 무관</li><li><b>D(전송 유효성)</b>: CRC의 <b>본래 설계 목적</b></li><li>CISA 시험: "<b>commonly used to determine</b>" 표현 → CRC의 일반적·전통적 용도 질문</li></ul><h4>왜 CRC는 B(프로그램 무결성)에 부적합한가</h4><ul><li>CRC는 <b>무작위 오류 탐지용</b> — 의도적 변조를 방어하도록 설계되지 않음</li><li>공격자는 <b>같은 CRC 값을 가진 악성 파일</b>을 쉽게 조작 가능</li><li>다운로드된 프로그램이 <b>악의적으로 교체되었는지</b> 확인하려면 <b>암호학적 해시·디지털 서명</b> 필요</li><li>그래서 소프트웨어 배포 사이트는 CRC가 아닌 <b>SHA-256 해시</b>를 게시</li></ul><h4>데이터 검증 통제 계층</h4><ul><li><b>입력 검증(Input Validation)</b>: Reasonableness·Picklist·Check digit·Control total → <b>A 영역</b></li><li><b>처리 검증(Processing)</b>: 무결성 로직·승인 절차</li><li><b>전송 검증(Transmission)</b>: CRC·Parity → <b>D 영역 / CRC 본 영역</b></li><li><b>암호학적 검증(Cryptographic)</b>: Hash·HMAC·Digital Signature → <b>B 영역</b></li><li>각 계층이 서로 다른 목적·수준의 통제 제공</li></ul><h4>CRC의 장단점</h4><ul><li><b>장점</b>: 빠름·간단·하드웨어 구현 용이·무작위 오류에 효과적</li><li><b>단점</b>: 의도적 공격에 취약·긴 버스트 오류는 일부 놓칠 수 있음</li><li>그래서 <b>의도 위변조 걱정이 있는 경우</b>는 해시·MAC·서명 사용</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>CRC의 주 용도 = 데이터 전송 유효성(오류 탐지)</b></li><li>CRC는 <b>무작위 오류</b> 탐지용 / 해시는 <b>의도 변조</b> 탐지용</li><li>입력 정확성 = 입력 검증 / 프로그램 무결성 = 해시·서명 / 암호화 적절성 = 알고리즘 선택</li><li>"commonly used" 키워드 = <b>전통적·표준적 용도</b> 질문</li><li>유사 출제: Q558(해시=파일 무결성) vs Q560(CRC=전송 오류) — <b>목적별 구분</b>이 핵심</li></ul></div>`,
+reference:"CRM Chapter 5: Data Integrity — CRC and Error Detection for Data Transfer",
+keyConcepts:[
+"CRC 용도|데이터 전송 유효성(블록 오류 탐지) — Ethernet·Wi-Fi·ZIP·디스크 I/O 등",
+"CRC 원리|다항식 나눗셈 → 나머지를 체크 값으로 사용 → 재계산 비교로 오류 탐지",
+"CRC vs Hash|CRC=무작위 오류 탐지·속도 우선 / Hash=의도 변조 탐지·보안 우선",
+"CRC 한계|의도적 변조에 취약 — 같은 CRC 악성 파일 조작 가능 → 보안 검증 부적합",
+"다운로드 무결성|해시(SHA-256)·디지털 서명 사용 — CRC는 부적합",
+"데이터 검증 계층|입력(Reasonableness)·처리·전송(CRC)·암호학(Hash·Signature)",
+"전송 오류 사용처|Ethernet FCS·Wi-Fi·USB·CAN·저장 섹터 — 저수준 하드웨어 프로토콜",
+"Commonly Used 키워드|전통적·표준적 용도 — 기술의 본래 설계 목적 질문",
+"해시 vs CRC 구분|Q558(해시=무결성) vs Q560(CRC=전송) — 목적별 구분이 핵심",
+"오류 vs 공격|CRC=우연한 오류 / Hash·MAC=고의적 공격 — 다른 위협 모델"
+]
+}
+,
+{
+id:561,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"An online stock trading firm is in the process of implementing a system to provide secure email exchange with its customers. What is the BEST option to ensure confidentiality, integrity and nonrepudiation?",
+questionKo:"온라인 증권거래 회사가 고객과의 안전한 이메일 교환 시스템을 구축 중이다. <b>기밀성(Confidentiality)·무결성(Integrity)·부인방지(Nonrepudiation)</b>를 모두 보장하는 최선의 방법은?",
+options:[
+"A. Symmetric key encryption",
+"B. Digital signatures",
+"C. Message digest algorithms",
+"D. Digital certificates"
+],
+optionsKo:[
+"A. <b>대칭키 암호화</b>",
+"B. <b>디지털 서명</b>",
+"C. <b>메시지 다이제스트 알고리즘</b>",
+"D. <b>디지털 인증서</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>C · I · N 제공 여부</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>대칭키 암호화</td><td>기밀성 ✓ / 무결성 ✗ / 부인방지 ✗ — 키 공유 문제(양쪽이 동일 키 소유 → 송신자 특정 불가)</td><td>부분적</td></tr><tr><td><b>B</b></td><td>디지털 서명</td><td>무결성 ✓ / 부인방지 ✓ / <b>기밀성 ✗</b> — 서명만으로는 내용을 암호화하지 않음</td><td>부분적</td></tr><tr><td><b>C</b></td><td>메시지 다이제스트(해시)</td><td>무결성 ✓ / 기밀성 ✗ / 부인방지 ✗ — 단방향 해시만으로는 세 가지 중 하나만 제공</td><td>부분적</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>디지털 인증서</b></td><td class="correct-cell"><b>PKI 기반으로 공개키·개인키를 활용</b> → 암호화로 <b>기밀성</b>, 해시·서명으로 <b>무결성</b>, 신뢰된 CA의 신원 확인으로 <b>부인방지</b> — 세 가지 모두 충족</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 디지털 인증서와 PKI</h4><p><b>Digital Certificate</b>는 <b>공개키 + 소유자 신원 정보</b>를 담고 <b>CA(인증기관)</b>의 서명으로 검증되는 전자 문서다. <b>PKI(공개키 기반구조)</b>의 핵심 요소.</p><h4>세 가지 보안 속성(C·I·N) 보장 메커니즘</h4><ul><li><b>Confidentiality(기밀성)</b>: 수신자의 <b>공개키로 암호화</b> → 수신자만 <b>개인키로 복호화</b> 가능</li><li><b>Integrity(무결성)</b>: 송신자가 메시지를 <b>해시</b> → 해시를 <b>개인키로 서명</b> → 수신자가 <b>공개키로 검증</b> → 변조 시 불일치</li><li><b>Nonrepudiation(부인방지)</b>: 송신자의 <b>개인키는 본인만 소유</b> + CA가 <b>공개키와 신원을 결합</b> → 송신자가 "내가 안 보냈다" 부인 불가</li></ul><h4>안전한 이메일의 표준 동작 (S/MIME·PGP)</h4><ul><li>① <b>해시 생성</b>: 메시지의 해시(Digest) 계산</li><li>② <b>디지털 서명</b>: 송신자가 자신의 <b>개인키로 해시 서명</b> → 무결성 + 부인방지</li><li>③ <b>세션키 생성</b>: 임의 대칭키 생성</li><li>④ <b>본문 암호화</b>: 세션키로 메시지 본문 대칭 암호화(속도)</li><li>⑤ <b>세션키 암호화</b>: <b>수신자의 공개키</b>로 세션키 암호화 → 기밀성</li><li>⑥ 수신자: 자기 개인키로 세션키 복호화 → 세션키로 본문 복호화 → 송신자 공개키로 서명 검증</li><li>⑦ 신뢰 체인: CA가 발급한 <b>디지털 인증서</b>로 공개키와 신원 연결 검증</li></ul><h4>함정 포인트 — B(디지털 서명) 오답 이유</h4><ul><li>디지털 서명은 <b>무결성 + 부인방지</b>만 제공 — <b>기밀성 없음</b></li><li>서명된 메시지는 <b>평문이 보임</b> → 누구나 내용 읽을 수 있음</li><li>"<b>C·I·N 모두</b>" 요구하는 문제에서 서명만은 부족</li><li>서명 + 암호화 조합이 필요하며, 이를 <b>PKI/디지털 인증서가 통합</b> 제공</li></ul><h4>A(대칭키) 오답 이유</h4><ul><li><b>기밀성 ✓</b>: 암호화 가능</li><li><b>키 공유 문제</b>: 안전한 채널로 키 전달 필요 — 이메일에는 구조적 어려움</li><li><b>무결성 ✗</b>: 단순 암호화는 변조 탐지 못함(HMAC 필요)</li><li><b>부인방지 ✗</b>: 송수신자 <b>양쪽이 동일 키 소유</b> → 누가 보냈는지 증명 불가</li><li>대칭키 단독으로는 C·I·N 모두 만족 불가</li></ul><h4>C(메시지 다이제스트) 오답 이유</h4><ul><li>해시는 <b>단방향 함수</b> — 무결성만 제공</li><li>암호화 기능 없음 → 기밀성 ✗</li><li>서명·인증 요소 없음 → 부인방지 ✗</li><li>C·I·N 중 <b>I만 단독</b> 제공 → 한참 부족</li></ul><h4>대칭 vs 비대칭 암호화 조합</h4><table><tr><th>구분</th><th>대칭 암호</th><th>비대칭 암호(PKI)</th></tr><tr><td>속도</td><td>빠름</td><td>느림</td></tr><tr><td>키 교환</td><td>공유 필요(문제)</td><td>공개키로 해결</td></tr><tr><td>기밀성</td><td>✓</td><td>✓</td></tr><tr><td>무결성</td><td>✗(HMAC 필요)</td><td>✓(서명)</td></tr><tr><td>부인방지</td><td>✗</td><td>✓</td></tr><tr><td>실무</td><td>본문 암호화</td><td>키 교환·서명</td></tr></table><p><b>하이브리드 암호화</b>: 속도의 대칭 + 신원의 비대칭 → <b>디지털 인증서가 통합</b></p><h4>CA와 신뢰 모델</h4><ul><li><b>CA(Certificate Authority)</b>: 신원 확인 후 인증서 발급</li><li><b>인증서 내용</b>: 공개키·소유자 정보·유효기간·CA 서명·용도</li><li><b>신뢰 체인</b>: Root CA → Intermediate CA → 사용자 인증서</li><li><b>검증</b>: 브라우저·이메일 클라이언트가 CA 서명을 Root 인증서로 검증</li><li><b>CRL·OCSP</b>: 폐기된 인증서 확인</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>C·I·N 모두 = 디지털 인증서(PKI)</b> — 종합 솔루션</li><li>디지털 서명 단독 = <b>I·N만</b>, 기밀성 부족</li><li>대칭키 단독 = <b>C만</b>, I·N 부족</li><li>해시 단독 = <b>I만</b>, C·N 부족</li><li>S/MIME·PGP = 디지털 인증서 기반 안전한 이메일 표준</li><li>부인방지 핵심: <b>개인키의 유일한 소유</b> + <b>CA의 신원 결합</b></li><li>유사 출제: 보기에 "C·I·N 모두 요구" 키워드 있으면 항상 <b>PKI/Digital Certificate</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — PKI, Digital Certificates, and Secure Email (S/MIME)",
+keyConcepts:[
+"C·I·N 통합|디지털 인증서(PKI) — 기밀성·무결성·부인방지를 모두 충족하는 유일한 선택지",
+"디지털 인증서 구성|공개키 + 소유자 신원 + CA 서명 + 유효기간 + 용도",
+"안전한 이메일 표준|S/MIME·PGP — 대칭키 본문 암호화 + 비대칭키 세션키 교환 + 디지털 서명",
+"기밀성 메커니즘|수신자 공개키로 암호화 → 개인키로만 복호화 가능",
+"무결성 메커니즘|메시지 해시를 송신자 개인키로 서명 → 수신자 공개키로 검증",
+"부인방지 메커니즘|개인키는 본인만 소유 + CA가 공개키·신원 결합 → 송신자 부인 불가",
+"디지털 서명 한계|무결성·부인방지만 — 기밀성 없음(평문 노출)",
+"대칭키 한계|기밀성만 — 키 공유 문제·부인방지 불가(양측 동일 키)",
+"해시 한계|무결성만 — 기밀성·부인방지 없음",
+"하이브리드 암호|대칭(속도) + 비대칭(신원·키교환) 조합 → 디지털 인증서가 통합 제공",
+"CA 신뢰 체인|Root CA → Intermediate CA → 사용자 인증서 / CRL·OCSP로 폐기 확인"
+]
+}
+,
+{
+id:562,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The use of digital signatures:",
+questionKo:"<b>디지털 서명(Digital Signature)</b>의 용도는:",
+options:[
+"A. requires the use of a one-time password generator.",
+"B. provides encryption to a message.",
+"C. validates the source of a message.",
+"D. ensures message confidentiality."
+],
+optionsKo:[
+"A. <b>일회용 비밀번호(OTP) 생성기</b> 사용을 요구한다.",
+"B. 메시지에 <b>암호화를 제공</b>한다.",
+"C. 메시지의 <b>출처(source)를 검증</b>한다.",
+"D. 메시지 <b>기밀성을 보장</b>한다."
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>디지털 서명 실제 기능</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>OTP 생성기 필요</td><td>OTP는 <b>별개의 인증 메커니즘</b> — 디지털 서명은 PKI(공개키·개인키)만 필요</td><td>부적합</td></tr><tr><td><b>B</b></td><td>메시지 암호화 제공</td><td>서명은 <b>암호화와 별개</b> — 서명된 메시지의 <b>본문은 평문으로 보임</b></td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>메시지 출처 검증</b></td><td class="correct-cell">송신자가 <b>개인키로 서명</b> → 수신자가 <b>공개키로 검증</b> → 해당 개인키 소유자(송신자)가 보낸 것 증명 → <b>출처 인증 + 무결성 + 부인방지</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>기밀성 보장</td><td>기밀성은 <b>암호화의 역할</b> — 디지털 서명은 기밀성과 무관</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 디지털 서명의 역할</h4><p><b>디지털 서명(Digital Signature)</b>은 <b>개인키로 암호학적 서명을 생성</b>하고 <b>공개키로 검증</b>하는 메커니즘이다. 제공하는 3가지 속성:</p><ul><li><b>Authentication(인증·출처 검증)</b>: 해당 <b>개인키 소유자</b>만 서명 생성 가능 → 송신자 신원 확인 ← <b>본 문제 정답</b></li><li><b>Integrity(무결성)</b>: 서명 검증 실패 시 <b>메시지 변조</b> 의미</li><li><b>Nonrepudiation(부인방지)</b>: 송신자가 자신이 안 보냈다고 주장 불가 → 법적 증거력</li></ul><h4>디지털 서명 동작 과정</h4><ul><li>① 송신자: 메시지 → <b>해시(Digest) 생성</b></li><li>② 송신자: 해시를 <b>자신의 개인키로 암호화</b> = <b>디지털 서명 생성</b></li><li>③ 서명을 메시지와 함께 전송</li><li>④ 수신자: 메시지에서 해시 H1 재계산</li><li>⑤ 수신자: 받은 서명을 <b>송신자 공개키로 복호화</b> → H2 추출</li><li>⑥ H1 == H2 → 서명 유효 → <b>송신자 확인(인증) + 변조 없음(무결성)</b></li></ul><h4>디지털 서명이 제공하지 않는 것</h4><ul><li><b>기밀성(Confidentiality) ✗</b>: 메시지 본문은 <b>평문</b> — 누구나 읽을 수 있음</li><li><b>기밀성까지 필요하면</b>: 서명 + <b>암호화</b>(수신자 공개키로 메시지 암호화) 조합</li><li>Q561 답은 디지털 <b>인증서(D)</b>, Q562 답은 디지털 <b>서명(C)</b> — <b>인증서는 서명 + 암호화·신원 통합</b>, 서명은 <b>출처 검증에 특화</b></li></ul><h4>함정 포인트 — 보기별 상세 오답 근거</h4><ul><li><b>A(OTP 필요)</b>: 완전 다른 기술 — OTP는 사용자 인증용 임시 코드, 디지털 서명과 무관. PKI 인증서만으로 서명 생성·검증 가능</li><li><b>B(암호화 제공)</b>: 디지털 서명은 <b>해시를 암호화</b>하지만 <b>메시지 본문을 암호화하지 않음</b>. 기밀성 용도로 오해 금지</li><li><b>C(출처 검증)</b>: <b>정답</b> — 서명의 핵심 목적은 신원·출처 확인</li><li><b>D(기밀성 보장)</b>: 서명과 무관 — 기밀성은 암호화(대칭·비대칭)의 역할</li></ul><h4>디지털 서명 vs 전자 서명(Electronic Signature)</h4><ul><li><b>전자 서명(Electronic Signature)</b>: 넓은 개념 — 이메일 하단 텍스트·마우스 필기·스캔 이미지 등</li><li><b>디지털 서명(Digital Signature)</b>: <b>암호학적 기법</b>을 사용한 전자 서명의 한 종류 — PKI 기반</li><li>전자 서명은 <b>법적 의사표시</b> / 디지털 서명은 <b>기술적 보증</b></li><li>CISA 시험에서 "digital signature"는 항상 <b>암호학적 서명</b></li></ul><h4>실무 적용 예시</h4><ul><li><b>소프트웨어 코드 서명</b>: 개발자가 배포 파일에 서명 → 사용자가 <b>변조 없이 해당 개발자가 배포</b>한 것 확인</li><li><b>S/MIME 이메일</b>: 이메일 서명으로 송신자 신원·무결성 확인</li><li><b>PDF 전자계약</b>: 법적 효력 있는 디지털 서명</li><li><b>TLS/SSL 서버</b>: 서버 인증서로 도메인 소유자 검증</li><li><b>블록체인</b>: 거래마다 디지털 서명으로 송신자 입증</li></ul><h4>C·I·N 매핑 재정리</h4><table><tr><th>속성</th><th>제공 기술</th><th>원리</th></tr><tr><td>Confidentiality</td><td>암호화(대칭·비대칭)</td><td>본문 읽기 차단</td></tr><tr><td>Integrity</td><td>해시·MAC·Digital Signature</td><td>변조 탐지</td></tr><tr><td>Authentication</td><td><b>Digital Signature</b>·인증서·MFA</td><td>신원 확인</td></tr><tr><td>Nonrepudiation</td><td><b>Digital Signature</b>(PKI)</td><td>부인 불가</td></tr><tr><td>C+I+N 통합</td><td>디지털 인증서(PKI·S/MIME)</td><td>하이브리드</td></tr></table><h4>CISA 시험 핵심 정리</h4><ul><li><b>디지털 서명의 용도 = 메시지 출처(source) 검증</b></li><li>제공: <b>인증 + 무결성 + 부인방지</b> (3가지)</li><li>제공하지 않음: <b>기밀성</b> — 암호화와 조합 필요</li><li>OTP는 별개 메커니즘 — 서명과 무관</li><li>유사 출제: Q561(C·I·N 모두=인증서) vs Q562(출처=서명) — <b>요구 속성 수</b>로 판별</li><li>본문 "validates the source" = "authenticates the sender" = "verifies identity"의 동의어</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Digital Signatures and Sender Authentication",
+keyConcepts:[
+"디지털 서명 주 목적|메시지 출처(source) 검증 — 송신자 인증 + 무결성 + 부인방지",
+"기밀성 미제공|서명은 해시만 암호화, 메시지 본문은 평문 노출 — 기밀성 필요 시 별도 암호화",
+"서명 생성·검증|송신자 개인키로 해시 서명 → 수신자 공개키로 검증 → 일치 시 출처 확인",
+"OTP vs 디지털 서명|완전 별개 메커니즘 — OTP는 사용자 인증용, 서명은 PKI 기반",
+"전자 서명 vs 디지털 서명|전자는 광의(이메일 텍스트 포함), 디지털은 암호학적 PKI 기반",
+"C·I·N 기술 매핑|C=암호화 / I=해시·서명 / N=서명(PKI) — 서명은 I·N만 (Q562)",
+"Q561 vs Q562 구분|Q561=C·I·N 모두(인증서) / Q562=출처 검증(서명) — 요구 속성 수 판별",
+"실무 적용|코드 서명·S/MIME·PDF 계약·TLS 서버·블록체인 모두 디지털 서명 기반",
+"법적 효력|디지털 서명은 부인방지로 법적 증거력 — 전자상거래·계약에 활용",
+"Authentication 동의어|validates source = authenticates sender = verifies identity"
+]
+}
+,
+{
+id:563,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The PRIMARY reason for using digital signatures is to ensure data:",
+questionKo:"<b>디지털 서명</b>을 사용하는 <b>1차적 이유(PRIMARY reason)</b>는 데이터의 <b>무엇</b>을 보장하는가?",
+options:[
+"A. confidentiality.",
+"B. integrity.",
+"C. availability.",
+"D. correctness."
+],
+optionsKo:[
+"A. <b>기밀성(Confidentiality)</b>",
+"B. <b>무결성(Integrity)</b>",
+"C. <b>가용성(Availability)</b>",
+"D. <b>정확성(Correctness)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>데이터 속성</th><th>디지털 서명과 관계</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>기밀성</td><td>서명은 메시지를 <b>암호화하지 않음</b> → 본문 평문 노출. 기밀성은 <b>암호화의 역할</b></td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>무결성</b></td><td class="correct-cell">서명된 문서의 <b>1비트 변경</b>만으로도 서명이 달라짐 → <b>변조 탐지</b>. 디지털 서명의 <b>본질적 데이터 보호 속성</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>가용성</td><td>서명은 <b>백업·이중화·가용성 통제</b>와 무관 — 시스템 다운 시 서명은 무의미</td><td>부적합</td></tr><tr><td><b>D</b></td><td>정확성</td><td>서명은 <b>데이터가 변경되지 않았음</b>만 보증 — 애초에 데이터가 <b>옳은지(correct)</b>는 보증 못함</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 디지털 서명의 데이터 속성 보호</h4><p>디지털 서명은 여러 속성을 제공하지만, 질문이 "<b>데이터(data)</b>의 무엇"을 보장하느냐이면 <b>Integrity(무결성)</b>가 핵심이다.</p><h4>디지털 서명이 제공하는 보증</h4><ul><li><b>Data Integrity(데이터 무결성)</b>: 서명 이후 <b>1비트도 변경되지 않았음</b> 보장 ← <b>본 문제 정답</b></li><li><b>Origin Authentication(출처 인증)</b>: 누가 서명했는지 확인</li><li><b>Nonrepudiation(부인방지)</b>: 송신자가 부인 불가</li><li>이 셋은 상호 연결되지만 <b>"data"의 속성</b>은 무결성이 직접적</li></ul><h4>왜 무결성이 데이터 관점의 1차 이유인가</h4><ul><li>디지털 서명의 <b>기술적 기반</b> = 해시 → 암호학적 해시는 <b>변조 탐지</b>에 특화</li><li>1비트라도 바뀌면 <b>해시가 완전히 달라짐</b>(눈사태 효과) → 서명 검증 실패</li><li>CISA 관점: 서명은 <b>데이터 무결성의 표준 통제</b></li><li>Authentication·Nonrepudiation은 <b>송신자 속성</b>, Integrity는 <b>데이터 속성</b></li></ul><h4>Q562 vs Q563 구별 — 핵심 대비</h4><table><tr><th>구분</th><th>Q562</th><th>Q563</th></tr><tr><td>질문</td><td>"The use of digital signatures"</td><td>"PRIMARY reason to ensure <b>data</b>"</td></tr><tr><td>보기 특성</td><td>source validation(Authentication) 포함</td><td>CIA + correctness(데이터 속성만)</td></tr><tr><td>정답</td><td><b>C: validates source</b> (Authentication)</td><td><b>B: integrity</b></td></tr><tr><td>관점</td><td>기능적 용도</td><td>데이터 속성</td></tr></table><p>이 차이는 <b>질문이 데이터 중심인지 송신자 중심인지</b>로 구분</p><h4>함정 포인트 — A·C·D 상세</h4><ul><li><b>A(Confidentiality)</b>: 서명은 <b>평문 메시지 + 서명</b>을 전송 — 암호화 없음. 기밀성은 별도 암호화 필요</li><li><b>C(Availability)</b>: CIA의 세 번째 속성 — 시스템·데이터 접근 가능성. 서명과 무관한 영역(백업·이중화·DDoS 방어)</li><li><b>D(Correctness)</b>: "데이터가 옳은가"는 <b>업무 로직·검증</b>의 문제. 서명은 "변경되지 않았음"만 보증 — 처음부터 틀린 데이터에 서명해도 서명은 유효</li></ul><h4>Integrity vs Correctness 구별</h4><ul><li><b>Integrity(무결성)</b>: 데이터가 <b>변조되지 않았음</b> — 저장·전송 중 변경 없음</li><li><b>Correctness(정확성)</b>: 데이터가 <b>진실·정확한 값</b> — 입력·계산의 올바름</li><li>예: 잘못 입력된 금액 "$10,000"이 변조 없이 전달되면 <b>무결성은 OK</b>, <b>정확성은 NG</b></li><li>서명은 <b>무결성</b> 담당 — 정확성은 <b>입력 검증·비즈니스 룰·승인</b>의 영역</li><li>CISA 시험 고전 함정 — 두 용어 혼동 주의</li></ul><h4>CIA Triad에서의 서명 위치</h4><ul><li><b>Confidentiality</b>: 암호화 / 접근통제 / 차폐</li><li><b>Integrity</b>: <b>해시 · 디지털 서명 · HMAC · 체크섬</b> ← 본 문제</li><li><b>Availability</b>: 백업 · 이중화 · DDoS 방어 · DR</li><li>서명은 Integrity의 <b>강력한 암호학적 통제</b></li></ul><h4>실무에서의 무결성 보장</h4><ul><li><b>소프트웨어 배포</b>: 서명된 실행파일 — 변조 시 OS가 경고</li><li><b>코드 서명(Code Signing)</b>: 개발자가 배포 전 서명 → 사용자가 변조 확인</li><li><b>전자 계약</b>: PDF·계약서 서명 → 내용 변경 시 서명 깨짐</li><li><b>블록체인</b>: 각 트랜잭션 서명 → 장부 무결성</li><li><b>로그 무결성</b>: 서명된 로그 → 사후 조작 방지</li><li><b>패치·업데이트</b>: 서명 검증 후 설치</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>PRIMARY reason to ensure data = Integrity(무결성)</b></li><li>디지털 서명의 3가지 보증: <b>Integrity · Authentication · Nonrepudiation</b></li><li>제공 안 함: <b>Confidentiality · Availability · Correctness</b></li><li>Integrity(변조 여부) ≠ Correctness(정확한 값) — CISA 단골 함정</li><li>Q562(use=source validation) vs Q563(data=integrity) — <b>질문의 주체</b> 구분</li><li>CIA Triad에서 서명 = <b>Integrity 카테고리의 암호학적 최강 통제</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Digital Signatures and Data Integrity",
+keyConcepts:[
+"디지털 서명 1차 이유|데이터 무결성(Integrity) — 1비트 변경도 서명 불일치로 탐지",
+"서명 3가지 보증|Integrity(데이터) + Authentication(출처) + Nonrepudiation(부인방지)",
+"서명 미제공|Confidentiality·Availability·Correctness — 다른 통제 필요",
+"Integrity vs Correctness|무결성=변조 없음 / 정확성=값이 옳음 — 서명은 무결성만",
+"Q562 vs Q563 구분|Q562=용도(source validation) / Q563=데이터 속성(integrity) — 질문 주체 판별",
+"눈사태 효과|해시 기반이라 1비트 변경도 완전히 다른 서명 → 무결성 탐지 민감",
+"CIA 매핑|C=암호화 / I=해시·서명 / A=백업·이중화 — 서명은 I의 강력한 통제",
+"코드 서명·전자계약|무결성의 실무 적용 — 변조 시 서명 깨짐 탐지",
+"데이터 중심 질문|'data'의 속성 묻는 질문 → 송신자 속성(N·A) 아닌 데이터 속성(C·I·A) 선택",
+"무결성 통제 계층|Parity<Checksum<CRC<Hash<Digital Signature — 보안성 상승 순"
+]
+}
+,
+{
+id:564,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"An enterprise has decided to implement an electronic signature scheme based on a public key infrastructure. The user's private key will be stored on the computer's hard drive and protected by a password. The MOST significant risk of this approach is:",
+questionKo:"한 기업이 PKI 기반 전자 서명 방식을 구현하기로 결정했다. 사용자의 <b>개인키가 컴퓨터 하드드라이브에 저장되며 비밀번호로 보호</b>된다. 이 방식의 <b>가장 중대한 위험(MOST significant risk)</b>은?",
+options:[
+"A. use of the user's electronic signature by another person if the password is compromised.",
+"B. forgery by using another user's private key to sign a message with an electronic signature.",
+"C. impersonation of a user by substitution of the user's public key with another person's public key.",
+"D. forgery by substitution of another person's private key on the computer."
+],
+optionsKo:[
+"A. <b>비밀번호가 노출되면</b> 다른 사람이 해당 사용자의 전자 서명을 사용할 수 있음",
+"B. 다른 사용자의 <b>개인키를 사용하여</b> 메시지에 서명하는 위조",
+"C. 사용자의 <b>공개키를 타인의 공개키로 치환</b>하여 신원 가장",
+"D. 타인의 <b>개인키를 컴퓨터에 치환</b>하여 위조"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>시나리오</th><th>위험 분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>비밀번호 노출 → 타인 서명 사용</b></td><td class="correct-cell"><b>개인키의 유일한 보호막이 비밀번호</b> — 피싱·키로거·무차별 대입으로 <b>비밀번호 탈취 쉬움</b>. 탈취 시 원사용자인 것처럼 서명 생성 가능 → 가장 현실적·빈번·영향 큰 위험</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>타인 개인키로 서명 위조</td><td>타인 개인키로 서명하면 <b>해당 타인의 공개키로만 검증됨</b> → 원사용자 자격증명이 아님. <b>위조 성립 안 함</b></td><td>시나리오 불성립</td></tr><tr><td><b>C</b></td><td>공개키 치환으로 신원 가장</td><td>공개키는 <b>CA 발급 인증서에 포함·CA 서명</b>으로 보호 → 치환하려면 CA 인증서 변조 필요(매우 어려움). 가능성 최저</td><td>가능성 매우 낮음</td></tr><tr><td><b>D</b></td><td>타인 개인키로 치환</td><td>타인 개인키를 컴퓨터에 심어도 <b>원사용자 공개키로 서명 검증 실패</b> → 위조 성공 못함</td><td>기술적 무효</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 개인키 보호의 중요성</h4><p>PKI에서 <b>개인키의 유일한 소유(Sole Possession)</b>가 인증·부인방지의 기반이다. 개인키가 <b>비밀번호로만 보호되는 하드드라이브</b>에 저장되면 여러 공격 경로가 생긴다.</p><h4>비밀번호 기반 개인키 보호의 취약성</h4><ul><li><b>피싱</b>: 가짜 로그인 화면으로 비밀번호 탈취</li><li><b>키로거(Keylogger)</b>: 악성코드가 키 입력 캡처</li><li><b>무차별 대입(Brute Force)</b>: 약한 비밀번호 추측 공격</li><li><b>사전 공격(Dictionary Attack)</b>: 일반적 단어 조합 대량 시도</li><li><b>어깨 너머(Shoulder Surfing)</b>: 타이핑 관찰</li><li><b>동일 비밀번호 재사용</b>: 다른 사이트 유출 시 연쇄 피해</li><li><b>내부자</b>: 관리자·공유 PC에서 비밀번호 획득</li></ul><h4>왜 A가 MOST significant risk인가</h4><ul><li><b>발생 가능성 높음</b>: 비밀번호 탈취는 가장 흔한 공격 벡터</li><li><b>영향 중대</b>: 탈취 시 <b>원사용자로 완전 위장 가능</b> — 법적 효력 있는 서명 생성</li><li><b>탐지 어려움</b>: 원사용자와 구별 불가능한 서명 → <b>부인방지가 오히려 원사용자에게 불리</b>하게 작용</li><li><b>부정 규모</b>: 공격자가 <b>얼마든지 서명 생성</b> 가능 — 지속적 피해</li><li><b>B·D는 기술적으로 무효</b>, C는 <b>CA 보호로 현실 가능성 최저</b></li></ul><h4>함정 포인트 — B·D가 왜 위조 불성립인가</h4><ul><li><b>디지털 서명 검증 원리</b>: "서명 = 개인키로 암호화한 해시" → 검증은 <b>해당 개인키와 쌍을 이루는 공개키</b>로만 가능</li><li><b>B(타인 개인키 사용)</b>: A의 메시지에 B의 개인키로 서명 → B의 공개키로만 검증 성공 → <b>A를 사칭하지 못함</b></li><li><b>D(타인 개인키 치환)</b>: A의 컴퓨터에 B의 개인키 심기 → 생성된 서명은 B의 것 → A의 공개키로 검증 실패 → <b>시스템이 거부</b></li><li>PKI는 <b>개인키-공개키 짝</b>이 일치해야만 유효 — 짝이 깨진 위조는 자동 탐지</li></ul><h4>C(공개키 치환) 가능성이 낮은 이유</h4><ul><li>공개키는 <b>디지털 인증서(X.509)</b>에 담겨 CA가 서명</li><li>치환하려면 <b>CA의 개인키 획득</b> 또는 <b>Root CA 위조</b> 필요 — 극도로 어려움</li><li>현대 OS·브라우저·이메일 클라이언트는 <b>CA 체인 자동 검증</b></li><li>따라서 이론적 위협이지만 <b>현실 확률 매우 낮음</b></li></ul><h4>개인키 보호 모범 사례</h4><ul><li><b>하드웨어 토큰</b>: USB 토큰·스마트카드 → 키가 <b>외부로 추출 불가</b></li><li><b>TPM(Trusted Platform Module)</b>: PC 내 보안 칩에 키 저장</li><li><b>HSM(Hardware Security Module)</b>: 서버급 키 관리 장치</li><li><b>다중 인증(MFA)</b>: 비밀번호 + 생체·토큰 조합</li><li><b>키 암호화</b>: 강력한 AES 등으로 이중 보호</li><li><b>PIN + 잠금</b>: 시도 제한 후 키 폐기</li><li><b>키 사용 감사 로그</b>: 이상 서명 시도 탐지</li></ul><h4>문제 시나리오의 취약 구조</h4><ul><li>① 개인키가 <b>평범한 파일시스템</b>에 저장 → 접근 가능성 높음</li><li>② 보호가 <b>단일 비밀번호만</b> → 단일 장애점(SPOF)</li><li>③ 비밀번호는 <b>탈취 쉬움</b> → 공격 벡터 광범위</li><li>④ 키 사용에 <b>추가 인증 없음</b> → 탈취 시 무제한 사용</li><li>개선: 하드웨어 토큰·MFA·키 사용 제한·로깅 조합</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>개인키 비밀번호 보호 = 비밀번호 노출 시 서명 도용 위험 최대</b></li><li>공격 현실성: A(높음) > C(극히 낮음) > B·D(시나리오 무효)</li><li>PKI는 <b>개인키 유일 소유</b>가 신뢰의 근본 — 보호 실패 시 전 체계 붕괴</li><li>권장: <b>하드웨어 토큰·TPM·HSM·MFA</b> 조합</li><li>CISA 원칙: "MOST significant risk"는 <b>발생 가능성 × 영향</b>이 최대인 것</li><li>B·D는 PKI 동작 원리 이해를 확인하는 <b>함정 보기</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Private Key Protection and PKI Risks",
+keyConcepts:[
+"개인키 보호 원칙|Sole Possession(유일 소유) — PKI 신뢰의 근본, 탈취 시 전 체계 붕괴",
+"비밀번호 한계|단일 보호막 → 피싱·키로거·무차별대입·사전공격·재사용 취약",
+"MOST significant risk|발생 가능성 × 영향 최대 — A(비밀번호 탈취)가 가장 현실적",
+"B·D 시나리오 무효|PKI는 개인키·공개키 짝 일치 필수 — 타인 키로는 검증 실패",
+"C 가능성 낮음|공개키 치환은 CA 인증서 변조 필요 — 현실 확률 극저",
+"개인키 저장 모범|하드웨어 토큰·스마트카드·TPM·HSM — 외부 추출 불가 설계",
+"MFA 필수|비밀번호 + 생체·토큰 조합 → 단일 장애점 제거",
+"PKI 검증 원리|서명=개인키 암호화, 검증=공개키 복호화 — 짝 일치만 유효",
+"소프트 토큰 위험|파일 저장 개인키 = 복사·탈취 용이 → 하드웨어 저장 권장",
+"법적 영향|탈취된 키로 생성된 서명도 법적 유효 가능성 → 부인방지가 피해자에 불리"
+]
+}
+,
+{
+id:565,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following is BEST suited for secure communications within a small group?",
+questionKo:"<b>소규모 그룹 내 안전한 통신</b>에 가장 적합한 것은?",
+options:[
+"A. Key distribution center",
+"B. Certificate authority",
+"C. Web of trust",
+"D. Kerberos Authentication System"
+],
+optionsKo:[
+"A. <b>키 분배 센터(KDC)</b>",
+"B. <b>인증 기관(CA)</b>",
+"C. <b>신뢰 망(Web of Trust)</b>",
+"D. <b>커버로스 인증 시스템</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>방식</th><th>소규모 그룹 적합성 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>KDC(Key Distribution Center)</td><td>Kerberos 구성요소 — <b>대규모 조직 내부</b> 대칭키 세션 배포에 적합. 중앙 인프라 필요 → 소규모에 과함</td><td>부적합</td></tr><tr><td><b>B</b></td><td>CA(Certificate Authority)</td><td>신뢰된 제3자로 인증서 발급 — <b>대규모·공식 통신</b>(이커머스·B2B)에 적합. 비용·운영 부담 큼</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>Web of Trust</b></td><td class="correct-cell"><b>PGP 대표 방식</b> — 그룹 구성원들이 <b>서로의 공개키를 직접 교차 서명</b>하여 신뢰 형성. 중앙 기관 불필요 → <b>소규모에 이상적</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>Kerberos</td><td>KDC 기반 티켓 시스템 — 네트워크 리소스 접근 권한 관리. <b>기업 내부 대규모 환경</b>에 적합</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — Web of Trust</h4><p><b>Web of Trust(신뢰 망)</b>는 <b>PGP(Pretty Good Privacy)</b>와 GPG에서 사용되는 <b>분산 신뢰 모델</b>이다. 중앙 CA 없이 <b>사용자들이 서로의 공개키를 직접 서명·검증</b>하여 신뢰를 구축.</p><h4>Web of Trust 동작 원리</h4><ul><li>① 각 사용자는 자신의 <b>공개키·개인키 쌍</b> 생성</li><li>② <b>직접 만나거나 신뢰 채널로 공개키 교환</b> (예: 키 지문 대조)</li><li>③ 상대 공개키를 자신의 개인키로 <b>서명</b> → "나는 이 키가 X의 것임을 보증"</li><li>④ 서명된 공개키들이 <b>공개 키 서버</b>나 그룹 내 공유</li><li>⑤ 제3자는 <b>신뢰하는 사용자의 서명</b>을 근거로 미지의 공개키를 간접 신뢰</li><li>⑥ 신뢰 관계가 <b>망(web)</b>처럼 확장 → 이름의 유래</li></ul><h4>PKI(CA) vs Web of Trust 비교</h4><table><tr><th>구분</th><th>PKI/CA</th><th>Web of Trust</th></tr><tr><td>신뢰 모델</td><td>계층적·중앙집중</td><td>분산·수평</td></tr><tr><td>신뢰 주체</td><td>공인 CA</td><td>구성원 상호</td></tr><tr><td>확장성</td><td>우수(대규모 가능)</td><td>제한적(소규모 적합)</td></tr><tr><td>비용</td><td>CA 수수료·운영 부담</td><td>무료·자율</td></tr><tr><td>공식성</td><td>법적·규제 효력</td><td>비공식</td></tr><tr><td>장애점</td><td>CA가 SPOF</td><td>분산 장애 허용</td></tr><tr><td>적합 환경</td><td>이커머스·B2B·정부</td><td>개인·활동가·소그룹</td></tr><tr><td>대표 도구</td><td>X.509·S/MIME·TLS</td><td><b>PGP·GPG</b></td></tr></table><h4>소규모 그룹에 적합한 이유</h4><ul><li><b>중앙 인프라 불필요</b>: CA·서버·관리 조직 없이 사용 가능</li><li><b>신뢰 구축 용이</b>: 구성원이 적으면 <b>직접 대면·지문 확인</b> 가능</li><li><b>비용 무료</b>: CA 발급 수수료·연간 갱신 부담 없음</li><li><b>개인정보 보호</b>: 제3자에 신원 공개 불필요</li><li><b>유연성</b>: 신뢰 깊이·조건을 <b>사용자 재량</b>으로 설정</li><li><b>검열 저항</b>: 중앙 기관 권한 없음 → 통제·차단 어려움</li></ul><h4>함정 포인트 — A·B·D 구별</h4><ul><li><b>A(KDC)</b>: Kerberos의 <b>핵심 구성요소</b> — 대칭키 세션 발급. 대규모 조직 내부용</li><li><b>B(CA)</b>: PKI의 신뢰 기반 — <b>공식·대규모 통신</b>(웹·이메일·코드 서명)에 적합. 운영 부담 있음</li><li><b>D(Kerberos)</b>: KDC + 티켓 + 네트워크 서비스 통합 — 기업 AD(Active Directory) 등 <b>대규모 내부 인증</b> 환경</li><li>CISA 시험: <b>규모·공식성·신뢰 유형</b> 키워드로 구분 — 소규모·비공식 = Web of Trust</li></ul><h4>Web of Trust 한계</h4><ul><li><b>확장성 제약</b>: 구성원 증가 시 신뢰 관리 복잡</li><li><b>초기 인증 어려움</b>: 신규 사용자는 <b>초기 신뢰 획득</b>이 난관(첫 서명자 필요)</li><li><b>키 폐기 문제</b>: 분실·침해 시 모든 관련 당사자에 통보 어려움</li><li><b>공식성 부족</b>: 법적·규제 상황에서 증거력 약함</li><li><b>신뢰 전이(Transitive Trust)</b>: "친구의 친구" 신뢰는 약화 가능성</li><li>대규모·공식 환경에서는 <b>CA 기반 PKI</b>가 표준</li></ul><h4>PGP(Pretty Good Privacy)와의 관계</h4><ul><li>PGP = <b>Phil Zimmermann 개발(1991)</b> 이메일 암호화·서명 프로그램</li><li>Web of Trust는 <b>PGP의 핵심 신뢰 모델</b></li><li>활동가·기자·프라이버시 옹호자·오픈소스 커뮤니티에 인기</li><li>GPG(GNU Privacy Guard)는 오픈소스 PGP 구현</li><li>S/MIME는 CA 기반, PGP는 Web of Trust 기반 — <b>동일 기능 다른 신뢰 모델</b></li></ul><h4>실제 사용 시나리오</h4><ul><li><b>활동가·기자 그룹</b>: 익명성·검열 저항 필요 → PGP/WoT</li><li><b>오픈소스 개발팀</b>: 코드 서명·릴리스 검증 → GPG 키 교환</li><li><b>연구 커뮤니티</b>: 학술 이메일 보안 → PGP</li><li><b>내부 소규모 팀</b>: 기업 CA 인프라 없이 소규모 부서 내 암호화</li><li><b>개인 이메일</b>: 공인 CA 비용 부담 없이 개인 간 암호화</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>소규모 그룹 보안 통신 = Web of Trust(PGP)</b></li><li>대규모 공식 통신 = <b>CA(PKI)</b></li><li>기업 내부 인증 = <b>Kerberos·KDC</b></li><li>규모 → 신뢰 모델 선택 원칙</li><li>WoT: 분산·수평·상호 서명 / PKI: 중앙·계층·공인 CA</li><li>Kerberos: 대칭키 기반 티켓 시스템 — 개념적으로 다름</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Web of Trust and PGP for Small Groups",
+keyConcepts:[
+"Web of Trust|PGP/GPG 신뢰 모델 — 구성원 상호 공개키 서명으로 분산 신뢰 형성",
+"소규모 적합성|중앙 인프라 불필요·직접 신뢰 구축 용이·무료·유연성",
+"CA vs WoT|CA=중앙집중·공식·대규모 / WoT=분산·비공식·소규모",
+"Kerberos·KDC|대규모 내부 네트워크 인증 — 대칭키 티켓 시스템",
+"PGP 발전|Phil Zimmermann 1991 개발 — 이메일 암호화·서명·키 관리 통합",
+"WoT 한계|확장성 제약·초기 신뢰 획득 어려움·키 폐기 복잡·공식성 부족",
+"신뢰 모델 선택|규모(소/대) + 공식성 + 운영 부담 기준으로 CA·WoT·Kerberos 선택",
+"교차 서명|구성원이 서로 공개키에 서명 → 신뢰 망 확장",
+"GPG|GNU Privacy Guard — PGP 오픈소스 구현, 현재 표준",
+"S/MIME vs PGP|동일 기능(이메일 보안) 다른 신뢰 모델 — S/MIME=CA / PGP=WoT"
+]
+}
+,
+{
+id:566,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following is a machine learning technique used for identifying patterns and relationships in unlabeled data?",
+questionKo:"<b>레이블이 없는(unlabeled) 데이터</b>에서 패턴과 관계를 식별하는 데 사용되는 <b>머신러닝 기법</b>은?",
+options:[
+"A. Regression",
+"B. Clustering",
+"C. Decision tree",
+"D. Naive Bayes"
+],
+optionsKo:[
+"A. <b>회귀(Regression)</b>",
+"B. <b>군집화(Clustering)</b>",
+"C. <b>의사결정 트리(Decision Tree)</b>",
+"D. <b>나이브 베이즈(Naive Bayes)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기법</th><th>학습 유형 / 용도</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>Regression(회귀)</td><td><b>지도학습(Supervised)</b> — 입력 변수로 <b>연속 수치 예측</b>. 레이블(정답) 데이터 필요</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>Clustering(군집화)</b></td><td class="correct-cell"><b>비지도학습(Unsupervised)</b> — 레이블 없는 데이터를 <b>유사성·거리 기반</b>으로 그룹화하여 숨겨진 패턴 발견</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>Decision Tree</td><td><b>지도학습</b> — 분류·회귀. 레이블된 데이터로 트리 학습</td><td>부적합</td></tr><tr><td><b>D</b></td><td>Naive Bayes</td><td><b>지도학습</b> — 확률 기반 분류. 레이블된 학습 데이터 필요</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 머신러닝 학습 유형</h4><p>ML 기법은 <b>데이터 레이블 유무</b>에 따라 크게 세 가지로 분류된다:</p><ul><li><b>지도학습(Supervised Learning)</b>: <b>레이블 있는</b> 데이터로 입력-출력 매핑 학습 — Regression·Decision Tree·Naive Bayes·SVM·Neural Network</li><li><b>비지도학습(Unsupervised Learning)</b>: <b>레이블 없는</b> 데이터에서 구조·패턴 발견 — <b>Clustering</b>·차원 축소(PCA)·연관 규칙·이상 탐지</li><li><b>강화학습(Reinforcement Learning)</b>: 환경과 상호작용하며 보상 최대화 — 게임 AI·로봇 제어</li></ul><h4>Clustering(군집화) 특징</h4><ul><li><b>입력</b>: 레이블 없는 데이터 (특성 벡터만 존재)</li><li><b>출력</b>: 데이터 포인트를 <b>K개 그룹(클러스터)</b>으로 분류</li><li><b>원리</b>: 유사성·거리(Euclidean·Manhattan·Cosine) 기반으로 가까운 점을 묶음</li><li><b>대표 알고리즘</b>:<ul><li><b>K-Means</b>: K개 중심점 기준 군집화 (가장 일반적)</li><li><b>계층적 군집(Hierarchical)</b>: 트리형 중첩 군집</li><li><b>DBSCAN</b>: 밀도 기반, 이상치 처리 우수</li><li><b>Gaussian Mixture Models(GMM)</b>: 확률 분포 기반</li></ul></li></ul><h4>Clustering의 실무 활용</h4><ul><li><b>고객 세분화</b>: 구매 패턴별 그룹화 → 맞춤 마케팅</li><li><b>이상 탐지</b>: 정상 군집 밖 데이터 = 이상 (사기 탐지·침입 탐지)</li><li><b>이미지 분할</b>: 픽셀 유사도로 영역 구분</li><li><b>문서 분류</b>: 주제별 자동 그룹화</li><li><b>추천 시스템</b>: 유사 사용자·상품 그룹 기반</li><li><b>유전자 분석</b>: 유사 발현 유전자 군집화</li><li><b>네트워크 보안</b>: 트래픽 패턴 이상 탐지</li></ul><h4>함정 포인트 — 지도학습 보기 식별</h4><ul><li><b>A(Regression)</b>: 정답 수치 필요 — 집값 예측 시 과거 집값·면적 데이터 학습</li><li><b>C(Decision Tree)</b>: "합격/불합격" 레이블로 학습 → 새 데이터 분류</li><li><b>D(Naive Bayes)</b>: 이메일 "스팸/정상" 레이블로 학습 → 새 이메일 분류</li><li>세 기법 모두 <b>학습 데이터에 정답이 주어짐</b> → 지도학습</li><li>본 문제 "<b>unlabeled</b>" 키워드 → 자동으로 <b>비지도학습</b> = Clustering</li></ul><h4>지도 vs 비지도 구별 키워드</h4><table><tr><th>지도학습 키워드</th><th>비지도학습 키워드</th></tr><tr><td>label / labeled</td><td><b>unlabeled</b></td></tr><tr><td>classify / predict</td><td>group / cluster</td></tr><tr><td>training data with answers</td><td>find patterns</td></tr><tr><td>target variable</td><td>discover structure</td></tr><tr><td>supervised</td><td>unsupervised</td></tr></table><h4>보안 감사에서의 ML 활용</h4><ul><li><b>이상 탐지(Anomaly Detection)</b>: Clustering으로 정상 행동 군집 정의 → 이탈 시 경보 — <b>UEBA·SIEM 핵심</b></li><li><b>사용자 행동 분석</b>: 로그인 패턴·접근 그룹화 → 내부자 위협 탐지</li><li><b>네트워크 트래픽 분석</b>: 정상·악성 트래픽 군집 분리</li><li><b>데이터 분류(DLP 보조)</b>: 민감 데이터 자동 분류</li><li><b>로그 분석</b>: 대량 로그에서 숨겨진 패턴 발견</li><li><b>사기 탐지</b>: 거래 패턴 군집화 → 이상 거래 식별</li></ul><h4>CISA 감사 관점</h4><ul><li>ML은 <b>신흥 기술(Emerging Technology)</b> — Task Statement 43 영역</li><li>감사 포인트: <b>편향(Bias)·설명 가능성(Explainability)·데이터 품질·모델 거버넌스</b></li><li>비지도학습은 <b>결과 해석이 주관적</b> → 검증 필요</li><li>Clustering 결과는 <b>도메인 전문가 리뷰</b> 필수</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>Unlabeled 데이터 패턴 식별 = Clustering(비지도학습)</b></li><li>지도학습 = 레이블 필요 (Regression·Decision Tree·Naive Bayes)</li><li>비지도학습 = 레이블 없음 (<b>Clustering</b>·PCA·Association Rules)</li><li>강화학습 = 보상 기반 (본 문제 무관)</li><li>보안 응용: <b>이상 탐지·UEBA·SIEM·사기 탐지</b>에 Clustering 핵심</li><li>감사 관점: Emerging Tech로서 편향·설명력·거버넌스 평가 필요</li></ul></div>`,
+reference:"CRM Chapter 5: Emerging Technologies — Machine Learning Techniques",
+keyConcepts:[
+"Clustering 정의|비지도학습 기법 — 레이블 없는 데이터를 유사성·거리 기반 그룹화",
+"ML 학습 유형|지도(Supervised)·비지도(Unsupervised)·강화(Reinforcement) 3가지",
+"지도학습 예|Regression·Decision Tree·Naive Bayes·SVM·Neural Net — 레이블 필요",
+"비지도학습 예|Clustering·PCA·Association Rules·이상 탐지 — 레이블 없음",
+"주요 알고리즘|K-Means·Hierarchical·DBSCAN·GMM — Clustering 대표",
+"보안 응용|UEBA·SIEM 이상 탐지·사용자 행동 분석·사기 탐지·DLP 분류",
+"키워드 식별|'unlabeled' → 비지도학습 / 'classify·predict with target' → 지도학습",
+"감사 포인트|편향·설명 가능성·데이터 품질·모델 거버넌스 — Emerging Tech 핵심",
+"Clustering 한계|결과 주관적 해석 필요 → 도메인 전문가 리뷰 필수",
+"Task Statement 43|신흥 기술(Emerging Tech) 평가 — CISA 감사 영역"
+]
+}
+,
+{
+id:567,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Applying a digital signature to data traveling in a network provides:",
+questionKo:"네트워크로 전송되는 데이터에 <b>디지털 서명을 적용</b>하면 무엇이 제공되는가?",
+options:[
+"A. confidentiality and integrity.",
+"B. security and nonrepudiation.",
+"C. integrity and nonrepudiation.",
+"D. confidentiality and nonrepudiation."
+],
+optionsKo:[
+"A. <b>기밀성 + 무결성</b>",
+"B. <b>보안(security) + 부인방지</b>",
+"C. <b>무결성 + 부인방지</b>",
+"D. <b>기밀성 + 부인방지</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>속성 조합</th><th>디지털 서명이 제공 여부</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>기밀성 + 무결성</td><td>무결성 ✓ / <b>기밀성 ✗</b> — 서명은 메시지를 암호화하지 않음(본문 평문)</td><td>부분 오류</td></tr><tr><td><b>B</b></td><td>보안 + 부인방지</td><td>"security"는 <b>모호한 포괄 개념</b> — CISA 시험은 명확한 속성(C·I·A·N) 선호. 정답으로 부적합</td><td>모호함</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>무결성 + 부인방지</b></td><td class="correct-cell">송신자 개인키로 <b>해시를 서명</b> → 무결성(변조 탐지) + 부인방지(개인키 소유자만 생성 가능)</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>기밀성 + 부인방지</td><td>부인방지 ✓ / <b>기밀성 ✗</b> — 서명만으로는 메시지 읽기 차단 못함</td><td>부분 오류</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 디지털 서명이 제공하는 2가지 속성</h4><p>네트워크로 전송되는 데이터에 디지털 서명을 적용하면 <b>Integrity + Nonrepudiation</b>이 보장된다. <b>Confidentiality는 별도 암호화 필요</b>.</p><h4>각 속성 제공 메커니즘</h4><ul><li><b>Integrity(무결성)</b>: 송신자가 메시지의 <b>해시를 계산</b> → 해시를 자신의 개인키로 서명. 수신자는 재계산한 해시와 복호화한 해시를 비교 → 1비트라도 변경되면 불일치</li><li><b>Nonrepudiation(부인방지)</b>: 개인키는 <b>송신자만이 소유</b>하므로, 해당 서명이 검증되면 송신자가 "내가 안 보냈다"고 부인 불가 → 법적 증거력</li><li><b>Authentication(출처 인증)</b>: 부인방지와 함께 동반되는 속성 — 공개키로 서명 검증 성공 시 송신자 확인</li></ul><h4>디지털 서명이 제공하지 않는 것</h4><ul><li><b>Confidentiality(기밀성) ✗</b>: 메시지 본문은 평문 — 누구나 내용 읽을 수 있음</li><li><b>기밀성이 필요하면</b>: <b>서명 + 암호화</b> 조합 (예: S/MIME·PGP)</li><li><b>Availability(가용성) ✗</b>: 서명과 무관 — 시스템 다운·DDoS와 별개</li></ul><h4>함정 포인트 — B(security + nonrepudiation) 오답 이유</h4><ul><li>"<b>security</b>"는 매우 포괄적·모호한 용어 — 정답으로 부적합</li><li>CISA 시험은 <b>정확한 기술 용어</b>(C·I·A·N)를 선호</li><li>"security"에 기밀성·무결성·가용성이 모두 포함되는 것으로 해석 가능하므로 <b>정확한 답이 아님</b></li><li>시험 원칙: <b>명확하고 구체적인 보기</b> 우선 선택</li></ul><h4>A·D 오답 이유 상세</h4><ul><li><b>A(C + I)</b>: 기밀성은 제공 못함 → "기밀성"이 포함된 보기는 자동 오답</li><li><b>D(C + N)</b>: 동일 이유로 오답 — 서명은 절대 기밀성 제공 안 함</li><li>서명 문제에서 "<b>confidentiality</b>" 포함 보기는 <b>거의 항상 오답</b></li></ul><h4>디지털 서명 동작 정리</h4><ul><li>① 송신자: 메시지 → 해시(Digest) 계산</li><li>② 송신자: 해시를 <b>자신의 개인키로 암호화</b> = 서명 생성</li><li>③ 메시지(평문) + 서명 전송</li><li>④ 수신자: 메시지로 해시 H1 재계산</li><li>⑤ 수신자: 받은 서명을 <b>송신자 공개키로 복호화</b> → H2 추출</li><li>⑥ H1 == H2 → <b>무결성 확인 + 출처 확인 + 부인방지</b></li><li>⑦ <b>메시지 본문은 평문 그대로</b> → 기밀성 없음</li></ul><h4>속성 조합 매트릭스</h4><table><tr><th>기술</th><th>기밀성</th><th>무결성</th><th>부인방지</th></tr><tr><td>대칭 암호화</td><td>✓</td><td>✗</td><td>✗</td></tr><tr><td>비대칭 암호화(공개키)</td><td>✓</td><td>✗</td><td>✗</td></tr><tr><td>해시</td><td>✗</td><td>✓</td><td>✗</td></tr><tr><td><b>디지털 서명</b></td><td><b>✗</b></td><td><b>✓</b></td><td><b>✓</b></td></tr><tr><td>MAC·HMAC</td><td>✗</td><td>✓</td><td>✗(공유키)</td></tr><tr><td>디지털 인증서(PKI)</td><td>✓(+암호화)</td><td>✓</td><td>✓</td></tr></table><h4>CISA 디지털 서명 문제 판별 패턴</h4><ul><li>"<b>Primary reason to ensure data</b>" + CIA 보기 → <b>Integrity</b> (Q563)</li><li>"<b>The use of digital signatures</b>" + source validation 보기 → <b>Validates source</b> (Q562)</li><li>"<b>Provides what?</b>" + 속성 조합 보기 → <b>Integrity + Nonrepudiation</b> (Q567)</li><li>"<b>C·I·N 모두 제공</b>" 요구 → <b>Digital Certificate(PKI)</b> (Q561)</li><li>공통 오답 제거: <b>Confidentiality 포함 보기는 서명 문제에서 오답</b></li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>디지털 서명 = 무결성 + 부인방지</b> (2가지만)</li><li>기밀성 필요 시 암호화 추가 — 서명 + 암호화 조합</li><li>"security" 같은 <b>모호한 용어</b>는 정답 아님 — 구체적 속성 선택</li><li>PKI 인증서는 <b>서명 + 암호화 통합</b>으로 C·I·N 모두 제공</li><li>유사 출제 빈번: 서명 관련 Q561~Q567 패턴 숙지 필수</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Digital Signature Security Properties",
+keyConcepts:[
+"디지털 서명 제공 속성|무결성(Integrity) + 부인방지(Nonrepudiation) — 2가지만",
+"기밀성 미제공|서명은 해시만 암호화, 본문은 평문 노출 — 기밀성 필요 시 암호화 추가",
+"Security 용어 모호성|CISA 시험은 구체적 속성(C·I·A·N) 선호 — 'security' 포괄 용어 오답",
+"Confidentiality 오답 패턴|서명 문제에서 '기밀성' 포함 보기는 거의 항상 오답",
+"서명 검증 원리|해시 → 개인키 서명 → 공개키 검증 → 무결성·출처·부인방지 확인",
+"속성 조합 매트릭스|대칭=C / 해시=I / 서명=I+N / 인증서=C+I+N",
+"Q561~Q567 패턴|서명·인증서 관련 출제 빈번 — 요구 속성 수로 답 판별",
+"PKI 통합 솔루션|디지털 인증서는 서명+암호화 통합 → C·I·N 모두 제공",
+"서명 vs 암호화 역할|서명=신원·변조 / 암호화=기밀성 — 목적 명확 구분",
+"부인방지 근거|개인키 유일 소유 + CA 인증서의 신원 결합 → 법적 효력"
+]
+}
+,
+{
+id:568,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"When using a digital signature, the message digest is computed by the:",
+questionKo:"<b>디지털 서명 사용 시 메시지 다이제스트(해시)</b>를 계산하는 주체는?",
+options:[
+"A. sender only.",
+"B. receiver only.",
+"C. sender and receiver both.",
+"D. Certificate authority (CA)."
+],
+optionsKo:[
+"A. <b>송신자만</b>",
+"B. <b>수신자만</b>",
+"C. <b>송신자와 수신자 모두</b>",
+"D. <b>인증 기관(CA)</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주체</th><th>메시지 다이제스트 역할</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>송신자만</td><td>송신자가 해시를 계산하지만 <b>수신자도 검증을 위해 재계산</b>해야 함 → 부분 정답</td><td>부적합</td></tr><tr><td><b>B</b></td><td>수신자만</td><td>수신자가 검증을 위해 재계산은 하지만 <b>송신자가 먼저 계산·서명</b>해야 시작 가능</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>송신자와 수신자 모두</b></td><td class="correct-cell">① 송신자: 해시 계산 → 개인키로 서명 ② 수신자: 수신 메시지로 <b>해시 재계산</b> → 서명 복호화와 비교. <b>양쪽 모두 계산</b>해야 무결성 검증 완성</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>CA</td><td>CA는 <b>공개키-신원 연결 인증서</b>만 발급 — 실제 메시지 해시는 <b>전혀 관여 안 함</b></td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 메시지 다이제스트의 양방향 계산</h4><p>디지털 서명은 <b>송신자와 수신자가 동일한 해시 알고리즘</b>으로 각자 해시를 계산하고 비교함으로써 <b>무결성</b>을 보장한다.</p><h4>양쪽이 모두 계산하는 이유</h4><ul><li><b>송신자 계산 이유</b>:<ul><li>메시지 전체의 <b>지문(fingerprint)</b>을 생성</li><li>전체 메시지를 암호화하는 대신 <b>작은 해시만 서명</b> → 성능 효율</li><li>해시를 개인키로 암호화 = 디지털 서명</li></ul></li><li><b>수신자 계산 이유</b>:<ul><li>수신받은 메시지가 <b>원본과 동일한지</b> 확인 필요</li><li>수신 메시지로 <b>직접 해시 재계산</b></li><li>송신자 서명을 공개키로 복호화 → 원본 해시 추출</li><li>두 해시 비교 → 일치 시 <b>무결성 확인</b></li></ul></li></ul><h4>디지털 서명 상세 절차</h4><ul><li>① <b>송신자 측</b>:<ol><li>메시지 M 작성</li><li>해시 H(M) 계산 ← <b>송신자의 다이제스트 계산</b></li><li>H(M)을 자신의 개인키로 암호화 = 서명 S</li><li>M과 S를 함께 전송</li></ol></li><li>② <b>수신자 측</b>:<ol><li>수신한 메시지 M'과 서명 S 받음</li><li>M'에서 해시 H(M') 재계산 ← <b>수신자의 다이제스트 계산</b></li><li>S를 송신자의 공개키로 복호화 → 원본 H(M) 추출</li><li>H(M') == H(M) 비교 → 일치하면 무결성·출처 확인</li></ol></li></ul><h4>양쪽 해시가 일치할 때의 의미</h4><ul><li><b>무결성</b>: 전송 중 메시지 변조 없음 (한 비트라도 바뀌면 해시 다름)</li><li><b>출처 인증</b>: 송신자 공개키로 서명 검증 성공 → 해당 개인키 소유자가 보냄</li><li><b>부인방지</b>: 송신자가 메시지 보냈음을 부인 불가</li></ul><h4>해시가 불일치할 때의 의미</h4><ul><li>가능성 1: 메시지가 <b>전송 중 변조</b>됨</li><li>가능성 2: 메시지가 <b>다른 키로 서명</b>됨 (위조 시도)</li><li>가능성 3: <b>전송 오류</b>로 일부 비트 손상</li><li>어느 경우든 수신자는 메시지를 <b>거부</b>해야 함</li></ul><h4>함정 포인트 — CA(D) 역할 명확화</h4><ul><li>CA는 <b>인증서 발급·서명·폐기 관리</b> 담당</li><li>CA가 하는 일:<ul><li>공개키 소유자 신원 확인</li><li>공개키에 <b>CA가 서명</b>하여 인증서 생성</li><li>CRL·OCSP로 폐기 관리</li></ul></li><li>CA가 하지 않는 일:<ul><li>실제 메시지 전달 관여</li><li>메시지 해시 계산</li><li>메시지 암·복호화</li></ul></li><li>CA는 <b>공개키의 신뢰 기반</b>을 제공할 뿐 메시지 통신에는 참여 안 함</li></ul><h4>동일 해시 알고리즘의 중요성</h4><ul><li>송신자와 수신자는 <b>반드시 동일 해시 함수</b> 사용 (SHA-256·SHA-512 등)</li><li>다른 알고리즘 사용 시 해시가 다르므로 검증 실패</li><li>서명 메타데이터에 <b>사용된 알고리즘 명시</b> (예: X.509 Signature Algorithm 필드)</li><li>알고리즘 협상·통보는 <b>프로토콜(TLS·S/MIME·PGP)</b>이 처리</li></ul><h4>왜 전체 메시지가 아닌 해시를 서명하는가</h4><ul><li><b>성능</b>: 큰 메시지 전체를 비대칭 암호화는 매우 느림</li><li><b>해시는 짧음</b>(SHA-256=32바이트) → 빠른 서명·검증</li><li><b>보안 등가</b>: 눈사태 효과로 원본 변조 시 해시도 변함 → 무결성 유지</li><li>이것이 디지털 서명이 <b>해시 + 서명</b>의 구조인 이유</li></ul><h4>실무 예시</h4><ul><li><b>소프트웨어 배포</b>: 배포자가 파일 해시를 서명 → 다운로드 후 사용자가 해시 재계산 + 서명 검증</li><li><b>PDF 전자계약</b>: 서명 당시 문서 해시 저장 → 열람 시 재계산으로 변조 탐지</li><li><b>TLS 핸드셰이크</b>: 서버가 메시지 해시 서명 → 클라이언트가 검증</li><li><b>Git 커밋</b>: 커밋 해시를 GPG 서명 → 저장소 무결성</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>메시지 다이제스트 = 송신자 + 수신자 모두 계산</b></li><li>송신자: 원본 해시 계산 → 서명 생성</li><li>수신자: 수신 메시지 해시 재계산 → 서명과 비교</li><li>CA는 <b>인증서 발급만</b> — 메시지 해시와 무관</li><li>동일 해시 알고리즘 필수 (SHA-256 이상 권장)</li><li>해시 서명의 이유: <b>성능 + 무결성 등가성</b></li><li>디지털 서명 메커니즘 단골 출제 — 계산 주체·절차·목적 숙지</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Message Digest Computation in Digital Signatures",
+keyConcepts:[
+"다이제스트 계산 주체|송신자 + 수신자 모두 — 양쪽 계산·비교로 무결성 검증 완성",
+"송신자 역할|원본 메시지 해시 계산 → 개인키로 서명 → 메시지와 함께 전송",
+"수신자 역할|수신 메시지 해시 재계산 + 서명을 공개키로 복호화 → 두 해시 비교",
+"CA 역할 한계|인증서 발급·공개키-신원 결합·폐기 관리 — 메시지 해시와 무관",
+"동일 알고리즘|송수신 양쪽 반드시 동일 해시 함수 사용 — 프로토콜이 협상 처리",
+"해시 서명 구조 이유|성능(짧은 해시) + 보안(눈사태 효과로 무결성 등가)",
+"불일치 의미|변조·위조·전송 오류 — 수신자는 메시지 거부 필수",
+"서명 알고리즘 식별|X.509·S/MIME 헤더에 알고리즘 명시 — 수신자가 참조",
+"실무 적용|소프트웨어 배포·PDF·TLS·Git — 모두 양방향 해시 계산 구조",
+"검증 공식|서명 유효 = H(수신 메시지) == 공개키 복호화(서명)"
+]
+}
+,
+{
+id:569,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following effectively verifies the originator of a transaction?",
+questionKo:"거래의 <b>발신자(Originator)를 효과적으로 검증</b>하는 것은?",
+options:[
+"A. Using a secret password between the originator and the receiver",
+"B. Encrypting the transaction with the receiver's public key",
+"C. Using a portable document format to encapsulate transaction content",
+"D. Digitally signing the transaction with the source's private key"
+],
+optionsKo:[
+"A. 발신자와 수신자 간 <b>공유 비밀 비밀번호</b> 사용",
+"B. 거래를 <b>수신자의 공개키로 암호화</b>",
+"C. 거래 내용을 <b>PDF 형식</b>으로 캡슐화",
+"D. 거래를 <b>발신자의 개인키로 디지털 서명</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>방식</th><th>발신자 검증 능력</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>공유 비밀번호</td><td><b>양쪽이 동일 비밀번호 소유</b> → 누가 보냈는지 증명 불가. 시스템 관리자도 알 수 있어 약한 인증</td><td>부적합</td></tr><tr><td><b>B</b></td><td>수신자 공개키 암호화</td><td>기밀성은 제공하나 <b>누구든 수신자 공개키로 암호화 가능</b> → 발신자 검증 기능 없음</td><td>부적합</td></tr><tr><td><b>C</b></td><td>PDF 형식</td><td>문서 <b>무결성 보호</b>는 일부 가능하나 <b>저작자·발신자 증명과 무관</b>. 형식만으로는 신원 검증 불가</td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>발신자 개인키로 디지털 서명</b></td><td class="correct-cell">개인키는 <b>발신자만 소유</b> → 공개키로 서명 검증 성공 시 발신자 확인. <b>출처 인증·무결성·부인방지</b> 동시 제공</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — Originator(발신자) 검증의 표준</h4><p>거래의 발신자를 <b>암호학적으로 검증</b>하는 유일한 방법은 <b>디지털 서명</b>이다. 개인키의 <b>유일한 소유(Sole Possession)</b>가 발신자 검증의 근본.</p><h4>디지털 서명이 발신자 검증에 효과적인 이유</h4><ul><li><b>개인키 유일 소유</b>: 개인키는 발신자만 가지므로, 서명 생성은 <b>해당 발신자만 가능</b></li><li><b>공개키 검증</b>: 누구든 발신자의 공개키로 서명을 검증 가능</li><li><b>인증서 연결</b>: CA가 발급한 디지털 인증서가 <b>공개키와 신원</b>을 결합 → 법적 증거력</li><li><b>부인방지 보너스</b>: 발신자가 "내가 안 보냈다"고 부인 불가</li><li><b>무결성 보너스</b>: 동시에 거래 내용 변조도 탐지</li></ul><h4>암호 키 사용 방향의 이해</h4><table><tr><th>목적</th><th>사용 키</th><th>결과</th></tr><tr><td>기밀성(암호화)</td><td>수신자의 <b>공개키</b></td><td>수신자만 복호화 가능</td></tr><tr><td>발신자 검증(서명)</td><td>발신자의 <b>개인키</b></td><td>모두가 공개키로 검증 가능</td></tr><tr><td>수신자 복호화</td><td>수신자의 <b>개인키</b></td><td>암호화 메시지 해독</td></tr><tr><td>서명 검증</td><td>발신자의 <b>공개키</b></td><td>서명의 유효성 확인</td></tr></table><p><b>핵심</b>: 발신자 검증은 <b>발신자 개인키로 서명</b> → 누구든 공개키로 검증</p><h4>함정 포인트 — B(수신자 공개키 암호화) 오답 이유</h4><ul><li>수신자의 공개키는 <b>공개</b>되어 있음 → <b>누구든</b> 수신자에게 암호화된 메시지 보낼 수 있음</li><li>공격자가 위장해서 수신자 공개키로 암호화하면 수신자는 <b>누가 보냈는지 모름</b></li><li>"수신자만 복호화 가능"이라는 <b>기밀성</b>만 제공 — 발신자 검증과 무관</li><li>CISA 함정: 발신자 검증을 원하면 <b>발신자 개인키</b>를 써야지, <b>수신자 공개키</b>가 아님</li></ul><h4>A(공유 비밀번호) 오답 이유</h4><ul><li><b>대칭 비밀</b>: 양쪽 모두 동일 비밀번호 소유 → 발신자 특정 불가</li><li><b>공유 취약성</b>: 비밀번호 유출 시 양쪽 모두 피해</li><li><b>시스템 관리자 접근</b>: DB에 저장된 비밀번호는 관리자도 접근 가능</li><li><b>부인방지 불가</b>: 발신자가 "수신자가 꾸민 것"이라 주장 가능</li><li>CISA에서 비밀번호는 <b>약한 인증 수단</b>으로 분류</li></ul><h4>C(PDF 형식) 오답 이유</h4><ul><li>PDF는 <b>문서 형식</b>일 뿐 암호학적 보안 기능 없음(그 자체로는)</li><li>PDF에 <b>디지털 서명</b>을 추가해야 발신자 검증 가능 — 그러나 이 경우 핵심은 서명이지 PDF가 아님</li><li>"using PDF"만으로는 무결성도 보장 안 되며(편집 가능) 저작자도 증명 못함</li><li>형식(format)과 암호학적 보증은 다른 차원</li></ul><h4>디지털 서명의 검증 흐름</h4><ul><li>① 발신자 A가 거래 T에 <b>자신의 개인키로 서명</b> → S_A(T) 생성</li><li>② 수신자 B가 T와 S_A(T) 수신</li><li>③ B는 A의 <b>공개키로 S_A(T) 검증</b></li><li>④ 검증 성공 → <b>"이 거래는 A가 보낸 것이 확실"</b></li><li>⑤ A의 공개키는 CA 인증서로 <b>A 신원과 결합</b> 확인</li><li>이 전 과정이 <b>원자적(atomic)으로 발신자 검증</b></li></ul><h4>Authentication vs Authorization</h4><ul><li><b>Authentication(인증)</b>: "<b>누구인가?</b>" — 발신자 검증이 여기 해당 ← <b>본 문제</b></li><li><b>Authorization(권한)</b>: "<b>무엇을 할 수 있는가?</b>"</li><li><b>Accounting(감사)</b>: "<b>무엇을 했는가?</b>"</li><li>디지털 서명은 <b>Authentication</b>의 강력한 암호학적 메커니즘</li></ul><h4>실무 적용</h4><ul><li><b>전자 금융 거래</b>: 사용자 개인키로 거래 서명 → 은행이 검증</li><li><b>전자 계약</b>: 양방 개인키 서명으로 법적 효력 확보</li><li><b>블록체인</b>: 트랜잭션마다 발신자 서명 → 장부 신뢰성</li><li><b>코드 서명</b>: 개발자 개인키로 서명 → 사용자가 배포자 확인</li><li><b>정부 전자문서</b>: 공인 인증서 기반 서명 → 발급자 증명</li><li><b>이메일 서명</b>: S/MIME으로 발신자 검증·변조 탐지</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>발신자 검증 = 발신자 개인키로 디지털 서명</b></li><li>수신자 공개키 암호화 = 기밀성만 (발신자 검증 아님)</li><li>비밀번호 = 약한 인증 (공유로 부인방지 불가)</li><li>PDF = 형식일 뿐 (암호학적 보증 없음)</li><li>방향 기억: <b>서명=송신자 개인키 / 암호화=수신자 공개키</b></li><li>디지털 서명은 <b>C·I·N + Authentication</b> 중 I·N·Auth 제공</li><li>유사 출제: "who sent", "originator", "source verification" 키워드 → 모두 디지털 서명</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Originator Verification via Digital Signatures",
+keyConcepts:[
+"발신자 검증 표준|발신자 개인키로 디지털 서명 — 개인키 유일 소유가 검증 근본",
+"키 방향 규칙|서명=발신자 개인키 / 암호화=수신자 공개키 — 반대로 쓰지 않기",
+"수신자 공개키 암호화 한계|기밀성만 제공, 발신자 검증 불가(누구든 공개키 사용 가능)",
+"비밀번호 약점|공유 비밀로 부인방지 불가·관리자 접근 가능·CISA는 약한 인증 분류",
+"PDF 형식 오답|형식만으로 암호학적 보증 없음 — 서명 추가해야 의미 있음",
+"서명 제공 속성|Authentication + Integrity + Nonrepudiation 동시 제공",
+"AAA 매핑|Authentication(누구인가)·Authorization(권한)·Accounting(감사) 중 인증에 해당",
+"CA 역할|공개키와 발신자 신원 결합 인증서 발급 → 법적 증거력 부여",
+"실무 영역|전자 금융·계약·블록체인·코드 서명·정부문서·이메일 모두 적용",
+"출제 키워드|originator·source·who sent·verify identity → 디지털 서명 정답"
+]
+}
+,
+{
+id:570,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"An information systems (IS) auditor is reviewing Transport Layer Security enabled websites for the enterprise. Which of the following choices would be the HIGHEST risk?",
+questionKo:"IS 감사인이 기업의 <b>TLS(Transport Layer Security) 활성화 웹사이트</b>를 검토 중이다. 다음 중 <b>가장 높은 위험(HIGHEST risk)</b>은?",
+options:[
+"A. Expired digital certificates",
+"B. Self-signed digital certificates",
+"C. Using the same digital certificate for multiple websites",
+"D. Using 56-bit digital certificates"
+],
+optionsKo:[
+"A. <b>만료된(Expired)</b> 디지털 인증서",
+"B. <b>자체 서명(Self-signed)</b> 디지털 인증서",
+"C. 여러 웹사이트에 <b>동일한 인증서</b> 사용",
+"D. <b>56비트</b> 디지털 인증서 사용"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>상황</th><th>위험 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>만료된 인증서</td><td>브라우저가 <b>접속 차단·경고</b> → 가용성 문제·신뢰 저하. 그러나 <b>데이터 유출은 없음</b>. 비교적 낮은 위험</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>자체 서명 인증서</b></td><td class="correct-cell"><b>CA 검증이 없음</b> → 누구나 생성 가능 → <b>공격자가 사이트 사칭 가능</b> → <b>중간자 공격(MITM)·데이터 탈취</b>. 최고 위험</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>동일 인증서 다중 사용</td><td><b>와일드카드 인증서</b>로 여러 서브도메인에 합법 사용 가능 → 실질 위험 낮음</td><td>부적합</td></tr><tr><td><b>D</b></td><td>56비트 인증서</td><td>현대 기준으로 <b>낮은 강도</b>이나 레거시 OS·브라우저 호환용. 자체 서명보다는 위험 낮음</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 자체 서명 인증서의 근본적 위험</h4><p><b>Self-signed Certificate</b>는 <b>CA의 서명·검증 없이</b> 소유자가 스스로 서명한 인증서다. PKI의 <b>신뢰 체인(Chain of Trust)</b>에서 벗어나 있으므로 <b>신원 보증이 없음</b>.</p><h4>왜 자체 서명이 HIGHEST risk인가</h4><ul><li><b>신원 검증 없음</b>: CA의 실사·심사 절차 없음 → <b>누구든 "bank.com" 명의 인증서 생성 가능</b></li><li><b>MITM 공격 가능</b>: 공격자가 가짜 사이트를 자체 서명 인증서로 운영 → 사용자 트래픽 가로채기</li><li><b>피싱 조장</b>: 사용자가 경고를 무시하는 습관 형성 → 진짜 공격도 놓침</li><li><b>데이터 유출</b>: 로그인·결제 정보가 공격자에게 전달</li><li><b>부인방지 실패</b>: 법적 효력 없음 — 분쟁 시 증명 불가</li><li><b>신뢰 체인 붕괴</b>: 브라우저가 경고 표시 → 사용자 혼란</li></ul><h4>만료된 인증서(A)가 B보다 덜 위험한 이유</h4><ul><li>현대 브라우저는 만료 즉시 <b>접속 차단</b>(또는 강한 경고)</li><li>데이터 전송이 <b>중단</b>되므로 유출 위험 없음</li><li><b>가용성 문제</b>: 웹사이트 접속 불가 → 업무 중단</li><li><b>신뢰 저하</b>: 기업 이미지 훼손</li><li>그러나 <b>기밀성 침해는 발생 안 함</b> → B보다 낮은 위험</li></ul><h4>동일 인증서 다중 사용(C)이 허용되는 경우</h4><ul><li><b>Wildcard Certificate</b>: *.example.com 형태 → 모든 서브도메인에 사용 가능</li><li><b>SAN(Subject Alternative Name) Certificate</b>: 여러 도메인을 단일 인증서에 포함</li><li>비용 효율적·관리 간소화 → <b>합법적 실무 관행</b></li><li>단, 개인키 유출 시 영향 범위가 넓어지는 <b>부작용</b>은 있음 → 중간 정도 위험이나 자체 서명보다 낮음</li></ul><h4>56비트 인증서(D) 한계</h4><ul><li>DES 같은 구형 암호 — 현대 컴퓨팅으로 <b>무차별 대입 가능</b></li><li>그러나 <b>암호화는 존재</b>하며 CA 서명도 있음 → 일부 보호</li><li>레거시 시스템 호환용으로 사용되는 경우 존재</li><li>권장: 128비트 이상(실제로는 256비트 대칭키, 2048비트 이상 RSA)</li><li>약하지만 <b>"신원 없음"(B)보다는 덜 위험</b></li></ul><h4>TLS/SSL 인증서의 신뢰 체인</h4><ul><li>① <b>Root CA</b>: 브라우저·OS에 <b>사전 설치된 최상위 신뢰 기관</b></li><li>② <b>Intermediate CA</b>: Root CA가 서명한 중간 CA</li><li>③ <b>End Entity Certificate</b>: Intermediate가 서명한 실제 사이트 인증서</li><li>④ 클라이언트는 <b>체인 전체를 Root까지 검증</b></li><li>자체 서명 인증서는 <b>Root 없이 자신이 자신을 서명</b> → 체인 검증 실패</li></ul><h4>중간자 공격(MITM) 시나리오</h4><ul><li>① 공격자가 <b>피해자와 서버 사이에 위치</b> (Wi-Fi 해킹·ARP Poisoning·DNS Hijack)</li><li>② 공격자가 <b>가짜 자체 서명 인증서</b> 제시</li><li>③ 피해자가 경고를 <b>무시</b>하고 수락 → 공격자와 TLS 연결</li><li>④ 공격자는 동시에 진짜 서버와 별도 TLS 연결</li><li>⑤ 공격자가 <b>양방향 트래픽 복호화·기록·조작</b> 가능</li><li>⑥ 피해자의 로그인·결제·세션 쿠키 유출</li><li>CA 기반 인증서라면 체인 검증 실패로 <b>차단</b>되었을 공격</li></ul><h4>자체 서명 인증서의 합법 용도</h4><ul><li><b>내부 테스트·개발 환경</b>: 프로덕션 배포 전 검증</li><li><b>격리된 내부 네트워크</b>: 외부 접근 없는 폐쇄망</li><li><b>내부 Root CA 구축</b>: 기업 자체 PKI의 Root로 사용</li><li>이런 경우도 <b>내부 신뢰 체인 명시·배포·관리</b> 필요</li><li>공공 인터넷·고객 대면 사이트에는 <b>절대 부적합</b></li></ul><h4>CISA 감사 포인트</h4><ul><li>자체 서명 인증서 사용 현황 점검</li><li>만료 예정 인증서 모니터링 체계</li><li>키 길이·알고리즘 현행성(최소 2048비트 RSA, SHA-256 이상)</li><li>CA 선정 기준·비용·갱신 절차</li><li>인증서 폐기(CRL·OCSP) 관리</li><li>Wildcard·SAN 인증서 사용 정책</li><li>내부 CA 운영 시 거버넌스·키 보호</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>HIGHEST risk = 자체 서명 인증서</b> — CA 검증 없음 → MITM·사칭·데이터 유출</li><li>만료 인증서 = 가용성 문제 (데이터 유출 없음)</li><li>다중 사용 = 와일드카드로 합법 관행 (낮은 위험)</li><li>56비트 = 약하지만 암호화·CA 서명은 있음</li><li>위험 우선순위: <b>B > D > A > C</b></li><li>원칙: <b>신원 보증 실패가 기밀성 문제보다 치명적</b></li><li>CA 기반 PKI의 <b>신뢰 체인이 TLS 보안의 핵심</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — TLS Certificate Management and Risks",
+keyConcepts:[
+"자체 서명 위험|CA 검증 없음 → 사이트 사칭·MITM 공격·데이터 탈취 — HIGHEST risk",
+"만료 인증서 영향|접속 차단·가용성 문제 — 데이터 유출은 없어 상대적으로 낮은 위험",
+"Wildcard·SAN 인증서|여러 도메인에 합법 사용 — 다중 사용이 곧 위험 아님",
+"56비트 인증서|약한 강도이나 암호화·CA 서명 존재 → 자체 서명보다 덜 위험",
+"신뢰 체인|Root CA → Intermediate CA → End Entity — 자체 서명은 체인 밖",
+"MITM 공격 메커니즘|공격자 중간 삽입 + 자체 서명 제시 → 양방향 복호화·조작",
+"자체 서명 합법 용도|내부 테스트·격리 환경·기업 내부 CA Root — 공공 인터넷 부적합",
+"위험 우선순위|Self-signed > 56-bit > Expired > Multiple use",
+"CA 역할 재확인|신원 실사·공개키 결합·서명·폐기 관리로 신뢰 부여",
+"감사 체크|자체 서명 사용·만료 모니터링·키 길이·CRL/OCSP·내부 CA 거버넌스"
+]
+}
+,
+{
+id:571,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The Transport Layer Security (TLS) protocol ensures the confidentiality of data and message by using:",
+questionKo:"<b>TLS(Transport Layer Security) 프로토콜</b>이 데이터와 메시지의 <b>기밀성(Confidentiality)</b>을 보장하기 위해 사용하는 것은?",
+options:[
+"A. symmetric encryption.",
+"B. message authentication codes.",
+"C. hash function.",
+"D. digital signature certificates."
+],
+optionsKo:[
+"A. <b>대칭 암호화(Symmetric Encryption)</b>",
+"B. <b>메시지 인증 코드(MAC)</b>",
+"C. <b>해시 함수(Hash Function)</b>",
+"D. <b>디지털 서명 인증서</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>TLS 내 역할 / 기밀성 제공 여부</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>대칭 암호화</b></td><td class="correct-cell">TLS는 <b>세션 성립 후</b> 합의된 <b>대칭 세션키</b>로 실제 데이터를 암호화 → <b>기밀성 보장</b>. AES·ChaCha20 등 사용</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>MAC(HMAC 등)</td><td><b>데이터 무결성</b> 보장 — 변조 탐지용. 기밀성과 무관</td><td>부적합</td></tr><tr><td><b>C</b></td><td>해시 함수</td><td>메시지 다이제스트 생성 — <b>무결성</b>만 제공. 암호화 기능 없음</td><td>부적합</td></tr><tr><td><b>D</b></td><td>디지털 서명 인증서</td><td>TLS에서 <b>서버 인증·세션 성립</b>에 사용 — 기밀성 자체는 제공 안 함</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — TLS의 하이브리드 암호화 구조</h4><p>TLS는 <b>비대칭 암호(느림·안전한 키 교환) + 대칭 암호(빠름·대용량 암호화)</b>를 결합한 하이브리드 프로토콜. 각 역할:</p><ul><li><b>비대칭 암호</b>(RSA·ECDHE): <b>세션 성립·키 교환·서버 인증</b> — 인증서·서명 기반</li><li><b>대칭 암호</b>(AES·ChaCha20): <b>실제 데이터 암호화</b> → <b>기밀성 보장</b></li><li><b>해시·MAC</b>(SHA-256·HMAC·AEAD): <b>무결성</b> 보장</li></ul><h4>왜 데이터 암호화에 대칭키를 쓰는가</h4><ul><li><b>속도</b>: 대칭 암호는 비대칭보다 <b>수백~수천 배 빠름</b></li><li><b>성능</b>: 웹 트래픽은 대용량·고빈도 → 빠른 암호화 필수</li><li><b>하드웨어 가속</b>: 현대 CPU에 AES-NI 등 내장</li><li><b>대용량 처리</b>: 파일·스트림·동영상 암호화에 적합</li><li><b>비대칭은 키 교환용</b>: 작은 세션키만 암호화 → 이후 대칭으로 전환</li></ul><h4>TLS 핸드셰이크 과정 (TLS 1.2 예시)</h4><ul><li>① <b>Client Hello</b>: 지원 암호 스위트·난수 전송</li><li>② <b>Server Hello</b>: 선택된 암호 스위트·난수 응답</li><li>③ <b>Certificate</b>: 서버가 <b>디지털 인증서 전송</b> (서버 인증)</li><li>④ <b>Key Exchange</b>: DH·ECDHE로 <b>세션키 합의</b> (비대칭 연산)</li><li>⑤ <b>Finished</b>: 핸드셰이크 무결성 확인</li><li>⑥ <b>Application Data</b>: 합의된 <b>대칭 세션키로 암호화</b>된 데이터 교환 ← <b>기밀성 단계</b></li></ul><h4>함정 포인트 — 각 보기의 실제 TLS 역할</h4><ul><li><b>A(대칭 암호화)</b>: <b>기밀성</b> — 본 문제 정답. 실제 트래픽 암호화</li><li><b>B(MAC)</b>: <b>무결성 + 출처 인증</b>. HMAC-SHA256 등으로 메시지 변조 탐지</li><li><b>C(해시)</b>: <b>무결성</b>. PRF·HKDF에서 키 유도, 핸드셰이크 무결성</li><li><b>D(디지털 서명 인증서)</b>: <b>서버 인증·키 교환 서명</b>. 기밀성 제공 주체 아님</li><li>질문이 "<b>confidentiality</b>"이므로 <b>A</b>만 정답</li></ul><h4>TLS의 보안 속성 제공 매핑</h4><table><tr><th>보안 속성</th><th>TLS 제공 기술</th></tr><tr><td><b>Confidentiality(기밀성)</b></td><td><b>대칭 암호화</b>(AES-GCM·ChaCha20-Poly1305)</td></tr><tr><td>Integrity(무결성)</td><td>MAC(HMAC)·AEAD 태그·해시</td></tr><tr><td>Authentication(인증)</td><td>X.509 디지털 인증서·서명</td></tr><tr><td>Forward Secrecy(전방향 비밀성)</td><td>DHE·ECDHE 키 교환</td></tr><tr><td>Replay 방지</td><td>Sequence Number·Nonce</td></tr></table><h4>대표 대칭 암호 알고리즘 in TLS</h4><ul><li><b>AES-128-GCM</b>: 현대 표준 — 인증 암호화(AEAD) 내장</li><li><b>AES-256-GCM</b>: 고보안용 고강도</li><li><b>ChaCha20-Poly1305</b>: 모바일·저전력 환경 효율적</li><li><b>3DES</b>: 레거시 — 더 이상 권장 안 됨(TLS 1.3에서 제거)</li><li><b>RC4</b>: 더 이상 안전하지 않음 — 사용 금지</li><li>TLS 1.3은 <b>AEAD 암호만 허용</b> (CBC 모드 제거)</li></ul><h4>왜 비대칭(D)만으로는 기밀성 부족한가</h4><ul><li>비대칭 암호는 <b>작은 데이터</b>(수백 바이트)에 최적</li><li>대용량 웹 트래픽(HTML·이미지·동영상)을 비대칭으로 암호화하면 <b>성능 재앙</b></li><li>따라서 비대칭은 "<b>대칭 세션키 교환</b>"에만 사용</li><li>기밀성의 실제 집행자는 <b>대칭 암호</b></li><li>인증서 자체는 <b>키 보유자 검증</b>일 뿐 암호화가 아님</li></ul><h4>AEAD(Authenticated Encryption with Associated Data)</h4><ul><li>현대 TLS(1.3)는 <b>AEAD 암호만 사용</b></li><li>AES-GCM·ChaCha20-Poly1305 등</li><li><b>암호화(기밀성) + 인증 태그(무결성)</b>를 하나로 통합</li><li>별도 MAC 불필요 → 구현 단순·안전</li><li>본 문제 관점에서 AEAD도 <b>대칭 암호의 일종</b> → A 정답</li></ul><h4>실무 적용</h4><ul><li><b>HTTPS</b>: 웹 브라우저의 모든 암호화 통신</li><li><b>이메일(SMTP STARTTLS·IMAPS·POP3S)</b>: 이메일 전송 보호</li><li><b>VoIP·SRTP</b>: 음성 통신 기밀성</li><li><b>VPN(OpenVPN·SSL VPN)</b>: 원격 접속 암호화</li><li><b>API 통신</b>: REST·gRPC over TLS</li><li><b>데이터베이스 연결</b>: TLS 기반 DB 클라이언트 연결</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>TLS 기밀성 = 대칭 암호화(AES·ChaCha20)</b></li><li>비대칭 = 키 교환·서버 인증 (핸드셰이크 단계)</li><li>MAC·해시 = 무결성 (기밀성 아님)</li><li>인증서 = 서버 신원 검증 (기밀성 제공 주체 아님)</li><li>TLS 구조: <b>비대칭으로 시작 → 대칭으로 전환</b> (하이브리드)</li><li>TLS 1.3 표준: <b>AEAD 암호 전용</b>·DHE·ECDHE 강제</li><li>감사 포인트: 프로토콜 버전(1.2 이상)·암호 스위트·Forward Secrecy·인증서 관리</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — TLS Protocol and Symmetric Encryption for Confidentiality",
+keyConcepts:[
+"TLS 기밀성|대칭 암호화(AES·ChaCha20)로 실제 데이터 암호화 — 본 문제 정답",
+"하이브리드 구조|비대칭(키 교환·인증) + 대칭(데이터 암호화) 결합 — 속도·안전 동시 충족",
+"TLS 핸드셰이크|Client Hello → Server Hello → 인증서 → 키 교환 → Finished → 대칭 암호화 데이터",
+"속성별 기술|기밀성=대칭 / 무결성=MAC·해시 / 인증=인증서 / Forward Secrecy=ECDHE",
+"AEAD 암호|AES-GCM·ChaCha20-Poly1305 — TLS 1.3 표준 (기밀성+무결성 통합)",
+"대칭 알고리즘|AES-128/256-GCM·ChaCha20-Poly1305 권장, 3DES·RC4 금지",
+"왜 대칭으로 데이터 암호화|비대칭은 수백~수천 배 느림, 대용량 웹 트래픽에 부적합",
+"비대칭 역할 한정|작은 세션키 교환·서버 인증에만 사용, 데이터 암호화 아님",
+"TLS 1.3 개선|AEAD 전용·CBC 제거·핸드셰이크 암호화·1-RTT·0-RTT",
+"감사 체크|프로토콜 버전(1.2+)·암호 스위트·Forward Secrecy·인증서·HSTS"
+]
+}
+,
+{
+id:572,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Confidentiality of transmitted data can best be delivered by encrypting the:",
+questionKo:"<b>전송되는 데이터의 기밀성(Confidentiality)</b>은 무엇을 암호화함으로써 가장 잘 제공되는가?",
+options:[
+"A. message digest with the sender's private key.",
+"B. session key with the sender's public key.",
+"C. messages with the receiver's private key.",
+"D. session key with the receiver's public key."
+],
+optionsKo:[
+"A. <b>메시지 다이제스트를 송신자의 개인키로</b> 암호화",
+"B. <b>세션키를 송신자의 공개키로</b> 암호화",
+"C. <b>메시지를 수신자의 개인키로</b> 암호화",
+"D. <b>세션키를 수신자의 공개키로</b> 암호화"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>암호화 방식</th><th>결과 / 기밀성 제공 여부</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>다이제스트 + 송신자 개인키</td><td>이것은 <b>디지털 서명</b> — 무결성·부인방지 제공 / 기밀성 아님</td><td>부적합</td></tr><tr><td><b>B</b></td><td>세션키 + 송신자 공개키</td><td>송신자 공개키로 암호화 → <b>송신자 자신만 복호화</b> 가능 → 수신자는 세션키 복구 불가 → <b>통신 불성립</b></td><td>기능 오류</td></tr><tr><td><b>C</b></td><td>메시지 + 수신자 개인키</td><td>수신자 개인키로 암호화 → <b>수신자 공개키로 누구나 복호화 가능</b> → 기밀성 파괴</td><td>기능 오류</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>세션키 + 수신자 공개키</b></td><td class="correct-cell">수신자 공개키로 암호화 → <b>수신자 개인키로만 복호화 가능</b> → 세션키가 수신자에게만 안전하게 전달 → 이후 세션키로 메시지 대칭 암호화 → <b>기밀성 완벽 보장</b></td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 하이브리드 암호화에서 세션키 교환</h4><p>현대 암호 프로토콜(TLS·S/MIME·PGP)은 <b>하이브리드 방식</b>을 사용한다:</p><ul><li><b>대칭 암호(세션키)</b>: 메시지 본문 빠른 암호화 → 기밀성</li><li><b>비대칭 암호</b>: 대칭 세션키를 <b>안전하게 전달</b>하는 용도</li><li>본 문제는 <b>세션키를 어떻게 전달하느냐</b>의 질문</li></ul><h4>키 방향의 절대 규칙</h4><ul><li><b>기밀성(암호화·비밀 전송)</b>: <b>수신자의 공개키</b>로 암호화 → <b>수신자 개인키로만 복호화</b> → 수신자에게만 비밀이 전달됨</li><li><b>발신자 검증(서명)</b>: <b>발신자의 개인키</b>로 서명 → <b>발신자 공개키로 검증</b> → 발신자 신원 증명</li><li>이 두 방향이 <b>정반대</b>임을 기억</li></ul><h4>세션키 전달 표준 절차 (D의 실제 구현)</h4><ul><li>① 송신자가 <b>임의의 세션키 K</b> 생성 (대칭키, 예: AES-256)</li><li>② 송신자가 <b>수신자의 공개키</b>로 세션키 K 암호화 → E(K)</li><li>③ 송신자가 <b>세션키 K로 메시지 M 암호화</b> → C = E_K(M)</li><li>④ E(K)와 C를 함께 전송</li><li>⑤ 수신자: <b>자신의 개인키</b>로 E(K) 복호화 → 세션키 K 획득</li><li>⑥ 수신자: <b>세션키 K로 C 복호화</b> → 메시지 M 획득</li><li>이 과정으로 <b>오직 수신자만</b> 메시지 읽을 수 있음 → 완벽한 기밀성</li></ul><h4>함정 포인트 — 왜 세션키를 따로 암호화하는가</h4><ul><li><b>메시지 자체를 비대칭으로 암호화하면</b>:<ul><li>속도 매우 느림(수백~수천 배)</li><li>큰 파일·스트림 처리 불가능</li><li>비대칭 암호 블록 크기 한계(RSA-2048은 약 245바이트 최대)</li></ul></li><li><b>세션키만 비대칭으로 암호화</b>:<ul><li>세션키는 짧음(16~32바이트) → 빠른 암호화</li><li>대용량 메시지는 <b>빠른 대칭 암호</b>로 처리</li><li>비대칭의 보안 + 대칭의 속도 = <b>하이브리드의 장점</b></li></ul></li></ul><h4>A·B·C 오답 상세 분석</h4><h5>A: 다이제스트 + 송신자 개인키</h5><ul><li>이 동작은 <b>디지털 서명 생성</b></li><li>제공: 무결성 + 출처 인증 + 부인방지</li><li><b>기밀성은 전혀 제공 안 함</b> — 메시지는 평문</li><li>질문이 기밀성이므로 오답</li></ul><h5>B: 세션키 + 송신자 공개키</h5><ul><li>송신자 공개키는 <b>누구나 알고 있음</b></li><li>그러나 공개키로 암호화하면 <b>짝이 되는 개인키</b>로만 복호화 가능</li><li>송신자 개인키는 <b>송신자만</b> 소유 → <b>수신자가 세션키를 얻을 수 없음</b></li><li>결과: 통신 실패</li></ul><h5>C: 메시지 + 수신자 개인키</h5><ul><li>수신자 개인키로 암호화한다는 전제 자체가 잘못 — <b>수신자 개인키는 수신자만 소유</b>, 송신자는 접근 불가</li><li>설령 가능하더라도 결과물은 <b>수신자 공개키로 누구나 복호화</b> → 기밀성 파괴</li><li>수신자 개인키로 하는 동작은 <b>수신자가 서명</b>할 때만 의미 있음</li></ul><h4>키 사용 방향 매트릭스</h4><table><tr><th>목적</th><th>사용 키</th><th>결과</th></tr><tr><td>기밀성(암호화)</td><td><b>수신자 공개키</b></td><td>수신자만 읽을 수 있음 ← <b>본 문제</b></td></tr><tr><td>서명 생성</td><td>송신자 개인키</td><td>발신자 증명·변조 탐지</td></tr><tr><td>서명 검증</td><td>송신자 공개키</td><td>서명 유효성 확인</td></tr><tr><td>수신자 복호화</td><td>수신자 개인키</td><td>암호 메시지 해독</td></tr></table><h4>실제 구현 예시</h4><ul><li><b>S/MIME 이메일</b>: 세션키를 수신자 인증서의 공개키로 암호화하여 첨부</li><li><b>PGP</b>: 세션키(OpenPGP에서 "symmetric-key encrypted session key packet")를 수신자 공개키로 암호화</li><li><b>TLS 1.2 RSA 키 교환</b>: 클라이언트가 pre-master secret을 서버 공개키로 암호화 전송</li><li><b>TLS 1.3 ECDHE</b>: DH 방식으로 세션키 합의 (다른 방식이지만 동일 원리)</li></ul><h4>대칭 vs 비대칭 속도 비교</h4><table><tr><th>알고리즘</th><th>속도(1GB 데이터)</th></tr><tr><td>AES-256 (대칭)</td><td>수 초</td></tr><tr><td>RSA-2048 (비대칭)</td><td>수 시간~수 일</td></tr><tr><td>ECC (비대칭)</td><td>RSA보다 빠름, 여전히 대칭 대비 느림</td></tr></table><p>→ 대용량 데이터에는 <b>반드시 대칭</b>, 비대칭은 <b>키 교환용</b>으로만</p><h4>CISA 시험 핵심 정리</h4><ul><li><b>기밀성 전송 = 세션키를 수신자 공개키로 암호화</b> + <b>메시지는 세션키로 대칭 암호화</b></li><li>수신자 공개키 사용 → 수신자 개인키로만 복호화 → 기밀성 달성</li><li>송신자 개인키로 다이제스트 암호화 = 서명 (기밀성 아님)</li><li>송신자 공개키로 세션키 암호화 = 수신자 복호화 불가 (오류)</li><li>수신자 개인키로 메시지 암호화 = 누구나 공개키로 복호화 (기밀성 파괴)</li><li>하이브리드 이유: <b>대칭 속도 + 비대칭 키 교환의 안전성</b></li><li>키 방향 규칙: <b>"상대방에게 비밀을 보내려면 상대방의 공개키로 암호화"</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Hybrid Encryption and Session Key Distribution",
+keyConcepts:[
+"기밀성 전송 공식|세션키를 수신자 공개키로 암호화 + 메시지를 세션키로 대칭 암호화",
+"키 방향 규칙|기밀성=수신자 공개키 / 서명=송신자 개인키 — 절대 규칙",
+"하이브리드 이유|대칭 속도 + 비대칭 키 교환 안전성 — 대용량 메시지에 필수",
+"송신자 개인키 + 다이제스트|디지털 서명 생성 — 무결성·부인방지 제공(기밀성 아님)",
+"송신자 공개키 + 세션키|송신자만 복호화 가능 → 수신자 세션키 획득 불가(오류)",
+"수신자 개인키 + 메시지|공개키로 누구나 복호화 → 기밀성 파괴(오류)",
+"비대칭 속도 한계|수백~수천 배 느림 → 큰 메시지 직접 암호화 부적합",
+"세션키 짧음|16~32바이트 → 비대칭으로 빠르게 암호화 가능",
+"S/MIME·PGP 표준|세션키를 수신자 공개키로 암호화하는 동일 원리 사용",
+"TLS 1.2 RSA 키교환|클라이언트가 pre-master secret을 서버 공개키로 암호화 전송"
+]
+}
+,
+{
+id:573,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Confidentiality of the data transmitted in a wireless local area network (WLAN) is BEST protected if the session is:",
+questionKo:"<b>무선 LAN(WLAN)</b>에서 전송되는 데이터의 <b>기밀성은</b> 세션을 어떻게 처리할 때 가장 잘 보호되는가?",
+options:[
+"A. restricted to predefined media access control addresses.",
+"B. encrypted using static keys.",
+"C. encrypted using dynamic keys.",
+"D. initiated from devices that have encrypted storage."
+],
+optionsKo:[
+"A. 사전 정의된 <b>MAC 주소</b>로 제한",
+"B. <b>정적 키(static key)</b>로 암호화",
+"C. <b>동적 키(dynamic key)</b>로 암호화",
+"D. <b>암호화된 저장소</b>를 가진 장치에서 세션 시작"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>방식</th><th>WLAN 기밀성 제공 효과</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>MAC 주소 필터링</td><td>접속 가능 장치를 <b>제한</b>할 뿐 트래픽을 <b>암호화하지 않음</b> → 도청 가능. MAC은 쉽게 위조(MAC Spoofing)됨</td><td>부적합</td></tr><tr><td><b>B</b></td><td>정적 키 암호화</td><td>동일 키를 <b>장기간 사용</b> → 키 노출 시 <b>모든 과거·미래 트래픽 복호화 가능</b>. WEP가 대표 실패 사례</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>동적 키 암호화</b></td><td class="correct-cell">키가 <b>주기적·세션별로 변경</b> → 키 노출 영향 최소화. WPA2/WPA3의 <b>4-way handshake·PMK/PTK</b>, Forward Secrecy와 결합 → 최고의 기밀성</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>장치 저장소 암호화</td><td>장치에 <b>저장된 데이터</b>의 기밀성 — 전송 중 세션과 무관. <b>Data at Rest vs Data in Motion</b> 혼동</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 동적 키(Dynamic Key) 암호화</h4><p>동적 키 방식은 <b>세션별·주기적·프레임별로 키를 재생성</b>하는 구조다. WPA2/WPA3의 <b>세션 키 유도 메커니즘</b>이 대표적.</p><h4>정적 키 vs 동적 키</h4><table><tr><th>구분</th><th>정적 키(WEP)</th><th>동적 키(WPA2/WPA3)</th></tr><tr><td>키 수명</td><td>고정·장기간</td><td>세션·주기별 변경</td></tr><tr><td>키 도출</td><td>단일 공유 키</td><td>PMK → PTK → GTK 계층</td></tr><tr><td>노출 영향</td><td>모든 트래픽 복호화 가능</td><td>해당 세션만 영향</td></tr><tr><td>Forward Secrecy</td><td>없음</td><td>있음(WPA3)</td></tr><tr><td>보안성</td><td>매우 취약</td><td>현대 표준</td></tr><tr><td>예시</td><td>WEP, 사전 공유 고정 키</td><td>WPA2-Enterprise·WPA3·TLS</td></tr></table><h4>동적 키가 기밀성에 우월한 이유</h4><ul><li><b>키 노출 영향 제한</b>: 한 키가 깨져도 <b>다른 세션은 안전</b></li><li><b>암호 분석 저항</b>: 공격자가 수집한 트래픽이 키 변경으로 <b>부분적</b>으로만 유효</li><li><b>리플레이 공격 방어</b>: 세션별 키·Nonce로 재전송 무효화</li><li><b>Forward Secrecy</b>: 과거 세션은 개인키 유출 후에도 복호화 불가</li><li><b>키 피로 방지</b>: 동일 키 과다 사용으로 인한 통계적 공격 방지</li></ul><h4>WPA2/WPA3의 키 계층 구조</h4><ul><li><b>PSK/MSK (사전 공유 비밀)</b>: Wi-Fi 비밀번호 또는 EAP 인증 결과</li><li><b>PMK (Pairwise Master Key)</b>: PSK/MSK에서 유도 — 세션 전체</li><li><b>PTK (Pairwise Transient Key)</b>: <b>4-way handshake</b>로 매 연결마다 생성 — <b>동적</b></li><li><b>GTK (Group Temporal Key)</b>: 브로드캐스트·멀티캐스트용 — 주기적 갱신</li><li><b>TK (Temporal Key)</b>: PTK에서 분리된 암호화 전용 키 — 프레임 단위 사용</li><li>이 전체가 <b>동적 키 시스템</b> → 기밀성·무결성·방어 강화</li></ul><h4>함정 포인트 — 각 오답의 문제점</h4><h5>A: MAC 주소 필터링</h5><ul><li><b>암호화 아님</b> — 단순 접속 제한</li><li>MAC 주소는 <b>평문 전송</b>되며 쉽게 위조 가능</li><li>공격자가 합법 장치의 MAC 관찰·복제 → 필터 우회</li><li>편의적 통제(Weak) — 심각한 보안 용도로 부적합</li></ul><h5>B: 정적 키</h5><ul><li>WEP의 RC4 고정 키가 대표 실패 사례</li><li>수 분~수 시간 트래픽 수집으로 키 복원 가능(FMS·KoreK·PTW 공격)</li><li>키 변경 절차 부재 → 노출 후 장기간 피해</li><li>WPA2-PSK도 PSK 자체는 정적이나 <b>PTK는 동적 유도</b>로 보호</li></ul><h5>D: 장치 저장소 암호화</h5><ul><li>BitLocker·FileVault 등은 <b>저장된 파일</b>의 암호화</li><li>네트워크 전송 세션과 <b>완전히 별개 통제</b></li><li><b>Data at Rest(저장) vs Data in Motion(전송)</b> 혼동 유도 함정</li><li>문제가 "<b>transmitted</b>"라고 명시 → 전송 통제가 필요</li></ul><h4>WLAN 보안 진화 역사</h4><ul><li><b>WEP (1997)</b>: RC4 + 정적 키 → 깨짐 (사용 금지)</li><li><b>WPA (2003)</b>: TKIP + 동적 키 도입 (과도기)</li><li><b>WPA2 (2004)</b>: AES-CCMP + 4-way handshake → 장기 표준</li><li><b>WPA3 (2018)</b>: SAE(Simultaneous Authentication of Equals) + Forward Secrecy + 192-bit 옵션</li><li>핵심 진화: <b>정적 → 동적 → Forward Secrecy</b></li></ul><h4>Forward Secrecy(PFS)와의 관계</h4><ul><li>동적 키 + DH/ECDHE 교환 → <b>세션별 독립적 키</b></li><li>장기 개인키 유출 후에도 <b>과거 트래픽 복호화 불가</b></li><li>WPA3와 TLS 1.3이 표준 채택</li><li>동적 키의 <b>진화형 보안 모델</b></li></ul><h4>실무 감사 포인트</h4><ul><li>사용 중인 WLAN 보안 프로토콜(WPA2/WPA3) 확인</li><li>WEP·WPA 사용 여부 — 발견 시 즉시 폐기 권고</li><li>PSK 강도(최소 12자 이상 임의 문자열)·갱신 주기</li><li>Enterprise 환경은 <b>802.1X + RADIUS</b> 권장</li><li>SSID 노출·Rogue AP 탐지</li><li>게스트 네트워크 분리(VLAN)</li><li>WPS 비활성화(무차별 대입 취약)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>WLAN 기밀성 BEST = 동적 키 암호화</b></li><li>정적 키(WEP) = 구식·깨짐 / 동적 키(WPA2/3) = 표준</li><li>MAC 필터링 = 약한 접근 통제 (암호화 아님)</li><li>장치 저장소 암호화 = Data at Rest (전송과 무관)</li><li>동적 키 핵심: <b>4-way handshake · PMK/PTK/GTK 계층 · Forward Secrecy</b></li><li>감사 시 WPA3·AES-CCMP·PSK 강도 확인</li><li>키워드: "transmitted" = 전송 = 세션 암호화 필요 / "stored" = 저장 = 다른 통제</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — WLAN Security and Dynamic Key Management",
+keyConcepts:[
+"WLAN 기밀성 BEST|동적 키 암호화 — 세션·주기별 키 변경으로 노출 영향 최소화",
+"정적 키 문제|WEP RC4 고정 키 → 수집·분석으로 복원 가능, 모든 트래픽 복호화",
+"동적 키 메커니즘|PMK → PTK(4-way handshake) → GTK/TK 계층 — WPA2/WPA3 표준",
+"MAC 필터링 한계|암호화 아님·MAC Spoofing으로 우회 가능·트래픽 도청 허용",
+"저장소 암호화 오답|Data at Rest 통제 — 전송 세션(Data in Motion)과 무관",
+"WLAN 보안 진화|WEP → WPA → WPA2 → WPA3 — 정적 → 동적 → Forward Secrecy",
+"Forward Secrecy|DH/ECDHE + 동적 키 → 과거 트래픽 복호화 불가 (WPA3 표준)",
+"WPA3 개선|SAE 키 교환·192비트 옵션·Forward Secrecy·공격 저항성",
+"감사 체크|프로토콜 버전·PSK 강도·WPS 상태·Rogue AP·게스트 VLAN·802.1X",
+"키워드 판별|transmitted=전송 세션 / stored=저장 매체 — 대상 다름"
+]
+}
+,
+{
+id:574,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following provides the GREATEST assurance for database password encryption?",
+questionKo:"<b>데이터베이스 비밀번호 암호화</b>에 가장 큰 보증을 제공하는 것은?",
+options:[
+"A. Secure hash algorithm-256",
+"B. Advanced encryption standard (AES)",
+"C. Secure Shell (SSH)",
+"D. Triple DES (3DES)"
+],
+optionsKo:[
+"A. <b>SHA-256 해시 알고리즘</b>",
+"B. <b>AES(고급 암호화 표준)</b>",
+"C. <b>SSH(Secure Shell)</b>",
+"D. <b>3DES(Triple DES)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>DB 비밀번호 암호화 적합성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>SHA-256</td><td><b>해싱이지 암호화가 아님</b> — 단방향(역산 불가). 비밀번호 보호에 자주 쓰이지만 질문은 "<b>encryption</b>"이므로 부적합</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>AES</b></td><td class="correct-cell"><b>현대 표준 대칭 암호화 알고리즘</b> — 128/192/256비트 키 강도. 비밀번호·DB 필드 암호화에 가장 적합. NIST·FIPS 승인</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>SSH</td><td><b>전송 중(transit) 암호화 프로토콜</b> — 전송되는 비밀번호는 보호하나 <b>DB 저장 데이터(at rest)는 암호화 안 함</b></td><td>부적합</td></tr><tr><td><b>D</b></td><td>3DES</td><td>유효한 암호화이나 <b>AES보다 구식·약함</b>. NIST는 2023년 공식 사용 중단(Deprecated)</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — AES의 우수성</h4><p><b>AES(Advanced Encryption Standard)</b>는 2001년 NIST가 DES의 후계자로 선정한 <b>블록 암호</b>다. 현대 암호화의 <b>사실상 표준</b>.</p><h4>AES 특징</h4><ul><li><b>블록 크기</b>: 128비트 고정</li><li><b>키 길이</b>: 128·192·256비트 중 선택</li><li><b>라운드 수</b>: 10·12·14 (키 길이에 비례)</li><li><b>구조</b>: Rijndael 알고리즘 기반 — SPN(Substitution-Permutation Network)</li><li><b>성능</b>: 소프트웨어·하드웨어 모두 빠름 (AES-NI 명령어)</li><li><b>보안성</b>: 현재까지 <b>실질적 공격 없음</b> — 256비트는 양자 내성까지 고려</li><li><b>표준</b>: NIST FIPS 197, 전 세계 정부·금융·기업 표준</li></ul><h4>함정 포인트 — 해싱 vs 암호화 구분</h4><ul><li><b>해싱(Hashing)</b>: 단방향 함수 — <b>복호화 불가</b> (예: SHA-256·bcrypt)</li><li><b>암호화(Encryption)</b>: 양방향 함수 — <b>키로 복호화 가능</b> (예: AES·3DES)</li><li>질문이 "<b>password encryption</b>"이므로 해싱은 제외</li><li>실제 비밀번호 보안 관행:<ul><li><b>인증용 비밀번호 저장</b>: 해싱(+Salt+pepper) — bcrypt·Argon2·PBKDF2 권장</li><li><b>DB 내 암호화 필드·서비스 계정 비밀번호</b>: AES 암호화 — 복구 필요</li></ul></li><li>이 문제는 <b>DB 내 저장 비밀번호 암호화</b> 시나리오 → AES</li></ul><h4>왜 해싱(A)이 일반적으로 비밀번호에 쓰이는가</h4><ul><li>사용자 비밀번호는 <b>복구 필요 없음</b> → 단방향 해싱이 안전</li><li>DB 유출 시에도 원본 비밀번호 노출 방지</li><li>로그인 시 입력값을 해싱·비교</li><li>그러나 <b>DB 연결용 비밀번호·API 키·암호화된 필드</b>는 <b>복구 필요</b> → AES 같은 대칭 암호화 사용</li><li>문제가 해싱이 아닌 <b>암호화</b>로 제한하므로 AES가 정답</li></ul><h4>SSH(C) 오답 이유</h4><ul><li>SSH는 <b>원격 접속·전송 암호화 프로토콜</b></li><li>사용자가 SSH로 DB 서버 접속 시 <b>전송 중 비밀번호 보호</b></li><li>그러나 <b>DB에 저장된 비밀번호 자체는 암호화 안 함</b></li><li>Data in Transit vs Data at Rest 구분 — 문제는 저장 데이터 암호화</li></ul><h4>3DES(D)가 AES에 비해 약한 이유</h4><ul><li><b>블록 크기 64비트</b>: AES의 128비트보다 작음 → <b>Sweet32 공격</b>에 취약</li><li><b>키 실효 강도</b>: 3DES 168비트 키의 실효 보안은 <b>112비트</b>(Meet-in-the-middle)</li><li><b>속도</b>: DES를 3번 수행 → 느림</li><li><b>NIST 권고</b>: 2023년 이후 사용 금지·폐기 단계</li><li>현재 표준은 <b>AES-256</b>, 3DES는 레거시 호환용</li></ul><h4>비밀번호 보호의 계층별 접근</h4><ul><li><b>네트워크 전송</b>: TLS·SSH (SSH는 여기 해당)</li><li><b>저장 인증 비밀번호</b>: 해싱 + Salt + 작업 인수 (bcrypt·Argon2·PBKDF2)</li><li><b>저장 서비스·API 비밀번호</b>: AES 암호화 (본 문제)</li><li><b>키 관리</b>: KMS·HSM·Vault에 마스터 키 보관</li><li><b>접근 제어</b>: RBAC·감사 로그·주기적 갱신</li></ul><h4>AES 운영 모드 (실무)</h4><ul><li><b>AES-GCM</b>: 인증 암호화(AEAD) — 기밀성 + 무결성. 가장 권장</li><li><b>AES-CCM</b>: IoT·무선에 최적</li><li><b>AES-CBC</b>: 레거시 — MAC 별도 필요</li><li><b>AES-ECB</b>: 사용 금지 — 패턴 노출</li><li>DB 암호화 모드는 <b>AES-GCM·AES-CBC + HMAC</b> 조합 일반적</li></ul><h4>실무 적용 — DB 비밀번호 암호화</h4><ul><li><b>TDE(Transparent Data Encryption)</b>: SQL Server·Oracle·MySQL이 AES로 DB 파일 암호화</li><li><b>Always Encrypted</b>: 특정 컬럼 AES 암호화 (클라이언트 측 키)</li><li><b>Credential Store·Key Vault</b>: 서비스 비밀번호를 AES로 암호화·중앙 저장</li><li><b>Application Layer 암호화</b>: 앱에서 AES로 암호화 후 DB 저장</li><li><b>HSM/KMS 통합</b>: 마스터 키 보호·로테이션</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DB 비밀번호 암호화 BEST = AES</b></li><li>해싱(SHA-256) = 인증용 비밀번호 저장 (복구 불가)</li><li>암호화(AES) = 복구 필요한 비밀번호·키·민감 필드</li><li>SSH = 전송 보호 (저장 암호화 아님)</li><li>3DES = AES에 비해 구식·약함·Deprecated</li><li>해시 vs 암호화 구분: <b>복구 필요성</b>이 기준</li><li>NIST/FIPS 표준: AES-128/256이 현대 표준</li><li>감사 포인트: 사용 알고리즘·키 길이·운영 모드·키 관리(HSM·KMS)</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — AES for Database Password Protection",
+keyConcepts:[
+"DB 비밀번호 암호화|AES(128/192/256비트) — 현대 표준 대칭 암호화, NIST FIPS 197",
+"해싱 vs 암호화|해싱=단방향·복구 불가(SHA-256) / 암호화=양방향·키로 복호화(AES)",
+"비밀번호 저장 구분|인증용=해싱+Salt(bcrypt·Argon2) / 복구 필요=AES",
+"SSH 역할 한계|전송 중 암호화 프로토콜 — 저장 데이터(at rest) 암호화 아님",
+"3DES 한계|64비트 블록(Sweet32 취약)·실효 112비트 키·NIST 2023 Deprecated",
+"AES 운영 모드|GCM(AEAD 권장)·CCM·CBC+HMAC / ECB 절대 금지",
+"AES 특징|Rijndael·SPN 구조·128비트 블록·10~14 라운드·AES-NI 하드웨어 가속",
+"DB 암호화 실무|TDE·Always Encrypted·Key Vault·Application Layer 암호화",
+"키 관리|HSM·KMS로 마스터 키 보호·로테이션·감사 로그",
+"Data at Rest vs in Transit|저장(AES)·전송(TLS·SSH) — 각기 다른 통제"
+]
+}
+,
+{
+id:575,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"A digital signature contains a message digest to:",
+questionKo:"<b>디지털 서명이 메시지 다이제스트(해시)를 포함</b>하는 이유는?",
+options:[
+"A. show if the message has been altered after transmission.",
+"B. define the encryption algorithm.",
+"C. confirm the identity of the originator.",
+"D. enable message transmission in a digital format."
+],
+optionsKo:[
+"A. 전송 후 메시지가 <b>변경되었는지 확인</b>하기 위해",
+"B. <b>암호화 알고리즘을 정의</b>하기 위해",
+"C. 발신자의 <b>신원을 확인</b>하기 위해",
+"D. 메시지를 <b>디지털 형식으로 전송</b>할 수 있도록 하기 위해"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>다이제스트의 실제 역할</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>메시지 변조 여부 확인</b></td><td class="correct-cell">다이제스트(해시)가 포함된 <b>본질적 이유</b> — 수신자가 메시지를 재해싱하여 원본 해시와 비교 → <b>1비트 변경도 즉시 탐지</b>. 서명 내 다이제스트의 핵심 목적</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>암호화 알고리즘 정의</td><td>알고리즘은 <b>별도 메타데이터</b>(인증서·프로토콜 헤더)에 명시 — 다이제스트와 무관</td><td>부적합</td></tr><tr><td><b>C</b></td><td>발신자 신원 확인</td><td>신원 확인은 <b>인증서와 개인키 서명</b>이 담당 — 다이제스트가 아닌 <b>서명 전체 구조</b>의 역할</td><td>부적합</td></tr><tr><td><b>D</b></td><td>디지털 형식 전송 가능</td><td>디지털 전송은 <b>프로토콜·매체</b>의 문제 — 다이제스트와 완전 무관</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 서명 내 다이제스트의 목적</h4><p>디지털 서명은 <b>메시지 다이제스트(해시) + 개인키 암호화</b>의 구조다. 다이제스트가 포함되는 <b>본질적 이유</b>는 <b>무결성 검증</b>.</p><h4>다이제스트의 역할 세분화</h4><ul><li><b>① 메시지 변조 탐지(Integrity)</b> ← <b>본 문제 정답</b>: 원본과 재계산 해시 비교</li><li><b>② 성능 최적화</b>: 전체 메시지가 아닌 <b>짧은 해시만 서명</b> → 비대칭 암호 부담 최소화</li><li><b>③ 고정 길이 입력</b>: 비대칭 암호 알고리즘은 고정 블록 크기 요구 → 해시가 적합</li><li>이 중 <b>Integrity 제공</b>이 가장 핵심적 목적</li></ul><h4>왜 C(발신자 신원)가 오답인가</h4><ul><li>발신자 신원은 <b>"개인키로 서명했다"</b>라는 사실에서 도출</li><li>즉 <b>서명 자체</b>(개인키 적용)가 신원 증명, <b>다이제스트</b>는 그 대상일 뿐</li><li>다이제스트 없이 메시지 전체를 직접 서명해도 <b>신원 확인은 가능</b>(비효율적이지만)</li><li>다이제스트의 <b>고유 가치</b>는 <b>변조 탐지(무결성)</b></li><li>CISA 관점: "다이제스트가 <b>왜 포함되는가</b>"의 질문 → 그 요소의 <b>고유 기능</b>을 묻는 것</li></ul><h4>다이제스트 비교 절차</h4><ul><li>① 송신자: 메시지 M에서 해시 H(M) 계산 = <b>원본 다이제스트</b></li><li>② 송신자: H(M)을 개인키로 암호화 = 서명 S</li><li>③ M과 S 전송</li><li>④ 수신자: 수신한 메시지 M'에서 <b>해시 H(M') 재계산</b> = <b>새 다이제스트</b></li><li>⑤ 수신자: S를 공개키로 복호화 → H(M) 추출</li><li>⑥ <b>H(M) == H(M')?</b>:<ul><li>일치 → 메시지 <b>변조되지 않음</b></li><li>불일치 → 메시지 <b>변조됨</b> 또는 오류</li></ul></li></ul><h4>해시의 눈사태 효과(Avalanche Effect)</h4><ul><li>1비트만 변경해도 해시가 완전히 달라짐</li><li>예: "Hello" → SHA-256: 185f8db3...<br>"Hello." → SHA-256: 334d016f... (완전 다름)</li><li>따라서 변조 탐지에 극히 민감</li><li>SHA-256·SHA-3·BLAKE2 등 현대 해시 모두 이 특성 보유</li></ul><h4>함정 포인트 — 서명의 3가지 속성 각각 담당</h4><table><tr><th>속성</th><th>담당 메커니즘</th></tr><tr><td><b>무결성(Integrity)</b></td><td><b>메시지 다이제스트(해시)</b> ← 본 문제</td></tr><tr><td>출처 인증(Authentication)</td><td>송신자 개인키 서명 + CA 인증서</td></tr><tr><td>부인방지(Nonrepudiation)</td><td>개인키 유일 소유 + 법적 효력</td></tr></table><p>다이제스트의 직접적 역할은 <b>무결성</b>. 신원·부인방지는 서명 구조 전체의 역할.</p><h4>Q568 vs Q575 비교</h4><ul><li><b>Q568</b>: "메시지 다이제스트를 <b>계산하는 주체</b>는?" → 송신자와 수신자 모두</li><li><b>Q575</b>: "다이제스트를 <b>포함하는 이유</b>는?" → 변조 탐지(무결성)</li><li>Q568은 "누가", Q575는 "왜" — <b>다이제스트의 목적</b>에 초점</li></ul><h4>B·D 오답 상세</h4><h5>B: 암호화 알고리즘 정의</h5><ul><li>알고리즘은 <b>헤더·인증서·프로토콜 파라미터</b>로 통지</li><li>X.509 Signature Algorithm 필드·S/MIME Content-Type·TLS Cipher Suite 등</li><li>다이제스트는 <b>알고리즘의 출력물</b>이지 알고리즘 자체가 아님</li></ul><h5>D: 디지털 형식 전송 가능</h5><ul><li>디지털 전송은 <b>네트워크·프로토콜·매체</b>의 영역</li><li>모든 전자 데이터는 이미 디지털 → 다이제스트 불필요</li><li>완전히 질문과 동떨어진 오답 보기</li></ul><h4>다이제스트의 추가 활용 분야</h4><ul><li><b>파일 무결성 검증</b>: 소프트웨어 다운로드 시 SHA-256 해시 비교</li><li><b>블록체인</b>: 각 블록에 이전 블록 해시 포함 → 체인 무결성</li><li><b>Git 커밋</b>: SHA-1 기반 커밋 해시로 변조 탐지</li><li><b>디지털 포렌식</b>: 증거 파일 해시 기록 → Chain of Custody</li><li><b>패스워드 저장</b>: 해시 + Salt로 원본 비밀번호 보호</li><li><b>HMAC</b>: 해시 + 공유 키로 메시지 인증</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>서명 내 다이제스트의 목적 = 메시지 변조 탐지(무결성)</b></li><li>발신자 신원 = 서명 전체 구조의 역할 (다이제스트만이 아님)</li><li>알고리즘·전송 형식은 다이제스트와 무관</li><li>해시 눈사태 효과: 1비트 변경도 완전히 다른 해시 → 극민감 탐지</li><li>Q568(누가 계산) vs Q575(왜 포함) 구분</li><li>CIA 매핑: 다이제스트 = <b>Integrity 통제의 핵심 요소</b></li><li>서명 구조: <b>메시지 → 해시 → 개인키 서명 → 검증은 역순</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Purpose of Message Digest in Digital Signatures",
+keyConcepts:[
+"다이제스트 포함 이유|메시지 변조 탐지(무결성) — 수신자 재계산 해시와 비교로 변경 확인",
+"다이제스트 3가지 역할|① 무결성(본 문제) ② 성능(짧은 해시 서명) ③ 고정 길이 입력",
+"발신자 신원 구분|개인키 서명 자체가 신원 증명 — 다이제스트는 변조 탐지 담당",
+"눈사태 효과|1비트 변경도 완전히 다른 해시 → 극민감 변조 탐지",
+"Q568 vs Q575|Q568=누가 계산(양쪽) / Q575=왜 포함(무결성 검증)",
+"서명 속성 매핑|무결성=해시 / 인증=서명+CA / 부인방지=개인키 유일 소유",
+"알고리즘 식별 방법|헤더·인증서·프로토콜 메타데이터에 명시 — 다이제스트와 무관",
+"해시 활용|파일 검증·블록체인·Git·포렌식·패스워드·HMAC 등 광범위",
+"현대 해시|SHA-256·SHA-3·BLAKE2 — MD5·SHA-1은 충돌 취약으로 금지",
+"서명 흐름|메시지→해시→개인키 서명→전송→재해싱→공개키 검증→비교"
+]
+}
+,
+{
+id:576,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"An information systems (IS) auditor is reviewing an organization's information security policy, which requires encryption of all data placed on USB drives. The policy also requires that a specific encryption algorithm be used. Which of the following algorithms would provide the greatest assurance that data placed on USB drives is protected from unauthorized disclosure?",
+questionKo:"IS 감사인이 기업의 정보보안 정책을 검토 중이다. 정책은 <b>USB 드라이브에 저장되는 모든 데이터를 암호화</b>할 것을 요구하며, 특정 암호화 알고리즘 사용도 요구한다. USB 드라이브 데이터가 <b>무단 노출로부터 보호됨을 가장 크게 보증</b>하는 알고리즘은?",
+options:[
+"A. Data Encryption Standard (DES)",
+"B. Message digest 5",
+"C. Advanced Encryption Standard (AES)",
+"D. Secure Shell (SSH)"
+],
+optionsKo:[
+"A. <b>DES</b>(Data Encryption Standard)",
+"B. <b>MD5</b>(Message Digest 5)",
+"C. <b>AES</b>(Advanced Encryption Standard)",
+"D. <b>SSH</b>(Secure Shell)"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>USB 암호화 적합성 · 강도</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>DES</td><td>56비트 키 — <b>무차별 대입 공격으로 공개적으로 깨짐</b>(1998년 EFF). 무단 노출 방지 보증 없음</td><td>부적합</td></tr><tr><td><b>B</b></td><td>MD5</td><td><b>해시(단방향) 함수</b> — 데이터 암호화 기능 없음. 역산 불가로 복구도 불가 → USB 데이터 보호에 부적합</td><td>부적합</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>AES</b></td><td class="correct-cell">128/192/256비트 키 — <b>현대 표준 대칭 암호화</b>. 복구는 계산상 실행 불가능(computationally infeasible) → <b>민감 데이터 보호 최선</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>SSH</td><td><b>전송 중 암호화 프로토콜</b> — 원격 접속 세션 보호용. <b>저장 데이터(Data at Rest) 암호화 불가</b></td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — USB 드라이브 암호화의 필수 조건</h4><p>USB 드라이브는 <b>이동식·도난 취약</b> 매체다. 분실·도난 시 <b>무단 열람 방지</b>가 최우선 → 강력한 <b>저장 데이터(Data at Rest) 암호화</b> 필요.</p><h4>요구 속성</h4><ul><li><b>강력한 대칭 암호화</b>: 복구·열람용이므로 양방향 필요</li><li><b>충분한 키 길이</b>: 무차별 대입 저항(최소 128비트)</li><li><b>검증된 표준</b>: NIST FIPS·공신력 있는 알고리즘</li><li><b>성능</b>: USB 읽기·쓰기에 지장 없는 속도</li><li>AES는 이 모든 조건을 충족</li></ul><h4>AES 우월성 정리</h4><ul><li><b>키 강도</b>: 128·192·256비트 — 양자 내성까지 고려된 256</li><li><b>보안성</b>: 25년 이상 공격 연구, <b>실용적 깨짐 없음</b></li><li><b>성능</b>: AES-NI 하드웨어 가속 → 초당 GB급 처리</li><li><b>표준성</b>: NIST FIPS 197, 전 세계 정부·금융 표준</li><li><b>운영 모드</b>: GCM·XTS 등 저장 암호화에 최적화</li></ul><h4>함정 포인트 — 각 오답 상세 분석</h4><h5>A: DES</h5><ul><li>1977년 표준 — <b>56비트 키</b>로 현대 컴퓨팅에서 수 시간 내 크랙 가능</li><li>1998년 EFF의 Deep Crack: 22시간 만에 DES 키 발견</li><li>현재 <b>사실상 폐기</b>됨 — USB 보호에 부적합</li><li>3DES도 AES에 비해 약함·구식</li></ul><h5>B: MD5</h5><ul><li><b>해시(단방향) 함수</b> — 암호화가 아님</li><li>일단 해시되면 <b>원본 복구 불가능</b> → USB에 저장한 데이터를 다시 읽을 수 없음</li><li>2004년 이후 <b>충돌 공격</b> 발견 → 무결성 검증으로도 사용 금지</li><li>질문이 "encryption"이므로 자체로 오답</li></ul><h5>D: SSH</h5><ul><li>네트워크 <b>전송 중 암호화 프로토콜</b></li><li>원격 로그인·파일 전송(SFTP)·터널링에 사용</li><li><b>저장 데이터 암호화 기능 없음</b> — USB 드라이브 보호 불가</li><li>Data in Transit vs Data at Rest 혼동 함정</li></ul><h4>USB 암호화 실무 구현</h4><ul><li><b>BitLocker To Go (Windows)</b>: AES-128/256 기반 USB 전체 암호화</li><li><b>FileVault (macOS)</b>: USB 디스크 암호화 지원</li><li><b>VeraCrypt·Cryptomator</b>: 오픈소스·크로스플랫폼 AES 기반</li><li><b>하드웨어 암호화 USB</b>: Kingston IronKey·Apricorn — FIPS 140-2/3 인증</li><li><b>Self-Encrypting Drives(SED)</b>: 드라이브 자체 AES 엔진</li><li><b>DLP 통합</b>: 기업 DLP가 민감 데이터 USB 쓰기 시 자동 암호화</li></ul><h4>AES 운영 모드 for USB</h4><ul><li><b>AES-XTS</b>: 디스크 암호화 전용 모드 — BitLocker·VeraCrypt·SED 표준</li><li><b>AES-GCM</b>: 파일 단위 암호화 + 무결성</li><li><b>AES-CBC</b>: 레거시 — HMAC 별도 필요</li><li>USB 볼륨 암호화는 <b>XTS</b>가 일반적</li></ul><h4>키 관리 고려사항</h4><ul><li><b>키 저장 위치</b>: TPM·스마트카드·HSM (USB와 분리)</li><li><b>비밀번호 정책</b>: 강력한 PBKDF2·Argon2로 비밀번호 강화</li><li><b>복구 키</b>: 분실 대비 기업 Key Escrow·Recovery Key</li><li><b>접근 로깅</b>: USB 마운트·데이터 접근 감사</li><li><b>분실 절차</b>: Remote Wipe·원격 키 폐기</li></ul><h4>CISA 감사 포인트</h4><ul><li>정책에 명시된 알고리즘(AES 등) 준수 여부</li><li>키 길이(최소 128비트 이상)</li><li>키 관리 절차 — 저장·로테이션·백업·폐기</li><li>DES·3DES·MD5 등 <b>폐기 알고리즘 사용 여부</b></li><li>BitLocker·FileVault 등 도구 구성·강제 적용</li><li>USB 포트 통제(DLP·엔드포인트 보안)</li><li>분실·도난 보고·대응 절차</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>USB 저장 암호화 BEST = AES</b> (강력·현대 표준)</li><li>DES = 깨짐·폐기 / MD5 = 해시(암호화 아님) / SSH = 전송 보호만</li><li>Data at Rest vs Data in Transit 구분 필수</li><li>해시 vs 암호화 구분 — 복구 필요성 기준</li><li>AES-256 + XTS 모드 + HSM 키 관리 = 최강 조합</li><li>정책 감사: 알고리즘 명시·키 길이·도구 구성·예외 처리</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — AES for USB Drive Data Protection",
+keyConcepts:[
+"USB 암호화 BEST|AES — 128/192/256비트·계산상 복구 불가능·현대 표준",
+"DES 한계|56비트 키 무차별대입 취약·1998 EFF 22시간 크랙·공식 폐기",
+"MD5 부적합|해시(단방향) 함수·암호화 아님·복구 불가·충돌 공격 발견",
+"SSH 역할 한계|전송 중 암호화 프로토콜 — 저장 데이터 암호화 불가",
+"Data at Rest vs in Transit|USB=저장(AES) / 원격접속=전송(SSH·TLS)",
+"AES 운영 모드 USB|XTS(디스크 표준)·GCM(파일+무결성)·CBC+HMAC(레거시)",
+"USB 암호화 도구|BitLocker To Go·FileVault·VeraCrypt·IronKey·SED",
+"해시 vs 암호화|해싱=단방향 복구 불가 / 암호화=양방향 키로 복호화",
+"USB 보안 계층|알고리즘(AES) + 모드(XTS) + 키관리(TPM/HSM) + 정책(DLP)",
+"감사 체크|알고리즘 준수·키 길이·키 관리·폐기 알고리즘 사용·분실 절차"
+]
+}
+,
+{
+id:577,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"When reviewing a digital certificate verification process, which of the following findings represents the MOST significant risk?",
+questionKo:"<b>디지털 인증서 검증 프로세스</b> 검토 시 가장 중대한 위험을 나타내는 발견 사항은?",
+options:[
+"A. There is no registration authority for reporting key compromises.",
+"B. The certificate revocation list is not current.",
+"C. Digital certificates contain a public key that is used to encrypt messages and verify digital signatures.",
+"D. Subscribers report key compromises to the certificate authority."
+],
+optionsKo:[
+"A. 키 침해를 보고할 <b>등록 기관(RA)</b>이 없다",
+"B. <b>인증서 폐기 목록(CRL)이 최신 상태가 아니다</b>",
+"C. 디지털 인증서가 메시지 암호화 및 디지털 서명 검증에 사용되는 <b>공개키를 포함</b>한다",
+"D. 구독자가 키 침해를 <b>CA에 보고</b>한다"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>상황</th><th>위험 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>RA(등록 기관) 부재</td><td>RA가 없으면 <b>CA가 직접 등록 역할 수행</b> — 불편하지만 위험 자체는 아님</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>CRL이 최신이 아님</b></td><td class="correct-cell"><b>폐기된 인증서가 여전히 유효로 표시</b> → 침해·탈취된 인증서로 무단·사기 활동 지속 가능 → <b>검증 실패 = 신뢰 체인 붕괴</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>인증서에 공개키 포함</b></td><td>이것은 <b>정상적·필수적 기능</b> — 인증서의 본질적 구성 요소, 위험이 아님</td><td>정상 동작</td></tr><tr><td><b>D</b></td><td>구독자의 CA 침해 보고</td><td><b>올바른 절차</b> — CA가 신속히 CRL·OCSP에 반영하여 즉시 폐기 → 위험 완화 행동</td><td>정상 절차</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — CRL(Certificate Revocation List)의 중요성</h4><p><b>CRL</b>은 CA가 <b>유효 기간 전에 폐기된 인증서 목록</b>이다. 인증서 검증 시 클라이언트가 이 목록을 확인하여 폐기 여부 판단. <b>최신성 유지가 검증 프로세스의 생명줄</b>.</p><h4>CRL이 최신이 아닐 때의 위험</h4><ul><li><b>탈취된 개인키로 서명 위조 가능</b>: 폐기되었지만 반영 안 된 인증서 계속 사용</li><li><b>MITM 공격 허용</b>: 도난·유출된 인증서로 사이트 사칭</li><li><b>사기 거래 가능</b>: 퇴사자·해고자 인증서가 여전히 유효로 인식</li><li><b>부인방지 실패</b>: 탈취 인증서로 서명된 거래가 법적으로 유효로 잘못 판정</li><li><b>컴플라이언스 위반</b>: 폐기 관리 요구 사항(PCI-DSS·SOX) 불이행</li><li><b>신뢰 체인 전체 붕괴</b>: PKI의 핵심 가정이 깨짐</li></ul><h4>인증서 폐기가 필요한 상황</h4><ul><li><b>개인키 노출·침해(Compromise)</b>: 키 도난·유출</li><li><b>소유자 퇴사·권한 변경</b>: 직원 퇴사·부서 이동</li><li><b>인증서 발급 오류</b>: 잘못된 정보·중복 발급</li><li><b>CA 침해</b>: CA 자체 보안 사고 → 하위 인증서 일괄 폐기</li><li><b>알고리즘 취약성</b>: SHA-1·짧은 키 인증서 대체</li><li><b>소유자 요청</b>: 변경·갱신 필요</li></ul><h4>폐기 확인 메커니즘</h4><ul><li><b>CRL(Certificate Revocation List)</b>:<ul><li>CA가 주기적(시간·일 단위) 발행</li><li>폐기된 인증서 일련번호·폐기 시각·사유 포함</li><li>클라이언트가 다운로드·캐시</li><li>단점: <b>업데이트 지연</b>·<b>파일 크기 증가</b></li></ul></li><li><b>OCSP(Online Certificate Status Protocol)</b>:<ul><li>실시간 단일 인증서 상태 조회</li><li>CA·OCSP Responder에 실시간 질의</li><li>장점: 최신성 우수·크기 작음</li><li>단점: 네트워크 지연·프라이버시</li></ul></li><li><b>OCSP Stapling</b>: 서버가 OCSP 응답을 미리 받아 TLS 핸드셰이크에 첨부 — 성능·프라이버시 개선</li></ul><h4>함정 포인트 — 각 보기의 실제 의미</h4><h5>A: RA(등록 기관) 부재</h5><ul><li>RA는 신원 확인·등록 접수를 담당하는 <b>CA의 대리인</b></li><li>RA 없으면 CA가 <b>직접 수행</b> → 업무 분산 없을 뿐 기능 자체는 유지</li><li>소규모 환경에서 흔한 구성 — 위험으로 보기 어려움</li><li>다만 대규모에서는 CA 부담 증가·확장성 저하</li></ul><h5>C: 공개키 포함</h5><ul><li>인증서의 <b>본질적 기능·필수 구성요소</b></li><li>공개키 없는 인증서는 존재 의미 없음</li><li><b>위험이 아닌 정상 동작</b> — 질문 의도와 반대되는 함정</li></ul><h5>D: 구독자 침해 보고</h5><ul><li><b>올바른 절차·모범 사례</b> — 즉시 폐기 요청</li><li>CA는 보고 받아 CRL·OCSP에 반영</li><li>이 절차가 <b>없다면</b>(A)이 위험 — 있는 것은 좋은 일</li><li>함정: 긍정적 조치를 부정적으로 보이게 포장</li></ul><h4>CRL 최신성 보장 방안</h4><ul><li><b>주기적 자동 갱신</b>: 시간 단위 생성·배포</li><li><b>Delta CRL</b>: 변경분만 배포 → 용량·속도 개선</li><li><b>OCSP 병행</b>: 실시간 확인으로 CRL 지연 보완</li><li><b>OCSP Stapling</b>: TLS 서버가 자동으로 최신 상태 제공</li><li><b>SCVP</b>: 서버 기반 인증서 유효성 검증 프로토콜</li><li><b>Short-lived Certificates</b>: 인증서 수명을 짧게(수 시간~일) → 폐기 필요 최소화</li></ul><h4>유명한 CRL·폐기 실패 사례</h4><ul><li><b>Heartbleed(2014)</b>: 대량 개인키 탈취 → 대규모 인증서 폐기 필요, CRL 크기 폭증</li><li><b>DigiNotar(2011)</b>: CA 침해 → 부정 인증서 발급, 폐기 지연으로 이란 사용자 MITM</li><li><b>Symantec(2017)</b>: 부정 발급 인증서 → Google/Mozilla가 전체 CA 신뢰 철회</li></ul><h4>CISA 감사 체크 — 인증서 검증 프로세스</h4><ul><li>CRL 갱신 주기·최신성</li><li>OCSP 가용성·응답 시간</li><li>OCSP Stapling 적용 여부</li><li>인증서 수명 정책</li><li>침해 보고 절차(SLA)</li><li>자동화된 인증서 관리(ACME·Certificate Manager)</li><li>Root CA·Intermediate CA 보호</li><li>만료 모니터링(시스템 장애 예방)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>인증서 검증 프로세스 MOST significant risk = CRL 최신 아님</b></li><li>RA 부재 = CA가 대체 가능 (낮은 위험)</li><li>공개키 포함 = 정상 동작 (위험 아님)</li><li>구독자 침해 보고 = 올바른 절차 (위험 아님)</li><li>CRL·OCSP 최신성이 <b>PKI 신뢰의 근본</b></li><li>폐기 관리 실패 = 탈취 인증서로 MITM·사칭·사기 가능</li><li>현대 권고: <b>OCSP Stapling + Short-lived Certificates</b>로 위험 최소화</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Certificate Revocation List and PKI Verification",
+keyConcepts:[
+"CRL 최신성 중요|최신 아니면 폐기된 인증서 유효로 오인 → MITM·사칭·사기 허용",
+"CRL vs OCSP|CRL=주기적 일괄 목록 / OCSP=실시간 단일 조회 — 병행이 모범",
+"OCSP Stapling|서버가 OCSP 응답 첨부 → 성능·프라이버시 개선",
+"폐기 사유|키 침해·퇴사·발급 오류·CA 침해·알고리즘 취약·변경 요청",
+"RA 부재 영향|CA가 직접 대체 — 불편하나 위험 아님",
+"공개키 포함|인증서 본질 기능 — 위험 아닌 정상 동작(함정)",
+"구독자 침해 보고|올바른 절차 — CA가 즉시 반영하여 위험 완화",
+"유명 실패 사례|DigiNotar·Heartbleed·Symantec — 폐기 관리 실패의 심각한 결과",
+"Short-lived Cert|수명 짧게(수시간~일) → 폐기 필요 최소화 (Let's Encrypt 90일 등)",
+"감사 체크|CRL 갱신 주기·OCSP 가용성·Stapling·수명 정책·침해 보고 SLA"
+]
+}
+,
+{
+id:578,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"An information systems (IS) auditor reviewing digital rights management applications should expect to find an extensive use for which of the following technologies?",
+questionKo:"<b>DRM(디지털 권리 관리) 애플리케이션</b>을 검토하는 IS 감사인이 광범위하게 사용된다고 예상해야 할 기술은?",
+options:[
+"A. Digitalized signatures",
+"B. Hashing",
+"C. Parsing",
+"D. Steganography"
+],
+optionsKo:[
+"A. <b>디지털화된 서명(Digitalized signatures)</b>",
+"B. <b>해싱(Hashing)</b>",
+"C. <b>파싱(Parsing)</b>",
+"D. <b>스테가노그래피(Steganography)</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>DRM 관련성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>Digitalized signatures</td><td>필기 서명의 <b>스캔 이미지</b> — 디지털 서명과 다름, DRM과 무관</td><td>부적합</td></tr><tr><td><b>B</b></td><td>Hashing</td><td>메시지 해시·다이제스트 생성 — 무결성 검증용. <b>암호학의 일부</b>이나 DRM 핵심 아님</td><td>부적합</td></tr><tr><td><b>C</b></td><td>Parsing</td><td>연속 문자열을 <b>분석적 목적으로 분할</b> — 프로그래밍 언어·데이터 입력 검증용. DRM과 무관</td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>Steganography</b></td><td class="correct-cell">다른 메시지 내에 <b>정보 존재를 은닉</b>하는 기법 — <b>Digital Watermarking</b>이 대표 응용. 이미지·음악 파일에 권리 정보를 보이지 않게 삽입 → DRM의 핵심 기술</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — Steganography와 DRM</h4><p><b>Steganography(스테가노그래피)</b>는 "감춰진 글쓰기"라는 그리스어 어원에서 유래한 기술로, <b>다른 데이터(커버 미디어) 안에 정보를 감추는 기술</b>이다. DRM에서는 <b>Digital Watermarking(디지털 워터마킹)</b> 형태로 광범위 사용.</p><h4>Digital Watermarking</h4><ul><li><b>정의</b>: 이미지·오디오·비디오·문서에 <b>저작권·권리 정보를 감지할 수 없게 삽입</b></li><li><b>목적</b>:<ul><li>저작권 소유자·라이선스 증명</li><li>유출·불법 복제 추적(Traitor Tracing)</li><li>무단 편집·변조 탐지</li><li>DRM 정책 집행</li></ul></li><li><b>특성</b>:<ul><li><b>지각 불가능(Imperceptibility)</b>: 눈·귀로 감지 불가</li><li><b>견고성(Robustness)</b>: 압축·필터·편집에도 유지</li><li><b>보안성</b>: 무단 제거·위조 방지</li></ul></li></ul><h4>DRM의 주요 기술 요소</h4><ul><li><b>암호화(Encryption)</b>: 콘텐츠 자체 암호화 → 라이선스 없이 재생 불가</li><li><b>라이선스 관리</b>: 재생 조건·기간·횟수·디바이스 제한</li><li><b>인증(Authentication)</b>: 사용자·디바이스 검증</li><li><b>Steganography/Watermarking</b>: <b>권리 정보 은닉·추적</b> ← 본 문제 핵심</li><li><b>Fingerprinting</b>: 각 배포 복사본에 고유 식별자 삽입 → 유출 출처 추적</li><li><b>Tamper Detection</b>: 변조 탐지·차단</li></ul><h4>Steganography vs Cryptography</h4><table><tr><th>구분</th><th>Steganography</th><th>Cryptography</th></tr><tr><td>목적</td><td>존재 은닉</td><td>내용 보호</td></tr><tr><td>전략</td><td>메시지 존재 자체를 숨김</td><td>내용을 읽을 수 없게 변환</td></tr><tr><td>공격자 관점</td><td>"숨겨진 것이 있는지 모름"</td><td>"암호화된 것이 있음을 알지만 못 읽음"</td></tr><tr><td>DRM에서</td><td>워터마크·흔적 추적</td><td>콘텐츠 암호화</td></tr><tr><td>조합</td><td>보안 강화를 위해 암호 + 스테가노 결합</td></tr></table><h4>실제 워터마킹 유형</h4><ul><li><b>Visible Watermark</b>: 보이는 로고·텍스트 (CNN 로고, 사진 브랜드)</li><li><b>Invisible Watermark</b>: 숨겨진 정보 — 검출 도구로만 확인</li><li><b>Robust Watermark</b>: 편집·압축에도 살아남음 — 저작권 증명</li><li><b>Fragile Watermark</b>: 변조 시 깨짐 — 무결성 증명</li><li><b>Semi-Fragile</b>: 경미한 변경은 견디고 심한 변조는 탐지</li></ul><h4>DRM에서의 Steganography 활용</h4><ul><li><b>영화·음악 배포</b>: Netflix·Spotify가 스트림에 고유 ID 삽입 → 유출 계정 식별</li><li><b>전자책</b>: Kindle 등이 구매자 ID를 미세 삽입</li><li><b>디지털 이미지</b>: 포토 뉴스·스톡 사진의 저작권 증명</li><li><b>소프트웨어</b>: 바이너리에 라이선스·버전 정보 은닉</li><li><b>3D 모델·CAD</b>: 도면 저작권 보호</li><li><b>의료 이미지</b>: 환자 정보·접근 이력 삽입</li></ul><h4>함정 포인트 — 각 오답 상세</h4><h5>A: Digitalized signatures</h5><ul><li>필기 서명의 <b>스캔·이미지화</b> — 단순 디지털 변환</li><li>디지털 서명(Digital Signature)과 <b>혼동 유발</b>되는 용어</li><li>DRM과 무관 — 단순 문서 서명 이미지</li></ul><h5>B: Hashing</h5><ul><li>DRM에서 무결성 검증·핑거프린트에 일부 사용</li><li>그러나 DRM의 <b>핵심·광범위 사용 기술은 아님</b></li><li>워터마킹·암호화가 더 중심</li></ul><h5>C: Parsing</h5><ul><li>구문 분석 — 프로그래밍 언어 컴파일러·데이터 입력 처리</li><li>DRM과 <b>전혀 무관</b>한 기술</li><li>명백한 오답 보기</li></ul><h4>Steganography 구현 기법</h4><ul><li><b>LSB(Least Significant Bit)</b>: 이미지 픽셀의 최하위 비트에 정보 삽입</li><li><b>주파수 도메인</b>: DCT·DWT 변환 후 계수에 삽입 (JPEG 압축에 강함)</li><li><b>Spread Spectrum</b>: 정보를 넓은 주파수 대역에 분산</li><li><b>Echo Hiding</b>: 오디오에 미세한 에코 삽입</li><li><b>Linguistic Steganography</b>: 텍스트 단어·구문 조정으로 정보 인코딩</li></ul><h4>DRM 감사 포인트</h4><ul><li>워터마킹 알고리즘 강도·견고성</li><li>암호화 표준(AES·FairPlay·PlayReady) 적용</li><li>라이선스 서버 보안·접근 통제</li><li>유출 추적 역량(Traitor Tracing)</li><li>사용자 프라이버시 vs 추적성 균형</li><li>워터마크 제거 공격 저항성</li><li>규제 준수(DMCA·EUCD 등)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>DRM 광범위 사용 기술 = Steganography(특히 Digital Watermarking)</b></li><li>Digitalized signature = 스캔 이미지 (digital signature와 다름)</li><li>Hashing = 무결성 검증 (DRM 핵심 아님)</li><li>Parsing = 구문 분석 (DRM 무관)</li><li>Watermarking: 저작권 증명 + 유출 추적 + 변조 탐지</li><li>Steganography는 <b>은닉</b>, Cryptography는 <b>변환</b> — 조합 시 최강 보안</li><li>감사: 알고리즘·견고성·제거 저항성·라이선스 관리·프라이버시</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Steganography, Watermarking, and DRM",
+keyConcepts:[
+"DRM 핵심 기술|Steganography(Digital Watermarking) — 권리 정보 은닉·유출 추적·변조 탐지",
+"Steganography 정의|다른 메시지 안에 정보 존재를 은닉 — 감춰진 글쓰기",
+"Watermarking 특성|지각 불가능·견고성·보안성 — 편집·압축·필터링에도 유지",
+"Watermark 유형|Visible(보이는 로고)·Invisible(숨겨진)·Robust(견고)·Fragile(변조 탐지)",
+"Steganography vs Cryptography|은닉(존재 숨김) vs 변환(내용 보호) — 조합 시 최강",
+"Digitalized vs Digital Signature|Digitalized=스캔 이미지 / Digital=암호학적 서명 — 혼동 유발 함정",
+"Fingerprinting|배포 복사본마다 고유 식별자 → 유출 출처 추적(Traitor Tracing)",
+"DRM 구성요소|암호화 + 라이선스 + 인증 + Watermark + Fingerprint + Tamper Detection",
+"실무 응용|Netflix·Spotify·Kindle·스톡 사진·의료 이미지·3D CAD 저작권 보호",
+"구현 기법|LSB·주파수 도메인(DCT/DWT)·Spread Spectrum·Echo Hiding·Linguistic"
+]
+}
+,
+{
+id:579,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following is the MOST reliable method to ensure identity of the sender for messages transferred across the Internet?",
+questionKo:"인터넷을 통해 전송되는 메시지의 <b>발신자 신원을 가장 신뢰성 있게 보장</b>하는 방법은?",
+options:[
+"A. Digital signatures",
+"B. Asymmetric cryptography",
+"C. Digital certificates",
+"D. Message authentication code"
+],
+optionsKo:[
+"A. <b>디지털 서명(Digital Signatures)</b>",
+"B. <b>비대칭 암호화(Asymmetric Cryptography)</b>",
+"C. <b>디지털 인증서(Digital Certificates)</b>",
+"D. <b>메시지 인증 코드(MAC)</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>발신자 신원 보증 능력</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>디지털 서명</td><td>인증·무결성 제공 그러나 <b>신원 확인은 디지털 인증서가 담당</b> — 서명 단독으로는 "이 공개키가 누구의 것인지" 보증 못함</td><td>부분적</td></tr><tr><td><b>B</b></td><td>비대칭 암호화</td><td>PKI처럼 발신자 인증 <b>외관</b>만 제공 — <b>MITM 공격에 취약</b> (중간자가 자신의 공개키를 밀어 넣을 수 있음)</td><td>취약</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>디지털 인증서</b></td><td class="correct-cell"><b>신뢰된 제3자(CA)가 발급</b> — 발신자가 인증서를 첨부하면 수신자는 CA 저장소에서 <b>진위 검증</b> 가능. <b>공개키와 신원의 신뢰 있는 결합</b> 제공</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>MAC</td><td><b>메시지 무결성 검증</b>용 — 공유 대칭키 기반이므로 누가 보냈는지 <b>특정 불가</b>(양측 동일 키)</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 발신자 신원 보증의 완성</h4><p>발신자 신원 확인은 <b>두 층으로 완성</b>된다:</p><ul><li><b>① 기술적 층</b>: 디지털 서명으로 "<b>이 개인키 소유자가 서명했다</b>" 증명</li><li><b>② 신뢰 층</b>: 디지털 인증서로 "<b>이 공개키는 실제로 X라는 사람의 것이다</b>" 증명</li><li>두 층이 함께 있어야 완전한 신원 보증 — <b>인증서가 최종 연결고리</b></li></ul><h4>왜 인증서가 MOST reliable인가</h4><ul><li><b>CA의 신원 실사</b>: 공인 CA가 신청자의 실제 신원을 검증 후 발급</li><li><b>CA 디지털 서명</b>: 인증서 내용을 CA가 서명 → 변조 방지</li><li><b>신뢰 체인</b>: Root CA → Intermediate CA → End Entity로 검증 가능</li><li><b>폐기 관리</b>: CRL·OCSP로 실시간 유효성 확인</li><li><b>공개 저장소</b>: 누구나 인증서 진위 확인 가능</li><li>따라서 "이 공개키가 정말 A의 것인가?"라는 근본 질문을 해결</li></ul><h4>함정 포인트 — A(디지털 서명) vs C(인증서) 구분</h4><table><tr><th>구분</th><th>디지털 서명</th><th>디지털 인증서</th></tr><tr><td>역할</td><td>개인키로 메시지 서명</td><td>공개키와 신원 결합</td></tr><tr><td>제공 속성</td><td>무결성·부인방지·출처 인증 (기술적)</td><td>공개키 소유자 신원 보증 (신뢰 기반)</td></tr><tr><td>단독 사용 시 문제</td><td><b>이 공개키가 누구의 것인지 모름</b></td><td>서명 검증을 위한 공개키 배포 도구</td></tr><tr><td>MITM 취약성</td><td>공개키 교환 시 취약</td><td>CA가 차단</td></tr></table><p>요약: 서명은 <b>행위 증명</b>, 인증서는 <b>신원 보증</b> — <b>완전한 신원 확인에는 인증서가 결정적</b></p><h4>B(비대칭 암호화 단독)의 MITM 취약성</h4><ul><li>A와 B가 공개키를 교환하는 상황</li><li>공격자 M이 <b>중간에 개입</b>하여 자기 공개키를 A에게 "B의 것"으로 전달</li><li>A는 M의 공개키로 메시지 암호화 → M이 가로채 복호화 후 B의 진짜 공개키로 재암호화 → B에게 전달</li><li>A와 B는 <b>누구와 통신하는지 확신 없음</b></li><li>해결: <b>CA가 서명한 인증서</b>로 공개키의 출처를 보증 → MITM 차단</li><li>따라서 "비대칭 암호화 + 인증서" 조합이 필요</li></ul><h4>D(MAC) 오답 이유</h4><ul><li>MAC은 <b>공유 대칭키</b> 기반 — 송수신자 양측 동일 키 보유</li><li>MAC이 유효하다고 해서 <b>누가 생성했는지 특정 불가</b> — 양측 중 누구나 가능</li><li>부인방지 불가 — 발신자가 "수신자가 꾸몄다" 주장 가능</li><li>무결성은 제공하나 <b>신원 증명에는 부적합</b></li><li>인터넷처럼 <b>공개 네트워크·대규모 참여자</b> 환경에서는 더욱 부적합</li></ul><h4>디지털 인증서의 신원 검증 흐름</h4><ul><li>① 발신자 A가 메시지 M에 <b>개인키로 서명</b> → S 생성</li><li>② 발신자가 M + S + <b>자신의 디지털 인증서(Cert_A)</b>를 전송</li><li>③ 수신자 B가 Cert_A의 유효성 검증:<ul><li>CA 서명 확인</li><li>CA를 신뢰 체인으로 Root까지 검증</li><li>CRL/OCSP로 폐기 여부 확인</li><li>유효 기간 확인</li></ul></li><li>④ 인증서에서 A의 공개키 추출</li><li>⑤ 공개키로 서명 S 검증 → 무결성·행위 확인</li><li>⑥ <b>최종 결론</b>: "이 메시지는 A가 보낸 것이 확실"</li><li>⑤만으로는 부족 — ③이 <b>신원 신뢰의 핵심</b></li></ul><h4>실무 적용 사례</h4><ul><li><b>HTTPS·TLS</b>: 웹 서버 인증서로 도메인 소유자 확인</li><li><b>S/MIME 이메일</b>: 이메일 인증서로 발신자 신원 확인</li><li><b>코드 서명</b>: 소프트웨어 개발자 인증서로 배포자 확인</li><li><b>금융 거래</b>: 공인인증서·PKI로 거래 당사자 확인</li><li><b>정부 전자문서</b>: 공인 인증서 기반 신원 확인</li><li><b>블록체인</b>: 주소·서명으로 자기 주장 신원 (분산형, 다른 모델)</li></ul><h4>Q561·Q562·Q569·Q579 비교</h4><table><tr><th>문제</th><th>질문 키워드</th><th>정답</th></tr><tr><td>Q561</td><td>C·I·N 모두 보장</td><td>Digital Certificate</td></tr><tr><td>Q562</td><td>"The use of" (source validation 보기)</td><td>Digital Signature</td></tr><tr><td>Q569</td><td>Originator verification (private key 보기)</td><td>Sign with sender's private key</td></tr><tr><td><b>Q579</b></td><td><b>MOST reliable identity (cert·sig 둘 다 보기)</b></td><td><b>Digital Certificate</b></td></tr></table><p>보기 구성·키워드에 따라 정답이 달라짐 — 인증서와 서명이 <b>함께 있으면 인증서 우선</b></p><h4>CISA 시험 핵심 정리</h4><ul><li><b>발신자 신원 MOST reliable = 디지털 인증서</b></li><li>디지털 서명만으로는 <b>공개키 출처 보증 불가</b></li><li>비대칭 암호화 단독 = <b>MITM 취약</b></li><li>MAC = 공유키 기반이라 <b>신원 특정 불가</b></li><li>인증서 = <b>CA가 공개키와 신원을 결합</b> → 신뢰 기반 제공</li><li>신원 확인 완전 구조: <b>서명(행위) + 인증서(신원) + CA(신뢰 체인) + CRL/OCSP(유효성)</b></li><li>Q562(use=signature)와 Q579(reliable identity=certificate) 구분: 보기에 <b>둘 다 있으면 인증서 우선</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Digital Certificates for Sender Identity Verification",
+keyConcepts:[
+"발신자 신원 MOST reliable|디지털 인증서 — CA가 공개키와 신원을 결합 보증",
+"서명 vs 인증서|서명=행위 증명(개인키 사용) / 인증서=신원 보증(공개키 출처)",
+"비대칭 단독 취약|MITM 공격으로 공개키 위조 가능 — 인증서 없으면 신뢰 불가",
+"MAC 한계|공유 대칭키 기반 — 누가 생성했는지 특정 불가, 부인방지 불가",
+"CA 역할|신원 실사·인증서 발급·서명·폐기 관리로 신뢰 부여",
+"신뢰 체인|Root CA → Intermediate CA → End Entity — 인증서 유효성 검증 경로",
+"완전 신원 확인 구조|서명(행위) + 인증서(신원) + CA(신뢰) + CRL/OCSP(유효성)",
+"Q561·Q562·Q569·Q579 구분|보기 구성으로 판별 — 서명·인증서 둘 다 있으면 인증서 우선",
+"MITM 차단 메커니즘|인증서의 CA 서명 검증 → 공격자 공개키 배제",
+"실무 적용|HTTPS·S/MIME·코드 서명·금융 공인인증서·정부 전자문서 모두 인증서 기반"
+]
+}
+,
+{
+id:580,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The MOST important difference between hashing and encryption is that hashing:",
+questionKo:"<b>해싱(Hashing)과 암호화(Encryption)의 가장 중요한 차이점</b>은 해싱이:",
+options:[
+"A. is irreversible.",
+"B. output is the same length as the original message.",
+"C. is concerned with integrity and security.",
+"D. is the same at the sending and receiving end."
+],
+optionsKo:[
+"A. <b>역산 불가능(irreversible)</b>하다",
+"B. 출력 길이가 <b>원본 메시지와 동일</b>하다",
+"C. <b>무결성과 보안</b>을 다룬다",
+"D. <b>송신과 수신 끝에서 동일</b>하다"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>해싱 vs 암호화 실제</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>역산 불가능</b></td><td class="correct-cell">해싱은 <b>단방향 함수</b> — 해시 값에서 원본 복구 불가능 / 암호화는 <b>양방향</b> — 키로 복호화 가능. 두 기술의 <b>본질적 차이</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>출력 길이 = 원본</td><td><b>반대</b> — 해싱은 <b>고정 길이 출력</b>(보통 원본보다 작음), 암호화는 원본과 유사한 길이</td><td>사실 반대</td></tr><tr><td><b>C</b></td><td>무결성·보안 다룸</td><td>해싱은 <b>무결성만</b> 다룸 — 보안(기밀성)은 암호화의 영역. "security" 포괄 용어가 모호</td><td>부정확</td></tr><tr><td><b>D</b></td><td>송수신 끝에서 동일</td><td>해싱은 맞지만 <b>가장 중요한 차이가 아님</b> — 사소한 특성. 핵심은 역산 가능성</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 해싱과 암호화의 본질적 차이</h4><p><b>방향성</b>이 두 기술의 <b>가장 근본적 차이</b>다:</p><ul><li><b>해싱</b>: <b>단방향(One-way)</b> — 원본 → 해시 (돌릴 수 없음)</li><li><b>암호화</b>: <b>양방향(Two-way)</b> — 원본 ↔ 암호문 (키로 복구 가능)</li></ul><h4>주요 차이점 종합 비교</h4><table><tr><th>구분</th><th>해싱</th><th>암호화</th></tr><tr><td><b>방향성(핵심)</b></td><td><b>단방향·역산 불가</b></td><td><b>양방향·복호화 가능</b></td></tr><tr><td>키 필요성</td><td>보통 불필요(HMAC은 예외)</td><td>필수(대칭·비대칭)</td></tr><tr><td>출력 길이</td><td>고정(128~512비트)</td><td>원본과 유사 또는 약간 김</td></tr><tr><td>목적</td><td>무결성·식별·패스워드 저장</td><td>기밀성</td></tr><tr><td>충돌 가능성</td><td>이론적 존재(가능성 극저)</td><td>역함수 관계로 충돌 없음</td></tr><tr><td>대표 알고리즘</td><td>SHA-256·SHA-3·BLAKE2·bcrypt</td><td>AES·RSA·ChaCha20</td></tr><tr><td>사용 예</td><td>파일 무결성·패스워드·블록체인</td><td>TLS·이메일·디스크 암호화</td></tr></table><h4>A가 정답인 이유</h4><ul><li><b>본질적·기능적 차이</b>: 방향성이 두 기술의 <b>존재 이유</b>를 결정</li><li><b>응용 분야 결정</b>: 역산 가능성이 <b>사용 시나리오</b>를 나눔<ul><li>역산 불가(해싱) → 패스워드 저장·무결성 검증</li><li>역산 가능(암호화) → 메시지 보호·데이터 복구</li></ul></li><li>다른 차이(출력 길이·키 유무 등)는 <b>방향성에서 파생되는 부차적 특성</b></li><li>CISA 관점: 개념의 <b>1차 구분 기준</b>이 가장 중요</li></ul><h4>B(출력 길이) 오답 이유</h4><ul><li>정반대 — 해싱은 <b>고정 길이 출력</b>:<ul><li>MD5: 128비트</li><li>SHA-1: 160비트</li><li>SHA-256: 256비트</li><li>SHA-512: 512비트</li></ul></li><li>1바이트든 1TB든 동일한 해시 길이</li><li>암호화는 원본과 <b>비슷한 길이</b>(블록 암호는 패딩으로 약간 김)</li><li>따라서 "출력 길이 = 원본"은 해싱에 <b>거짓 주장</b></li></ul><h4>C(무결성·보안 다룸) 오답 이유</h4><ul><li>해싱은 <b>무결성만</b> 제공 — 보안(기밀성)은 다루지 않음</li><li>"security"는 포괄적 용어로 기밀성 포함 → 부정확한 주장</li><li>해시 값만 보이면 원본 내용은 <b>보안상 그대로 노출 가능</b></li><li>비밀번호는 해시 + <b>Salt + 암호학적 해시</b>로 특수 처리 필요</li></ul><h4>D(송수신 동일) 오답 이유</h4><ul><li>이 특성은 <b>맞지만 "가장 중요한 차이"가 아님</b></li><li>사소한 운영적 특성일 뿐</li><li>질문 "MOST important difference" → <b>본질적 차이(역산 가능성)</b>가 답</li><li>오답 유형: 정확하지만 <b>핵심이 아닌</b> 보기</li></ul><h4>해싱의 활용 시나리오</h4><ul><li><b>패스워드 저장</b>: 원본 비밀번호 저장하지 않고 해시만 저장 → 유출 시에도 원본 보호</li><li><b>파일 무결성 검증</b>: 다운로드 파일 해시 비교</li><li><b>디지털 서명</b>: 메시지 해시를 서명 → 성능·무결성</li><li><b>블록체인</b>: 블록 해시로 체인 연결</li><li><b>데이터 중복 제거</b>: 해시 비교로 동일 파일 식별</li><li><b>HMAC</b>: 해시 + 공유키 → 메시지 인증</li><li><b>Proof of Work</b>: 특정 패턴의 해시를 찾는 계산 증명</li></ul><h4>암호화의 활용 시나리오</h4><ul><li><b>통신 보안</b>: TLS·VPN·SSH</li><li><b>저장 데이터</b>: 디스크 암호화·DB 암호화·USB 암호화</li><li><b>이메일 보안</b>: S/MIME·PGP</li><li><b>파일 보호</b>: ZIP 암호화·문서 암호화</li><li><b>데이터베이스</b>: TDE·컬럼 암호화</li><li><b>클라우드</b>: 객체 스토리지 암호화</li></ul><h4>혼동하기 쉬운 경계 사례</h4><ul><li><b>HMAC</b>: 해시 + 키 → 무결성·인증 (여전히 단방향)</li><li><b>PBKDF2·Argon2</b>: 패스워드 해싱 전용 — 해싱의 특수화</li><li><b>암호화된 해시</b>: 디지털 서명의 일부 — 해시를 암호화</li><li><b>Encrypted Hash Function</b>: 구조적 해시 (암호학적 해시 = 충돌 저항 등)</li><li>기본 구분: <b>복구 가능성</b>이 기준</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>해싱 vs 암호화 MOST important 차이 = 역산 가능성(단방향 vs 양방향)</b></li><li>출력 길이·목적·키 사용 등은 <b>방향성에서 파생된 특성</b></li><li>해싱 용도: 무결성·패스워드·식별 / 암호화 용도: 기밀성</li><li>"security" 같은 포괄 용어는 정답 후보에서 제외하는 경향</li><li>"MOST important" 키워드: <b>본질적·근본적 차이</b> 선택</li><li>SHA-256(256비트)·MD5(128비트)·AES(블록 128비트 키 128~256) 알고리즘 특성 숙지</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Hashing vs Encryption Fundamental Differences",
+keyConcepts:[
+"해싱 vs 암호화 핵심|역산 가능성 — 해싱=단방향(irreversible) / 암호화=양방향(reversible)",
+"해싱 특성|고정 길이 출력·키 불필요(HMAC 제외)·충돌 이론적 가능·무결성 목적",
+"암호화 특성|원본 유사 길이·키 필수·역함수·기밀성 목적",
+"해싱 용도|패스워드 저장·파일 무결성·디지털 서명·블록체인·중복 제거·HMAC",
+"암호화 용도|통신(TLS)·저장(디스크·DB)·이메일(S/MIME)·파일·클라우드",
+"B 오답|해싱 출력은 고정 길이이지 원본과 동일 아님 — 정반대 주장",
+"C 오답|해싱은 무결성만, 기밀성(security)은 암호화의 영역 — 포괄 용어 모호",
+"D 오답|송수신 동일은 맞지만 핵심 차이 아님 — 사소한 특성",
+"혼동 경계|HMAC·PBKDF2·Argon2는 해싱 특수화 / 디지털 서명은 해시+암호화 조합",
+"MOST important 원칙|본질적·근본적 차이 우선 — 부차적 특성은 오답"
+]
+}
+,
+{
+id:581,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"A Transmission Control Protocol/Internet Protocol (TCP/IP)-based environment is exposed to the Internet. Which of the following BEST ensures that complete encryption and authentication protocols exist for protecting information while transmitted?",
+questionKo:"인터넷에 노출된 <b>TCP/IP 기반 환경</b>에서 전송 중 정보 보호를 위한 <b>완전한 암호화·인증 프로토콜</b>을 가장 잘 보장하는 것은?",
+options:[
+"A. Work is completed in tunnel mode with internet protocol (IP) security.",
+"B. A digital signature with RSA has been implemented.",
+"C. Digital certificates with RSA are being used.",
+"D. Work is being completed in transmission control protocol (TCP) services."
+],
+optionsKo:[
+"A. <b>IPsec 터널 모드(Tunnel mode)</b>로 작업 수행",
+"B. <b>RSA 디지털 서명</b> 구현",
+"C. <b>RSA 디지털 인증서</b> 사용",
+"D. <b>TCP 서비스</b>로 작업 수행"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>기술</th><th>완전한 암호화+인증 제공 여부</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>IPsec 터널 모드</b></td><td class="correct-cell"><b>IP 패킷 전체</b>(헤더+페이로드)를 <b>암호화(ESP) + 인증(AH)</b> → AH와 ESP를 중첩하여 완전한 보호. VPN 표준</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>RSA 디지털 서명</td><td>인증·무결성 제공 / <b>기밀성(암호화) 없음</b> — 메시지 평문 노출</td><td>부분적</td></tr><tr><td><b>C</b></td><td>RSA 디지털 인증서</td><td>인증·무결성 제공 / <b>암호화 자체는 제공 안 함</b> — 공개키 분배 수단일 뿐</td><td>부분적</td></tr><tr><td><b>D</b></td><td>TCP 서비스</td><td>TCP는 <b>전송 신뢰성</b>만 담당 — 암호화·인증 기능 <b>전혀 없음</b></td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — IPsec(Internet Protocol Security)</h4><p><b>IPsec</b>은 IP 계층(L3)에서 <b>암호화·인증·무결성</b>을 통합 제공하는 프로토콜 모음. VPN의 사실상 표준.</p><h4>IPsec의 2가지 동작 모드</h4><table><tr><th>모드</th><th>보호 범위</th><th>용도</th></tr><tr><td><b>Transport 모드</b></td><td>페이로드만 보호 (IP 헤더 평문)</td><td>호스트간 직접 통신</td></tr><tr><td><b>Tunnel 모드</b></td><td><b>IP 패킷 전체</b>(헤더+페이로드) 보호 → 새 IP 헤더로 캡슐화</td><td>VPN·사이트간 연결 ← <b>본 문제</b></td></tr></table><h4>IPsec의 2가지 보안 프로토콜</h4><ul><li><b>AH(Authentication Header)</b>:<ul><li>인증 + 무결성 + 순서 보장</li><li>패킷 전체 해시 서명</li><li><b>암호화는 없음</b>(기밀성 없음)</li></ul></li><li><b>ESP(Encapsulating Security Payload)</b>:<ul><li><b>암호화</b>(기밀성) + 선택적 인증·무결성</li><li>AES·3DES로 페이로드 암호화</li><li>선택적으로 인증 태그 포함</li></ul></li><li><b>AH + ESP 중첩</b>: <b>완전한 암호화 + 완전한 인증</b> 구현 ← 본 문제 "complete" 키워드 대응</li></ul><h4>Tunnel 모드 + ESP/AH의 보호 범위</h4><ul><li>원본 IP 패킷(헤더 + 페이로드) 전체를 ESP로 <b>암호화</b></li><li>AH로 전체 패킷 <b>인증</b></li><li>새 외부 IP 헤더로 캡슐화 → 라우팅</li><li>공격자는 내부 IP·포트·콘텐츠 모두 알 수 없음</li><li>VPN 게이트웨이 간 통신에 최적</li></ul><h4>왜 A가 BEST인가</h4><ul><li><b>완전한 암호화</b>: ESP로 IP 패킷 전체 기밀성 보호</li><li><b>완전한 인증</b>: AH로 송수신자·무결성 검증</li><li><b>L3 통합</b>: 모든 상위 프로토콜(TCP·UDP·ICMP) 자동 보호</li><li><b>투명성</b>: 애플리케이션 수정 불필요</li><li><b>표준화</b>: RFC 4301·4302·4303 — 광범위 지원</li><li>B·C는 암호화 자체 없고, D는 보안 기능 자체 없음 → A만이 "complete"</li></ul><h4>함정 포인트 — B·C의 한계</h4><h5>B: RSA 디지털 서명</h5><ul><li>메시지의 해시를 개인키로 서명 → 인증·무결성·부인방지</li><li><b>메시지 본문은 평문</b> — 암호화 없음</li><li>"complete encryption and authentication" 요구 충족 못함</li></ul><h5>C: RSA 디지털 인증서</h5><ul><li>공개키와 신원을 결합한 <b>신뢰 수단</b></li><li>그 자체로는 <b>암호화 동작 수행 안 함</b></li><li>서명 검증·키 교환에 사용되는 <b>보조 인프라</b></li><li>암호화를 위해 <b>추가 프로토콜</b>(TLS·IPsec 등) 필요</li></ul><h5>D: TCP 서비스</h5><ul><li>TCP는 L4 전송 계층 — <b>순서·재전송·흐름 제어</b> 담당</li><li>암호화·인증 기능 <b>전혀 없음</b></li><li>TCP만으로는 평문 통신</li><li>TCP 위에 TLS·IPsec 등을 얹어야 보안 확보</li></ul><h4>IPsec의 키 교환</h4><ul><li><b>IKE(Internet Key Exchange)</b>: 자동 키 협상·교환</li><li><b>IKEv1·IKEv2</b>: 협상 프로토콜 버전</li><li><b>Phase 1</b>: IKE SA 성립 (관리 채널)</li><li><b>Phase 2</b>: IPsec SA 성립 (데이터 채널)</li><li>Diffie-Hellman 기반 안전한 키 합의</li><li>사전 공유 키(PSK) 또는 <b>디지털 인증서(RSA)</b>로 인증</li><li>여기서 보기 C(RSA 인증서)가 IPsec의 <b>인증 요소</b>로 쓰일 수 있으나 암호화 자체는 IPsec이 담당</li></ul><h4>IPsec vs 다른 VPN/보안 프로토콜</h4><table><tr><th>프로토콜</th><th>계층</th><th>특징</th></tr><tr><td><b>IPsec</b></td><td>L3(IP)</td><td>투명·범용·VPN 표준</td></tr><tr><td>TLS/SSL</td><td>L4-5 위</td><td>애플리케이션 지원 필요·웹 표준</td></tr><tr><td>SSH</td><td>L7</td><td>원격 접속·파일 전송·터널</td></tr><tr><td>WireGuard</td><td>L3/L4</td><td>최신 VPN·빠르고 간결</td></tr></table><h4>IPsec 실무 적용</h4><ul><li><b>사이트 간 VPN</b>: 본사-지사 네트워크 연결</li><li><b>원격 접속 VPN</b>: 모바일 직원·재택근무</li><li><b>클라우드 연결</b>: AWS·Azure Site-to-Site VPN</li><li><b>보안 라우팅</b>: 민감 트래픽 전용 경로</li><li><b>IPv6 표준</b>: IPv6은 IPsec을 <b>선택 사항</b>으로 내장</li></ul><h4>감사 포인트</h4><ul><li>IPsec 활성화 여부·모드(Tunnel vs Transport)</li><li>AH·ESP 사용·알고리즘 강도(AES-GCM·SHA-256 이상)</li><li>IKE 버전(IKEv2 권장)·사전 공유 키 강도</li><li>인증서 기반 인증 vs PSK</li><li>NAT-T(NAT Traversal) 설정</li><li>Dead Peer Detection·Rekey 정책</li><li>VPN 로그·이상 탐지</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>완전한 암호화+인증 = IPsec 터널 모드(A)</b></li><li>AH=인증·무결성 / ESP=암호화·선택적 인증 — <b>결합 시 완전 보호</b></li><li>RSA 서명·인증서는 <b>부분적 기능</b>(암호화 단독 제공 안 함)</li><li>TCP는 <b>보안 기능 없음</b></li><li>Tunnel 모드는 VPN·사이트 간 표준</li><li>"complete encryption and authentication" 키워드 = <b>통합 보안 프로토콜</b>(IPsec)</li><li>IPsec은 IPv6의 선택 기능으로 내장</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — IPsec Tunnel Mode for Complete Protection",
+keyConcepts:[
+"IPsec 터널 모드|IP 패킷 전체(헤더+페이로드) 암호화·인증 — VPN 표준·완전 보호",
+"AH vs ESP|AH=인증·무결성 / ESP=암호화·선택적 인증 — 결합 시 완전 보호",
+"Transport vs Tunnel|Transport=페이로드만 / Tunnel=전체 패킷 — 본 문제는 Tunnel",
+"RSA 서명 한계|인증·무결성·부인방지만 — 암호화(기밀성) 없음",
+"RSA 인증서 한계|공개키-신원 결합 수단 — 암호화 동작 직접 수행 안 함",
+"TCP 한계|L4 전송 신뢰성만 — 암호화·인증 기능 전혀 없음",
+"IKE 키 교환|IKEv1/v2 · DH 기반 · PSK 또는 RSA 인증서 인증",
+"IPsec vs TLS|IPsec=L3 범용 투명 / TLS=L4-5 위 애플리케이션 지원 필요",
+"IPv6 통합|IPsec을 선택 기능으로 내장 — IPv4에서는 별도 구성",
+"감사 체크|모드·AH/ESP·알고리즘·IKE 버전·PSK 강도·인증서·NAT-T·로그"
+]
+}
+,
+{
+id:582,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The information systems (IS) auditor is reviewing findings from a prior IS audit of a hospital. One finding indicates that the organization was using email to communicate sensitive patient issues. The IT manager indicates that to address this finding, the organization has implemented digital signatures for all email users. What should the IS auditor's response be?",
+questionKo:"IS 감사인이 병원의 <b>이전 IS 감사 결과</b>를 검토하고 있다. 한 가지 발견사항은 조직이 <b>민감한 환자 정보를 이메일로 소통</b>했다는 것이다. IT 관리자는 이 발견사항을 해결하기 위해 <b>모든 이메일 사용자에게 디지털 서명을 구현했다</b>고 말한다. 감사인의 적절한 대응은?",
+options:[
+"A. Digital signatures are not adequate to protect confidentiality.",
+"B. Digital signatures are adequate to protect confidentiality.",
+"C. The IS auditor should gather more information about the specific implementation.",
+"D. The IS auditor should recommend implementation of digital watermarking for secure email."
+],
+optionsKo:[
+"A. <b>디지털 서명은 기밀성 보호에 충분하지 않다</b>고 대응",
+"B. 디지털 서명은 <b>기밀성 보호에 충분하다</b>고 대응",
+"C. 구체적 구현에 대해 <b>추가 정보를 수집</b>해야 함",
+"D. 안전한 이메일을 위해 <b>디지털 워터마킹 구현을 권고</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>대응</th><th>적절성 분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>디지털 서명은 기밀성에 불충분</b></td><td class="correct-cell">디지털 서명은 <b>인증·무결성·부인방지</b>만 제공 / <b>기밀성(암호화) 없음</b> — 이전 발견사항(민감 환자 정보 노출)은 <b>기밀성 문제</b>이므로 서명은 해결책이 아님</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>기밀성에 충분</td><td>명백한 오류 — 서명은 메시지를 암호화하지 않아 공격자가 가로채면 <b>평문 읽기 가능</b></td><td>사실 반대</td></tr><tr><td><b>C</b></td><td>추가 정보 수집</td><td>일반적으로 좋은 감사 관행이나, 이 경우 <b>구현 세부와 무관하게</b> 서명만으로는 기밀성 해결 불가 → 답이 이미 명확</td><td>불필요한 지연</td></tr><tr><td><b>D</b></td><td>디지털 워터마킹 권고</td><td>워터마킹은 <b>지적재산권 보호·DRM</b>용 — 이메일 기밀성 해결책이 아님</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 발견사항과 해결책의 정합성</h4><p>감사 findings 시정 조치의 핵심은 <b>원인과 해결책이 정확히 일치</b>하는가이다. 본 시나리오:</p><ul><li><b>문제(Finding)</b>: 민감 환자 정보가 <b>평문 이메일</b>로 송수신 → <b>기밀성(Confidentiality) 침해</b></li><li><b>제시된 해결책</b>: 디지털 서명 도입</li><li><b>평가</b>: 디지털 서명은 <b>무결성·인증·부인방지</b>만 제공 → 기밀성 문제 <b>미해결</b></li><li>올바른 해결책: <b>이메일 암호화</b>(S/MIME·PGP) — 민감 내용 암호화</li></ul><h4>디지털 서명의 정확한 기능</h4><ul><li><b>제공</b>:<ul><li><b>Integrity</b>: 메시지 변조 탐지</li><li><b>Authentication</b>: 발신자 신원 확인</li><li><b>Nonrepudiation</b>: 발신자의 부인 방지</li></ul></li><li><b>제공하지 않음</b>:<ul><li><b>Confidentiality</b>: 암호화 아님 — 메시지 본문 평문</li><li><b>Availability</b>: 서명과 무관</li></ul></li><li>HIPAA(의료정보보호법) 관점에서 환자 정보는 <b>암호화 필수</b> → 서명만으로는 규제 위반</li></ul><h4>의료 데이터와 HIPAA</h4><ul><li>미국 HIPAA(Health Insurance Portability and Accountability Act): PHI(Protected Health Information) 보호 의무</li><li><b>전송 중 암호화</b>(Transit Encryption) 요구</li><li><b>저장 중 암호화</b>(Rest Encryption) 요구</li><li>이메일 PHI 전송 시 <b>TLS·S/MIME·암호화된 포털</b> 등 필요</li><li>디지털 서명 단독 = <b>규제 미준수</b></li><li>유사 규제: GDPR(EU)·HIPAA(US)·PIPEDA(캐나다) 등 모두 기밀성 요구</li></ul><h4>올바른 해결책 — 이메일 기밀성 보장</h4><ul><li><b>S/MIME</b>: PKI 기반 이메일 암호화·서명 (수신자 공개키 암호화)</li><li><b>PGP/GPG</b>: Web of Trust 기반 이메일 암호화·서명</li><li><b>TLS(STARTTLS)</b>: 전송 구간 암호화 (서버 간)</li><li><b>보안 포털(Secure Messaging Portal)</b>: 웹 기반 암호화 메시지 교환</li><li><b>Opportunistic Encryption</b>: 가능한 경우 자동 암호화</li><li>심층 방어: <b>서명 + 암호화 + DLP + 접근통제 + 교육</b></li></ul><h4>함정 포인트 — C(추가 정보 수집) 오답 이유</h4><ul><li>일반적으로 감사인은 <b>증거 기반·신중한 접근</b> 선호 → C가 매력적 보기로 보임</li><li>그러나 본 시나리오는 <b>"디지털 서명 = 기밀성 해결"</b>이라는 명제가 <b>기술적으로 불가능</b></li><li>추가 정보를 수집하더라도 <b>결론은 변하지 않음</b> — 서명은 기밀성 제공 못함</li><li>따라서 <b>즉시 지적</b>이 올바른 대응</li><li>CISA 시험 교훈: "더 조사"가 항상 정답은 아님 — <b>명확한 원칙 위배</b> 시 즉시 대응</li></ul><h4>D(워터마킹) 오답 이유</h4><ul><li>디지털 워터마킹 = <b>DRM·지적재산권 증명</b>용</li><li>이메일 기밀성과 <b>완전 무관</b>한 기술</li><li>워터마킹은 저작권 추적·변조 탐지용 (Q578 참조)</li><li>명백한 오답 — 기술 오용의 함정</li></ul><h4>올바른 감사 대응 플로우</h4><ul><li>① Finding 검토: 원 발견사항 = <b>기밀성 문제</b></li><li>② 제시된 해결책 분석: 디지털 서명 ≠ 기밀성 통제</li><li>③ 기술적 근거 확인: 서명의 3가지 속성 중 기밀성 없음</li><li>④ 대응: <b>시정 조치 불충분</b> 보고 + 암호화 권고</li><li>⑤ 후속: 이메일 암호화 구현·정책 수립·사용자 교육</li></ul><h4>C·I·A·N 매핑 재확인</h4><table><tr><th>속성</th><th>적합 통제</th><th>디지털 서명 제공</th></tr><tr><td>Confidentiality</td><td>암호화(AES·RSA)</td><td>✗</td></tr><tr><td>Integrity</td><td>해시·서명·HMAC</td><td>✓</td></tr><tr><td>Authentication</td><td>서명·인증서·MFA</td><td>✓</td></tr><tr><td>Nonrepudiation</td><td>서명(PKI)</td><td>✓</td></tr></table><p>Finding = C(기밀성) 영역 → <b>암호화</b>가 해결책, 서명은 부족</p><h4>CISA 시험 핵심 정리</h4><ul><li><b>문제-해결책 정합성</b>: 발견사항의 <b>본질적 영역</b>과 해결책의 기능이 일치해야 함</li><li>디지털 서명 ≠ 기밀성 → 평문 이메일 문제 해결 못함</li><li>규제(HIPAA 등) 관점에서 암호화 필수</li><li>"더 조사"(C)가 매력적이지만 기술적으로 명확한 경우 즉시 지적</li><li>워터마킹(D)은 DRM용 — 이메일 기밀성과 무관</li><li>올바른 해결책: <b>S/MIME·PGP·보안 포털</b></li><li>감사 원칙: <b>즉시 지적 vs 추가 조사</b> — 기술적 원리로 판별</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Audit Response to Inadequate Email Security Controls",
+keyConcepts:[
+"Finding-해결책 정합성|기밀성 문제에는 암호화, 서명은 인증·무결성·부인방지 전용",
+"디지털 서명 제공 속성|Integrity + Authentication + Nonrepudiation — 기밀성 없음",
+"기밀성 요구 상황|의료(HIPAA)·금융·개인정보 — 암호화 필수, 서명만으로 규제 미준수",
+"올바른 이메일 기밀성|S/MIME·PGP·TLS·보안 포털 — 수신자 공개키 암호화",
+"HIPAA 요구|PHI 전송·저장 암호화 의무 — 서명 단독 = 규제 위반",
+"감사 대응 원칙|기술적으로 명확한 경우 즉시 지적 / 불확실 시 추가 조사",
+"C(더 조사) 함정|일반적으로 좋은 관행이나 원칙 위배 명백 시 지연 이유 없음",
+"워터마킹 용도|DRM·지적재산권 — 이메일 기밀성과 무관(Q578 참조)",
+"심층 방어 구성|서명 + 암호화 + DLP + 접근통제 + 교육 통합",
+"CIA 매핑|C=암호화 / I=해시·서명 / A=백업·이중화 — 원인에 맞는 통제 선택"
+]
+}
+,
+{
+id:583,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The cryptographic hash sum of a message is recalculated by the receiver. This is to ensure:",
+questionKo:"수신자가 <b>메시지의 암호학적 해시 합(hash sum)을 재계산</b>한다. 이것의 목적은?",
+options:[
+"A. the confidentiality of the message.",
+"B. nonrepudiation by the sender.",
+"C. the authenticity of the message.",
+"D. the integrity of data transmitted by the sender."
+],
+optionsKo:[
+"A. 메시지의 <b>기밀성</b>",
+"B. 송신자의 <b>부인방지</b>",
+"C. 메시지의 <b>진정성(authenticity)</b>",
+"D. 송신자가 전송한 <b>데이터의 무결성</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>속성</th><th>해시 재계산과의 관계</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>기밀성</td><td>기밀성은 <b>비밀키 암호화</b>로 제공 — 해시 재계산은 암호화 아님</td><td>부적합</td></tr><tr><td><b>B</b></td><td>부인방지</td><td>부인방지는 <b>송신자 개인키 서명</b>에서 나옴 — 해시 재계산만으로는 불충분</td><td>부적합</td></tr><tr><td><b>C</b></td><td>진정성(Authenticity)</td><td>진정성은 <b>디지털 서명</b>이 제공 — 해시만으로는 누가 보냈는지 증명 못함</td><td>부적합</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>데이터 무결성</b></td><td class="correct-cell">기대 해시와 다르면 <b>메시지 변조됨</b>을 의미 → 변조 탐지·<b>무결성 검증</b>. 해시 재계산의 정확한 목적</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 해시 재계산의 목적</h4><p>수신자가 해시를 <b>재계산하는 유일한 이유</b>는 <b>원본 해시와 비교하여 변조 여부 확인</b>(무결성 검증)이다.</p><h4>해시 재계산 비교 절차</h4><ul><li>① 송신자: 메시지 M으로 해시 H(M) 계산 → M과 함께 전송</li><li>② 수신자: 수신한 메시지 M'에서 <b>해시 H(M') 재계산</b></li><li>③ 비교: H(M) == H(M')?<ul><li>일치 → <b>변조 없음</b> = 무결성 확인</li><li>불일치 → <b>변조 발생</b> = 메시지 거부</li></ul></li><li>이 전 절차의 목적이 <b>무결성</b> (D)</li></ul><h4>각 보안 속성 제공 메커니즘</h4><table><tr><th>속성</th><th>제공 기술</th><th>해시 재계산 기여</th></tr><tr><td><b>Integrity(무결성)</b></td><td><b>해시·MAC</b></td><td><b>✓ 직접 제공</b></td></tr><tr><td>Confidentiality(기밀성)</td><td>암호화</td><td>✗</td></tr><tr><td>Authentication(진정성)</td><td>디지털 서명</td><td>간접(서명 내부에서)</td></tr><tr><td>Nonrepudiation(부인방지)</td><td>서명 + PKI</td><td>간접(서명 내부에서)</td></tr></table><p>해시 재계산 <b>그 자체</b>는 오직 <b>무결성</b>만 직접 제공</p><h4>함정 포인트 — C(진정성) 오답 이유</h4><ul><li>"Authenticity"는 <b>발신자 신원 확인</b> 개념</li><li>해시만으로는 누가 생성했는지 모름 — <b>공격자도 해시 계산 가능</b></li><li>진정성은 <b>서명(개인키로 해시 암호화)</b>에서 나옴</li><li>디지털 서명 = 해시 + 개인키 암호화 → 서명 내에 해시 포함되지만 <b>해시 재계산 자체의 목적은 무결성</b></li><li>질문이 "hash sum 재계산"이라는 좁은 행위에 집중 → 무결성만 해당</li></ul><h4>A(기밀성) 오답 이유</h4><ul><li>해시는 <b>단방향 함수</b>로 원본 숨기지 않음</li><li>같은 입력은 항상 같은 해시 → 사전 공격으로 추정 가능</li><li>기밀성은 <b>암호화(대칭·비대칭)</b>의 영역</li><li>해시는 기밀성과 <b>완전 무관</b></li></ul><h4>B(부인방지) 오답 이유</h4><ul><li>부인방지는 <b>개인키 서명 + CA 인증서</b>로 달성</li><li>해시만으로는 송신자 특정 불가 → 부인 가능</li><li>HMAC(해시+공유키)도 <b>공유키 기반</b>이라 부인방지 제공 못함</li><li>진정한 부인방지는 <b>비대칭 개인키 서명</b>만 가능</li></ul><h4>해시 vs 서명 vs MAC</h4><table><tr><th>기술</th><th>구조</th><th>제공 속성</th></tr><tr><td>해시(Hash)</td><td>메시지 → 다이제스트</td><td>무결성</td></tr><tr><td>MAC·HMAC</td><td>해시 + 공유키</td><td>무결성 + 인증(대칭)</td></tr><tr><td>디지털 서명</td><td>해시 + 개인키 서명</td><td>무결성 + 인증 + 부인방지</td></tr></table><p>해시는 <b>가장 단순한 무결성 통제</b> — 재계산은 해시의 본질적 동작</p><h4>해시의 눈사태 효과</h4><ul><li>1비트 변경도 해시 완전히 달라짐</li><li>SHA-256 예:<ul><li>"Hello" → 185f8db3...</li><li>"Hello!" → 334d016f... (완전 다름)</li></ul></li><li>따라서 <b>변조 탐지에 극히 민감</b></li><li>이 특성이 무결성 검증의 기반</li></ul><h4>해시 재계산 불일치의 원인</h4><ul><li><b>의도적 변조</b>: 공격자가 메시지 내용 변경</li><li><b>전송 오류</b>: 네트워크 비트 오류·손상</li><li><b>잘못된 알고리즘</b>: 송수신 다른 해시 함수 사용</li><li><b>구현 버그</b>: 인코딩·패딩 차이</li><li>어느 경우든 <b>무결성 보증 실패</b>로 메시지 거부</li></ul><h4>실무 적용</h4><ul><li><b>파일 다운로드</b>: SHA-256 해시 공개 → 사용자 재계산 비교</li><li><b>디지털 서명 내부</b>: 서명 검증의 하위 단계</li><li><b>TLS Finished 메시지</b>: 핸드셰이크 무결성 확인</li><li><b>Git 커밋</b>: 커밋 해시로 변조 탐지</li><li><b>패치 관리</b>: 패치 파일 해시 검증</li><li><b>백업 검증</b>: 백업 무결성 확인</li></ul><h4>Q563·Q568·Q575·Q583 정리</h4><table><tr><th>문제</th><th>질문</th><th>정답</th></tr><tr><td>Q563</td><td>서명 1차 이유 (data 속성)</td><td>Integrity</td></tr><tr><td>Q568</td><td>다이제스트 계산 주체</td><td>송신자+수신자 모두</td></tr><tr><td>Q575</td><td>서명에 다이제스트 포함 이유</td><td>변조 탐지(무결성)</td></tr><tr><td><b>Q583</b></td><td><b>해시 재계산 목적</b></td><td><b>무결성</b></td></tr></table><p>해시·다이제스트 관련 질문은 거의 모두 <b>무결성</b>으로 귀결</p><h4>CISA 시험 핵심 정리</h4><ul><li><b>해시 재계산 목적 = 데이터 무결성 검증</b></li><li>해시 = 단방향 함수로 <b>변조 탐지</b>에 특화</li><li>기밀성 = 암호화 / 진정성 = 서명 / 부인방지 = 서명+PKI</li><li>해시만으로는 무결성만 제공 — 다른 속성은 추가 메커니즘 필요</li><li>MAC·디지털 서명은 해시의 <b>확장·보강</b></li><li>눈사태 효과: 1비트 변경도 완전히 다른 해시 → 극민감 탐지</li><li>질문 키워드: "recalculated"·"hash sum" = 무결성 검증</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Hash Recalculation for Integrity Verification",
+keyConcepts:[
+"해시 재계산 목적|데이터 무결성 검증 — 원본 해시와 비교로 변조 탐지",
+"해시의 본질|단방향 함수·고정 길이·무결성 전용",
+"속성별 통제|무결성=해시·MAC / 기밀성=암호화 / 진정성=서명 / 부인방지=서명+PKI",
+"눈사태 효과|1비트 변경도 완전히 다른 해시 → 변조 탐지 극민감",
+"해시 vs MAC vs 서명|해시=무결성 / MAC=무결성+대칭인증 / 서명=무결성+인증+부인방지",
+"재계산 불일치 원인|의도적 변조·전송 오류·알고리즘 불일치·구현 버그",
+"실무 적용|파일 다운로드·TLS Finished·Git 커밋·패치 검증·백업 무결성",
+"Q563·Q568·Q575·Q583 매핑|모두 무결성으로 귀결 — 해시 관련 질문 패턴",
+"해시 기밀성 제공 안 함|같은 입력은 항상 같은 해시 → 사전 공격 가능, 암호화 아님",
+"진정성 ≠ 해시|누가 생성했는지 모름 — 서명·인증서 필요"
+]
+}
+,
+{
+id:584,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"During an audit of an enterprise that is dedicated to ecommerce, the information systems (IS) manager states that digital signatures are used when receiving communications from customers. To substantiate this, an IS auditor must prove that which of the following is used?",
+questionKo:"이커머스 기업 감사 중 IS 관리자가 <b>고객으로부터의 통신 수신 시 디지털 서명을 사용</b>한다고 말한다. 이를 입증하려면 감사인은 다음 중 무엇이 사용됨을 증명해야 하는가?",
+options:[
+"A. A biometric, digitalized and encrypted parameter with the customer's public key.",
+"B. A hash of the data that is transmitted and encrypted with the customer's private key.",
+"C. A hash of the data that is transmitted and encrypted with the customer's public key.",
+"D. The customer's scanned signature encrypted with the customer's public key."
+],
+optionsKo:[
+"A. <b>생체인식·디지털화·암호화된 파라미터</b>를 고객의 공개키로",
+"B. 전송 데이터의 <b>해시</b>를 <b>고객의 개인키</b>로 암호화",
+"C. 전송 데이터의 <b>해시</b>를 <b>고객의 공개키</b>로 암호화",
+"D. 고객의 <b>스캔된 서명</b>을 고객의 공개키로 암호화"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>구성</th><th>디지털 서명 적합성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>생체인식 + 공개키 암호화</td><td>생체인식은 <b>디지털 서명·공개키 암호화와 무관</b> — 사용자 인증용 별개 기술</td><td>부적합</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>해시 + 고객 개인키 암호화</b></td><td class="correct-cell"><b>디지털 서명의 정확한 정의</b> — 송신자(고객)가 데이터 해시를 자신의 개인키로 암호화. 수신자는 송신자 공개키로 검증 → 무결성 + 인증 + 부인방지</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>해시 + 고객 공개키 암호화</td><td>고객 공개키로 암호화하면 <b>수신자가 고객 개인키 필요</b>하나 개인키는 고객만 보유 → 검증 불가 → 구조 오류</td><td>논리 오류</td></tr><tr><td><b>D</b></td><td>스캔된 서명 + 공개키 암호화</td><td>스캔된 서명 = <b>Digitized Signature</b>(이미지) / <b>Digital Signature</b>(암호학적)와 완전 다름 — 위조 용이</td><td>개념 혼동</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 디지털 서명의 정확한 기술적 정의</h4><p><b>디지털 서명 = 데이터 해시 + 송신자 개인키로 암호화</b>. 이 구조가 <b>무결성·인증·부인방지</b>를 동시에 제공한다.</p><h4>디지털 서명 생성·검증 절차</h4><ul><li>① <b>송신자(고객) 측</b>:<ol><li>메시지 M 작성</li><li>해시 H(M) 계산</li><li><b>고객 개인키로 H(M) 암호화</b> = 서명 S ← <b>B가 설명하는 단계</b></li><li>M과 S 전송</li></ol></li><li>② <b>수신자(기업) 측</b>:<ol><li>메시지 M'과 서명 S 수신</li><li>M'의 해시 H(M') 재계산</li><li><b>고객 공개키로 S 복호화</b> → H(M) 추출</li><li>H(M) == H(M')? 일치하면 서명 유효</li></ol></li><li><b>결과</b>: 무결성(변조 탐지) + 인증(고객 개인키 소유자 확인) + 부인방지(고객 부인 불가)</li></ul><h4>왜 "개인키로 암호화"가 정답인가</h4><ul><li><b>부인방지의 원천</b>: 개인키는 고객만 소유 → 서명 생성 가능한 유일한 존재</li><li><b>공개키로 검증</b>: 누구든 고객 공개키로 서명 복호화 → 고객이 보냈음 증명</li><li>"키 쌍의 원리": 공개키로 복호화되는 것은 <b>반드시</b> 개인키로 암호화된 것</li><li>따라서 "공개키 복호화 성공 = 개인키 소유자 증명" = <b>부인방지</b></li></ul><h4>함정 포인트 — C(공개키로 암호화) 오답 이유</h4><ul><li>공개키로 암호화 → <b>개인키로만 복호화 가능</b></li><li>이 경우 수신자(기업)가 복호화하려면 <b>고객 개인키 필요</b> — 그러나 개인키는 고객만 보유</li><li>결과: <b>수신자가 서명 검증 불가능</b> → 디지털 서명 기능 실패</li><li>이는 <b>키 방향 혼동</b> 함정 — 서명과 암호화의 키 방향이 정반대</li><li>기억: "<b>서명 = 송신자 개인키 / 암호화 기밀성 = 수신자 공개키</b>"</li></ul><h4>키 방향 원리 정리</h4><table><tr><th>목적</th><th>사용 키</th><th>검증 키</th></tr><tr><td><b>디지털 서명(무결성·인증)</b></td><td><b>송신자 개인키</b></td><td>송신자 공개키</td></tr><tr><td>기밀성 전송(암호화)</td><td>수신자 공개키</td><td>수신자 개인키</td></tr><tr><td>이커머스 서명 검증</td><td>고객(송신자) 개인키</td><td>기업이 고객 공개키로</td></tr></table><h4>D(스캔 서명) 오답 이유 — 용어 구분</h4><ul><li><b>Digital Signature(디지털 서명)</b>: <b>암호학적 서명</b> — PKI 기반, 법적 효력</li><li><b>Digitized Signature(디지털화 서명)</b>: <b>필기 서명의 스캔 이미지</b> — 단순 복사본</li><li>두 용어는 <b>완전히 다른 개념</b>이나 혼동 유발 함정</li><li>디지털화 서명은:<ul><li>쉽게 복사·위조 가능</li><li>무결성·부인방지 제공 없음</li><li>암호학적 가치 거의 없음</li></ul></li><li>CISA 시험에서 Digital vs Digitized 구분은 단골 출제</li></ul><h4>A(생체인식) 오답 이유</h4><ul><li>생체인식(지문·얼굴·홍채)은 <b>사용자 인증</b> 수단</li><li>디지털 서명과 <b>구조적으로 다른 기술</b></li><li>생체인식 + 공개키 암호화 조합은 서명의 정의가 아님</li><li>"키 쌍 + 해시"가 디지털 서명의 필수 구성</li></ul><h4>이커머스에서 디지털 서명의 감사 증거</h4><ul><li><b>구현 검증</b>: 고객 개인키로 해시 암호화되는가?</li><li><b>키 관리</b>: 고객 개인키의 유일한 소유·보안 저장</li><li><b>인증서 인프라</b>: CA가 고객 공개키-신원 결합 증명</li><li><b>검증 로직</b>: 서버에서 고객 공개키로 서명 검증</li><li><b>로그·증거</b>: 서명 검증 결과 기록·보관</li><li><b>폐기 관리</b>: 침해·만료 시 즉시 폐기</li></ul><h4>이커머스에서의 디지털 서명 활용</h4><ul><li><b>주문 확정</b>: 고객이 주문 내용에 서명 → 변조·부인 방지</li><li><b>결제 승인</b>: 거래 당사자 신원·무결성 증명</li><li><b>전자 계약</b>: 이용약관 수락·서비스 계약</li><li><b>환불·반품 요청</b>: 고객 의사 증명</li><li><b>규제 준수</b>: eIDAS·전자서명법 등 법적 효력</li></ul><h4>부인방지 달성 원리</h4><ul><li>① 고객 개인키는 고객만 소유 (Sole Possession)</li><li>② 고객 개인키로 암호화된 서명은 <b>고객만 생성 가능</b></li><li>③ 고객 공개키로 복호화 성공 → 고객이 서명했음 증명</li><li>④ 고객은 <b>"내가 안 했다"</b>고 부인 불가</li><li>⑤ 이 원리가 <b>법적 효력</b>의 근거</li><li>이 전 체인의 시작이 "해시 + 개인키 암호화" → <b>B의 정확한 구조</b></li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>디지털 서명 = 해시 + 송신자 개인키 암호화</b> (B)</li><li>C는 키 방향 반대 — 수신자 검증 불가</li><li>D는 디지털화 서명(이미지)로 완전 다른 개념</li><li>A는 생체인식 혼용으로 서명 정의와 무관</li><li>키 방향 규칙: <b>서명=송신자 개인키 / 기밀성=수신자 공개키</b></li><li>부인방지 = 개인키의 유일 소유 원리</li><li>Q569(originator verify=개인키 서명)와 동일 원리 출제</li><li>Digital vs Digitized 구분 주의 (Q578 참조)</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Digital Signature Technical Structure",
+keyConcepts:[
+"디지털 서명 구조|해시 + 송신자 개인키 암호화 — 무결성+인증+부인방지 동시 제공",
+"키 방향 규칙|서명=송신자 개인키 / 기밀성=수신자 공개키 — 절대 혼동 금지",
+"C 함정 분석|공개키 암호화는 개인키 복호화 필요 → 수신자 검증 불가 → 서명 실패",
+"Digital vs Digitized|Digital=암호학적(PKI) / Digitized=스캔 이미지 — 완전 다름",
+"부인방지 원리|개인키 유일 소유 + 공개키 복호화 성공 = 송신자 확인 + 부인 불가",
+"이커머스 서명 감사|키 관리·인증서·검증 로직·로그·폐기 관리 확인",
+"법적 효력|eIDAS·전자서명법 — 디지털 서명의 법적 지위",
+"생체인식 혼용 오답|서명 구조와 무관 — 사용자 인증 별도 기술",
+"서명 검증 조건|송신자 공개키로 복호화 성공 + 재계산 해시 일치",
+"Q569·Q584 연관|같은 원리(개인키 서명) 다른 표현 — CISA 반복 출제"
+]
+}
+,
+{
+id:585,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following is an advantage of elliptic curve encryption over RSA encryption?",
+questionKo:"<b>타원곡선(ECC) 암호화</b>가 <b>RSA 암호화</b>에 비해 갖는 이점은?",
+options:[
+"A. Computation speed",
+"B. Ability to support digital signatures",
+"C. Simpler key distribution",
+"D. Message integrity controls"
+],
+optionsKo:[
+"A. <b>계산 속도</b>",
+"B. 디지털 서명 지원 능력",
+"C. 더 단순한 키 분배",
+"D. 메시지 무결성 통제"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>특성</th><th>ECC vs RSA 비교</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>계산 속도</b></td><td class="correct-cell">ECC는 <b>훨씬 작은 키 크기</b>로 동일한 보안 수준 달성 → 연산량 적음·속도 빠름·전력 효율 우수. 모바일·IoT에 특히 적합</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>디지털 서명 지원</td><td><b>둘 다 지원</b>(RSA-Sign, ECDSA) — 차별적 이점 아님</td><td>부적합</td></tr><tr><td><b>C</b></td><td>키 분배</td><td>둘 다 <b>공개키 암호화 기반</b>으로 동일한 PKI·인증서 인프라 사용</td><td>부적합</td></tr><tr><td><b>D</b></td><td>무결성 통제</td><td>둘 다 해시·서명 기반 무결성 지원 — 차별점 아님</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — ECC의 수학적 기반</h4><p><b>ECC(Elliptic Curve Cryptography)</b>는 <b>타원곡선 위의 이산대수 문제(ECDLP)</b>의 계산 난이도에 기반한다. RSA의 <b>소인수분해 난이도</b>보다 <b>훨씬 작은 키</b>로 동일 강도 달성.</p><h4>동등 보안 수준 비교</h4><table><tr><th>대칭키 강도</th><th>RSA 키</th><th>ECC 키</th></tr><tr><td>80비트</td><td>1024비트</td><td>160비트</td></tr><tr><td>112비트</td><td>2048비트</td><td>224비트</td></tr><tr><td>128비트</td><td>3072비트</td><td>256비트</td></tr><tr><td>192비트</td><td>7680비트</td><td>384비트</td></tr><tr><td>256비트</td><td>15360비트</td><td>521비트</td></tr></table><p>→ ECC 키는 RSA의 <b>1/6~1/30</b> 크기로 동일 강도 → 속도·저장·전력 모두 우위</p><h4>ECC의 구체적 이점</h4><ul><li><b>속도</b>: 작은 키로 서명·검증·키 교환 모두 빠름</li><li><b>저장·전송</b>: 인증서·서명 크기 작음</li><li><b>전력 효율</b>: 모바일·IoT·스마트카드 배터리 절약</li><li><b>대역폭 절약</b>: 제한된 네트워크(저궤도 위성·센서망)에 유리</li><li><b>확장성</b>: 256비트로 현대 표준 달성</li></ul><h4>ECC 활용 분야</h4><ul><li><b>TLS 1.3</b>: ECDHE 키 교환 표준</li><li><b>암호화폐</b>: Bitcoin·Ethereum(secp256k1)·ED25519</li><li><b>스마트카드</b>: 여권·신분증 PKI</li><li><b>모바일</b>: iOS·Android 기기 인증</li><li><b>IoT</b>: 제한된 리소스 환경의 서명·키 교환</li><li><b>SSH</b>: ED25519 키 지원</li></ul><h4>주요 ECC 곡선</h4><ul><li><b>NIST P-256·P-384·P-521</b>: NIST 표준</li><li><b>secp256k1</b>: Bitcoin 사용</li><li><b>Curve25519·ED25519</b>: Daniel Bernstein 설계 — 안전·빠름</li><li><b>Curve448·ED448</b>: 더 높은 보안 수준</li></ul><h4>RSA의 잔존 가치</h4><ul><li>오랜 표준·광범위 호환성</li><li>구현 단순·라이브러리 풍부</li><li>일부 레거시 시스템 필수 지원</li><li>그러나 키 크기 증가·속도 한계로 점차 ECC로 이동 중</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>ECC vs RSA 핵심 이점 = 계산 속도·키 크기</b></li><li>서명·키 분배·무결성 = 둘 다 지원(차별점 없음)</li><li>현대 추세: ECC가 모바일·IoT·TLS 1.3 표준</li><li>보안 강도: ECC 256비트 ≈ RSA 3072비트</li><li>양자 내성: 둘 다 Shor 알고리즘에 취약 → 포스트 양자 암호로 전환 준비</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Elliptic Curve Cryptography vs RSA",
+keyConcepts:[
+"ECC 핵심 이점|계산 속도·키 크기 — 훨씬 작은 키로 동일 보안 강도 달성",
+"보안 강도 비교|ECC 256비트 ≈ RSA 3072비트 (1/6~1/30 크기)",
+"ECC 활용|TLS 1.3·암호화폐·스마트카드·모바일·IoT·SSH(ED25519)",
+"주요 곡선|NIST P-256·secp256k1·Curve25519·ED25519·Curve448",
+"RSA vs ECC 공통|디지털 서명·키 분배·무결성 — 둘 다 지원, 차별점 아님",
+"ECC 수학 기반|타원곡선 이산대수 문제(ECDLP) — RSA의 소인수분해보다 효율적",
+"모바일·IoT 적합성|전력·저장·대역폭 절약 → 제한 리소스 환경 최적",
+"양자 위협|ECC·RSA 둘 다 Shor 알고리즘 취약 — 포스트 양자 암호 전환 필요",
+"TLS 1.3 표준|ECDHE 키 교환 채택 — 현대 웹 표준",
+"암호화폐 표준|Bitcoin·Ethereum의 secp256k1 — ECC가 기본"
+]
+}
+,
+{
+id:586,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"During an audit of a telecommunications system, an information systems (IS) auditor finds that the risk of intercepting data transmitted to and from remote sites is very high. The MOST effective control for reducing this exposure is:",
+questionKo:"통신 시스템 감사 중 IS 감사인이 <b>원격 사이트 간 전송 데이터 도청(interception) 위험이 매우 높음</b>을 발견했다. 이 노출을 줄이는 <b>가장 효과적인 통제</b>는?",
+options:[
+"A. encryption.",
+"B. callback modems.",
+"C. message authentication.",
+"D. dedicated leased lines."
+],
+optionsKo:[
+"A. <b>암호화(Encryption)</b>",
+"B. <b>콜백 모뎀(Callback modems)</b>",
+"C. <b>메시지 인증</b>",
+"D. <b>전용 임대 회선(Dedicated leased lines)</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>통제</th><th>도청 위험 감소 효과</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>암호화</b></td><td class="correct-cell"><b>가장 안전한 기밀성 보호 방법</b> — 가로챈 트래픽도 암호문이라 내용 파악 불가. 매체 독립적·근본적 해결</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>콜백 모뎀</td><td><b>사용자 위치 확인</b>용 — 로그인 진위 검증에는 유용하나 전송 데이터 <b>자체의 도청은 방지 못함</b></td><td>부적합</td></tr><tr><td><b>C</b></td><td>메시지 인증</td><td>메시지 <b>무결성·출처</b> 검증용 — 기밀성(도청 방지) 제공 안 함</td><td>부적합</td></tr><tr><td><b>D</b></td><td>전용 임대 회선</td><td>공유망보다 <b>물리적 접근 어려움</b>이나 <b>여전히 도청 가능</b> — 근본적 해결 아님. 비용 높음</td><td>부분적</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 도청 위험의 근본 해결책</h4><p>도청(Interception)은 <b>기밀성(Confidentiality) 침해</b>다. 기밀성을 보장하는 근본 통제는 <b>암호화</b>. 다른 통제는 보조 수단.</p><h4>암호화가 MOST effective인 이유</h4><ul><li><b>매체 독립적</b>: 유선·무선·위성·공중망 관계없이 동일한 보호</li><li><b>도청 무력화</b>: 공격자가 트래픽 가로채도 <b>암호문만 획득</b> → 실질적으로 사용 불가</li><li><b>종단간(End-to-End) 보호</b>: 중간 경로·장비와 무관하게 보호</li><li><b>Defense in Depth</b>: 물리적·논리적 통제 실패 시 최후의 방어선</li><li><b>확장성</b>: 원격 사이트 수 증가해도 동일 방식 적용</li><li><b>비용 효율</b>: 전용 회선 대비 저렴</li></ul><h4>함정 포인트 — D(전용 임대 회선) 분석</h4><ul><li>전용 회선은 <b>물리적으로 공유되지 않는</b> 통신 매체</li><li>공유망보다 <b>물리적 접근 어려움</b> → 도청 난이도 증가</li><li>그러나:<ul><li>내부자·통신사 직원이 접근 가능</li><li>물리적 탭핑(Tapping) 공격 가능</li><li>전자기 누출(TEMPEST) 공격 가능</li><li>통신사 백본에서 도청 가능</li></ul></li><li>결론: <b>도청 완전 방지 불가</b> → 여전히 암호화 필요</li><li>비용도 매우 높아 대규모 원격 사이트에 부적합</li></ul><h4>B(콜백 모뎀) 오답 이유</h4><ul><li>콜백 시스템 = 사용자 로그인 시 <b>등록된 전화번호로 다시 걸어 확인</b></li><li>목적: <b>원격 접속 인증</b> 강화 — 위장 접속 방지</li><li>기밀성·도청과 <b>완전히 다른 영역</b></li><li>레거시 기술로 현재는 거의 사용 안 됨</li></ul><h4>C(메시지 인증) 오답 이유</h4><ul><li>메시지 인증(MAC·HMAC)은 <b>무결성 + 출처 인증</b></li><li>변조·위조 탐지에는 유효</li><li>그러나 <b>메시지 내용은 평문</b> → 도청 시 읽히는 것은 동일</li><li>기밀성과 다른 속성</li></ul><h4>전송 데이터 암호화 표준</h4><ul><li><b>IPsec VPN</b>: 원격 사이트 간 암호화 터널 (Q581 참조)</li><li><b>TLS/SSL</b>: 애플리케이션 계층 암호화</li><li><b>SSH 터널</b>: 관리·파일 전송 암호화</li><li><b>WireGuard</b>: 최신 경량 VPN</li><li><b>MPLS + 암호화</b>: 통신사 망 위에 암호화 오버레이</li></ul><h4>원격 사이트 간 통신 보안 아키텍처</h4><ul><li><b>사이트간 VPN</b>: IPsec 터널로 본사-지사 연결</li><li><b>SD-WAN 암호화</b>: 클라우드 기반 암호화 오버레이</li><li><b>Zero Trust Network</b>: 모든 통신 암호화·인증</li><li><b>이중화</b>: 주·백업 경로 모두 암호화</li><li><b>키 관리</b>: 중앙 집중 KMS·HSM</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>도청 위험 MOST effective = 암호화</b></li><li>콜백 = 접속 인증 / 메시지 인증 = 무결성 / 전용 회선 = 물리적 보조</li><li>기밀성 침해의 근본 해결책은 <b>암호화</b></li><li>매체 독립·확장성·비용 효율 모두 우수</li><li>IPsec VPN·TLS·SSH 등 표준 활용</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Encryption as Primary Control Against Interception",
+keyConcepts:[
+"도청 위험 해결책|암호화 — 기밀성 침해의 근본·가장 효과적 통제",
+"암호화 우위|매체 독립·종단간 보호·확장성·비용 효율",
+"콜백 모뎀|접속 인증 강화용 — 도청과 무관한 레거시 기술",
+"메시지 인증 한계|무결성·출처 확인만 — 기밀성 제공 없음, 평문 노출",
+"전용 회선 한계|물리적 난이도 증가하나 내부자·탭핑·TEMPEST 위협 여전",
+"원격 사이트 암호화|IPsec VPN·TLS·SSH·WireGuard·SD-WAN",
+"Defense in Depth|암호화는 물리·논리 통제 실패 시 최후의 방어선",
+"Zero Trust|모든 통신 암호화·인증 — 현대 보안 표준",
+"키 관리 중요성|KMS·HSM으로 중앙 집중 관리 — 암호화의 운영 기반",
+"기밀성 = 암호화 공식|CISA 시험 반복 출제 — 도청·노출 문제는 암호화가 기본 답"
+]
+}
+,
+{
+id:587,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The role of the certificate (certification) authority (CA) as a third party is to:",
+questionKo:"<b>인증 기관(CA)의 제3자로서의 역할</b>은?",
+options:[
+"A. provide secure communication and networking services based on certificates.",
+"B. host a repository of certificates with the corresponding public and secret keys issued by that CA.",
+"C. act as a trusted intermediary between two communication partners.",
+"D. confirm the identity of the entity owning a certificate issued by that CA."
+],
+optionsKo:[
+"A. 인증서 기반 <b>안전한 통신·네트워킹 서비스 제공</b>",
+"B. CA가 발급한 인증서와 <b>해당 공개키·비밀키 저장소</b> 운영",
+"C. 두 통신 당사자 사이의 <b>신뢰된 중개자</b> 역할",
+"D. CA가 발급한 인증서 <b>소유자의 신원 확인</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>CA 실제 역할과의 관계</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>통신·네트워킹 서비스 제공</td><td>통신 인프라는 <b>CA의 활동이 아님</b> — CA는 인증서 발급·관리만 담당</td><td>부적합</td></tr><tr><td><b>B</b></td><td>공개·비밀키 저장소</td><td><b>비밀(개인)키는 CA에 보관되지 않음</b> — 개인키는 소유자만 보관. CA는 공개키만 인증서로 공개</td><td>사실 오류</td></tr><tr><td><b>C</b></td><td>통신 중개자</td><td>CA는 신원 인증에 <b>기여</b>하나 <b>통신 흐름 자체에는 참여하지 않음</b> — 중개자 아님</td><td>부정확</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>인증서 소유자 신원 확인</b></td><td class="correct-cell">CA의 <b>1차 활동</b> — 인증서 발급 시 소유자의 실제 신원을 실사·검증하고, 발급한 인증서의 무결성을 보증</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — CA의 본질적 역할</h4><p><b>Certificate Authority(CA)</b>의 <b>1차 역할</b>은 <b>인증서 발급 시 소유자 신원을 실사·확인</b>하고 <b>인증서의 진위·무결성을 보증</b>하는 것.</p><h4>CA의 주요 활동</h4><ul><li><b>① 신원 확인(본 문제 정답)</b>: 인증서 신청자의 실제 신원 실사</li><li><b>② 인증서 발급</b>: 공개키와 신원을 결합하여 인증서 생성·서명</li><li><b>③ 폐기 관리</b>: CRL·OCSP로 폐기된 인증서 목록 유지</li><li><b>④ 갱신·교체</b>: 만료 전 갱신, 침해 시 재발급</li><li><b>⑤ 신뢰 체인 유지</b>: Root CA → Intermediate CA 구조</li></ul><h4>CA가 하지 않는 일</h4><ul><li><b>통신 중개</b>: CA는 메시지 흐름에 참여 안 함 (C 오답)</li><li><b>개인키 보관</b>: 개인키는 소유자만 보관 (B 오답)</li><li><b>암호화·복호화 수행</b>: 실제 통신 보안은 당사자가 수행</li><li><b>네트워크 서비스</b>: 통신 인프라 제공 안 함 (A 오답)</li><li><b>메시지 해시 계산</b>: 메시지 서명 과정에 직접 관여 안 함</li></ul><h4>신원 확인의 중요성</h4><ul><li><b>신뢰의 근원</b>: 공개키가 누구의 것인지 CA가 보증하므로 <b>MITM 공격 방지</b></li><li><b>법적 효력</b>: CA의 실사가 부인방지·법적 증거력의 기반</li><li><b>실사 수준(Validation Level)</b>:<ul><li><b>DV(Domain Validation)</b>: 도메인 소유만 확인 (기본)</li><li><b>OV(Organization Validation)</b>: 조직 신원 확인</li><li><b>EV(Extended Validation)</b>: 엄격한 조직·법적 실사 (녹색 주소창)</li></ul></li><li>CA의 <b>신원 확인 품질</b>이 PKI 전체 신뢰의 토대</li></ul><h4>함정 포인트 — B(공개·비밀키 저장) 오답 이유</h4><ul><li><b>개인키(Private/Secret Key)</b>는 <b>소유자만 보관</b>하는 것이 원칙</li><li>CA가 개인키를 보관하면 <b>부인방지 근거 붕괴</b> (누구든 서명 가능)</li><li>CA는 <b>공개키만</b> 인증서 형태로 공개</li><li>Key Escrow(키 위탁)는 별개의 특수 서비스로 CA의 기본 역할 아님</li><li>B는 "secret keys"로 개인키를 포함하여 <b>명백한 오답</b></li></ul><h4>C(중개자) 오답 이유</h4><ul><li>CA는 <b>신뢰 부여자(Trust Provider)</b>이지 <b>통신 중개자가 아님</b></li><li>A가 B에게 메시지를 보낼 때 CA는 <b>중간에 끼어들지 않음</b></li><li>A와 B가 각자 CA 서명 인증서로 <b>상대방 공개키 진위 확인</b>할 뿐</li><li>"Intermediate"라는 용어가 함정을 유도</li><li>신뢰 체인의 Intermediate CA는 있지만 <b>통신 중개자</b>는 아님</li></ul><h4>A(통신 서비스) 오답 이유</h4><ul><li>CA는 <b>인증서 발급·관리 전문 기관</b></li><li>VPN·이메일·웹 호스팅 등 통신 서비스는 <b>별도 공급자</b> 담당</li><li>CA 제품은 <b>통신을 가능하게 하는 신뢰 기반</b>일 뿐 통신 자체 아님</li></ul><h4>CA 운영 구조</h4><ul><li><b>Root CA</b>: 최상위 신뢰 앵커 — 오프라인·엄격 보호</li><li><b>Intermediate CA</b>: 일상 발급 담당 — Root가 서명</li><li><b>Registration Authority(RA)</b>: 신원 검증·접수 (CA의 대리인)</li><li><b>Validation Authority(VA)</b>: 폐기 상태 조회 (OCSP Responder)</li><li><b>Certificate Repository</b>: 발급된 인증서 공개 저장소</li><li><b>HSM</b>: CA 서명 키 보호 하드웨어</li></ul><h4>신뢰된 제3자(Trusted Third Party) 개념</h4><ul><li>A와 B가 서로 직접 신뢰 관계가 없어도</li><li>둘 다 <b>공통의 제3자 CA를 신뢰</b>함으로써</li><li>CA를 통해 <b>간접적으로 서로를 신뢰</b></li><li>이것이 PKI의 본질 — CA의 역할은 <b>신원 증명으로 신뢰 다리 제공</b></li><li>중개자가 아닌 <b>증인·인증자</b></li></ul><h4>CA 감사 포인트</h4><ul><li>신원 검증 절차·문서화</li><li>Root CA 보호(오프라인·HSM·물리 보안)</li><li>인증서 발급 프로세스·승인</li><li>CRL·OCSP 갱신 주기·가용성</li><li>감사 로그·추적</li><li>WebTrust·ETSI 감사 인증</li><li>키 관리 정책(Key Ceremony)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>CA의 역할 = 인증서 소유자 신원 확인</b></li><li>통신 중개(C)·서비스 제공(A)·개인키 보관(B) 아님</li><li>CA는 <b>신뢰된 제3자(Trusted Third Party)</b>로 PKI 신뢰의 근간</li><li>실사 수준: DV < OV < EV</li><li>구조: Root CA → Intermediate CA → RA → End Entity</li><li>PKI 원칙: <b>개인키는 소유자만</b>, CA는 공개키만 다룸</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Role of Certificate Authority in PKI",
+keyConcepts:[
+"CA 1차 역할|인증서 소유자 신원 확인 — PKI 신뢰의 근간",
+"CA가 하지 않는 일|통신 중개·개인키 보관·네트워크 서비스·암호화 실행",
+"신뢰된 제3자|Trusted Third Party — 중개자 아닌 증인·인증자",
+"개인키 원칙|소유자만 보관 — CA에 저장 금지(B 오답 핵심)",
+"실사 수준|DV(도메인만)·OV(조직 확인)·EV(엄격 실사)",
+"CA 구조|Root CA(오프라인) → Intermediate CA(일상 발급) → RA(접수) → VA(조회)",
+"CA 활동|신원 확인·발급·폐기·갱신·신뢰 체인 유지",
+"MITM 방지 원리|CA가 공개키 진위 보증 → 공격자 키 주입 차단",
+"감사 표준|WebTrust·ETSI — CA 운영 인증 프레임워크",
+"Root CA 보호|오프라인·HSM·Key Ceremony로 최고 보안"
+]
+}
+,
+{
+id:588,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"In what capacity would an information systems (IS) auditor MOST likely see a hash function applied?",
+questionKo:"IS 감사인이 <b>해시 함수</b>가 적용되는 것을 <b>가장 가능성 높게</b> 보게 되는 용도는?",
+options:[
+"A. Authentication",
+"B. Identification",
+"C. Authorization",
+"D. Encryption"
+],
+optionsKo:[
+"A. <b>인증(Authentication)</b>",
+"B. <b>식별(Identification)</b>",
+"C. <b>권한 부여(Authorization)</b>",
+"D. <b>암호화(Encryption)</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>용도</th><th>해시 함수와의 관계</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>인증(Authentication)</b></td><td class="correct-cell">해시는 <b>데이터 지문</b>을 생성 → 무결성·인증에 사용. <b>비밀번호 해시</b>로 사용자·프로세스 인증. HMAC·서명 등 인증 메커니즘의 핵심 구성</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>식별(Identification)</td><td>해시는 <b>신원 주장의 진정성 검증</b>에 사용 — 식별 자체가 아님. 식별은 "나는 X입니다" 단순 주장</td><td>부적합</td></tr><tr><td><b>C</b></td><td>권한 부여(Authorization)</td><td>권한 부여는 <b>인증 이후</b> 단계 — 해시와 직접 연관 없음. ACL·RBAC 등이 담당</td><td>부적합</td></tr><tr><td><b>D</b></td><td>암호화(Encryption)</td><td>해시는 <b>단방향 함수</b> — 양방향 암호화가 아님. 데이터를 숨기지 못함</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 해시의 인증 용도</h4><p>해시는 "데이터 지문"으로 <b>무결성·인증</b>을 지원한다. 인증 분야에서 해시는 다음과 같이 광범위 활용:</p><h4>해시 기반 인증 메커니즘</h4><ul><li><b>비밀번호 저장</b>:<ul><li>원본 비밀번호 대신 <b>해시 + Salt</b> 저장</li><li>로그인 시 입력값 해시하여 저장된 해시와 비교</li><li>DB 유출에도 원본 비밀번호 보호</li><li>bcrypt·Argon2·PBKDF2 같은 <b>강화 해시</b> 사용</li></ul></li><li><b>디지털 서명</b>:<ul><li>메시지 해시를 개인키로 암호화 = 서명</li><li>무결성 + 출처 인증(Authentication) + 부인방지</li></ul></li><li><b>HMAC(Hash-based MAC)</b>:<ul><li>해시 + 공유 비밀키</li><li>메시지 인증·TLS·API 인증</li></ul></li><li><b>Challenge-Response 인증</b>:<ul><li>서버가 Challenge → 클라이언트가 해시 응답</li><li>비밀번호 직접 전송 없이 인증</li></ul></li><li><b>토큰 검증</b>: JWT 서명·API 키 검증</li><li><b>파일·패치 무결성</b>: 설치 전 해시 검증으로 정품 인증</li></ul><h4>AAA 프레임워크에서의 해시 위치</h4><table><tr><th>단계</th><th>정의</th><th>해시 역할</th></tr><tr><td>Identification</td><td>"나는 X" 주장</td><td>없음</td></tr><tr><td><b>Authentication</b></td><td><b>X인지 증명</b></td><td><b>✓ 해시 기반 검증</b></td></tr><tr><td>Authorization</td><td>X가 무엇을 할 수 있는지</td><td>없음(ACL·RBAC)</td></tr><tr><td>Accounting</td><td>X가 무엇을 했는지</td><td>간접(로그 무결성)</td></tr></table><p>해시는 Authentication 단계의 <b>핵심 기술</b></p><h4>왜 B(Identification)가 오답인가</h4><ul><li>식별(Identification)은 <b>"나는 X입니다"</b>라는 단순 주장</li><li>해시 없이도 사용자ID·이메일 입력만으로 가능</li><li>식별의 <b>진위 검증</b>이 바로 인증 — 해시는 이 검증 단계에 사용</li><li>따라서 해시는 식별 <b>자체</b>가 아닌 <b>확인 단계</b>에 기여</li></ul><h4>왜 C(Authorization)가 오답인가</h4><ul><li>권한 부여는 <b>"X가 무엇을 할 수 있는가"</b> 결정</li><li>인증 완료 <b>이후</b>의 단계</li><li>ACL·RBAC·ABAC가 담당</li><li>해시와 직접 연관 없음</li></ul><h4>왜 D(Encryption)가 오답인가</h4><ul><li>해시는 <b>단방향·복구 불가</b> → 암호화가 아님</li><li>암호화는 <b>양방향·키로 복호화</b> 가능</li><li>해시와 암호화는 <b>근본적으로 다른 기술</b> (Q580 참조)</li><li>용어 혼동 함정</li></ul><h4>비밀번호 해싱의 진화</h4><ul><li><b>평문 저장</b>: 절대 금지 — DB 유출 시 즉시 노출</li><li><b>단순 해시(MD5·SHA-1)</b>: Rainbow Table 공격 취약</li><li><b>Salt + Hash</b>: 각 사용자마다 고유 Salt로 Rainbow 무력화</li><li><b>Key Stretching(PBKDF2·bcrypt·scrypt·Argon2)</b>: 의도적으로 느린 해시 → 무차별 대입 공격 어려움</li><li><b>현재 권장</b>: Argon2(2015 PHC 우승) 또는 bcrypt</li></ul><h4>해시 인증 실무 시나리오</h4><ul><li><b>로그인 검증</b>: 입력 비밀번호 해시 vs DB 저장 해시</li><li><b>파일 다운로드</b>: SHA-256 해시 비교로 정품 확인</li><li><b>API 서명</b>: HMAC으로 요청 무결성·인증</li><li><b>JWT</b>: HMAC-SHA256 또는 RSA 서명</li><li><b>TLS 핸드셰이크</b>: Finished 메시지 해시 검증</li><li><b>Git 커밋</b>: SHA-1(SHA-256 전환 중) 해시로 무결성</li><li><b>블록체인</b>: 블록 해시 체인·Merkle Tree</li></ul><h4>감사 시 해시 적용 확인</h4><ul><li>비밀번호 DB 저장 방식(해시+Salt·Key Stretching)</li><li>사용 알고리즘(MD5·SHA-1 금지 / SHA-256 이상 권장)</li><li>API 인증 메커니즘(HMAC·서명)</li><li>파일 무결성 검증 절차</li><li>TLS 프로토콜 버전·암호 스위트</li><li>로그 무결성 보호(해시 체인·워터마크)</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>해시 함수 MOST likely 용도 = Authentication(인증)</b></li><li>비밀번호 저장·디지털 서명·HMAC·토큰 검증 — 모두 인증</li><li>식별(단순 주장) ≠ 인증(진위 증명) — 해시는 인증에 기여</li><li>권한 부여(Authorization)는 ACL·RBAC 영역</li><li>해시 ≠ 암호화 — 단방향 vs 양방향</li><li>해시는 무결성·인증의 <b>핵심 요소</b></li><li>AAA 중 Authentication 단계의 대표 기술</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Hash Functions in Authentication",
+keyConcepts:[
+"해시 주요 용도|인증(Authentication) — 비밀번호·서명·HMAC·토큰 검증",
+"AAA 매핑|Identification=주장 / Authentication=해시 검증 / Authorization=ACL",
+"비밀번호 저장|해시+Salt+Key Stretching(bcrypt·Argon2·PBKDF2) — 평문 저장 금지",
+"디지털 서명 내 해시|메시지 해시 → 개인키 서명 → 인증+무결성+부인방지",
+"HMAC|해시+공유키 → 메시지 인증·API·TLS",
+"Challenge-Response|서버 Challenge → 클라이언트 해시 응답 → 비밀번호 직접 전송 없이 인증",
+"해시 vs 암호화|단방향 vs 양방향 — 해시는 암호화 아님(D 오답)",
+"식별 vs 인증|식별=단순 주장 / 인증=진위 증명 — 해시는 인증 단계",
+"Rainbow Table 방어|Salt로 각 사용자 고유화 → Rainbow 무력화",
+"현재 권장 알고리즘|Argon2·bcrypt (PBKDF2 차선) — SHA-256 이상 기반"
+]
+}
+,
+{
+id:589,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"An information systems (IS) auditor is reviewing an enterprise's controls related to email encryption. The enterprise's policy states that all sent email must be encrypted to protect the confidentiality of the message because the enterprise shares nonpublic information through email. In a public-key infrastructure implementation properly configured to provide confidentiality, email is encrypted with:",
+questionKo:"IS 감사인이 기업의 <b>이메일 암호화 통제</b>를 검토 중이다. 기업 정책은 비공개 정보를 이메일로 공유하므로 <b>모든 발신 이메일을 기밀성 보호를 위해 암호화</b>할 것을 요구한다. 기밀성 제공을 위해 <b>PKI가 올바르게 구성된 경우</b>, 이메일은 무엇으로 암호화되는가?",
+options:[
+"A. the sender's private key and decrypted with the sender's public key.",
+"B. the recipient's private key and decrypted with the sender's private key.",
+"C. the sender's private key and decrypted with the recipient's private key.",
+"D. the recipient's public key and decrypted with the recipient's private key."
+],
+optionsKo:[
+"A. <b>송신자 개인키</b>로 암호화하고 <b>송신자 공개키</b>로 복호화",
+"B. <b>수신자 개인키</b>로 암호화하고 <b>송신자 개인키</b>로 복호화",
+"C. <b>송신자 개인키</b>로 암호화하고 <b>수신자 개인키</b>로 복호화",
+"D. <b>수신자 공개키</b>로 암호화하고 <b>수신자 개인키</b>로 복호화"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>키 조합</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>송신자 개인키 → 송신자 공개키</td><td>이것은 <b>디지털 서명 구조</b> — 송신자 검증(누가 보냈는지)만 제공, <b>기밀성 없음</b>(누구나 공개키로 복호화 가능)</td><td>부적합</td></tr><tr><td><b>B</b></td><td>수신자 개인키 → 송신자 개인키</td><td>송신자는 <b>수신자 개인키 접근 불가</b> — 구조적으로 성립 불가능한 조합</td><td>논리 오류</td></tr><tr><td><b>C</b></td><td>송신자 개인키 → 수신자 개인키</td><td>PKI 원리상 <b>같은 쌍의 키로만 복호화 가능</b> — 송신자 개인키로 암호화된 것은 송신자 공개키로만 복호화</td><td>논리 오류</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>수신자 공개키 → 수신자 개인키</b></td><td class="correct-cell">수신자 공개키로 암호화 → <b>수신자만 자신의 개인키로 복호화 가능</b> → 완벽한 기밀성. PKI 기밀성 전송의 정확한 공식</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — PKI 기밀성 전송 원리</h4><p>기밀성(Confidentiality)의 핵심 원칙: <b>수신자만이 메시지를 읽을 수 있어야 함</b>. 이를 달성하는 PKI 구조는 <b>수신자 공개키로 암호화</b>.</p><h4>키 방향의 절대 규칙</h4><table><tr><th>목적</th><th>암호화 키</th><th>복호화 키</th><th>제공 속성</th></tr><tr><td><b>기밀성(본 문제)</b></td><td><b>수신자 공개키</b></td><td><b>수신자 개인키</b></td><td>Confidentiality</td></tr><tr><td>서명·인증</td><td>송신자 개인키</td><td>송신자 공개키</td><td>Integrity + Authenticity</td></tr><tr><td>기밀성+인증</td><td>수신자 공개키 + 송신자 개인키 서명</td><td>수신자 개인키 + 송신자 공개키 검증</td><td>C + I + A + N</td></tr></table><h4>왜 "수신자 공개키 → 수신자 개인키"인가</h4><ul><li><b>공개키는 모두에게 공개</b>: 누구든 수신자 공개키로 암호화 가능 → 송신자가 암호화 수행 가능</li><li><b>개인키는 수신자만 소유</b>: 오직 수신자만 자신의 개인키로 복호화</li><li><b>중간자 공격 차단</b>: 공격자가 가로채도 <b>수신자 개인키 없이 복호화 불가</b></li><li>따라서 <b>진정한 기밀성</b>이 달성됨</li></ul><h4>함정 포인트 — A(송신자 개인키·공개키) 오답 이유</h4><ul><li>이 구조는 <b>디지털 서명</b>과 동일</li><li>송신자 개인키로 암호화 → <b>누구든</b> 송신자 공개키로 복호화 가능</li><li>공개키는 전 세계가 알고 있음 → <b>기밀성 없음</b></li><li>이 구조는 <b>송신자 검증</b>이 목적이지 내용 보호가 아님</li><li>CISA 시험: 서명과 기밀성 암호화의 <b>키 방향 구분</b>이 단골 함정</li></ul><h4>B·C의 논리 오류</h4><h5>B: 수신자 개인키 → 송신자 개인키</h5><ul><li>송신자는 <b>수신자 개인키에 접근 불가</b> — 수신자만 소유</li><li>따라서 이 조합의 암호화는 <b>실행 자체 불가능</b></li><li>명백한 논리 오류</li></ul><h5>C: 송신자 개인키 → 수신자 개인키</h5><ul><li>PKI 원리: "키 쌍" — 한 키로 암호화하면 같은 쌍의 다른 키로만 복호화 가능</li><li>송신자 개인키로 암호화 → <b>송신자 공개키로만</b> 복호화 가능</li><li>수신자 개인키(다른 키 쌍)로는 복호화 불가</li><li>수학적으로 성립 안 함</li></ul><h4>PKI 키 쌍 원리</h4><ul><li>각 사용자는 <b>공개키 + 개인키 쌍</b>을 보유</li><li>공개키로 암호화된 것은 <b>같은 쌍의 개인키로만</b> 복호화</li><li>개인키로 암호화된 것(서명)은 <b>같은 쌍의 공개키로만</b> 검증</li><li>다른 쌍의 키로는 복호화·검증 불가</li><li>이것이 PKI의 <b>수학적 기반</b>(RSA·ECC)</li></ul><h4>하이브리드 암호화에서의 활용</h4><p>대량 이메일 본문은 <b>대칭 암호(AES)</b>로 암호화하고, <b>대칭 세션키만 비대칭으로</b> 보호:</p><ul><li>① 송신자: 임의 세션키 K 생성 (AES-256)</li><li>② 송신자: <b>수신자 공개키로 K 암호화</b> ← 본 문제 정답과 일치</li><li>③ 송신자: K로 이메일 본문 대칭 암호화</li><li>④ 전송: 암호화 세션키 + 암호화 본문</li><li>⑤ 수신자: <b>자신의 개인키로 K 복호화</b></li><li>⑥ 수신자: K로 본문 복호화</li><li>S/MIME·PGP 동작 방식 — <b>속도 + 기밀성 완벽</b></li></ul><h4>S/MIME·PGP 이메일 암호화</h4><ul><li><b>S/MIME</b>: X.509 인증서 기반 — 수신자 인증서의 공개키로 암호화</li><li><b>PGP/GPG</b>: Web of Trust 기반 — 수신자 공개키로 암호화</li><li>두 표준 모두 "수신자 공개키 암호화 + 수신자 개인키 복호화" 원리</li><li>본 문제의 D와 일치</li></ul><h4>감사 포인트</h4><ul><li>이메일 암호화 구성: 수신자 공개키 사용 여부</li><li>수신자 인증서 획득 절차</li><li>CA 신뢰 체인·폐기 관리</li><li>개인키 보관 보안(HSM·스마트카드)</li><li>알고리즘 강도(RSA 2048+·ECC 256+·AES 128+)</li><li>정책 준수 모니터링(DLP와 통합)</li></ul><h4>기밀성과 서명 결합</h4><ul><li>기밀성 + 부인방지 + 무결성 = <b>Sign-then-Encrypt</b> 또는 <b>Encrypt-then-Sign</b></li><li>일반적으로: ① 송신자 개인키로 서명 → ② 수신자 공개키로 본문+서명 암호화</li><li>수신자: ① 자신의 개인키로 복호화 → ② 송신자 공개키로 서명 검증</li><li>S/MIME·PGP가 이 조합을 표준 지원</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>PKI 기밀성 = 수신자 공개키로 암호화 → 수신자 개인키로 복호화</b></li><li>송신자 개인키 사용 = <b>서명</b>이지 기밀성 아님</li><li>키 방향 규칙 절대 혼동 금지</li><li>"키 쌍" 원리: 한 키로 암호화하면 같은 쌍의 다른 키로만 복호화</li><li>하이브리드: 세션키를 수신자 공개키로, 본문을 세션키로</li><li>S/MIME·PGP가 표준 구현</li><li>Q572와 동일 원리 (세션키 기밀성 전송) — 일관된 CISA 출제 패턴</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — PKI Confidentiality with Recipient's Public Key",
+keyConcepts:[
+"PKI 기밀성 공식|수신자 공개키 암호화 → 수신자 개인키 복호화 — 유일한 올바른 방향",
+"키 방향 절대 규칙|기밀성=수신자 공개키 / 서명=송신자 개인키 — 혼동 금지",
+"A 함정|송신자 개인키·공개키 조합 = 디지털 서명(검증용) — 기밀성 아님",
+"키 쌍 원리|한 키로 암호화하면 같은 쌍의 다른 키로만 복호화 가능",
+"하이브리드 암호화|세션키는 수신자 공개키로 / 본문은 세션키로 — 속도+기밀성",
+"S/MIME·PGP 표준|수신자 공개키 암호화 원리 구현",
+"Sign-then-Encrypt|서명 후 암호화 — 기밀성+무결성+인증+부인방지 결합",
+"Q572·Q589 일관성|동일 키 방향 원리 다른 시나리오 — CISA 반복 출제",
+"공개키 특성|모두에게 공개되므로 암호화는 누구든 가능 — 복호화는 개인키 소유자만",
+"개인키 특성|본인만 소유 → 수신자가 받은 기밀 메시지 복호화 유일 주체"
+]
+}
+,
+{
+id:590,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Email message authenticity and confidentiality is BEST achieved by signing the message using the:",
+questionKo:"이메일 메시지의 <b>진정성(authenticity)과 기밀성(confidentiality) 모두</b>를 가장 잘 달성하는 방법은 메시지에 무엇으로 서명하는가?",
+options:[
+"A. sender's private key and encrypting the message using the receiver's public key.",
+"B. sender's public key and encrypting the message using the receiver's private key.",
+"C. receiver's private key and encrypting the message using the sender's public key.",
+"D. receiver's public key and encrypting the message using the sender's private key."
+],
+optionsKo:[
+"A. <b>송신자 개인키로 서명</b>하고 <b>수신자 공개키로 암호화</b>",
+"B. 송신자 공개키로 서명하고 수신자 개인키로 암호화",
+"C. 수신자 개인키로 서명하고 송신자 공개키로 암호화",
+"D. 수신자 공개키로 서명하고 송신자 개인키로 암호화"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>서명 키</th><th>암호화 키</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell">송신자 개인키</td><td class="correct-cell">수신자 공개키</td><td class="correct-cell"><b>서명(진정성)</b>=송신자 개인키로 → 수신자가 송신자 공개키로 검증 / <b>암호화(기밀성)</b>=수신자 공개키로 → 수신자 개인키로만 복호화. <b>진정성+기밀성 모두 제공</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>송신자 공개키</td><td>수신자 개인키</td><td>서명은 <b>송신자 개인키로만</b> 가능 / 송신자는 수신자 개인키 접근 불가 → 구조적 오류</td><td>논리 오류</td></tr><tr><td><b>C</b></td><td>수신자 개인키</td><td>송신자 공개키</td><td>송신자가 수신자 개인키 접근 불가 → 서명 불가능 / 송신자 공개키로 암호화하면 송신자만 복호화 → 수신자 읽기 불가</td><td>논리 오류</td></tr><tr><td><b>D</b></td><td>수신자 공개키</td><td>송신자 개인키</td><td>수신자 공개키로 서명 = <b>기밀성 전송 방식</b>(서명 아님) / 송신자 개인키로 암호화 = <b>누구나 공개키로 복호화</b> → 기밀성 없음</td><td>키 방향 반대</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 진정성 + 기밀성의 키 방향 조합</h4><p>두 속성을 동시에 달성하려면 <b>두 개의 키 방향을 각각 올바르게</b> 사용해야 한다:</p><ul><li><b>Authenticity(진정성)</b>: <b>송신자 개인키로 서명</b> → 수신자가 송신자 공개키로 검증 → 누가 보냈는지 확인</li><li><b>Confidentiality(기밀성)</b>: <b>수신자 공개키로 암호화</b> → 수신자 개인키로만 복호화 → 오직 수신자만 읽음</li><li>이 두 방향을 결합한 것이 <b>S/MIME·PGP의 표준 동작</b></li></ul><h4>올바른 키 조합 암기법</h4><table><tr><th>속성</th><th>암호 동작</th><th>키</th></tr><tr><td>진정성(서명)</td><td>서명 생성</td><td><b>송신자 개인키</b></td></tr><tr><td>진정성(검증)</td><td>서명 검증</td><td>송신자 공개키</td></tr><tr><td>기밀성(암호화)</td><td>메시지 암호화</td><td><b>수신자 공개키</b></td></tr><tr><td>기밀성(복호화)</td><td>메시지 복호화</td><td>수신자 개인키</td></tr></table><p>기억: "<b>본인이 하는 것은 본인 개인키, 상대에게 보내는 것은 상대 공개키</b>"</p><h4>Sign-then-Encrypt 절차</h4><ul><li>① 송신자가 메시지 M 작성</li><li>② 메시지 해시 H(M) 계산</li><li>③ <b>송신자 개인키로 H(M) 서명</b> → S (진정성)</li><li>④ M + S를 <b>수신자 공개키로 암호화</b> → E (기밀성)</li><li>⑤ E 전송</li><li>⑥ 수신자: <b>자신의 개인키로 E 복호화</b> → M + S 획득</li><li>⑦ 수신자: <b>송신자 공개키로 S 검증</b> → 진정성 확인</li><li>⑧ 해시 재계산·비교 → 무결성 확인</li></ul><h4>실제로는 하이브리드 방식 사용</h4><ul><li>비대칭 암호는 대용량 메시지에 <b>매우 느림</b></li><li>실무 구현:<ol><li>임의 세션키 K 생성(AES-256)</li><li>수신자 공개키로 <b>K만 암호화</b></li><li>메시지 본문은 K로 <b>대칭 암호화</b></li><li>송신자 개인키로 <b>서명</b></li></ol></li><li>S/MIME·PGP의 실제 구조 — 개념은 A와 동일</li></ul><h4>함정 포인트 — 각 오답의 논리적 결함</h4><h5>B: 송신자 공개키 서명 + 수신자 개인키 암호화</h5><ul><li>공개키로 서명 = 누구나 서명 가능 → <b>진정성 없음</b></li><li>송신자는 수신자 개인키 접근 불가 → <b>암호화 불가</b></li><li>이중 오류</li></ul><h5>C: 수신자 개인키 서명 + 송신자 공개키 암호화</h5><ul><li>송신자가 수신자 개인키 없음 → <b>서명 불가</b></li><li>송신자 공개키로 암호화 → <b>송신자 개인키로만 복호화</b> → 수신자가 읽을 수 없음 → 기밀성 달성 실패</li><li>이중 오류</li></ul><h5>D: 수신자 공개키 서명 + 송신자 개인키 암호화</h5><ul><li>수신자 공개키로 "서명"하면 누구나 암호화 가능 → <b>서명 아님</b></li><li>송신자 개인키로 암호화하면 누구나 공개키로 복호화 → <b>기밀성 없음</b></li><li>키 방향이 <b>정확히 반대</b></li></ul><h4>왜 A가 "BEST"인가</h4><ul><li>A는 <b>두 속성 모두를 동시에 달성</b>하는 유일한 정답</li><li>진정성 = 서명(송신자 개인키) ✓</li><li>기밀성 = 암호화(수신자 공개키) ✓</li><li>부인방지도 보너스로 제공 (서명의 부수 효과)</li><li>무결성도 해시 서명으로 자동 제공</li><li>C·I·A·N 모두 충족</li></ul><h4>Q589 vs Q590 비교</h4><ul><li><b>Q589</b>: 기밀성만 — 수신자 공개키 암호화</li><li><b>Q590</b>: 진정성 + 기밀성 — <b>송신자 개인키 서명 + 수신자 공개키 암호화</b></li><li>두 속성을 요구하면 <b>두 키 방향을 모두 올바르게</b></li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>진정성 + 기밀성 = 송신자 개인키 서명 + 수신자 공개키 암호화</b></li><li>S/MIME·PGP 표준 동작 방식</li><li>암기: "내가 하는 것은 내 개인키, 상대에게 보내는 것은 상대 공개키"</li><li>하이브리드 구현: 세션키를 수신자 공개키로, 본문을 세션키로</li><li>키 방향 혼동이 CISA 단골 함정</li><li>Sign-then-Encrypt vs Encrypt-then-Sign: 현대 표준은 <b>Sign-then-Encrypt</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Email Authenticity and Confidentiality (Sign-then-Encrypt)",
+keyConcepts:[
+"진정성+기밀성 공식|송신자 개인키 서명 + 수신자 공개키 암호화 — S/MIME·PGP 표준",
+"서명 키|송신자 개인키로 서명(생성) → 송신자 공개키로 검증",
+"암호화 키|수신자 공개키로 암호화 → 수신자 개인키로 복호화",
+"암기법|내가 하는 것은 내 개인키, 상대에게 보내는 것은 상대 공개키",
+"하이브리드 실무|세션키를 수신자 공개키로·본문을 세션키로 + 송신자 서명",
+"Sign-then-Encrypt|서명 후 암호화 — 현대 표준 순서",
+"Q589 vs Q590|Q589=기밀성만 / Q590=진정성+기밀성 — 두 키 방향 모두 필요",
+"키 방향 함정|B·C·D 모두 키 방향 오류 — 논리적으로 성립 불가",
+"C·I·A·N 통합|A는 기밀성·무결성·진정성·부인방지 모두 충족",
+"S/MIME·PGP 구현|Q561·Q572·Q589·Q590 모두 동일 원리 — CISA 반복 출제"
+]
+}
+,
+{
+id:591,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"Which of the following cryptography options increases overhead/cost?",
+questionKo:"다음 암호화 옵션 중 <b>오버헤드·비용을 증가</b>시키는 것은?",
+options:[
+"A. The encryption is symmetric rather than asymmetric.",
+"B. A long asymmetric encryption key is used.",
+"C. The hash is encrypted rather than the message.",
+"D. A secret key is used."
+],
+optionsKo:[
+"A. <b>비대칭이 아닌 대칭 암호화</b>를 사용",
+"B. <b>긴 비대칭 암호화 키</b>를 사용",
+"C. 메시지가 아닌 <b>해시를 암호화</b>",
+"D. <b>비밀키(대칭)</b>를 사용"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>옵션</th><th>오버헤드 분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>대칭 암호화 사용</td><td>대칭이 비대칭보다 <b>훨씬 빠름</b> — 오버헤드 감소</td><td>사실 반대</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>긴 비대칭 키 사용</b></td><td class="correct-cell">비대칭 키 길이 증가 시 <b>처리 시간 비례 이상 증가</b> — RSA 512→1024비트는 복호화 시간 <b>약 6배 증가</b>. 오버헤드·비용 급증</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>해시 암호화</td><td>해시는 원본보다 <b>훨씬 짧음</b>(고정 길이) → 암호화 오버헤드 감소</td><td>사실 반대</td></tr><tr><td><b>D</b></td><td>비밀키(대칭) 사용</td><td>대칭 비밀키는 보통 짧고 빠름 → 오버헤드 작음</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — 비대칭 암호의 성능 특성</h4><p>비대칭 암호는 대칭에 비해 <b>기본적으로 느리다</b>. 키 길이가 증가하면 처리 시간이 <b>비선형적으로 증가</b>한다.</p><h4>비대칭 키 길이와 성능 관계</h4><ul><li><b>RSA 복호화 시간 증가 비율(예시)</b>:<ul><li>512비트 → 1024비트: 약 <b>6배 증가</b></li><li>1024비트 → 2048비트: 약 5~7배 증가</li><li>2048비트 → 4096비트: 추가 5~7배 증가</li></ul></li><li>이유: <b>모듈러 지수 연산</b>의 복잡도는 키 길이의 3차식 정도</li><li>따라서 키를 2배로 늘리면 처리 시간은 약 <b>8배까지</b> 증가 가능</li></ul><h4>왜 긴 비대칭 키가 오버헤드 증가인가</h4><ul><li><b>연산량 급증</b>: 큰 수 연산 → CPU 부하</li><li><b>메모리 사용</b>: 큰 키 저장·버퍼</li><li><b>전송 오버헤드</b>: 서명·암호문 크기 증가</li><li><b>하드웨어 제약</b>: IoT·스마트카드 등 제한된 환경에서 부담</li><li><b>비용 증가</b>: 서버 자원·전력 소비 상승</li></ul><h4>각 오답 상세 분석</h4><h5>A: 대칭 암호화 사용 — 오히려 절감</h5><ul><li>대칭(AES) vs 비대칭(RSA) 속도 차이: <b>수백~수천 배</b></li><li>대칭은 단순한 치환·셔플 연산</li><li>비대칭은 복잡한 수학 연산(모듈러·이산대수)</li><li>대칭 사용 = 오버헤드 <b>대폭 감소</b></li><li>실무 하이브리드: 대용량 암호화는 대칭 사용</li></ul><h5>C: 해시 암호화 vs 메시지 암호화</h5><ul><li>해시는 <b>고정 짧은 길이</b>(SHA-256 = 32바이트)</li><li>원본 메시지(KB~MB)보다 훨씬 작음</li><li>해시만 암호화 = 비대칭 암호 부담 <b>대폭 감소</b></li><li>이 원리로 디지털 서명은 메시지가 아닌 <b>해시를 서명</b>함 (Q575 참조)</li></ul><h5>D: 비밀키(대칭) 사용</h5><ul><li>대칭 비밀키는 보통 128~256비트 (16~32바이트)</li><li>키 관리·연산 모두 간단</li><li>오버헤드 증가 요인이 아님</li></ul><h4>RSA 키 길이 권장 추세</h4><table><tr><th>연도</th><th>권장 RSA 키</th><th>상응 ECC 키</th></tr><tr><td>~2010</td><td>1024비트 (폐기)</td><td>160비트</td></tr><tr><td>2010~2030</td><td>2048비트 (현재 표준)</td><td>256비트</td></tr><tr><td>2030~</td><td>3072~4096비트</td><td>384비트</td></tr><tr><td>양자 이후</td><td>포스트 양자 암호로 전환</td><td>PQC</td></tr></table><p>보안 강화를 위해 키 길이 증가 필요 → 오버헤드 증가 불가피</p><h4>오버헤드 완화 전략</h4><ul><li><b>하이브리드 암호화</b>: 비대칭으로 세션키만 교환, 대칭으로 본문 암호화</li><li><b>ECC 사용</b>: 더 작은 키로 동일 보안 강도 (Q585 참조)</li><li><b>하드웨어 가속</b>: AES-NI·RSA 가속기·HSM</li><li><b>세션 재사용</b>: TLS 세션 재개 등</li><li><b>Forward Secrecy + 경량 알고리즘</b>: ECDHE·Curve25519</li></ul><h4>비대칭 vs 대칭 오버헤드 비교</h4><table><tr><th>구분</th><th>대칭(AES-256)</th><th>비대칭(RSA-2048)</th></tr><tr><td>키 길이</td><td>256비트</td><td>2048비트</td></tr><tr><td>1MB 암호화 시간</td><td>수 ms</td><td>수 초~분</td></tr><tr><td>서명·검증</td><td>해당 없음(HMAC 사용)</td><td>수 ms~십 ms</td></tr><tr><td>하드웨어 가속</td><td>AES-NI 보편</td><td>HSM·SIM 제한적</td></tr><tr><td>오버헤드 민감도</td><td>낮음</td><td><b>매우 높음</b></td></tr></table><h4>RSA 512→1024비트 사례 해석</h4><ul><li>RSA 복호화는 <b>개인키 연산</b>으로 가장 무거움</li><li>키 2배 증가 → 연산량 약 6배 (책 해설과 일치)</li><li>이것이 <b>긴 비대칭 키의 비용 문제</b>의 대표 예시</li><li>반면 보안 요구사항(양자 위협 등)으로 키 길이 증가 불가피</li></ul><h4>감사 포인트</h4><ul><li>사용 알고리즘·키 길이 적정성</li><li>성능 측정(TPS·Latency)</li><li>하드웨어 가속 활용</li><li>하이브리드 구현 여부</li><li>포스트 양자 대비 로드맵</li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>비대칭 키 길이 증가 = 오버헤드·비용 급증</b></li><li>대칭 사용·해시 암호화·짧은 비밀키는 오버헤드 <b>감소 요인</b></li><li>RSA 512→1024: 6배 증가 (고전적 예시)</li><li>현대 대응: 하이브리드 암호화 + ECC + 하드웨어 가속</li><li>보안 강화 vs 성능 부담의 <b>상충 관계</b> 이해</li><li>실무: 키 길이 결정 시 보안 요구와 성능 균형 고려</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Asymmetric Key Length and Computational Overhead",
+keyConcepts:[
+"비대칭 오버헤드|긴 비대칭 키는 처리 시간 비선형 증가 — RSA 512→1024 약 6배",
+"대칭 vs 비대칭 속도|대칭이 비대칭보다 수백~수천 배 빠름 — 대칭 사용은 오버헤드 감소",
+"해시 암호화 효율|해시는 짧은 고정 길이 — 원본 메시지 암호화보다 훨씬 빠름",
+"RSA 권장 키|2048비트 현재 표준 / 3072~4096비트 미래 대비",
+"ECC 이점|더 작은 키로 동일 보안 — 비대칭 오버헤드 완화 (Q585 참조)",
+"하이브리드 암호화|비대칭으로 세션키만 / 대칭으로 본문 — 속도+보안 동시 달성",
+"키 길이 vs 성능|복잡도는 키 길이의 3차식 정도 — 2배 증가 시 8배까지",
+"하드웨어 가속|AES-NI·HSM·RSA 가속기 — 오버헤드 완화",
+"보안 vs 성능 상충|양자 위협 대응 위해 키 길이 증가 불가피",
+"포스트 양자 암호(PQC)|차세대 표준 — 현재 비대칭의 양자 위협 대비"
+]
+}
+,
+{
+id:592,
+domain:"5",
+ks:"5A6 Data Encryption",
+question:"The feature of a digital signature that ensures that the sender cannot later deny generating and sending the message is called:",
+questionKo:"디지털 서명에서 <b>송신자가 나중에 메시지 생성·전송을 부인할 수 없도록</b> 보장하는 특징은?",
+options:[
+"A. data integrity.",
+"B. authentication.",
+"C. nonrepudiation.",
+"D. replay protection."
+],
+optionsKo:[
+"A. <b>데이터 무결성</b>",
+"B. <b>인증(Authentication)</b>",
+"C. <b>부인방지(Nonrepudiation)</b>",
+"D. <b>재전송 방어(Replay protection)</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>속성</th><th>정의 / 본 질문과의 관계</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>데이터 무결성</td><td>메시지 <b>변조 탐지</b> — 수신자가 해시 재계산 시 일치 여부 확인. 부인 방지와 다른 속성</td><td>부적합</td></tr><tr><td><b>B</b></td><td>인증(Authentication)</td><td>송신자의 <b>개인키 소유 증명</b>으로 출처 확인 — 누가 보냈는지 확인. 부인 방지와 관련은 있으나 <b>직접적 정의는 아님</b></td><td>부분적</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>부인방지(Nonrepudiation)</b></td><td class="correct-cell">송신자가 <b>생성·전송을 나중에 부인할 수 없도록</b> 보장 — 본 질문의 <b>정확한 정의</b>. 개인키 유일 소유가 근거</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>재전송 방어</td><td>가로챈 메시지를 <b>재전송 공격</b>으로부터 보호 — 부인 방지와 무관</td><td>부적합</td></tr></tbody></table></div><div class="sbox"><h4>핵심 개념 — Nonrepudiation(부인방지)</h4><p><b>부인방지</b>는 "송신자가 자신의 행위를 나중에 부인할 수 없게 함"을 보장하는 보안 속성. 법적·금융·전자계약 분야에서 매우 중요.</p><h4>부인방지의 3가지 요소</h4><ul><li><b>Proof of Origin(출처 증명)</b>: 누가 메시지를 보냈는지 증명</li><li><b>Proof of Delivery(전달 증명)</b>: 수신자가 메시지를 받았음 증명</li><li><b>Proof of Integrity(무결성 증명)</b>: 메시지 내용이 변경되지 않음 증명</li><li>디지털 서명이 이 중 Origin + Integrity를 기술적으로 보장</li></ul><h4>부인방지의 기술적 근거</h4><ul><li><b>개인키 유일 소유(Sole Possession)</b>:<ul><li>개인키는 소유자만 보관</li><li>개인키로 서명된 것은 그 사람만 생성 가능</li><li>CA 인증서가 공개키-신원 결합 보증</li></ul></li><li><b>공개키로 검증 성공</b>: 해당 개인키 소유자가 보냈음 수학적 증명</li><li><b>시간 증거(Timestamping)</b>: 언제 서명했는지 증명 — TSA(Time Stamping Authority) 활용</li><li><b>감사 증거</b>: 서명·검증 로그 보관</li></ul><h4>디지털 서명의 4가지 보장 속성</h4><table><tr><th>속성</th><th>제공 메커니즘</th></tr><tr><td>Data Integrity(무결성)</td><td>해시 비교</td></tr><tr><td>Authentication(인증)</td><td>공개키로 서명 검증 성공</td></tr><tr><td><b>Nonrepudiation(부인방지)</b></td><td><b>개인키 유일 소유 + 인증서</b></td></tr><tr><td>Replay Protection(재전송 방어)</td><td>Nonce·타임스탬프·Sequence Number</td></tr></table><p>본 질문은 "부인 불가" 정의에 해당 → <b>Nonrepudiation</b></p><h4>함정 포인트 — B(Authentication)와 C 구분</h4><ul><li><b>Authentication</b>: "누가 보냈는가?" — 출처 확인</li><li><b>Nonrepudiation</b>: "송신자가 부인할 수 없음" — 법적 구속력</li><li>두 속성은 <b>밀접히 연관</b>되지만 <b>다른 개념</b>:<ul><li>인증 성공 = 부인방지의 <b>기반</b>이지만 전부 아님</li><li>부인방지는 <b>시간이 지나도</b> 부인 못하게 하는 특수 요구</li></ul></li><li>HMAC은 인증 제공하나 <b>부인방지 없음</b>(공유키 → 양측 모두 생성 가능)</li><li>디지털 서명(PKI)은 <b>둘 다 제공</b>(개인키 유일 소유 덕분)</li></ul><h4>부인방지 vs 다른 속성 구분</h4><h5>A: Data Integrity</h5><ul><li>메시지 변조 탐지 — <b>기술적 일치 여부</b></li><li>"메시지가 바뀌지 않았음"과 "송신자가 부인 못함"은 다른 차원</li><li>무결성은 부인방지의 <b>전제조건</b>이지 동일 개념 아님</li></ul><h5>D: Replay Protection</h5><ul><li>공격자가 가로챈 메시지를 <b>재전송하여 피해</b> 일으키는 공격 방어</li><li>예: 로그인 요청을 공격자가 복사해 재전송 → 중복 접근</li><li>Nonce·타임스탬프·Sequence Number로 방어</li><li>부인방지와 <b>완전히 다른 속성</b></li></ul><h4>부인방지의 실무 응용</h4><ul><li><b>전자계약</b>: 당사자 서명으로 법적 효력 확보</li><li><b>금융 거래</b>: 주문·이체 서명으로 분쟁 방지</li><li><b>의료 전자처방</b>: 의사 서명으로 처방 책임 명확</li><li><b>블록체인</b>: 각 트랜잭션 서명으로 전송자 부인 불가</li><li><b>감사 로그</b>: 서명된 로그로 변조·부인 방지</li><li><b>정부 전자문서</b>: 공인 인증서 기반 공문서</li></ul><h4>부인방지 강화 기술</h4><ul><li><b>Timestamping(TSA)</b>: 신뢰된 제3자가 시간 증명</li><li><b>Blockchain</b>: 불변 장부로 부인 불가 기록</li><li><b>Audit Log 서명</b>: 로그 무결성 + 부인방지</li><li><b>Multi-signature</b>: 다중 당사자 서명 — 강화된 부인방지</li><li><b>Long-term Validation(LTV)</b>: 인증서 만료 후에도 서명 유효성 유지</li></ul><h4>부인방지의 법적 효력</h4><ul><li><b>미국 ESIGN Act</b>: 전자 서명의 법적 효력 인정</li><li><b>EU eIDAS</b>: 자격인증 전자서명(QES) 수기 서명과 동등</li><li><b>한국 전자서명법</b>: 공인 인증서 기반 서명 법적 효력</li><li><b>디지털 서명 + 인증서 + 시간 증명</b> = 법정 증거력</li></ul><h4>부인방지 실패 시나리오</h4><ul><li>개인키 탈취: 원 소유자가 "탈취당해 그 시점 이후 서명은 내 것 아님" 주장</li><li>키 관리 소홀: 공유·약한 보호 → 부인방지 붕괴</li><li>인증서 유효성 문제: 만료·폐기된 인증서</li><li>시간 증명 부재: "서명 시점이 불명확"</li><li>해결: <b>견고한 키 관리 + 즉시 폐기 절차 + 시간 증명</b></li></ul><h4>CISA 시험 핵심 정리</h4><ul><li><b>"부인할 수 없음" = Nonrepudiation(부인방지)</b></li><li>디지털 서명 4속성: Integrity·Authentication·<b>Nonrepudiation</b>·Replay Protection</li><li>부인방지 기반: <b>개인키 유일 소유 + CA 인증서</b></li><li>Authentication ≠ Nonrepudiation — 관련 있으나 다른 개념</li><li>HMAC은 인증만 / 디지털 서명은 부인방지까지</li><li>법적 효력: 전자서명법·eIDAS·ESIGN Act 등에서 인정</li><li>실무: 계약·금융·의료·정부 문서에 광범위 사용</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Nonrepudiation and Digital Signatures",
+keyConcepts:[
+"부인방지 정의|송신자가 생성·전송을 나중에 부인할 수 없게 보장 — Nonrepudiation",
+"기술적 근거|개인키 유일 소유(Sole Possession) + CA 인증서 + 공개키 검증",
+"디지털 서명 4속성|Integrity·Authentication·Nonrepudiation·Replay Protection",
+"Authentication vs Nonrepudiation|인증=출처 확인 / 부인방지=시간 지나도 부인 불가",
+"HMAC 한계|인증 제공하나 부인방지 없음 — 공유키라 양측 모두 생성 가능",
+"부인방지 3요소|Origin(출처)·Delivery(전달)·Integrity(무결성) — Origin+Integrity가 서명으로",
+"법적 효력|ESIGN Act·eIDAS·한국 전자서명법 — 법정 증거력",
+"강화 기술|Timestamping(TSA)·Blockchain·Multi-signature·LTV",
+"실무 응용|전자계약·금융 거래·전자처방·블록체인·감사 로그·공문서",
+"실패 요인|개인키 탈취·공유·인증서 만료·시간 증명 부재"
+]
+}
+,
+{
+id:593,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Digital signatures require the:",
+questionKo:"디지털 서명에 <b>요구되는 키 조합</b>은?",
+options:[
+"A. signer to have a public key and the receiver to have a private key.",
+"B. signer to have a private key and the receiver to have a public key.",
+"C. signer and receiver to have a public key.",
+"D. signer and receiver to have a private key."
+],
+optionsKo:[
+"A. 서명자=공개키, 수신자=개인키",
+"B. <b>서명자=개인키, 수신자=공개키</b>",
+"C. 서명자·수신자 모두 공개키",
+"D. 서명자·수신자 모두 개인키"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>서명자 키</th><th>수신자 키</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>공개키</td><td>개인키</td><td>공개키는 누구나 보유 → 서명 주체 특정 불가 / 수신자 개인키로는 송신자 서명 검증 불가 — <b>키 방향 반대</b></td><td>오답</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>개인키</b></td><td class="correct-cell"><b>공개키</b></td><td class="correct-cell">서명자가 메시지 다이제스트를 <b>자신의 개인키로 암호화(서명)</b> → 수신자는 서명자의 <b>공개키로 검증</b>. 무결성+출처 확인 모두 충족 — DSS 표준</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>공개키</td><td>공개키</td><td>공개키는 누구나 접근 가능 → <b>서명 생성 불가능</b> (개인키 없이는 서명 자체가 성립 X)</td><td>오답</td></tr><tr><td><b>D</b></td><td>개인키</td><td>개인키</td><td>개인키는 본인만 보유 → 수신자가 서명자의 개인키 가질 수 없음 → <b>검증 불가</b></td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 디지털 서명의 키 방향</h4><ul><li><b>서명(생성)</b>: 서명자 <b>개인키</b>로 메시지 해시 암호화</li><li><b>검증</b>: 수신자가 서명자 <b>공개키</b>로 복호화 → 해시 비교</li><li>핵심 원리: <b>개인키는 본인만 / 공개키는 누구나</b> → 본인만 서명 가능, 누구나 검증 가능</li></ul><h4>왜 반대 방향(공개키 서명)은 불가</h4><ul><li>공개키로 서명하면 누구나 서명 가능 → <b>서명 의미 상실</b></li><li>"서명"이라는 말 자체가 본인만 할 수 있어야 성립</li><li>개인키 유일 소유 → 부인방지 근거</li></ul><h4>디지털 서명 vs 메시지 암호화 — 키 방향 반대</h4><table><tr><th>목적</th><th>사용 키</th></tr><tr><td><b>디지털 서명</b>(진정성)</td><td>서명자 개인키 → 수신자가 공개키로 검증</td></tr><tr><td><b>메시지 암호화</b>(기밀성)</td><td>수신자 공개키 → 수신자가 개인키로 복호화</td></tr></table><p><b>암기법</b>: "내가 책임지는 행위(서명)는 내 개인키 / 상대만 보게 하려면(암호화) 상대 공개키"</p><h4>CISA 시험 포인트</h4><ul><li>디지털 서명 = <b>서명자 개인키 + 수신자 공개키</b> (Q593 정답 B)</li><li>DSS(Digital Signature Standard) 기본 동작 방식</li><li>키 방향 헷갈리는 함정이 단골 — A·C·D처럼 키 방향 바꾼 오답 자주 등장</li><li>해시 + 개인키 서명 = 무결성 + 출처 확인 + 부인방지 동시 제공</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Digital Signature Standard (DSS) and PKI",
+keyConcepts:[
+"디지털 서명 키 조합|서명자 개인키로 서명 → 수신자 공개키로 검증 (DSS 표준)",
+"키 방향 원리|개인키는 본인만 / 공개키는 누구나 — 서명은 본인만, 검증은 누구나",
+"서명 vs 암호화 키 방향|서명=서명자 개인키 / 암호화=수신자 공개키 — 정반대",
+"공개키로 서명 불가|누구나 서명 가능해져 서명 의미 상실",
+"수신자가 개인키로 검증 불가|서명자의 공개키만 있으면 검증 가능",
+"부인방지 근거|개인키 유일 소유 → 본인만 서명 가능 → 부인 불가",
+"암기법|내 책임 행위(서명)는 내 개인키 / 상대만 보게 하려면 상대 공개키"
+]
+}
+,
+{
+id:594,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Which of the following is the MOST significant function of an enterprise public key infrastructure and certificate authority employing X.509 digital certificates?",
+questionKo:"X.509 디지털 인증서를 사용하는 <b>기업 PKI와 CA의 가장 중요한 기능</b>은?",
+options:[
+"A. It provides the public/private key set for the encryption and signature services used by email and file space.",
+"B. It binds a digital certificate and its public key to an individual subscriber's identity.",
+"C. It provides the authoritative source for employee identity and personal details.",
+"D. It provides the authoritative authentication source for object access."
+],
+optionsKo:[
+"A. 이메일·파일 공간의 암호화·서명 서비스용 <b>공개키/개인키 쌍 제공</b>",
+"B. <b>디지털 인증서와 공개키를 개별 가입자의 신원에 바인딩</b>",
+"C. 직원 신원·개인정보의 <b>권위 있는(authoritative) 출처 제공</b>",
+"D. 객체 접근 통제를 위한 <b>권위 있는 인증(Authentication) 출처 제공</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>키 쌍 제공</td><td>일부 이메일 앱이 PKI 인증서를 활용하지만, <b>CA는 통상 사용자 개인키를 생성하지 않음</b>(가입자가 직접 생성·CA에 CSR 제출). PKI의 본질 기능 아님</td><td>부분적</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>인증서·공개키를 가입자 신원에 바인딩</b></td><td class="correct-cell">PKI의 <b>핵심 목적</b>: 공개키가 특정 신원에 속함을 보증. CA가 엄격한 신원 확인 절차로 가입자와 공개키를 결합 → 보호된 데이터·서비스의 <b>출처 신뢰성</b> 확보</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>직원 신원·개인정보 출처</td><td>개인정보·HR 데이터는 <b>PKI에 저장·제공되지 않음</b> — 그건 HR 시스템·디렉터리(LDAP/AD) 역할</td><td>오답</td></tr><tr><td><b>D</b></td><td>객체 접근 인증 출처</td><td>OS·앱의 인증 서비스가 PKI 인증서를 <b>활용할 수는 있지만</b>, PKI 자체가 객체 접근 인증을 제공하지 않음 — 그건 IAM·접근통제 시스템 역할</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — PKI/CA의 본질</h4><ul><li>PKI의 <b>가장 중요한 기능 = 공개키-신원 바인딩</b></li><li>CA가 발급하는 X.509 인증서 = "이 공개키는 이 사람·기관 것"이라는 <b>디지털 신원증명서</b></li><li>이 바인딩이 있어야 디지털 서명·암호화·TLS 인증이 신뢰 가능</li></ul><h4>X.509 인증서 핵심 필드</h4><ul><li><b>Subject</b>: 가입자 신원(이름·조직·이메일·DN)</li><li><b>Public Key</b>: 가입자 공개키</li><li><b>Issuer</b>: 발급 CA</li><li><b>Validity</b>: 유효 기간</li><li><b>CA Signature</b>: CA가 위 정보를 자신의 개인키로 서명 → <b>바인딩 무결성 보증</b></li></ul><h4>왜 A·C·D가 틀렸나</h4><ul><li><b>A</b>: 키 쌍은 보통 <b>가입자가 자체 생성</b> 후 공개키만 CSR로 CA에 제출. CA가 키 쌍 제공 안 함 (예외: 일부 키 에스크로 환경)</li><li><b>C</b>: 인증서에는 신원 정보 일부만 포함. 상세 개인정보(주소·연락처·HR 데이터)는 PKI 영역 밖 → HR/디렉터리 시스템 담당</li><li><b>D</b>: PKI는 <b>인증의 기반 기술</b>이지 인증 서비스 자체가 아님. 객체 접근 인증·인가는 OS·IAM·RBAC이 수행</li></ul><h4>CISA 시험 포인트</h4><ul><li>PKI/CA의 <b>본질 기능 = 신원-공개키 바인딩</b> (Q594 정답 B)</li><li>"키 생성"은 CA의 일반 기능 아님 — 가입자가 생성, CA는 서명만</li><li>PKI는 인증·암호화·서명의 <b>신뢰 기반(trust anchor)</b> 제공이지 인증 자체 수행 아님</li><li>유사 함정: "CA가 직원 정보 관리"·"CA가 접근통제 제공" 같은 <b>역할 확장 보기는 오답</b></li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Public Key Infrastructure (PKI) and X.509 Certificates",
+keyConcepts:[
+"PKI 본질 기능|공개키와 가입자 신원을 바인딩 — X.509 인증서로 보증",
+"X.509 인증서 구성|Subject(신원)·Public Key·Issuer(CA)·Validity·CA Signature",
+"CA 역할|가입자 신원 검증 후 인증서 서명 — 키 쌍 생성은 통상 가입자가 수행",
+"바인딩 보증|CA 개인키 서명으로 신원-공개키 결합의 무결성 보장",
+"PKI ≠ 인증 서비스|PKI는 신뢰 기반 제공, 객체 접근 인증은 OS·IAM 담당",
+"PKI ≠ HR 시스템|상세 개인정보는 인증서에 없음 — LDAP·AD가 별도 관리",
+"CSR(Certificate Signing Request)|가입자가 공개키와 신원 정보를 CA에 제출 → CA가 서명",
+"신뢰 앵커(Trust Anchor)|루트 CA의 자체 서명 인증서가 신뢰 체인의 기점"
+]
+}
+,
+{
+id:595,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Which of the following BEST describes the role of a directory server in a public key infrastructure?",
+questionKo:"PKI에서 <b>디렉터리 서버(Directory Server)의 역할</b>을 가장 잘 설명한 것은?",
+options:[
+"A. Encrypts the information transmitted over the network",
+"B. Makes other users' certificates available to applications",
+"C. Facilitates the implementation of a password policy",
+"D. Stores certificate revocation lists"
+],
+optionsKo:[
+"A. 네트워크로 전송되는 정보를 <b>암호화</b>",
+"B. <b>다른 사용자의 인증서</b>를 애플리케이션이 사용할 수 있도록 게시",
+"C. <b>패스워드 정책</b> 구현 지원",
+"D. <b>인증서 폐기 목록(CRL) 저장</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>네트워크 정보 암호화</td><td>전송 암호화는 <b>보안 서버(Security Server)</b>·TLS 종단의 역할 — 디렉터리 서버 기능 아님</td><td>오답</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>다른 사용자 인증서 게시</b></td><td class="correct-cell">디렉터리 서버는 <b>인증서·공개키를 중앙 저장소로 게시</b>하여 애플리케이션·사용자가 조회·다운로드 가능하게 함 (LDAP/X.500 기반)</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>패스워드 정책 구현</td><td>PKI는 <b>공개키 기반 인증 체계</b> — 패스워드 정책과 무관</td><td>오답</td></tr><tr><td><b>D</b></td><td>CRL 저장</td><td>CRL 저장·발급은 <b>보안 서버(또는 CA)</b>의 역할 — 디렉터리는 CRL을 게시·배포하는 보조 역할은 가능하나 <b>핵심 저장소는 아님</b></td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — PKI 구성요소별 역할</h4><table><tr><th>구성요소</th><th>역할</th></tr><tr><td><b>CA (인증기관)</b></td><td>인증서 발급·서명·관리</td></tr><tr><td><b>RA (등록기관)</b></td><td>가입자 신원 검증, CSR 접수</td></tr><tr><td><b>Directory Server (디렉터리 서버)</b></td><td><b>인증서·공개키 게시·조회</b> (LDAP/X.500)</td></tr><tr><td><b>Security Server (보안 서버)</b></td><td>네트워크 암호화·CRL 저장·정책 집행</td></tr><tr><td><b>End Entity (가입자)</b></td><td>개인키 보관, 서명·복호화 수행</td></tr></table><h4>디렉터리 서버 동작</h4><ul><li>주로 <b>LDAP</b> 또는 <b>X.500</b> 기반 — 사용자·인증서·공개키 정보를 트리 구조로 저장</li><li>예: 김이사가 박부장에게 암호화 메일 보낼 때 → <b>박부장의 공개키를 디렉터리에서 조회</b> → 그 공개키로 암호화</li><li>S/MIME·기업 PKI에서 핵심 인프라</li></ul><h4>왜 D(CRL 저장)가 오답인가</h4><ul><li>본 문제 출제 의도: <b>"다른 사용자의 인증서 조회"</b>가 디렉터리의 본질 기능</li><li>CRL은 <b>폐기 정보</b> — 보안 서버·CA가 발급·관리</li><li>실무에서 디렉터리에 CRL이 함께 게시되기도 하나, <b>"BEST describes"</b> 문구에서는 핵심 기능인 <b>"인증서 게시"</b>가 정답</li><li>D 함정: "디렉터리도 저장하니까 맞지 않나?" → CISA는 <b>가장 핵심적 역할</b>을 묻는 것</li></ul><h4>CISA 시험 포인트</h4><ul><li>디렉터리 서버 = <b>인증서·공개키 게시·조회 인프라</b> (Q595 정답 B)</li><li>LDAP·X.500이 표준 프로토콜</li><li>CRL 저장은 보조 기능 — 본질은 보안 서버·CA 영역</li><li>PKI 구성요소별 역할 분리 출제 단골</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — PKI Components and Directory Services",
+keyConcepts:[
+"디렉터리 서버 역할|다른 사용자의 인증서·공개키를 애플리케이션이 조회 가능하도록 게시",
+"디렉터리 프로토콜|LDAP·X.500 기반 — 트리 구조로 신원·인증서 저장",
+"PKI 구성요소|CA(발급)·RA(등록)·Directory(게시)·Security Server(암호화·CRL)",
+"보안 서버 역할|네트워크 암호화·CRL 저장·정책 집행 — 디렉터리와 구분",
+"공개키 조회 흐름|송신자가 디렉터리에서 수신자 공개키 조회 → 그 키로 암호화",
+"CRL 저장 주체|CA·보안 서버가 핵심 — 디렉터리는 보조 게시 역할",
+"디렉터리 vs 보안 서버|디렉터리=인증서 게시 / 보안 서버=암호화·CRL — 역할 분리",
+"S/MIME 활용|기업 메일 암호화·서명에 디렉터리 서버 필수"
+]
+}
+,
+{
+id:596,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"When using public key encryption to secure data being transmitted across a network:",
+questionKo:"네트워크 전송 데이터를 보호하기 위해 <b>공개키 암호(public key encryption)</b>를 사용할 때:",
+options:[
+"A. the keys used to encrypt and decrypt the data are public.",
+"B. the key used to encrypt the data is private, but the key used to decrypt the data is public.",
+"C. the key used to encrypt the data is public, but the key used to decrypt the data is private.",
+"D. the keys used to encrypt and decrypt the data are private."
+],
+optionsKo:[
+"A. 암호화·복호화 키 모두 <b>공개키</b>",
+"B. <b>암호화=개인키 / 복호화=공개키</b>",
+"C. <b>암호화=공개키 / 복호화=개인키</b>",
+"D. 암호화·복호화 키 모두 <b>개인키</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>키 조합</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>공개키·공개키</td><td>공개키만으로는 키 쌍이 성립하지 않음 — 비대칭 암호 원리상 <b>한 키로 암호화하면 쌍의 다른 키로만 복호화</b> 가능</td><td>오답</td></tr><tr><td><b>B</b></td><td>개인키 암호화 / 공개키 복호화</td><td>개인키 암호화 = <b>디지털 서명 구조</b> — 출처 증명만 제공, <b>기밀성 없음</b>(공개키는 모두에게 공개되어 누구나 복호화 가능)</td><td>오답</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>공개키 암호화 / 개인키 복호화</b></td><td class="correct-cell">공개키로 암호화하면 <b>오직 해당 개인키 소유자만</b> 복호화 가능 → 진정한 기밀성 달성. 비대칭 암호의 <b>표준 동작 방식</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>개인키·개인키</td><td>개인키는 본인만 소유 → 송신자가 수신자 개인키 접근 불가 → <b>구조적으로 성립 불가</b></td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 공개키 암호의 키 쌍 원리</h4><ul><li>공개키·개인키는 <b>항상 쌍으로 작동</b> (RSA·ECC 등)</li><li><b>공개키로 암호화 → 같은 쌍의 개인키로만 복호화</b></li><li>역방향(개인키 암호화 → 공개키 복호화)은 <b>서명용</b>이지 기밀성용 아님</li></ul><h4>왜 "공개키 암호화"가 기밀성을 제공하나</h4><ul><li>공개키는 누구나 알 수 있음 → <b>송신자가 자유롭게 암호화 가능</b></li><li>개인키는 수신자만 보관 → <b>수신자만 복호화 가능</b></li><li>중간자가 암호문을 가로채도 개인키 없이는 무용</li><li>= 데이터 전송의 진정한 기밀성</li></ul><h4>B 함정 — 서명과 기밀성 구분</h4><table><tr><th>구조</th><th>제공 속성</th></tr><tr><td><b>공개키 암호화 → 개인키 복호화</b></td><td>기밀성(본 문제)</td></tr><tr><td><b>개인키 암호화 → 공개키 복호화</b></td><td>출처 증명·서명(기밀성 X)</td></tr></table><p>B는 서명 구조 — 공개키는 전 세계가 알기에 누구나 복호화 가능 → 기밀성 없음</p><h4>CISA 시험 포인트</h4><ul><li>공개키 암호 = 비대칭 암호(asymmetric) — <b>공개키 암호화 / 개인키 복호화</b>가 기밀성 표준 (Q596 정답 C)</li><li>키 방향 절대 규칙: 기밀성=수신자 공개키 / 서명=송신자 개인키</li><li>유사 문제: Q589(이메일 시나리오)·Q590(서명+암호화)도 같은 원리 적용</li><li>"두 키 모두 공개"·"두 키 모두 개인" 보기는 비대칭 원리상 자동 오답</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Public Key Encryption (Asymmetric Cryptography)",
+keyConcepts:[
+"공개키 암호 기본 공식|공개키 암호화 → 개인키 복호화 — 비대칭 암호의 기밀성 표준",
+"키 쌍 원리|한 키로 암호화하면 같은 쌍의 다른 키로만 복호화 — 절대 규칙",
+"기밀성 메커니즘|수신자만 개인키 소유 → 수신자만 복호화 가능 → 진정한 기밀성",
+"서명 vs 기밀성 키 방향|서명=개인키→공개키 / 기밀성=공개키→개인키 — 정반대",
+"B 함정|개인키 암호화는 서명 구조 — 누구나 공개키로 복호화 → 기밀성 없음",
+"A·D 자동 오답|두 키 모두 공개·모두 개인은 비대칭 원리상 성립 불가",
+"비대칭 암호 별칭|Public key encryption = Asymmetric key cryptography",
+"Q589·Q590 연계|동일 원리 다른 시나리오 — 이메일·서명 결합"
+]
+}
+,
+{
+id:597,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"In a public key infrastructure, a registration authority:",
+questionKo:"PKI에서 <b>등록기관(Registration Authority, RA)</b>의 역할은?",
+options:[
+"A. verifies information supplied by the subject requesting a certificate.",
+"B. issues the certificate after the required attributes are verified and the keys are generated.",
+"C. digitally signs a message to achieve nonrepudiation of the signed message.",
+"D. registers signed messages to protect them from future repudiation."
+],
+optionsKo:[
+"A. 인증서를 요청한 주체(subject)가 제공한 <b>정보를 검증</b>",
+"B. 필요 속성 검증·키 생성 후 <b>인증서를 발급</b>",
+"C. 서명된 메시지의 부인방지를 위해 <b>메시지에 디지털 서명</b>",
+"D. <b>서명된 메시지를 등록</b>하여 향후 부인 방지"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>요청자 정보 검증</b></td><td class="correct-cell">RA의 본질 역할 — 인증서를 요청한 주체의 신원·권한·소속을 <b>검증(verify)</b>하고 요청자의 자격을 확인. CA에 검증 결과 전달</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>인증서 발급</td><td>인증서 발급은 <b>CA(Certificate Authority)</b>의 역할 — RA는 발급 권한 없음</td><td>오답</td></tr><tr><td><b>C</b></td><td>메시지 서명</td><td>메시지 서명은 <b>개인키 소유자(송신자)</b>가 수행 — RA·CA의 역할 아님</td><td>오답</td></tr><tr><td><b>D</b></td><td>서명 메시지 등록</td><td>"서명 메시지 등록"은 PKI 표준 기능 아님 — 부인방지는 개인키 유일 소유로 달성</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — RA vs CA 역할 분리</h4><table><tr><th>구성요소</th><th>역할</th></tr><tr><td><b>RA (등록기관)</b></td><td><b>요청자 신원·자격 검증</b> → CA에 전달 (발급 권한 없음)</td></tr><tr><td><b>CA (인증기관)</b></td><td>RA 검증 결과 기반으로 <b>인증서 발급·서명·폐기</b></td></tr><tr><td><b>End Entity (가입자)</b></td><td>키 쌍 생성·CSR 제출·개인키 보관</td></tr></table><h4>RA의 검증 대상</h4><ul><li>요청자 신원(이름·조직·이메일)</li><li>요청자가 본인·소속 조직을 대표할 권한</li><li>제공된 정보의 정확성·일관성</li><li>조직 정책에 따른 자격 충족 여부</li></ul><h4>RA·CA 분리 이유</h4><ul><li>책임 분리(Segregation of Duties) — 검증과 발급 분리</li><li>대규모·분산 환경에서 RA를 지역별·부서별로 운영 가능</li><li>CA는 핵심 키 보호에 집중, RA는 현장 검증 담당</li></ul><h4>CISA 시험 포인트</h4><ul><li>RA 핵심 역할 = <b>요청자 정보 검증</b> (Q597 정답 A)</li><li>인증서 <b>발급은 CA</b> — RA·CA 역할 혼동 함정 단골</li><li>RA는 키 생성·서명·등록 기능 없음 — 검증만</li><li>"누가 무엇을 한다" 매핑 문제 자주 출제</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — PKI Components: Registration Authority and Certificate Authority",
+keyConcepts:[
+"RA 핵심 역할|인증서 요청자의 정보·신원·자격 검증 → CA에 전달",
+"RA vs CA|RA=검증만 / CA=발급·서명·폐기 — 역할 엄격 분리",
+"검증 대상|신원·소속·권한·정보 정확성·정책 부합 여부",
+"책임 분리 원칙|RA·CA 분리로 SoD 달성 — 핵심 키 보호와 현장 검증 분담",
+"발급 권한 부재|RA는 인증서 발급·서명·폐기 권한 없음",
+"PKI 구성요소 매핑|CA·RA·Directory·End Entity 각자 역할 명확 — 시험 단골",
+"분산 운영|대규모 조직에서 RA를 지역·부서별로 분산 가능",
+"오답 패턴|RA가 발급·서명·등록한다는 보기는 자동 오답"
+]
+}
+,
+{
+id:598,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"The information security policy that states \"each individual must have his/her badge read at every controlled door\" addresses which of the following attack methods?",
+questionKo:"<b>\"모든 개인은 통제된 모든 출입문에서 본인의 배지를 인식해야 한다\"</b>는 정보보안 정책이 대응하는 공격 기법은?",
+options:[
+"A. Piggybacking",
+"B. Shoulder surfing",
+"C. Dumpster diving",
+"D. Impersonation"
+],
+optionsKo:[
+"A. <b>피기배킹(Piggybacking)</b> — 인가자 뒤따라 들어가기",
+"B. <b>숄더 서핑(Shoulder surfing)</b> — 어깨너머 훔쳐보기",
+"C. <b>덤스터 다이빙(Dumpster diving)</b> — 쓰레기통 뒤지기",
+"D. <b>사칭(Impersonation)</b> — 직원인 척 위장"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>공격 기법</th><th>정책과의 관련성</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>Piggybacking</b></td><td class="correct-cell">인가자가 문 열어준 틈에 비인가자가 따라 들어감(예의상 문 잡아주는 행위 악용). <b>모든 개인이 본인 배지를 인식</b>하면 비인가자 진입 차단 — <b>정확히 이 정책의 목적</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>Shoulder surfing</td><td>화면·문서를 어깨너머로 훔쳐보는 공격 — <b>출입 통제와 무관</b>. 화면 보호기·프라이버시 필터로 대응</td><td>오답</td></tr><tr><td><b>C</b></td><td>Dumpster diving</td><td>버려진 문서·매체에서 정보 수집 — <b>물리적 경계 외부</b>에서 수행 가능. 출입 정책으로 막을 수 없음. 분쇄·폐기 정책으로 대응</td><td>오답</td></tr><tr><td><b>D</b></td><td>Impersonation</td><td>위조 신분으로 직원 행세 — 배지 인식만으로는 사칭 자체 차단 불가(위조 배지·도용 가능). 별도 신원 확인·다중 인증 필요</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — Piggybacking(테일게이팅)</h4><ul><li><b>정의</b>: 인가자가 출입문을 통과할 때 비인가자가 뒤따라 들어가는 공격</li><li>"문 잡아주는 예의" 악용 — 사회공학적 요소 포함</li><li>물리적 보안의 대표적 우회 기법</li></ul><h4>대응 통제</h4><ul><li><b>1인 1배지 인식 정책</b>(본 문제 정답)</li><li><b>Mantrap·Turnstile</b> — 1명씩만 통과 가능한 물리 구조</li><li>출입 감지 센서·CCTV</li><li>경비원 상주·교육</li><li>임직원 보안 인식 교육 — "낯선 사람에게 문 열어주지 않기"</li></ul><h4>다른 공격 기법 대응 통제</h4><table><tr><th>공격</th><th>주요 대응</th></tr><tr><td>Piggybacking(본 문제)</td><td>1인 1배지·맨트랩·CCTV</td></tr><tr><td>Shoulder surfing</td><td>프라이버시 필터·화면 잠금·자리 배치</td></tr><tr><td>Dumpster diving</td><td>문서 분쇄·매체 파기 정책</td></tr><tr><td>Impersonation</td><td>다중 인증·신원 확인·콜백 검증</td></tr></table><h4>CISA 시험 포인트</h4><ul><li>"개별 배지 인식" 정책 = <b>Piggybacking 대응</b> (Q598 정답 A)</li><li>물리 보안 공격 4종 매핑 — 단골 출제</li><li>각 공격별 대응 통제가 다르다는 점 정확히 구분</li><li>유사어: Piggybacking ≈ Tailgating (CISA QAE에서 혼용)</li></ul></div>`,
+reference:"CRM Chapter 5: Protection of Information Assets — Physical Access Controls and Social Engineering",
+keyConcepts:[
+"Piggybacking|인가자 뒤를 따라 비인가자가 통제 구역 진입 — 1인 1배지 인식으로 차단",
+"Tailgating|Piggybacking 동의어 — CISA에서 혼용",
+"Mantrap|1명씩만 통과하는 이중 도어 — Piggybacking 물리 차단",
+"Shoulder surfing|어깨너머 훔쳐보기 — 프라이버시 필터·자리 배치로 대응",
+"Dumpster diving|쓰레기통 뒤지기 — 문서 분쇄·매체 파기로 대응",
+"Impersonation|직원 사칭 — 다중 인증·신원 확인·콜백 검증으로 대응",
+"공격-통제 매핑|각 공격별 대응 통제 다름 — 정책 목적과 공격 일치 여부로 판별",
+"사회공학 요소|Piggybacking은 '문 잡아주는 예의' 악용 — 보안 인식 교육 병행 필요"
+]
+}
+,
+{
+id:599,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Which of the following public key infrastructure (PKI) elements describes the procedure for disabling a compromised private key?",
+questionKo:"PKI 요소 중 <b>손상된 개인키를 비활성화(폐기)하는 절차</b>를 기술하는 것은?",
+options:[
+"A. Certificate revocation list",
+"B. Certification practice statement",
+"C. Certificate policy",
+"D. PKI disclosure statement"
+],
+optionsKo:[
+"A. <b>인증서 폐기 목록(CRL)</b>",
+"B. <b>인증업무준칙(CPS, Certification Practice Statement)</b>",
+"C. <b>인증서 정책(CP, Certificate Policy)</b>",
+"D. <b>PKI 공개 성명(PDS, PKI Disclosure Statement)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>요소</th><th>역할</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>CRL</td><td>이미 <b>폐기된 인증서 목록</b>(결과물) — 폐기 절차 자체가 아닌 <b>폐기 결과 게시</b></td><td>오답</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>CPS</b></td><td class="correct-cell">PKI 운영의 <b>"How-to" 문서</b> — 인증서 발급·갱신·폐기·키 손상 시 절차 등 <b>구체적 운영 절차</b>를 기술</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>CP</td><td><b>요구사항(What)</b>을 정의하는 정책 문서 — CPS가 이를 구현. 절차 자체는 기술하지 않음</td><td>오답</td></tr><tr><td><b>D</b></td><td>PDS</td><td>가입자·신뢰자에게 <b>법적 보증·책임·의무</b>를 알리는 공개 성명 — 절차 문서 아님</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — PKI 정책·운영 문서 4종</h4><table><tr><th>문서</th><th>내용</th><th>비유</th></tr><tr><td><b>CP (Certificate Policy)</b></td><td><b>What</b> — 인증서 사용·관리 요구사항</td><td>"법(法)"</td></tr><tr><td><b>CPS (Certification Practice Statement)</b></td><td><b>How</b> — 실제 운영·발급·폐기 절차</td><td>"시행령·매뉴얼"</td></tr><tr><td><b>CRL (Certificate Revocation List)</b></td><td>폐기된 인증서 목록(결과)</td><td>"수배자 명단"</td></tr><tr><td><b>PDS (PKI Disclosure Statement)</b></td><td>법적 책임·보증·면책 공개</td><td>"약관"</td></tr></table><h4>CP vs CPS — 시험 단골 함정</h4><ul><li><b>CP</b>: "어떤 인증서를 어떤 용도로 발급할지" 요구사항 정의 (What·Why)</li><li><b>CPS</b>: "그 요구사항을 어떻게 실행할지" 절차 기술 (How)</li><li>CP가 상위 정책 → CPS가 하위 구현</li><li>키 손상 시 폐기 <b>절차</b>는 <b>CPS</b>에 기술</li></ul><h4>CRL과 CPS 구분</h4><ul><li><b>CRL</b>: 폐기된 인증서를 <b>나열한 결과물</b> — 정기 발행되는 데이터</li><li><b>CPS</b>: 폐기 자체를 <b>어떻게 수행하는지</b> 절차 문서</li><li>본 문제는 "절차(procedure)"를 묻고 있으므로 <b>CPS</b>가 정답</li></ul><h4>키 손상 시 CPS에 기술되는 절차 예</h4><ul><li>가입자가 즉시 RA·CA에 통보</li><li>CA가 인증서 폐기 처리</li><li>CRL 갱신·OCSP 응답 갱신</li><li>가입자에게 새 키 쌍·인증서 재발급</li><li>관련 시스템·로그 검토</li></ul><h4>CISA 시험 포인트</h4><ul><li>"절차(procedure)·How-to" → <b>CPS</b> (Q599 정답 B)</li><li>"요구사항·정책(requirement)" → CP</li><li>"폐기된 인증서 목록(list)" → CRL (결과물)</li><li>"법적 보증·약관" → PDS</li><li>키워드 매핑이 정답 판별 핵심</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — PKI Policy Documents (CP, CPS, CRL, PDS)",
+keyConcepts:[
+"CPS|PKI 운영 How-to 문서 — 인증서 발급·갱신·폐기·키 손상 절차 기술",
+"CP|인증서 사용·관리 요구사항(What) — CPS가 이를 구현",
+"CP vs CPS|CP=법(요구사항) / CPS=시행령(절차) — 상위·하위 관계",
+"CRL|폐기된 인증서 목록(결과물) — 절차 문서 아님",
+"PDS|법적 보증·책임·의무 공개 성명 — 약관 성격",
+"키 손상 절차|CPS에 명시 — 즉시 통보·폐기·CRL 갱신·재발급",
+"키워드 매핑|절차=CPS / 요구사항=CP / 목록=CRL / 약관=PDS",
+"OCSP|온라인 인증서 상태 프로토콜 — CRL 보완해 실시간 폐기 확인"
+]
+}
+,
+{
+id:600,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Which of the following features of a public key infrastructure is MOST closely associated with proving that an online transaction was authorized by a specific customer?",
+questionKo:"PKI 기능 중 <b>온라인 거래가 특정 고객에 의해 승인되었음을 증명</b>하는 것과 가장 밀접한 것은?",
+options:[
+"A. Nonrepudiation",
+"B. Encryption",
+"C. Authentication",
+"D. Integrity"
+],
+optionsKo:[
+"A. <b>부인방지(Nonrepudiation)</b>",
+"B. <b>암호화(Encryption)</b>",
+"C. <b>인증(Authentication)</b>",
+"D. <b>무결성(Integrity)</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>속성</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>Nonrepudiation</b></td><td class="correct-cell">디지털 서명으로 달성 — 송신자가 나중에 "내가 안 했다"고 <b>부인할 수 없게 보장</b>. "특정 고객이 거래를 승인했음 증명"의 정확한 정의</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>Encryption</td><td>디지털 서명에 활용되긴 하나 <b>여러 용도</b>가 있음 — 부인방지 자체와 직접 매핑되지 않음 (수단이지 결과 속성 아님)</td><td>오답</td></tr><tr><td><b>C</b></td><td>Authentication</td><td>당사자 신원 확인은 필요하지만 "거래 승인의 부인 불가"는 <b>인증을 넘어선 법적 효력</b>까지 포함 — 부분적</td><td>부분적</td></tr><tr><td><b>D</b></td><td>Integrity</td><td>거래 내용 변조 방지 — <b>"누가 했는지" 증명과 무관</b></td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — Nonrepudiation의 정의</h4><ul><li>송신자가 자신의 행위(메시지·거래 생성·전송)를 <b>나중에 부인할 수 없게</b> 보장</li><li>기술적 근거: <b>개인키 유일 소유</b> + CA 인증서로 신원 결합</li><li>법적 효력: ESIGN Act·eIDAS·전자서명법 등이 인정</li></ul><h4>왜 부인방지가 정답인가</h4><ul><li>"<b>특정 고객</b>이 <b>거래를 승인</b>했음 <b>증명</b>" = 추후 부인 불가</li><li>인증은 "지금 누구인지" 확인 / 부인방지는 "<b>시간이 지나도 부인 불가</b>" 보장</li><li>온라인 거래 분쟁(예: "내가 주문 안 했다") 방지의 핵심 속성</li></ul><h4>Authentication vs Nonrepudiation</h4><table><tr><th>속성</th><th>관점</th><th>적용 시점</th></tr><tr><td>Authentication</td><td>"지금 누구인가" 확인</td><td>접속·거래 시점</td></tr><tr><td><b>Nonrepudiation</b></td><td><b>"행위를 부인 못함"</b> 보장</td><td><b>거래 후·분쟁 발생 시</b></td></tr></table><h4>부인방지 달성 메커니즘</h4><ul><li>고객이 <b>자신의 개인키로 거래에 서명</b></li><li>은행·서비스가 고객 공개키로 <b>서명 검증</b> → 진정성 확인</li><li>개인키는 고객만 소유 → "다른 사람이 했다" 주장 불가</li><li>감사 로그·타임스탬프와 결합 → 법정 증거력</li></ul><h4>다른 속성과의 차이</h4><ul><li><b>Integrity</b>: 거래 내용이 변조되지 않았음 — "<b>무엇이</b> 거래되었나"만 보장</li><li><b>Authentication</b>: 거래 시점에 누구인지 확인 — 부인 차단까지는 못함</li><li><b>Encryption</b>: 거래 내용 비밀 유지 — 부인 방지와 무관</li><li><b>Nonrepudiation</b>: "<b>누가</b> 했는지를 <b>나중에도</b> 증명" — 본 문제 정답</li></ul><h4>CISA 시험 포인트</h4><ul><li>"거래 승인 증명·부인 불가" → <b>Nonrepudiation</b> (Q600 정답 A)</li><li>디지털 서명이 부인방지의 기술적 구현 수단</li><li>Authentication과 구분 — 인증은 "지금" / 부인방지는 "시간 지나도"</li><li>HMAC은 인증 제공하나 부인방지 없음(공유키) / 디지털 서명은 둘 다</li><li>Q592와 동일 개념 — 부인방지 정의 반복 출제</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Nonrepudiation in Online Transactions",
+keyConcepts:[
+"부인방지 정의|특정 행위자가 자신의 행위를 나중에 부인할 수 없게 보장",
+"부인방지 vs 인증|인증=지금 누구 / 부인방지=시간 지나도 부인 불가 — 적용 시점 다름",
+"기술적 구현|디지털 서명 — 개인키 유일 소유 + CA 인증서로 신원 결합",
+"법적 효력|ESIGN Act·eIDAS·전자서명법 등이 인정 → 분쟁·법정 증거력",
+"온라인 거래 적용|고객 개인키로 거래 서명 → 추후 '내가 안 했다' 주장 차단",
+"HMAC 한계|인증 제공하나 부인방지 없음 — 공유키라 양측 모두 생성 가능",
+"디지털 서명 우위|인증+부인방지 동시 — 비대칭 키 기반",
+"Q592 연계|부인방지 정의 동일 — CISA 반복 출제 패턴"
+]
+}
+,
+{
+id:601,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"The purpose of a mantrap controlling access to a computer facility is PRIMARILY to:",
+questionKo:"전산실 접근 통제용 <b>맨트랩(Mantrap)의 주된 목적</b>은?",
+options:[
+"A. prevent piggybacking.",
+"B. prevent toxic gases from entering the data center.",
+"C. starve a fire of oxygen.",
+"D. prevent rapid movement in or out of the facility."
+],
+optionsKo:[
+"A. <b>피기배킹(Piggybacking) 방지</b>",
+"B. <b>유독가스의 데이터센터 유입 차단</b>",
+"C. <b>화재 시 산소 차단</b>(질식 소화)",
+"D. <b>시설 출입 시 빠른 이동 방지</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>피기배킹 방지</b></td><td class="correct-cell">맨트랩은 <b>이중 도어 + 1명씩만 통과 가능한 구조</b> — 인가자 뒤를 따라 비인가자가 진입하는 피기배킹을 물리적으로 차단</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>유독가스 차단</td><td>가스 유입 방지는 <b>자동 닫힘 단일 도어</b>로도 충분 — 맨트랩의 이중 구조 불필요</td><td>오답</td></tr><tr><td><b>C</b></td><td>화재 산소 차단</td><td>질식 소화도 <b>방화 자동 닫힘 도어</b>로 가능 — 맨트랩 본 목적 아님</td><td>오답</td></tr><tr><td><b>D</b></td><td>빠른 이동 방지</td><td>화재 등 비상시 <b>빠른 대피가 필요</b>할 수 있음 — 빠른 이동 차단이 목적이라면 안전 규정 위반</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — Mantrap 구조와 동작</h4><ul><li>두 개의 연동(interlock) 도어로 구성된 <b>작은 격리 공간</b></li><li>첫 번째 문이 닫혀야 두 번째 문이 열림 → <b>1인 1통과</b> 강제</li><li>각 도어에서 <b>개별 신원 인증</b>(배지·생체) 필요</li><li>비인가자가 인가자 뒤를 따라 들어오는 것을 물리적으로 차단</li></ul><h4>Mantrap의 주 목적 = Piggybacking 차단</h4><ul><li>"1인 1배지 인식" 정책의 <b>물리적 강제 구현</b> (Q598과 연계)</li><li>경비원·CCTV에 의존하는 행정 통제보다 강력한 <b>물리 통제</b></li><li>고보안 시설(데이터센터·금고·연구소)에 표준 적용</li></ul><h4>다른 보기들이 오답인 이유</h4><table><tr><th>요구</th><th>적절한 통제</th><th>맨트랩 필요?</th></tr><tr><td>유독가스 차단</td><td>자동 닫힘 단일 도어·기밀 처리</td><td>불필요</td></tr><tr><td>화재 산소 차단</td><td>방화 자동 닫힘 도어·할론/FM-200</td><td>불필요</td></tr><tr><td>피기배킹 차단</td><td><b>맨트랩</b>·턴스타일</td><td><b>필수</b></td></tr></table><h4>유사 물리 통제와 비교</h4><ul><li><b>Turnstile</b>: 1명씩만 통과(회전문) — 맨트랩보다 가볍지만 동일 목적</li><li><b>Anti-passback</b>: 동일 배지 재진입·중복 인식 차단</li><li><b>Tailgate detector</b>: 다수 인원 동시 통과 감지 → 경보</li><li><b>Bollard</b>: 차량 진입 차단 (사람 통제와 별개)</li></ul><h4>CISA 시험 포인트</h4><ul><li>맨트랩 주 목적 = <b>Piggybacking(테일게이팅) 방지</b> (Q601 정답 A)</li><li>가스·화재 대응은 별도의 단일 도어·소화 시스템으로 충분</li><li>비상시 빠른 대피 보장 필요 → D는 안전 규정 위반</li><li>Q598(1인 1배지 정책)과 짝 — 정책+물리 구조의 결합</li></ul></div>`,
+reference:"CRM Chapter 5: Protection of Information Assets — Physical Access Controls (Mantrap)",
+keyConcepts:[
+"Mantrap 구조|이중 연동 도어 — 첫 문 닫힘 후 두 번째 문 열림 → 1인 1통과 강제",
+"주 목적|Piggybacking·Tailgating 물리적 차단 — 행정 통제보다 강력",
+"Q598 연계|1인 1배지 정책의 물리적 구현 — 정책+구조 결합",
+"가스·화재 통제 분리|단일 자동 닫힘 도어로 충분 — 맨트랩 불필요",
+"비상 대피 고려|화재 등 비상시 빠른 대피 보장 필요 — D는 안전 위반",
+"Turnstile|회전문 — 맨트랩 경량 대안 동일 목적",
+"Anti-passback|동일 배지 재진입 차단 — 보조 통제",
+"고보안 적용|데이터센터·금고·연구소·정부 시설 표준"
+]
+}
+,
+{
+id:602,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Which of the following manages the digital certificate life cycle to ensure that adequate security and controls exist in digital signature applications related to ecommerce?",
+questionKo:"전자상거래 관련 디지털 서명 애플리케이션의 보안·통제를 위해 <b>디지털 인증서 수명주기를 관리</b>하는 것은?",
+options:[
+"A. Registration authority",
+"B. Certificate authority (CA)",
+"C. Certification revocation list",
+"D. Certification practice statement"
+],
+optionsKo:[
+"A. <b>등록기관(RA)</b>",
+"B. <b>인증기관(CA)</b>",
+"C. <b>인증서 폐기 목록(CRL)</b>",
+"D. <b>인증업무준칙(CPS)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>역할</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>RA</td><td><b>선택적 보조 기관</b> — 신원 검증 등 등록 행정만 담당. 수명주기 관리 권한 없음</td><td>오답</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>CA</b></td><td class="correct-cell">인증서 <b>발급·게시·갱신·폐기·CRL 관리</b> 등 <b>전체 수명주기</b> 관리. 디렉터리 유지·CRL 발행 책임</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>CRL</td><td>폐기된 인증서 <b>목록(결과물)</b> — 유효성 확인 도구이지 관리 주체 아님</td><td>오답</td></tr><tr><td><b>D</b></td><td>CPS</td><td>CA 운영 <b>규칙을 기술한 문서</b> — 관리 주체가 아닌 <b>운영 매뉴얼</b></td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 인증서 수명주기 관리는 CA</h4><p>CA는 PKI의 <b>중심 권위 기관</b>으로 인증서의 발급부터 폐기까지 전 과정을 관리한다.</p><h4>인증서 수명주기 단계</h4><ol><li><b>등록(Registration)</b>: RA가 신원 검증 → CA에 전달</li><li><b>발급(Issuance)</b>: CA가 가입자 정보+공개키에 서명 → 인증서 생성</li><li><b>게시(Publication)</b>: 디렉터리 서버에 공개</li><li><b>사용(Use)</b>: 가입자가 서명·암호화에 활용</li><li><b>갱신(Renewal)</b>: 유효기간 만료 전 재발급</li><li><b>폐기(Revocation)</b>: 키 손상·퇴직·정보 변경 시 → CRL 등재</li><li><b>아카이브(Archival)</b>: 만료·폐기 후 일정 기간 보관</li></ol><h4>주체 vs 도구·문서 구분</h4><table><tr><th>구분</th><th>분류</th><th>예</th></tr><tr><td><b>관리 주체</b>(Who)</td><td>기관·조직</td><td><b>CA</b>·RA·디렉터리 서버</td></tr><tr><td>도구·결과물(What)</td><td>데이터·목록</td><td>CRL·인증서·OCSP 응답</td></tr><tr><td>규칙·문서(Rule)</td><td>운영 정책·절차</td><td>CP·CPS·PDS</td></tr></table><p>"수명주기 <b>관리</b>" 키워드 → 주체인 <b>CA</b> 선택</p><h4>RA vs CA 권한 차이</h4><ul><li><b>RA</b>: 신원 검증 + 등록 행정만 — <b>발급 권한 없음</b> (Q597 참조)</li><li><b>CA</b>: 인증서 발급·서명·관리·폐기 — <b>최고 권한 보유</b></li><li>RA는 CA의 <b>보조</b> 역할</li></ul><h4>CISA 시험 포인트</h4><ul><li>"수명주기 관리·디렉터리 유지·CRL 발행 주체" → <b>CA</b> (Q602 정답 B)</li><li>RA는 검증·등록만 / CRL·CPS는 도구·문서 → 관리 주체 아님</li><li>키워드 "manages"가 등장하면 <b>주체</b>를 묻는 것 — 기관 선택</li><li>Q597(RA)·Q599(CPS)와 짝 — PKI 구성요소 역할 매핑 시리즈</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — Certificate Authority and Digital Certificate Life Cycle",
+keyConcepts:[
+"CA 핵심 역할|디지털 인증서 수명주기 전체 관리 — 발급·갱신·폐기·CRL 발행",
+"인증서 수명주기 7단계|등록·발급·게시·사용·갱신·폐기·아카이브",
+"주체 vs 도구·문서|관리 주체=CA·RA / 도구=CRL·OCSP / 문서=CP·CPS·PDS",
+"RA vs CA|RA=검증·등록만 / CA=발급·관리·폐기 — RA는 CA 보조",
+"디렉터리 유지|CA 책임 — 인증서·CRL 게시 인프라 운영",
+"OCSP 활용|실시간 인증서 상태 확인 — CRL 보완",
+"키워드 manages|주체를 묻는 신호 — CRL·CPS는 도구·문서라 자동 오답",
+"Q597·Q599·Q602 시리즈|PKI 구성요소 역할 매핑 — RA·CPS·CA 각각의 본질"
+]
+}
+,
+{
+id:603,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"A certificate (certification) authority (CA) can delegate the processes of:",
+questionKo:"인증기관(CA)이 <b>위임할 수 있는</b> 프로세스는?",
+options:[
+"A. revocation and suspension of a subscriber's certificate.",
+"B. generation and distribution of the CA public key.",
+"C. establishing a link between the requesting entity and its public key.",
+"D. issuing and distributing subscriber certificates."
+],
+optionsKo:[
+"A. 가입자 인증서의 <b>폐기·정지</b>",
+"B. <b>CA 공개키의 생성·배포</b>",
+"C. 요청 주체와 공개키 사이의 <b>연결(신원 검증) 수립</b>",
+"D. 가입자 인증서의 <b>발급·배포</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>프로세스</th><th>위임 가능성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>인증서 폐기·정지</td><td>가입자 인증서 <b>수명주기 관리</b>의 핵심 — CA가 직접 수행해야 함</td><td>위임 불가</td></tr><tr><td><b>B</b></td><td>CA 공개키 생성·배포</td><td>CA <b>자체 키 수명주기</b>의 핵심 — 신뢰 앵커이므로 위임 절대 불가</td><td>위임 불가</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>요청자-공개키 연결 수립(신원 검증)</b></td><td class="correct-cell">RA(등록기관)의 역할 — CA가 직접 수행하거나 <b>RA에 위임 가능</b>. CA가 반드시 직접 할 필요 없음</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>인증서 발급·배포</td><td>CA의 <b>핵심 권한</b> — 서명을 위해 CA 개인키가 필요하므로 위임 불가</td><td>위임 불가</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — CA가 위임 가능한 것 vs 불가한 것</h4><table><tr><th>구분</th><th>프로세스</th><th>이유</th></tr><tr><td><b>위임 가능</b></td><td><b>신원 검증</b>(요청자-공개키 연결)</td><td>RA가 대신 수행 가능 — 행정 절차</td></tr><tr><td><b>위임 불가</b></td><td>인증서 발급·서명</td><td>CA 개인키 필요 — 신뢰 핵심</td></tr><tr><td><b>위임 불가</b></td><td>인증서 폐기·정지</td><td>CA 권한·서명 필요</td></tr><tr><td><b>위임 불가</b></td><td>CRL 발행·서명</td><td>CA 개인키 필요</td></tr><tr><td><b>위임 불가</b></td><td>CA 자체 키 생성·배포</td><td>신뢰 앵커 — 절대 보호</td></tr></table><h4>왜 신원 검증만 위임 가능한가</h4><ul><li>신원 검증은 <b>행정·물리적 절차</b> — CA 개인키 불필요</li><li>RA가 가입자를 직접 만나 신분증 확인·자격 검증 → 결과를 CA에 전달</li><li>CA는 RA의 검증 결과를 신뢰하여 <b>인증서에 서명만</b> 수행</li><li>지역·부서별 분산 운영에 효율적</li></ul><h4>CA 개인키가 필요한 작업은 위임 불가</h4><ul><li>인증서 서명·발급</li><li>CRL 서명·발행</li><li>OCSP 응답 서명</li><li>이런 작업은 <b>CA만이 보유한 개인키</b>로만 가능 → 위임 시 신뢰 붕괴</li></ul><h4>RA의 위임 범위</h4><ul><li>가입자 신원 확인(신분증·소속 확인)</li><li>요청자가 본인·조직을 대표할 권한 검증</li><li>CSR 접수·제출 정보 검토</li><li>CA에 검증 결과 전달</li><li><b>제한</b>: 인증서 자체에 손대지 못함</li></ul><h4>CISA 시험 포인트</h4><ul><li>CA 위임 가능 = <b>신원 검증(RA가 수행)</b> (Q603 정답 C)</li><li>위임 불가: 발급·폐기·CRL·CA 키 관리 — 모두 CA 개인키 또는 핵심 권한 필요</li><li>Q597(RA 역할)·Q602(CA 수명주기 관리)와 연계 — 권한 분리 시리즈</li><li>"can be delegated" 키워드 → <b>RA로 이관 가능한 작업</b>을 묻는 것</li></ul></div>`,
+reference:"CRM Chapter 5: Data Encryption — CA Delegation and Registration Authority",
+keyConcepts:[
+"위임 가능 프로세스|신원 검증(요청자-공개키 연결) — RA가 대신 수행 가능",
+"위임 불가 프로세스|인증서 발급·폐기·CRL 발행·CA 키 생성 — CA 개인키 필요",
+"위임 가능 기준|CA 개인키 불필요 + 행정·물리 절차 → 위임 가능",
+"RA 역할 한계|신원 검증·등록만 — 인증서 자체에는 손대지 못함",
+"CA 핵심 권한|개인키 보유 = 신뢰 앵커 — 절대 위임·공유 불가",
+"분산 운영 효율|RA를 지역·부서별 운영 → CA 부담 감소",
+"CRL·OCSP 서명|CA 개인키 필요 → 위임 불가 — 폐기 정보 무결성 보장",
+"Q597·Q602·Q603 연계|RA 역할·CA 수명주기·위임 범위 — PKI 권한 매핑"
+]
+}
+,
+{
+id:604,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"An enterprise is reviewing its contract with a cloud computing provider. For which of the following reasons would the enterprise want to remove a lock-in clause from the cloud service contract?",
+questionKo:"클라우드 서비스 계약을 검토 중인 기업이 <b>락인(lock-in) 조항을 제거</b>하려는 이유로 가장 적절한 것은?",
+options:[
+"A. Availability",
+"B. Portability",
+"C. Agility",
+"D. Scalability"
+],
+optionsKo:[
+"A. <b>가용성(Availability)</b>",
+"B. <b>이식성(Portability)</b>",
+"C. <b>민첩성(Agility)</b>",
+"D. <b>확장성(Scalability)</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>속성</th><th>락인 제거와의 관련성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>Availability</td><td>시스템·자원의 <b>지속 가용성</b> 확보 — SLA·이중화로 보장. 락인 제거와 직접 무관</td><td>오답</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>Portability</b></td><td class="correct-cell">한 공급자에서 <b>다른 공급자로 자산·서비스를 이전할 권리</b> 확보. 락인 조항이 있으면 전환이 어려움 — 락인 제거 = <b>이식성 보장</b></td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>Agility</td><td>비즈니스 요구에 빠르게 대응하는 <b>효율성</b> — 클라우드의 본질 장점이지 락인과 무관</td><td>오답</td></tr><tr><td><b>D</b></td><td>Scalability</td><td>비즈니스 변화에 따른 <b>서비스 수준 조정 능력</b> — 클라우드 기본 강점이지 락인과 무관</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — Vendor Lock-in과 Portability</h4><ul><li><b>Vendor lock-in</b>: 특정 공급자에 종속되어 다른 공급자로 전환하기 어려운 상태</li><li><b>Portability</b>: 데이터·애플리케이션·워크로드를 <b>다른 환경으로 이전할 수 있는 능력</b></li><li>락인 조항 제거 = 전환 권리 확보 = <b>이식성 보장</b></li></ul><h4>락인의 위험</h4><ul><li>가격 인상 협상력 상실</li><li>공급자 장애·도산 시 대안 부재</li><li>기술적 종속(독자 API·포맷)</li><li>데이터 반출 비용·시간 증가</li><li>규제 변화 시 빠른 이전 불가</li></ul><h4>이식성 확보 방안</h4><ul><li>계약상 <b>락인 조항 제거·완화</b>(본 문제)</li><li>표준 포맷·API 사용(OCI·Kubernetes 등)</li><li>데이터 반출 권리·시한 명시</li><li>멀티 클라우드 아키텍처 채택</li><li>탈출 전략(Exit strategy) 사전 수립</li></ul><h4>클라우드 4대 속성 비교</h4><table><tr><th>속성</th><th>의미</th><th>관련 통제</th></tr><tr><td>Availability</td><td>지속 가용성</td><td>SLA·이중화·DR</td></tr><tr><td><b>Portability</b></td><td><b>다른 공급자로 이전 능력</b></td><td><b>락인 제거·표준 채택</b></td></tr><tr><td>Agility</td><td>빠른 대응 능력</td><td>자동화·DevOps</td></tr><tr><td>Scalability</td><td>유연한 자원 조정</td><td>오토스케일링</td></tr></table><h4>CISA 시험 포인트</h4><ul><li>락인 조항 제거 목적 = <b>Portability(이식성)</b> 확보 (Q604 정답 B)</li><li>클라우드 4속성 구분: Availability·Portability·Agility·Scalability</li><li>"전환·이전·종속" 키워드 → Portability</li><li>감사 시 점검: 탈출 전략·데이터 반출 권리·표준 사용 여부</li></ul></div>`,
+reference:"CRM Chapter 5: Cloud Computing — Vendor Lock-in and Portability",
+keyConcepts:[
+"Portability|데이터·앱·워크로드를 다른 클라우드 공급자로 이전할 수 있는 능력",
+"Vendor lock-in|특정 공급자 종속 — 가격·기술·데이터 측면 위험",
+"락인 제거 효과|이식성 보장 — 전환 권리·협상력 확보",
+"이식성 확보 방안|락인 조항 제거·표준 포맷·데이터 반출 권리·멀티 클라우드",
+"클라우드 4속성|Availability(가용성)·Portability(이식성)·Agility(민첩성)·Scalability(확장성)",
+"Exit strategy|클라우드 계약 시 사전 수립 필수 — 종료·전환 시나리오",
+"감사 점검 항목|계약상 락인 여부·데이터 반출 권리·표준 채택·탈출 전략",
+"멀티 클라우드|단일 종속 회피 전략 — 이식성·복원력 동시 강화"
+]
+}
+,
+{
+id:605,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"An enterprise's IT director approved the installation of a wireless local area network (WLAN) access point in a conference room for a team of consultants to access the Internet with their laptop computers. The BEST control to protect the corporate servers from unauthorized access is to ensure that:",
+questionKo:"기업 IT 디렉터가 컨설턴트 팀의 인터넷 접속을 위해 회의실에 <b>무선 LAN(WLAN) 액세스 포인트 설치</b>를 승인했다. 기업 서버를 비인가 접근으로부터 보호하기 위한 <b>최선의 통제</b>는?",
+options:[
+"A. encryption is enabled on the access point.",
+"B. the conference room network is on a separate virtual local area network (VLAN).",
+"C. antivirus signatures and patch levels are current on the consultants' laptops.",
+"D. default user IDs are disabled and strong passwords are set on the corporate servers."
+],
+optionsKo:[
+"A. 액세스 포인트에 <b>암호화 활성화</b>",
+"B. 회의실 네트워크를 <b>별도 VLAN</b>으로 분리",
+"C. 컨설턴트 노트북의 <b>백신·패치 최신화</b>",
+"D. 기업 서버의 <b>기본 ID 비활성화·강력한 패스워드 설정</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>통제</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>WLAN 암호화</td><td>비인가 무선 접근 차단에는 좋으나 — <b>일단 접속한 사용자(컨설턴트 포함)</b>가 내부 서버 접근하는 위험은 못 막음</td><td>부분적</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>회의실 별도 VLAN</b></td><td class="correct-cell"><b>네트워크 격리(segmentation)</b>로 컨설턴트(인가·비인가 모두)가 내부 DB·서버에 접근하지 못하도록 차단. 인터넷만 허용 — 가장 근본적·범용적 방어</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>노트북 백신·패치</td><td>좋은 관행이지만 <b>네트워크 접근 통제보다 후순위</b> — 컨설턴트 노트북 자체를 기업이 통제하기도 어려움</td><td>오답</td></tr><tr><td><b>D</b></td><td>서버 ID·패스워드 강화</td><td>좋은 관행이나 <b>네트워크 노출 자체를 차단하지 못함</b> — 컨설턴트가 내부망에 닿으면 패스워드 크래킹 등 다른 공격 경로 시도 가능</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 네트워크 분리(Segmentation)가 1순위</h4><ul><li>외부 사용자(컨설턴트·게스트)에게 네트워크 접근을 허용할 때 가장 먼저 적용할 통제는 <b>VLAN/Subnet 분리</b></li><li>분리하면 인증·암호화·서버 강화가 부분 실패해도 <b>내부 자산은 격리</b>되어 안전</li><li>"심층 방어(Defense in Depth)"의 핵심 — 네트워크 경계가 가장 바깥</li></ul><h4>왜 VLAN 분리가 BEST인가</h4><ul><li>A(암호화): 인증된 사용자가 들어와도 내부 노출은 그대로</li><li>C(엔드포인트 보안): 컨설턴트 단말 통제 한계</li><li>D(서버 강화): 노출된 후의 방어 — 노출 자체 차단이 더 효과적</li><li>B(VLAN): <b>노출 자체를 원천 차단</b> — 인터넷만 허용</li></ul><h4>게스트·외부 접근 분리 모범 사례</h4><ul><li>게스트 SSID + 별도 VLAN + 인터넷 전용 라우팅</li><li>방화벽 룰: 게스트 VLAN → 내부 서버 차단</li><li>NAC(Network Access Control)로 단말 검증</li><li>captive portal 인증·이용 시간 제한</li><li>로그·모니터링</li></ul><h4>CISA 시험 포인트</h4><ul><li>외부 사용자 무선 접속 = <b>VLAN 분리가 최선</b> (Q605 정답 B)</li><li>"BEST" 키워드 → 가장 근본적·범용적 통제 선택</li><li>심층 방어 우선순위: <b>네트워크 분리 > 암호화 > 엔드포인트 > 서버 강화</b></li><li>암호화·패치·패스워드는 보조 통제 — 분리 통제 없으면 방어 깊이 부족</li></ul></div>`,
+reference:"CRM Chapter 5: Protection of Information Assets — Network Segmentation and Wireless Security",
+keyConcepts:[
+"VLAN 분리|외부 사용자(게스트·컨설턴트) 네트워크를 별도 VLAN으로 분리 — 내부 자산 보호 1순위",
+"심층 방어 우선순위|네트워크 분리 > 암호화 > 엔드포인트 보안 > 서버 강화",
+"WLAN 암호화 한계|인증된 사용자의 내부 접근은 막지 못함 — 분리 필수",
+"게스트 SSID 모범|별도 SSID·VLAN·인터넷 전용 라우팅·방화벽 룰",
+"NAC 활용|단말 검증·정책 적용 — 분리 통제 보강",
+"BEST 키워드|가장 근본적·범용 통제 선택 — 부분 통제는 차순위",
+"감사 점검|VLAN 분리 여부·방화벽 룰·게스트 격리·로그 모니터링",
+"심층 방어 원칙|단일 통제 실패 시 다른 통제로 보완 — 네트워크 경계가 핵심"
+]
+}
+,
+{
+id:606,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"Which of the following is the responsibility of an infrastructure-as-a-service cloud provider during an audit of third-party management programs?",
+questionKo:"제3자 관리 프로그램 감사에서 <b>IaaS 클라우드 제공자의 책임</b>에 해당하는 것은?",
+options:[
+"A. Security settings for the operating system",
+"B. Maintenance of the host firewall",
+"C. Security settings and maintenance of the hypervisor",
+"D. Access control configuration for servers"
+],
+optionsKo:[
+"A. <b>운영체제 보안 설정</b>",
+"B. <b>호스트 방화벽 유지관리</b>",
+"C. <b>하이퍼바이저 보안 설정·유지관리</b>",
+"D. <b>서버 접근통제 구성</b>"
+],
+correct:2,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>항목</th><th>IaaS 책임 주체</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>OS 보안 설정</td><td><b>고객 책임</b> — OS는 하이퍼바이저 위에 고객이 설치·구성</td><td>오답</td></tr><tr><td><b>B</b></td><td>호스트 방화벽</td><td><b>고객 책임</b> — VM 내부 방화벽은 OS 영역</td><td>오답</td></tr><tr><td class="correct-cell"><b>C ✓</b></td><td class="correct-cell"><b>하이퍼바이저</b></td><td class="correct-cell"><b>제공자 책임</b> — 하이퍼바이저 및 그 아래(물리 인프라·네트워크·스토리지) 모두 제공자가 관리·보안</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>D</b></td><td>서버 접근통제</td><td><b>고객 책임</b> — 게스트 OS 및 애플리케이션 레벨 통제</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — IaaS의 공유 책임 모델(Shared Responsibility)</h4><table><tr><th>계층</th><th>IaaS 책임</th></tr><tr><td>애플리케이션</td><td>고객</td></tr><tr><td>미들웨어</td><td>고객</td></tr><tr><td>운영체제(OS)</td><td>고객</td></tr><tr><td>호스트 방화벽·접근통제</td><td>고객</td></tr><tr><td><b>하이퍼바이저</b></td><td><b>제공자</b></td></tr><tr><td>물리 서버·네트워크·스토리지</td><td>제공자</td></tr><tr><td>데이터센터 물리 보안</td><td>제공자</td></tr></table><p>경계선: <b>하이퍼바이저 = 제공자/고객 책임의 분기점</b></p><h4>IaaS · PaaS · SaaS 책임 비교</h4><table><tr><th>계층</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr><tr><td>애플리케이션</td><td>고객</td><td>고객</td><td>제공자</td></tr><tr><td>OS·미들웨어</td><td>고객</td><td>제공자</td><td>제공자</td></tr><tr><td>하이퍼바이저·인프라</td><td><b>제공자</b></td><td>제공자</td><td>제공자</td></tr></table><p>위로 갈수록 고객 책임 ↑, 아래로 갈수록 제공자 책임 ↑</p><h4>왜 하이퍼바이저가 제공자 책임인가</h4><ul><li>하이퍼바이저는 <b>여러 고객 VM을 격리</b>하는 핵심 — 멀티테넌시 보안의 기반</li><li>고객이 직접 접근·설정 불가 — 제공자만 패치·설정 권한</li><li>제공자가 보안하지 않으면 <b>VM Escape</b>·side-channel 공격으로 타 고객 자산 노출 위험</li><li>감사 시: 제공자의 SOC 2·ISO 27017 보고서로 검증</li></ul><h4>고객 영역의 책임</h4><ul><li>게스트 OS 패치·보안 설정·서비스 비활성화</li><li>호스트 방화벽·SELinux/AppArmor</li><li>애플리케이션·미들웨어 보안</li><li>접근 통제(IAM·sudo·SSH 키)</li><li>데이터 암호화·백업</li></ul><h4>CISA 시험 포인트</h4><ul><li>IaaS 제공자 책임 = <b>하이퍼바이저 + 그 아래(물리·네트워크·스토리지)</b> (Q606 정답 C)</li><li>고객 책임 = <b>게스트 OS 위쪽 모두</b>(OS·미들웨어·앱·접근통제·방화벽)</li><li>SaaS·PaaS·IaaS 책임 경계 매핑 단골 출제</li><li>감사 시 제3자 관리: 제공자는 SOC 보고서 / 고객은 자체 통제 검증</li></ul></div>`,
+reference:"CRM Chapter 5: Cloud Computing — Shared Responsibility Model (IaaS)",
+keyConcepts:[
+"IaaS 책임 분기점|하이퍼바이저 — 제공자/고객 책임 경계",
+"제공자 책임(IaaS)|하이퍼바이저·물리 서버·네트워크·스토리지·데이터센터",
+"고객 책임(IaaS)|게스트 OS·미들웨어·애플리케이션·방화벽·접근통제·데이터",
+"공유 책임 모델|IaaS·PaaS·SaaS 계층별 책임 매핑 — 위=고객 / 아래=제공자",
+"PaaS 비교|OS·미들웨어까지 제공자 / 애플리케이션·데이터는 고객",
+"SaaS 비교|애플리케이션까지 제공자 / 고객은 데이터·계정·구성만 책임",
+"멀티테넌시 보안|하이퍼바이저 격리 핵심 — VM Escape 방어 위해 제공자 패치 필수",
+"감사 검증|제공자=SOC 2·ISO 27017 보고서 / 고객=자체 통제 점검"
+]
+}
+,
+{
+id:607,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"An enterprise is planning to deploy an outsourced cloud-based application that is used to track job applicant data for the human resources department. Which of the following should be the GREATEST concern to an information systems (IS) auditor?",
+questionKo:"기업이 HR 부서의 <b>구직 지원자 데이터</b>를 추적하기 위한 <b>외부 클라우드 애플리케이션</b> 도입을 계획 중이다. IS 감사인의 <b>가장 큰 우려사항</b>은?",
+options:[
+"A. The service level agreement (SLA) ensures strict limits for uptime and performance.",
+"B. The cloud provider will not agree to an unlimited right-to-audit as part of the SLA.",
+"C. The SLA is not explicit regarding the disaster recovery plan capabilities of the cloud provider.",
+"D. The cloud provider's physical data centers are in multiple cities and countries."
+],
+optionsKo:[
+"A. SLA가 <b>가동시간·성능에 엄격한 한도</b>를 보장",
+"B. 클라우드 제공자가 SLA에 <b>무제한 감사권</b> 동의 거부",
+"C. SLA가 <b>제공자의 DRP 역량</b>을 명시하지 않음",
+"D. 제공자의 <b>물리 데이터센터가 여러 도시·국가</b>에 분산"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>사안</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>SLA가 엄격한 가동시간·성능 보장</td><td>오히려 <b>긍정적 요소</b> — 우려가 아님</td><td>오답</td></tr><tr><td><b>B</b></td><td>무제한 감사권 거부</td><td>실무상 다국적 클라우드의 무제한 감사권은 <b>비현실적</b>(비용·시간) — 표준 보고서(SOC 2 등)로 대체. 큰 우려 아님</td><td>오답</td></tr><tr><td><b>C</b></td><td>SLA에 DRP 미명시</td><td>SLA는 보통 <b>가동시간 결과만</b> 명시 — 구체적 DRP 수단은 통상 별도. 중간 우려</td><td>오답</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>다국가 데이터센터</b></td><td class="correct-cell">HR 지원자 데이터는 <b>개인식별정보(PII)</b> — 국가별 데이터 프라이버시 법(GDPR·CCPA·국내 개인정보보호법) 상이. <b>국경 간 이전·관할권 분쟁·법적 구제 한계</b> 등 가장 큰 컴플라이언스 리스크</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 데이터 국외 저장(Data Sovereignty) 리스크</h4><ul><li>HR 지원자 데이터 = <b>PII</b>(이름·주소·이력서·여권 등)</li><li>국가별로 데이터 보호법 상이 (EU GDPR·미국 CCPA·한국 개인정보보호법·중국 PIPL)</li><li>제공자 데이터센터가 다국에 있을 경우 <b>국경 간 이전 규제·관할권 분쟁</b> 발생</li><li>데이터 유출 시 본국 법으로 외국 관할권에 강제할 수 없음</li></ul><h4>왜 D가 가장 큰 우려인가</h4><ul><li>가용성·DR(A·C)·감사권(B)은 <b>SLA로 협상·문서화</b> 가능</li><li>데이터 위치는 한 번 잘못 정해지면 <b>법적 노출이 즉시 발생</b></li><li>GDPR 위반 시 글로벌 매출의 4% 또는 €2천만 — 기업 존립 위협</li><li>일부 국가는 <b>정부 기관의 데이터 접근권</b> 보유(미국 CLOUD Act·중국 Cybersecurity Law)</li></ul><h4>데이터 국외 이전 통제 방안</h4><ul><li>데이터 위치(Region) 명시·고정 — 계약 조항</li><li>적정성 결정·표준계약조항(SCC)·BCR 활용</li><li>암호화 + 키 보관 위치 분리</li><li>가명·익명 처리</li><li>국가별 데이터 분리(Data localization)</li><li>DPIA(Data Protection Impact Assessment) 수행</li></ul><h4>다른 보기들 우려도 비교</h4><table><tr><th>보기</th><th>우려도</th><th>대응 가능성</th></tr><tr><td>A: 엄격 SLA</td><td>낮음(긍정)</td><td>해당 없음</td></tr><tr><td>B: 감사권 거부</td><td>중간</td><td>SOC 2 등 표준 보고서로 대체</td></tr><tr><td>C: DRP 미명시</td><td>중간</td><td>SLA에 구체화 협상</td></tr><tr><td><b>D: 다국가 저장</b></td><td><b>높음</b></td><td><b>법적 노출 — 통제 한계</b></td></tr></table><h4>CISA 시험 포인트</h4><ul><li>HR·PII 데이터의 <b>국외·다국가 저장</b> = 가장 큰 컴플라이언스 리스크 (Q607 정답 D)</li><li>SLA·감사권·DRP는 <b>협상·문서화로 보완 가능</b> — 우려 강도 낮음</li><li>"GREATEST concern" + PII 키워드 → <b>데이터 주권·프라이버시 법</b> 우선 검토</li><li>관련 법: GDPR·CCPA·PIPL·개인정보보호법·HIPAA</li></ul></div>`,
+reference:"CRM Chapter 5: Cloud Computing — Data Sovereignty and Cross-border Data Transfer",
+keyConcepts:[
+"Data Sovereignty|데이터가 저장된 국가의 법률 적용 — 국경 간 이전 시 컴플라이언스 핵심 리스크",
+"PII 국외 저장 위험|HR 지원자 데이터는 개인식별정보 — 다국가 저장 시 프라이버시 법 충돌",
+"GDPR·CCPA·PIPL|국가별 데이터 보호법 상이 — 위반 시 매출 4% 등 큰 제재",
+"Cross-border Transfer|적정성 결정·SCC·BCR로 통제 — 단순 다국가 저장은 위험",
+"CLOUD Act|미국 정부의 해외 데이터 접근권 — 미국 클라우드 사용 시 고려",
+"SLA 한계|가동시간·성능은 협상 가능 / 데이터 위치는 법적 노출이라 우선 검토",
+"감사권 현실|다국적 제공자는 무제한 감사 거부 — SOC 2·ISO 27001 보고서로 대체",
+"DPIA|개인정보영향평가 — 클라우드 도입 전 필수 — 위치·접근·법적 관할 검토"
+]
+}
+,
+{
+id:608,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"Which one of the following can be used to provide automated assurance that proper data files are being used during processing?",
+questionKo:"처리 중 <b>올바른 데이터 파일이 사용되고 있음을 자동으로 보증</b>하는 것은?",
+options:[
+"A. File header record",
+"B. Version usage",
+"C. Parity checking",
+"D. File security controls"
+],
+optionsKo:[
+"A. <b>파일 헤더 레코드</b>",
+"B. <b>버전 사용(Version usage)</b>",
+"C. <b>패리티 체크(Parity checking)</b>",
+"D. <b>파일 보안 통제</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>메커니즘</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>파일 헤더 레코드</b></td><td class="correct-cell">파일 첫 부분에 파일명·날짜·버전·레코드 수 등 메타데이터 포함 — 처리 프로그램이 헤더를 읽어 <b>자동 검증</b> 가능. 올바른 파일 사용 보증의 표준 수단</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>버전 사용</td><td>올바른 버전 사용 보증은 가능하나 <b>자동 검증 메커니즘 없음</b> — 운영자 수동 확인에 의존</td><td>오답</td></tr><tr><td><b>C</b></td><td>패리티 체크</td><td>데이터 <b>전송 무결성</b> 검증 도구 — 비트 오류 감지. 어떤 파일인지는 알지 못함</td><td>오답</td></tr><tr><td><b>D</b></td><td>파일 보안 통제</td><td>접근 통제·권한 관리에 해당 — <b>올바른 파일 사용 자동 검증과 무관</b></td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 파일 헤더 레코드</h4><ul><li>파일 첫 레코드에 <b>식별 메타데이터</b> 포함: 파일명·생성일·버전·시퀀스·레코드 수 등</li><li>처리 프로그램이 시작 시 헤더를 읽어 <b>예상값과 비교</b> → 자동 검증</li><li>잘못된 파일이면 즉시 처리 중단·경고</li></ul><h4>왜 자동 검증인가</h4><ul><li>프로그램 로직에 검증이 내장 — 사람 개입 불필요</li><li>매 실행마다 일관된 검증 보장</li><li>운영자 실수로 잘못된 파일 마운트 시 <b>즉시 차단</b></li></ul><h4>다른 보기들의 한계</h4><table><tr><th>보기</th><th>제한</th></tr><tr><td>버전 사용</td><td>자동 메커니즘 없음 — 사람이 확인</td></tr><tr><td>패리티 체크</td><td>전송 무결성용 — "어떤 파일"은 모름</td></tr><tr><td>파일 보안 통제</td><td>접근 통제 — "올바름" 검증과 무관</td></tr></table><h4>유사 통제와 비교</h4><ul><li><b>파일 헤더(본 문제)</b>: 파일 식별·자동 검증</li><li><b>파일 트레일러(Trailer)</b>: 파일 끝에 합계·레코드 수 — 완전성 검증</li><li><b>체크섬·해시</b>: 무결성 검증 — 변조 탐지</li><li><b>레이블(Label)</b>: 테이프·매체 식별 — 헤더와 유사</li></ul><h4>CISA 시험 포인트</h4><ul><li>"올바른 파일 자동 검증" → <b>파일 헤더 레코드</b> (Q608 정답 A)</li><li>키워드 "<b>automated</b>" → 사람 개입 없는 메커니즘 우선</li><li>패리티 = 비트 오류 / 헤더 = 파일 식별 — 목적 다름</li><li>파일 처리 통제: 헤더(시작) + 트레일러(끝) + 체크섬(무결성) 조합</li></ul></div>`,
+reference:"CRM Chapter 5: Protection of Information Assets — File Processing Controls",
+keyConcepts:[
+"파일 헤더 레코드|파일명·날짜·버전·레코드 수 메타데이터 — 프로그램이 자동 검증",
+"자동 검증 메커니즘|프로그램 로직에 검증 내장 — 사람 개입 없음",
+"버전 사용 한계|올바른 버전 보증 가능하나 자동 메커니즘 없음 — 수동 확인",
+"패리티 체크|전송 비트 오류 검증 — 파일 식별과 무관",
+"파일 보안 통제|접근·권한 관리 — 올바름 검증과 다른 영역",
+"파일 트레일러|파일 끝 합계·레코드 수 — 완전성 검증 보조",
+"체크섬·해시|파일 무결성·변조 탐지 — 헤더와 보완 관계",
+"파일 처리 통제 조합|헤더(시작)+트레일러(끝)+해시(무결성) 종합 적용"
+]
+}
+,
+{
+id:609,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"An information systems (IS) auditor performing an audit has determined that developers have been granted administrative access to the virtual machine management console to manage their own servers used for software development and testing. Which of the following choices is the PRIMARY concern for the IS auditor?",
+questionKo:"개발자가 자신들의 개발·테스트 서버 관리를 위해 <b>VM 관리 콘솔에 관리자 접근권한</b>을 부여받았다. IS 감사인의 <b>주요(PRIMARY) 우려</b>는?",
+options:[
+"A. Developers can create or de-provision servers.",
+"B. Developers can gain elevated access to production servers.",
+"C. Developers can affect the performance of production servers with their applications.",
+"D. Developers can install unapproved applications to any servers."
+],
+optionsKo:[
+"A. 개발자가 <b>서버를 생성하거나 해제(de-provision)</b>할 수 있음",
+"B. 개발자가 <b>운영 서버에 상승된 접근권한</b>을 획득할 수 있음",
+"C. 개발자 애플리케이션이 <b>운영 서버 성능에 영향</b>을 줄 수 있음",
+"D. 개발자가 <b>미승인 애플리케이션을 설치</b>할 수 있음"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>VM 생성·해제 가능</b></td><td class="correct-cell">VM 관리 콘솔의 관리자 권한은 <b>VM 생성·시작·중지·삭제</b>를 허용. 개발자가 실수·악의로 운영 VM을 해제하면 <b>심각한 가용성 손실</b> — 가장 큰 리스크</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>OS 권한 상승</td><td>관리 콘솔은 게스트 OS 인증을 <b>우회하지 않음</b> — VM 자체 OS 접근은 별도 인증 필요. 직접적 위협 아님</td><td>오답</td></tr><tr><td><b>C</b></td><td>성능 영향</td><td>리소스 경합은 발생 가능하나 <b>VM 해제만큼 치명적이지 않음</b> — 모니터링·QoS로 완화 가능</td><td>차순위</td></tr><tr><td><b>D</b></td><td>미승인 앱 설치</td><td>관리 콘솔로는 게스트 OS 내부에 앱 설치 불가 — OS 인증 필요. 직접 위협 아님</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — VM 관리 콘솔 권한의 위험</h4><ul><li>VM 관리 콘솔(예: vCenter·Hyper-V Manager)은 <b>VM 수명주기 전체 통제</b></li><li>개발자에게 부여하면 자신 VM뿐 아니라 <b>다른 VM(운영 포함) 조작 가능</b></li><li>가장 위험한 작업: <b>de-provision(VM 삭제)</b> — 즉각적·되돌리기 어려운 손실</li></ul><h4>왜 A가 PRIMARY인가</h4><ul><li>VM 해제는 <b>운영 가용성·데이터 손실</b> 직결</li><li>되돌리기 어려움 — 백업·스냅샷 의존</li><li>실수 1번으로 운영 중단 가능 — 최악 시나리오</li><li>B·D는 콘솔 권한으로 <b>구조적으로 불가능</b>(OS 인증 별도)</li></ul><h4>관리 콘솔 vs 게스트 OS 권한 구분</h4><table><tr><th>레벨</th><th>관리 콘솔 권한으로 가능</th></tr><tr><td>VM 생성·삭제·시작·중지</td><td>가능 (위험 영역)</td></tr><tr><td>스냅샷·복제·이전</td><td>가능</td></tr><tr><td>리소스 할당 변경</td><td>가능</td></tr><tr><td>게스트 OS 로그인·앱 설치</td><td><b>불가</b> — OS 인증 별도</td></tr><tr><td>게스트 데이터 직접 수정</td><td>불가</td></tr></table><h4>완화 통제</h4><ul><li>RBAC: 개발자에게 <b>본인 VM에만</b> 권한 부여 — 운영 VM 격리</li><li>리소스 풀(Pool) 분리: 개발/운영 분리</li><li>승인 워크플로우: VM 삭제 전 결재</li><li>스냅샷·백업 정책</li><li>관리 콘솔 활동 로깅·모니터링</li><li>SoD: 개발자와 운영 관리자 권한 분리</li></ul><h4>CISA 시험 포인트</h4><ul><li>VM 관리 콘솔 관리자 권한 위험 1순위 = <b>VM 생성·해제</b> (Q609 정답 A)</li><li>관리 콘솔은 게스트 OS 인증 우회 불가 → B·D는 자동 오답</li><li>"PRIMARY concern" → 가장 직접적·심각한 영향</li><li>해결책: <b>RBAC로 본인 VM 한정 + 운영 VM 격리</b></li></ul></div>`,
+reference:"CRM Chapter 5: Cloud and Virtualization — VM Management Console Access Risks",
+keyConcepts:[
+"VM 콘솔 핵심 위험|VM 생성·해제(de-provision) — 운영 VM 실수 삭제 시 가용성 손실 직결",
+"콘솔 vs OS 권한|관리 콘솔은 게스트 OS 인증 우회 못함 — VM 수명주기만 통제",
+"De-provision 영향|되돌리기 어려움 — 백업·스냅샷 의존",
+"RBAC 적용|개발자에게 본인 VM만 권한 — 운영 VM 격리 필수",
+"SoD 원칙|개발자와 운영 관리자 권한 분리 — 가용성·무결성 보호",
+"관리 콘솔 기능|VM 생성·삭제·시작·중지·스냅샷·리소스 할당 — 게스트 내부는 불가",
+"PRIMARY 키워드|가장 직접적·심각한 영향 우선 — 구조적 불가능 항목은 오답",
+"완화 통제 조합|RBAC+리소스 풀 분리+승인 워크플로우+활동 로깅"
+]
+}
+,
+{
+id:610,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"An information systems (IS) auditor discovers that the chief information officer (CIO) of an enterprise is using a wireless broadband modem using global system for mobile communications (GSM) technology. This modem is being used to connect the CIO's laptop to the enterprise virtual private network when the CIO travels outside of the office. The IS auditor should:",
+questionKo:"IS 감사인이 CIO가 출장 중 노트북을 기업 VPN에 연결하기 위해 <b>GSM 기반 무선 광대역 모뎀</b>을 사용한다는 사실을 발견했다. IS 감사인은:",
+options:[
+"A. do nothing because the inherent security features of GSM technology are appropriate.",
+"B. recommend that the CIO stop using the laptop computer until encryption is enabled.",
+"C. ensure that media access control (MAC) address filtering is enabled on the network so that unauthorized wireless users cannot connect.",
+"D. suggest that multifactor authentication be used over the wireless link to prevent unauthorized communications."
+],
+optionsKo:[
+"A. <b>GSM의 내재된 보안 기능이 적절</b>하므로 조치 불필요",
+"B. 암호화가 활성화될 때까지 <b>노트북 사용 중단 권고</b>",
+"C. <b>MAC 주소 필터링</b>을 활성화해 비인가 무선 사용자 연결 차단",
+"D. 무선 링크에 <b>다중 요소 인증(MFA)</b> 적용 권고"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>조치 불필요</b></td><td class="correct-cell">GSM은 <b>무선 구간 암호화·세션 보호·인증</b>을 표준 내장 — 사용자가 비활성화 불가. 추가로 <b>VPN 암호화</b>까지 적용되어 있어 이중 보호. 적절한 구성</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>B</b></td><td>암호화 미적용 가정</td><td>VPN 사용 = <b>이미 암호화 적용</b> — 잘못된 전제</td><td>오답</td></tr><tr><td><b>C</b></td><td>MAC 필터링</td><td>MAC 필터링은 <b>Wi-Fi(802.11) LAN 통제</b> — GSM 네트워크에 적용 불가</td><td>오답</td></tr><tr><td><b>D</b></td><td>무선 링크 MFA</td><td>GSM 무선 구간에 MFA 직접 적용 불가 — 일반적으로 VPN·앱 레벨에서 MFA 적용. 무선 링크 자체에는 부적합</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — GSM의 내재된 보안</h4><ul><li>GSM은 <b>표준 보안 기능을 강제 활성화</b> — 사용자가 끄거나 조정 불가</li><li>주요 기능: 가입자 인증(SIM·IMSI)·무선 구간 암호화(A5)·세션 보호</li><li>Wi-Fi(802.11)와 달리 보안 설정을 변경할 수 없음 → 우회 위험 적음</li></ul><h4>왜 A가 정답인가</h4><ul><li>GSM 자체가 무선 보안 충족</li><li>그 위에 <b>VPN</b>이 추가되어 종단 간 암호화·인증 보장</li><li>이중 방어 — 추가 조치 불필요</li><li>감사인은 적절한 기존 통제를 인정해야 함</li></ul><h4>다른 보기 오답 이유</h4><ul><li><b>B</b>: VPN을 쓰고 있으므로 암호화는 이미 적용 — 전제 오류</li><li><b>C</b>: MAC 필터링은 Wi-Fi용 — 셀룰러 네트워크에 무관</li><li><b>D</b>: GSM 무선 링크는 사용자 MFA 적용 대상 아님 — 캐리어 인증은 SIM 기반</li></ul><h4>GSM vs Wi-Fi 보안 비교</h4><table><tr><th>항목</th><th>GSM</th><th>Wi-Fi(802.11)</th></tr><tr><td>인증</td><td>SIM·IMSI 강제</td><td>WPA2/3·MAC 등 가변</td></tr><tr><td>암호화</td><td>A5 강제</td><td>WEP/WPA/WPA2/WPA3 선택</td></tr><tr><td>사용자 조정</td><td>불가</td><td>가능(보안 끄기 가능)</td></tr><tr><td>주된 위협</td><td>구버전 A5/1 약점·IMSI catcher</td><td>설정 미흡·약한 패스워드</td></tr></table><h4>CISA 시험 포인트</h4><ul><li>GSM + VPN 조합 = <b>적절한 보안 구성</b> (Q610 정답 A)</li><li>MAC 필터링 = Wi-Fi용 — 셀룰러에 적용 불가</li><li>VPN 사용 = 암호화 가정 가능</li><li>감사인은 <b>적절한 기존 통제는 인정</b> — 불필요한 권고 지양</li><li>"do nothing"이 정답인 보기 — 감사 판단력 평가</li></ul></div>`,
+reference:"CRM Chapter 5: Protection of Information Assets — Wireless Communication Security (GSM, VPN)",
+keyConcepts:[
+"GSM 내재 보안|SIM 인증·A5 암호화·세션 보호 표준 강제 — 사용자 비활성화 불가",
+"GSM + VPN 이중 방어|무선 구간 암호화 + 종단 간 VPN 암호화 — 적절한 구성",
+"MAC 필터링 적용 범위|Wi-Fi(802.11) LAN 전용 — 셀룰러 네트워크 무관",
+"GSM vs Wi-Fi|GSM=강제 보안 / Wi-Fi=설정 가변 — Wi-Fi가 더 위험",
+"VPN 암호화 가정|VPN 사용 시 자동으로 암호화 적용 — B 보기 전제 오류",
+"감사 판단|적절한 기존 통제는 인정 — 불필요한 권고 지양",
+"IMSI catcher|GSM 약점 — 가짜 기지국으로 식별자 수집(고급 공격)",
+"do nothing 정답 패턴|기존 통제가 충분할 때 추가 조치 불필요"
+]
+}
+,
+{
+id:611,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"An information systems (IS) auditor is reviewing a third-party agreement for a new cloud-based accounting service provider. Which of the following considerations is the MOST important with regard to the privacy of accounting data?",
+questionKo:"IS 감사인이 신규 <b>클라우드 회계 서비스 제공자</b>와의 제3자 계약을 검토 중이다. <b>회계 데이터의 프라이버시</b>와 관련해 가장 중요한 고려사항은?",
+options:[
+"A. Data retention, backup and recovery",
+"B. Return or destruction of information",
+"C. Network and intrusion detection",
+"D. A patch management process"
+],
+optionsKo:[
+"A. <b>데이터 보존·백업·복구</b>",
+"B. <b>정보의 반환 또는 파기</b>",
+"C. <b>네트워크·침입 탐지</b>",
+"D. <b>패치 관리 프로세스</b>"
+],
+correct:1,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>고려사항</th><th>프라이버시 연관성</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>보존·백업·복구</td><td>가용성·연속성 통제 — <b>프라이버시 자체를 보장하지 않음</b></td><td>오답</td></tr><tr><td class="correct-cell"><b>B ✓</b></td><td class="correct-cell"><b>계약 종료 시 정보 반환·파기</b></td><td class="correct-cell">계약 종료 후 <b>제공자가 데이터를 보유·잔존시키면 프라이버시 직접 침해</b>. 안전한 반환·파기 조항이 데이터 통제권 회수의 핵심</td><td class="correct-cell"><b>정답</b></td></tr><tr><td><b>C</b></td><td>네트워크·IDS</td><td>보안 통제 — 데이터 보호에 기여하나 <b>프라이버시 자체 보장 안 함</b></td><td>오답</td></tr><tr><td><b>D</b></td><td>패치 관리</td><td>취약점 노출 차단 — 보안 통제이지 프라이버시 본질 아님</td><td>오답</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 계약 종료 시점의 데이터 처분</h4><ul><li>제3자 계약의 <b>가장 큰 프라이버시 리스크</b>: 계약 종료 후 데이터가 제공자 측에 남는 것</li><li><b>잔존 데이터(Data Remanence)</b>는 유출 시 책임 부담 + 통제 불가</li><li>계약서에 <b>"반환 또는 안전한 파기"</b> 조항 명시 + 검증 메커니즘 필수</li></ul><h4>왜 B가 가장 중요한가</h4><ul><li>A·C·D는 <b>운영 중</b> 보안·가용성에 기여하지만 프라이버시 자체는 보장하지 않음</li><li>B는 <b>데이터 소유권·통제권 회수</b> 보장 — 프라이버시의 핵심</li><li>회계 데이터는 PII·재무 정보 포함 → 잔존 시 즉시 법적·평판 리스크</li></ul><h4>반환·파기 조항에 포함할 항목</h4><ul><li>반환 형식·시한·매체</li><li>파기 방법(NIST 800-88 wiping·암호 파기·물리 파괴)</li><li>파기 증명서(Certificate of Destruction)</li><li>백업·아카이브의 잔존 처리</li><li>법적 보존 의무(litigation hold) 예외 처리</li><li>독립 검증 권한</li></ul><h4>다른 보기 비교</h4><table><tr><th>보기</th><th>주된 영역</th><th>프라이버시 직접성</th></tr><tr><td>A: 보존·백업·복구</td><td>가용성</td><td>간접</td></tr><tr><td><b>B: 반환·파기</b></td><td><b>데이터 통제권</b></td><td><b>직접</b></td></tr><tr><td>C: 네트워크·IDS</td><td>보안 모니터링</td><td>간접</td></tr><tr><td>D: 패치 관리</td><td>취약점 관리</td><td>간접</td></tr></table><h4>CISA 시험 포인트</h4><ul><li>제3자 계약 + 프라이버시 = <b>반환·파기 조항</b> (Q611 정답 B)</li><li>"<b>privacy</b>" 키워드 → 데이터 소유·통제권 관점</li><li>운영 보안 통제(C·D)는 프라이버시 자체와 구분</li><li>계약 종료 시 데이터 처분이 가장 큰 노출 — Exit clause</li><li>관련: GDPR Art.28 (Processor 의무) — 종료 시 반환·파기 명시 의무</li></ul></div>`,
+reference:"CRM Chapter 5: Protection of Information Assets — Third-party Privacy Controls and Data Disposal",
+keyConcepts:[
+"반환·파기 조항|계약 종료 시 데이터 반환 또는 안전한 파기 — 프라이버시 통제권 회수의 핵심",
+"데이터 잔존(Remanence)|계약 후 잔존 데이터 = 직접적 프라이버시 침해 위험",
+"프라이버시 vs 보안|보안=기술 통제 / 프라이버시=데이터 소유·통제권",
+"파기 방법|NIST 800-88 wiping·암호 파기·물리 파괴 + 파기 증명서",
+"GDPR Art.28|Processor 종료 시 반환·파기 명시 의무 — 표준 조항",
+"운영 통제 한계|백업·IDS·패치는 운영 중 보안 — 종료 시점 처분과 별개",
+"Exit clause|계약 종료 절차 — 데이터 반환·파기·검증·법적 보존 예외 포함",
+"감사 점검 항목|계약서 반환·파기 조항·시한·증명·독립 검증 권한"
+]
+}
+,
+{
+id:612,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"Which of the following should be a concern for an information systems (IS) auditor reviewing an enterprise's cloud computing strategy that is based on a software as a service (SaaS) model with an external provider?",
+questionKo:"외부 제공자 기반 <b>SaaS 모델</b> 클라우드 전략을 검토하는 IS 감사인의 우려사항은?",
+options:[
+"A. Workstation upgrades must be performed.",
+"B. Long-term software acquisition costs are higher.",
+"C. Contract with the provider does not include onsite technical support.",
+"D. Incident handling procedures with the provider are not well defined."
+],
+optionsKo:[
+"A. <b>워크스테이션 업그레이드</b> 필요",
+"B. <b>장기 소프트웨어 취득 비용 증가</b>",
+"C. 계약에 <b>현장(onsite) 기술 지원</b> 미포함",
+"D. 제공자와의 <b>사고 처리 절차가 명확하지 않음</b>"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>주장</th><th>분석</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>워크스테이션 업그레이드</td><td>SaaS는 <b>다양한 단말 호환</b> — 구형 단말이 아니면 업그레이드 불필요</td><td>오답</td></tr><tr><td><b>B</b></td><td>SW 취득비 증가</td><td>SaaS는 오히려 <b>취득비 절감</b>이 주요 이점 — 사실 반대</td><td>오답</td></tr><tr><td><b>C</b></td><td>현장 기술 지원 부재</td><td>SaaS 모델에서 현장 지원은 <b>일반적이지 않음</b> — 예상된 특성</td><td>오답</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>사고 처리 절차 미정의</b></td><td class="correct-cell">SaaS는 현장 지원이 없으므로 <b>제공자-기업 간 사고 탐지·소통·해결 절차</b>가 더더욱 중요. 미정의 시 <b>탐지 지연·책임 불명·복구 실패</b> 위험 — 가장 큰 우려</td><td class="correct-cell"><b>정답</b></td></tr></tbody></table></div><div class="sbox"><h4>핵심 — SaaS의 사고 처리 절차</h4><ul><li>SaaS는 인프라·앱이 모두 제공자 측 — 기업이 직접 통제 불가</li><li>장애·보안 사고 발생 시 <b>탐지·통보·에스컬레이션</b>은 제공자 의존</li><li>절차 미정의 시: 사고 인지 지연 + 책임 소재 분쟁 + 비즈니스 중단 장기화</li></ul><h4>왜 D가 정답인가</h4><ul><li>A·B·C는 SaaS의 <b>일반적 특성</b>이거나 <b>잘못된 전제</b></li><li>D는 SaaS 환경에서 가장 중요한 <b>운영 거버넌스 갭</b></li><li>현장 지원 부재(C)는 정상이지만, 사고 처리 절차 미정의(D)는 <b>비정상</b></li></ul><h4>SaaS 사고 처리 절차에 포함할 항목</h4><ul><li>사고 탐지 책임·범위 분담</li><li>통보 시한(SLA): "X시간 내 통보"</li><li>에스컬레이션 경로·연락처</li><li>분류 기준(Severity) 합의</li><li>RCA(Root Cause Analysis) 공유</li><li>침해 알림 의무(GDPR 72시간 등)</li><li>증거 보전·포렌식 협력</li><li>사후 보고서 제공</li></ul><h4>SaaS 감사 점검 영역</h4><table><tr><th>영역</th><th>점검 항목</th></tr><tr><td>SLA</td><td>가동시간·성능 보증·위약금</td></tr><tr><td>사고 처리</td><td>탐지·통보·해결·보고</td></tr><tr><td>데이터 처리</td><td>위치·암호화·반환·파기</td></tr><tr><td>접근 통제</td><td>SSO·MFA·감사 로그</td></tr><tr><td>준법</td><td>SOC 2·ISO 27001·GDPR</td></tr></table><h4>CISA 시험 포인트</h4><ul><li>SaaS 우려 1순위 = <b>사고 처리 절차 미정의</b> (Q612 정답 D)</li><li>SaaS 특성 정상: 현장 지원 없음·취득비 절감·다양한 단말 호환</li><li>"<b>concern</b>" 키워드 → 비정상·갭이 있는 항목 선택</li><li>Q604·Q606·Q607·Q612 시리즈 — 클라우드 거버넌스 종합</li></ul></div>`,
+reference:"CRM Chapter 5: Cloud Computing — SaaS Audit Considerations and Incident Management",
+keyConcepts:[
+"SaaS 사고 처리 절차|제공자-기업 간 탐지·통보·해결 절차 — 미정의 시 가장 큰 우려",
+"SaaS 일반 특성|현장 지원 없음·취득비 절감·다양한 단말 호환 — 정상이며 우려 아님",
+"제공자 의존|SaaS는 인프라·앱 모두 제공자 — 사고 인지·복구 의존도 높음",
+"통보 시한|SLA에 명시 — GDPR 72시간 등 법적 의무 반영",
+"에스컬레이션 경로|사전 합의·연락처 명시·심각도 분류 — 사고 처리 핵심",
+"RCA 공유|근본 원인 분석 공유 의무 — 재발 방지",
+"SaaS 감사 영역|SLA·사고 처리·데이터 처리·접근 통제·준법 보고서",
+"concern 키워드|비정상·갭 있는 항목 선택 — 정상 특성은 자동 오답"
+]
+},
+
+{
+id:613,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"Which of the following would be of MOST concern to an information systems (IS) auditor reviewing a virtual private network implementation? Computers on the network are located:",
+questionKo:"VPN 구현을 검토하는 IS 감사인의 <b>가장 큰 우려</b>는? 네트워크상의 컴퓨터가 어디에 위치할 때:",
+options:[
+"A. on the enterprise's internal network.",
+"B. at the backup site.",
+"C. in third-party employees' homes.",
+"D. at the enterprise's remote offices."
+],
+optionsKo:[
+"A. 기업 <b>내부 네트워크</b>",
+"B. <b>백업 사이트</b>",
+"C. <b>외부(third-party) 직원의 가정</b>",
+"D. 기업의 <b>원격 사무소</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 외부 직원의 가정 컴퓨터</b><br><br>
+<b>핵심:</b> VPN은 외부 단말을 내부망에 연결시키는 통로 — 그 단말이 기업 보안정책의 통제를 벗어날수록 위험. 가정 PC는 통제 가장 약함.<br><br>
+<table class="cmp">
+<tr><th>위치</th><th>보안정책 적용도</th><th>위험</th></tr>
+<tr><td>A. 내부망</td><td>완전 적용</td><td>최저 ❌</td></tr>
+<tr><td>B. 백업 사이트</td><td>완전 적용</td><td>낮음 ❌</td></tr>
+<tr><td>D. 원격 사무소</td><td>부분 적용 (지사별 차이)</td><td>중간 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 외부 직원 가정</b></td><td><b>거의 미적용</b></td><td><b>최고 ✅</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• VPN의 본질적 위험 = <b>고위험 단말이 내부망에 신뢰받음</b><br>
+• 한 단말이 침해되면 그 단말을 신뢰하는 모든 네트워크가 위험<br>
+• 가정 PC는 패치·AV·구성관리·물리보안 모두 통제 불가<br>
+• 같은 기업 내 단말일수록 동일 보안정책 강제 가능</div>`,
+reference:"CRM Chapter 5: Network Security — VPN Risks",
+keyConcepts:[
+"VPN 핵심 위험|고위험 단말의 내부망 신뢰 — 모든 연결 단말은 동일 보안정책 적용 필요",
+"가정 PC 위험|기업 보안정책 통제 밖 — 패치·AV·구성·물리보안 보장 불가",
+"내부망/백업|완전 통제 — 위험 낮음",
+"원격 사무소|보안정책은 적용되지만 지사별 IS·보안 인력 판단 차이로 중간 위험",
+"신뢰 전이|침해된 단말을 신뢰하는 모든 네트워크가 함께 위험"
+]
+},
+
+{
+id:614,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"When auditing an enterprise's internet of things (IoT) environment, which of the following is a PRIMARY focus area?",
+questionKo:"기업의 IoT 환경 감사 시 <b>주요(PRIMARY) 초점 영역</b>은?",
+options:[
+"A. Assessing the physical security measures of internet of things (IoT) devices",
+"B. Reviewing the enterprise's privacy policies related to IoT data",
+"C. Evaluating the effectiveness of IoT device authentication controls",
+"D. Verifying the availability of IoT device firmware updates"
+],
+optionsKo:[
+"A. IoT 기기의 <b>물리적 보안</b> 조치 평가",
+"B. IoT 데이터 관련 <b>개인정보 정책</b> 검토",
+"C. IoT 기기 <b>인증(authentication) 통제 효과성</b> 평가",
+"D. IoT 기기 <b>펌웨어 업데이트 가용성</b> 확인"
+],
+correct:2,
+explanation:`<b>정답: C. IoT 기기 인증 통제 효과성</b><br><br>
+<b>핵심:</b> IoT 보안의 근본 = 인가된 사용자/기기만 접근하도록 보장. 인증이 무너지면 물리보안·프라이버시·펌웨어 통제도 모두 무력화.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr><td>A. 물리적 보안</td><td>관련 있으나 부분 영역 — 물리 접근 차단해도 네트워크 인증 약하면 침해 ❌</td></tr>
+<tr><td>B. 개인정보 정책</td><td>준법 측면 — 보안 본질 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 인증 통제</b></td><td><b>✅ IoT 보안 핵심 — 인가/비인가 단말·사용자 분리</b></td></tr>
+<tr><td>D. 펌웨어 업데이트</td><td>중요하지만 운영 측면 — 인증 없으면 업데이트 자체가 위협 벡터 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• IoT 위협 1순위 = <b>약한/기본 자격증명</b> (Mirai 등)<br>
+• 인증 무너짐 → 비인가 명령·데이터 유출·봇넷 가담<br>
+• 물리·프라이버시·펌웨어는 <b>인증 위에서</b> 작동하는 보조 통제</div>`,
+reference:"CRM Chapter 5: IoT Security — Authentication as Primary Control",
+keyConcepts:[
+"IoT 인증 통제|인가된 사용자/기기만 접근 — IoT 보안의 1차 방어선",
+"기본 자격증명 위험|IoT 침해 1순위 원인 — 변경·강화 필수",
+"물리 보안|보조 통제 — 인증 우회 시 의미 약화",
+"펌웨어 업데이트|운영 통제 — 인증 없이 업데이트 채널 자체가 공격 벡터",
+"PRIMARY 키워드|보안 본질(인증) 우선 — 준법·운영은 후순위"
+]
+},
+
+{
+id:615,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"An information systems (IS) auditor reviewing wireless network security determines that the Dynamic Host Configuration Protocol is disabled at all wireless access points. This practice:",
+questionKo:"무선 네트워크 보안 감사 중 모든 AP에서 <b>DHCP가 비활성화</b>됨을 확인했다. 이 관행은:",
+options:[
+"A. reduces the risk of unauthorized access to the network.",
+"B. is not suitable for small networks.",
+"C. automatically provides an internet protocol (IP) address to anyone.",
+"D. increases the risk associated with Wireless Encryption Protocol."
+],
+optionsKo:[
+"A. 네트워크 <b>비인가 접근 위험을 감소</b>시킨다",
+"B. <b>소규모 네트워크에 부적합</b>하다",
+"C. 누구에게나 자동으로 IP 주소를 제공한다",
+"D. WEP 관련 위험을 <b>증가</b>시킨다"
+],
+correct:0,
+explanation:`<b>정답: A. 비인가 접근 위험 감소</b><br><br>
+<b>핵심:</b> DHCP 비활성화 → 정적 IP 수동 설정 필요 → 관리자 지원 또는 높은 기술 수준 요구 → 무단 접속 장벽 ↑.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 비인가 접근 감소</b></td><td><b>✅ 정적 IP 수동 설정 필요 — 진입 장벽 ↑</b></td></tr>
+<tr><td>B. 소규모 부적합</td><td>DHCP는 가정망부터 대기업까지 모두 적합 — 사실 아님 ❌</td></tr>
+<tr><td>C. 자동 IP 제공</td><td>비활성화 시 IP 제공 안 함 — 정반대 ❌</td></tr>
+<tr><td>D. WEP 위험 증가</td><td>오히려 <b>WEP 약점 악용을 어렵게</b> 만듦 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• DHCP 비활성화는 무선 보안 강화 기법 중 하나 (보조적)<br>
+• 단독으로는 약함 — WPA2/WPA3, MAC 필터링, SSID 숨김과 함께 사용<br>
+• 침입자가 정적 IP·서브넷·게이트웨이를 추측해야 → 시간·노력 증가</div>`,
+reference:"CRM Chapter 5: Wireless Security — DHCP Hardening",
+keyConcepts:[
+"DHCP 비활성화|무선 AP에서 IP 자동할당 차단 — 정적 IP 수동 설정 강제",
+"비인가 접근 차단|침입자가 IP·서브넷·GW 추측 필요 — 진입 장벽 ↑",
+"WEP 약점|DHCP 비활성화는 WEP 익스플로잇을 어렵게 — 위험 감소",
+"보조 통제|DHCP off 단독은 약함 — WPA2/3·MAC 필터·SSID 숨김 병행",
+"DHCP 적용 범위|소규모~대규모 모두 적합 — 규모 제한 없음"
+]
+},
+
+{
+id:616,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"Which of the following BEST encrypts data on mobile devices?",
+questionKo:"모바일 기기 데이터 암호화에 <b>가장 적합한</b> 알고리즘은?",
+options:[
+"A. Elliptical curve cryptography",
+"B. Data encryption standard",
+"C. Advanced encryption standard",
+"D. The Blowfish algorithm"
+],
+optionsKo:[
+"A. <b>타원곡선 암호(ECC)</b>",
+"B. <b>DES</b> (Data Encryption Standard)",
+"C. <b>AES</b> (Advanced Encryption Standard)",
+"D. <b>Blowfish</b> 알고리즘"
+],
+correct:0,
+explanation:`<b>정답: A. ECC (타원곡선 암호)</b><br><br>
+<b>핵심:</b> 모바일 기기는 <b>제한된 자원(CPU·전력·대역폭)</b>이 핵심 제약. ECC는 작은 키 크기로 강한 보안 → 모바일에 최적.<br><br>
+<table class="cmp">
+<tr><th>알고리즘</th><th>유형</th><th>모바일 적합성</th></tr>
+<tr style="background:#d4edda"><td><b>A. ECC</b></td><td>비대칭</td><td><b>✅ 작은 키·낮은 자원 — 모바일 최적</b></td></tr>
+<tr><td>B. DES</td><td>대칭</td><td>처리 부하 적지만 <b>56bit로 보안 약함</b> ❌</td></tr>
+<tr><td>C. AES</td><td>대칭</td><td>강력하나 <b>키 관리·분배 문제</b> + ECC보다 자원 ↑ ❌</td></tr>
+<tr><td>D. Blowfish</td><td>대칭</td><td><b>처리 부하 큼</b> — 모바일 부적합 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• ECC 256bit ≈ RSA 3072bit 보안 강도 — <b>키 크기 1/12</b><br>
+• 비대칭이라 키 분배 문제 해결<br>
+• 모바일·IoT·스마트카드처럼 자원 제약 환경의 표준<br>
+• AES는 우수하지만 대칭키 분배 부담 + ECC 대비 자원 소모 ↑</div>`,
+reference:"CRM Chapter 5: Cryptography — ECC for Mobile",
+keyConcepts:[
+"ECC (타원곡선 암호)|비대칭 — 작은 키로 강한 보안 — 모바일·IoT 최적",
+"키 크기 비교|ECC 256bit ≈ RSA 3072bit — 자원 효율 ↑",
+"AES 한계|대칭키 — 키 관리·분배 부담 — 자원 소모도 ECC보다 큼",
+"DES|56bit — 보안 약함 — 현대 환경 부적합",
+"Blowfish|처리 부하 큼 — 모바일 부적합",
+"모바일 암호 선택 기준|자원 제약(CPU·전력·대역폭) + 키 분배 — 비대칭 ECC가 답"
+]
+},
+
+{
+id:617,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"Which of the following controls should an information systems (IS) auditor consider when reviewing the integrity of the wireless communications to ensure that the received communications have not been altered in transit?",
+questionKo:"무선 통신의 <b>무결성</b> 검토 시 — 전송 중 변조 여부 확인을 위해 IS 감사인이 고려해야 할 통제는?",
+options:[
+"A. Device authentication and data origin authentication",
+"B. Wireless intrusion detection and intrusion prevention systems",
+"C. The use of cryptographic hashes",
+"D. Packet headers and trailers"
+],
+optionsKo:[
+"A. <b>기기 인증 및 데이터 원본 인증</b>",
+"B. <b>무선 IDS/IPS</b>",
+"C. <b>암호학적 해시</b> 사용",
+"D. <b>패킷 헤더와 트레일러</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 암호학적 해시</b><br><br>
+<b>핵심:</b> 무결성(integrity) = "데이터가 전송 중 변경되지 않았는가". 수신측이 해시를 재계산해 비교 → 변조 즉시 탐지.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>다루는 보안 속성</th><th>판정</th></tr>
+<tr><td>A. 기기·원본 인증</td><td><b>인증(Authentication)</b> — MITM·위장 방지</td><td>무결성 직접 통제 아님 ❌</td></tr>
+<tr><td>B. 무선 IDS/IPS</td><td>탐지·차단 — 비인가 기기·공격</td><td>탐지 통제 — 무결성 직접 보장 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 암호학적 해시</b></td><td><b>무결성(Integrity)</b> — 변조 탐지</td><td><b>✅ 정답</b></td></tr>
+<tr><td>D. 헤더·트레일러</td><td>패킷 구조 — 공격자가 데이터+트레일러 함께 변조 가능</td><td>무결성 보장 X ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>무결성 = 해시(MD5/SHA) 또는 HMAC</b><br>
+• 인증과 무결성은 다른 보안 속성 — 시험 빈출 함정<br>
+• HMAC = 해시 + 비밀키 → 무결성 + 원본 인증 동시<br>
+• CRC·체크섬은 우연 오류 탐지용 — 의도적 변조 방어 X</div>`,
+reference:"CRM Chapter 5: Wireless Security — Integrity Controls",
+keyConcepts:[
+"무결성|전송 중 데이터 변경 여부 — 해시·HMAC·디지털 서명으로 보장",
+"암호학적 해시|MD5/SHA 등 — 송신측 계산값과 수신측 재계산값 비교",
+"인증 vs 무결성|인증=신원 확인, 무결성=내용 변경 여부 — 다른 속성",
+"IDS/IPS|탐지·차단 통제 — 무결성 직접 보장 아님",
+"패킷 헤더·트레일러|구조 정보 — 변조 보호 없음",
+"HMAC|해시+비밀키 — 무결성+원본 인증 결합"
+]
+},
+
+{
+id:618,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"Which of the following is a KEY consideration when implementing machine learning (ML) models for cybersecurity applications?",
+questionKo:"사이버보안용 <b>머신러닝(ML) 모델</b> 구현 시 <b>핵심 고려사항</b>은?",
+options:[
+"A. Regularly updating and retraining the machine learning (ML) model with new data",
+"B. Ensuring the ML model detects all types of threats",
+"C. Using open-source ML libraries without considering their security vulnerabilities",
+"D. Relying solely on ML models for all cybersecurity decision making"
+],
+optionsKo:[
+"A. 새로운 데이터로 ML 모델을 <b>정기적으로 업데이트·재학습</b>",
+"B. ML 모델이 <b>모든 종류의 위협을 탐지</b>하도록 보장",
+"C. 보안 취약점 고려 없이 <b>오픈소스 ML 라이브러리</b> 사용",
+"D. 모든 사이버보안 의사결정을 <b>ML 모델에만 의존</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 정기적 업데이트·재학습</b><br><br>
+<b>핵심:</b> 사이버 위협은 끊임없이 진화 — 정적(static) 모델은 시간이 지날수록 탐지 정확도 ↓. 신규 데이터로 재학습해야 신종 위협 대응 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 정기 재학습</b></td><td><b>✅ 모델 드리프트 방지 — 신종 위협 대응</b></td></tr>
+<tr><td>B. 모든 위협 탐지</td><td>비현실적 — 위협 동적 진화로 100% 탐지 불가 ❌</td></tr>
+<tr><td>C. 취약점 무시 OSS 사용</td><td>공급망·라이브러리 취약점 위험 — 권장 X ❌</td></tr>
+<tr><td>D. ML에만 의존</td><td>오탐·맥락 부재 — 인간 전문성·검증 필요 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>모델 드리프트(Model Drift)</b> = 시간 지나며 탐지 성능 저하<br>
+• 위협 환경 진화 → 학습 데이터도 갱신 필요<br>
+• ML은 <b>인간 분석가의 보조 도구</b> — 최종 판단·맥락 분석은 사람</div>`,
+reference:"CRM Chapter 5: Emerging Tech — ML in Cybersecurity",
+keyConcepts:[
+"모델 재학습|신규 위협 데이터 반영 — 사이버보안 ML 핵심",
+"모델 드리프트|시간 경과 시 탐지 정확도 저하 — 정기 갱신으로 대응",
+"100% 탐지 비현실|위협 동적 진화 — 완전 탐지 보장 불가",
+"오픈소스 ML 위험|라이브러리 취약점·공급망 검증 필수",
+"ML 의존 한계|오탐·맥락 부재 — 인간 검증과 결합 필요"
+]
+},
+
+{
+id:619,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"Which of the following is the BEST control over a guest wireless ID that is given to vendor staff?",
+questionKo:"<b>벤더 직원에게 부여된 게스트 무선 ID</b>에 대한 <b>최선의 통제</b>는?",
+options:[
+"A. Assignment of a renewable user ID that expires daily.",
+"B. A write-once log to monitor the vendor's activities on the system.",
+"C. Use of a user ID format similar to that used by employees.",
+"D. Ensuring that wireless network encryption is configured properly."
+],
+optionsKo:[
+"A. <b>매일 만료되는 갱신형 사용자 ID</b> 부여",
+"B. 벤더 활동 모니터링용 <b>write-once 로그</b>",
+"C. 직원과 <b>유사한 사용자 ID 형식</b> 사용",
+"D. <b>무선 암호화</b>의 적절한 구성 보장"
+],
+correct:0,
+explanation:`<b>정답: A. 매일 만료되는 갱신형 ID</b><br><br>
+<b>핵심:</b> 게스트 ID 위험 = 미사용 후에도 활성 상태 유지. 매일 자동 만료 = <b>예방 통제</b> — 비인가 접근 자체를 차단.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>통제 유형</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 일일 만료 ID</b></td><td><b>예방(Preventive)</b></td><td><b>✅ 가장 강력 — 자동 차단</b></td></tr>
+<tr><td>B. write-once 로그</td><td>탐지(Detective)</td><td>사후 추적 — 예방보다 약함 ❌</td></tr>
+<tr><td>C. 유사한 ID 형식</td><td>형식 통제</td><td>보안에 무관 ❌</td></tr>
+<tr><td>D. 무선 암호화</td><td>전송 보호</td><td>중요하나 접근 통제는 별개 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>예방 > 탐지 > 교정</b> 통제 — 시험 빈출 우선순위<br>
+• 게스트/임시 계정은 <b>최단 유효기간</b>이 핵심 원칙<br>
+• 자동 만료는 관리자 망각·계정 잔존 위험 제거<br>
+• 암호화(D)는 도청 방지 — 인가된 사용자가 누구냐의 문제와 다름</div>`,
+reference:"CRM Chapter 5: Wireless Security — Guest Access Controls",
+keyConcepts:[
+"게스트 ID 통제|최단 유효기간·자동 만료가 핵심 원칙",
+"예방 vs 탐지|예방 통제(자동 만료)가 탐지 통제(로그)보다 강함",
+"일일 만료 ID|관리자 망각·계정 잔존 위험 제거 — 자동화된 예방",
+"write-once 로그|탐지·포렌식 보조 — 사고 후 추적용",
+"무선 암호화|전송 보호 ≠ 접근 통제 — 별개 영역"
+]
+},
+
+{
+id:620,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"An information systems (IS) auditor is evaluating a virtual-machine-based architecture used for all programming and testing environments. The production architecture is a three-tier physical architecture. What is the MOST important IT control to test to ensure availability and confidentiality of the web application in production?",
+questionKo:"개발·테스트는 <b>VM 기반</b>, 운영은 <b>3-tier 물리 아키텍처</b>. 운영 웹앱의 <b>가용성·기밀성</b> 보장을 위해 <b>가장 중요한</b> IT 통제 테스트는?",
+options:[
+"A. Server configuration has been hardened appropriately.",
+"B. Allocated physical resources are available.",
+"C. System administrators are trained to use the virtual machine (VM) architecture.",
+"D. The VM server is included in the disaster recovery plan."
+],
+optionsKo:[
+"A. 서버 구성이 적절히 <b>하드닝</b>되어 있다",
+"B. 할당된 <b>물리 자원</b>이 가용하다",
+"C. 시스템 관리자가 <b>VM 아키텍처 사용 교육</b>을 받았다",
+"D. <b>VM 서버가 DRP에 포함</b>되어 있다"
+],
+correct:0,
+explanation:`<b>정답: A. 서버 구성 하드닝</b><br><br>
+<b>핵심:</b> 개발(VM)과 운영(물리 3-tier) 환경이 <b>다르기 때문에</b> — 운영에 배포된 후 별도로 패치·불필요 기능 비활성화 등 하드닝 검증이 필수.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 하드닝</b></td><td><b>✅ 환경 차이 → 운영 서버 별도 보안 검증 필요</b></td></tr>
+<tr><td>B. 물리 자원</td><td>가용성 위험 낮고 쉽게 해결 ❌</td></tr>
+<tr><td>C. VM 교육</td><td>VM은 개발용 — 운영 웹앱과 무관 ❌</td></tr>
+<tr><td>D. VM DRP 포함</td><td>VM은 운영 아님 — DRP 포함 불필수 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>개발 ≠ 운영 환경</b>일 때 가장 큰 리스크 = 보안 구성 차이<br>
+• 운영 서버는 별도로 패치·불필요 서비스 제거·기본 계정 변경 필요<br>
+• 가용성·기밀성 직접 보호 = 하드닝 (취약점·노출 표면 감소)<br>
+• VM 관련 통제(C·D)는 운영 웹앱과 직접 관련 없음</div>`,
+reference:"CRM Chapter 5: Server Hardening — Dev/Prod Parity",
+keyConcepts:[
+"서버 하드닝|패치·불필요 기능 비활성화·기본계정 제거 — 가용성·기밀성 직접 보호",
+"개발·운영 환경 차이|VM 개발 + 물리 운영 → 운영 별도 보안 검증 필수",
+"운영 통제 우선|운영에 배포되는 자산이 감사 초점 — 개발 도구는 부차적",
+"VM DRP|VM이 개발용일 때 DRP 포함 불필수 — 운영 자산만 핵심",
+"하드닝 항목|미사용 포트 차단·서비스 최소화·CIS 벤치마크 적용"
+]
+},
+
+{
+id:621,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"An enterprise is planning to replace its wired networks with wireless networks. Which of the following would BEST secure the wireless network from unauthorized access?",
+questionKo:"유선망을 무선망으로 교체 시 <b>비인가 접근</b>을 가장 잘 차단하는 통제는?",
+options:[
+"A. Implement wired equivalent privacy (WEP).",
+"B. Permit access to only authorized media access control addresses.",
+"C. Disable open broadcast of service set identifiers.",
+"D. Implement Wi-Fi Protected Access (WPA) 2."
+],
+optionsKo:[
+"A. <b>WEP</b> 구현",
+"B. 인가된 <b>MAC 주소</b>만 접근 허용",
+"C. <b>SSID 브로드캐스트 비활성화</b>",
+"D. <b>WPA2</b> 구현"
+],
+correct:3,
+explanation:`<b>정답: D. WPA2</b><br><br>
+<b>핵심:</b> WPA2는 IEEE 802.11i 기반 — AES 암호화 + EAP/PSK 인증으로 무선 보안의 표준. 다른 보기는 모두 우회 가능한 약한 통제.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr><td>A. WEP</td><td><b>몇 분 내 크래킹</b> — 정적 키·키 관리 어려움 ❌</td></tr>
+<tr><td>B. MAC 필터링</td><td>MAC 주소 <b>스푸핑</b>으로 우회 가능 ❌</td></tr>
+<tr><td>C. SSID 숨김</td><td>탐지 도구로 쉽게 발견 — 진짜 통제 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. WPA2</b></td><td><b>✅ AES 암호화 + EAP/PSK — 802.11i 표준</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 무선 보안 진화: <b>WEP → WPA → WPA2 → WPA3</b><br>
+• WPA2 = AES 기반 — 현재까지 사실상 표준 (WPA3가 차세대)<br>
+• MAC 필터·SSID 숨김은 <b>"보안 by 모호함"</b> — 진짜 보안 아님<br>
+• EAP = 엔터프라이즈 환경, PSK = 가정·소규모</div>`,
+reference:"CRM Chapter 5: Wireless Security — WPA2 / 802.11i",
+keyConcepts:[
+"WPA2|802.11i 표준 — AES 암호화 + EAP/PSK 인증 — 무선 보안 표준",
+"WEP 약점|정적 키·짧은 IV — 몇 분 내 크래킹 가능",
+"MAC 스푸핑|MAC 주소 위조 가능 — MAC 필터는 우회 가능",
+"SSID 숨김 한계|탐지 도구로 쉽게 노출 — 진짜 통제 아님",
+"무선 보안 진화|WEP → WPA → WPA2 → WPA3",
+"EAP vs PSK|EAP=엔터프라이즈(인증서버), PSK=가정·소규모(공유키)"
+]
+},
+
+{
+id:622,
+domain:"5",
+ks:"5A9 Mobile, Wireless, and Internet-of-Things Devices",
+question:"A human resources enterprise offers wireless Internet access to its guests, after authenticating with a generic user ID and password. The generic ID and password are requested from the reception desk. Which of the following controls BEST addresses the situation?",
+questionKo:"기업이 게스트에게 <b>공용 ID/PW</b>로 무선 인터넷을 제공한다. 가장 적절한 통제는?",
+options:[
+"A. The password for the wireless network is changed on a weekly basis.",
+"B. A stateful inspection firewall is used between the public wireless and enterprise networks.",
+"C. The public wireless network is physically segregated from the enterprise network.",
+"D. An intrusion detection system is deployed within the wireless network."
+],
+optionsKo:[
+"A. 무선망 비밀번호 <b>주간 변경</b>",
+"B. 게스트망과 사내망 사이 <b>Stateful Inspection 방화벽</b>",
+"C. 게스트 무선망을 사내망과 <b>물리적 분리</b>",
+"D. 무선망 내 <b>IDS 배치</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 물리적 분리</b><br><br>
+<b>핵심:</b> 공용 ID/PW로 누구나 접근 가능 → 사내망과 <b>물리적으로 분리</b>해야 게스트 접근이 사내 자산에 닿지 않음. 가장 강력한 예방.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr><td>A. 주간 변경</td><td>일주일간은 무방비 — 사내망 접근 차단 못함 ❌</td></tr>
+<tr><td>B. 방화벽</td><td>패킷 검사 가능하나 <b>구성 오류·우회 가능</b> ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 물리적 분리</b></td><td><b>✅ 게스트 트래픽이 사내망에 도달 불가 — 가장 강력</b></td></tr>
+<tr><td>D. IDS</td><td>탐지만 — 차단 X, 비인가 접근은 허용됨 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>물리적 분리 > 논리적 분리(VLAN/방화벽)</b> — 격리 강도<br>
+• 게스트 무선망 모범사례: 별도 회선·별도 SSID + 사내망 0접점<br>
+• 방화벽도 구성 오류·취약점으로 우회 가능 — 물리 분리는 그런 위험 없음<br>
+• IDS는 탐지 통제 — 예방 통제(분리)보다 약함</div>`,
+reference:"CRM Chapter 5: Network Segmentation — Guest Wireless",
+keyConcepts:[
+"물리적 분리|게스트망과 사내망을 별도 회선·인프라로 — 가장 강력한 격리",
+"공용 ID/PW 위험|누구나 접근 가능 → 사내망 접점 자체를 없애야 함",
+"방화벽 한계|구성 오류·우회 가능 — 물리 분리보다 약함",
+"IDS 한계|탐지 전용 — 비인가 접근 차단 못함",
+"예방 vs 탐지|분리(예방) > 방화벽(예방·논리) > IDS(탐지)",
+"게스트망 모범사례|별도 SSID + 별도 ISP 또는 DMZ + 사내망 접점 0"
+]
+},
+
+{
+id:623,
+domain:"5",
+ks:"5B1 Security Awareness Training and Programs",
+question:"Which of the following is the BEST criterion for evaluating the adequacy of an enterprise's security awareness program?",
+questionKo:"보안 인식(Security Awareness) 프로그램의 <b>적정성 평가 기준</b>으로 가장 적합한 것은?",
+options:[
+"A. Senior management is aware of critical information assets and demonstrates an adequate concern for their protection.",
+"B. Job descriptions contain clear statements of accountability for information security.",
+"C. In accordance with the degree of risk and business impact, there is adequate funding for security efforts.",
+"D. No actual incidents have occurred that have caused a loss or a public embarrassment."
+],
+optionsKo:[
+"A. 경영진이 핵심 정보자산을 인지하고 보호에 적절한 관심을 보임",
+"B. 직무기술서(JD)에 <b>정보보안 책임이 명확히 기술</b>됨",
+"C. 위험·비즈니스 영향에 따라 <b>충분한 예산</b>이 배정됨",
+"D. <b>손실·평판 훼손 사고가 없음</b>"
+],
+correct:1,
+explanation:`<b>정답: B. JD에 정보보안 책임 명시</b><br><br>
+<b>핵심:</b> 보안 인식 프로그램의 성숙도는 <b>전 직원이 본인의 보안 역할을 인지·실천하는가</b>로 평가. JD에 책임이 명시 = 제도적 정착의 증거.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr><td>A. 경영진 인식</td><td>중요하나 <b>전사 인식</b>의 일부일 뿐 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. JD에 책임 명시</b></td><td><b>✅ 모든 직원이 보안 책임 인지 — 프로그램 성숙도 지표</b></td></tr>
+<tr><td>C. 충분한 예산</td><td>예산이 효과성을 보장하지 않음 ❌</td></tr>
+<tr><td>D. 사고 없음</td><td><b>위험관리</b> 평가 기준 — 인식 프로그램 평가 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 보안 인식 프로그램 성숙도 = <b>제도적 정착</b> 여부<br>
+• JD = 채용·평가·징계의 기준 — 책임을 강제 가능<br>
+• "사고 없음"은 운(luck)이거나 미탐지일 수도 — 평가 기준 부적합<br>
+• 경영진만 인식 ≠ 전 직원 인식 (Top-down은 시작점)</div>`,
+reference:"CRM Chapter 5: Security Awareness Program Maturity",
+keyConcepts:[
+"JD 보안 책임|직무기술서에 보안 책임 명시 — 제도적 정착의 증거",
+"보안 인식 성숙도|전 직원이 자신의 보안 역할 인지·실천",
+"예산 ≠ 효과성|예산만으로 프로그램 성공 보장 불가",
+"사고 없음의 함정|운·미탐지일 수도 — 인식 프로그램 평가 기준 아님",
+"인식 vs 위험관리|사고 발생률은 위험관리 지표 — 인식 프로그램과 구분"
+]
+},
+
+{
+id:624,
+domain:"5",
+ks:"5B1 Security Awareness Training and Programs",
+question:"The management of an enterprise has decided to establish a security awareness program. Which of the following would MOST likely be a part of the program?",
+questionKo:"보안 인식 프로그램의 <b>구성요소</b>로 가장 가능성이 높은 것은?",
+options:[
+"A. Using an intrusion detection system to report incidents.",
+"B. Mandating the use of passwords to access all software.",
+"C. Installing an efficient user log system to track the actions of each user.",
+"D. Training provided on a regular basis to all current and new employees."
+],
+optionsKo:[
+"A. <b>IDS</b>로 사고 보고",
+"B. 모든 소프트웨어 접근에 <b>비밀번호 사용 의무화</b>",
+"C. 사용자 행위 추적용 <b>로그 시스템</b> 설치",
+"D. 모든 기존·신규 직원에게 <b>정기 교육</b> 제공"
+],
+correct:3,
+explanation:`<b>정답: D. 정기 교육</b><br><br>
+<b>핵심:</b> 보안 <b>인식(Awareness)</b> 프로그램의 본질 = 사람을 변화시키는 것 → 정기 교육이 핵심 수단. 나머지는 기술·정책 통제로 별개.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>구분</th><th>판정</th></tr>
+<tr><td>A. IDS</td><td>기술 통제</td><td>보안 프로그램의 일부 — 인식 프로그램 아님 ❌</td></tr>
+<tr><td>B. PW 의무화</td><td>정책 통제</td><td>정책 결정 — 인식 이슈 아님 ❌</td></tr>
+<tr><td>C. 로그 시스템</td><td>탐지 통제</td><td>모니터링 도구 — 인식과 무관 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 정기 교육</b></td><td><b>인식 통제</b></td><td><b>✅ Awareness 프로그램의 핵심</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 보안 통제 3축: <b>기술(Technical) + 정책(Policy) + 인식(Awareness)</b><br>
+• Awareness Program = <b>교육·훈련·캠페인</b> 중심<br>
+• 신규 입사자 + 기존 직원 모두 — <b>정기성·반복성</b>이 핵심<br>
+• 기술/정책 통제는 인식 프로그램의 효과를 보강할 뿐 대체 불가</div>`,
+reference:"CRM Chapter 5: Security Awareness Program Components",
+keyConcepts:[
+"보안 인식 프로그램|사람의 행동·인지를 변화시키는 통제 — 교육이 핵심",
+"정기 교육|기존+신규 직원 대상 반복 — Awareness의 주요 활동",
+"기술 vs 인식|IDS·로그·PW 정책은 별도 통제 — 인식 프로그램과 구분",
+"인식 캠페인 형태|이러닝·뉴스레터·포스터·피싱 모의훈련·워크숍",
+"신규 입사자 교육|온보딩 시 보안 정책·역할 교육 의무"
+]
+},
+
+{
+id:625,
+domain:"5",
+ks:"5B1 Security Awareness Training and Programs",
+question:"Which of the following controls is the MOST comprehensive in a remote access network with multiple and diverse subsystems?",
+questionKo:"다양한 서브시스템을 가진 <b>원격 접속망</b>에서 가장 <b>포괄적</b>인 통제는?",
+options:[
+"A. Proxy server",
+"B. Firewall installation",
+"C. Demilitarized zone",
+"D. Virtual private network"
+],
+optionsKo:[
+"A. <b>프록시 서버</b>",
+"B. <b>방화벽</b> 설치",
+"C. <b>DMZ</b>",
+"D. <b>VPN</b>"
+],
+correct:3,
+explanation:`<b>정답: D. VPN</b><br><br>
+<b>핵심:</b> 원격 접속의 핵심 = 인터넷 경유 트래픽을 <b>암호화 터널</b>로 보호. VPN은 인증·기밀성·무결성을 모두 제공해 가장 포괄적.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할</th><th>판정</th></tr>
+<tr><td>A. 프록시</td><td>방화벽의 한 형태 — 트래픽 필터·중계</td><td>일부 통제만 ❌</td></tr>
+<tr><td>B. 방화벽</td><td>1차 방어선 — 그러나 암호화·터널 없음</td><td>VPN 보강 필요 ❌</td></tr>
+<tr><td>C. DMZ</td><td>외부 공개 서비스 격리망 — 암호화 X</td><td>원격 접속 보호 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. VPN</b></td><td><b>암호화 터널 + 인증</b></td><td><b>✅ 원격 접속 가장 포괄</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• VPN = <b>기밀성(암호화) + 무결성(MAC) + 인증(IPSec/SSL)</b><br>
+• 방화벽·프록시·DMZ는 <b>경계 통제</b> — 트래픽 자체는 평문<br>
+• 원격 접속 보안 = VPN을 중심으로 방화벽·DMZ가 보조<br>
+• "comprehensive" 키워드 → 다중 보안 속성 동시 제공 = VPN</div>`,
+reference:"CRM Chapter 5: Remote Access Security — VPN",
+keyConcepts:[
+"VPN 포괄성|암호화·무결성·인증 동시 — 원격 접속 보안의 표준",
+"방화벽 한계|트래픽 필터링은 가능하나 암호화 X — VPN 보강 필요",
+"프록시 서버|방화벽의 한 형태 — 중계·필터 — 원격 보안에 부족",
+"DMZ|공개 서비스 격리망 — 원격 접속자 보호용 아님",
+"comprehensive 키워드|다중 보안 속성 — VPN이 정답인 시그널",
+"VPN 프로토콜|IPSec(네트워크층), SSL/TLS(전송층)"
+]
+},
+
+{
+id:626,
+domain:"5",
+ks:"5B1 Security Awareness Training and Programs",
+question:"Which of the following is the BEST way for an information systems (IS) auditor to determine the effectiveness of a security awareness and training program?",
+questionKo:"보안 인식·교육 프로그램의 <b>효과성 판단</b>에 가장 좋은 방법은?",
+options:[
+"A. Review the security training program.",
+"B. Ask the security administrator.",
+"C. Interview a sample of employees.",
+"D. Review the security reminders to employees."
+],
+optionsKo:[
+"A. 보안 교육 <b>프로그램 검토</b>",
+"B. <b>보안 관리자에게 문의</b>",
+"C. <b>직원 표본 인터뷰</b>",
+"D. 직원에게 발송된 <b>보안 안내문 검토</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 직원 표본 인터뷰</b><br><br>
+<b>핵심:</b> 인식 프로그램의 효과 = <b>직원의 실제 인식 수준</b>. 프로그램·자료·관리자 답변이 아닌 <b>대상자(직원) 자체</b>를 직접 확인해야 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>측정 대상</th><th>판정</th></tr>
+<tr><td>A. 프로그램 검토</td><td>설계(input)</td><td>설계가 좋아도 인식이 낮을 수 있음 ❌</td></tr>
+<tr><td>B. 관리자 문의</td><td>관리자 의견</td><td>대상은 전 직원이지 관리자 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 직원 인터뷰</b></td><td><b>실제 인식 수준(outcome)</b></td><td><b>✅ 효과성 직접 측정</b></td></tr>
+<tr><td>D. 안내문 검토</td><td>전달(output)</td><td>발송 ≠ 이해·실천 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 효과성(Effectiveness) = <b>결과(Outcome)</b> 측정 — 입력·산출 아님<br>
+• 보안 = 사람에 의존 → 사람을 직접 평가해야 함<br>
+• 표본 인터뷰 외 보강: 피싱 시뮬레이션·정책 시험·관찰<br>
+• 프로그램 설계(A)·자료 발송(D)은 <b>실행</b> 평가 — 효과 평가 아님</div>`,
+reference:"CRM Chapter 5: Awareness Program Effectiveness Evaluation",
+keyConcepts:[
+"효과성 평가|결과(Outcome) 측정 — 직원의 실제 인식·행동",
+"직원 표본 인터뷰|효과성 직접 확인 — 대상자에게 묻는 것이 핵심",
+"프로그램 검토|설계(Input) 평가 — 효과성과 다름",
+"안내문 검토|전달(Output) 평가 — 발송 ≠ 이해",
+"피싱 시뮬레이션|행동 기반 효과 측정 도구 — 인터뷰와 함께 사용",
+"보안=사람 의존|기술 통제로 보완 불가한 인식 영역"
+]
+},
+
+{
+id:627,
+domain:"5",
+ks:"5B1 Security Awareness Training and Programs",
+question:"The risk of dumpster diving is BEST mitigated by:",
+questionKo:"<b>덤스터 다이빙(쓰레기 뒤지기)</b> 위험을 가장 잘 완화하는 방법은:",
+options:[
+"A. implementing security awareness training.",
+"B. placing shred bins in copy rooms.",
+"C. developing a media disposal policy.",
+"D. placing shredders in individual offices."
+],
+optionsKo:[
+"A. <b>보안 인식 교육</b> 시행",
+"B. 복사실에 <b>분쇄용 통</b> 배치",
+"C. <b>매체 폐기 정책</b> 수립",
+"D. 개인 사무실에 <b>분쇄기</b> 배치"
+],
+correct:0,
+explanation:`<b>정답: A. 보안 인식 교육</b><br><br>
+<b>핵심:</b> 분쇄통·분쇄기·정책이 있어도 <b>직원이 위험을 인지·실천하지 않으면 무용지물</b>. 인식 교육이 다른 모든 통제의 효과를 결정.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 인식 교육</b></td><td><b>✅ 모든 폐기 통제의 전제 — 직원이 위험을 알아야 사용</b></td></tr>
+<tr><td>B. 분쇄통</td><td>도구만 — 직원이 사용 안 하면 무의미 ❌</td></tr>
+<tr><td>C. 폐기 정책</td><td>문서 존재만으로 효과 X — 인지 필요 ❌</td></tr>
+<tr><td>D. 개인 분쇄기</td><td>도구만 — 사용 의지·습관 없으면 무의미 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 덤스터 다이빙 = <b>버려진 문서·매체에서 정보 탈취</b><br>
+• 도구·정책은 <b>실천(인식)</b>이 받쳐줘야 효과 발생<br>
+• 인식 교육은 다른 통제의 <b>활성화 조건</b><br>
+• CISA 패턴: "위험 완화" 답이 여러 개일 때 → <b>인식·교육</b>이 우선</div>`,
+reference:"CRM Chapter 5: Physical Security — Dumpster Diving",
+keyConcepts:[
+"덤스터 다이빙|폐기물에서 정보 탈취 — 사회공학·물리 보안 영역",
+"인식 교육 우선성|도구·정책의 실효성을 결정 — 사람 통제가 전제",
+"폐기 통제 계층|정책 → 도구(분쇄기) → 인식 교육 — 인식이 최종 효과",
+"기술·정책 한계|직원 인지 없이는 무용지물",
+"CISA 패턴|인식·교육은 다른 통제의 활성화 조건 — 우선 정답 후보"
+]
+},
+
+{
+id:628,
+domain:"5",
+ks:"5B1 Security Awareness Training and Programs",
+question:"Which of the following MOST effectively reduces social engineering incidents?",
+questionKo:"<b>사회공학(Social Engineering)</b> 사고를 가장 효과적으로 줄이는 방법은?",
+options:[
+"A. Security awareness training",
+"B. Increased physical security measures",
+"C. Email monitoring policy",
+"D. Intrusion detection systems (IDSs)"
+],
+optionsKo:[
+"A. <b>보안 인식 교육</b>",
+"B. <b>물리적 보안</b> 강화",
+"C. <b>이메일 모니터링 정책</b>",
+"D. <b>IDS</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 보안 인식 교육</b><br><br>
+<b>핵심:</b> 사회공학은 <b>인간의 심리·약점</b>을 노린 공격 — 기술 통제로 막을 수 없음. 직원 인식 향상이 유일한 근본 대책.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 인식 교육</b></td><td><b>✅ 인간 약점 공격 → 인간 인식으로 대응</b></td></tr>
+<tr><td>B. 물리적 보안</td><td>대부분의 사회공학은 침입자 물리 접근 불필요 (전화·이메일) ❌</td></tr>
+<tr><td>C. 이메일 모니터링</td><td>모니터링 정책은 사용자 보호 X — 사후 추적용 ❌</td></tr>
+<tr><td>D. IDS</td><td>비정상 트래픽 탐지 — 사회공학(인간 대상)과 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 사회공학 유형: <b>피싱·비싱·스미싱·프리텍스팅·테일게이팅·미끼(Bait)</b><br>
+• 기술 통제로 100% 차단 불가 — 사람이 마지막 방어선<br>
+• 효과적 인식 교육: <b>피싱 모의훈련 + 정기 교육 + 사례 공유</b><br>
+• "사람이 약점" → "사람이 통제" — CISA 사회공학 정답 패턴</div>`,
+reference:"CRM Chapter 5: Social Engineering Defense",
+keyConcepts:[
+"사회공학|인간 심리·약점 악용 공격 — 기술 통제로 차단 불가",
+"인식 교육 효과|사람을 약점→통제로 전환 — 사회공학 근본 대책",
+"사회공학 유형|피싱·비싱·스미싱·프리텍스팅·테일게이팅·Bait",
+"피싱 모의훈련|행동 기반 교육 — 인식 교육 효과 측정·강화",
+"기술 통제 한계|IDS·이메일 정책은 보조 — 인간 대상 공격에 부족"
+]
+},
+
+{
+id:629,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"A hacker can obtain passwords without the use of computer tools or programs through the technique of:",
+questionKo:"해커가 <b>컴퓨터 도구 없이</b> 비밀번호를 획득하는 기법은:",
+options:[
+"A. social engineering.",
+"B. sniffers.",
+"C. back doors.",
+"D. Trojan horses."
+],
+optionsKo:[
+"A. <b>사회공학</b>",
+"B. <b>스니퍼</b>",
+"C. <b>백도어</b>",
+"D. <b>트로이 목마</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 사회공학</b><br><br>
+<b>핵심:</b> "컴퓨터 도구 없이" 키워드 → <b>인간 대상</b> 공격. 대화·인터뷰·전화로 정보를 끌어내는 사회공학만 비기술적.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>도구 사용</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 사회공학</b></td><td><b>인간 대상 — 도구 불필요</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>B. 스니퍼</td><td>네트워크 트래픽 모니터링 도구</td><td>도구 필요 ❌</td></tr>
+<tr><td>C. 백도어</td><td>해커가 심어둔 프로그램</td><td>프로그램 ❌</td></tr>
+<tr><td>D. 트로이 목마</td><td>위장 악성 프로그램</td><td>프로그램 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 사회공학 = <b>비기술적</b> 공격 — 대화·신뢰·심리 이용<br>
+• 형태: 전화 사칭, 어깨 너머 보기, 쓰레기 뒤지기, 피싱(이메일은 도구지만 본질은 인간 속임)<br>
+• 다른 보기들은 모두 <b>기술 도구(프로그램·캡처)</b><br>
+• "without computer tools" 키워드 → 무조건 사회공학</div>`,
+reference:"CRM Chapter 5: Attack Methods — Social Engineering",
+keyConcepts:[
+"사회공학|비기술적 공격 — 인간 심리·신뢰 이용 — 도구 불필요",
+"스니퍼|네트워크 트래픽 캡처 도구 — 기술 공격",
+"백도어|해커가 심은 비인가 접근 경로 — 프로그램 기반",
+"트로이 목마|정상 프로그램 위장 악성코드 — 프로그램 기반",
+"공격 분류|기술적(스니퍼·백도어·트로이) vs 비기술적(사회공학)",
+"키워드 'no tools'|사회공학 자동 정답 시그널"
+]
+},
+
+{
+id:630,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following results in a denial-of-service (DoS) attack?",
+questionKo:"<b>DoS(서비스 거부) 공격</b>을 일으키는 기법은?",
+options:[
+"A. Brute force attack",
+"B. Ping of death",
+"C. Leapfrog attack",
+"D. Negative acknowledgment attack"
+],
+optionsKo:[
+"A. <b>무차별 대입(Brute Force)</b>",
+"B. <b>Ping of Death</b>",
+"C. <b>Leapfrog 공격</b>",
+"D. <b>Negative Acknowledgment(NAK) 공격</b>"
+],
+correct:1,
+explanation:`<b>정답: B. Ping of Death</b><br><br>
+<b>핵심:</b> 65KB 초과 + Fragment Flag off인 ICMP Ping 패킷 전송 → 대상 시스템이 처리 불능·크래시 → DoS.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>공격 목적</th><th>판정</th></tr>
+<tr><td>A. Brute Force</td><td>키·암호 전수 조사</td><td>인증 우회 — DoS 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Ping of Death</b></td><td><b>거대 ICMP 패킷 → 시스템 크래시</b></td><td><b>✅ DoS</b></td></tr>
+<tr><td>C. Leapfrog</td><td>탈취한 자격증명으로 다중 호스트 거쳐 추적 회피</td><td>침투·은닉 — DoS 아님 ❌</td></tr>
+<tr><td>D. NAK 공격</td><td>비동기 인터럽트 처리 약점 → 보호되지 않은 상태 진입</td><td>침투 — DoS 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DoS = 가용성 침해</b> — 정상 사용자가 서비스 이용 불가<br>
+• Ping of Death: ICMP Echo Request 65,535 byte 초과 → 패킷 재조립 시 버퍼 오버플로<br>
+• 기타 DoS 유형: SYN Flood, Smurf, Fraggle, UDP Flood, Slowloris<br>
+• Brute Force = 인증 공격, Leapfrog/NAK = 침투·우회 — DoS와 구분</div>`,
+reference:"CRM Chapter 5: Attack Methods — DoS / Ping of Death",
+keyConcepts:[
+"Ping of Death|65KB 초과 ICMP 패킷 → 재조립 시 시스템 크래시 — DoS",
+"DoS 본질|가용성 침해 — 정상 서비스 불가 상태 유발",
+"Brute Force|키·암호 전수 조사 — 인증 공격 (DoS 아님)",
+"Leapfrog|탈취 자격증명으로 다중 호스트 경유 — 추적 회피·침투",
+"NAK 공격|비동기 인터럽트 처리 약점 악용 — 침투",
+"DoS 유형|Ping of Death·SYN Flood·Smurf·UDP Flood·Slowloris"
+]
+},
+
+{
+id:631,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"An Internet-based attack using password sniffing can:",
+questionKo:"인터넷 기반 <b>패스워드 스니핑</b> 공격이 일으킬 수 있는 결과는?",
+options:[
+"A. enable one party to act as if they are another party.",
+"B. cause modification to the contents of certain transactions.",
+"C. be used to gain access to systems containing proprietary information.",
+"D. result in major problems with billing systems and transaction processing agreements."
+],
+optionsKo:[
+"A. 한 당사자가 <b>다른 당사자인 것처럼 행세</b>",
+"B. 특정 거래 <b>내용 변조</b>",
+"C. <b>독점 정보 보유 시스템 접근</b>",
+"D. <b>청구·거래처리 합의</b>의 주요 문제"
+],
+correct:2,
+explanation:`<b>정답: C. 독점 정보 시스템 접근</b><br><br>
+<b>핵심:</b> 패스워드 스니핑 = 네트워크 트래픽에서 자격증명 캡처 → 정상 사용자로 위장해 시스템 접근. 결과는 <b>비인가 접근</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>관련 공격</th><th>판정</th></tr>
+<tr><td>A. 위장</td><td><b>스푸핑(Spoofing)</b></td><td>스니핑 결과의 일부일 수 있으나 대표 결과 아님 ❌</td></tr>
+<tr><td>B. 거래 변조</td><td><b>데이터 변조 공격</b></td><td>스니핑은 캡처 — 변조 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 시스템 접근</b></td><td><b>패스워드 스니핑</b></td><td><b>✅ 자격증명 획득 → 비인가 접근</b></td></tr>
+<tr><td>D. 청구 시스템 문제</td><td><b>거래 부인(Repudiation)</b></td><td>스니핑과 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 스니핑 = <b>수동적(Passive) 도청</b> — 트래픽에서 정보 추출<br>
+• 평문 프로토콜(Telnet·FTP·HTTP) 취약 — TLS·SSH·VPN으로 방어<br>
+• 공격 결과 매핑: <b>스니핑→접근 / 스푸핑→위장 / 변조→무결성 / 부인→책임 회피</b><br>
+• 시험 패턴: 공격 기법 ↔ 결과 1:1 매칭</div>`,
+reference:"CRM Chapter 5: Attack Methods — Password Sniffing",
+keyConcepts:[
+"패스워드 스니핑|네트워크 트래픽에서 자격증명 캡처 — 비인가 접근으로 이어짐",
+"수동적 공격|스니핑·도청 — 데이터 변조 없이 정보만 수집",
+"스푸핑|타 당사자 위장 — 스니핑과 별개 공격",
+"데이터 변조|거래 내용 변경 — 무결성 침해",
+"거래 부인|당사자가 거래 부인 — 청구·결제 시스템 문제 유발",
+"방어책|TLS·SSH·VPN — 평문 프로토콜 회피"
+]
+}
+,
+{
+id:632,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"The use of residual biometric information to gain unauthorized access is an example of which of the following attacks?",
+questionKo:"<b>잔존 생체정보</b>를 이용해 비인가 접근을 시도하는 것은 다음 중 어떤 공격의 예인가?",
+options:[
+"A. Replay",
+"B. Brute force",
+"C. Cryptographic",
+"D. Mimic"
+],
+optionsKo:[
+"A. <b>재전송(Replay) 공격</b>",
+"B. <b>무차별 대입(Brute force) 공격</b>",
+"C. <b>암호 공격(Cryptographic)</b>",
+"D. <b>모방(Mimic) 공격</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 재전송(Replay) 공격</b><br><br>
+<b>핵심:</b> 생체인식 장치에 남은 <b>잔존 지문·흔적</b>을 재사용 → 이전 인증 데이터를 그대로 다시 제출하는 <b>Replay 공격</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>공격 방식</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Replay</b></td><td><b>이전 생체 샘플·인증 데이터 재사용</b></td><td><b>✅ 잔존 지문 재이용이 전형적 사례</b></td></tr>
+<tr><td>B. Brute force</td><td>다수의 다른 샘플 무작위 시도</td><td>잔존 정보 활용 아님 ❌</td></tr>
+<tr><td>C. Cryptographic</td><td>알고리즘·암호화 데이터 공략</td><td>생체 흔적과 무관 ❌</td></tr>
+<tr><td>D. Mimic</td><td>등록 사용자의 특성 모방(서명·음성 위조)</td><td>모방이지 재사용 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 생체인증 위협: <b>Replay(재사용)</b>·<b>Mimic(모방)</b>·<b>Brute force(무작위)</b>·<b>Spoofing(가짜 생체)</b><br>
+• 방어책: <b>활성 감지(Liveness detection)</b>·세션 nonce·캡처 장치 정기 청소<br>
+• Replay = 과거의 정상 데이터를 재제출 / Mimic = 새로 위조한 데이터 생성<br>
+• 시험 패턴: "잔존(residual)·이전(previous) 데이터 재사용" → <b>Replay</b></div>`,
+reference:"CRM Chapter 5: Biometric Attack Methods — Replay vs Mimic",
+keyConcepts:[
+"Replay 공격|이전 캡처된 정상 인증 데이터를 그대로 재제출 — 잔존 지문 재이용",
+"Mimic 공격|사용자 특성을 새로 위조(서명·음성 모사) — 재사용 아님",
+"Brute force|여러 샘플을 무작위 시도 — 잔존 정보 미활용",
+"Cryptographic 공격|알고리즘·암호화 데이터 자체 공략 — 생체 흔적과 무관",
+"Liveness Detection|살아있는 생체 여부 확인 — Replay·가짜 생체 방어 핵심",
+"잔존 생체정보|캡처 장치 표면에 남은 지문·잔흔 — Replay 공격의 입력"
+]
+}
+,
+{
+id:633,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Web application developers occasionally use hidden fields on web pages to save information about a client session. This technique is used to store session variables that enable persistence across web pages, such as maintaining the contents of a shopping cart on a retail website application. The MOST likely web-based attack due to this practice is:",
+questionKo:"웹 애플리케이션 개발자는 세션 정보(예: 쇼핑카트 내용)를 페이지 간 유지하기 위해 <b>숨겨진 필드(hidden field)</b>를 사용한다. 이 관행으로 인해 <b>가장 발생 가능성이 높은 웹 기반 공격</b>은?",
+options:[
+"A. parameter tampering.",
+"B. cross-site scripting.",
+"C. cookie poisoning.",
+"D. stealth commanding."
+],
+optionsKo:[
+"A. <b>파라미터 변조(Parameter Tampering)</b>",
+"B. <b>크로스 사이트 스크립팅(XSS)</b>",
+"C. <b>쿠키 포이즈닝(Cookie Poisoning)</b>",
+"D. <b>스텔스 코맨딩(Stealth Commanding)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 파라미터 변조(Parameter Tampering)</b><br><br>
+<b>핵심:</b> 숨겨진 필드도 <b>HTTP 요청에 그대로 전송</b> — 공격자는 프록시로 가로채 값을 수정(가격·수량 등) 후 재전송. 검증 누락 시 비정상 거래 발생.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>공격 대상</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Parameter Tampering</b></td><td><b>요청 파라미터(hidden field 포함) 악의적 변조</b></td><td><b>✅ 숨겨진 필드 = 변조 표적</b></td></tr>
+<tr><td>B. XSS</td><td>스크립트 삽입 → 다른 사용자 브라우저 실행</td><td>hidden field는 정적 콘텐츠 — 무관 ❌</td></tr>
+<tr><td>C. Cookie Poisoning</td><td>세션 쿠키 가로채기·변조</td><td>쿠키 ≠ hidden field ❌</td></tr>
+<tr><td>D. Stealth Commanding</td><td>서버에 무단 코드 설치(서버 OS·WAS 취약점)</td><td>주로 OS·서버 취약점 — 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Hidden field ≠ Hidden from attacker</b> — 브라우저 개발자도구·프록시(Burp·ZAP)로 즉시 조작 가능<br>
+• 방어책: <b>서버측 재검증</b>·세션 저장(서버 세션·DB)·HMAC 서명·민감 데이터는 hidden field 회피<br>
+• 데이터 저장 위치별 공격: <b>hidden field→Parameter Tampering / cookie→Cookie Poisoning / URL→URL 조작</b><br>
+• 시험 패턴: "숨겨진 필드 변조" → <b>Parameter Tampering</b> 1:1 매칭</div>`,
+reference:"CRM Chapter 5: Web Application Attacks — Parameter Tampering",
+keyConcepts:[
+"Parameter Tampering|HTTP 요청 파라미터(hidden field·쿼리·폼 데이터) 악의적 변조 — 가격·권한 조작",
+"Hidden Field 위험|브라우저 미표시 ≠ 보안 — 요청에 평문 전송되어 변조 가능",
+"XSS|악성 스크립트 삽입 → 타 사용자 세션 탈취 — hidden field와 무관",
+"Cookie Poisoning|클라이언트 쿠키 변조 → 사용자 위장·로그인 우회",
+"Stealth Commanding|웹서버에 무단 코드 설치 — OS·WAS 취약점 악용",
+"방어책|서버측 검증·세션 서버 저장·HMAC 서명·민감 데이터 노출 회피"
+]
+}
+,
+{
+id:634,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following presents an inherent risk with no distinct identifiable preventive controls?",
+questionKo:"다음 중 <b>고유한 식별 가능한 예방통제가 없는 본질적(inherent) 위험</b>은?",
+options:[
+"A. Piggybacking",
+"B. Viruses",
+"C. Data diddling",
+"D. Unauthorized application shutdown"
+],
+optionsKo:[
+"A. <b>피기배킹(Piggybacking)</b>",
+"B. <b>바이러스(Viruses)</b>",
+"C. <b>데이터 디들링(Data diddling)</b>",
+"D. <b>비인가 애플리케이션 종료</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 데이터 디들링(Data diddling)</b><br><br>
+<b>핵심:</b> Data diddling은 <b>입력 전</b> 데이터를 변경하는 행위 → 시스템 보안 통제 적용 <b>이전 단계</b>라 직접적 예방통제 불가, <b>보완통제(compensating)</b>만 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>예방통제 존재</th><th>판정</th></tr>
+<tr><td>A. 피기배킹</td><td><b>Deadman door(맨트랩)·암호화</b></td><td>식별 가능한 예방통제 있음 ❌</td></tr>
+<tr><td>B. 바이러스</td><td><b>안티바이러스 SW</b></td><td>예방통제 명확 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Data Diddling</b></td><td><b>없음 — 보완통제만</b></td><td><b>✅ 컴퓨터 보안 적용 전 변조 → 본질적 위험</b></td></tr>
+<tr><td>D. 비인가 종료</td><td><b>접근통제·고권한 ID/PW</b></td><td>접근통제로 예방 가능 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Data Diddling</b> = 입력 전 원시 데이터 변조 — 기술 지식 거의 불필요, 가장 흔한 부정행위<br>
+• 시스템 통제 적용 <b>이전 단계</b>에서 발생 → 예방통제 불가능<br>
+• 보완통제: <b>직무분리·이중입력·교차검증·대조(reconciliation)·감사로그·이상거래 모니터링</b><br>
+• 본질적 위험(Inherent risk) = 통제 적용 전 위험 / 잔여위험(Residual) = 통제 후 위험<br>
+• 시험 패턴: "예방통제 없음 / 보완통제만" → <b>Data Diddling</b></div>`,
+reference:"CRM Chapter 5: Attack Methods — Data Diddling (Inherent Risk)",
+keyConcepts:[
+"Data Diddling|입력 전 데이터 변경 — 시스템 보안 적용 이전이라 직접 예방 불가",
+"보완통제(Compensating Control)|예방 불가 시 차선책 — 직무분리·이중입력·교차검증",
+"본질적 위험(Inherent Risk)|통제 적용 전 본래 위험 — Data Diddling이 대표 사례",
+"피기배킹 예방|Deadman door(맨트랩)·물리 인증·논리적 피기배킹은 암호화로 방어",
+"바이러스 예방|안티바이러스·시그니처 업데이트·EDR — 명확한 예방통제 존재",
+"비인가 종료 예방|강력한 접근통제·권한 분리·관리자 계정 보호"
+]
+}
+,
+{
+id:635,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"The MOST likely explanation for a successful social engineering attack is:",
+questionKo:"<b>사회공학 공격</b>이 성공하는 가장 가능성이 높은 이유는?",
+options:[
+"A. computer error.",
+"B. judgment error.",
+"C. expertise.",
+"D. technology."
+],
+optionsKo:[
+"A. <b>컴퓨터 오류</b>",
+"B. <b>판단 오류(judgment error)</b>",
+"C. <b>전문성(expertise)</b>",
+"D. <b>기술(technology)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 판단 오류(Judgment Error)</b><br><br>
+<b>핵심:</b> 사회공학은 <b>인간 행동·신뢰</b>를 표적 — 피해자가 <b>부적절한 신뢰</b>를 부여하는 <b>판단 오류</b>가 성공의 본질.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>설명</th><th>판정</th></tr>
+<tr><td>A. 컴퓨터 오류</td><td>HW·SW 결함 — 사회공학과 무관</td><td>표적은 사람 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 판단 오류</b></td><td><b>피해자가 부당한 신뢰 부여 — 사람 중심 공격</b></td><td><b>✅ 핵심 원인</b></td></tr>
+<tr><td>C. 전문성</td><td>공격자에게 IT 전문성 불필요 — 심리·대화술 위주</td><td>오히려 비전문가 가능 ❌</td></tr>
+<tr><td>D. 기술</td><td>이메일·전화 등은 수단일 뿐 — 본질은 인간 신뢰 획득</td><td>촉진 요소일 뿐 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 사회공학 = <b>사람의 취약점 공략</b> (기술적 취약점이 아닌 인지·신뢰의 허점)<br>
+• 공격 유형: <b>피싱·프리텍스팅·베이팅·테일게이팅·쇼울더 서핑</b><br>
+• 방어책: <b>보안 인식 교육(security awareness training)</b>이 가장 효과적 — 사람을 강화<br>
+• 시험 패턴: "사회공학 성공 원인 = <b>사람의 판단·신뢰</b>" / "방어 = <b>인식 교육</b>"</div>`,
+reference:"CRM Chapter 5: Social Engineering — Human Factor",
+keyConcepts:[
+"사회공학|인간 신뢰·심리 취약점 공략 — 기술 취약점 아님",
+"판단 오류|피해자가 부당한 신뢰를 부여 — 사회공학 성공의 본질",
+"전문성 불필요|공격자에게 고도 IT 지식 불필요 — 대화술·연기력이 핵심",
+"기술은 수단|이메일·전화는 전달 매체 — 본질은 인간 신뢰 획득",
+"방어 = 인식 교육|보안 인식 훈련(Security Awareness Training)이 가장 효과적",
+"공격 유형|피싱·프리텍스팅·베이팅·테일게이팅·쇼울더 서핑"
+]
+}
+,
+{
+id:636,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"What method might an information systems (IS) auditor use to test wireless security at branch office locations?",
+questionKo:"IS 감사인이 <b>지점 사무소의 무선 보안</b>을 테스트할 때 사용할 수 있는 방법은?",
+options:[
+"A. War dialing",
+"B. Social engineering",
+"C. War driving",
+"D. Password cracking"
+],
+optionsKo:[
+"A. <b>워 다이얼링(War dialing)</b>",
+"B. <b>사회공학(Social engineering)</b>",
+"C. <b>워 드라이빙(War driving)</b>",
+"D. <b>패스워드 크래킹</b>"
+],
+correct:2,
+explanation:`<b>정답: C. War Driving</b><br><br>
+<b>핵심:</b> 차량으로 <b>지점 사무소를 이동</b>하며 무선 신호·취약 AP·암호화 수준을 스캔 — 무선 보안 테스트의 정석.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>대상</th><th>판정</th></tr>
+<tr><td>A. War dialing</td><td><b>전화 모뎀·다이얼업</b> 회선 스캔</td><td>무선 아님 ❌</td></tr>
+<tr><td>B. 사회공학</td><td>사람의 신뢰 공략</td><td>무선 보안 직접 테스트 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. War driving</b></td><td><b>이동하며 Wi-Fi AP·암호화 약점 탐지</b></td><td><b>✅ 무선 보안 테스트 정석</b></td></tr>
+<tr><td>D. 패스워드 크래킹</td><td>해시·로그인 자격증명 공격</td><td>무선 환경 특정 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>War driving</b> = 차량 + 무선 카드 + 안테나 + GPS로 AP 매핑·취약 암호화(WEP/Open) 식별<br>
+• <b>War dialing</b> = 1990년대 다이얼업 모뎀 탐지 (전화) / <b>War walking·War flying</b> = 도보·드론 버전<br>
+• 무선 위협: <b>Rogue AP·Evil Twin·약한 암호화(WEP)·기본 자격증명</b><br>
+• 방어책: <b>WPA2/WPA3·SSID 숨김·MAC 필터링·강한 패스프레이즈·정기 무선 사이트 서베이</b><br>
+• 시험 패턴: "지점·이동하며 무선 테스트" → <b>War Driving</b> 1:1 매칭</div>`,
+reference:"CRM Chapter 5: Wireless Security Testing — War Driving",
+keyConcepts:[
+"War Driving|차량으로 이동하며 무선 AP·암호화 취약점 스캔 — 무선 보안 테스트 표준 기법",
+"War Dialing|전화 모뎀·다이얼업 회선 탐지 — 무선이 아닌 PSTN 대상",
+"무선 위협|Rogue AP·Evil Twin·WEP 약한 암호화·기본 자격증명",
+"방어책|WPA2/WPA3·강한 패스프레이즈·정기 사이트 서베이·Rogue AP 탐지",
+"파생 기법|War Walking(도보)·War Flying(드론)·War Chalking(취약 AP 표시)",
+"감사 활용|지점 사무소 무선 보안 평가 시 합법적 권한 하에 War Driving 수행"
+]
+}
+,
+{
+id:637,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"An enterprise discovers that the computer of the chief financial officer has been infected with malware that includes a keystroke logger and a rootkit. The FIRST action to take is to:",
+questionKo:"기업이 CFO PC에서 <b>키로거+루트킷</b> 감염을 발견했다. <b>가장 먼저(FIRST)</b> 취해야 할 조치는?",
+options:[
+"A. contact the appropriate law enforcement authorities to begin an investigation.",
+"B. immediately ensure that no additional data are compromised.",
+"C. disconnect the PC from the network.",
+"D. update the antivirus signature on the PC to ensure that the malware or virus is detected and removed."
+],
+optionsKo:[
+"A. <b>법 집행기관에 연락</b>하여 수사 개시",
+"B. <b>추가 데이터 유출이 없도록</b> 즉시 보장",
+"C. <b>PC를 네트워크에서 분리</b>",
+"D. <b>안티바이러스 시그니처 업데이트</b>로 악성코드 탐지·제거"
+],
+correct:2,
+explanation:`<b>정답: C. PC를 네트워크에서 분리(Disconnect from network)</b><br><br>
+<b>핵심:</b> 데이터 유출 차단 + 증거 보존 — 전원은 끄지 말고 <b>네트워크 케이블만 분리</b> → 메모리·임시파일·네트워크 연결 정보 등 휘발성 증거 유지.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>문제점</th><th>판정</th></tr>
+<tr><td>A. 법 집행기관 연락</td><td>필요하지만 <b>먼저 출혈부터 멈춰야</b> 함</td><td>1순위 아님 ❌</td></tr>
+<tr><td>B. 추가 유출 방지(목표)</td><td>지향점이지 <b>구체적 행동</b>이 아님</td><td>C가 그 실행 방법 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 네트워크 분리</b></td><td><b>유출 차단 + 휘발성 증거 보존</b> 동시 달성</td><td><b>✅ FIRST</b></td></tr>
+<tr><td>D. AV 업데이트·치료</td><td><b>증거 파괴</b> — 메모리·임시파일·로그 소실</td><td>포렌식 원칙 위반 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>침해사고 대응 순서</b>: ① <b>격리(Containment)</b> → ② 증거 수집(휘발성→비휘발성) → ③ 근본 원인 분석 → ④ 복구 → ⑤ 교훈<br>
+• <b>전원 차단·재부팅 ✗</b> — RAM·캐시·실행 중 프로세스·네트워크 세션 등 휘발성 증거 소실<br>
+• <b>AV 스캔·패치 ✗</b> — 파일 타임스탬프·시스템 상태 변경 → 증거 무결성 훼손<br>
+• <b>휘발성 우선순위(RFC 3227)</b>: 레지스터/캐시 → RAM → 네트워크 상태 → 프로세스 → 디스크 → 백업<br>
+• <b>Rootkit</b>은 커널 레벨 은닉 → AV로 완전 제거 불가, <b>이미징 후 재설치</b> 권장<br>
+• 시험 패턴: "악성코드 감염 FIRST" → <b>네트워크 분리</b> (전원 차단·AV 업데이트는 함정)</div>`,
+reference:"CRM Chapter 5: Incident Response — Containment & Digital Forensics (RFC 3227)",
+keyConcepts:[
+"네트워크 분리(First Action)|유출 차단 + 휘발성 증거 보존 동시 달성 — 침해사고 1순위",
+"전원 차단 금지|RAM·실행 프로세스·네트워크 세션 등 휘발성 증거 소실",
+"AV 업데이트 금지|시스템 상태 변경으로 증거 무결성 훼손 — 포렌식 원칙 위반",
+"휘발성 증거 순서(RFC 3227)|레지스터→RAM→네트워크→프로세스→디스크→백업",
+"Rootkit|커널 레벨 은닉 — AV 탐지·제거 불완전, 이미징 후 재설치 필요",
+"침해사고 대응 단계|준비→식별→격리→근절→복구→교훈(NIST SP 800-61)"
+]
+}
+,
+{
+id:638,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following is the BEST control to mitigate the risk of pharming attacks to an Internet banking application?",
+questionKo:"인터넷 뱅킹 애플리케이션에 대한 <b>파밍(Pharming) 공격</b> 위험을 완화하는 <b>가장 좋은(BEST) 통제</b>는?",
+options:[
+"A. User registration and password policies",
+"B. User security awareness",
+"C. Use of intrusion detection/intrusion prevention systems",
+"D. Domain name system (DNS) server security hardening"
+],
+optionsKo:[
+"A. <b>사용자 등록 및 비밀번호 정책</b>",
+"B. <b>사용자 보안 인식 교육</b>",
+"C. <b>IDS/IPS 사용</b>",
+"D. <b>DNS 서버 보안 하드닝</b>"
+],
+correct:3,
+explanation:`<b>정답: D. DNS 서버 보안 하드닝</b><br><br>
+<b>핵심:</b> 파밍은 <b>DNS 레코드 변조</b>로 트래픽을 가짜 사이트로 리디렉션 — <b>DNS 서버 자체의 취약점 제거(패치·DNSSEC)</b>가 근본 대책.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>한계</th><th>판정</th></tr>
+<tr><td>A. 비밀번호 정책</td><td>DNS 변조 자체를 막을 수 없음</td><td>인증 통제 ≠ 파밍 방어 ❌</td></tr>
+<tr><td>B. 보안 인식 교육</td><td>피싱은 막아도 <b>파밍은 정상 URL 입력에도 발생</b></td><td>사용자 행동으로 차단 불가 ❌</td></tr>
+<tr><td>C. IDS/IPS</td><td>DNS 레코드 조작 자체는 탐지 어려움</td><td>네트워크 트래픽 통제 부족 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. DNS 하드닝</b></td><td><b>DNS 캐시 포이즈닝·구버전 취약점 제거</b></td><td><b>✅ 근본 원인 차단</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Pharming vs Phishing</b>: 피싱=사용자 속여 가짜 링크 클릭 / <b>파밍=DNS 변조로 정상 URL 입력해도 가짜 사이트로 이동</b><br>
+• 파밍 메커니즘: ① <b>DNS 서버 캐시 포이즈닝</b> ② 로컬 hosts 파일 변조 ③ 라우터 DNS 설정 변조<br>
+• 방어책: <b>DNS 서버 패치·DNSSEC·재귀 쿼리 제한·랜덤 소스 포트·캐시 검증</b><br>
+• 사용자 인식 교육은 <b>피싱</b>엔 효과적이나 <b>파밍</b>엔 무력 (URL이 정상이라 의심 불가)<br>
+• 시험 패턴: "파밍 방어 BEST" → <b>DNS 보안 하드닝</b> (사용자 통제·인증 통제는 모두 함정)</div>`,
+reference:"CRM Chapter 5: Pharming Attack & DNS Security",
+keyConcepts:[
+"Pharming|DNS 레코드 변조로 정상 URL 입력에도 가짜 사이트로 리디렉션 — 사용자 인식 무력",
+"DNS 하드닝(BEST)|서버 패치·DNSSEC·재귀쿼리 제한·소스포트 랜덤화 — 근본 원인 제거",
+"Pharming vs Phishing|피싱=링크 클릭 유도 / 파밍=DNS 변조 (사용자 행동과 무관)",
+"DNS 캐시 포이즈닝|구버전 DNS SW 취약점 — 패치 필수",
+"DNSSEC|DNS 응답 서명·검증 — 변조 탐지의 핵심 표준",
+"인식 교육 한계|파밍은 정상 URL 입력에서도 발생 → 사용자 통제로 차단 불가"
+]
+}
+,
+{
+id:639,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following is the MOST reliably effective method for dealing with the spread of a network worm that exploits vulnerability in a protocol?",
+questionKo:"<b>프로토콜 취약점</b>을 악용하는 <b>네트워크 웜</b> 확산 대응에 <b>가장 확실히 효과적인(MOST reliably effective)</b> 방법은?",
+options:[
+"A. Install the latest vendor security patches immediately.",
+"B. Block the protocol traffic in the perimeter firewall.",
+"C. Block the protocol traffic between internal network segments.",
+"D. Stop the services that the protocol uses."
+],
+optionsKo:[
+"A. <b>최신 벤더 보안 패치 즉시 적용</b>",
+"B. <b>경계 방화벽에서 해당 프로토콜 차단</b>",
+"C. <b>내부 네트워크 세그먼트 간 프로토콜 차단</b>",
+"D. <b>해당 프로토콜이 사용하는 서비스 중지</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 프로토콜 사용 서비스 중지(Stop services)</b><br><br>
+<b>핵심:</b> 웜의 <b>전파 경로(서비스 자체)</b>를 차단 — 패치 가용 여부·테스트·내부 USB 유입 등과 무관하게 <b>가장 낮은 실용 계층</b>에서 확실히 차단.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>한계</th><th>판정</th></tr>
+<tr><td>A. 패치 즉시 적용</td><td>패치 <b>미공개·미테스트</b>면 무력 / 신규 취약점 생성 위험</td><td>가용성 보장 X ❌</td></tr>
+<tr><td>B. 경계 방화벽 차단</td><td><b>USB·이동매체로 내부 유입 시 무력</b></td><td>외부 경로만 차단 ❌</td></tr>
+<tr><td>C. 내부 세그먼트 간 차단</td><td>확산 지연은 가능하나 <b>해당 프로토콜 의존 SW 모두 중단</b></td><td>부분 효과 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 서비스 중지</b></td><td><b>전파 메커니즘 자체 제거 — 모든 진입점 차단</b></td><td><b>✅ 가장 확실</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>웜(Worm)</b> = 자체 전파 악성코드 — 사용자 개입 불필요, 네트워크 서비스 취약점 자동 악용<br>
+• 대응 우선순위: <b>서비스 중지(가장 확실) > 세그먼트 차단 > 경계 차단 > 패치</b><br>
+• 패치가 <b>BEST가 아닌 이유</b>: ① 패치 부재 가능성 ② 테스트 미완료 시 시스템 불안정 ③ 적용에 시간 소요<br>
+• 방화벽 차단의 함정: <b>외부 경로만 차단</b> → 노트북·USB로 내부 유입 시 웜 폭발적 확산 (예: Conficker)<br>
+• 사례: <b>SQL Slammer(UDP 1434), Blaster(RPC 135), WannaCry(SMB 445)</b> — 해당 서비스/포트 중지가 가장 빠른 대응<br>
+• 시험 패턴: "웜 확산 MOST reliably" → <b>서비스 중지</b> (패치는 함정 — 가용성·시간 변수)</div>`,
+reference:"CRM Chapter 5: Worm Containment & Vulnerability Management",
+keyConcepts:[
+"Worm 대응 BEST|취약 서비스 중지 — 전파 메커니즘 자체 제거 (가장 낮은 실용 계층)",
+"패치의 한계|패치 부재·테스트 필요·신규 취약점 가능 → 즉시 적용 BEST 아님",
+"경계 방화벽 한계|USB·노트북 등 내부 유입 시 무력 — 외부 경로만 차단",
+"내부 세그먼트 차단|확산 지연 효과 있으나 해당 프로토콜 의존 SW 중단 부작용",
+"Worm 특징|사용자 개입 불필요·자체 복제·네트워크 서비스 취약점 자동 악용",
+"실제 사례|SQL Slammer(1434)·Blaster(135)·WannaCry(SMB 445) — 서비스/포트 중지가 최우선"
+]
+}
+,
+{
+id:640,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"During an information systems (IS) audit of a global enterprise, the IS auditor discovers that the enterprise uses Voice-over Internet Protocol as the sole means of voice connectivity among all offices. Which of the following presents the MOST significant risk for the enterprise's Voice-over Internet Protocol (VoIP) infrastructure?",
+questionKo:"글로벌 기업이 모든 사무소 간 <b>음성 통신을 VoIP에 전적으로 의존</b>한다. VoIP 인프라에 대한 <b>가장 중대한(MOST significant) 위험</b>은?",
+options:[
+"A. Network equipment failure",
+"B. Distributed denial-of-service attack",
+"C. Premium-rate fraud (toll fraud)",
+"D. Social engineering attack"
+],
+optionsKo:[
+"A. <b>네트워크 장비 장애</b>",
+"B. <b>분산 서비스 거부(DDoS) 공격</b>",
+"C. <b>요금 사기(Toll fraud)</b>",
+"D. <b>사회공학 공격</b>"
+],
+correct:1,
+explanation:`<b>정답: B. DDoS 공격</b><br><br>
+<b>핵심:</b> VoIP는 <b>데이터망에 음성을 통합</b> — 데이터망 DDoS가 발생하면 <b>전사 음성 통신도 동시 중단</b>. 사무소 간 유일한 음성 수단이라 영향 최대.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>영향</th><th>판정</th></tr>
+<tr><td>A. 장비 장애</td><td>VoIP 고유 위험 아님 — 이중화로 해결 가능</td><td>전통 음성망도 동일 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. DDoS</b></td><td><b>데이터망 마비 → 음성 통신 전면 중단</b></td><td><b>✅ VoIP 고유·최대 영향</b></td></tr>
+<tr><td>C. Toll Fraud</td><td>비용 손실 발생하나 <b>서비스 중단보다 영향 적음</b></td><td>금전 피해 한정 ❌</td></tr>
+<tr><td>D. 사회공학</td><td>전화 종류와 무관 — VoIP 고유 위험 아님</td><td>유선·VoIP 공통 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>VoIP 핵심 리스크</b> = <b>음성·데이터망 통합 → 단일 장애점</b> (데이터망 문제 = 음성 문제)<br>
+• 전통 PSTN은 DDoS 무영향 (별도 회선) / VoIP는 <b>데이터망 가용성에 직결</b><br>
+• VoIP 위협 유형: <b>DDoS·도청(unencrypted SIP/RTP)·Toll fraud·SPIT(VoIP 스팸)·Caller ID 위조</b><br>
+• 방어책: <b>QoS·이중화 회선·SBC(Session Border Controller)·SRTP/TLS 암호화·VLAN 분리·IDS</b><br>
+• 가용성 우선: 글로벌 기업이 <b>유일한 음성 수단</b>으로 VoIP 의존 → DDoS는 비즈니스 중단 직결<br>
+• 시험 패턴: "VoIP MOST significant risk" → <b>DDoS</b> (가용성·단일 장애점 관점)</div>`,
+reference:"CRM Chapter 5: VoIP Security — DDoS & Availability Risk",
+keyConcepts:[
+"VoIP 단일 장애점|음성·데이터망 통합 → 데이터망 DDoS = 음성 통신 동시 중단",
+"DDoS(MOST significant)|가용성 최대 위협 — 글로벌 기업 사무소 간 통신 마비",
+"Toll Fraud|요금 사기 — 금전 피해이나 서비스 중단보다 영향 적음",
+"VoIP 위협|DDoS·SIP/RTP 도청·Toll Fraud·SPIT·Caller ID 위조",
+"VoIP 방어책|QoS·회선 이중화·SBC·SRTP/TLS·VLAN 분리·IDS",
+"PSTN vs VoIP|전통망은 DDoS 무관 / VoIP는 데이터망 가용성에 종속"
+]
+}
+,
+{
+id:641,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following is MOST indicative of the effectiveness of an information security awareness program?",
+questionKo:"<b>정보보안 인식 교육 프로그램의 효과성</b>을 가장 잘 나타내는 지표는?",
+options:[
+"A. Employees report more information regarding security incidents.",
+"B. All employees have signed the information security policy.",
+"C. Most employees have attended an awareness session.",
+"D. Information security responsibilities have been included in job descriptions."
+],
+optionsKo:[
+"A. <b>직원이 보안 사고를 더 많이 신고</b>",
+"B. <b>전 직원이 보안 정책에 서명</b>",
+"C. <b>대부분의 직원이 인식 교육 세션 참석</b>",
+"D. <b>정보보안 책임이 직무기술서에 포함</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 직원이 보안 사고를 더 많이 신고</b><br><br>
+<b>핵심:</b> 인식 교육의 효과는 <b>행동 변화(behavior)</b>로 측정 — 사고 신고 증가 = 직원이 위협을 인지하고 적극 행동하는 증거.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>측정 대상</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 사고 신고 증가</b></td><td><b>실제 행동 변화 — 탐지/예방 효과 동시 입증</b></td><td><b>✅ 효과성 직접 지표</b></td></tr>
+<tr><td>B. 정책 서명</td><td>서명 = 인지 ≠ 이해·실천</td><td>형식적 증거 ❌</td></tr>
+<tr><td>C. 세션 참석</td><td>참석 = 노출 ≠ 학습·행동</td><td>활동 지표일 뿐 ❌</td></tr>
+<tr><td>D. 직무기술서 명시</td><td>문서화 ≠ 효과성</td><td>관리적 통제 항목 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 인식 교육 = <b>예방 통제 + 탐지 통제</b> (직원이 위반 식별·신고 → 탐지 효과)<br>
+• 효과성 측정 계층: <b>입력(참석률) < 출력(시험 점수) < 결과(행동 변화·사고 신고) < 영향(사고 감소)</b><br>
+• 사고 신고 증가는 <b>긍정 신호</b>: 실제 사고가 늘어난 게 아니라 <b>인지·신고 문화</b>가 자리잡았다는 증거<br>
+• 함정 보기 공통점: B·C·D 모두 <b>"했다"(activity)</b>만 측정 → 실제 효과 입증 불가<br>
+• 보완 지표: 피싱 시뮬레이션 클릭률 감소·정책 위반 감소·자발적 보고 채널 활용도<br>
+• 시험 패턴: "인식 교육 효과성 MOST" → <b>행동·결과 지표(사고 신고·시뮬레이션 결과)</b> 선택</div>`,
+reference:"CRM Chapter 5: Security Awareness — Effectiveness Metrics",
+keyConcepts:[
+"인식 교육 효과성|행동 변화·사고 신고 증가가 가장 강력한 지표 — 단순 참석/서명은 활동 지표",
+"예방+탐지 이중 효과|직원이 위협 인지·식별·신고 → 탐지 통제 역할 동시 수행",
+"측정 계층|입력(참석)<출력(시험)<결과(행동)<영향(사고 감소) — 상위로 갈수록 효과성 입증",
+"함정 패턴|정책 서명·세션 참석·직무기술서 명시 = 형식적 컴플라이언스",
+"보완 지표|피싱 시뮬레이션 클릭률·정책 위반 건수·자발적 보고 채널 활용",
+"사고 신고 증가의 해석|실제 사고 증가가 아닌 인지·보고 문화 정착의 증거"
+]
+}
+,
+{
+id:642,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"The FIRST step in a successful attack to a system is:",
+questionKo:"시스템 공격의 <b>가장 첫 단계(FIRST step)</b>는?",
+options:[
+"A. gathering information.",
+"B. gaining access.",
+"C. denying services.",
+"D. evading detection."
+],
+optionsKo:[
+"A. <b>정보 수집(Information Gathering)</b>",
+"B. <b>접근 획득(Gaining Access)</b>",
+"C. <b>서비스 거부(Denying Services)</b>",
+"D. <b>탐지 회피(Evading Detection)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 정보 수집(Information Gathering / Reconnaissance)</b><br><br>
+<b>핵심:</b> 공격은 <b>표적 시스템을 파악</b>하는 정찰부터 — 어떤 서비스·취약점이 있는지 알아야 후속 공격(접근·악용·은닉)이 가능.<br><br>
+<table class="cmp">
+<tr><th>단계</th><th>활동</th><th>순서</th></tr>
+<tr style="background:#d4edda"><td><b>① 정보 수집(Reconnaissance)</b></td><td><b>표적 IP·서비스·OS·취약점 식별 (OSINT·스캐닝)</b></td><td><b>✅ FIRST</b></td></tr>
+<tr><td>② 접근 획득(Gaining Access)</td><td>식별된 취약점 악용 → 진입</td><td>2단계</td></tr>
+<tr><td>③ 권한 상승·내부 이동</td><td>일반계정 → root/admin / 측면 이동</td><td>3단계</td></tr>
+<tr><td>④ 목표 달성(DoS·데이터 탈취)</td><td>서비스 마비·데이터 유출·악성코드 설치</td><td>후반</td></tr>
+<tr><td>⑤ 탐지 회피·흔적 제거</td><td>로그 삭제·루트킷 설치 — 사후 단계</td><td>마지막</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Cyber Kill Chain (Lockheed Martin)</b>: <b>Reconnaissance → Weaponization → Delivery → Exploitation → Installation → C2 → Actions on Objectives</b><br>
+• 정보 수집 기법: <b>OSINT(공개정보)·Whois·DNS·Google Hacking·소셜미디어·포트스캔(Nmap)·배너 그래빙</b><br>
+• <b>Passive Recon</b>(공개정보) → <b>Active Recon</b>(스캐닝) 순서로 진행 — 탐지 위험 낮은 것부터<br>
+• DoS·탐지 회피는 <b>공격 종반</b> — 표적 정보 없이는 효과적 수행 불가<br>
+• 방어: <b>Attack Surface Management·OSINT 모니터링·DNS/Whois 정보 최소화·IDS 정찰 탐지</b><br>
+• 시험 패턴: "공격 FIRST step" → <b>정보 수집(Reconnaissance)</b> (Kill Chain 1단계)</div>`,
+reference:"CRM Chapter 5: Cyber Attack Lifecycle — Kill Chain",
+keyConcepts:[
+"공격 FIRST 단계|정보 수집(Reconnaissance) — 표적 식별·취약점 파악이 모든 공격의 출발점",
+"Cyber Kill Chain|Recon→Weaponize→Deliver→Exploit→Install→C2→Actions (Lockheed Martin)",
+"Passive vs Active Recon|공개정보 수집(Whois·OSINT) → 능동 스캐닝(Nmap·배너) — 탐지 위험순",
+"Gaining Access(2단계)|식별된 취약점 악용으로 진입 — 정찰 결과 기반",
+"DoS·탐지 회피|공격 종반 활동 — 표적 정보 확보 후에야 효과적 수행",
+"방어 전략|Attack Surface 최소화·OSINT 모니터링·IDS의 정찰 행위 탐지"
+]
+}
+,
+{
+id:643,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following intrusion detection systems (IDSs) will MOST likely generate false alarms resulting from normal network activity?",
+questionKo:"정상 네트워크 활동으로 인해 <b>오탐(false alarm)</b>이 가장 많이 발생할 가능성이 높은 IDS는?",
+options:[
+"A. Statistical-based",
+"B. Signature-based",
+"C. Neural network",
+"D. Host-based"
+],
+optionsKo:[
+"A. <b>통계 기반(Statistical-based) IDS</b>",
+"B. <b>시그니처 기반(Signature-based) IDS</b>",
+"C. <b>신경망(Neural network) IDS</b>",
+"D. <b>호스트 기반(Host-based) IDS</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 통계 기반(Statistical-based / Anomaly-based) IDS</b><br><br>
+<b>핵심:</b> 정상 행동 <b>기준선(baseline)</b>에서 벗어나면 경보 — 일시적 트래픽 폭주·대량 다운로드 같은 <b>정상이지만 비일상적</b> 활동을 의심 행위로 오탐.<br><br>
+<table class="cmp">
+<tr><th>IDS 유형</th><th>탐지 원리</th><th>오탐 경향</th></tr>
+<tr style="background:#d4edda"><td><b>A. Statistical(Anomaly)</b></td><td><b>정상 baseline 이탈 탐지</b></td><td><b>✅ 오탐 高 (신규 공격 탐지 가능)</b></td></tr>
+<tr><td>B. Signature</td><td>알려진 공격 패턴(룰) 매칭</td><td>오탐 低 / <b>제로데이 미탐</b> ❌</td></tr>
+<tr><td>C. Neural Network</td><td>Statistical+Signature 결합 학습</td><td>하이브리드 — 오탐 개선 ❌</td></tr>
+<tr><td>D. Host-based</td><td>호스트 로그·파일 무결성</td><td>네트워크 활동 감시 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Statistical(Anomaly) vs Signature</b> 트레이드오프: <b>Anomaly = 신규 공격 탐지 ↑, 오탐 ↑</b> / <b>Signature = 정확도 ↑, 제로데이 미탐 ↑</b><br>
+• 통계 기반 오탐 사례: <b>월말 대량 보고서 다운로드·새 캠페인 트래픽 급증·VPN 신규 사용자 폭증</b><br>
+• Baseline 학습 기간이 짧거나 환경 변화 잦으면 오탐 폭증<br>
+• 보완책: <b>임계치 튜닝·머신러닝 적용·SIEM 상관분석·SOC 분석가 검증</b><br>
+• False Positive(오탐) vs False Negative(미탐): Anomaly는 FP ↑·FN ↓ / Signature는 FP ↓·FN ↑<br>
+• 시험 패턴: "정상 활동으로 오탐 가장 많음" → <b>Statistical/Anomaly-based</b> 1:1 매칭</div>`,
+reference:"CRM Chapter 5: IDS Types — Anomaly vs Signature",
+keyConcepts:[
+"Statistical(Anomaly) IDS|정상 baseline 이탈 탐지 — 신규 공격 탐지 가능하나 오탐 多",
+"Signature IDS|알려진 공격 패턴 매칭 — 오탐 적으나 제로데이 미탐(False Negative ↑)",
+"Neural Network IDS|Statistical+Signature 하이브리드 — 학습으로 오탐 개선",
+"Host-based IDS|호스트 로그·파일 무결성 감시 — 네트워크 활동 탐지 대상 아님",
+"FP vs FN 트레이드오프|Anomaly = FP↑·FN↓ / Signature = FP↓·FN↑",
+"오탐 보완책|임계치 튜닝·ML 적용·SIEM 상관분석·SOC 분석가 2차 검증"
+]
+}
+,
+{
+id:644,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"An information security policy stating that \"a fixed time duration of inactivity must initiate a password-enabled screensaver\" addresses which of the following attack methods?",
+questionKo:"\"일정 시간 미사용 시 <b>패스워드 보호 화면보호기</b>를 자동 실행한다\"는 정책이 대응하는 공격 방식은?",
+options:[
+"A. Piggybacking",
+"B. Dumpster diving",
+"C. Shoulder surfing",
+"D. Impersonation"
+],
+optionsKo:[
+"A. <b>피기배킹(Piggybacking)</b>",
+"B. <b>쓰레기통 뒤지기(Dumpster diving)</b>",
+"C. <b>숄더 서핑(Shoulder surfing)</b>",
+"D. <b>사칭(Impersonation)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 숄더 서핑(Shoulder surfing)</b><br><br>
+<b>핵심:</b> 사용자가 자리를 비운 사이 <b>화면을 엿보는</b> 행위를 막기 위해 <b>비활성 시 자동 화면 잠금</b>으로 화면 내용 노출을 차단.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>공격 대상</th><th>판정</th></tr>
+<tr><td>A. 피기배킹</td><td>물리적 출입 동반(테일게이팅)</td><td>물리 출입통제 영역 ❌</td></tr>
+<tr><td>B. 쓰레기 뒤지기</td><td>버려진 문서·매체에서 정보 수집</td><td>화면과 무관 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 숄더 서핑</b></td><td><b>사용자 화면·키 입력 관찰로 민감정보 획득</b></td><td><b>✅ 화면 잠금이 직접 방어</b></td></tr>
+<tr><td>D. 사칭</td><td>직원 행세로 정보 요청</td><td>사회공학 — 화면 잠금과 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Shoulder surfing</b> = 어깨 너머·CCTV·망원경 등으로 화면·키 입력 관찰 — 사용자 부재 시 화면 그대로 노출이 최대 취약점<br>
+• 방어책: <b>비활성 시 자동 화면 잠금·프라이버시 필터·민감 데이터 표시 최소화·오픈 좌석 배치 주의</b><br>
+• 다른 공격별 대응책: <b>피기배킹 → 맨트랩·턴스타일 / 쓰레기 뒤지기 → 종이 파쇄·미디어 와이핑 / 사칭 → 본인 확인 절차</b><br>
+• 화면 잠금 정책은 <b>물리적 컴퓨터 접근 통제</b> 효과도 있으나, 정책 문구가 "화면보호기·패스워드"에 초점 → <b>화면 노출 방어 = 숄더 서핑 1:1 대응</b><br>
+• 시험 패턴: "화면보호기·자동 잠금" → <b>Shoulder Surfing</b> 키워드 매칭</div>`,
+reference:"CRM Chapter 5: Physical/Social Attacks — Shoulder Surfing",
+keyConcepts:[
+"Shoulder Surfing|어깨 너머·CCTV·망원경으로 화면·키 입력 관찰 — 화면 잠금이 직접 방어",
+"화면 보호기 정책|비활성 시 자동 잠금 → 사용자 부재 시 화면 노출 차단",
+"Piggybacking/Tailgating|물리적 출입 동반 — 맨트랩·턴스타일로 방어",
+"Dumpster Diving|버려진 문서·매체에서 정보 수집 — 파쇄·와이핑으로 방어",
+"Impersonation|직원·관리자 사칭 — 본인 확인 절차·인식 교육으로 방어",
+"보완 통제|프라이버시 필터·민감 데이터 표시 최소화·오픈 좌석 배치 주의"
+]
+}
+,
+{
+id:645,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"What is a risk associated with attempting to control physical access to sensitive areas, such as computer rooms, using card keys or locks?",
+questionKo:"전산실 등 민감 구역의 <b>물리적 접근 통제</b>를 카드키·잠금장치로 구현할 때 발생할 수 있는 <b>위험</b>은?",
+options:[
+"A. Unauthorized individuals wait for controlled doors to open and walk in behind those authorized.",
+"B. The contingency plan for the enterprise cannot effectively test controlled access practices.",
+"C. Access cards, keys and pads can be easily duplicated allowing easy compromise of the control.",
+"D. Removing access for those who are no longer authorized is complex."
+],
+optionsKo:[
+"A. <b>비인가자가 문이 열릴 때 인가자 뒤를 따라 들어옴</b>",
+"B. <b>비상계획에서 접근 통제를 효과적으로 테스트할 수 없음</b>",
+"C. <b>카드·키·패드가 쉽게 복제되어 통제가 무력화됨</b>",
+"D. <b>퇴직자 등 비인가자의 접근 권한 제거가 복잡함</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 피기배킹/테일게이팅 (인가자 뒤를 따라 들어옴)</b><br><br>
+<b>핵심:</b> 카드키·잠금장치는 <b>한 명 인증 = 한 명 통과</b>를 보장하지 못함 — 문이 열려 있는 동안 <b>비인가자가 따라 들어가는 피기배킹</b>이 물리 통제의 대표 우회 수법.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>설명</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Piggybacking/Tailgating</b></td><td><b>인가자 뒤에 붙어 통과 — 물리 통제의 대표 우회</b></td><td><b>✅ 실질적 핵심 위험</b></td></tr>
+<tr><td>B. BCP 테스트 불가</td><td>DR 환경에서 접근 통제 테스트는 <b>주요 관심사 아님</b></td><td>비중 낮음 ❌</td></tr>
+<tr><td>C. 카드/키 쉽게 복제</td><td>기술적으로 <b>복제 난이도 높음</b> (특히 RFID/iCLASS 등)</td><td>실제 위험 작음 ❌</td></tr>
+<tr><td>D. 권한 제거 복잡</td><td>표준 ID 라이프사이클 절차로 <b>쉽게 관리 가능</b></td><td>관리적 문제일 뿐 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Piggybacking</b>(자발적 동반)·<b>Tailgating</b>(몰래 따라감) — 카드키 기반 통제의 가장 흔한 우회 방식<br>
+• 방어책: <b>맨트랩(Mantrap)·턴스타일(Turnstile)·1인 1통과 회전문·보안요원·CCTV·반-패스백(Anti-passback)</b><br>
+• <b>Mantrap</b> = 2중문 부스, 한 사람만 통과 / <b>Anti-passback</b> = 입장 후 재입장 차단으로 카드 공유 방지<br>
+• 카드 복제·키 복제는 가능하나 <b>난이도·도구 필요</b> → 가장 흔한 우회는 인간의 예의(문 잡아주기)<br>
+• 인식 교육: 직원에게 <b>"문 잡아주지 말기·신원 확인 후 통과"</b> 문화 정착<br>
+• 시험 패턴: "물리 접근 통제 위험" → <b>Piggybacking/Tailgating</b> 1:1 매칭</div>`,
+reference:"CRM Chapter 5: Physical Access Controls — Piggybacking",
+keyConcepts:[
+"Piggybacking/Tailgating|인가자 뒤를 따라 통과 — 카드키·잠금장치 통제의 대표 우회 방식",
+"Mantrap(맨트랩)|2중문 부스로 1인 1통과 강제 — 피기배킹 직접 방어",
+"Turnstile(턴스타일)|회전문으로 1명씩 통과 — 동반 진입 차단",
+"Anti-passback|입장 후 재입장 차단 — 카드 공유·재사용 방지",
+"카드 복제 난이도|기술적으로 어렵고 도구 필요 — 실질 위험은 피기배킹보다 낮음",
+"인식 교육|\"문 잡아주지 말기·신원 확인 후 통과\" 문화 정착이 보조 통제"
+]
+}
+,
+{
+id:646,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"To detect attack attempts that the firewall is unable to recognize, an information systems (IS) auditor should recommend placing a network intrusion detection system between the:",
+questionKo:"<b>방화벽이 인식하지 못한 공격 시도</b>를 탐지하기 위해 IS 감사인은 네트워크 IDS를 어디에 배치할 것을 권고해야 하는가?",
+options:[
+"A. Firewall and the organization's network.",
+"B. Internet and the firewall.",
+"C. Internet and the web server.",
+"D. Web server and the firewall."
+],
+optionsKo:[
+"A. <b>방화벽과 내부 네트워크 사이</b>",
+"B. <b>인터넷과 방화벽 사이</b>",
+"C. <b>인터넷과 웹 서버 사이</b>",
+"D. <b>웹 서버와 방화벽 사이</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 방화벽과 내부 네트워크 사이</b><br><br>
+<b>핵심:</b> 방화벽을 <b>통과한 트래픽만</b> 관찰하면 "방화벽이 놓친 공격"을 식별 가능 — 외부에 두면 방화벽이 차단할 트래픽까지 보여 노이즈만 증가.<br><br>
+<table class="cmp">
+<tr><th>배치 위치</th><th>탐지 대상</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 방화벽 ↔ 내부망 (Inside)</b></td><td><b>방화벽 통과한 트래픽 = 방화벽이 놓친 공격</b></td><td><b>✅ 질문 목적과 정확히 일치</b></td></tr>
+<tr><td>B. 인터넷 ↔ 방화벽 (Outside)</td><td>방화벽 차단·통과 <b>구분 없이 모두 탐지</b></td><td>"방화벽 놓침"만 식별 불가 ❌</td></tr>
+<tr><td>C. 인터넷 ↔ 웹서버</td><td>웹서버 공격만 — 방화벽 효과 측정 불가</td><td>범위 협소 ❌</td></tr>
+<tr><td>D. 웹서버 ↔ 방화벽</td><td>웹서버 통과 트래픽 — 방화벽 검증 X</td><td>목적 불일치 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• IDS 배치 전략은 <b>목적</b>에 따라 달라짐:<br>
+&nbsp;&nbsp;— <b>"공격 시도 전체 파악"</b> → 방화벽 외부 (Outside)<br>
+&nbsp;&nbsp;— <b>"방화벽 효과성 검증·놓친 공격 탐지"</b> → 방화벽 내부 (Inside) ✅<br>
+&nbsp;&nbsp;— <b>"내부 측면 이동·내부자 공격"</b> → 내부 네트워크 세그먼트 사이<br>
+• <b>Inside IDS</b>의 장점: 트래픽 양 감소 → 분석 효율 ↑, 실제 위협만 알람 (오탐 감소)<br>
+• <b>Outside IDS</b>의 단점: 방화벽이 어차피 차단할 스캔·노이즈가 폭증 → SOC 피로<br>
+• 보안 아키텍처: <b>Defense in Depth</b> = 방화벽 + IDS/IPS + WAF + 엔드포인트 보안 다층 방어<br>
+• 시험 패턴: "방화벽이 놓친 공격 탐지" → <b>방화벽 안쪽(Inside) 배치</b> (Outside는 함정)</div>`,
+reference:"CRM Chapter 5: IDS Architecture — Placement Strategy",
+keyConcepts:[
+"IDS 배치 (방화벽 내부)|방화벽 통과 트래픽만 관찰 → 방화벽이 놓친 공격 식별 가능",
+"Inside vs Outside IDS|Inside=방화벽 효과 검증·실제 위협 / Outside=전체 공격 시도·노이즈 多",
+"방화벽 효과성 검증|Inside IDS 알람 = 방화벽 우회 공격 → 룰 보완 필요 신호",
+"Defense in Depth|방화벽 + IDS/IPS + WAF + 엔드포인트 다층 방어 — 단일 통제 의존 회피",
+"오탐 감소 효과|Inside 배치 시 차단된 노이즈 제외 → SOC 분석 효율 향상",
+"배치 목적별 선택|전체 스캔 추세=Outside / 방화벽 검증=Inside / 내부자 위협=세그먼트 사이"
+]
+}
+,
+{
+id:647,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Distributed denial-of-service (DDoS) attacks on Internet sites are typically evoked by hackers using which of the following?",
+questionKo:"인터넷 사이트에 대한 <b>분산 서비스 거부(DDoS) 공격</b>은 일반적으로 해커가 무엇을 이용해 수행하는가?",
+options:[
+"A. Logic bombs",
+"B. Phishing site",
+"C. Spyware",
+"D. Botnets"
+],
+optionsKo:[
+"A. <b>논리 폭탄(Logic bomb)</b>",
+"B. <b>피싱 사이트(Phishing site)</b>",
+"C. <b>스파이웨어(Spyware)</b>",
+"D. <b>봇넷(Botnet)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 봇넷(Botnet)</b><br><br>
+<b>핵심:</b> DDoS는 <b>다수의 감염된 단말(좀비)</b>이 동시에 트래픽을 발생 — 이 좀비 네트워크가 <b>봇넷</b>. C2 서버 명령으로 일제히 표적을 공격.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>본질</th><th>판정</th></tr>
+<tr><td>A. Logic Bomb</td><td>특정 시점·조건 발동 데이터 파괴/변조</td><td>단일 호스트 — 분산성 X ❌</td></tr>
+<tr><td>B. Phishing Site</td><td>이메일·가짜 사이트로 자격증명 탈취</td><td>정보 탈취 목적 ❌</td></tr>
+<tr><td>C. Spyware</td><td>PC 내 정보 복사·수집</td><td>정찰·탈취 — DDoS 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. Botnet</b></td><td><b>감염 단말 집합 + C2 명령으로 동시 트래픽 발생</b></td><td><b>✅ DDoS 표준 무기</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Botnet 구조</b>: 봇마스터 → C2(Command & Control) 서버 → 다수 좀비(감염 PC/IoT) → 표적<br>
+• <b>유명 사례</b>: <b>Mirai(IoT 봇넷·Dyn DNS 마비 2016)</b>·<b>Conficker</b>·<b>Zeus</b>·<b>Emotet</b><br>
+• DDoS 유형: <b>볼륨(UDP flood·ICMP)·프로토콜(SYN flood·Ping of Death)·애플리케이션(HTTP flood·Slowloris)</b><br>
+• 방어책: <b>CDN·Anti-DDoS 서비스(Cloudflare·AWS Shield)·Rate limiting·Anycast·BGP Blackhole·트래픽 스크러빙</b><br>
+• 봇넷 활용: DDoS 외에 <b>스팸 발송·암호화폐 채굴·자격증명 탈취·클릭 사기</b><br>
+• 방어 vs 봇넷: 단말 측 <b>패치·AV·기본 자격증명 변경·IoT 보안</b>이 봇넷 형성 자체 방지<br>
+• 시험 패턴: "DDoS 도구" → <b>Botnet</b> 1:1 매칭 (Logic bomb·Spyware는 단독 호스트 위협)</div>`,
+reference:"CRM Chapter 5: DDoS Attacks & Botnets",
+keyConcepts:[
+"Botnet|감염된 단말(좀비) 집합 + C2 서버 명령 — DDoS의 표준 실행 수단",
+"DDoS 유형|볼륨(UDP/ICMP flood)·프로토콜(SYN flood)·애플리케이션(HTTP flood·Slowloris)",
+"유명 봇넷 사례|Mirai(IoT·Dyn DNS 2016)·Conficker·Zeus·Emotet",
+"Logic Bomb|특정 조건 발동 악성코드 — 단일 호스트, DDoS와 무관",
+"Spyware|정보 수집·탈취 — DDoS 도구 아님",
+"DDoS 방어|CDN·Anti-DDoS 서비스·Rate Limiting·Anycast·트래픽 스크러빙",
+"봇넷 형성 차단|단말 패치·AV·기본 자격증명 변경·IoT 보안이 근본 방어"
+]
+}
+,
+{
+id:648,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"To protect a Voice-over Internet Protocol (VoIP) infrastructure against a denial-of-service (DoS) attack, it is MOST important to secure the:",
+questionKo:"VoIP 인프라를 <b>DoS 공격</b>으로부터 보호하기 위해 <b>가장 중요하게 보안 강화</b>해야 할 것은?",
+options:[
+"A. access control servers.",
+"B. session border controllers.",
+"C. backbone gateways.",
+"D. intrusion detection system (IDS)."
+],
+optionsKo:[
+"A. <b>접근통제 서버</b>",
+"B. <b>세션 경계 컨트롤러(SBC)</b>",
+"C. <b>백본 게이트웨이</b>",
+"D. <b>침입 탐지 시스템(IDS)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. SBC(Session Border Controller)</b><br><br>
+<b>핵심:</b> SBC는 VoIP 트래픽의 <b>경계 게이트키퍼</b> — 사용자 실주소·내부 토폴로지를 은닉하고, 시그널링(SIP)·미디어(RTP) 트래픽을 모니터링·정책 적용해 DoS 시도 차단.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할</th><th>판정</th></tr>
+<tr><td>A. 접근통제 서버</td><td>계정 인증·잠금 방어</td><td>DoS 1차 방어 아님 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. SBC</b></td><td><b>VoIP 경계 보호·주소 은닉·SIP/RTP 트래픽 모니터·대역폭 통제</b></td><td><b>✅ VoIP DoS 핵심 방어 지점</b></td></tr>
+<tr><td>C. 백본 게이트웨이</td><td>코어망 격리 — 외부 직접 접근 어려움</td><td>DoS 표적 아님 ❌</td></tr>
+<tr><td>D. IDS</td><td>트래픽 감시·탐지만, <b>차단·완화 기능 없음</b></td><td>탐지 ≠ 보호 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>SBC(Session Border Controller)</b> = VoIP 네트워크의 경계 방화벽 + 프록시 + 미디어 게이트웨이 통합 장비<br>
+• SBC 주요 기능: <b>① 토폴로지 은닉(NAT/주소 변환) ② SIP/RTP 프로토콜 검사 ③ 대역폭·QoS 통제 ④ Rate limiting·블랙리스트 ⑤ 암호화(SRTP/TLS)</b><br>
+• VoIP는 <b>방화벽 친화적이지 않은 동적 포트(RTP)</b> 사용 → SBC가 방화벽 우회 없이 안전한 경로 제공<br>
+• DoS 시도 차단: <b>비정상 SIP INVITE 폭주·등록 폭주(REGISTER flood)·악성 SDP·Fragmented packet</b> 등 탐지·차단<br>
+• IDS는 <b>탐지만</b> 가능 → 차단은 IPS·SBC·방화벽 / SBC는 차단·정책 적용 모두 수행<br>
+• 시험 패턴: "VoIP DoS 보호 MOST important" → <b>SBC</b> (다른 통제는 일반 인프라 통제)</div>`,
+reference:"CRM Chapter 5: VoIP Security — Session Border Controllers",
+keyConcepts:[
+"SBC(Session Border Controller)|VoIP 경계 방화벽 — 주소 은닉·SIP/RTP 검사·DoS 차단 핵심 장비",
+"SBC 주요 기능|토폴로지 은닉·프로토콜 검사·QoS 통제·Rate Limiting·SRTP/TLS 암호화",
+"VoIP DoS 형태|SIP INVITE flood·REGISTER flood·악성 SDP·Fragmented packet",
+"IDS vs IPS vs SBC|IDS=탐지만 / IPS=탐지+차단 / SBC=VoIP 특화 경계 통제",
+"접근통제 서버 한계|계정 보호 목적 — DoS 1차 방어가 아님",
+"방화벽 친화성|VoIP는 동적 RTP 포트 사용 → SBC가 방화벽 우회 없이 안전 경로 제공"
+]
+}
+,
+{
+id:649,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Information systems (IS) management recently replaced its existing wired local area network with a wireless infrastructure to accommodate the increased use of mobile devices within the enterprise. This will increase the risk of which of the following attacks?",
+questionKo:"기업이 모바일 기기 사용 증가에 대응해 기존 <b>유선 LAN을 무선 인프라로 교체</b>했다. 이로 인해 위험이 증가하는 공격은?",
+options:[
+"A. Port scanning",
+"B. Back door",
+"C. Man-in-the-middle",
+"D. War driving"
+],
+optionsKo:[
+"A. <b>포트 스캐닝(Port scanning)</b>",
+"B. <b>백도어(Back door)</b>",
+"C. <b>중간자 공격(Man-in-the-middle)</b>",
+"D. <b>워 드라이빙(War driving)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. War Driving</b><br><br>
+<b>핵심:</b> 유선→무선 전환은 <b>물리 경계가 사라지는 변화</b> — 차량 등에서 외부에서 무선 신호를 스캔·침투하는 <b>War driving</b> 위험이 새로 증가.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>유선/무선 의존도</th><th>판정</th></tr>
+<tr><td>A. Port scanning</td><td>유선·무선 무관, <b>외부 방화벽 대상</b></td><td>무선 전환과 무관 ❌</td></tr>
+<tr><td>B. Back door</td><td>SW에 심어진 비밀 통로</td><td>네트워크 매체 무관 ❌</td></tr>
+<tr><td>C. MITM</td><td>유선에서도 가능 (ARP 스푸핑 등)</td><td>유선·무선 공통 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. War Driving</b></td><td><b>무선 신호 외부 스캔·침투 — 유선엔 존재 X</b></td><td><b>✅ 무선 전환으로 신규 위험</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 유선 → 무선 전환의 <b>본질적 변화</b>: <b>물리적 경계 소멸</b> — 신호가 건물 밖까지 방사 → 외부 침투 표면 확대<br>
+• War Driving 도구: <b>Promiscuous 모드 무선카드 + 지향성 안테나 + GPS</b> + 분석 SW(Kismet·inSSIDer)<br>
+• 무선 신규 위협: <b>War Driving·Rogue AP·Evil Twin·WEP 크래킹·KARMA·KRACK</b><br>
+• MITM은 무선에서 더 쉬워지긴 하나, <b>유선에도 존재</b>(ARP poisoning) → "새로 생긴 위험"으론 War Driving이 더 정확<br>
+• 방어책: <b>WPA3·강한 패스프레이즈·MAC 필터링·SSID 숨김·정기 무선 사이트 서베이·Rogue AP 탐지</b><br>
+• 시험 패턴: "무선 전환으로 증가하는 위험" → <b>War Driving</b> (무선 고유 위험 키워드)</div>`,
+reference:"CRM Chapter 5: Wireless Threats — War Driving",
+keyConcepts:[
+"War Driving|차량으로 이동하며 무선 신호 스캔·침투 — 유선엔 존재하지 않는 위험",
+"물리 경계 소멸|무선 신호 건물 외부 방사 → 공격 표면 확대",
+"Port Scanning 비무관|외부 방화벽 대상 — 유선·무선 매체와 독립",
+"Back Door 비무관|SW에 심어진 통로 — 네트워크 매체 영향 없음",
+"MITM 공통|유선에서도 ARP 스푸핑으로 가능 — \"신규 위험\"으론 부적합",
+"무선 방어책|WPA3·강한 패스프레이즈·SSID 숨김·MAC 필터링·Rogue AP 탐지"
+]
+}
+,
+{
+id:650,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"If inadequate, which of the following is the MOST likely contributor to a denial-of-service (DoS) attack?",
+questionKo:"부적절할 경우 <b>DoS 공격에 가장 크게 기여(MOST likely contributor)</b>하는 요소는?",
+options:[
+"A. Router configuration and rules",
+"B. Design of the internal network",
+"C. Updates to the router system software",
+"D. Audit testing and review techniques"
+],
+optionsKo:[
+"A. <b>라우터 구성 및 규칙</b>",
+"B. <b>내부 네트워크 설계</b>",
+"C. <b>라우터 시스템 소프트웨어 업데이트</b>",
+"D. <b>감사 테스트 및 검토 기법</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 라우터 구성 및 규칙</b><br><br>
+<b>핵심:</b> 라우터는 경계에서 트래픽을 통제 — <b>ACL·Rate limit·필터링 규칙 미흡</b>이면 DoS 트래픽이 그대로 내부로 유입되어 가장 큰 기여 요인.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>DoS 기여도</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 라우터 구성·규칙</b></td><td><b>경계 트래픽 통제 실패 → DoS 트래픽 그대로 유입</b></td><td><b>✅ 최대 기여 요인</b></td></tr>
+<tr><td>B. 내부 네트워크 설계</td><td>비효율 설계도 DoS 가능하나 <b>경계 통제보다 영향 적음</b></td><td>2차 요인 ❌</td></tr>
+<tr><td>C. 라우터 SW 업데이트</td><td>업데이트로 DoS 사례 있으나 <b>A의 부분집합</b></td><td>하위 항목 ❌</td></tr>
+<tr><td>D. 감사 기법</td><td>테스트 중 시스템 다운 가능 — <b>드문 사례</b></td><td>영향 미미 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 라우터 경계 통제 부재 = <b>모든 DoS 트래픽이 내부로 직행</b> — 가장 직접적 원인<br>
+• 라우터 DoS 완화 설정: <b>ACL(불필요 트래픽 차단)·uRPF(Source 검증)·CoPP(Control Plane Policing)·Rate limiting·BCP38(스푸핑 차단)</b><br>
+• 일반적 DoS 형태: <b>SYN flood·ICMP flood·Smurf·Fraggle·UDP flood</b> — 라우터에서 1차 필터링 가능<br>
+• 내부 설계(B)는 단일 장애점·세그멘테이션 부재 등 영향 있으나, <b>외부 유입 차단</b>이 우선<br>
+• SW 업데이트(C)는 라우터 구성의 일부 — A에 포함되는 개념<br>
+• 시험 패턴: "DoS MOST likely contributor (inadequate)" → <b>라우터 구성·규칙</b> (경계 통제 우선)</div>`,
+reference:"CRM Chapter 5: DoS Attacks — Router-Based Mitigation",
+keyConcepts:[
+"라우터 구성·규칙|경계 트래픽 통제 핵심 — 부적절 시 DoS 최대 기여 요인",
+"라우터 DoS 완화|ACL·uRPF·CoPP·Rate Limiting·BCP38(스푸핑 차단)",
+"DoS 트래픽 형태|SYN flood·ICMP flood·Smurf·Fraggle·UDP flood — 경계에서 1차 차단 대상",
+"내부 설계 영향|단일 장애점·세그멘테이션 부재로 DoS 확산 가능 — 2차 요인",
+"라우터 SW 업데이트|구성의 일부 — 별도 항목보다 라우터 구성 범주에 포함",
+"감사 기법 영향|테스트 중 시스템 다운은 드문 사례 — 주요 기여 요인 아님"
+]
+}
+,
+{
+id:651,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"During a review of intrusion detection logs, an information systems (IS) auditor notices traffic coming from the Internet, which appears to originate from the internal internet protocol (IP) address of the enterprise payroll server. Which of the following malicious activities would MOST likely cause this type of result?",
+questionKo:"IDS 로그에서 IS 감사인이 <b>인터넷에서 들어오는 트래픽의 출발지 IP가 내부 급여 서버의 IP</b>로 표시되는 것을 발견했다. 이를 가장 잘 설명하는 공격은?",
+options:[
+"A. Denial-of-service (DoS) attack",
+"B. Spoofing",
+"C. Port scanning",
+"D. Man-in-the-middle attack"
+],
+optionsKo:[
+"A. <b>서비스 거부(DoS) 공격</b>",
+"B. <b>스푸핑(Spoofing)</b>",
+"C. <b>포트 스캐닝(Port scanning)</b>",
+"D. <b>중간자 공격(Man-in-the-middle)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. IP 스푸핑(Spoofing)</b><br><br>
+<b>핵심:</b> 외부에서 <b>내부 IP를 출발지로 위조</b>한 패킷 — 방화벽·접근통제를 우회하기 위해 신뢰받는 내부 서버(급여 서버) IP로 가장하는 전형적 스푸핑.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>특성</th><th>판정</th></tr>
+<tr><td>A. DoS</td><td>다수 요청으로 자원 고갈 — <b>출발지 IP 위조 가능하나 핵심은 양</b></td><td>로그 패턴 불일치 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Spoofing</b></td><td><b>출발지 IP 위조로 신원 위장 — 외부 트래픽이 내부 IP로 표시</b></td><td><b>✅ 로그 현상 정확히 일치</b></td></tr>
+<tr><td>C. Port scanning</td><td>표적 정보 수집 — <b>내부 서버 IP가 출발지로 나타나지 않음</b></td><td>로그 패턴 불일치 ❌</td></tr>
+<tr><td>D. MITM</td><td>두 당사자 사이 중계 — <b>급여 서버 출발지로 표시 X</b></td><td>로그 패턴 불일치 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>IP Spoofing</b> = 패킷 출발지 주소 위조 → 방화벽·ACL 우회·신뢰 관계 악용·DoS 증폭<br>
+• <b>외부 ↔ 내부 IP 충돌</b>이 명확한 스푸핑 신호 — 라우터/방화벽 ACL로 <b>BCP38(Ingress filtering)</b> 적용해 차단<br>
+• 스푸핑 유형: <b>IP·MAC·ARP·DNS·이메일·Caller ID</b> — 모두 신원 위조 공격<br>
+• 방어책: <b>Ingress/Egress filtering(BCP38/84)·uRPF·인증·암호화(IPSec)·SPF/DKIM/DMARC(이메일)</b><br>
+• 라우터 ACL 룰: <b>외부 인터페이스 인입 패킷의 출발지가 내부 IP면 차단</b> (Anti-spoofing 기본)<br>
+• 시험 패턴: "외부 트래픽인데 출발지가 내부 IP" → <b>Spoofing</b> 1:1 매칭 (DoS·Scan·MITM과 구분)</div>`,
+reference:"CRM Chapter 5: IP Spoofing — Detection via Log Analysis",
+keyConcepts:[
+"IP Spoofing|출발지 IP 위조로 신원 위장 — 외부에서 내부 IP로 들어오는 패킷이 전형적 증거",
+"BCP38/Ingress Filtering|외부 인터페이스에서 내부 IP 출발지 패킷 차단 — 스푸핑 표준 방어",
+"uRPF(Unicast Reverse Path Forwarding)|역경로 검증 — 스푸핑 패킷 자동 폐기",
+"스푸핑 유형|IP·MAC·ARP·DNS·이메일·Caller ID — 모두 신원 위조 공격",
+"DoS와 구분|DoS는 양 중심 / Spoofing은 출발지 IP 위조 자체가 핵심 증거",
+"이메일 스푸핑 방어|SPF·DKIM·DMARC 3종 세트로 발신자 검증"
+]
+}
+,
+{
+id:652,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following types of penetration tests simulates a real attack and is used to test incident handling and response capability of the target?",
+questionKo:"실제 공격을 시뮬레이션하여 표적의 <b>사고 대응 능력</b>을 검증하는 모의해킹 유형은?",
+options:[
+"A. Blind testing",
+"B. Targeted testing",
+"C. Double-blind testing",
+"D. External testing"
+],
+optionsKo:[
+"A. <b>블라인드 테스트(Blind testing)</b>",
+"B. <b>타겟 테스트(Targeted testing)</b>",
+"C. <b>더블 블라인드 테스트(Double-blind testing)</b>",
+"D. <b>외부 테스트(External testing)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 더블 블라인드 테스트(Double-blind / Zero-knowledge)</b><br><br>
+<b>핵심:</b> <b>테스터·표적 양쪽 모두 정보 없음</b> — 표적은 실제 공격으로 인식하고 대응 → 침해사고 대응(IR) 능력을 진짜로 검증할 수 있는 유일한 방식.<br><br>
+<table class="cmp">
+<tr><th>유형</th><th>테스터 정보</th><th>표적 인지</th><th>판정</th></tr>
+<tr><td>A. Blind (Black-box)</td><td>없음(공개정보만)</td><td><b>알고 있음</b></td><td>실제 공격성 X ❌</td></tr>
+<tr><td>B. Targeted (White-box)</td><td>전부 제공</td><td>알고 있음</td><td>협업 테스트 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Double-blind (Zero-knowledge)</b></td><td><b>없음</b></td><td><b>모름</b></td><td><b>✅ IR 능력 진짜 검증</b></td></tr>
+<tr><td>D. External</td><td>관계 없음</td><td>관계 없음</td><td>위치(외부) 분류 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Double-blind</b>은 IR/SOC 팀의 <b>탐지·격리·복구·커뮤니케이션</b>까지 진짜 능력 측정 — Red Team 훈련의 표준<br>
+• 정보 제공 기준: <b>Blind=공개정보 / Double-blind=공개정보+표적 비인지 / Targeted=전부 공유</b><br>
+• 위치 기준: <b>External(외부 인터넷)·Internal(내부망)·Physical(물리)·Social(사회공학)</b><br>
+• 정보·인지·위치는 <b>독립적 차원</b> — 예: External + Double-blind 조합 가능<br>
+• 사전 승인 필수: <b>경영진·법무·보안 책임자만</b> 더블블라인드 사실 인지(Get-out-of-jail letter)<br>
+• 시험 패턴: "실제 공격 시뮬·IR 대응 검증" → <b>Double-blind</b> (Blind는 표적이 알고 있음에 주의)</div>`,
+reference:"CRM Chapter 5: Penetration Testing — Test Types",
+keyConcepts:[
+"Double-blind(Zero-knowledge)|테스터·표적 모두 정보 없음 — IR 능력 진짜 검증 가능",
+"Blind(Black-box)|테스터만 정보 없음, 표적은 인지 — 실제 대응 능력 측정 어려움",
+"Targeted(White-box)|양쪽 모두 정보 공유 — 협업 테스트, 깊이 있는 코드/구성 검토",
+"External vs Internal|위치 기반 분류 — 정보·인지 차원과 독립적 조합 가능",
+"Red Team 표준|Double-blind = Red Team 훈련 핵심 방식 — SOC 탐지·격리·복구 전 과정 검증",
+"사전 승인|경영진·법무·보안 책임자만 인지 — Get-out-of-jail letter 필수"
+]
+}
+,
+{
+id:653,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Two-factor authentication can be circumvented through which of the following attacks?",
+questionKo:"<b>이중 인증(2FA)</b>을 우회할 수 있는 공격은?",
+options:[
+"A. Denial-of-service (DoS)",
+"B. Man-in-the-middle",
+"C. Key logging",
+"D. Brute force"
+],
+optionsKo:[
+"A. <b>서비스 거부(DoS)</b>",
+"B. <b>중간자 공격(Man-in-the-middle)</b>",
+"C. <b>키 로깅(Key logging)</b>",
+"D. <b>무차별 대입(Brute force)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. MITM (Man-in-the-Middle)</b><br><br>
+<b>핵심:</b> MITM은 사용자와 서버 사이에 끼어들어 <b>인증 완료 후 세션을 가로채</b> 추가 거래를 실행 — 2FA로 인증이 성공해도 세션 자체가 도용되므로 무력화.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>2FA와의 관계</th><th>판정</th></tr>
+<tr><td>A. DoS</td><td>가용성 공격 — 인증과 무관</td><td>인증 우회 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. MITM</b></td><td><b>인증 후 세션 가로채기 — 두 요소 모두 거쳤어도 무력</b></td><td><b>✅ 2FA 우회 가능</b></td></tr>
+<tr><td>C. Key logging</td><td>패스워드는 캡처하나 <b>OTP·생체는 1회성</b></td><td>1요소 한정 ❌</td></tr>
+<tr><td>D. Brute force</td><td>OTP·생체엔 사실상 불가능</td><td>1요소 한정 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>MITM이 2FA를 뚫는 원리</b>: 사용자 ↔ 가짜 사이트 ↔ 실제 사이트 중계 → OTP·푸시 승인까지 가로채 즉시 재사용<br>
+• 실제 사례: <b>Modlishka·Evilginx2</b> 같은 리버스 프록시 피싱 도구 — OTP까지 자동 가로채 세션 쿠키 획득<br>
+• Key logging·Brute force는 <b>패스워드(1요소)</b> 공략 — 두 번째 요소(OTP·푸시·생체)는 시간 한정·1회성이라 무력<br>
+• <b>2FA 강화 방어</b>: <b>FIDO2/WebAuthn(피싱 저항)·Number matching 푸시·인증서 기반·하드웨어 키(YubiKey)</b><br>
+• 일반 OTP·SMS는 MITM 취약 / FIDO2는 도메인 바인딩으로 MITM 원천 차단<br>
+• 시험 패턴: "2FA 우회 공격" → <b>MITM</b> (DoS·Keylog·Brute는 1요소 한정)</div>`,
+reference:"CRM Chapter 5: Two-Factor Authentication & MITM",
+keyConcepts:[
+"MITM과 2FA 우회|인증 후 세션 가로채기 — 두 요소 모두 통과해도 무력",
+"리버스 프록시 피싱|Modlishka·Evilginx2 — OTP까지 가로채 세션 쿠키 탈취",
+"Key Logging 한정|패스워드만 캡처 — OTP·생체 같은 1회성 요소엔 무효",
+"Brute Force 한정|패스워드 공략 — OTP·생체엔 사실상 불가능",
+"FIDO2/WebAuthn|도메인 바인딩으로 MITM 원천 차단 — 피싱 저항 인증 표준",
+"Number Matching|푸시 알림에 숫자 일치 요구 — MFA fatigue 공격 방어"
+]
+}
+,
+{
+id:654,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"What is the BEST approach to mitigate the risk of a phishing attack?",
+questionKo:"<b>피싱 공격</b> 위험을 완화하는 <b>가장 좋은(BEST) 접근법</b>은?",
+options:[
+"A. Intrusion detection",
+"B. Security assessment",
+"C. Strong authentication",
+"D. User education"
+],
+optionsKo:[
+"A. <b>침입 탐지(IDS)</b>",
+"B. <b>보안 평가(Security assessment)</b>",
+"C. <b>강력한 인증(Strong authentication)</b>",
+"D. <b>사용자 교육(User education)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 사용자 교육</b><br><br>
+<b>핵심:</b> 피싱은 <b>사회공학</b>으로 사용자의 판단을 노림 — 기술적 통제는 일부 차단에 그치고, <b>의심 능력</b>을 키우는 교육이 가장 광범위·근본적 방어.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>피싱 방어 한계</th><th>판정</th></tr>
+<tr><td>A. IDS</td><td>네트워크 트래픽 탐지 — <b>이메일 본문·심리적 속임수 탐지 불가</b></td><td>피싱에 무력 ❌</td></tr>
+<tr><td>B. 보안 평가</td><td>현황 파악일 뿐 — 위험 자체를 줄이지 않음</td><td>측정 ≠ 완화 ❌</td></tr>
+<tr><td>C. 강력한 인증</td><td>일부 자격증명 탈취 방어 — <b>MITM 피싱·악성 첨부엔 무력</b></td><td>부분 효과 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 사용자 교육</b></td><td><b>의심·확인 행동 습관화 — 모든 피싱 변종에 광범위 효과</b></td><td><b>✅ BEST</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 피싱은 <b>사회공학 공격</b> — 기술 통제로 100% 차단 불가, 사람의 판단이 최후 방어선<br>
+• 효과적 교육: <b>주기적 피싱 시뮬레이션·실제 사례 공유·신고 채널·실패자 추가 교육</b><br>
+• 피싱 변종: <b>Spear phishing(표적), Whaling(임원), Smishing(SMS), Vishing(음성), Quishing(QR), BEC(비즈니스 이메일 침해)</b><br>
+• 기술 보조책: <b>SPF/DKIM/DMARC, 이메일 게이트웨이·URL 재작성·Sandbox, FIDO2 피싱 저항 인증</b><br>
+• 위협 진화: 공격 기법이 계속 변하므로 <b>한 번이 아닌 지속 교육</b> 필수<br>
+• 시험 패턴: "피싱 BEST 방어" → <b>사용자 교육</b> (사회공학 = 사람 강화가 정답)</div>`,
+reference:"CRM Chapter 5: Phishing — User Education as Primary Defense",
+keyConcepts:[
+"사용자 교육(BEST)|피싱 = 사회공학 → 사람의 판단력 강화가 가장 광범위·근본적 방어",
+"피싱 시뮬레이션|주기적 모의 피싱·실패자 재교육·신고 채널 운영이 효과 측정·강화 표준",
+"피싱 변종|Spear·Whaling·Smishing·Vishing·Quishing·BEC — 매체별 변화",
+"기술 보조책|SPF/DKIM/DMARC·이메일 게이트웨이·URL 재작성·Sandbox — 교육과 병행",
+"IDS의 한계|네트워크 트래픽 탐지만 — 이메일 본문·심리 속임수 탐지 불가",
+"강력한 인증의 한계|MITM 피싱·악성 첨부엔 무력 — FIDO2 같은 피싱 저항형만 효과"
+]
+}
+,
+{
+id:655,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"An organization is developing a new web-based application to process orders from customers. Which of the following security measures should be taken to protect this application from hackers?",
+questionKo:"신규 <b>웹 기반 주문 처리 애플리케이션</b>을 해커로부터 보호하기 위해 취해야 할 보안 조치는?",
+options:[
+"A. Ensure that ports 80 and 443 are blocked at the firewall.",
+"B. Inspect file and access permissions on all servers to ensure that all files have read-only access.",
+"C. Perform a web application security review.",
+"D. Make sure that only the internet protocol (IP) addresses of existing customers are allowed through the firewall."
+],
+optionsKo:[
+"A. <b>방화벽에서 80·443 포트 차단</b>",
+"B. <b>모든 서버 파일을 읽기 전용으로 설정</b>",
+"C. <b>웹 애플리케이션 보안 검토 수행</b>",
+"D. <b>기존 고객의 IP만 방화벽에서 허용</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 웹 애플리케이션 보안 검토 수행</b><br><br>
+<b>핵심:</b> 웹 애플리케이션 취약점(OWASP Top 10 등)은 <b>코드·설계 차원</b>의 문제 — 방화벽으론 차단 불가. 보안 검토로 SQLi·XSS·CSRF·인증 결함을 사전 식별·제거.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>문제점</th><th>판정</th></tr>
+<tr><td>A. 80/443 차단</td><td>웹 서비스 동작 불가 — <b>가용성 파괴</b></td><td>비즈니스 중단 ❌</td></tr>
+<tr><td>B. 모두 읽기 전용</td><td>주문 저장 불가 — <b>기능 작동 안 됨</b></td><td>요구사항 위반 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 웹앱 보안 검토</b></td><td><b>OWASP Top 10·인증·세션·입력검증 결함 식별 → 코드 수정</b></td><td><b>✅ 근본 대응</b></td></tr>
+<tr><td>D. 기존 고객 IP만 허용</td><td>신규 고객 차단 — <b>비즈니스 목적 위반</b></td><td>운영 불가 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 웹앱 위협은 <b>방화벽으로 차단 불가</b> — 정상 HTTP/HTTPS 트래픽 안에 공격 페이로드 숨김 (SQLi·XSS·CSRF·SSRF·IDOR)<br>
+• 보안 검토 기법: <b>SAST(정적 코드 분석)·DAST(동적 테스트)·IAST·SCA(오픈소스)·수동 침투테스트·코드 리뷰</b><br>
+• OWASP Top 10 (2021): Broken Access Control·Crypto Failures·Injection·Insecure Design·Misconfig·Vulnerable Components·Auth Failures·Integrity·Logging·SSRF<br>
+• 보완 통제: <b>WAF·CSP·HTTPS·Input validation·Output encoding·Parameterized query·MFA·Rate limiting</b><br>
+• 보안은 <b>SDLC 전 단계 통합(Shift-left)</b> — 출시 후 패치보다 설계·개발 단계 결함 제거가 비용 효율<br>
+• 시험 패턴: "웹앱 해커 방어" → <b>웹 애플리케이션 보안 검토</b> (방화벽·IP 제한은 응용 계층 무력)</div>`,
+reference:"CRM Chapter 5: Web Application Security Review (OWASP)",
+keyConcepts:[
+"웹앱 보안 검토|OWASP Top 10 등 코드·설계 차원 결함 식별 — 방화벽으로 못 막는 응용 계층 위협",
+"OWASP Top 10|Broken Access Control·Injection·XSS·CSRF·SSRF·인증 결함 등",
+"보안 검토 기법|SAST(정적)·DAST(동적)·IAST·SCA·침투테스트·코드 리뷰",
+"보완 통제|WAF·CSP·HTTPS·Input validation·Output encoding·Parameterized query",
+"Shift-left 보안|SDLC 초기 단계 결함 제거가 출시 후 패치보다 비용 효율적",
+"방화벽 한계|정상 HTTP/HTTPS 안의 공격 페이로드는 차단 불가 — 응용 계층 통제 필요"
+]
+}
+,
+{
+id:656,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following potentially blocks hacking attempts?",
+questionKo:"다음 중 <b>해킹 시도를 차단할 수 있는</b> 통제는?",
+options:[
+"A. Intrusion detection system (IDS)",
+"B. Honeypot system",
+"C. Intrusion prevention system (IPS)",
+"D. Network security scanner"
+],
+optionsKo:[
+"A. <b>침입 탐지 시스템(IDS)</b>",
+"B. <b>허니팟(Honeypot)</b>",
+"C. <b>침입 방지 시스템(IPS)</b>",
+"D. <b>네트워크 보안 스캐너</b>"
+],
+correct:2,
+explanation:`<b>정답: C. IPS (Intrusion Prevention System)</b><br><br>
+<b>핵심:</b> IPS는 <b>인라인(in-line) 배치</b>되어 트래픽을 실시간 검사하고 <b>탐지 + 차단</b>까지 수행 — IDS는 탐지만, 스캐너는 식별만 가능.<br><br>
+<table class="cmp">
+<tr><th>장비</th><th>통제 유형</th><th>기능</th></tr>
+<tr><td>A. IDS</td><td><b>탐지(Detective)</b></td><td>관찰·알람만 — 차단 X ❌</td></tr>
+<tr><td>B. Honeypot</td><td>속임수(Deception)</td><td>유인·관찰 — 실제 차단 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. IPS</b></td><td><b>예방(Preventive)</b></td><td><b>✅ 탐지+차단(인라인)</b></td></tr>
+<tr><td>D. 보안 스캐너</td><td>식별(Identification)</td><td>취약점 발견 — 차단 기능 없음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>IDS vs IPS</b>: 배치 위치가 핵심 — IDS는 <b>패시브(미러 포트·SPAN)</b>, IPS는 <b>인라인(트래픽 경로상)</b><br>
+• IPS 동작: 시그니처·이상 행동 매칭 시 <b>패킷 드롭·세션 종료·소스 IP 차단·알림</b> 동시 수행<br>
+• IPS 부작용: <b>오탐 시 정상 트래픽 차단(가용성 영향)</b> → 튜닝 필요, 단계적 활성화 권장<br>
+• Honeypot의 가치: 공격 정보·TTP 수집·SOC 알람 정확도 향상 — <b>저영향 고가치 통제</b>지만 차단 도구 아님<br>
+• 스캐너(Nessus·Qualys·OpenVAS): 정기 취약점 식별 → 결과는 <b>패치·구성 강화로 수동 조치</b>해야 위험 감소<br>
+• <b>방어 통제 분류</b>: 예방=IPS·방화벽 / 탐지=IDS·SIEM / 교정=백업·복구 / 보완=Honeypot·DLP / 억제=경고·CCTV<br>
+• 시험 패턴: "해킹 시도 차단" → <b>IPS</b> (IDS는 탐지만, 스캐너는 식별만)</div>`,
+reference:"CRM Chapter 5: IPS vs IDS — Preventive vs Detective",
+keyConcepts:[
+"IPS|인라인 배치로 탐지+차단 — 해킹 시도를 실시간 막는 예방 통제",
+"IDS vs IPS|IDS=패시브 탐지만 / IPS=인라인 탐지+차단 — 배치 위치가 결정적 차이",
+"IPS 부작용|오탐 시 정상 트래픽 차단 → 튜닝 필수·단계적 활성화 권장",
+"Honeypot|공격 유인·정보 수집·SOC 정확도 향상 — 차단 도구 아닌 보완·기만 통제",
+"보안 스캐너|취약점 식별만 — 차단·교정은 수동 패치·구성 강화로 수행",
+"통제 분류|예방(IPS·방화벽) / 탐지(IDS·SIEM) / 교정(백업·복구) / 보완(Honeypot·DLP)"
+]
+}
+,
+{
+id:657,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"Which of the following is an example of a passive cybersecurity attack?",
+questionKo:"다음 중 <b>수동적(Passive) 사이버 공격</b>의 예는?",
+options:[
+"A. Traffic analysis",
+"B. Masquerading",
+"C. Denial-of-service",
+"D. Email spoofing"
+],
+optionsKo:[
+"A. <b>트래픽 분석(Traffic analysis)</b>",
+"B. <b>위장(Masquerading)</b>",
+"C. <b>서비스 거부(Denial-of-service)</b>",
+"D. <b>이메일 스푸핑(Email spoofing)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 트래픽 분석(Traffic Analysis)</b><br><br>
+<b>핵심:</b> Passive = <b>관찰·도청만, 데이터 변경 X</b> — 트래픽 분석은 패킷 크기·빈도·발신/수신 패턴을 관찰해 정보를 추론하지만 트래픽 자체를 건드리지 않음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>유형</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Traffic Analysis</b></td><td><b>Passive — 관찰만, 변경 X</b></td><td><b>✅ 수동 공격</b></td></tr>
+<tr><td>B. Masquerading</td><td>Active — <b>출발지 위조로 데이터 변경</b></td><td>능동 공격 ❌</td></tr>
+<tr><td>C. DoS</td><td>Active — <b>트래픽 폭주·악성 패킷 송신</b></td><td>능동 공격 ❌</td></tr>
+<tr><td>D. Email Spoofing</td><td>Active — <b>이메일 헤더 변조</b></td><td>능동 공격 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Passive vs Active</b> 구분 기준: <b>데이터 변경·자원 소비·시스템 상태 영향</b> 여부<br>
+• Passive 예시: <b>도청(Eavesdropping)·트래픽 분석·네트워크 스니핑·패킷 캡처·OSINT 수집</b><br>
+• Active 예시: <b>Masquerading·DoS·Replay·Modification·Spoofing·Injection·악성코드 실행</b><br>
+• Passive 특징: <b>탐지 어려움(흔적 없음), 기밀성 침해 중심</b> → 방어는 <b>암호화(데이터+메타데이터)</b><br>
+• Active 특징: <b>탐지 가능(로그·이상 트래픽), 무결성·가용성 침해 중심</b> → 방어는 <b>IPS·인증·MAC</b><br>
+• 시험 패턴: "Passive 공격" → 관찰/도청/분석 키워드 / "Active 공격" → 변조/위조/플러드/주입 키워드</div>`,
+reference:"CRM Chapter 5: Passive vs Active Attacks",
+keyConcepts:[
+"Passive Attack|관찰·도청만, 데이터 변경 X — 트래픽 분석·스니핑·OSINT가 대표 사례",
+"Active Attack|데이터 변경·자원 소비·시스템 상태 영향 — DoS·Spoofing·Masquerading 등",
+"구분 기준|데이터·자원·상태에 영향을 미치는가 = Active, 단순 관찰 = Passive",
+"Passive 방어|암호화(메시지+메타데이터)·VPN·TLS — 도청해도 의미 파악 불가",
+"Active 방어|IPS·인증·MAC·서명·로그 분석 — 탐지·차단 가능",
+"탐지 난이도|Passive는 흔적이 없어 매우 어려움 / Active는 로그·이상 트래픽으로 탐지 가능"
+]
+}
+,
+{
+id:658,
+domain:"5",
+ks:"5B2 Information System Attack Methods and Techniques",
+question:"A perpetrator looking to gain access to, and gather information about, encrypted data being transmitted over a network would MOST likely use:",
+questionKo:"네트워크상에서 전송되는 <b>암호화된 데이터</b>에 대한 정보를 수집하려는 공격자가 가장 많이 사용하는 방법은?",
+options:[
+"A. eavesdropping.",
+"B. spoofing.",
+"C. traffic analysis.",
+"D. masquerading."
+],
+optionsKo:[
+"A. <b>도청(Eavesdropping)</b>",
+"B. <b>스푸핑(Spoofing)</b>",
+"C. <b>트래픽 분석(Traffic analysis)</b>",
+"D. <b>위장(Masquerading)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 트래픽 분석(Traffic Analysis)</b><br><br>
+<b>핵심:</b> 암호화로 <b>내용 자체는 읽을 수 없음</b> → 대신 <b>패킷 크기·빈도·발신/수신·세션 길이</b> 같은 메타데이터를 분석해 통신 종류·관계·의도를 추론.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>암호화 시 효과</th><th>판정</th></tr>
+<tr><td>A. Eavesdropping</td><td><b>암호화 트래픽은 평문 추출 불가</b></td><td>암호화 환경에선 무력 ❌</td></tr>
+<tr><td>B. Spoofing</td><td>신원 위조 — 정보 수집 목적 X</td><td>능동 공격 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Traffic Analysis</b></td><td><b>메타데이터(크기·빈도·시간)로 추론 — 암호화 무관</b></td><td><b>✅ 암호화 환경 최적</b></td></tr>
+<tr><td>D. Masquerading</td><td>신원 가장 — 정보 수집 우회 목적</td><td>능동 공격 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Traffic Analysis vs Eavesdropping</b>: 둘 다 Passive지만, <b>도청=내용 / 분석=메타데이터</b>로 표적이 다름<br>
+• 추론 가능한 정보: <b>관계자 식별·통신 빈도·업무 패턴·중요 시점·VPN/Tor 사용 여부</b><br>
+• 실제 사례: 군사 통신·금융 거래 패턴 분석·VPN 사용자 식별·HTTPS 사이트 방문 추정(SNI·DNS·패킷 크기)<br>
+• 방어책: <b>패딩(Padding)·더미 트래픽·Onion routing(Tor)·VPN+상시 트래픽·메타데이터 최소 노출(ECH·DoH/DoT)</b><br>
+• 암호화는 <b>기밀성</b> 보호 — 메타데이터 보호엔 <b>별도 통제</b> 필요<br>
+• 시험 패턴: "암호화된 트래픽 정보 수집" → <b>Traffic Analysis</b> (Eavesdropping은 평문에서 의미)</div>`,
+reference:"CRM Chapter 5: Traffic Analysis vs Eavesdropping",
+keyConcepts:[
+"Traffic Analysis|메타데이터(크기·빈도·세션 길이) 분석 — 암호화 환경에서도 정보 수집 가능",
+"Eavesdropping 한계|암호화 시 평문 추출 불가 — 트래픽 분석으로 대체",
+"추론 가능 정보|관계자·통신 빈도·업무 패턴·중요 시점·VPN/Tor 사용 여부",
+"방어책|패딩·더미 트래픽·Onion routing·VPN 상시·메타데이터 최소화(ECH·DoH/DoT)",
+"암호화 범위|기밀성만 보호 — 메타데이터·통신 패턴은 별도 통제 필요",
+"Passive 공통|Traffic Analysis·Eavesdropping 모두 변경 없는 관찰 — 탐지 어려움"
+]
 }
 
 ];
