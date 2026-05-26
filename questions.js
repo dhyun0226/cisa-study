@@ -26741,5 +26741,564 @@ keyConcepts:[
 "Passive 공통|Traffic Analysis·Eavesdropping 모두 변경 없는 관찰 — 탐지 어려움"
 ]
 }
+,
+{
+id:659,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"An information systems (IS) auditor selects a server for a penetration test that will be carried out by a technical specialist. Which of the following is MOST important?",
+questionKo:"IS 감사인이 기술 전문가가 수행할 <b>모의해킹 대상 서버</b>를 선정한다. 가장 중요한 것은?",
+options:[
+"A. The tools used to conduct the test",
+"B. Certifications held by the IS auditor",
+"C. Permission from the data owner of the server",
+"D. An intrusion detection system (IDS) is enabled"
+],
+optionsKo:[
+"A. <b>테스트 수행 도구</b>",
+"B. <b>감사인이 보유한 자격증</b>",
+"C. <b>서버 데이터 오너의 허가(Permission)</b>",
+"D. <b>IDS 활성화 여부</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 데이터 오너의 허가(Permission)</b><br><br>
+<b>핵심:</b> 모의해킹은 본질적으로 <b>공격 행위</b> — 사전 서면 승인 없이 수행 시 <b>불법·내부 정책 위반·증거 훼손·서비스 중단 책임</b>. 데이터 오너의 명시적 허가가 절대 우선.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>중요도</th><th>판정</th></tr>
+<tr><td>A. 도구</td><td>유효성·시스템 영향에 중요하나 <b>허가 후 결정 사항</b></td><td>2차 ❌</td></tr>
+<tr><td>B. 자격증</td><td>역량 신호일 뿐 — <b>테스트 효과성과 무관</b></td><td>비핵심 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 데이터 오너 허가</b></td><td><b>법적·정책적 정당성·범위·시점·리스크 합의</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>D. IDS 활성화</td><td>모의해킹 요구사항 아님 — 탐지 능력 평가 시에만 관련</td><td>선택 사항 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Rules of Engagement(ROE)</b>: 모의해킹 사전 서면 합의 — <b>범위·표적·기법·시점·연락처·금지 사항·종료 조건</b> 명시<br>
+• 허가 문서: <b>Get-out-of-jail letter</b>(법적 면책 증명) + <b>경영진 결재·데이터 오너 승인·법무 검토</b><br>
+• 데이터 오너가 알아야 할 것: <b>잠재 영향(서비스 중단·데이터 손실)·복구 절차·증거 보존·언론 대응</b><br>
+• 무허가 모의해킹 사례 = <b>해킹 행위</b>로 형사 처벌 가능 (Computer Fraud and Abuse Act 등)<br>
+• 도구·자격증·IDS는 <b>허가 확보 후</b> 검토할 운영 사항 — 우선순위 명확히 구분<br>
+• 시험 패턴: "Pen Test MOST important" → <b>데이터 오너 허가</b> (허가 = 모든 보안 테스트의 전제 조건)</div>`,
+reference:"CRM Chapter 5: Penetration Testing — Authorization & RoE",
+keyConcepts:[
+"데이터 오너 허가|모의해킹의 절대 전제 — 무허가 시 불법·정책 위반·법적 책임 발생",
+"Rules of Engagement(ROE)|범위·표적·기법·시점·연락처·금지 사항·종료 조건 서면 합의",
+"Get-out-of-jail Letter|법적 면책 증명서 — 경영진·법무·데이터 오너 결재 필수",
+"오너 통지 사항|잠재 영향·복구 절차·증거 보존·언론 대응 사전 안내",
+"우선순위|허가 > 범위/RoE > 도구·기법 > 자격증 — 운영 사항은 모두 허가 후 결정",
+"무허가 위험|해킹 행위로 형사 처벌 대상 — CFAA 등 법규 적용"
+]
+}
+,
+{
+id:660,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"When protecting an enterprise's IT systems, which of the following is normally the next line of defense after the network firewall has been compromised?",
+questionKo:"기업 IT 시스템 보호에서 <b>네트워크 방화벽이 뚫린 후</b> 일반적으로 <b>다음 방어선</b>은?",
+options:[
+"A. Personal firewall",
+"B. Antivirus programs",
+"C. Intrusion detection system (IDS)",
+"D. Virtual local area network (VLAN) configuration"
+],
+optionsKo:[
+"A. <b>개인 방화벽(Personal firewall)</b>",
+"B. <b>안티바이러스 프로그램</b>",
+"C. <b>침입 탐지 시스템(IDS)</b>",
+"D. <b>VLAN 구성</b>"
+],
+correct:2,
+explanation:`<b>정답: C. IDS (Intrusion Detection System)</b><br><br>
+<b>핵심:</b> 방어 다층화 순서에서 방화벽 다음은 <b>네트워크 IDS/IPS</b> — 방화벽 통과 트래픽을 분석해 이상 행위·공격 시도 탐지.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>방어 계층 위치</th><th>판정</th></tr>
+<tr><td>A. Personal Firewall</td><td><b>엔드포인트(최후방)</b> — 네트워크 다음 단계 아님</td><td>후반 계층 ❌</td></tr>
+<tr><td>B. AV 프로그램</td><td>엔드포인트·서버 — 네트워크 직후 X</td><td>호스트 계층 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. IDS/IPS</b></td><td><b>방화벽 직후 — 통과 트래픽 검사·이상 탐지</b></td><td><b>✅ 방화벽 다음 방어선</b></td></tr>
+<tr><td>D. VLAN</td><td>아키텍처 설계 요소 — 방화벽 보완 아님</td><td>설계 단계 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Defense in Depth 계층 순서</b>: <b>방화벽 → IDS/IPS → 네트워크 세그멘테이션(VLAN) → 호스트 보안(AV·Personal FW) → 애플리케이션 보안 → 데이터 암호화</b><br>
+• IDS는 방화벽이 <b>놓친·우회된 공격</b>을 탐지 — 시그니처+행위 기반 분석<br>
+• Personal Firewall·AV는 <b>네트워크가 아닌 호스트 계층</b> → 다층 방어의 후반에 위치<br>
+• VLAN은 <b>설계 단계 격리 통제</b> — 침해 후 횡적 이동을 제한하지만 공격 탐지 자체는 못 함<br>
+• Defense in Depth 원칙: <b>단일 통제 실패 시에도 다른 계층이 방어</b> — 침해 확산 지연·탐지 시간 확보<br>
+• 시험 패턴: "방화벽 다음 방어선" → <b>IDS</b> (네트워크 → 호스트 순서로 외곽부터 안쪽)</div>`,
+reference:"CRM Chapter 5: Defense in Depth — Layered Security",
+keyConcepts:[
+"방어 계층 순서|방화벽 → IDS/IPS → VLAN/세그멘테이션 → 호스트(AV·Personal FW) → 앱 → 데이터 암호화",
+"IDS의 위치|방화벽 직후 — 통과 트래픽 검사로 우회 공격 탐지",
+"Defense in Depth|단일 통제 실패해도 다른 계층이 방어 — 침해 확산 지연·탐지 시간 확보",
+"Personal FW·AV|호스트 계층 — 네트워크 다음 단계 아닌 후반 계층",
+"VLAN|아키텍처 격리 — 탐지가 아닌 횡적 이동 제한 통제",
+"외곽 → 내부 원칙|네트워크에서 시작해 호스트·앱·데이터까지 안쪽으로 계층화"
+]
+}
+,
+{
+id:661,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"Neural networks are effective in detecting fraud because they can:",
+questionKo:"<b>신경망(Neural Network)</b>이 부정행위 탐지에 효과적인 이유는?",
+options:[
+"A. discover new trends because they are inherently linear.",
+"B. solve problems where large and general sets of training data are not obtainable.",
+"C. address problems that require consideration of a large number of input variables.",
+"D. make assumptions about the shape of any curve relating variables to the output."
+],
+optionsKo:[
+"A. <b>본질적으로 선형이라 새로운 트렌드를 발견함</b>",
+"B. <b>크고 일반적인 학습 데이터 확보가 어려운 문제 해결</b>",
+"C. <b>많은 수의 입력 변수를 고려해야 하는 문제 처리</b>",
+"D. <b>변수와 출력 사이 곡선 형태에 가정을 둠</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 많은 입력 변수를 고려해야 하는 문제 처리</b><br><br>
+<b>핵심:</b> 신경망은 <b>다수 변수 간 비선형 관계·패턴</b>을 학습 — 다른 통계 기법이 놓치는 미묘한 부정 패턴까지 포착해 부정행위 탐지에 강력.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>사실 여부</th><th>판정</th></tr>
+<tr><td>A. 선형이라 트렌드 발견</td><td><b>거짓 — 신경망은 본질적 비선형</b></td><td>오개념 ❌</td></tr>
+<tr><td>B. 학습 데이터 부족 문제 해결</td><td><b>반대 — 대규모 데이터가 있어야 잘 작동</b></td><td>오개념 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 다수 입력 변수 처리</b></td><td><b>참 — 다차원·비선형 관계 학습이 핵심 강점</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>D. 곡선 형태 가정</td><td><b>거짓 — 가정 없음, 데이터로부터 학습</b></td><td>오개념 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 신경망 특징: <b>비선형·다차원·가정 없음(model-free)·대규모 데이터 필요·블랙박스(설명 어려움)</b><br>
+• 부정행위 탐지 적용: <b>신용카드 이상 거래·보험 사기·자금세탁(AML)·내부자 거래·로그인 이상 행위</b><br>
+• 강점: <b>전통 통계가 놓치는 미묘한 패턴·복잡한 상호작용·새로운 변형 부정행위 적응</b><br>
+• 한계: <b>설명 가능성 낮음(블랙박스)·학습 데이터 편향 위험·과적합·대규모 컴퓨팅 비용</b><br>
+• 신경망은 <b>패턴 학습</b>이지 트렌드 발견(트렌드 분석)이 아님 — A는 잘못된 주장<br>
+• 신경망 ≠ 마법 — 양질의 라벨링된 대규모 학습 데이터 필수 (B의 반대)<br>
+• 시험 패턴: "신경망 부정행위 탐지 강점" → <b>다수 입력 변수의 비선형 관계 처리</b></div>`,
+reference:"CRM Chapter 5: AI/ML in Fraud Detection — Neural Networks",
+keyConcepts:[
+"신경망 강점|다수 입력 변수 + 비선형 관계 학습 — 전통 통계가 놓치는 패턴 포착",
+"신경망 특징|비선형·다차원·가정 없음·대규모 데이터 필요·블랙박스",
+"부정행위 탐지 적용|신용카드·보험사기·AML·내부자 거래·로그인 이상 행위",
+"한계|설명 가능성 낮음·학습 데이터 편향·과적합·컴퓨팅 비용",
+"오개념 회피|신경망은 선형 X·곡선 가정 X·소규모 데이터 부적합·트렌드 발견 X",
+"신경망 vs 통계|통계=가정 기반 / 신경망=데이터 기반 비선형 학습"
+]
+}
+,
+{
+id:662,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"An information systems (IS) auditor evaluates security controls' effectiveness by simulating real-world attacks during an audit review. Which of the following security testing techniques is the auditor using?",
+questionKo:"감사 검토 중 IS 감사인이 <b>실제 공격을 시뮬레이션</b>하여 보안 통제의 효과성을 평가하고 있다. 어떤 보안 테스트 기법을 사용하고 있는가?",
+options:[
+"A. Vulnerability scanning",
+"B. Security auditing",
+"C. Code review",
+"D. Penetration testing"
+],
+optionsKo:[
+"A. <b>취약점 스캐닝(Vulnerability scanning)</b>",
+"B. <b>보안 감사(Security auditing)</b>",
+"C. <b>코드 리뷰(Code review)</b>",
+"D. <b>모의해킹(Penetration testing)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 모의해킹(Penetration Testing)</b><br><br>
+<b>핵심:</b> 펜테스트는 <b>실제 공격을 능동적으로 시도</b>해 취약점 악용 가능성과 통제 효과성을 검증 — 단순 식별·점검이 아닌 <b>실증 시뮬레이션</b>이 핵심 차별점.<br><br>
+<table class="cmp">
+<tr><th>기법</th><th>활동 성격</th><th>판정</th></tr>
+<tr><td>A. 취약점 스캐닝</td><td>자동화 도구로 <b>식별·보고만</b> — 악용 시도 X</td><td>능동 공격 아님 ❌</td></tr>
+<tr><td>B. 보안 감사</td><td>정책·통제 준수성 점검 — <b>문서·인터뷰 중심</b></td><td>시뮬레이션 아님 ❌</td></tr>
+<tr><td>C. 코드 리뷰</td><td>소스코드 정적 검토 — <b>실행·공격 시도 X</b></td><td>정적 분석 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. Penetration Testing</b></td><td><b>실제 공격 시뮬레이션·취약점 능동 악용·통제 우회 시도</b></td><td><b>✅ 시뮬레이션의 정의</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>보안 테스트 스펙트럼 (수동 → 능동)</b>: <b>감사(준수) → 코드리뷰(정적) → 취약점 스캔(식별) → 펜테스트(악용) → Red Team(은밀한 장기 공격)</b><br>
+• 펜테스트 단계: <b>정찰 → 스캐닝 → 침투 → 권한 상승 → 측면 이동 → 목표 달성 → 보고</b> (Kill Chain 모방)<br>
+• 펜테스트 vs 취약점 스캔: <b>스캔=취약점 목록 / 펜테스트=취약점 + 악용 가능성 + 비즈니스 영향 입증</b><br>
+• 펜테스트 vs Red Team: <b>펜테스트=범위 한정·시간 제한·기술 중심 / Red Team=목표 중심·은밀성·장기·다중 벡터</b><br>
+• 사전 요건: <b>RoE(Rules of Engagement)·Get-out-of-jail letter·범위·시점·연락처</b> 합의 필수<br>
+• 시험 패턴: "실제 공격 시뮬레이션·통제 효과성 검증" → <b>Penetration Testing</b> 키워드 매칭</div>`,
+reference:"CRM Chapter 5: Penetration Testing vs Other Security Testing",
+keyConcepts:[
+"Penetration Testing|실제 공격 시뮬레이션·능동 악용 — 통제 효과성·우회 가능성 실증",
+"보안 테스트 스펙트럼|감사 → 코드리뷰 → 취약점 스캔 → 펜테스트 → Red Team (수동→능동)",
+"펜테스트 vs 스캔|스캔=식별만 / 펜테스트=식별+악용+비즈니스 영향 입증",
+"펜테스트 vs Red Team|펜테스트=범위·시간 한정 / Red Team=목표 중심·은밀·장기",
+"펜테스트 단계|정찰→스캐닝→침투→권한 상승→측면 이동→목표→보고 (Kill Chain 모방)",
+"사전 요건|RoE·Get-out-of-jail letter·범위·시점·연락처 서면 합의 필수"
+]
+}
+,
+{
+id:663,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"When conducting a penetration test of an IT system, an enterprise should be MOST concerned with:",
+questionKo:"IT 시스템 <b>모의해킹 수행 시</b> 기업이 <b>가장 염려해야 할 사항(MOST concerned)</b>은?",
+options:[
+"A. the confidentiality of the report.",
+"B. finding all weaknesses in the system.",
+"C. restoring systems to the original state.",
+"D. logging changes made to production systems."
+],
+optionsKo:[
+"A. <b>보고서의 기밀성</b>",
+"B. <b>시스템의 모든 취약점 발견</b>",
+"C. <b>테스트 후 시스템을 원상태로 복원</b>",
+"D. <b>운영 시스템 변경 사항 로깅</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 테스트 후 시스템 원상복구</b><br><br>
+<b>핵심:</b> 펜테스트 중 생성된 <b>방화벽 룰·테스트 계정·업로드 파일·백도어</b> 등이 운영 환경에 남으면 보안 구멍이 되므로 <b>완전 원상복구</b>가 최우선.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>중요도</th><th>판정</th></tr>
+<tr><td>A. 보고서 기밀성</td><td>중요하나 <b>사후 관리</b> 사항</td><td>핵심 운영 리스크 아님 ❌</td></tr>
+<tr><td>B. 모든 취약점 발견</td><td><b>현실적으로 불가능</b> — 시간·자원 제약</td><td>비현실적 목표 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 원상복구</b></td><td><b>남은 변경이 보안 구멍·서비스 장애 유발 → 즉시 위험</b></td><td><b>✅ MOST concerned</b></td></tr>
+<tr><td>D. 변경 로깅</td><td>복구의 <b>전제·수단</b>이지 목적 아님</td><td>도구적 가치 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 펜테스트 중 흔히 남는 흔적: <b>테스트 사용자 계정·임시 방화벽 룰·웹쉘·업로드 파일·SSH 키·스케줄 작업·DB 임시 객체</b><br>
+• 미복구 시 위험: <b>실제 공격자가 발견·악용 → 더 큰 침해</b>, 컴플라이언스 위반, 서비스 불안정<br>
+• 복구 보장 절차: <b>① 모든 변경 로깅 → ② 체크리스트로 역순 제거 → ③ 시스템 오너 입회 확인 → ④ 회복 검증 보고</b><br>
+• 로깅(D)은 <b>복구의 도구</b>이지 목적이 아님 — 로그만 남기고 복구 안 하면 무의미<br>
+• 보고서 기밀성(A)은 별도 통제(암호화·접근 제한·NDA) — 운영 리스크 아님<br>
+• 모든 취약점 발견(B) 불가능: 펜테스트는 <b>샘플링·시간 제한</b> 활동 → 발견된 것만 보고<br>
+• 시험 패턴: "펜테스트 MOST concerned" → <b>원상복구</b> (변경이 운영에 잔존하면 새 취약점)</div>`,
+reference:"CRM Chapter 5: Penetration Testing — Post-Test Cleanup",
+keyConcepts:[
+"원상복구(MOST concerned)|테스트 중 변경(계정·룰·파일)이 잔존하면 새 보안 구멍 발생",
+"흔한 잔존 흔적|테스트 계정·임시 방화벽 룰·웹쉘·업로드 파일·SSH 키·스케줄 작업·DB 임시 객체",
+"복구 절차|변경 로깅 → 역순 제거 → 시스템 오너 확인 → 회복 검증 보고",
+"로깅의 역할|복구의 전제·도구이지 목적 아님 — 로그만으론 위험 미해소",
+"보고서 기밀성|중요하나 사후 관리 사항 — 즉시 운영 리스크 아님",
+"모든 취약점 발견 불가|샘플링·시간 제한 활동 — 100% 커버리지는 현실적 불가능"
+]
+}
+,
+{
+id:664,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"After installing a network, an enterprise implemented a vulnerability assessment tool to identify possible weaknesses. Which type of reporting poses the MOST serious risk associated with such tools?",
+questionKo:"기업이 네트워크 설치 후 <b>취약점 평가 도구</b>를 도입했다. 이 도구의 보고에서 <b>가장 심각한 위험</b>을 초래하는 것은?",
+options:[
+"A. Differential",
+"B. False-positive",
+"C. False-negative",
+"D. Less-detail"
+],
+optionsKo:[
+"A. <b>차등 보고(Differential)</b>",
+"B. <b>오탐(False-positive)</b>",
+"C. <b>미탐(False-negative)</b>",
+"D. <b>상세도 부족(Less-detail)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. False-Negative(미탐)</b><br><br>
+<b>핵심:</b> 미탐 = <b>실제 취약점을 놓침</b> → 조직은 안전하다고 오인 → 패치·통제 누락 → <b>공격자에게 그대로 노출</b>되는 가장 위험한 상황.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위험 성격</th><th>판정</th></tr>
+<tr><td>A. Differential</td><td>시점 간 스캔 결과 비교 — <b>정상 기능</b></td><td>위험 X ❌</td></tr>
+<tr><td>B. False-Positive(오탐)</td><td>존재하지 않는 취약점 보고 → <b>재검증 노력</b> 필요하나 보안엔 무해</td><td>운영 부담일 뿐 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. False-Negative(미탐)</b></td><td><b>실제 취약점 누락 → 안전 착각 → 무대응 → 침해</b></td><td><b>✅ 가장 심각</b></td></tr>
+<tr><td>D. Less-detail</td><td>상세 부족 — 추가 분석으로 보완 가능</td><td>위험 낮음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>FP vs FN 영향 비교</b>: FP=<b>비용·시간 낭비</b> / FN=<b>실제 침해 가능성</b> → FN이 훨씬 치명적<br>
+• 미탐 원인: <b>구식 시그니처·인증되지 않은 스캔(unauthenticated)·범위 누락·새로운 제로데이·맞춤형 앱 미인식</b><br>
+• 미탐 감소 방안: <b>① 인증 스캔(Authenticated/Credentialed)·② 다중 도구 병행(Nessus+Qualys+OpenVAS)·③ 수동 검증·④ 시그니처 최신화·⑤ 펜테스트 보완</b><br>
+• 신뢰의 함정: 스캔 결과 "취약점 없음" ≠ "취약점 부재" — <b>스캐너 한계 인지 필수</b><br>
+• Differential(A)는 시간 흐름에 따른 변화 추적 — 신규 취약점·해결된 취약점 식별의 정상 기능<br>
+• Less-detail(D)은 보고 형식 문제로 추가 분석·도구로 보완 가능<br>
+• 시험 패턴: "취약점 도구 가장 심각 위험" → <b>False-Negative(미탐)</b> (오탐은 비용일 뿐, 미탐은 침해 원인)</div>`,
+reference:"CRM Chapter 5: Vulnerability Assessment — FP vs FN Risk",
+keyConcepts:[
+"False-Negative(MOST serious)|실제 취약점 누락 → 안전 착각 → 무대응으로 침해 발생",
+"FP vs FN|FP=비용·시간 낭비 / FN=실제 침해 가능성 — FN이 훨씬 치명적",
+"미탐 원인|구식 시그니처·미인증 스캔·범위 누락·제로데이·맞춤형 앱 미인식",
+"미탐 감소|인증 스캔·다중 도구 병행·수동 검증·시그니처 최신화·펜테스트 보완",
+"Differential 보고|시점 간 변화 추적 — 신규/해결 취약점 식별의 정상 기능",
+"신뢰의 함정|스캔 \"취약점 없음\" ≠ 실제 없음 — 도구 한계 인지 필수"
+]
+}
+,
+{
+id:665,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"When reviewing an intrusion detection system, an information systems (IS) auditor should be MOST concerned about which of the following?",
+questionKo:"IDS 검토 시 IS 감사인이 <b>가장 우려해야 할 사항</b>은?",
+options:[
+"A. High number of false-positive alarms",
+"B. Low coverage of network traffic",
+"C. Network performance downgrade",
+"D. Default detection settings"
+],
+optionsKo:[
+"A. <b>높은 오탐(False-positive) 발생</b>",
+"B. <b>네트워크 트래픽 커버리지 부족</b>",
+"C. <b>네트워크 성능 저하</b>",
+"D. <b>기본 탐지 설정 사용</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 네트워크 트래픽 커버리지 부족</b><br><br>
+<b>핵심:</b> IDS가 <b>일부 트래픽만 감시</b>하면 감시되지 않는 경로의 공격은 <b>탐지 자체가 불가능</b> — 보이지 않는 위협이 가장 위험.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위험 성격</th><th>판정</th></tr>
+<tr><td>A. 높은 오탐</td><td><b>알려진 문제 — 튜닝·필터링으로 교정 가능</b></td><td>관리 가능 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 커버리지 부족</b></td><td><b>감시 밖 트래픽은 탐지 불가 — 사각지대 = 침해 가능성</b></td><td><b>✅ MOST concerned</b></td></tr>
+<tr><td>C. 성능 저하</td><td>2차 위험 — 용량 증설·하드웨어 업그레이드로 완화</td><td>운영 이슈 ❌</td></tr>
+<tr><td>D. 기본 설정</td><td>커스터마이즈 권장 사항 — 보안 자체가 무력화되진 않음</td><td>관리 사항 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"보이지 않는 것은 보호할 수 없다"</b> — IDS의 가치는 가시성(visibility) 확보에 있음<br>
+• 커버리지 부족 원인: <b>스위치 SPAN 포트 누락·트래픽 비대칭·암호화 트래픽·VLAN 미연결·세그멘트 추가 시 미반영</b><br>
+• 커버리지 확보 방안: <b>네트워크 TAP·다중 SPAN·NDR·TLS 가시성(decrypt)·자산 인벤토리 동기화·정기 커버리지 검증</b><br>
+• 오탐(A)은 <b>탐지가 되었기 때문에 발생하는 문제</b> — 튜닝·화이트리스트로 개선 / 미탐 + 커버리지 부족은 탐지 자체가 안 됨<br>
+• 성능 저하(C)·기본 설정(D)은 <b>발견 가능·해결 가능</b>한 운영 이슈 — 사각지대보다 영향 작음<br>
+• 시험 패턴: "IDS MOST concerned" → <b>커버리지 부족</b> (오탐·성능은 관리 가능, 사각지대는 침해 직결)</div>`,
+reference:"CRM Chapter 5: IDS Review — Coverage as Primary Concern",
+keyConcepts:[
+"커버리지 부족(MOST concerned)|감시 밖 트래픽은 탐지 불가 — 사각지대 = 잠재 침해",
+"가시성 원칙|보이지 않는 것은 보호 불가 — IDS의 핵심 가치는 visibility",
+"커버리지 부족 원인|SPAN 포트 누락·트래픽 비대칭·암호화·VLAN 미연결·신규 세그멘트 미반영",
+"커버리지 확보|네트워크 TAP·다중 SPAN·NDR·TLS 가시성·자산 인벤토리 동기화·정기 검증",
+"오탐의 성격|탐지된 문제 — 튜닝·화이트리스트로 관리 가능 / 사각지대는 탐지 자체 불가",
+"성능·기본 설정|발견·해결 가능한 운영 이슈 — 사각지대보다 영향 작음"
+]
+}
+,
+{
+id:666,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"An enterprise is planning to install a network-based intrusion detection system (IDS) to protect the website that it hosts. Where should the device be installed?",
+questionKo:"자체 호스팅 <b>웹사이트 보호용 네트워크 IDS</b>를 설치하려 한다. 어디에 배치해야 하는가?",
+options:[
+"A. On the local network",
+"B. Outside the firewall",
+"C. In the demilitarized zone",
+"D. On the server that hosts the website"
+],
+optionsKo:[
+"A. <b>로컬 내부 네트워크</b>",
+"B. <b>방화벽 외부</b>",
+"C. <b>DMZ(비무장지대)</b>",
+"D. <b>웹사이트 호스트 서버 위에</b>"
+],
+correct:2,
+explanation:`<b>정답: C. DMZ(비무장지대)</b><br><br>
+<b>핵심:</b> 공개 웹서버는 통상 <b>DMZ에 위치</b> — 네트워크 IDS도 <b>같은 DMZ 세그먼트</b>에 두어 인터넷·내부 양방향에서 웹서버로 향하는 트래픽을 감시.<br><br>
+<table class="cmp">
+<tr><th>배치 위치</th><th>감시 대상</th><th>판정</th></tr>
+<tr><td>A. 로컬 내부망</td><td>내부 자원 보호용 — <b>웹서버는 DMZ에 있음</b></td><td>위치 불일치 ❌</td></tr>
+<tr><td>B. 방화벽 외부</td><td>방화벽 차단 전 모든 시도 — <b>노이즈 과다·웹 보호 직접 X</b></td><td>비효율 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. DMZ</b></td><td><b>웹서버와 같은 세그먼트 — 인터넷·내부 양방향 공격 탐지</b></td><td><b>✅ 웹 보호 최적</b></td></tr>
+<tr><td>D. 웹서버 위에</td><td>이는 <b>HIDS</b> — 문제는 <b>네트워크 IDS</b></td><td>유형 불일치 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>DMZ(Demilitarized Zone)</b> = 인터넷과 내부망 사이의 격리 세그먼트 — 공개 서비스(웹·메일·DNS) 호스팅<br>
+• DMZ IDS의 가치: <b>외부 공격 + 내부에서 DMZ로의 측면 이동 + DMZ→내부 침투</b> 모두 탐지<br>
+• NIDS vs HIDS: <b>NIDS=네트워크 트래픽 / HIDS=호스트 로그·파일 무결성</b> — 문제는 NIDS 한정<br>
+• 외부(B)는 <b>정찰 추세 파악용</b> — 웹앱 보호엔 부적합 (방화벽이 차단할 노이즈 폭증)<br>
+• 내부망(A)은 <b>내부 자원 보호용</b> — 공개 웹서버는 DMZ에 있어야 정상<br>
+• 보완 배치: <b>방화벽 외부(추세 파악) + DMZ(웹 보호) + 내부망(내부자 위협)</b> 다층 IDS 권장<br>
+• 시험 패턴: "공개 웹서버 보호 NIDS" → <b>DMZ</b> (서비스가 있는 곳에 IDS 배치)</div>`,
+reference:"CRM Chapter 5: Network IDS Placement — DMZ for Public Services",
+keyConcepts:[
+"DMZ IDS 배치|공개 웹서버와 같은 세그먼트 — 인터넷·내부 양방향 공격 탐지",
+"DMZ 정의|인터넷과 내부망 사이 격리 세그먼트 — 공개 서비스(웹·메일·DNS) 호스팅",
+"NIDS vs HIDS|NIDS=네트워크 트래픽 감시 / HIDS=호스트 로그·파일 무결성",
+"외부 배치 한계|정찰 추세 파악용 — 웹앱 보호엔 노이즈 과다로 부적합",
+"내부망 IDS|내부 자원·내부자 위협 탐지용 — 공개 웹 보호와 다른 목적",
+"다층 IDS|외부(추세) + DMZ(웹 보호) + 내부망(내부자) 조합이 이상적"
+]
+}
+,
+{
+id:667,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"The MOST important factor in planning a black box penetration test is:",
+questionKo:"<b>블랙박스 모의해킹</b> 계획에서 가장 중요한 요소는?",
+options:[
+"A. the documentation of the planned testing procedure.",
+"B. a realistic evaluation of the environment architecture to determine scope.",
+"C. knowledge by the management staff of the client organization.",
+"D. scheduling and deciding on the timed length of the test."
+],
+optionsKo:[
+"A. <b>계획된 테스트 절차 문서화</b>",
+"B. <b>범위 결정을 위한 환경 아키텍처의 현실적 평가</b>",
+"C. <b>고객사 경영진의 인지(knowledge)</b>",
+"D. <b>테스트 일정·소요 시간 결정</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 경영진의 인지(승인·인지)</b><br><br>
+<b>핵심:</b> 블랙박스 테스트는 <b>실제 공격처럼 보임</b> — 모니터링 시스템이 탐지했을 때 <b>합법성을 즉시 확인</b>할 수 있도록 경영진이 사전 인지해야 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>중요성</th><th>판정</th></tr>
+<tr><td>A. 절차 문서화</td><td>실행상 필요 — 그러나 <b>승인 후 작성</b></td><td>2차 ❌</td></tr>
+<tr><td>B. 환경 평가</td><td><b>블랙박스 정의상 환경 정보 없음</b></td><td>모순 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 경영진 인지</b></td><td><b>법적 정당성·테스트와 실제 공격 구분·중단 권한·연락 체계</b></td><td><b>✅ 가장 중요</b></td></tr>
+<tr><td>D. 일정·시간</td><td>업무 영향 최소화에 중요하나 <b>경영진 협의 하의 결정</b></td><td>하위 사항 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>블랙박스 = 테스터 정보 없음</b> (B는 블랙박스 정의와 모순) — 표적 정보 없이 외부 공격자 시점으로 진행<br>
+• 경영진 인지 필요 이유: <b>① 법적 면책(Get-out-of-jail letter)·② SOC 알람 시 실제 공격 여부 즉시 판단·③ 중단·확대 결정·④ 비상 연락 체계</b><br>
+• <b>Double-blind</b>의 경우는 SOC팀까지 모름 → 그래도 <b>최상위 경영진은 인지</b> 필수<br>
+• 인지 범위는 <b>최소화 원칙(Need-to-know)</b> — 정보 누출 방지하되 책임자는 반드시 포함<br>
+• 블랙박스에서 환경 평가(B)는 <b>테스터의 정찰 결과</b>로 도출 — 사전 입력 아님<br>
+• 시험 패턴: "Black box 펜테스트 MOST important" → <b>경영진 인지/승인</b> (법적·운영 안전망)</div>`,
+reference:"CRM Chapter 5: Black Box Penetration Test — Management Awareness",
+keyConcepts:[
+"경영진 인지(MOST important)|법적 정당성·SOC 알람 판별·중단 권한·비상 연락 — 블랙박스의 안전망",
+"블랙박스 정의|테스터에 정보 없음 — 외부 공격자 시점, 환경 평가는 정찰로 도출",
+"Get-out-of-jail Letter|법적 면책 증명 — 경영진 결재 필수 문서",
+"Double-blind와 구분|Double-blind는 SOC도 모름 / 그래도 최상위 경영진은 반드시 인지",
+"Need-to-know 원칙|인지 범위 최소화 — 정보 누출 방지하되 책임자는 포함",
+"환경 평가의 함정|블랙박스에선 사전 정보 없음 — 환경 평가는 테스터의 발견 사항"
+]
+}
+,
+{
+id:668,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"Which of the following antispam filtering methods has the LOWEST possibility of false-positive alerts?",
+questionKo:"다음 안티스팸 필터링 방식 중 <b>오탐(False-positive) 가능성이 가장 낮은 것</b>은?",
+options:[
+"A. Rule-based",
+"B. Checksum based",
+"C. Heuristic filtering",
+"D. Statistic-based"
+],
+optionsKo:[
+"A. <b>규칙 기반(Rule-based)</b>",
+"B. <b>체크섬 기반(Checksum-based)</b>",
+"C. <b>휴리스틱 필터링(Heuristic)</b>",
+"D. <b>통계 기반(Statistic-based)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 체크섬 기반(Checksum-based)</b><br><br>
+<b>핵심:</b> 사용자가 신고한 <b>스팸 메시지의 체크섬</b>과 일치하는 메일만 차단 — 정확한 해시 매칭이므로 정상 메일 오탐 가능성 가장 낮음.<br><br>
+<table class="cmp">
+<tr><th>방식</th><th>판정 기준</th><th>오탐 경향</th></tr>
+<tr><td>A. Rule-based</td><td>키워드 매칭 — <b>정상 메일에 키워드 포함 시 차단</b></td><td>FP ↑ ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Checksum-based</b></td><td><b>알려진 스팸 해시 정확 일치만 차단</b></td><td><b>✅ FP 가장 낮음</b></td></tr>
+<tr><td>C. Heuristic</td><td>휴리스틱 추론 — 속도·근사 우선이라 정확도 ↓</td><td>FP 中 ❌</td></tr>
+<tr><td>D. Statistic-based</td><td>단어 빈도 분석 — <b>정상 메일도 분포 유사 시 차단</b></td><td>FP ↑ ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Checksum-based 원리</b>: 사용자가 스팸 신고 → 해시 생성 → 중앙 DB 공유(예: Razor·Pyzor) → 일치 메일 차단<br>
+• 장점: <b>FP 거의 없음·사용자 참여로 신속 확산·정상 메일 보호 우수</b><br>
+• 단점: <b>Hashbuster(가변 잡음 삽입)로 우회 가능</b> → 스팸 측이 메일마다 해시 변경 → 군비경쟁<br>
+• Rule-based(A)는 키워드 단순 매칭으로 정상 비즈니스 메일(예: "free", "offer")도 차단 가능<br>
+• Statistical(D)는 신경망·베이지안 분류 — 정밀하나 정상 메일 분포가 스팸과 겹치면 FP 발생<br>
+• Heuristic(C)은 속도·완전성 트레이드오프 — 정밀도 양보로 FP 발생 가능<br>
+• 실무 권장: <b>다중 방식 조합(Checksum + Bayesian + DKIM/SPF/DMARC + 평판 기반)</b>으로 FP 최소화·FN 보완<br>
+• 시험 패턴: "FP 가장 낮음" → <b>Checksum-based</b> (정확한 해시 매칭 = 오탐 최소)</div>`,
+reference:"CRM Chapter 5: Antispam Filtering Methods — Checksum (Razor/Pyzor)",
+keyConcepts:[
+"Checksum-based|알려진 스팸 해시 정확 일치만 차단 — FP 가장 낮음, 사용자 신고 기반",
+"Hashbuster 우회|스팸 측이 가변 잡음 삽입으로 해시 변경 — 군비경쟁 한계",
+"Rule-based 한계|키워드 단순 매칭 — 정상 비즈니스 메일도 차단(FP 높음)",
+"Statistical 한계|단어 분포 분석 — 정상 메일 분포 유사 시 FP 발생",
+"Heuristic 한계|속도·근사 우선 — 정밀도 양보로 FP 가능",
+"실무 권장|다중 방식 조합(Checksum + Bayesian + SPF/DKIM/DMARC + 평판)으로 FP·FN 균형"
+]
+}
+,
+{
+id:669,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"An information systems (IS) auditor is reviewing a software-based firewall configuration. Which of the following represents the GREATEST vulnerability?",
+questionKo:"<b>소프트웨어 기반 방화벽</b> 구성을 검토 중인 IS 감사인이 발견할 수 있는 <b>가장 큰(GREATEST) 취약점</b>은?",
+options:[
+"A. An implicit deny rule as the last rule in the rule base",
+"B. Installation on an operating system configured with default settings",
+"C. Rules permitting or denying access to systems or networks",
+"D. Configuration as a virtual private network (VPN) endpoint"
+],
+optionsKo:[
+"A. <b>룰 베이스 마지막에 암묵적 거부(Implicit Deny) 룰</b>",
+"B. <b>기본 설정 상태의 OS 위에 설치</b>",
+"C. <b>시스템·네트워크 접근을 허용·거부하는 룰</b>",
+"D. <b>VPN 종단점(endpoint)으로 구성</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 기본 설정 OS 위에 설치 (Default OS)</b><br><br>
+<b>핵심:</b> 방화벽 SW가 강해도 <b>하부 OS가 약하면 우회됨</b> — 기본 설정은 공개·알려진 약점·불필요 서비스 다수 → 공격자가 OS 경로로 침투해 방화벽 무력화.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위험성</th><th>판정</th></tr>
+<tr><td>A. Implicit Deny</td><td><b>방화벽 모범 사례</b> — 명시되지 않은 트래픽 차단</td><td>정상 설정 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 기본 설정 OS</b></td><td><b>알려진 기본값·불필요 서비스·미패치 → 우회 경로</b></td><td><b>✅ GREATEST</b></td></tr>
+<tr><td>C. 접근 허용·거부 룰</td><td>방화벽의 <b>본질적 기능</b> — 정책에 따라 작성</td><td>정상 ❌</td></tr>
+<tr><td>D. VPN 종단점</td><td>일반적 구성 — 보안 통제와 양립</td><td>정상 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>방화벽 ≠ 운영체제 보안</b> — 방화벽 SW는 호스트 OS 위에서 동작 → <b>하부 OS의 보안이 전제</b><br>
+• 기본 설정의 위험: <b>기본 계정·기본 패스워드·불필요 서비스 활성·기본 포트 노출·미패치</b><br>
+• <b>Bastion Host 원칙</b>: 방화벽 호스트는 <b>최소 기능(minimal services)·하드닝·전용 OS·정기 패치·로컬 계정 최소화</b><br>
+• 실무 조치: <b>① 불필요 서비스 비활성 ② 기본 자격증명 변경 ③ 최신 패치 ④ STIG/CIS 벤치마크 적용 ⑤ 로그 외부 전송</b><br>
+• A·C·D는 모두 방화벽의 정상 운영 요소 — Implicit Deny는 오히려 모범 사례<br>
+• 함정 주의: 방화벽 룰만 검토하면 안 됨 → <b>하부 OS 하드닝 상태가 GREATEST 취약점</b><br>
+• 시험 패턴: "방화벽 GREATEST 취약점" → <b>기본 설정 OS</b> (Bastion Host 하드닝 누락)</div>`,
+reference:"CRM Chapter 5: Firewall Hardening — Bastion Host Principles",
+keyConcepts:[
+"기본 설정 OS(GREATEST)|방화벽 SW의 하부 OS가 약하면 우회됨 — 알려진 기본값·미패치·불필요 서비스",
+"Bastion Host 원칙|최소 기능·하드닝·전용 OS·정기 패치·로컬 계정 최소화",
+"Implicit Deny|마지막 룰로 명시되지 않은 트래픽 차단 — 방화벽 모범 사례 (취약점 아님)",
+"기본 설정 위험|기본 계정·패스워드·불필요 서비스·기본 포트·미패치",
+"실무 하드닝|불필요 서비스 비활성·자격증명 변경·패치·STIG/CIS 벤치마크·로그 외부 전송",
+"방화벽 검토 함정|룰만 보면 안 됨 — 하부 OS 하드닝 상태가 핵심"
+]
+}
+,
+{
+id:670,
+domain:"5",
+ks:"5B3 Security Testing Tools and Techniques",
+question:"A firewall is being deployed at a new location. Which of the following is the MOST important factor in ensuring a successful deployment?",
+questionKo:"신규 사이트에 <b>방화벽을 배포</b>한다. 성공적 배포를 보장하는 <b>가장 중요한 요소</b>는?",
+options:[
+"A. Reviewing logs frequently",
+"B. Testing and validating the rules",
+"C. Training a local administrator at the new location",
+"D. Sharing firewall administrative duties"
+],
+optionsKo:[
+"A. <b>로그를 자주 검토</b>",
+"B. <b>룰을 테스트·검증</b>",
+"C. <b>현지 관리자 교육</b>",
+"D. <b>방화벽 관리 업무 분담</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 룰 테스트·검증</b><br><br>
+<b>핵심:</b> 룰 셋의 오류는 <b>방화벽 무용화·필요 트래픽 차단·불필요 트래픽 허용</b>로 직결 — 배포 전 룰 검증이 보안과 가용성 모두의 전제.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>시점·중요도</th><th>판정</th></tr>
+<tr><td>A. 로그 검토</td><td><b>배포 후 운영 단계</b> 활동 — 배포 성공 보장 X</td><td>운영 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 룰 테스트·검증</b></td><td><b>배포 전 정확성 확인 → 보안·가용성 동시 보장</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>C. 현지 관리자 교육</td><td>중앙 관리 시 불필요할 수 있음</td><td>선택적 ❌</td></tr>
+<tr><td>D. 업무 분담</td><td>좋은 관행 — 배포 성공 직접 요인 아님</td><td>관리 사항 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 룰 오류의 위험: <b>① 허용해야 할 트래픽 차단(가용성)·② 차단해야 할 트래픽 허용(기밀성)·③ 룰 순서 오류로 의도와 다른 효과·④ Shadow rule(가려진 룰)</b><br>
+• 룰 검증 방법: <b>① 테스트 환경에서 시뮬레이션·② 정책 vs 룰 매핑 검토·③ 트래픽 캡처로 실측·④ 자동화 도구(Skybox·AlgoSec)·⑤ 동료 리뷰</b><br>
+• 단계적 배포: <b>Audit 모드(허용+로깅) → Permissive(경고만) → Enforce(차단)</b>로 영향 점진 확인<br>
+• 배포 전 체크리스트: <b>업무 영향 분석·롤백 계획·유지보수 창·이해관계자 통보</b><br>
+• 로그 검토(A)는 운영 단계 활동 — 배포 자체의 성공과 별개<br>
+• 시험 패턴: "방화벽 배포 MOST important" → <b>룰 테스트·검증</b> (배포 전 룰이 모든 것)</div>`,
+reference:"CRM Chapter 5: Firewall Deployment — Rule Validation",
+keyConcepts:[
+"룰 테스트·검증(MOST important)|배포 전 룰 정확성 확인 — 보안·가용성 동시 보장",
+"룰 오류 유형|필수 트래픽 차단·악성 트래픽 허용·순서 오류·Shadow rule(가려진 룰)",
+"검증 방법|테스트 환경 시뮬레이션·정책 매핑·트래픽 캡처·자동화 도구·동료 리뷰",
+"단계적 배포|Audit(로깅) → Permissive(경고) → Enforce(차단) 점진 활성화",
+"로그 검토|배포 후 운영 단계 활동 — 배포 성공과 별개",
+"배포 전 체크|업무 영향 분석·롤백 계획·유지보수 창·이해관계자 통보"
+]
+}
 
 ];
