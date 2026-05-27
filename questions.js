@@ -27300,5 +27300,2030 @@ keyConcepts:[
 "배포 전 체크|업무 영향 분석·롤백 계획·유지보수 창·이해관계자 통보"
 ]
 }
+,
+{
+id:671,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following choices is the MOST effective control that should be implemented to ensure accountability for application users accessing sensitive data in the human resource management system (HRMS) and among interfacing applications to the HRMS?",
+questionKo:"<b>HRMS와 연계 애플리케이션 사용자</b>의 민감 데이터 접근에 대한 <b>책임 추적(accountability)</b>을 보장하기 위해 가장 효과적인 통제는?",
+options:[
+"A. Two-factor authentication",
+"B. A digital certificate",
+"C. Audit trails",
+"D. Single sign-on (SSO) authentication"
+],
+optionsKo:[
+"A. <b>이중 인증(2FA)</b>",
+"B. <b>디지털 인증서</b>",
+"C. <b>감사 추적(Audit trails)</b>",
+"D. <b>싱글 사인온(SSO)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 감사 추적(Audit Trails)</b><br><br>
+<b>핵심:</b> 책임 추적성(Accountability)은 <b>누가·언제·무엇을 했는지 기록</b>으로 달성 — 인증 통제(2FA·인증서·SSO)는 진입 통제일 뿐, 사후 행위 기록은 감사 로그가 담당.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할</th><th>판정</th></tr>
+<tr><td>A. 2FA</td><td><b>로그인 강화</b> — 진입 후 행위 추적 불가</td><td>인증 통제 ❌</td></tr>
+<tr><td>B. 디지털 인증서</td><td>강한 인증 — <b>거래 내역 캡처 X</b></td><td>인증 통제 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Audit Trails</b></td><td><b>사용자 ID·시각·행위·데이터 기록 → 책임 추적성 확립</b></td><td><b>✅ MOST effective</b></td></tr>
+<tr><td>D. SSO</td><td>편의성 향상 — <b>책임 추적과 무관</b></td><td>인증 통제 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>5대 보안 속성(AAA+I+C)</b>: Authentication·Authorization·<b>Accountability(=감사 추적)</b>·Integrity·Confidentiality<br>
+• 인증(Authentication) vs 책임추적성(Accountability): <b>인증=신원 확인 / 추적=행위 기록</b> — 별개 통제<br>
+• Audit Trail 필수 기록 요소: <b>WHO(user ID)·WHEN(timestamp)·WHAT(action)·WHERE(IP/host)·WHICH(object/data)·RESULT(success/fail)</b><br>
+• HRMS 인터페이스 환경: <b>API·ETL·시스템 계정 호출까지 모두 로깅</b> — 사람 사용자만이 아닌 서비스 계정도 추적<br>
+• 로그 무결성 보장: <b>중앙 SIEM 전송·WORM 저장·해시 체이닝·접근 제한·로그 자체 감사</b><br>
+• 감사 추적 없으면: <b>사건 발생 시 책임자 식별 불가·법적 증거 부재·내부자 위협 탐지 불가</b><br>
+• 시험 패턴: "Accountability MOST effective" → <b>Audit Trails</b> (인증 통제는 진입만 막음, 추적은 별개)</div>`,
+reference:"CRM Chapter 5: Audit Trails — Accountability Control",
+keyConcepts:[
+"Audit Trails(Accountability)|누가·언제·무엇 기록 — 인증과 별개의 책임 추적 통제",
+"인증 vs 책임추적|인증=신원 확인(진입) / 추적=행위 기록(사후) — 별도 통제",
+"로그 필수 요소|WHO·WHEN·WHAT·WHERE·WHICH·RESULT — 6대 항목",
+"인터페이스 로깅|API·ETL·시스템 계정 호출까지 모두 — 서비스 계정도 추적 대상",
+"로그 무결성|중앙 SIEM·WORM 저장·해시 체이닝·접근 제한·로그 자체 감사",
+"5대 보안 속성|Authentication·Authorization·Accountability·Integrity·Confidentiality"
+]
+}
+,
+{
+id:672,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"An information systems (IS) auditor reviewing the implementation of an intrusion detection system (IDS) should be MOST concerned if:",
+questionKo:"IDS 구현을 검토 중인 IS 감사인이 <b>가장 우려해야 할 사항</b>은?",
+options:[
+"A. IDS sensors are placed outside of the firewall.",
+"B. a behavior-based IDS is causing many false alarms.",
+"C. a signature-based IDS is weak against new types of attacks.",
+"D. the IDS is used to detect encrypted traffic."
+],
+optionsKo:[
+"A. <b>IDS 센서가 방화벽 외부에 배치</b>",
+"B. <b>행위 기반 IDS가 다수의 오탐을 발생</b>",
+"C. <b>시그니처 기반 IDS가 새로운 공격에 취약</b>",
+"D. <b>IDS가 암호화 트래픽 탐지에 사용</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 행위 기반 IDS의 다수 오탐</b><br><br>
+<b>핵심:</b> 오탐 폭주 = <b>경보 피로(Alert Fatigue)</b> → 분석가가 모든 경보를 무시 → <b>실제 공격까지 무시되는 "양치기 소년" 효과</b>. IDS의 본래 가치 무효화.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>상황 해석</th><th>판정</th></tr>
+<tr><td>A. 방화벽 외부 배치</td><td>정찰·추세 파악용 — <b>고민감 구역 일반 관행</b></td><td>정당 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 행위 기반 다수 오탐</b></td><td><b>튜닝 부족 → Alert Fatigue → 실제 공격 미인지</b></td><td><b>✅ MOST concerned</b></td></tr>
+<tr><td>C. 시그니처 기반의 신규 공격 취약</td><td><b>본질적 한계</b> — 예상된 약점</td><td>본질적 특성 ❌</td></tr>
+<tr><td>D. 암호화 트래픽 탐지</td><td>NGFW 종단 검증 시 <b>방화벽 우회·구성 오류 탐지에 유용</b></td><td>가치 있음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Alert Fatigue(경보 피로)</b>: 오탐 과다 → 분석가 둔감 → <b>True Positive까지 무시</b> → IDS 가치 무효화<br>
+• 행위 기반(Anomaly) IDS는 본질적으로 FP↑ — 그러나 <b>지속 튜닝</b>으로 관리 가능 (튜닝 미실시가 문제)<br>
+• 튜닝 방법: <b>① 알람 임계치 조정 ② 정상 baseline 재학습 ③ 화이트리스트(정상 업무 활동) ④ Use Case별 규칙 분리 ⑤ ML 기반 우선순위</b><br>
+• 시그니처 기반(C)의 신규 공격 미탐은 <b>예상되는 본질적 한계</b> — 행위 기반과 결합해 보완<br>
+• 암호화 트래픽 탐지(D)는 <b>TLS 종단 + DPI</b>로 가능하며 오히려 방화벽 구성 오류 탐지에 유용<br>
+• 방화벽 외부 배치(A)는 <b>외부 정찰 추세 파악</b> 용으로 정상 — DMZ·내부망과 다층 배치 권장<br>
+• 시험 패턴: "IDS 검토 MOST concerned" → <b>운영상 무력화되는 상황(오탐 폭주)</b> — 본질적 한계나 정상 운영은 아님</div>`,
+reference:"CRM Chapter 5: IDS Tuning — Alert Fatigue Risk",
+keyConcepts:[
+"Alert Fatigue(MOST concerned)|오탐 과다 → 분석가 둔감 → True Positive 무시 → IDS 가치 무효화",
+"Anomaly IDS 본질|baseline 이탈 탐지 — FP↑ 본질적이나 튜닝으로 관리 가능",
+"튜닝 방법|임계치 조정·baseline 재학습·화이트리스트·Use Case 분리·ML 우선순위",
+"Signature IDS 한계|신규 공격 미탐은 본질적 — Anomaly와 결합해 보완",
+"암호화 트래픽 탐지|TLS 종단 + DPI로 가능 — 방화벽 구성 오류 탐지에 유용",
+"방화벽 외부 IDS|외부 정찰 추세 파악 용도 — DMZ·내부망 다층 배치의 일부"
+]
+}
+,
+{
+id:673,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following controls would be MOST effective in reducing the risk of loss due to fraudulent online payment requests?",
+questionKo:"<b>온라인 결제 부정 요청</b>으로 인한 손실 위험을 줄이는 데 가장 효과적인 통제는?",
+options:[
+"A. Transaction monitoring",
+"B. Protecting web sessions using secure sockets layer (SSL)",
+"C. Enforcing password complexity for authentication",
+"D. Inputting validation checks on web forms"
+],
+optionsKo:[
+"A. <b>거래 모니터링(Transaction monitoring)</b>",
+"B. <b>SSL로 웹 세션 보호</b>",
+"C. <b>패스워드 복잡도 적용</b>",
+"D. <b>웹 폼 입력 검증</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 거래 모니터링(Transaction Monitoring)</b><br><br>
+<b>핵심:</b> 부정 결제는 인증을 통과하더라도 <b>이상 패턴(금액·지역·시간·빈도)</b>이 드러남 — 거래 모니터링이 정상 사용자처럼 보이는 부정행위를 잡는 핵심 통제.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>막는 위협</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 거래 모니터링</b></td><td><b>패턴 이탈·이상 금액·이상 지역·이상 시간 탐지 → 부정거래 차단</b></td><td><b>✅ 부정 결제 핵심 방어</b></td></tr>
+<tr><td>B. SSL/TLS</td><td>전송 구간 도청 방지 — <b>인증된 부정거래는 막지 못함</b></td><td>전송 보호 ❌</td></tr>
+<tr><td>C. 패스워드 복잡도</td><td>자격증명 추측 방어 — <b>카드결제는 패스워드 인증 아닐 수 있음</b></td><td>제한적 ❌</td></tr>
+<tr><td>D. 입력 검증</td><td>웹앱 침해(SQLi·XSS) 방어 — <b>부정거래 자체와 무관</b></td><td>앱 보안 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 부정 결제는 <b>"인증된 사용자"의 비정상 행동</b> — 인증·암호화만으론 막을 수 없음<br>
+• 거래 모니터링 신호: <b>① 평소와 다른 금액·지역·시간 ② 짧은 시간 다수 시도 ③ 신규 단말·IP ④ 평소와 다른 상품군 ⑤ Velocity check(속도 제어)</b><br>
+• 구현 방식: <b>Rule 기반(고정 룰) + ML/통계(이상행동 점수) + 디바이스 핑거프린팅 + 행위 생체인식</b><br>
+• 대응 수준: <b>① 자동 차단 ② Step-up 인증(추가 OTP) ③ 사후 검토 ④ 카드 일시 정지</b><br>
+• PCI DSS·금융감독 규정도 <b>이상거래 탐지(FDS)</b> 구축을 의무화<br>
+• SSL(B)·패스워드(C)·입력검증(D)은 모두 보안 기본기지만 <b>부정거래의 핵심 위험엔 무력</b><br>
+• 시험 패턴: "온라인 결제 부정 MOST effective" → <b>거래 모니터링(FDS)</b> (인증 통과 후 행위 분석)</div>`,
+reference:"CRM Chapter 5: Transaction Monitoring / FDS",
+keyConcepts:[
+"거래 모니터링(MOST effective)|패턴 이탈·이상 금액/지역/시간 탐지 — 인증 통과 후 행위 분석",
+"부정 결제 본질|인증된 사용자의 비정상 행동 — 인증·암호화만으론 차단 불가",
+"이상 신호|금액·지역·시간·Velocity·신규 단말·평소와 다른 상품군",
+"구현 방식|Rule 기반 + ML/통계 + 디바이스 핑거프린팅 + 행위 생체인식",
+"대응 수준|자동 차단·Step-up 인증·사후 검토·카드 정지",
+"FDS 의무화|PCI DSS·금융감독 규정에서 이상거래 탐지(FDS) 구축 요구"
+]
+}
+,
+{
+id:674,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Security administration procedures require read-only access to:",
+questionKo:"보안 관리자(Security Administration) 절차상 <b>읽기 전용(read-only) 접근</b>이 요구되는 대상은?",
+options:[
+"A. access control tables.",
+"B. security log files.",
+"C. logging options.",
+"D. user profiles."
+],
+optionsKo:[
+"A. <b>접근통제 테이블(ACL)</b>",
+"B. <b>보안 로그 파일</b>",
+"C. <b>로깅 옵션(설정)</b>",
+"D. <b>사용자 프로파일</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 보안 로그 파일 (Read-only)</b><br><br>
+<b>핵심:</b> 보안 로그는 <b>증거·감사 추적의 원천</b> — 보안 관리자조차 변조할 수 없도록 <b>읽기 전용</b>으로 제한해 직무 분리·증거 무결성 보장.<br><br>
+<table class="cmp">
+<tr><th>대상</th><th>요구 권한</th><th>이유</th></tr>
+<tr><td>A. ACL 테이블</td><td>Read/Write</td><td>권한 부여·회수 작업 필요</td></tr>
+<tr style="background:#d4edda"><td><b>B. 보안 로그</b></td><td><b>Read-only ✅</b></td><td><b>증거 무결성·자기 행위 은닉 방지</b></td></tr>
+<tr><td>C. 로깅 옵션</td><td>Read/Write</td><td>로깅 정책 구성 필요</td></tr>
+<tr><td>D. 사용자 프로파일</td><td>Read/Write</td><td>계정·역할 관리 필요</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>직무 분리 원칙(SoD)</b>: 로그를 <b>생성하는 사람</b>과 <b>변경할 수 있는 사람</b>이 같으면 자기 행위 은닉 가능<br>
+• 보안 관리자는 시스템 권한이 크므로 <b>본인 활동의 추적성을 위해서라도</b> 로그 쓰기는 차단해야 함<br>
+• 로그 무결성 보장: <b>① 중앙 SIEM·Log server로 즉시 전송 ② WORM 저장 ③ 해시 체이닝/디지털 서명 ④ 별도 관리자(로그 관리자)·시스템 관리자 분리 ⑤ 로그 자체 감사</b><br>
+• 보안 관리자의 일반 권한: <b>ACL 편집·사용자 생성/삭제·로깅 정책 설정·키 관리 — 모두 쓰기 권한 필요</b><br>
+• 예외: 로그 보존 정책에 따른 <b>아카이브·삭제</b>는 별도 권한·승인 워크플로우<br>
+• 시험 패턴: "보안 관리자 Read-only" → <b>로그 파일</b> (로그는 누구도 임의 수정 불가)</div>`,
+reference:"CRM Chapter 5: Log Integrity — Separation of Duties",
+keyConcepts:[
+"보안 로그 = Read-only|증거 무결성·자기 행위 은닉 방지 — 보안 관리자도 쓰기 차단",
+"직무 분리(SoD)|로그 생성자와 변경 권한자 분리 — 자기 활동 은닉 차단",
+"ACL·로깅 옵션·사용자 프로파일|보안 관리자가 쓰기 권한 보유 (정상 업무)",
+"로그 무결성 보장|중앙 SIEM 전송·WORM·해시 체이닝·관리자 분리·로그 자체 감사",
+"보안 관리자 일반 권한|ACL 편집·계정 관리·로깅 정책·키 관리 — 모두 쓰기 권한",
+"로그 보존 예외|아카이브·삭제는 별도 권한·승인 워크플로우"
+]
+}
+,
+{
+id:675,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following is a MAJOR concern for an information systems (IS) auditor reviewing a security information and event management (SIEM) system that monitors logs from various devices?",
+questionKo:"여러 기기의 로그를 모니터링하는 <b>SIEM 시스템</b>을 검토 중인 IS 감사인이 <b>주요(major)</b>로 우려해야 할 사항은?",
+options:[
+"A. The number of false-positive alerts generated by correlation rules have decreased.",
+"B. Only security logs from critical systems and devices are collected for monitoring.",
+"C. The security information and event management (SIEM) system has been configured to perform certain tasks automatically based on alerts.",
+"D. Correlation rules for monitoring logs are reviewed once upon initial implementation."
+],
+optionsKo:[
+"A. <b>상관 규칙의 오탐 수가 감소함</b>",
+"B. <b>중요 시스템·기기의 보안 로그만 수집</b>",
+"C. <b>SIEM이 경보 기반으로 일부 작업을 자동 수행</b>",
+"D. <b>상관 규칙을 초기 구현 시 1회만 검토</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 상관 규칙을 초기 구현 시 1회만 검토</b><br><br>
+<b>핵심:</b> 위협·환경·자산은 계속 변하므로 <b>상관 규칙도 지속 검토·튜닝</b> 필요 — 1회 검토 후 방치 시 알람 정확도 저하·신규 위협 미탐 → SIEM 가치 무력화.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>상황 해석</th><th>판정</th></tr>
+<tr><td>A. 오탐 감소</td><td><b>긍정 신호</b> — 튜닝이 잘 되고 있음</td><td>좋은 결과 ❌</td></tr>
+<tr><td>B. 중요 시스템만 수집</td><td>이상적이진 않으나 <b>핵심 자산 커버</b> 시 주요 우려 아님</td><td>경미 ❌</td></tr>
+<tr><td>C. 자동 작업</td><td>SOAR 통합 — <b>업무 중단만 안 일으키면 정상</b></td><td>가치 있음 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 1회만 검토</b></td><td><b>위협·환경 변화 미반영 → 알람 정확도·탐지력 저하</b></td><td><b>✅ MAJOR concern</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• SIEM의 가치는 <b>지속 튜닝</b>에 비례 — 정적 룰셋은 시간이 갈수록 <b>오탐↑·미탐↑·노이즈↑</b><br>
+• 규칙 검토 주기: <b>분기별 정기 검토 + 신규 시스템·자산 변경·위협 정보 변화 시 수시 검토</b><br>
+• 검토 항목: <b>① Use case 적합성 ② FP/FN 통계 ③ 룰 트리거 분포 ④ 응답 시간 ⑤ 자산·로그소스 변경 반영 ⑥ MITRE ATT&CK 커버리지</b><br>
+• 운영 모범: <b>Use Case 라이프사이클(개발→테스트→배포→측정→개선→폐기)</b> 관리<br>
+• 자동화(C)는 SOAR/Playbook으로 분석 효율↑ — 단, 자동 차단은 <b>업무 영향 시뮬레이션 후</b> 활성화<br>
+• 중요 시스템만 수집(B)은 권장은 아니지만 <b>전체 미수집보다는 양호</b> — D보다 우려 낮음<br>
+• 시험 패턴: "SIEM MAJOR concern" → <b>상관 규칙 미정기 검토</b> (튜닝 정체 = SIEM 무력화)</div>`,
+reference:"CRM Chapter 5: SIEM Tuning & Correlation Rule Lifecycle",
+keyConcepts:[
+"상관 규칙 정기 검토(MAJOR)|위협·환경 변화 미반영 시 알람 정확도·탐지력 저하 — SIEM 가치 무력화",
+"검토 주기|분기별 정기 + 자산/위협 변화 시 수시 — 정적 룰은 시간 경과로 노이즈↑",
+"검토 항목|Use case 적합성·FP/FN 통계·룰 트리거 분포·응답 시간·자산 변경 반영·ATT&CK 커버리지",
+"Use Case 라이프사이클|개발→테스트→배포→측정→개선→폐기 — 지속 관리 필수",
+"오탐 감소|튜닝 성공 신호 — 우려 아닌 긍정적 결과",
+"SOAR 자동화|업무 영향 시뮬레이션 후 활성화 — 정상 운영 시 효율 향상"
+]
+}
+,
+{
+id:676,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following systems or tools can recognize that a credit card transaction is MORE likely to have resulted from a stolen credit card than from the holder of the credit card?",
+questionKo:"신용카드 거래가 <b>도난 카드에 의한 것일 가능성이 높음</b>을 인식할 수 있는 시스템·도구는?",
+options:[
+"A. Intrusion detection systems (IDSs)",
+"B. Data mining techniques",
+"C. Stateful inspection firewalls",
+"D. Packet filtering routers"
+],
+optionsKo:[
+"A. <b>침입 탐지 시스템(IDS)</b>",
+"B. <b>데이터 마이닝(Data Mining)</b>",
+"C. <b>상태 검사 방화벽(Stateful inspection)</b>",
+"D. <b>패킷 필터링 라우터</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 데이터 마이닝(Data Mining)</b><br><br>
+<b>핵심:</b> 데이터 마이닝은 <b>거래 이력·패턴</b>을 학습해 평소와 다른 사용(금액·지역·상품군) 발견 — 도난 카드 사용 등 부정거래의 행동 단서를 포착.<br><br>
+<table class="cmp">
+<tr><th>도구</th><th>분석 계층</th><th>판정</th></tr>
+<tr><td>A. IDS</td><td>네트워크·호스트 이벤트 — <b>비즈니스 거래 비분석</b></td><td>거래 무관 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Data Mining</b></td><td><b>거래 이력 패턴 분석·이상 행동 탐지</b></td><td><b>✅ 부정 거래 탐지 핵심</b></td></tr>
+<tr><td>C. Stateful FW</td><td>세션 상태 추적 — <b>네트워크 계층</b></td><td>거래 무관 ❌</td></tr>
+<tr><td>D. Packet Filtering</td><td>L3/L4 헤더 검사 — 거래 내용 보지 못함</td><td>거래 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 부정카드 식별 신호: <b>① 평소와 다른 금액·지역·시간 ② Velocity(짧은 간격 다수 거래) ③ 신규 가맹점·상품군 ④ 지리적 불가능 거래(예: 1시간 안에 다른 대륙)</b><br>
+• 데이터 마이닝 기법: <b>군집화·연관 규칙·의사결정나무·랜덤 포레스트·신경망·이상치 탐지</b><br>
+• 운영 흐름: 거래 발생 → <b>실시간 점수화(scoring)</b> → 임계치 초과 시 <b>차단·Step-up 인증·사후 검토</b><br>
+• 네트워크 보안 도구(A·C·D)는 <b>OSI 4계층 이하</b>에서 동작 — 비즈니스 거래 의미 해석 불가<br>
+• 데이터 마이닝은 <b>FDS(Fraud Detection System)</b>의 핵심 — 카드사·전자상거래·보험·세무 등 광범위 적용<br>
+• 시험 패턴: "거래·패턴·도난 카드 탐지" → <b>Data Mining</b> (네트워크 보안 도구는 거래 의미 모름)</div>`,
+reference:"CRM Chapter 5: Data Mining for Fraud Detection",
+keyConcepts:[
+"Data Mining|거래 이력 패턴 학습·이상 행동 탐지 — 부정카드 식별 핵심 기법",
+"이상 신호|금액·지역·시간·Velocity·신규 가맹점·지리적 불가능 거래",
+"마이닝 기법|군집화·연관 규칙·의사결정나무·랜덤 포레스트·신경망·이상치 탐지",
+"운영 흐름|실시간 scoring → 임계치 초과 시 차단·Step-up·사후 검토",
+"네트워크 도구 한계|IDS·FW·라우터는 OSI 4계층 이하 — 비즈니스 거래 의미 해석 불가",
+"FDS 적용 분야|카드사·전자상거래·보험·세무 — 데이터 마이닝의 광범위 활용"
+]
+}
+,
+{
+id:677,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"During an information systems (IS) audit of a bank, the IS auditor is assessing whether the enterprise properly manages staff member access to the operating system. The IS auditor should determine whether the enterprise performs:",
+questionKo:"은행 IS 감사 중 직원의 <b>운영체제(OS) 접근</b>이 적절히 관리되는지 평가하려면 감사인은 무엇을 확인해야 하는가?",
+options:[
+"A. periodic review of user activity logs.",
+"B. verification of user authorization at the field level.",
+"C. review of data communication access activity logs.",
+"D. periodic review of changing data files."
+],
+optionsKo:[
+"A. <b>사용자 활동 로그의 정기 검토</b>",
+"B. <b>필드 수준의 사용자 권한 검증</b>",
+"C. <b>데이터 통신 접근 활동 로그 검토</b>",
+"D. <b>변경되는 데이터 파일의 정기 검토</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 사용자 활동 로그의 정기 검토</b><br><br>
+<b>핵심:</b> OS는 <b>로그인·명령 실행·파일 접근·권한 변경</b> 등 사용자 활동을 기록 — 정기 검토로 비인가 행위·권한 남용 탐지가 OS 접근 통제의 핵심.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>해당 계층</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 사용자 활동 로그 검토</b></td><td><b>OS 계층 — 로그인·명령·파일·권한 활동 기록</b></td><td><b>✅ OS 접근 통제 평가</b></td></tr>
+<tr><td>B. 필드 수준 권한</td><td>DB·앱 계층 — OS와 무관</td><td>계층 불일치 ❌</td></tr>
+<tr><td>C. 데이터 통신 로그</td><td>네트워크 계층 통제</td><td>OS 아님 ❌</td></tr>
+<tr><td>D. 데이터 파일 변경 검토</td><td>변경관리 프로세스 — OS 접근 통제 아님</td><td>다른 통제 영역 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• OS 접근 통제 평가 포커스: <b>① 로그인·로그아웃·실패 시도 ② 권한 상승(sudo/su) ③ 민감 파일·디렉터리 접근 ④ 보안 설정 변경 ⑤ 시스템 명령 실행</b><br>
+• 주요 OS 로그: <b>Linux=/var/log(auth.log·secure·audit.log) · Windows=Event Log(Security/System/Application)</b><br>
+• 검토 주체: <b>본인 외 독립적 검토자</b>가 정기 검토(SoD) — 보안 로그는 read-only 권한<br>
+• 통제 계층 구분: <b>네트워크·OS·DB·앱·데이터 각각 별도 접근 통제·로그·감사 영역</b><br>
+• 필드 수준 권한(B)은 <b>DB/앱 계층</b>의 정밀 접근통제 — 문제는 OS 계층 한정<br>
+• 데이터 통신 로그(C)는 <b>네트워크 계층</b> 감사 — OS 사용자 접근과 별개<br>
+• 데이터 파일 변경(D)은 <b>변경관리·구성관리</b> 영역 — 접근통제와 다른 목적<br>
+• 시험 패턴: "OS 접근 관리 평가" → <b>OS 사용자 활동 로그 검토</b> (계층별 통제 매칭 중요)</div>`,
+reference:"CRM Chapter 5: OS Access Controls — User Activity Logs",
+keyConcepts:[
+"OS 사용자 활동 로그|로그인·명령·파일·권한 변경 기록 — OS 접근 통제 평가 핵심",
+"OS 로그 위치|Linux=/var/log(auth.log·secure·audit.log) / Windows=Event Log(Security)",
+"검토 포커스|로그인 실패·권한 상승·민감 파일 접근·보안 설정 변경·명령 실행",
+"독립적 검토|본인 외 검토자가 정기 검토 — SoD 원칙, 로그는 read-only",
+"통제 계층 구분|네트워크·OS·DB·앱·데이터 — 각각 별도 접근통제·로그·감사",
+"필드 권한 vs OS 활동|B는 DB/앱 계층 / 문제는 OS 계층 — 계층 매칭이 중요"
+]
+}
+,
+{
+id:678,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"An information systems (IS) auditor reviewing a cloud computing environment that is managed by a third party should be MOST concerned when:",
+questionKo:"<b>제3자가 관리하는 클라우드 환경</b>을 검토하는 IS 감사인이 <b>가장 우려해야 할 사항</b>은?",
+options:[
+"A. The enterprise is not permitted to assess the controls in the participating vendor's site.",
+"B. The service level agreement (SLA) does not address the responsibility of the vendor in the case of a security breach.",
+"C. Laws and regulations are different in the countries of the enterprise and the vendor.",
+"D. The enterprise is using an older version of a browser and is vulnerable to certain types of security risk."
+],
+optionsKo:[
+"A. <b>벤더 사이트의 통제를 평가할 수 없음</b>",
+"B. <b>SLA에 보안 사고 시 벤더 책임이 명시되지 않음</b>",
+"C. <b>기업과 벤더 국가의 법규가 다름</b>",
+"D. <b>기업이 구버전 브라우저를 사용하여 보안 위험에 노출</b>"
+],
+correct:1,
+explanation:`<b>정답: B. SLA에 보안 사고 시 벤더 책임 미명시</b><br><br>
+<b>핵심:</b> 클라우드는 <b>공유 책임(Shared Responsibility)</b> 모델 — SLA에 사고 책임이 정의되지 않으면 침해 발생 시 책임 소재 불명, 손해배상·복구 의무 강제 불가.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위험 성격</th><th>판정</th></tr>
+<tr><td>A. 통제 평가 불가</td><td>계약 한계 — <b>SOC 보고서·인증으로 보완 가능</b></td><td>대체 통제 가능 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. SLA 책임 미정의</b></td><td><b>침해 시 책임자 식별 불가·법적 강제력 부재</b></td><td><b>✅ MOST concerned</b></td></tr>
+<tr><td>C. 법규 차이</td><td>계약으로 적용법 명시 가능 — <b>차이 자체가 문제 아님</b></td><td>관리 가능 ❌</td></tr>
+<tr><td>D. 구버전 브라우저</td><td>내부 통제 사항 — 패치·교체로 해결 가능</td><td>운영 이슈 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Shared Responsibility Model</b>: IaaS=고객 더 많음 / SaaS=벤더 더 많음 — 책임 경계가 계약에 명시되어야 함<br>
+• SLA에 포함되어야 할 보안 사고 조항: <b>① 통지 시한(예: 24~72h) ② 조사 협조 의무 ③ 증거 보존 ④ 손해배상 한도 ⑤ SLA 위반 시 페널티 ⑥ 데이터 복구 책임 ⑦ 종료 시 반환·삭제</b><br>
+• 통제 평가 불가(A)는 <b>SOC 1/2/3 보고서·ISO 27001·CSA STAR</b> 등 제3자 인증으로 보완 가능<br>
+• 법규 차이(C)는 계약상 <b>준거법(Governing Law)·관할(Jurisdiction)·데이터 거주성</b> 명시로 관리<br>
+• 구버전 브라우저(D)는 클라이언트 측 운영 이슈 — 벤더 관리 클라우드 위험과 별개<br>
+• Right to Audit(감사권) 조항: 직접 감사 불가 시 <b>제3자 감사 결과 공유</b> 요구하는 절충안<br>
+• 시험 패턴: "클라우드 MOST concerned" → <b>SLA 책임 미정의</b> (계약 보완 불가능한 근본 결함)</div>`,
+reference:"CRM Chapter 5: Cloud SLA — Security Breach Responsibility",
+keyConcepts:[
+"SLA 책임 명시(MOST concerned)|보안 사고 시 벤더 책임 정의 — 책임 소재·손해배상 강제력의 기반",
+"Shared Responsibility|IaaS=고객多 / SaaS=벤더多 — 계층별 책임 경계 계약 명시 필수",
+"SLA 보안 조항|통지 시한·조사 협조·증거 보존·손해배상·페널티·데이터 복구·종료 반환/삭제",
+"통제 평가 보완|SOC 1/2/3·ISO 27001·CSA STAR 제3자 인증으로 직접 감사 대체",
+"법규 차이 관리|준거법·관할·데이터 거주성 계약 명시 — 차이 자체가 문제 아님",
+"Right to Audit|직접 감사 불가 시 제3자 감사 결과 공유 요구 절충안"
+]
+}
+,
+{
+id:679,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"When auditing a role-based access control system, the information systems (IS) auditor noticed that some IT security employees have system administrator privileges on some servers, which allows them to modify or delete transaction logs. Which would be the BEST recommendation that the IS auditor should make?",
+questionKo:"RBAC 감사 중 일부 보안 직원이 시스템 관리자 권한으로 <b>거래 로그를 수정·삭제</b>할 수 있다. 가장 좋은 권고는?",
+options:[
+"A. Ensure that these employees are adequately supervised.",
+"B. Ensure that backups of the transaction logs are retained.",
+"C. Implement controls to detect the changes.",
+"D. Write transaction logs in real time to write once and read many (WORM) drives."
+],
+optionsKo:[
+"A. <b>해당 직원을 적절히 감독</b>",
+"B. <b>거래 로그의 백업 보관</b>",
+"C. <b>변경을 탐지하는 통제 구현</b>",
+"D. <b>거래 로그를 실시간으로 WORM 드라이브에 기록</b>"
+],
+correct:3,
+explanation:`<b>정답: D. WORM 드라이브에 실시간 기록</b><br><br>
+<b>핵심:</b> 권한 자체를 회수할 수 없는 보안 직원 환경에선 <b>물리적으로 수정 불가한 매체(WORM)</b>에 실시간 기록 — 권한 보유자도 변조할 수 없도록 예방.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>통제 효과</th><th>판정</th></tr>
+<tr><td>A. 감독</td><td>키 입력 일일이 감시 불가 — <b>현실성 부족</b></td><td>비현실적 ❌</td></tr>
+<tr><td>B. 백업 보관</td><td>야간 백업 전 변조 가능 — <b>실시간성 부족</b></td><td>시간 갭 ❌</td></tr>
+<tr><td>C. 변경 탐지</td><td>탐지 통제 — <b>변조 자체는 막지 못함</b></td><td>탐지만 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. WORM 실시간 기록</b></td><td><b>물리적 변조 불가·실시간 → 예방 통제</b></td><td><b>✅ BEST</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>WORM(Write Once Read Many)</b>: 한 번 쓰면 수정·삭제 불가한 매체 — 광디스크·전용 SAN·클라우드 객체잠금(Object Lock·S3 Compliance Mode)<br>
+• 실시간성이 핵심: 백업(B)은 백업 시점 전 변조 가능 → <b>로그 생성 즉시 WORM 전송</b>이 필요<br>
+• 권한 분리의 현실 한계: 보안 관리자는 root 권한 필요 → <b>매체·인프라 계층에서 무결성 강제</b>가 유일한 방법<br>
+• 대안 구현: <b>① 로그 즉시 외부 SIEM 전송 ② Append-only 로그 ③ Blockchain 기반 로그 ④ 해시 체이닝 ⑤ HSM 서명</b><br>
+• 예방 > 탐지 > 교정 순서: WORM(예방) > 변경 탐지(C) > 백업 비교(B) > 감독(A)<br>
+• 규제 준수: SOX·HIPAA·PCI DSS·FINRA 등이 <b>로그 무결성·보존 요구</b> — WORM은 표준 대응<br>
+• 시험 패턴: "관리자 권한자의 로그 변조 방지 BEST" → <b>WORM 실시간 기록</b> (예방 통제 우선)</div>`,
+reference:"CRM Chapter 5: Log Integrity — WORM Storage",
+keyConcepts:[
+"WORM 실시간 기록(BEST)|물리적으로 수정 불가한 매체·실시간 — 권한 보유자도 변조 차단",
+"WORM 구현|광디스크·전용 SAN·클라우드 Object Lock(S3 Compliance Mode)",
+"백업의 한계|백업 시점 전 변조 가능 — 실시간성 부족으로 시간 갭 존재",
+"감독의 한계|키 입력 일일이 감시 불가 — 보안 관리자엔 비현실적",
+"대안 구현|즉시 SIEM 전송·Append-only 로그·블록체인·해시 체이닝·HSM 서명",
+"규제 요구|SOX·HIPAA·PCI DSS·FINRA — 로그 무결성·보존 의무화"
+]
+}
+,
+{
+id:680,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"A programmer maliciously modified a production program to change data and then restored the program back to the original code. Which of the following would MOST effectively detect the malicious activity?",
+questionKo:"프로그래머가 운영 프로그램을 악의적으로 수정해 데이터를 변경한 뒤 <b>원본 코드로 복원</b>했다. 이 악의적 활동을 가장 효과적으로 탐지할 수 있는 방법은?",
+options:[
+"A. Comparing source code",
+"B. Reviewing system log files",
+"C. Comparing object code",
+"D. Reviewing executable and source code integrity"
+],
+optionsKo:[
+"A. <b>소스 코드 비교</b>",
+"B. <b>시스템 로그 파일 검토</b>",
+"C. <b>오브젝트 코드 비교</b>",
+"D. <b>실행파일·소스 코드 무결성 검토</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 시스템 로그 파일 검토</b><br><br>
+<b>핵심:</b> 코드를 원상복구해도 <b>변경·실행·접근 행적은 로그에 남음</b> — 현재 코드 비교(A/C/D)는 모두 원본과 동일해 탐지 불가, 로그만이 과거 활동의 증거.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>현 상태에서 효과</th><th>판정</th></tr>
+<tr><td>A. 소스 비교</td><td><b>원본 복원됨 — 차이 없음</b></td><td>탐지 불가 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 시스템 로그</b></td><td><b>변경·배포·실행·파일 접근 시각·사용자 ID 기록 잔존</b></td><td><b>✅ 유일한 단서</b></td></tr>
+<tr><td>C. 오브젝트 비교</td><td><b>원본과 동일</b> — 차이 없음</td><td>탐지 불가 ❌</td></tr>
+<tr><td>D. 무결성 검토</td><td>현 코드 vs 현 실행파일 일치 — <b>변조 흔적 없음</b></td><td>탐지 불가 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 일시적 변조 후 복원(Time-of-check ≠ Time-of-use) 공격: <b>시점 분석</b>이 핵심 — 코드 스냅샷만으론 무력<br>
+• 검토할 로그: <b>① 파일 변경 시각(mtime/ctime) ② 컴파일/빌드 로그 ③ 배포 로그 ④ 권한 상승·sudo 사용 ⑤ 비정상 시간대 접근 ⑥ DB 거래 로그(데이터 변경) ⑦ 변경관리 티켓 vs 실제 변경</b><br>
+• 다중 로그 상관분석: <b>SIEM에서 코드 변경 시각 + DB 거래 시각 + 사용자 활동 매칭</b><br>
+• 예방 통제: <b>① 직무 분리(개발자 = 운영 권한 X) ② 변경관리 절차 ③ FIM(File Integrity Monitoring)으로 실시간 변경 알림 ④ WORM 로그</b><br>
+• FIM 도구: <b>Tripwire·OSSEC·AIDE·Samhain</b> — 변경 즉시 알람<br>
+• 코드 비교(A/C/D)는 <b>현재 상태</b>만 봄 — <b>이력</b>은 로그가 유일<br>
+• 시험 패턴: "변경 후 복원된 코드 탐지" → <b>시스템 로그</b> (스냅샷이 아닌 시계열 증거)</div>`,
+reference:"CRM Chapter 5: Detecting Tampered Production Code via Logs",
+keyConcepts:[
+"시스템 로그(MOST effective)|변경·배포·실행·접근 행적 — 원본 복원돼도 시계열 증거 잔존",
+"코드 비교의 한계|A·C·D 모두 현재 상태만 비교 — 일시 변조 후 복원엔 무력",
+"검토할 로그|파일 mtime/ctime·빌드/배포·sudo·비정상 시간대·DB 거래·변경관리 티켓",
+"FIM(File Integrity Monitoring)|Tripwire·OSSEC·AIDE·Samhain — 실시간 변경 알람",
+"SIEM 상관분석|코드 변경 시각 + DB 거래 시각 + 사용자 활동 매칭으로 의도 파악",
+"예방 통제|개발자/운영자 분리·변경관리·FIM·WORM 로그 — 사전 차단의 핵심"
+]
+}
+,
+{
+id:681,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following is the MOST effective control for restricting access to unauthorized Internet sites in an enterprise?",
+questionKo:"기업의 <b>비인가 인터넷 사이트 접근 제한</b>에 가장 효과적인 통제는?",
+options:[
+"A. Routing outbound Internet traffic through a content-filtering proxy server",
+"B. Routing inbound Internet traffic through a reverse proxy server",
+"C. Implementing a firewall with appropriate access rules",
+"D. Deploying client software utilities that block inappropriate content"
+],
+optionsKo:[
+"A. <b>아웃바운드 트래픽을 콘텐츠 필터링 프록시로 경유</b>",
+"B. <b>인바운드 트래픽을 리버스 프록시로 경유</b>",
+"C. <b>적절한 접근 규칙을 가진 방화벽 구현</b>",
+"D. <b>부적절한 콘텐츠 차단 클라이언트 SW 배포</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 콘텐츠 필터링 프록시(아웃바운드)</b><br><br>
+<b>핵심:</b> 사용자의 웹 요청은 <b>아웃바운드</b> — 모든 요청을 중앙 프록시로 강제 경유시켜 <b>URL·카테고리·콘텐츠 분석</b>으로 차단·로깅이 가장 효과적.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적합성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 콘텐츠 필터링 프록시</b></td><td><b>URL·카테고리·콘텐츠 분석으로 차단 + 중앙 로깅</b></td><td><b>✅ MOST effective</b></td></tr>
+<tr><td>B. 리버스 프록시</td><td><b>외부→내부 보호용</b> — 사용자 웹 접근 방향 반대</td><td>방향 오류 ❌</td></tr>
+<tr><td>C. 방화벽</td><td>IP·포트 통제 중심 — URL/카테고리 단위 정밀 차단 어려움</td><td>정밀도 부족 ❌</td></tr>
+<tr><td>D. 클라이언트 SW</td><td>다수 PC 설치·유지 부담 — <b>우회 가능성 높음</b></td><td>중앙 통제 약함 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Forward Proxy(웹 게이트웨이)</b> 방향: 사용자 → 프록시 → 인터넷 / <b>Reverse Proxy</b> 방향: 인터넷 → 프록시 → 내부 서버<br>
+• 콘텐츠 필터링 기능: <b>① URL 카테고리(도박·악성·SNS) ② 키워드·정규식 ③ 파일 형식·크기 ④ SSL 검사 ⑤ DLP 통합 ⑥ 시간대·역할 기반 정책 ⑦ 안티멀웨어 통합</b><br>
+• 중앙 집중 장점: <b>일관된 정책·중앙 로깅·즉시 정책 변경·모든 단말 적용·소요 비용 효율</b><br>
+• 우회 차단: <b>방화벽에서 프록시 외 직접 HTTP/HTTPS 차단</b>으로 강제 경유<br>
+• 클라이언트 SW(D)의 문제: <b>관리자 권한 사용자가 우회 가능·BYOD 적용 어려움·일관성 부족</b><br>
+• 방화벽(C)은 <b>네트워크 계층</b> — 콘텐츠 필터링은 보조 기능, 전용 프록시가 정밀도↑<br>
+• 상용 제품: <b>Zscaler·Cisco Umbrella·Forcepoint·Blue Coat·Squid+SquidGuard</b><br>
+• 시험 패턴: "비인가 사이트 차단 MOST effective" → <b>콘텐츠 필터링 프록시</b> (아웃바운드 중앙 통제)</div>`,
+reference:"CRM Chapter 5: Web Content Filtering — Forward Proxy",
+keyConcepts:[
+"콘텐츠 필터링 프록시(MOST effective)|아웃바운드 트래픽 중앙 경유 → URL/카테고리/콘텐츠 차단·로깅",
+"Forward vs Reverse Proxy|Forward=사용자→인터넷 / Reverse=인터넷→내부 서버 (방향 정반대)",
+"필터링 기능|URL 카테고리·키워드·파일형식·SSL 검사·DLP·시간/역할·안티멀웨어",
+"중앙 통제 장점|일관된 정책·중앙 로깅·즉시 변경·BYOD 포함·비용 효율",
+"우회 차단|방화벽에서 프록시 외 HTTP/HTTPS 직통 차단으로 강제 경유",
+"클라이언트 SW 한계|관리자 권한 우회·BYOD 적용 난·일관성 부족"
+]
+}
+,
+{
+id:682,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"The MOST serious challenge in the operation of an intrusion detection system is:",
+questionKo:"IDS 운영에서 <b>가장 심각한 과제</b>는?",
+options:[
+"A. filtering false-positives alerts.",
+"B. learning vendor-specific protocols.",
+"C. updating detection signatures.",
+"D. blocking eligible connections."
+],
+optionsKo:[
+"A. <b>오탐(False-positive) 알람 필터링</b>",
+"B. <b>벤더 고유 프로토콜 학습</b>",
+"C. <b>탐지 시그니처 업데이트</b>",
+"D. <b>정상 연결 차단</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 오탐 알람 필터링</b><br><br>
+<b>핵심:</b> IDS 운영의 본질적 어려움은 <b>대량 알람 중 실제 사고와 정상 활동을 구분</b>하는 것 — 튜닝·스크리닝·SOC 절차가 운영의 핵심.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>운영 난이도</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 오탐 필터링</b></td><td><b>본질적·지속적 — IDS 작동 방식상 회피 불가</b></td><td><b>✅ MOST serious</b></td></tr>
+<tr><td>B. 프로토콜 학습</td><td>벤더 문서·교육으로 단기 해결 가능</td><td>일회성 ❌</td></tr>
+<tr><td>C. 시그니처 업데이트</td><td>현대 IDS는 자동 업데이트 내장</td><td>자동화 ❌</td></tr>
+<tr><td>D. 정상 차단</td><td><b>IDS는 탐지만</b> — 차단은 IPS의 기능</td><td>유형 혼동 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• IDS는 <b>"많이 알람 → 분석가가 분류"</b> 방식 — 분류 부담이 운영 비용의 대부분<br>
+• 오탐 발생 원인: <b>① 정상 업무가 시그니처에 우연 일치 ② 행위 기반의 baseline 부적합 ③ 환경 변화 미반영 ④ 룰 과잉 ⑤ 트래픽 컨텍스트 부족</b><br>
+• 필터링 전략: <b>① 임계치·심각도 튜닝 ② 화이트리스트(정상 업무) ③ 자산 정보 결합(중요도) ④ 위협 인텔리전스 매칭 ⑤ ML 우선순위·노이즈 억제 ⑥ Use Case 라이프사이클 관리</b><br>
+• SOC 운영의 KPI: <b>True Positive Rate·MTTD·MTTR·알람당 분석 시간</b> — 모두 오탐 관리와 직결<br>
+• 오탐 방치 결과: <b>Alert Fatigue → 진짜 공격 무시 → 침해 장기화</b><br>
+• IDS vs IPS: 정상 차단(D)은 IPS 부작용 — IDS는 탐지만 하므로 차단은 별개 이슈<br>
+• 시험 패턴: "IDS 운영 MOST serious challenge" → <b>오탐 필터링</b> (시그니처·프로토콜은 자동화/학습으로 해결)</div>`,
+reference:"CRM Chapter 5: IDS Operations — False Positive Management",
+keyConcepts:[
+"오탐 필터링(MOST serious)|IDS 작동 방식상 본질적·지속적 — 운영 비용의 대부분",
+"오탐 원인|정상 업무 우연 일치·baseline 부적합·환경 변화·룰 과잉·컨텍스트 부족",
+"필터링 전략|튜닝·화이트리스트·자산 결합·위협 인텔·ML 우선순위·Use Case 라이프사이클",
+"SOC KPI|TP Rate·MTTD·MTTR·알람당 분석 시간 — 모두 오탐 관리와 직결",
+"오탐 방치 위험|Alert Fatigue → 진짜 공격 무시 → 침해 장기화",
+"IDS vs IPS|정상 차단은 IPS 부작용 — IDS는 탐지만, 차단 이슈와 분리"
+]
+}
+,
+{
+id:683,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"An information systems (IS) auditor observes large outbound volumes of binary executable data at random intervals. Which of the following is the BEST recommendation for the IS auditor to make?",
+questionKo:"IS 감사인이 <b>임의 간격으로 대량의 바이너리 실행 데이터가 외부로 전송</b>되는 것을 관찰했다. 가장 좋은 권고는?",
+options:[
+"A. Check cloud service provider service level agreements to review storage terms.",
+"B. Review historical peak hour timings and system testing schedules.",
+"C. Review the firewall logs and network traffic.",
+"D. Check for backup schedules for high volumes of binary executable data."
+],
+optionsKo:[
+"A. <b>클라우드 SLA의 스토리지 조항 검토</b>",
+"B. <b>과거 피크 시간·시스템 테스트 일정 검토</b>",
+"C. <b>방화벽 로그와 네트워크 트래픽 검토</b>",
+"D. <b>대용량 바이너리 데이터의 백업 일정 확인</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 방화벽 로그·네트워크 트래픽 검토</b><br><br>
+<b>핵심:</b> 비정상적 대량 아웃바운드 바이너리 = <b>데이터 유출·랜섬웨어 사전 덤프·C2 통신 의심</b> — 방화벽·네트워크 로그가 출발지·목적지·시간을 직접 보여주는 1차 단서.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>관련성</th><th>판정</th></tr>
+<tr><td>A. 클라우드 SLA</td><td>스토리지 조항 — 트래픽 출처 파악 무관</td><td>방향 불일치 ❌</td></tr>
+<tr><td>B. 피크 시간 이력</td><td>일부 단서이나 <b>"공격 vs 정상"</b> 판별엔 부족</td><td>보조 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 방화벽·네트워크 로그</b></td><td><b>출발지·목적지·포트·볼륨·시간 직접 파악 → 데이터 유출 확인</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>D. 백업 일정</td><td>볼륨 정보 부족 — 외부 전송 출처 식별 불가</td><td>관련 낮음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 비정상 아웃바운드 바이너리 시나리오: <b>① 데이터 유출(exfiltration) ② 랜섬웨어 데이터 덤프 ③ C2 통신·악성코드 다운로드 ④ Crypto miner 동기화 ⑤ 무단 백업·동기화</b><br>
+• 방화벽·NetFlow 분석 포인트: <b>① 출발지·목적지 IP ② 포트·프로토콜 ③ 볼륨·세션 시간 ④ Geo-IP(이상 국가) ⑤ 평판 DB 매칭(C2 known IOC) ⑥ 시간대 이상</b><br>
+• DLP 솔루션: <b>콘텐츠·메타데이터 기반 차단</b> — 방화벽이 못 보는 데이터 의미 분석<br>
+• 인접 통제: <b>EDR(엔드포인트 행위) + SIEM 상관분석 + Threat Intel 매칭</b>으로 정확도 향상<br>
+• 랜섬웨어 대응 순서: <b>① 격리(네트워크 분리)·② 증거 보존·③ 원인 분석·④ 복구·⑤ 교훈</b><br>
+• 클라우드 SLA(A)나 백업(D)은 <b>사고 분석 도구가 아님</b> — 위협 식별엔 부적합<br>
+• 시험 패턴: "비정상 아웃바운드 데이터 BEST" → <b>방화벽·네트워크 로그</b> (1차 가시성 확보)</div>`,
+reference:"CRM Chapter 5: Data Exfiltration Detection via Network Logs",
+keyConcepts:[
+"방화벽·네트워크 로그(BEST)|출발지·목적지·포트·볼륨·시간 — 데이터 유출/C2/랜섬웨어 식별의 1차 단서",
+"비정상 아웃바운드 시나리오|데이터 유출·랜섬웨어 사전 덤프·C2 통신·암호화폐 채굴·무단 동기화",
+"분석 포인트|출발지/목적지 IP·포트·볼륨·세션 시간·Geo-IP·평판 DB·시간대 이상",
+"DLP 솔루션|콘텐츠·메타데이터 기반 차단 — 방화벽 미흡 부분 보완",
+"인접 통제|EDR + SIEM 상관분석 + Threat Intel — 정확도 향상",
+"랜섬웨어 사전 덤프|암호화 전 외부 서버로 데이터 유출 — 대량 아웃바운드 바이너리의 전형적 신호"
+]
+}
+,
+{
+id:684,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"The PRIMARY purpose of audit trails is to:",
+questionKo:"<b>감사 추적(Audit Trails)의 주된 목적(PRIMARY)</b>은?",
+options:[
+"A. improve response time for users.",
+"B. establish accountability for processed transactions.",
+"C. improve the operational efficiency of the system.",
+"D. provide information to auditors who want to track transactions."
+],
+optionsKo:[
+"A. <b>사용자 응답 시간 개선</b>",
+"B. <b>처리된 거래에 대한 책임 추적성 확립</b>",
+"C. <b>시스템 운영 효율성 향상</b>",
+"D. <b>감사인의 거래 추적용 정보 제공</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 처리된 거래에 대한 책임 추적성 확립</b><br><br>
+<b>핵심:</b> 감사 추적의 핵심 목적은 <b>"누가·언제·무엇을" 기록해 책임 소재를 명확히 함</b> — 감사인 활용(D)이나 효율성(A·C)은 부가 효과·반대 효과.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>관계</th><th>판정</th></tr>
+<tr><td>A. 응답 시간 개선</td><td>로깅은 오히려 <b>처리 부담 → 응답 시간 증가</b></td><td>반대 효과 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 책임 추적성</b></td><td><b>거래 추적·책임 식별·법적 증거 — 핵심 목적</b></td><td><b>✅ PRIMARY</b></td></tr>
+<tr><td>C. 운영 효율 향상</td><td>저장 공간·CPU 소비 → <b>효율은 떨어짐</b></td><td>반대 효과 ❌</td></tr>
+<tr><td>D. 감사인용 정보</td><td>활용 사례 중 하나일 뿐 — 주 목적 아님</td><td>부수적 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Accountability(책임 추적성)</b> = AAA 중 마지막 A — 인증·인가 후 행위가 누구에게 귀속되는지 명확화<br>
+• 감사 추적의 다중 용도: <b>① 책임 추적(PRIMARY) ② 사고 조사·포렌식 ③ 부정행위 탐지 ④ 규제 준수 증명 ⑤ 운영 문제 진단 ⑥ 성능 분석 ⑦ 감사 증거</b><br>
+• 감사인 활용(D)은 <b>여러 용도 중 하나</b> — "PRIMARY"는 모든 활용을 가능케 하는 책임 추적성<br>
+• Trade-off: 감사 추적은 <b>저장·처리 비용·응답 시간</b>을 일부 희생 — 보안·통제를 위한 비용<br>
+• 효과적 감사 추적 요건: <b>WHO·WHEN·WHAT·WHERE·WHICH·RESULT</b> 6대 요소 + 무결성 보장 + 충분한 보존 기간<br>
+• 규제 요구: <b>SOX·HIPAA·PCI DSS·GDPR</b> 모두 감사 추적 의무 — 책임 추적성이 법적 근거<br>
+• 시험 패턴: "Audit Trail PRIMARY purpose" → <b>Accountability(책임 추적)</b> (D는 활용 예시 함정)</div>`,
+reference:"CRM Chapter 5: Audit Trails — Accountability as Primary Purpose",
+keyConcepts:[
+"Audit Trail PRIMARY|책임 추적성(Accountability) 확립 — 누가·언제·무엇 기록으로 책임 귀속",
+"다중 용도|책임 추적(주)·사고 조사·부정 탐지·규제 준수·성능 분석·감사 증거 (감사인 활용은 하나일 뿐)",
+"Trade-off|저장·처리 비용·응답 시간 증가 — 보안 통제를 위한 비용",
+"6대 요소|WHO·WHEN·WHAT·WHERE·WHICH·RESULT + 무결성 + 보존 기간",
+"규제 요구|SOX·HIPAA·PCI DSS·GDPR — 감사 추적 의무화의 법적 근거",
+"AAA 중 마지막 A|Authentication(인증) → Authorization(인가) → Accountability(추적성)"
+]
+}
+,
+{
+id:685,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following controls would BEST detect intrusion?",
+questionKo:"<b>침입을 가장 잘 탐지하는</b> 통제는?",
+options:[
+"A. User IDs and user privileges are granted through authorized procedures.",
+"B. Automatic logoff is used when a workstation is inactive for a particular period of time.",
+"C. Automatic logoff of the system occurs after a specified number of unsuccessful attempts.",
+"D. Unsuccessful logon attempts are monitored by the security administrator."
+],
+optionsKo:[
+"A. <b>승인 절차를 통한 사용자 ID·권한 부여</b>",
+"B. <b>워크스테이션 비활성 시 자동 로그오프</b>",
+"C. <b>일정 횟수 로그인 실패 후 자동 로그오프</b>",
+"D. <b>보안 관리자의 로그인 실패 시도 모니터링</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 보안 관리자의 로그인 실패 시도 모니터링</b><br><br>
+<b>핵심:</b> 탐지 통제는 <b>능동적 모니터링·검토</b>로 실현 — 자동 로그오프는 예방 통제, ID 부여는 관리 통제. 침입의 흔적인 실패 시도를 분석하는 것이 탐지의 본질.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>통제 유형</th><th>판정</th></tr>
+<tr><td>A. 권한 부여 절차</td><td><b>관리적 예방 통제</b> — 정책 차원</td><td>탐지 X ❌</td></tr>
+<tr><td>B. 비활성 자동 로그오프</td><td><b>예방 통제</b> — 무인 단말 차단</td><td>탐지 X ❌</td></tr>
+<tr><td>C. 실패 횟수 후 로그오프</td><td><b>예방 통제</b> — 무차별 대입 차단</td><td>탐지 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 실패 시도 모니터링</b></td><td><b>탐지 통제 — 침입 시도 능동 검토·식별</b></td><td><b>✅ BEST 탐지</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>통제 유형 구분</b>: 예방(Preventive)·탐지(Detective)·교정(Corrective)·억제(Deterrent)·복구(Recovery)·보완(Compensating)<br>
+• <b>예방 vs 탐지의 핵심 차이</b>: 예방=사건 발생 차단(통제 메커니즘) / 탐지=사건 발생 후 식별(모니터링·검토)<br>
+• 탐지 통제 예시: <b>① 로그 모니터링·SIEM ② IDS ③ 영상 CCTV ④ 무결성 검사(FIM) ⑤ 정기 감사·검토 ⑥ 침입 알람</b><br>
+• 로그인 실패 분석 가치: <b>① 무차별 대입 ② Credential stuffing ③ 비활성 계정 시도 ④ 비정상 시간대·지역 시도 ⑤ 권한 상승 시도</b><br>
+• 자동 로그오프(B·C)는 <b>발생을 막는 메커니즘</b> — 발생 사실을 인지하진 못함<br>
+• 단순 메커니즘 vs 모니터링: <b>"기록만 함" vs "기록을 검토함"</b> — 검토가 있어야 탐지<br>
+• 시험 패턴: "BEST detect" → <b>능동 모니터링/검토 활동</b> (자동화 차단은 예방, 검토는 탐지)</div>`,
+reference:"CRM Chapter 5: Detective Controls — Active Monitoring",
+keyConcepts:[
+"탐지 통제 본질|능동 모니터링·검토로 사건 발생 후 식별 — 단순 기록·자동 차단은 예방",
+"통제 유형 구분|예방·탐지·교정·억제·복구·보완 — 메커니즘에 따라 분류",
+"탐지 통제 예시|로그 모니터링·SIEM·IDS·CCTV·FIM·정기 감사·침입 알람",
+"로그인 실패 분석|무차별·Credential stuffing·비활성 계정·비정상 시간/지역·권한 상승 시도",
+"자동 로그오프|예방 통제 — 발생 차단 메커니즘, 발생 사실은 인지 못함",
+"기록 vs 검토|로그가 있어도 검토하지 않으면 탐지 통제 아님"
+]
+}
+,
+{
+id:686,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"An enterprise determined that its website was compromised, and a rootkit was installed on the server hosting the application. Which of the following choices would have MOST likely prevented the incident?",
+questionKo:"웹사이트가 침해되어 호스팅 서버에 <b>루트킷이 설치</b>됐다. 가장 잘 예방할 수 있었던 통제는?",
+options:[
+"A. A host-based intrusion prevention system (IPS)",
+"B. A network-based intrusion detection system (IDS)",
+"C. A firewall",
+"D. Operating system (OS) patching"
+],
+optionsKo:[
+"A. <b>호스트 기반 침입 방지 시스템(HIPS)</b>",
+"B. <b>네트워크 기반 침입 탐지 시스템(NIDS)</b>",
+"C. <b>방화벽</b>",
+"D. <b>OS 패치</b>"
+],
+correct:0,
+explanation:`<b>정답: A. HIPS (Host-based IPS)</b><br><br>
+<b>핵심:</b> 루트킷 설치는 <b>호스트의 시스템 파일·커널 변경</b> — HIPS는 호스트 내부에서 무단 변경을 실시간 차단해 루트킷 설치 자체를 막음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>한계</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. HIPS</b></td><td><b>호스트 시스템·파일·커널 무단 변경 실시간 차단 → 루트킷 설치 거부</b></td><td><b>✅ MOST likely</b></td></tr>
+<tr><td>B. NIDS</td><td>시그니처 의존·탐지만 — <b>SQLi 등 웹 공격은 정상 트래픽으로 인식</b></td><td>탐지·우회 가능 ❌</td></tr>
+<tr><td>C. 방화벽</td><td><b>웹 포트(80/443)는 열어둬야 함</b> — 정상 트래픽 안의 공격 통과</td><td>응용 계층 무력 ❌</td></tr>
+<tr><td>D. OS 패치</td><td>알려진 취약점만 차단 — <b>웹앱/구성 오류로 우회 가능</b></td><td>부분 효과 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>HIPS</b>는 호스트에 설치되어 <b>① 파일·레지스트리 변경 ② 프로세스 행위 ③ 시스템 콜 ④ 메모리 접근 ⑤ 권한 상승 시도</b>를 실시간 통제·차단<br>
+• 루트킷 방어 핵심: <b>커널/시스템 영역 쓰기 차단·서명되지 않은 드라이버 로드 거부·관리자 권한 행위 모니터링</b><br>
+• NIDS(B) 한계: <b>웹 공격은 80/443 정상 트래픽 안에 숨겨짐</b> — 시그니처 없는 공격·암호화 트래픽 미탐<br>
+• 방화벽(C) 한계: <b>웹 포트 개방 필수</b> — 정상 트래픽 안의 SQLi·XSS·악성 파일은 통과<br>
+• OS 패치(D)는 <b>알려진 취약점</b>만 — 웹앱 결함·잘못된 구성·제로데이엔 무력<br>
+• Defense in Depth: HIPS + WAF + 패치 + NIDS 조합이 이상적 — 단일 통제는 한계<br>
+• 현대 진화: EDR(Endpoint Detection & Response)·XDR로 통합 — HIPS의 후속 개념<br>
+• 시험 패턴: "Rootkit 설치 예방 MOST likely" → <b>HIPS</b> (호스트 무단 변경 차단)</div>`,
+reference:"CRM Chapter 5: Host-based IPS — Rootkit Prevention",
+keyConcepts:[
+"HIPS(MOST likely)|호스트 시스템·파일·커널 무단 변경 실시간 차단 — 루트킷 설치 자체 거부",
+"HIPS 통제 범위|파일/레지스트리 변경·프로세스 행위·시스템 콜·메모리·권한 상승",
+"NIDS 한계|웹 공격은 80/443 정상 트래픽 안에 숨김 — 시그니처 없는 공격 미탐",
+"방화벽 한계|웹 포트 개방 필수 — 응용 계층 공격은 정상 트래픽으로 통과",
+"OS 패치 한계|알려진 취약점만 — 웹앱 결함·구성 오류·제로데이엔 무력",
+"진화|EDR·XDR — HIPS의 후속 개념 (행위 분석·자동 대응·통합 가시성)"
+]
+}
+,
+{
+id:687,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following components is responsible for the collection of data in an intrusion detection system?",
+questionKo:"IDS에서 <b>데이터 수집</b>을 담당하는 구성 요소는?",
+options:[
+"A. Analyzer",
+"B. Administration console",
+"C. User interface",
+"D. Sensor"
+],
+optionsKo:[
+"A. <b>분석기(Analyzer)</b>",
+"B. <b>관리 콘솔(Administration console)</b>",
+"C. <b>사용자 인터페이스(UI)</b>",
+"D. <b>센서(Sensor)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 센서(Sensor)</b><br><br>
+<b>핵심:</b> 센서는 네트워크·서버·엔드포인트에 배치되어 <b>트래픽·이벤트·로그를 수집</b>해 분석기로 전달 — 데이터 수집은 센서의 고유 역할.<br><br>
+<table class="cmp">
+<tr><th>구성 요소</th><th>역할</th><th>판정</th></tr>
+<tr><td>A. Analyzer</td><td>센서에서 받은 데이터로 <b>침입 여부·유형 판정</b></td><td>분석 ❌</td></tr>
+<tr><td>B. 관리 콘솔</td><td>관리자 설정·정책 배포·상태 관리</td><td>관리 ❌</td></tr>
+<tr><td>C. UI</td><td>관리자가 시스템과 상호작용하는 화면</td><td>표시 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. Sensor</b></td><td><b>네트워크·서버 등 다중 지점에서 데이터 수집</b></td><td><b>✅ 수집 담당</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>IDS 4대 구성</b>: <b>Sensor(수집) → Analyzer(분석) → Admin Console(관리) → UI(표시)</b><br>
+• 센서 배치 위치: <b>네트워크(NIDS)=SPAN·TAP 포트 / 호스트(HIDS)=OS·에이전트 / 클라우드=가상 어플라이언스·API</b><br>
+• 센서 수집 데이터: <b>패킷·NetFlow·시스템 로그·파일 무결성·프로세스·레지스트리·인증 이벤트</b><br>
+• 센서 다중 배치: <b>경계·DMZ·내부 세그먼트·중요 자산 근처</b>로 가시성 극대화<br>
+• Analyzer는 센서 데이터 + 시그니처·룰·ML 모델 결합해 <b>침입 판단</b>·우선순위 부여<br>
+• 현대 SIEM: 센서/Agent → Log Collector → Parser → Correlation Engine → Dashboard 흐름 (IDS 구조의 확장)<br>
+• 시험 패턴: "데이터 수집 담당" → <b>Sensor</b> / "분석" → Analyzer / "관리" → Admin Console / "표시" → UI</div>`,
+reference:"CRM Chapter 5: IDS Architecture — Components",
+keyConcepts:[
+"Sensor|네트워크·서버·엔드포인트 데이터 수집 — IDS의 수집 담당 구성 요소",
+"IDS 4대 구성|Sensor(수집) → Analyzer(분석) → Admin Console(관리) → UI(표시)",
+"센서 배치|NIDS=SPAN/TAP / HIDS=OS 에이전트 / 클라우드=가상 어플라이언스·API",
+"수집 데이터|패킷·NetFlow·시스템 로그·파일 무결성·프로세스·인증 이벤트",
+"Analyzer 역할|센서 데이터 + 시그니처·룰·ML로 침입 판정·우선순위 부여",
+"SIEM 확장|Sensor → Collector → Parser → Correlation → Dashboard (IDS 구조 진화)"
+]
+}
+,
+{
+id:688,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"The GREATEST risk from an improperly implemented intrusion prevention system (IPS) is:",
+questionKo:"<b>IPS가 부적절하게 구현됐을 때</b> 가장 큰 위험은?",
+options:[
+"A. too many alerts for system administrators to verify.",
+"B. decreased network performance due to additional traffic.",
+"C. blocking of critical systems or services due to false triggers.",
+"D. reliance on specialized expertise within the IT organization."
+],
+optionsKo:[
+"A. <b>관리자가 확인할 알람 과다</b>",
+"B. <b>추가 트래픽으로 네트워크 성능 저하</b>",
+"C. <b>오탐으로 인한 중요 시스템·서비스 차단</b>",
+"D. <b>IT 조직 내 특정 전문성 의존</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 오탐으로 인한 중요 시스템·서비스 차단</b><br><br>
+<b>핵심:</b> IPS는 <b>인라인 자동 차단</b> 장비 — 오탐 시 실제로 정상 트래픽·서비스가 차단되어 <b>업무 중단·가용성 손실</b>이 직접 발생.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위험 성격</th><th>판정</th></tr>
+<tr><td>A. 알람 과다</td><td>운영 부담 — <b>비즈니스 직접 피해는 아님</b></td><td>경미 ❌</td></tr>
+<tr><td>B. 성능 저하</td><td>IPS는 트래픽을 추가 생성하지 않음 — 명제 오류</td><td>잘못된 전제 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 정상 서비스 차단</b></td><td><b>인라인 차단 → 정상 업무 중단·가용성 손실 직접 발생</b></td><td><b>✅ GREATEST</b></td></tr>
+<tr><td>D. 전문성 의존</td><td>학습 기간 필요하나 <b>특수 전문 분야 아님</b></td><td>관리 사항 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• IPS = <b>인라인 차단</b> → IDS와 달리 오탐의 결과가 <b>즉시 비즈니스 영향</b>으로 전이<br>
+• IDS 오탐 = 분석가 부담 / IPS 오탐 = <b>실제 트래픽·서비스 차단</b> → 가용성·매출·고객 영향<br>
+• 안전 도입 전략: <b>① Monitor/Detect-only 모드부터 시작 ② 단계적 Enforce 활성화 ③ 화이트리스트(중요 자산) ④ 임계치·심각도별 세밀 튜닝 ⑤ 변경 관리·롤백 절차</b><br>
+• 화이트리스트 필수 대상: <b>핵심 결제·인증 서버·내부 운영 도구·정상 비즈니스 파트너 IP</b><br>
+• 모니터링 vs 차단 균형: 룰 신뢰도 높을 때만 자동 차단, 의심 케이스는 알림만<br>
+• 운영 KPI: <b>차단된 정상 트래픽 건수(False Block Rate)·서비스 영향 시간·MTTR</b><br>
+• 시험 패턴: "IPS GREATEST risk" → <b>정상 차단(가용성 피해)</b> — IDS의 알람 과다와 구분</div>`,
+reference:"CRM Chapter 5: IPS Misconfiguration — Availability Risk",
+keyConcepts:[
+"IPS 정상 차단(GREATEST)|인라인 자동 차단 → 오탐 시 정상 서비스 중단·가용성 손실 직접 발생",
+"IDS vs IPS 오탐 영향|IDS=분석 부담 / IPS=실제 서비스 차단 → 비즈니스 영향 직결",
+"안전 도입 전략|Monitor → 단계적 Enforce → 화이트리스트 → 임계치 튜닝 → 변경관리·롤백",
+"화이트리스트 대상|결제·인증·운영 도구·정상 비즈니스 파트너 IP",
+"운영 KPI|False Block Rate·서비스 영향 시간·MTTR — IPS만의 추가 측정 지표",
+"성능 함정|IPS는 자체 트래픽 생성 X — B 보기는 잘못된 전제"
+]
+}
+,
+{
+id:689,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following is the MOST significant concern related to using artificial intelligence (AI) in automated decision-making systems?",
+questionKo:"<b>AI를 자동화된 의사결정 시스템</b>에 사용할 때 <b>가장 중대한 우려</b>는?",
+options:[
+"A. artificial intelligence (AI) systems may lack transparency and explainability.",
+"B. AI algorithms have limited accuracy and reliability.",
+"C. AI technology is susceptible to cyberattacks and hacking.",
+"D. AI implementation requires significant financial investment."
+],
+optionsKo:[
+"A. <b>AI 시스템의 투명성·설명가능성 부족</b>",
+"B. <b>AI 알고리즘의 정확도·신뢰성 한계</b>",
+"C. <b>AI 기술의 사이버 공격·해킹 취약성</b>",
+"D. <b>AI 구현에 막대한 재정 투자 필요</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 투명성·설명가능성(Explainability) 부족</b><br><br>
+<b>핵심:</b> 자동화 의사결정에서 AI(특히 딥러닝)는 <b>블랙박스</b> — 결과의 근거를 설명할 수 없으면 <b>편향·윤리·책임 추적성</b>에 직접 영향, 규제 준수도 어려움.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>관련성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 설명가능성 부족</b></td><td><b>편향·책임·규제 준수 — 의사결정 자동화의 본질적 문제</b></td><td><b>✅ MOST significant</b></td></tr>
+<tr><td>B. 정확도 한계</td><td>정확도는 높을 수 있으나 <b>설명 안 되면 신뢰·채택 한계</b></td><td>2차 ❌</td></tr>
+<tr><td>C. 사이버 공격</td><td>일반 보안 이슈 — 의사결정 자동화 특유 아님</td><td>일반 위험 ❌</td></tr>
+<tr><td>D. 재정 투자</td><td>투자 이슈 — 의사결정 품질과 무관</td><td>비핵심 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>XAI(Explainable AI)</b> 필요성: 인간이 결과 이유를 이해해야 <b>신뢰·교정·법적 정당화</b> 가능<br>
+• 자동화 의사결정 위험 시나리오: <b>① 채용·대출·보험 차별(Bias) ② 법적 책임 불명 ③ GDPR Art.22(자동 결정 거부권) ④ 의료·자율주행 사고 책임</b><br>
+• 규제 동향: <b>EU AI Act·GDPR·NIST AI RMF·ISO/IEC 42001</b> 모두 투명성·설명·인간 감독 요구<br>
+• 완화 통제: <b>① 설명가능 모델 우선(트리·로지스틱 등) ② LIME/SHAP 사후 설명 ③ 모델 카드·데이터 시트 문서화 ④ Human-in-the-loop ⑤ 정기 편향 감사</b><br>
+• 정확도(B)와 설명가능성은 흔히 <b>트레이드오프</b> — 신경망은 정확↑/설명↓, 트리는 설명↑/정확↓<br>
+• 사이버 공격(C)도 AI 위협이나 <b>의사결정 자동화 특유의 우려</b>는 아님<br>
+• 시험 패턴: "AI 자동 의사결정 MOST significant" → <b>투명성·설명가능성</b> (편향·책임·규제 핵심)</div>`,
+reference:"CRM Chapter 5: AI Risks — Explainability & Bias",
+keyConcepts:[
+"AI 설명가능성(MOST significant)|블랙박스 → 편향·책임 추적성·규제 준수 어려움 — 의사결정 자동화의 본질적 문제",
+"XAI(Explainable AI)|결과 근거 설명 — 신뢰·교정·법적 정당화의 전제",
+"자동화 의사결정 위험|채용/대출/보험 차별·법적 책임 불명·GDPR Art.22·의료/자율주행 책임",
+"규제 동향|EU AI Act·GDPR·NIST AI RMF·ISO/IEC 42001 — 투명성·인간 감독 요구",
+"완화 통제|설명가능 모델·LIME/SHAP·모델 카드·Human-in-the-loop·편향 감사",
+"정확도 vs 설명가능성|흔히 트레이드오프 — 신경망↑정확/↓설명, 트리↑설명/↓정확"
+]
+}
+,
+{
+id:690,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following controls will MOST effectively detect the presence of bursts of errors in network transmissions?",
+questionKo:"네트워크 전송 시 <b>버스트(burst) 오류</b>를 가장 효과적으로 탐지하는 통제는?",
+options:[
+"A. Parity check",
+"B. Echo check",
+"C. Block sum check",
+"D. Cyclic redundancy check"
+],
+optionsKo:[
+"A. <b>패리티 체크(Parity check)</b>",
+"B. <b>에코 체크(Echo check)</b>",
+"C. <b>블록 섬 체크(Block sum check)</b>",
+"D. <b>순환 중복 검사(CRC)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. CRC (Cyclic Redundancy Check)</b><br><br>
+<b>핵심:</b> CRC는 다항식 연산으로 <b>블록 전체에 대한 검증값</b>을 생성 — 다중 비트·버스트 오류까지 높은 신뢰도로 탐지하는 표준 방식.<br><br>
+<table class="cmp">
+<tr><th>방식</th><th>탐지 성능</th><th>판정</th></tr>
+<tr><td>A. Parity</td><td>1비트 단위 — <b>버스트 오류 시 50% 신뢰도</b></td><td>다중 오류 미탐 ❌</td></tr>
+<tr><td>B. Echo</td><td>송신측에 되돌려 비교 — <b>대역폭·지연 부담</b></td><td>비효율 ❌</td></tr>
+<tr><td>C. Block Sum</td><td>Parity 변형 — <b>신뢰도 낮음</b></td><td>부분 효과 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. CRC</b></td><td><b>다항식 기반 블록 검증 — 단일/이중 비트, 버스트 오류 거의 모두 탐지</b></td><td><b>✅ MOST effective</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>버스트 오류(Burst Error)</b>: 연속된 여러 비트가 동시에 손상 — 고속 전송·전자기 간섭·잡음 환경에서 흔함<br>
+• CRC 동작: 송신측이 <b>제수 다항식</b>으로 나눈 나머지(FCS)를 전송 → 수신측이 동일 계산 후 비교<br>
+• CRC 표준: <b>CRC-16(이더넷·HDLC), CRC-32(이더넷·ZIP·PNG), CRC-CCITT(통신)</b> 등 — 길이가 길수록 탐지력↑<br>
+• 탐지 능력: <b>모든 단일 비트 오류·모든 이중 비트·홀수 개 비트·길이 ≤ CRC 길이의 모든 버스트 오류 탐지</b><br>
+• Parity 한계: 비트 1개만 검출 — 비트 2개 변경 시 패리티는 동일하게 보임(미탐)<br>
+• Echo 한계: 동일 데이터 재전송으로 <b>대역폭 2배·지연 발생</b> — 효율 떨어짐<br>
+• CRC ≠ 암호 해시: CRC는 오류 탐지용(빠름), 변조 방지엔 SHA-256·HMAC 사용<br>
+• 시험 패턴: "버스트 오류 MOST effective" → <b>CRC</b> (Parity·Echo·Block Sum은 신뢰도/효율 한계)</div>`,
+reference:"CRM Chapter 5: Transmission Error Detection — CRC vs Parity",
+keyConcepts:[
+"CRC(MOST effective)|다항식 기반 블록 검증 — 단일/이중 비트·버스트 오류 거의 모두 탐지",
+"Burst Error|연속 비트 동시 손상 — 고속 전송·간섭·잡음에서 흔함",
+"CRC 표준|CRC-16·CRC-32·CRC-CCITT — 길이가 길수록 탐지력↑",
+"Parity 한계|1비트 단위 — 버스트 오류 50% 신뢰도, 짝수 개 변경 시 미탐",
+"Echo 한계|재전송으로 대역폭 2배·지연 — 효율 떨어짐",
+"CRC vs 해시|CRC=오류 탐지(빠름) / SHA·HMAC=변조 방지(보안) — 목적이 다름"
+]
+}
+,
+{
+id:691,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"Which of the following activities is MOST important for a security team that uses a security information and event management (SIEM) system to carry out log monitoring and alert generation?",
+questionKo:"<b>SIEM으로 로그 모니터링·경보 생성</b>을 수행하는 보안팀의 활동 중 가장 중요한 것은?",
+options:[
+"A. Periodic analysis of alerts to determine causes of false-positive alerts",
+"B. Summarized information about incidents for reporting to management",
+"C. Regular analysis of trends found by reviewing generated alerts",
+"D. Periodic archiving of logs to ensure the expected performance of the system"
+],
+optionsKo:[
+"A. <b>오탐 원인 파악을 위한 주기적 알람 분석</b>",
+"B. <b>경영진 보고를 위한 사고 요약 정보</b>",
+"C. <b>생성된 알람의 추세 분석</b>",
+"D. <b>SIEM 성능 유지를 위한 정기적 로그 아카이브</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 알람 추세 분석(Trend Analysis)</b><br><br>
+<b>핵심:</b> 개별 알람만 봐선 무차별 대입·정찰·내부자 위협 같은 <b>저강도 분산 공격</b>을 놓침 — 시계열·패턴 분석으로 진짜 위협을 식별하는 것이 SIEM의 핵심 가치.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>중요도</th><th>판정</th></tr>
+<tr><td>A. 오탐 분석</td><td>튜닝 활동 — <b>정상 운영의 일부</b>이지만 위협 발견엔 부족</td><td>유지보수 ❌</td></tr>
+<tr><td>B. 사고 요약</td><td>관리 보고 — <b>일상적 활동</b></td><td>관리 보고 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 추세 분석</b></td><td><b>단일 알람을 넘어 무차별·정찰·내부자 위협 식별</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>D. 로그 아카이브</td><td>표준 유지보수 — <b>로그 관리 활동</b></td><td>유지보수 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 추세 분석으로 탐지 가능한 위협: <b>① Low-and-slow 무차별 대입 ② 분산 정찰 스캔 ③ 내부자 점진적 데이터 유출 ④ Beaconing(C2 정기 통신) ⑤ 권한 점진 상승</b><br>
+• 추세 분석 기법: <b>① 시계열 시각화 ② baseline 대비 이탈 ③ Top-N 분석(반복 출발지·계정) ④ 시간대 패턴 ⑤ ML 이상 탐지 ⑥ MITRE ATT&CK 매핑</b><br>
+• 단일 알람의 함정: 1회 실패는 정상이나 <b>1000건 분산 실패는 공격</b> — 개별 관찰만으론 미탐<br>
+• SIEM의 진짜 가치: 단순 로그 집계가 아닌 <b>상관·시계열·문맥 분석</b> — 추세 없는 SIEM은 비싼 로그 저장소<br>
+• 보완 활동: 오탐 분석(A)·사고 요약(B)·아카이브(D) 모두 필요하나 <b>위협 식별 자체</b>가 핵심<br>
+• Threat Hunting과 연계: 추세 분석은 <b>가설 기반 위협 헌팅</b>의 시작점<br>
+• 시험 패턴: "SIEM 운영 MOST important" → <b>추세 분석</b> (단일 알람을 넘어 패턴 식별)</div>`,
+reference:"CRM Chapter 5: SIEM Operations — Trend Analysis & Threat Hunting",
+keyConcepts:[
+"추세 분석(MOST important)|단일 알람을 넘어 분산·점진적 공격 식별 — SIEM의 핵심 가치",
+"탐지 가능 위협|Low-and-slow 무차별·분산 정찰·내부자 점진 유출·Beaconing·권한 점진 상승",
+"분석 기법|시계열·baseline 이탈·Top-N·시간대 패턴·ML 이상·ATT&CK 매핑",
+"단일 알람 함정|1회 정상도 1000건 분산이면 공격 — 개별 관찰만으론 미탐",
+"SIEM 진짜 가치|상관·시계열·문맥 분석 — 추세 없으면 비싼 로그 저장소",
+"Threat Hunting 연계|추세 분석은 가설 기반 위협 헌팅의 시작점"
+]
+}
+,
+{
+id:692,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"An information systems (IS) auditor reviewing a network log discovers that an employee ran elevated commands on their PC by invoking the task scheduler to launch restricted applications. This is an example of what type of attack?",
+questionKo:"직원이 <b>작업 스케줄러를 이용해 제한된 애플리케이션을 관리자 권한으로 실행</b>한 것이 네트워크 로그에서 발견됐다. 어떤 공격 유형인가?",
+options:[
+"A. Race condition",
+"B. Privilege escalation",
+"C. Buffer overflow",
+"D. Impersonation"
+],
+optionsKo:[
+"A. <b>경쟁 상태(Race condition)</b>",
+"B. <b>권한 상승(Privilege escalation)</b>",
+"C. <b>버퍼 오버플로(Buffer overflow)</b>",
+"D. <b>사칭(Impersonation)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 권한 상승(Privilege Escalation)</b><br><br>
+<b>핵심:</b> 작업 스케줄러는 <b>관리자 권한</b>으로 실행되는 서비스 — 이를 통해 일반 사용자가 본인 권한을 넘는 명령을 실행한 것은 전형적 권한 상승 공격.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>공격 메커니즘</th><th>판정</th></tr>
+<tr><td>A. Race condition</td><td>두 이벤트 타이밍 차이 악용</td><td>타이밍 공격 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Privilege Escalation</b></td><td><b>높은 권한 프로세스를 이용해 자신의 권한을 넘는 행위 실행</b></td><td><b>✅ 시나리오와 일치</b></td></tr>
+<tr><td>C. Buffer overflow</td><td>메모리 처리 결함 악용 — 메모리 오염</td><td>메모리 공격 ❌</td></tr>
+<tr><td>D. Impersonation</td><td>다른 신원을 위장 — 신원 위조</td><td>신원 공격 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Privilege Escalation 유형</b>: <b>Vertical(수직, 일반 → 관리자)·Horizontal(수평, 다른 동급 사용자 계정 탈취)</b><br>
+• 일반적 권한 상승 벡터: <b>① 취약한 시스템 서비스(SYSTEM 권한) ② 잘못된 ACL/SUID/SGID ③ 미패치 커널 취약점 ④ Unquoted Service Path ⑤ DLL Hijacking ⑥ 토큰 도용</b><br>
+• 작업 스케줄러 악용: Windows Task Scheduler는 SYSTEM/관리자 권한 → <b>예약 작업이 호출하는 프로그램·스크립트도 해당 권한으로 실행</b><br>
+• 방어책: <b>① 최소 권한 원칙(PoLP) ② 표준 사용자 + UAC ③ AppLocker·WDAC ④ EDR로 권한 상승 행위 탐지 ⑤ 정기 패치 ⑥ 서비스 권한 감사</b><br>
+• Race Condition(A) 예시: TOCTOU(Time-of-check ≠ Time-of-use) — 체크 후 사용 사이에 변경<br>
+• Buffer Overflow(C): 스택/힙에 과도 데이터 입력 → 리턴 주소 덮어쓰기 → 임의 코드 실행<br>
+• Impersonation(D): 토큰 위조·세션 탈취 등 신원 가장 — 권한 상승과 다른 메커니즘<br>
+• 시험 패턴: "스케줄러·SUID·서비스 악용으로 상위 권한 실행" → <b>Privilege Escalation</b></div>`,
+reference:"CRM Chapter 5: Privilege Escalation Attacks",
+keyConcepts:[
+"Privilege Escalation|높은 권한 프로세스/서비스 악용으로 권한 상승 — 작업 스케줄러 악용이 대표 예",
+"수직 vs 수평|Vertical=일반→관리자 / Horizontal=다른 동급 계정 탈취",
+"공격 벡터|취약 서비스·잘못된 ACL/SUID·미패치 커널·Unquoted Path·DLL Hijack·토큰 도용",
+"작업 스케줄러 악용|SYSTEM 권한으로 실행되는 예약 작업 → 호출 프로그램도 해당 권한",
+"방어책|최소 권한·UAC·AppLocker/WDAC·EDR·정기 패치·서비스 권한 감사",
+"공격 유형 구분|Race=타이밍 / BOF=메모리 / Impersonation=신원 / PrivEsc=권한 상승"
+]
+}
+,
+{
+id:693,
+domain:"5",
+ks:"5B4 Security Monitoring Logs, Tools, and Techniques",
+question:"The network engineer observed surges in logs generated by network activity at arbitrary intervals. Which of the following should the network engineer perform NEXT?",
+questionKo:"네트워크 엔지니어가 <b>임의 간격으로 네트워크 활동 로그 급증</b>을 관찰했다. 다음에 수행해야 할 작업은?",
+options:[
+"A. Block the excess traffic.",
+"B. Review and analyze traffic logs.",
+"C. Check with business if transaction volume increased.",
+"D. Ask some users to log out."
+],
+optionsKo:[
+"A. <b>초과 트래픽 차단</b>",
+"B. <b>트래픽 로그 검토·분석</b>",
+"C. <b>거래량 증가 여부를 업무 부서에 확인</b>",
+"D. <b>일부 사용자에게 로그아웃 요청</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 트래픽 로그 검토·분석</b><br><br>
+<b>핵심:</b> 원인 파악 전에는 어떤 조치도 부적절 — <b>로그 분석으로 원인(악성코드·DDoS·정상 트래픽 등)을 식별한 뒤</b> 대응 방향 결정.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 초과 트래픽 차단</td><td>원인 모르고 차단 시 <b>정상 업무 중단</b></td><td>분석 전 차단 위험 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 로그 검토·분석</b></td><td><b>원인 식별 → 적절한 후속 대응 결정</b></td><td><b>✅ NEXT 단계</b></td></tr>
+<tr><td>C. 업무 부서 확인</td><td>분석 결과의 일부 — 우선 데이터 확인</td><td>후순위 ❌</td></tr>
+<tr><td>D. 사용자 로그아웃</td><td>원인 불명 상태에서 강제 종료 — 비합리</td><td>부적절 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>대응 원칙: 식별(Identify) → 격리(Contain) → 근절(Eradicate) → 복구(Recover) → 교훈(Lessons)</b> — 분석 전 차단은 NIST SP 800-61과 어긋남<br>
+• 임의 간격 급증의 가능한 원인: <b>① DDoS·botnet ② 악성코드 C2 통신 ③ 데이터 유출 ④ 자동화 스크립트·배치 ⑤ 일시적 캠페인·이벤트 ⑥ 잘못된 설정</b><br>
+• 로그 분석 포인트: <b>출발지/목적지 IP·포트·프로토콜·시간대·반복 패턴·트래픽 유형·평판 DB 매칭</b><br>
+• 트리아지 우선순위: <b>① 사고 여부 판단 ② 영향 범위 ③ 비즈니스 영향 ④ 대응 수준</b><br>
+• 차단(A)은 <b>분석 후 명확한 악성 트래픽</b>에만 — 정상 트래픽 차단은 가용성 손실<br>
+• 업무 부서 확인(C)·사용자 로그아웃(D)은 <b>로그 분석 결과를 기반</b>으로 한 후속 조치<br>
+• 시험 패턴: "이상 현상 발견 NEXT" → <b>로그 분석</b> (원인 식별 우선, 액션은 그 후)</div>`,
+reference:"CRM Chapter 5: Incident Response — Triage via Log Analysis",
+keyConcepts:[
+"분석 우선 원칙|원인 식별 전 차단은 가용성 손실 — NEXT는 항상 로그 분석",
+"NIST 사고 대응|Identify → Contain → Eradicate → Recover → Lessons — 분석은 1단계",
+"로그 급증 원인|DDoS·악성코드 C2·데이터 유출·배치·이벤트·설정 오류",
+"분석 포인트|IP·포트·프로토콜·시간대·반복 패턴·평판 DB 매칭",
+"트리아지|사고 여부·영향 범위·비즈니스 영향·대응 수준 평가",
+"차단의 타이밍|명확한 악성 트래픽 확인 후 — 분석 전 차단은 정상 트래픽 차단 위험"
+]
+}
+,
+{
+id:694,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following should an incident response team address FIRST after a major incident in an information processing facility (IPF)?",
+questionKo:"정보처리시설(IPF)에서 <b>대규모 사고</b> 발생 시 침해사고 대응팀이 가장 먼저 다뤄야 할 것은?",
+options:[
+"A. Restoration at the facility",
+"B. Documentation of the facility",
+"C. Containment at the facility",
+"D. Monitoring of the facility"
+],
+optionsKo:[
+"A. <b>시설 복원(Restoration)</b>",
+"B. <b>시설 문서화(Documentation)</b>",
+"C. <b>시설 격리·봉쇄(Containment)</b>",
+"D. <b>시설 모니터링(Monitoring)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 봉쇄(Containment)</b><br><br>
+<b>핵심:</b> 사고 발생 시 (인명 안전 다음) <b>피해 확산 차단이 최우선</b> — 격리 없이 복원·문서화·모니터링은 의미가 없고 오히려 피해를 키울 수 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>단계</th><th>판정</th></tr>
+<tr><td>A. 복원</td><td>봉쇄·근절 후 단계 — 출혈 멈춘 후</td><td>후속 ❌</td></tr>
+<tr><td>B. 문서화</td><td>대응 전 과정에 걸쳐 진행 — <b>최우선은 아님</b></td><td>병행 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 봉쇄</b></td><td><b>피해 확산 차단·증거 보존·통제권 확보</b></td><td><b>✅ FIRST</b></td></tr>
+<tr><td>D. 모니터링</td><td>봉쇄 후 추가 위협 감시</td><td>후속 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>NIST SP 800-61 사고 대응 단계</b>: <b>Preparation → Detection & Analysis → Containment·Eradication·Recovery → Post-Incident Activity</b><br>
+• 봉쇄 우선 원칙: <b>"멈추기 전엔 고치지 마라"</b> — 출혈을 멈춘 뒤에야 치료(복원)가 의미 있음<br>
+• 봉쇄 전략: <b>① 단기 봉쇄(즉시 격리) ② 시스템 백업/이미징(증거) ③ 장기 봉쇄(임시 패치·핫픽스) ④ 근절 준비</b><br>
+• 봉쇄 방법 예시: <b>네트워크 분리·VLAN 격리·방화벽 룰·계정 비활성·악성 프로세스 종료·물리 차단</b><br>
+• 인명 안전(Life Safety)은 항상 모든 통제보다 우선 — 화재·감전·붕괴 위험 시 인명 대피가 1순위<br>
+• 문서화(B)는 모든 단계에서 <b>지속적으로 병행</b> — 사후 분석·법적 증거를 위한 활동<br>
+• 복원(A)·모니터링(D)은 봉쇄·근절 이후의 활동 — 순서 명확<br>
+• 시험 패턴: "사고 발생 후 FIRST" → <b>Containment(봉쇄)</b> (인명 안전 다음으로 우선)</div>`,
+reference:"CRM Chapter 5: Incident Response — Containment First",
+keyConcepts:[
+"Containment(FIRST)|피해 확산 차단·증거 보존·통제권 확보 — 인명 안전 다음 1순위",
+"NIST 사고 대응|Preparation → Detection/Analysis → Containment·Eradication·Recovery → Post-Incident",
+"봉쇄 전략|단기 봉쇄(즉시 격리) → 백업/이미징(증거) → 장기 봉쇄(임시 패치) → 근절 준비",
+"봉쇄 방법|네트워크 분리·VLAN 격리·방화벽 룰·계정 비활성·프로세스 종료·물리 차단",
+"문서화|모든 단계에서 지속 병행 — 사후 분석·법적 증거",
+"우선순위|인명 안전 > 봉쇄 > 근절·복원 > 모니터링·문서화 정리"
+]
+}
+,
+{
+id:695,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following specifically addresses how to deal with unauthorized activity on the enterprise's IT systems and how to recover from an attack?",
+questionKo:"IT 시스템의 <b>비인가 행위 대응</b>과 <b>공격으로부터의 복구</b>를 구체적으로 다루는 계획은?",
+options:[
+"A. Incident response plan (IRP)",
+"B. IT contingency plan",
+"C. Business continuity plan (BCP)",
+"D. Continuity of operations plan"
+],
+optionsKo:[
+"A. <b>침해사고 대응 계획(IRP)</b>",
+"B. <b>IT 비상 계획(Contingency Plan)</b>",
+"C. <b>업무 연속성 계획(BCP)</b>",
+"D. <b>운영 연속성 계획(COOP)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 침해사고 대응 계획(IRP)</b><br><br>
+<b>핵심:</b> IRP는 <b>사이버 공격·비인가 행위 식별·완화·복구</b>를 구체적으로 다루는 보안 특화 계획 — BCP·Contingency·COOP는 일반적 재해·중단 대응이라 비인가 행위에 특화되지 않음.<br><br>
+<table class="cmp">
+<tr><th>계획</th><th>주요 범위</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. IRP</b></td><td><b>사이버 공격·비인가 접근·DoS·악성코드 — 식별·완화·복구 절차</b></td><td><b>✅ 시나리오 일치</b></td></tr>
+<tr><td>B. IT Contingency</td><td>IT 시스템 장애·일반적 복구 — <b>공격 식별·예방 미포함</b></td><td>일반 복구 ❌</td></tr>
+<tr><td>C. BCP</td><td>비즈니스 프로세스 지속 — <b>업무 중단 일반 대응</b></td><td>업무 차원 ❌</td></tr>
+<tr><td>D. COOP</td><td>핵심 미션 단기간 대체 사이트 유지</td><td>미션 차원 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>계획 계층 구조</b>: BCP(최상위) ⊃ DRP·COOP·IT Contingency ⊃ IRP — 보안 사고 특화는 IRP<br>
+• IRP 구성 요소: <b>① 역할·책임(CSIRT) ② 분류 체계 ③ 대응 절차(NIST SP 800-61) ④ 커뮤니케이션 ⑤ 증거 보존 ⑥ 외부 협력(법 집행·CERT) ⑦ 사후 분석</b><br>
+• IT Contingency Plan(B)은 <b>일반 시스템 장애 복구</b>가 목적 — 사이버 공격 시 IRP와 함께 작동하나 별개<br>
+• BCP(C)는 <b>비즈니스 전체</b> 차원 — 인력·시설·공급망까지 포함, IRP는 BCP의 하위 보안 영역<br>
+• COOP(D)은 <b>정부·핵심 미션</b> 중심 — 대체 사이트에서 핵심 기능 유지<br>
+• 사이버 공격이 심각해 비즈니스 중단 시: <b>IRP(공격 대응) + BCP(업무 유지) 동시 발동</b><br>
+• 시험 패턴: "비인가 행위·공격 대응 특화" → <b>IRP</b> / "장애 복구" → Contingency/DRP / "업무 지속" → BCP</div>`,
+reference:"CRM Chapter 5: Incident Response Plan vs BCP/DRP/Contingency",
+keyConcepts:[
+"IRP|사이버 공격·비인가 행위 식별·완화·복구 특화 계획 — 보안 사고 전담",
+"계획 계층 구조|BCP ⊃ DRP·COOP·IT Contingency ⊃ IRP — 보안 사고는 IRP",
+"IRP 구성|CSIRT·분류·대응 절차·커뮤니케이션·증거 보존·외부 협력·사후 분석",
+"IT Contingency vs IRP|Contingency=일반 장애 복구 / IRP=사이버 공격 특화 — 보완 관계",
+"BCP vs IRP|BCP=비즈니스 전체 / IRP=보안 사고 — IRP가 BCP의 보안 하위",
+"동시 발동|심각한 공격은 IRP(대응) + BCP(업무 유지) 병행"
+]
+}
+,
+{
+id:696,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following is the MAIN reason an enterprise should have an incident response plan? The plan helps to:",
+questionKo:"기업이 <b>침해사고 대응 계획(IRP)</b>을 가져야 하는 가장 큰 이유는?",
+options:[
+"A. ensure prompt communication of adverse events to relevant management.",
+"B. contain costs related to maintaining disaster recovery plan capabilities.",
+"C. ensure that customers are promptly notified of issues, such as security breaches.",
+"D. minimize the duration and impact of system outages and security incidents."
+],
+optionsKo:[
+"A. <b>경영진에게 사고를 신속히 전달</b>",
+"B. <b>DRP 유지 비용 통제</b>",
+"C. <b>고객에게 신속한 통지</b>",
+"D. <b>시스템 중단·보안 사고의 지속 시간과 영향 최소화</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 시스템 중단·보안 사고의 지속 시간과 영향 최소화</b><br><br>
+<b>핵심:</b> IRP의 본질적 목적은 <b>사고로 인한 비즈니스 피해(시간·금전·평판)를 최소화</b> — 통신·통지·비용 통제는 모두 이 목적을 위한 수단.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위치</th><th>판정</th></tr>
+<tr><td>A. 경영진 통신</td><td><b>대응 활동의 일부</b> — 최종 목적 아님</td><td>수단 ❌</td></tr>
+<tr><td>B. DRP 비용 통제</td><td>비용 측면 결과 — <b>주된 이유 아님</b></td><td>부수 효과 ❌</td></tr>
+<tr><td>C. 고객 통지</td><td>대응 절차의 일부 — 부분적 활동</td><td>수단 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 지속·영향 최소화</b></td><td><b>IRP의 본질적 목적 — 비즈니스 피해 최소화</b></td><td><b>✅ MAIN reason</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• IRP 단계: <b>계획 → 탐지 → 평가 → 봉쇄 → 근절 → 에스컬레이션 → 대응 → 복구 → 보고 → 사후 검토 → 교훈</b><br>
+• 영향 최소화의 차원: <b>① 시간(MTTR↓) ② 금전(매출 손실·복구 비용) ③ 평판·신뢰 ④ 법적·규제 노출 ⑤ 데이터 유실</b><br>
+• "사고 자체는 막을 수 없어도 영향은 통제 가능" — IRP의 핵심 가치 명제<br>
+• 통신·통지·비용은 <b>영향 최소화를 달성하는 활동</b> — 그 자체가 목적이 아님<br>
+• IRP가 없으면: 즉흥 대응·역할 불명·증거 훼손·통신 혼란 → <b>사고 영향 확대</b><br>
+• 측정 KPI: <b>MTTD(탐지 시간)·MTTR(대응 시간)·다운타임·복구 비용·고객 영향</b> — 모두 영향 최소화 지표<br>
+• 시험 패턴: "IRP MAIN reason" → <b>영향·지속 시간 최소화</b> (다른 보기는 수단·부수 효과)</div>`,
+reference:"CRM Chapter 5: Incident Response Plan — Primary Purpose",
+keyConcepts:[
+"IRP MAIN reason|사고 지속 시간·영향 최소화 — 통신·통지·비용은 수단",
+"영향의 차원|시간(MTTR↓)·금전·평판·법적/규제·데이터 유실",
+"IRP 단계|계획→탐지→평가→봉쇄→근절→대응→복구→보고→사후 검토→교훈",
+"핵심 명제|사고 자체는 막을 수 없어도 영향은 통제 가능 — IRP의 가치 제안",
+"IRP 부재 시|즉흥 대응·역할 불명·증거 훼손·통신 혼란 → 영향 확대",
+"측정 KPI|MTTD·MTTR·다운타임·복구 비용·고객 영향"
+]
+}
+,
+{
+id:697,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following is the MOST important action in recovering from a cybersecurity incident?",
+questionKo:"<b>사이버 침해사고로부터 복구</b> 시 가장 중요한 조치는?",
+options:[
+"A. Activating an incident response team",
+"B. Appointing cyberforensic investigators",
+"C. Executing a business continuity plan (BCP)",
+"D. Preserving evidence"
+],
+optionsKo:[
+"A. <b>침해사고 대응팀(IRT/CSIRT) 활성화</b>",
+"B. <b>사이버 포렌식 수사관 임명</b>",
+"C. <b>BCP 실행</b>",
+"D. <b>증거 보존</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 침해사고 대응팀 활성화</b><br><br>
+<b>핵심:</b> 사전 준비된 대응팀을 즉시 가동해 <b>봉쇄·복구·비즈니스 유지</b>를 일관되게 지휘 — 다른 활동(포렌식·BCP·증거 보존)은 모두 대응팀이 조율·실행.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. IRT 활성화</b></td><td><b>전체 대응의 컨트롤 타워 — 봉쇄·복구·BCP·포렌식·증거 모두 조율</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>B. 포렌식 수사관</td><td>침해 식별 후 일부 사례에서 필요 — <b>대응팀이 결정</b></td><td>하위 활동 ❌</td></tr>
+<tr><td>C. BCP 실행</td><td>대부분 침해는 BCP 활성화까지 가지 않음</td><td>제한적 ❌</td></tr>
+<tr><td>D. 증거 보존</td><td>중요하나 <b>비즈니스 유지가 우선</b>, 일부 증거 손실 감수 가능</td><td>2차 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>CSIRT(Computer Security Incident Response Team)</b> 구성: <b>리더·기술 분석가·포렌식·법무·홍보·인사·경영 연락관·외부 협력자</b><br>
+• IRT의 핵심 의사결정: <b>① 봉쇄 전략 ② 외부 통지 시점 ③ BCP 발동 여부 ④ 포렌식 수준 ⑤ 법 집행기관 협조 ⑥ 미디어 대응</b><br>
+• <b>비즈니스 우선 원칙</b>: 비범죄 사고에서 <b>일부 증거 손실</b>을 감수하더라도 운영 유지가 우선<br>
+• 대응팀 없이 즉흥 대응 시: 역할 혼란·중복 작업·증거 훼손·외부 통신 혼선 → <b>피해 확대</b><br>
+• 사전 준비 요건: <b>플레이북·연락처·도구 키트·권한 위임·정기 훈련(테이블탑·시뮬레이션)</b><br>
+• 포렌식(B)·BCP(C)·증거 보존(D)은 모두 <b>대응팀이 발동·조율</b>하는 종속 활동<br>
+• 시험 패턴: "사이버 사고 복구 MOST important" → <b>IRT 활성화</b> (모든 대응의 출발점·조율자)</div>`,
+reference:"CRM Chapter 5: Incident Response — CSIRT Activation",
+keyConcepts:[
+"CSIRT 활성화(MOST important)|대응의 컨트롤 타워 — 봉쇄·복구·BCP·포렌식·증거 모두 조율",
+"CSIRT 구성|리더·기술 분석가·포렌식·법무·홍보·인사·경영 연락관·외부 협력자",
+"비즈니스 우선|비범죄 사고에선 일부 증거 손실 감수해도 운영 유지 우선",
+"IRT 의사결정|봉쇄 전략·외부 통지·BCP 발동·포렌식 수준·법 집행 협조·미디어 대응",
+"사전 준비|플레이북·연락처·도구 키트·권한 위임·정기 훈련(테이블탑·시뮬레이션)",
+"종속 활동|포렌식·BCP·증거 보존은 모두 대응팀이 발동·조율"
+]
+}
+,
+{
+id:698,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"The FIRST action triggered by the IDS upon detecting suspicious traffic should be to:",
+questionKo:"메일 게이트웨이 외부에서 내부망으로 향하는 의심 트래픽을 IDS가 탐지했을 때 <b>가장 먼저 수행</b>해야 할 동작은?",
+options:[
+"A. alert the appropriate staff.",
+"B. create an entry in the log.",
+"C. close firewall-2.",
+"D. close firewall-1."
+],
+optionsKo:[
+"A. <b>담당 직원에게 경보 발송</b>",
+"B. <b>로그에 항목 기록</b>",
+"C. <b>방화벽-2 차단</b>",
+"D. <b>방화벽-1 차단</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 로그 기록(Log entry)</b><br><br>
+<b>핵심:</b> IDS의 모든 후속 행동(경보·차단·증거 보존)은 <b>로그 기록을 전제</b>로 함 — 기록이 먼저 있어야 알림·자동 대응·사후 분석이 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>순서</th><th>판정</th></tr>
+<tr><td>A. 직원 알림</td><td>로그 기록 후 발송 — <b>2단계</b></td><td>후속 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 로그 기록</b></td><td><b>모든 대응의 전제·증거·기록·후속 트리거</b></td><td><b>✅ FIRST</b></td></tr>
+<tr><td>C. 방화벽-2 차단</td><td>방어 차단 조치 — 로그 후 자동/수동 트리거</td><td>후속 ❌</td></tr>
+<tr><td>D. 방화벽-1 차단</td><td>외부 방화벽 — 시나리오상 이미 우회된 상태</td><td>부적절 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>IDS 표준 동작 흐름</b>: <b>탐지 → 로그 기록 → 알림(이메일·SNMP·SIEM) → (옵션) 차단 트리거 → 패킷 캡처</b><br>
+• 로그 우선의 이유: <b>① 증거 보존 ② 알람 트리거 입력 ③ 사후 포렌식 ④ 추세 분석 ⑤ 컴플라이언스</b><br>
+• 알림이 먼저면 안 되는 이유: <b>로그 없는 알람은 검증·재현 불가</b>, 사후 추적도 불가능<br>
+• 방화벽-1 vs 방화벽-2 차단: 시나리오의 트래픽은 <b>FW-1을 이미 우회</b>(또는 메일 게이트웨이 우회) → <b>내부 보호용 FW-2 차단</b>이 적절<br>
+• IDS는 일반적으로 <b>탐지만</b> 수행 — 차단은 IPS·FW 협업이나 자동화 룰<br>
+• 현대 SIEM/SOAR 흐름: 로그 → 상관분석 → 알람 → 플레이북 자동 실행(차단·격리·티켓)<br>
+• 시험 패턴: "IDS FIRST action" → <b>로그 기록</b> (알람·차단보다 우선 — 기록이 모든 대응의 기반)</div>`,
+reference:"CRM Chapter 5: IDS Operation — Log First, Then Act",
+keyConcepts:[
+"IDS FIRST|로그 기록 — 모든 후속 동작(알림·차단·포렌식)의 전제·증거",
+"IDS 표준 흐름|탐지 → 로그 → 알림 → (옵션) 차단 트리거 → 패킷 캡처",
+"로그 우선 이유|증거 보존·알람 입력·포렌식·추세 분석·컴플라이언스",
+"방화벽 차단 선택|시나리오는 FW-1 우회 상태 → 내부 보호용 FW-2 차단이 적절",
+"IDS vs IPS|IDS는 탐지만 — 차단은 IPS·FW 협업 또는 자동화 룰",
+"현대 흐름|SIEM/SOAR: 로그→상관분석→알람→플레이북 자동 실행(차단·격리·티켓)"
+]
+}
+,
+{
+id:699,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following is an indicator of the effectiveness of a computer security incident response team?",
+questionKo:"<b>CSIRT의 효과성</b>을 보여주는 지표는?",
+options:[
+"A. Financial impact per security incident",
+"B. Number of security vulnerabilities that were patched",
+"C. Percentage of business applications that are being protected",
+"D. Number of successful penetration tests"
+],
+optionsKo:[
+"A. <b>보안 사고당 재정적 영향</b>",
+"B. <b>패치된 보안 취약점 수</b>",
+"C. <b>보호되는 비즈니스 애플리케이션 비율</b>",
+"D. <b>성공한 모의해킹 횟수</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 사고당 재정적 영향(Financial Impact per Incident)</b><br><br>
+<b>핵심:</b> CSIRT의 효과는 <b>사고 발생을 제로화</b>하는 것이 아니라 <b>사고당 피해(시간·금액·평판)를 얼마나 줄이는가</b>로 평가 — 영향 최소화가 본질.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>책임 영역</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 사고당 재정 영향</b></td><td><b>CSIRT의 직접 성과 — 영향 최소화의 정량 지표</b></td><td><b>✅ 효과성 지표</b></td></tr>
+<tr><td>B. 패치된 취약점 수</b></td><td><b>보안팀/패치 관리</b> 책임 — CSIRT 영역 아님</td><td>역할 불일치 ❌</td></tr>
+<tr><td>C. 보호되는 앱 비율</td><td>시스템 보호는 <b>보안팀</b> 책임</td><td>역할 불일치 ❌</td></tr>
+<tr><td>D. 모의해킹 횟수</td><td>보안팀·패치 관리 효과 — CSIRT와 무관</td><td>역할 불일치 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• CSIRT의 핵심 성과 측정: <b>① 사고당 재정·운영 영향 ② MTTD(평균 탐지 시간) ③ MTTR(평균 대응·복구 시간) ④ 봉쇄 시간 ⑤ 침해 확산 범위 ⑥ 재발률</b><br>
+• <b>사고 자체는 불가피</b>(인간·기술의 한계) — <b>피해를 통제하는 능력</b>이 CSIRT의 진짜 가치<br>
+• 역할 분리: <b>보안팀=예방·패치·자산 보호 / CSIRT=탐지 후 대응·복구·교훈</b><br>
+• 재정 영향 측정 요소: <b>다운타임 손실·복구 비용·법률·벌금·고객 보상·평판·신뢰 회복 비용</b><br>
+• 트렌드 관리: 사고당 영향이 <b>시간이 지나면서 감소</b>해야 효과적 CSIRT — 같은 유형 재발 시 영향 감소 추세 확인<br>
+• 보안팀 KPI(B·C·D)와 CSIRT KPI를 혼동하지 말 것 — 시험 함정 패턴<br>
+• 시험 패턴: "CSIRT 효과성" → <b>사고당 재정 영향</b> (영향 최소화가 본질, 다른 지표는 보안팀 책임)</div>`,
+reference:"CRM Chapter 5: CSIRT Effectiveness Metrics",
+keyConcepts:[
+"CSIRT 효과성|사고당 재정 영향 — 사고 자체가 아닌 피해 통제 능력이 본질",
+"CSIRT KPI|사고당 영향·MTTD·MTTR·봉쇄 시간·확산 범위·재발률",
+"역할 분리|보안팀=예방·패치·보호 / CSIRT=대응·복구·교훈",
+"재정 영향 구성|다운타임·복구 비용·법률·벌금·고객 보상·평판·신뢰 회복",
+"트렌드 관리|시간 경과에 따른 사고당 영향 감소 — 효과성의 추세 증거",
+"함정 패턴|패치 수·보호 비율·펜테스트 횟수는 보안팀 KPI — CSIRT와 혼동 금지"
+]
+}
+,
+{
+id:700,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"When installing an intrusion detection system (IDS), which of the following is MOST important?",
+questionKo:"IDS 설치 시 <b>가장 중요한 사항</b>은?",
+options:[
+"A. Properly locating it in the network architecture",
+"B. Preventing denial-of-service (DoS) attacks",
+"C. Identifying messages that need to be quarantined",
+"D. Minimizing the rejection errors"
+],
+optionsKo:[
+"A. <b>네트워크 아키텍처상 적절한 위치 배치</b>",
+"B. <b>DoS 공격 예방</b>",
+"C. <b>격리해야 할 메시지 식별</b>",
+"D. <b>거부 오류 최소화</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 네트워크 아키텍처상 적절한 위치 배치</b><br><br>
+<b>핵심:</b> IDS는 <b>보는 트래픽만 탐지 가능</b> — 잘못 배치하면 중요 구역이 사각지대가 되어 IDS가 무의미. 위치 선정이 모든 가치의 출발점.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>관련성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 적절한 위치</b></td><td><b>가시성 확보 — IDS 가치의 전제</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>B. DoS 예방</td><td>IDS는 탐지만 — <b>예방 기능 없음</b></td><td>역할 혼동 ❌</td></tr>
+<tr><td>C. 격리 메시지 식별</td><td>이메일 게이트웨이·DLP 영역 — IDS와 다름</td><td>도메인 불일치 ❌</td></tr>
+<tr><td>D. 거부 오류 최소화</td><td>거부 오류는 <b>생체 인증 용어</b> — IDS와 무관</td><td>용어 오류 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>"보이지 않는 것은 보호할 수 없다"</b> — IDS의 가치는 <b>가시성(visibility)</b>에서 시작<br>
+• 권장 배치 위치: <b>① 방화벽 외부(외부 정찰 추세) ② DMZ(공개 서비스 보호) ③ 방화벽 내부(우회 공격 탐지) ④ 내부 세그먼트 사이(측면 이동·내부자) ⑤ 중요 자산 근처</b><br>
+• 위치 결정 요소: <b>① 트래픽 가시성(SPAN/TAP) ② 트래픽량·처리 용량 ③ 비대칭 라우팅 ④ 암호화 트래픽 ⑤ 자산 중요도 ⑥ 컴플라이언스 요구</b><br>
+• 잘못된 배치 사례: <b>방화벽 바깥쪽만 — 내부 횡이동 못 봄 / 한 곳만 — 사각지대 발생 / 부하 과다 지점 — 패킷 드롭</b><br>
+• IDS는 탐지만(B) — IPS·방화벽이 차단 / 메시지 격리(C)는 메일/DLP / 거부 오류(D)는 생체 인증<br>
+• 다층 배치 권장: 단일 위치는 한계 — <b>외부+DMZ+내부</b> 조합으로 가시성 극대화<br>
+• 시험 패턴: "IDS 설치 MOST important" → <b>적절한 위치(가시성)</b> (다른 보기는 역할 혼동·용어 오류)</div>`,
+reference:"CRM Chapter 5: IDS Deployment — Placement Strategy",
+keyConcepts:[
+"적절한 위치(MOST important)|가시성 확보가 IDS 가치의 전제 — 잘못 배치 시 사각지대",
+"권장 배치|방화벽 외부·DMZ·방화벽 내부·내부 세그먼트 사이·중요 자산 근처",
+"위치 결정 요소|가시성·트래픽량·비대칭 라우팅·암호화·자산 중요도·컴플라이언스",
+"잘못된 배치|단일 외부만(횡이동 미탐)·한 곳만(사각지대)·부하 과다(패킷 드롭)",
+"역할 명확화|IDS=탐지만 / IPS·FW=차단 / DLP=메시지 격리 / 생체=거부 오류",
+"다층 배치|외부+DMZ+내부 조합으로 가시성 극대화 — 단일 위치는 한계"
+]
+}
+,
+{
+id:701,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"An information systems (IS) auditor suspects an incident is occurring while an audit is being performed on a financial system. What should the IS auditor do FIRST?",
+questionKo:"감사 수행 중 IS 감사인이 <b>침해사고가 발생 중인 것을 의심</b>한다. 가장 먼저 해야 할 일은?",
+options:[
+"A. Request that the system be shut down to preserve evidence.",
+"B. Report the incident to management.",
+"C. Ask for immediate suspension of the suspect accounts.",
+"D. Investigate the source and nature of the incident."
+],
+optionsKo:[
+"A. <b>증거 보존을 위해 시스템 종료 요청</b>",
+"B. <b>경영진에 사고 보고</b>",
+"C. <b>의심 계정의 즉시 정지 요청</b>",
+"D. <b>사고의 출처·성격 조사</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 경영진에 사고 보고</b><br><br>
+<b>핵심:</b> IS 감사인의 역할은 <b>독립적 평가·보고</b> — 사고 대응은 경영진과 IRT의 책임. 의심 사실을 즉시 경영진에 보고해 적절한 대응을 개시하게 하는 것이 우선.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할 적합성</th><th>판정</th></tr>
+<tr><td>A. 시스템 종료 요청</td><td>증거 휘발 위험·운영 영향 — <b>감사인 권한 밖</b></td><td>월권 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 경영진 보고</b></td><td><b>감사인의 정당한 행동 — IRT 가동 트리거</b></td><td><b>✅ FIRST</b></td></tr>
+<tr><td>C. 계정 정지 요청</td><td>대응 활동 — <b>경영진/IRT가 결정</b></td><td>월권 ❌</td></tr>
+<tr><td>D. 출처 조사</td><td>대응팀 영역 — <b>감사인은 조사 주체 아님</b></td><td>월권 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사인의 독립성 원칙</b>: 감사인은 <b>평가·보고</b> 역할, 운영·대응에 직접 개입하면 독립성 훼손<br>
+• 책임 분리: <b>감사인=발견·보고 / 경영진=의사결정 / IRT=실행 / 보안팀=기술 조치</b><br>
+• 보고 즉시성: 의심 단계라도 <b>지체 없이 보고</b> — 대응 지연이 피해 확대로 직결<br>
+• 감사인의 후속 역할: <b>대응 활동 관찰·증거 보존 확인·통제 효과성 평가·사후 보고서 작성</b><br>
+• 시스템 종료·계정 정지·조사 개시는 모두 <b>경영진·IRT의 권한</b> — 감사인이 직접 명령하면 책임 혼선<br>
+• 발견 후 행동 양식: <b>감사인 = "발견했다 + 보고했다 + 권고했다"</b> — 직접 실행하지 않음<br>
+• 시험 패턴: "감사인 사고 의심 FIRST" → <b>경영진 보고</b> (감사인은 평가자, 대응자 아님)</div>`,
+reference:"CRM Chapter 5: IS Auditor Role During Incident Discovery",
+keyConcepts:[
+"감사인 FIRST|경영진에 보고 — 독립성 유지·IRT 가동 트리거",
+"감사인 독립성|평가·보고 역할 — 운영·대응 개입 시 독립성 훼손",
+"책임 분리|감사인=발견·보고 / 경영진=결정 / IRT=실행 / 보안팀=기술 조치",
+"보고 즉시성|의심 단계라도 지체 없이 — 대응 지연은 피해 확대 직결",
+"감사인 후속 역할|대응 관찰·증거 보존 확인·통제 평가·사후 보고서",
+"행동 양식|발견·보고·권고만 — 직접 실행(종료·정지·조사)은 월권"
+]
+}
+,
+{
+id:702,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"When reviewing the configuration of network devices, an information systems (IS) auditor should FIRST identify:",
+questionKo:"네트워크 장비 구성을 검토할 때 IS 감사인이 <b>가장 먼저 식별</b>해야 할 것은?",
+options:[
+"A. the good practices for the type of network devices deployed.",
+"B. whether components of the network are missing.",
+"C. the importance of the network devices in the topology.",
+"D. whether subcomponents of the network are being used appropriately."
+],
+optionsKo:[
+"A. <b>배치된 장비 유형의 모범 사례</b>",
+"B. <b>누락된 네트워크 구성 요소 여부</b>",
+"C. <b>토폴로지에서 네트워크 장비의 중요도</b>",
+"D. <b>하위 구성 요소가 적절히 사용되는지 여부</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 토폴로지에서 네트워크 장비의 중요도</b><br><br>
+<b>핵심:</b> 검토 전에 장비의 <b>역할·중요도·위치</b>를 먼저 이해해야 모범 사례 비교·누락 식별·사용 적절성 평가가 가능 — 맥락이 평가의 출발점.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>순서</th><th>판정</th></tr>
+<tr><td>A. 모범 사례 검토</td><td>장비 역할 이해 후 — 비교 대상 식별</td><td>2단계 ❌</td></tr>
+<tr><td>B. 누락 식별</td><td>토폴로지·모범 사례 알아야 가능</td><td>3단계 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 장비 중요도·역할 식별</b></td><td><b>모든 후속 평가의 맥락·기반</b></td><td><b>✅ FIRST</b></td></tr>
+<tr><td>D. 하위 구성 적절성</td><td>토폴로지·역할 후에 평가 가능</td><td>3단계 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 감사 절차 일반 순서: <b>① 이해(Understand) → ② 평가 기준 식별(모범 사례) → ③ 비교·발견 → ④ 권고</b><br>
+• 네트워크 장비 검토 단계: <b>① 토폴로지·역할·중요도 식별 ② 모범 사례·정책 검토 ③ 구성 vs 정책 비교 ④ 누락·잘못된 사용 식별 ⑤ 권고</b><br>
+• 중요도 분류 예: <b>코어 라우터·DMZ 방화벽·관리 점프호스트·인증 서버(중) / 액세스 스위치·VPN GW·로그 수집기(중-저)</b><br>
+• 중요도 기반 우선순위: <b>중요 장비부터 깊이 있게 검토</b> — 시간 제약 시 리스크 기반 접근<br>
+• 맥락 없는 모범 사례 적용은 부적절: 어떤 정책·기준을 적용할지는 <b>장비 역할에 따라 다름</b><br>
+• 감사 일반 원칙: 평가 전에 환경 이해(Walkthrough·인터뷰·문서 검토) — Risk-Based Auditing<br>
+• 시험 패턴: "장비 구성 검토 FIRST" → <b>장비의 역할·중요도</b> (모범 사례·누락·사용성은 후속)</div>`,
+reference:"CRM Chapter 5: Network Device Audit — Understand Before Evaluate",
+keyConcepts:[
+"네트워크 장비 검토 FIRST|토폴로지에서 장비의 중요도·역할 식별 — 후속 평가의 기반",
+"감사 일반 순서|이해 → 평가 기준 식별 → 비교·발견 → 권고",
+"검토 단계|토폴로지/역할 → 모범 사례/정책 → 구성 비교 → 누락/잘못된 사용 → 권고",
+"중요도 기반 우선순위|중요 장비부터 깊이 있는 검토 — 시간 제약 시 리스크 기반 접근",
+"맥락의 중요성|장비 역할에 따라 적용할 기준 다름 — 맥락 없는 모범 사례 부적절",
+"Risk-Based Auditing|평가 전 환경 이해(Walkthrough·인터뷰·문서)가 일반 원칙"
+]
+}
+,
+{
+id:703,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Over the long term, which of the following has the greatest potential to improve the security incident response process?",
+questionKo:"장기적으로 <b>침해사고 대응 프로세스 개선</b>에 가장 큰 잠재력을 가진 것은?",
+options:[
+"A. A walk-through review of incident response procedures",
+"B. Simulation exercises performed by the security incident response team",
+"C. Ongoing security training for users",
+"D. Documenting responses to an incident"
+],
+optionsKo:[
+"A. <b>침해사고 대응 절차 워크스루 검토</b>",
+"B. <b>침해사고 대응팀의 시뮬레이션 훈련</b>",
+"C. <b>사용자 보안 교육 지속</b>",
+"D. <b>사고 대응 문서화</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 침해사고 대응팀의 시뮬레이션 훈련</b><br><br>
+<b>핵심:</b> 시뮬레이션은 <b>실제 같은 상황에서 절차·도구·팀워크의 결함을 발견</b> — 워크스루(문서 검토)보다 깊이 있게 실전 격차를 드러내 지속 개선 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>개선 효과</th><th>판정</th></tr>
+<tr><td>A. 워크스루</td><td>문서·절차 1차 검토 — <b>실전 격차 발견 제한</b></td><td>표면적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 시뮬레이션 훈련</b></td><td><b>실전형 격차·도구·팀워크 결함 발견 → 지속 개선</b></td><td><b>✅ 장기 개선 최대</b></td></tr>
+<tr><td>C. 사용자 교육</td><td>예방·인식 향상 — <b>대응 프로세스 자체 개선 X</b></td><td>예방 영역 ❌</td></tr>
+<tr><td>D. 문서화</td><td>분석 자료 제공 — <b>분석·반영이 별도 필요</b></td><td>기록만 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 훈련 성숙도 단계: <b>① 워크스루(문서 토론) ② 테이블탑(시나리오 토론) ③ 시뮬레이션(실제 도구·환경 사용) ④ Live Fire(Red Team 활용 실전)</b><br>
+• 시뮬레이션이 드러내는 격차: <b>① 플레이북 누락·오류 ② 도구 미숙·미설치 ③ 권한·접근 부족 ④ 외부 연락처 부정확 ⑤ 의사결정 지연 ⑥ 커뮤니케이션 혼선</b><br>
+• <b>훈련 → 교훈 → 개선 → 재훈련</b> 반복으로 지속 개선 — Plan-Do-Check-Act 사이클<br>
+• 사용자 교육(C)은 <b>예방 통제</b> — 대응팀 프로세스 개선과는 별개<br>
+• 문서화(D)는 도구이지 그 자체로 개선이 아님 — 사후 분석·반영이 핵심<br>
+• 권장 주기: <b>워크스루 분기·테이블탑 반기·시뮬레이션 연 1~2회·Live Fire 연 1회</b><br>
+• 시험 패턴: "IRT 장기 개선 최대" → <b>시뮬레이션 훈련</b> (실전형 격차 식별이 핵심)</div>`,
+reference:"CRM Chapter 5: Incident Response Maturity — Simulation Exercises",
+keyConcepts:[
+"시뮬레이션 훈련|실전형 격차·도구·팀워크 결함 발견 — 장기 개선의 최강 수단",
+"훈련 성숙도|워크스루 → 테이블탑 → 시뮬레이션 → Live Fire(Red Team)",
+"드러내는 격차|플레이북 누락·도구 미숙·권한 부족·외부 연락처 오류·의사결정 지연·통신 혼선",
+"개선 사이클|훈련 → 교훈 → 개선 → 재훈련 (PDCA)",
+"사용자 교육 한계|예방 영역 — 대응 프로세스 자체 개선과 별개",
+"권장 주기|워크스루 분기·테이블탑 반기·시뮬레이션 연 1~2회·Live Fire 연 1회"
+]
+}
+,
+{
+id:704,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"A web server is attacked and compromised. Enterprise policy states that incident response should balance containment of an attack with retaining freedom for later legal action against an attacker. Under the circumstances, which of the following should be performed FIRST?",
+questionKo:"웹서버가 침해됐고, 정책상 <b>봉쇄와 향후 법적 조치 가능성</b>을 모두 고려해야 한다. 가장 먼저 수행할 작업은?",
+options:[
+"A. Dump the volatile storage data to a disk.",
+"B. Run the server in a fail-safe mode.",
+"C. Disconnect the web server from the network.",
+"D. Shut down the web server."
+],
+optionsKo:[
+"A. <b>휘발성 메모리 데이터를 디스크로 덤프</b>",
+"B. <b>서버를 페일세이프 모드로 실행</b>",
+"C. <b>웹서버를 네트워크에서 분리</b>",
+"D. <b>웹서버 종료</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 웹서버를 네트워크에서 분리(Disconnect)</b><br><br>
+<b>핵심:</b> 네트워크 분리는 <b>피해 확산 차단 + 휘발성 증거 보존</b>을 동시에 달성 — 전원 종료(D)나 페일세이프(B)는 메모리·세션 등 휘발성 증거를 파괴.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>증거·봉쇄 영향</th><th>판정</th></tr>
+<tr><td>A. 메모리 덤프</td><td>증거 수집 활동 — <b>공격 봉쇄 X</b>, 분리 후 수행</td><td>2단계 ❌</td></tr>
+<tr><td>B. 페일세이프 모드</td><td>서버 종료 필요 — <b>휘발성 증거 손실</b></td><td>증거 손실 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 네트워크 분리</b></td><td><b>봉쇄 + 휘발성 증거 보존 동시 달성</b></td><td><b>✅ FIRST</b></td></tr>
+<tr><td>D. 서버 종료</td><td><b>RAM·실행 프로세스·세션 등 휘발성 증거 소실</b></td><td>법적 활용 손실 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>네트워크 분리 = 봉쇄 + 증거 보존</b>의 황금률 — 전원은 유지, 트래픽만 차단<br>
+• 휘발성 증거(RFC 3227 순서): <b>레지스터/캐시 → RAM → 네트워크 연결·라우팅 → 실행 프로세스 → 디스크 → 백업·아카이브</b> — 위로 갈수록 휘발성↑<br>
+• 분리 방법: <b>① 네트워크 케이블 분리(가장 안전) ② VLAN 격리 ③ 방화벽 룰로 차단 ④ ARP/스위치 격리</b><br>
+• 후속 절차: <b>① 메모리 이미징(volatile dump) ② 디스크 이미지(write blocker 사용) ③ 로그·네트워크 캡처 ④ 체인 오브 커스터디 기록</b><br>
+• 법적 활용 요건: <b>증거 무결성(해시)·체인 오브 커스터디(Chain of Custody)·전문가 분석 보고서</b><br>
+• 종료(D)·재부팅·페일세이프(B)는 모두 <b>휘발성 증거 파괴</b> → 법적 조치 불가능<br>
+• 시험 패턴: "봉쇄 + 법적 조치 보장 FIRST" → <b>네트워크 분리</b> (전원 유지하며 증거 보존)</div>`,
+reference:"CRM Chapter 5: Incident Containment with Evidence Preservation",
+keyConcepts:[
+"네트워크 분리(FIRST)|봉쇄 + 휘발성 증거 보존 동시 달성 — 전원은 유지, 트래픽만 차단",
+"휘발성 증거 순서(RFC 3227)|레지스터→RAM→네트워크→프로세스→디스크→백업",
+"분리 방법|케이블 분리·VLAN 격리·방화벽 차단·ARP/스위치 격리",
+"후속 절차|메모리 이미징 → 디스크 이미지 → 로그/네트워크 캡처 → Chain of Custody",
+"법적 활용 요건|증거 무결성(해시)·Chain of Custody·전문가 보고서",
+"종료의 함정|전원 종료·재부팅·페일세이프는 모두 휘발성 증거 파괴 → 법적 조치 불가"
+]
+}
+,
+{
+id:705,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"The computer security incident response team of an enterprise disseminates detailed descriptions of recent threats. An information systems (IS) auditor's GREATEST concern should be that the users may:",
+questionKo:"CSIRT가 <b>최근 위협의 상세 설명을 사용자에게 전파</b>한다. IS 감사인의 가장 큰 우려는?",
+options:[
+"A. use this information to launch attacks.",
+"B. forward the security alert.",
+"C. implement individual solutions.",
+"D. fail to understand the threat."
+],
+optionsKo:[
+"A. <b>해당 정보를 이용해 공격을 시도</b>",
+"B. <b>보안 경보를 전달(전파)</b>",
+"C. <b>개별 해결책 구현</b>",
+"D. <b>위협을 이해하지 못함</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 정보를 악용해 공격 시도</b><br><br>
+<b>핵심:</b> 위협 상세 정보는 <b>공격 방법 자체를 알려주는 양날의 검</b> — 내부자가 이를 학습해 공격에 활용할 위험이 가장 큰 우려.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>위험 수준</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 공격 악용</b></td><td><b>위협 정보 = 공격 매뉴얼 — 내부자 위협 직접 유발</b></td><td><b>✅ GREATEST</b></td></tr>
+<tr><td>B. 경보 전달</td><td>외부 유출 가능성 — <b>큰 피해 아님</b></td><td>경미 ❌</td></tr>
+<tr><td>C. 개별 해결책</td><td>비효율이나 큰 위험 아님</td><td>운영 이슈 ❌</td></tr>
+<tr><td>D. 이해 부족</td><td>인식 교육 보완 가능 — 심각한 위험 아님</td><td>관리 사항 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>정보 공유의 양면성</b>: 인식 제고에 필요하지만 <b>상세 기술 정보는 공격 가이드</b>가 될 수 있음<br>
+• 대상별 정보 수준 차등(Need-to-know): <b>① 임원/관리자 — 위협 개요·비즈니스 영향 ② 일반 사용자 — 인식·신고 방법 ③ 보안팀 — 상세 TTP·IOC ④ IRT — 전체 정보</b><br>
+• 안전한 전파 방법: <b>① 추상화된 위협 설명 ② 행동 지침 위주 ③ 기술 상세는 보안팀만 ④ 채널 분리(브로드캐스트 vs 보안팀 전용)</b><br>
+• 내부자 위협 통계: <b>침해의 30~50%가 내부자 관련</b> — 의도적·실수·악용 포함<br>
+• CSIRT 정책 권장: <b>위협 정보 분류·접근 제어·전파 채널 정의·TLP(Traffic Light Protocol) 적용</b><br>
+• TLP: <b>RED(개인)·AMBER(조직 내)·GREEN(커뮤니티)·CLEAR(공개)</b> — 정보 민감도 표시 표준<br>
+• 시험 패턴: "위협 상세 전파 GREATEST concern" → <b>내부자 악용</b> (정보의 양면성)</div>`,
+reference:"CRM Chapter 5: Threat Information Dissemination — Need-to-Know",
+keyConcepts:[
+"내부자 악용 위험(GREATEST)|위협 상세 정보 = 공격 매뉴얼 — 내부자가 학습해 공격 가능",
+"정보 공유 양면성|인식 제고 필요 vs 공격 가이드화 위험 — 균형 필수",
+"Need-to-Know 차등|임원=개요 / 사용자=행동 지침 / 보안팀=TTP·IOC / IRT=전체",
+"안전한 전파|추상화·행동 지침 위주·채널 분리·기술 상세 제한",
+"TLP(Traffic Light Protocol)|RED(개인)·AMBER(조직)·GREEN(커뮤니티)·CLEAR(공개) — 표준 분류",
+"내부자 위협 통계|침해의 30~50%가 내부자 관련 — 의도·실수·악용 모두 포함"
+]
+}
+,
+{
+id:706,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following antivirus software implementation strategies is the MOST effective in an interconnected enterprise network?",
+questionKo:"상호 연결된 기업 네트워크에서 <b>가장 효과적인 안티바이러스 구현 전략</b>은?",
+options:[
+"A. Server-based antivirus software",
+"B. Enterprise-based antivirus software",
+"C. Workstation-based antivirus software",
+"D. Perimeter-based antivirus software"
+],
+optionsKo:[
+"A. <b>서버 기반 안티바이러스</b>",
+"B. <b>기업 전체(Enterprise) 안티바이러스</b>",
+"C. <b>워크스테이션 기반 안티바이러스</b>",
+"D. <b>경계 기반 안티바이러스</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 기업 전체(Enterprise) 안티바이러스 — 계층 방어</b><br><br>
+<b>핵심:</b> 악성코드 유입 경로가 다양하므로 <b>서버·네트워크·경계·엔드포인트를 모두 포함</b>하는 통합 솔루션이 효과적 — 단일 계층만으론 한계.<br><br>
+<table class="cmp">
+<tr><th>전략</th><th>커버 범위</th><th>판정</th></tr>
+<tr><td>A. 서버 기반</td><td>서버만 — 엔드포인트·경계 사각지대</td><td>부분적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. Enterprise 통합</b></td><td><b>서버+엔드포인트+경계+네트워크 — 다층 방어</b></td><td><b>✅ MOST effective</b></td></tr>
+<tr><td>C. 워크스테이션 기반</td><td>엔드포인트만 — 서버·네트워크 사각지대</td><td>부분적 ❌</td></tr>
+<tr><td>D. 경계 기반</td><td>외부 유입만 — USB·내부 측면 이동 미커버</td><td>부분적 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 악성코드 유입 경로: <b>① 이메일 첨부 ② 웹 다운로드 ③ USB·이동매체 ④ 네트워크 공유·SMB ⑤ 공급망 SW ⑥ 협력사 VPN ⑦ 모바일 BYOD</b><br>
+• Enterprise AV 계층 구성: <b>① 메일 게이트웨이(첨부 검사) ② 웹 프록시(다운로드 검사) ③ 방화벽·UTM(트래픽) ④ 엔드포인트(EDR) ⑤ 서버(파일·DB) ⑥ 모바일 MDM</b><br>
+• <b>Defense in Depth 원칙</b>: 단일 계층 실패해도 다른 계층이 잡음 — AV도 동일<br>
+• 중앙 집중 관리 이점: <b>정책 일관성·즉시 시그니처 배포·중앙 로깅·인시던트 가시성·라이선스 효율</b><br>
+• 현대 진화: AV → EDR(행위 기반) → XDR(엔드포인트+네트워크+클라우드 통합) → MDR(관리형)<br>
+• 단일 계층의 한계: 경계만(D)은 USB 우회 / 엔드포인트만(C)은 서버 미커버 / 서버만(A)은 단말 감염 못 잡음<br>
+• 시험 패턴: "AV MOST effective" → <b>Enterprise 통합(다층 방어)</b> (단일 계층은 모두 한계)</div>`,
+reference:"CRM Chapter 5: Antivirus Deployment — Enterprise-Wide Layered Defense",
+keyConcepts:[
+"Enterprise AV(MOST effective)|서버+엔드포인트+경계+네트워크 다층 방어 — 단일 계층은 한계",
+"악성코드 유입 경로|이메일·웹·USB·SMB·공급망·VPN·BYOD — 단일 통제로 모두 차단 불가",
+"AV 계층 구성|메일 GW·웹 프록시·방화벽/UTM·EDR·서버 AV·모바일 MDM",
+"중앙 집중 관리|정책 일관성·시그니처 즉시 배포·중앙 로깅·인시던트 가시성",
+"현대 진화|AV → EDR(행위) → XDR(통합) → MDR(관리형)",
+"단일 계층 한계|경계=USB 우회 / 엔드포인트=서버 미커버 / 서버=단말 미커버"
+]
+}
+,
+{
+id:707,
+domain:"5",
+ks:"5B5 Security Incident Response Management",
+question:"Which of the following types of penetration tests effectively evaluates the incident handling and response capability of the system administrator?",
+questionKo:"<b>시스템 관리자의 사고 처리·대응 능력</b>을 효과적으로 평가하는 모의해킹 유형은?",
+options:[
+"A. Targeted testing",
+"B. Internal testing",
+"C. Double-blind testing",
+"D. External testing"
+],
+optionsKo:[
+"A. <b>타겟 테스트(Targeted testing)</b>",
+"B. <b>내부 테스트(Internal testing)</b>",
+"C. <b>더블 블라인드 테스트(Double-blind testing)</b>",
+"D. <b>외부 테스트(External testing)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 더블 블라인드 테스트(Double-blind)</b><br><br>
+<b>핵심:</b> 표적 측이 <b>테스트인지 모르는 상태</b>로 실제 공격처럼 진행 — 관리자·SOC 팀이 평상시 실력으로 탐지·대응하므로 진짜 능력을 측정 가능.<br><br>
+<table class="cmp">
+<tr><th>유형</th><th>표적 인지</th><th>판정</th></tr>
+<tr><td>A. Targeted</td><td>알고 있음 — 협업 테스트</td><td>대응력 평가 X ❌</td></tr>
+<tr><td>B. Internal</td><td>일반적으로 알고 있음</td><td>대응력 평가 X ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Double-blind</b></td><td><b>모름 — 실제 공격처럼 대응 평가</b></td><td><b>✅ IR 평가 적합</b></td></tr>
+<tr><td>D. External</td><td>위치 분류 — 인지 여부 별개</td><td>분류 기준 다름 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>모의해킹 분류 차원</b>: ① 정보(Blind/White-box·Black-box) ② <b>인지(Blind/Double-blind)</b> ③ 위치(External/Internal)<br>
+• Double-blind이 평가하는 능력: <b>① 탐지 시간(MTTD) ② 분석 정확도 ③ 봉쇄 속도(MTTR) ④ 의사결정 ⑤ 커뮤니케이션 ⑥ 도구·플레이북 활용</b><br>
+• 이중 블라인드 조건: <b>테스터=정보 없음 + 표적팀=테스트 인지 X</b> — 양쪽 모두 어두운 상태<br>
+• 사전 준비: <b>최상위 경영진·법무·보안 책임자만 인지(Need-to-know)</b> — Get-out-of-jail letter 필수<br>
+• 유형별 정리: <b>Targeted/White-box=협업 / Blind=테스터만 모름 / Double-blind=양쪽 모름 / External/Internal=위치</b><br>
+• Red Team Exercise는 통상 Double-blind + 장기·은밀·다중 벡터로 진행<br>
+• 시험 패턴: "IR 평가에 적합한 펜테스트" → <b>Double-blind</b> (표적 비인지가 핵심)</div>`,
+reference:"CRM Chapter 5: Penetration Testing — Double-Blind for IR Evaluation",
+keyConcepts:[
+"Double-blind|테스터·표적 모두 정보·인지 없음 — IR 능력 평가에 최적",
+"분류 차원|정보(W/B-box) · 인지(Blind/Double-blind) · 위치(External/Internal)",
+"평가 능력|MTTD·분석 정확도·MTTR·의사결정·커뮤니케이션·플레이북 활용",
+"사전 준비|경영진·법무·보안 책임자만 인지 + Get-out-of-jail letter",
+"Red Team Exercise|통상 Double-blind + 장기·은밀·다중 벡터로 진행",
+"유형 구분|Targeted=협업 / Blind=테스터만 모름 / Double-blind=양쪽 모름 / External-Internal=위치"
+]
+}
+,
+{
+id:708,
+domain:"5",
+ks:"5B6 Evidence Collection and Forensics",
+question:"An information systems (IS) auditor is reviewing an organization to ensure that evidence related to a data breach case is preserved. Which of the following choices would be of MOST concern to the IS auditor?",
+questionKo:"<b>데이터 침해 사건의 증거 보존</b>을 검토 중인 IS 감사인의 <b>가장 큰 우려</b>는?",
+options:[
+"A. End users are not aware of incident reporting procedures.",
+"B. Log servers are not on a separate network.",
+"C. Backups are not performed consistently.",
+"D. There is no chain of custody policy."
+],
+optionsKo:[
+"A. <b>최종 사용자가 사고 보고 절차를 모름</b>",
+"B. <b>로그 서버가 별도 네트워크에 없음</b>",
+"C. <b>백업이 일관되게 수행되지 않음</b>",
+"D. <b>Chain of Custody(증거 관리 연속성) 정책이 없음</b>"
+],
+correct:3,
+explanation:`<b>정답: D. Chain of Custody 정책 부재</b><br><br>
+<b>핵심:</b> 증거가 법적으로 인정받으려면 <b>수집·처리·이송·보관·반환 전 과정의 기록·통제</b>가 필수 — 정책이 없으면 증거가 법정에서 무효화될 수 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>증거 보존 영향</th><th>판정</th></tr>
+<tr><td>A. 사용자 인식</td><td>예방·신고 영역 — <b>증거 무결성과 직결 X</b></td><td>관리 사항 ❌</td></tr>
+<tr><td>B. 로그 서버 분리</td><td>좋은 관행이나 <b>정책 부재가 더 근본적</b></td><td>구현 이슈 ❌</td></tr>
+<tr><td>C. 백업 일관성</td><td>가용성 문제 — <b>침해 증거는 백업에서 회수하지 않음</b></td><td>다른 목적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. CoC 정책 부재</b></td><td><b>증거 무결성·법적 인정 자체가 불가능</b></td><td><b>✅ MOST concern</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Chain of Custody(CoC)</b>: 증거의 <b>WHO·WHAT·WHEN·WHERE·WHY·HOW</b>를 모든 인계 시점에 기록 — 법정 인정의 전제 조건<br>
+• CoC 문서 필수 요소: <b>① 증거 식별자(해시·일련번호) ② 수집자·시간·장소 ③ 인계받은 사람·시간 ④ 보관 위치 ⑤ 접근자 기록 ⑥ 처분 일자</b><br>
+• 증거 무결성 보장: <b>① 디지털 해시(SHA-256) ② 봉인 ③ 보관 락커 ④ 접근 제한·감사 로그 ⑤ Write-blocker 사용</b><br>
+• 디지털 포렌식 원칙: <b>① 원본 변경 금지 ② 모든 행위 기록 ③ 자격 있는 사람만 처리 ④ 무결성 검증 가능</b><br>
+• CoC 깨지면: <b>법정에서 증거 무효·소송 패소·범죄자 처벌 불가·민사 손해배상 청구 어려움</b><br>
+• 다른 보기(A·B·C)는 모두 <b>정책이 있어도 발생할 수 있는 구현 이슈</b> — 정책 부재가 가장 근본적<br>
+• 시험 패턴: "증거 보존 MOST concern" → <b>Chain of Custody 정책</b> (법적 인정의 전제)</div>`,
+reference:"CRM Chapter 5: Digital Forensics — Chain of Custody",
+keyConcepts:[
+"Chain of Custody(MOST concern)|증거 인계 전 과정 기록·통제 — 법정 인정의 전제 조건",
+"CoC 문서|증거 식별자·수집자/시간/장소·인계 기록·보관 위치·접근자·처분 일자",
+"증거 무결성|디지털 해시(SHA-256)·봉인·보관 락커·접근 제한·Write-blocker",
+"디지털 포렌식 원칙|원본 변경 금지·모든 행위 기록·자격자만 처리·무결성 검증 가능",
+"CoC 부재 결과|법정 증거 무효·소송 패소·범죄자 처벌 불가·민사 손해배상 어려움",
+"정책 vs 구현|A·B·C는 정책 있어도 발생 가능 / D 정책 부재가 가장 근본적"
+]
+}
+,
+{
+id:709,
+domain:"5",
+ks:"5B6 Evidence Collection and Forensics",
+question:"An information systems (IS) auditor has been asked by management to review a potentially fraudulent transaction. The PRIMARY focus of the IS auditor while evaluating the transaction should be to:",
+questionKo:"경영진의 요청으로 <b>잠재적 부정 거래를 검토</b>할 때 IS 감사인의 <b>주된 초점(PRIMARY)</b>은?",
+options:[
+"A. maintain impartiality while evaluating the transaction.",
+"B. ensure that the independence of the IS auditor is maintained.",
+"C. ensure that the integrity of the evidence is maintained.",
+"D. assess all relevant evidence for the transaction."
+],
+optionsKo:[
+"A. <b>거래 평가 시 공정성 유지</b>",
+"B. <b>IS 감사인의 독립성 유지</b>",
+"C. <b>증거의 무결성 유지</b>",
+"D. <b>거래 관련 모든 증거 평가</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 증거의 무결성 유지</b><br><br>
+<b>핵심:</b> 부정 거래 조사 시 수집된 증거가 <b>법적·내부 절차에서 사용 가능</b>하려면 무결성 보장이 최우선 — 무결성 깨지면 다른 노력 모두 무의미.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>우선순위</th><th>판정</th></tr>
+<tr><td>A. 공정성 유지</td><td>중요한 원칙이나 <b>증거 무결성에 비해 부차적</b></td><td>2차 ❌</td></tr>
+<tr><td>B. 독립성 유지</td><td>중요한 원칙이나 <b>증거 무결성이 더 중요</b></td><td>2차 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 증거 무결성</b></td><td><b>법정·내부 활용 가능성의 전제 — 깨지면 모두 무의미</b></td><td><b>✅ PRIMARY</b></td></tr>
+<tr><td>D. 모든 증거 평가</td><td>중요하나 <b>무결성 유지가 우선</b> — Chain of Custody 우선</td><td>2차 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 무결성이 최우선인 이유: <b>잘못 수집·처리된 증거는 법정에서 무효</b> — 부정 입증 실패·민형사 책임 추궁 불가<br>
+• 증거 무결성 보장 절차: <b>① Chain of Custody 기록 ② 디지털 해시(SHA-256) ③ Write-blocker로 원본 보호 ④ 사본 작업·원본 보관 ⑤ 보관 락커·접근 제한</b><br>
+• 감사인 행동: <b>전문 포렌식 인력과 협업·법무 상담·CoC 양식 즉시 시작</b><br>
+• 공정성·독립성(A·B)도 중요하나 — <b>증거가 없으면 평가 자체가 불가능</b><br>
+• 모든 증거 평가(D) ≠ 증거 무결성 — 양보다 질·법적 가용성이 핵심<br>
+• 발견 후 우선순위: <b>① 증거 보존(무결성) → ② 경영진 보고 → ③ 추가 분석 → ④ 권고</b><br>
+• 시험 패턴: "부정 거래 조사 PRIMARY" → <b>증거 무결성</b> (다른 원칙은 그 다음)</div>`,
+reference:"CRM Chapter 5: Fraud Investigation — Evidence Integrity First",
+keyConcepts:[
+"증거 무결성(PRIMARY)|법정·내부 활용의 전제 — 깨지면 모든 노력 무의미",
+"무결성 보장 절차|Chain of Custody·SHA-256 해시·Write-blocker·사본 작업·보관 락커",
+"감사인 행동|전문 포렌식 협업·법무 상담·CoC 즉시 시작",
+"공정성·독립성|중요 원칙이나 증거 보존 우선 — 증거 없으면 평가 자체 불가",
+"모든 증거 평가 한계|양보다 질·법적 가용성 — 무결성이 핵심",
+"발견 후 순서|증거 보존 → 경영진 보고 → 추가 분석 → 권고"
+]
+}
+,
+{
+id:710,
+domain:"5",
+ks:"5B6 Evidence Collection and Forensics",
+question:"When performing a computer forensic investigation, in regard to the evidence gathered, an information systems (IS) auditor should be MOST concerned with:",
+questionKo:"<b>컴퓨터 포렌식 수사</b> 시 수집된 증거에 대해 IS 감사인이 <b>가장 우려해야 할 사항</b>은?",
+options:[
+"A. analysis.",
+"B. evaluation.",
+"C. preservation.",
+"D. disclosure."
+],
+optionsKo:[
+"A. <b>분석(Analysis)</b>",
+"B. <b>평가(Evaluation)</b>",
+"C. <b>보존(Preservation)</b>",
+"D. <b>공개(Disclosure)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 보존(Preservation)</b><br><br>
+<b>핵심:</b> 증거가 <b>온전히 보존</b>되어야 분석·평가·법적 활용이 가능 — 보존이 무너지면 후속 모든 활동이 의미를 잃고 법적 인정도 어려움.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>순서</th><th>판정</th></tr>
+<tr><td>A. 분석</td><td>보존 이후 단계 — <b>원본/사본 안전 후 수행</b></td><td>후속 ❌</td></tr>
+<tr><td>B. 평가</td><td>분석 결과로 의미 도출 — <b>3단계</b></td><td>후속 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 보존</b></td><td><b>증거의 무결성·법적 인정 가능성의 전제</b></td><td><b>✅ MOST concerned</b></td></tr>
+<tr><td>D. 공개</td><td>증거 처분·보고 단계 — 마지막</td><td>후속 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>포렌식 단계: Identification(식별) → Preservation(보존) → Collection(수집) → Examination(검사) → Analysis(분석) → Presentation(보고)</b><br>
+• 보존 우선 원칙: <b>잘못 보존된 증거는 법정 무효 → 처벌·민사 청구 모두 불가</b><br>
+• 보존 방법: <b>① Write-blocker 사용 ② 비트수준 이미징(dd·FTK Imager) ③ 해시(SHA-256) 검증 ④ 원본 봉인·보관 ⑤ 사본으로 작업 ⑥ Chain of Custody 기록</b><br>
+• 휘발성 증거 즉시 수집(RFC 3227): <b>레지스터/캐시 → RAM → 네트워크 → 프로세스 → 디스크 → 백업</b><br>
+• 분석(A)·평가(B)·공개(D)는 모두 <b>보존된 사본 기반</b>으로 진행 — 원본은 절대 변경 금지<br>
+• 보존 실패 시: <b>증거 변조 의심·인정 거부·소송 패소·감사 발견 신뢰 상실</b><br>
+• 시험 패턴: "포렌식 증거 MOST concerned" → <b>보존(Preservation)</b> (분석·평가·공개는 모두 보존 후)</div>`,
+reference:"CRM Chapter 5: Digital Forensics — Preservation as Primary Concern",
+keyConcepts:[
+"증거 보존(MOST concerned)|무결성·법적 인정 가능성의 전제 — 다른 모든 활동의 출발점",
+"포렌식 단계|Identification → Preservation → Collection → Examination → Analysis → Presentation",
+"보존 방법|Write-blocker·비트수준 이미징·SHA-256 해시·원본 봉인·사본 작업·CoC 기록",
+"휘발성 수집(RFC 3227)|레지스터→RAM→네트워크→프로세스→디스크→백업",
+"원본 보호|분석은 사본으로만 — 원본 절대 변경 금지",
+"보존 실패 결과|증거 변조 의심·법정 무효·소송 패소·감사 신뢰 상실"
+]
+}
+,
+{
+id:711,
+domain:"5",
+ks:"5B6 Evidence Collection and Forensics",
+question:"Which of the following criteria are MOST needed to ensure that log information is admissible in court? Ensure that data have been:",
+questionKo:"<b>법정에서 로그 정보가 인정</b>받기 위해 가장 필요한 기준은? 데이터가:",
+options:[
+"A. independently time stamped.",
+"B. recorded by multiple logging systems.",
+"C. encrypted by the most secure algorithm.",
+"D. verified to ensure log integrity."
+],
+optionsKo:[
+"A. <b>독립적으로 타임스탬프됨</b>",
+"B. <b>여러 로깅 시스템에 의해 기록됨</b>",
+"C. <b>가장 안전한 알고리즘으로 암호화됨</b>",
+"D. <b>로그 무결성이 검증됨</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 로그 무결성 검증</b><br><br>
+<b>핵심:</b> 법정 인정은 <b>"기록 이후 변조되지 않았음"</b>을 증명하는 무결성 검증에 달림 — 타임스탬프·중복·암호화는 무결성을 지원하는 수단의 일부일 뿐.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할</th><th>판정</th></tr>
+<tr><td>A. 독립 타임스탬프</td><td>시점 증명 — 무결성의 <b>한 요소</b></td><td>부분 ❌</td></tr>
+<tr><td>B. 다중 로깅</td><td>중복성 — <b>신뢰성에 큰 가치 추가 X</b></td><td>제한적 ❌</td></tr>
+<tr><td>C. 강력 암호화</td><td>기밀성 보호 — <b>변조 방지엔 부족</b></td><td>다른 목적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 무결성 검증</b></td><td><b>변조 부재 입증 — 법정 인정의 핵심</b></td><td><b>✅ MOST needed</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 법정 증거 인정 5요건: <b>① 관련성(Relevant) ② 신뢰성(Reliable·무결성) ③ 충분성(Sufficient) ④ 합법성(Legally obtained) ⑤ 진위성(Authentic)</b><br>
+• 무결성 검증 방법: <b>① 해시(SHA-256) 체이닝 ② 디지털 서명·HMAC ③ WORM 저장 ④ Chain of Custody ⑤ 독립 타임스탬프(TSA) ⑥ 로그 무결성 모니터링(FIM)</b><br>
+• 암호화 vs 무결성: <b>암호화=기밀성(읽기 차단) / 무결성=변조 탐지 — 별도 목적</b><br>
+• 타임스탬프(A)는 무결성의 한 구성 요소이나 <b>변조 자체 차단은 못 함</b> — TSA(Time Stamping Authority)와 결합해야 의미<br>
+• 다중 로깅(B): 중앙·중복 저장은 가용성 향상이나 <b>법정 인정 결정 요인 아님</b><br>
+• <b>"무결성 검증"은 종합 개념</b> — 타임스탬프·해시·서명·CoC 모두를 포괄<br>
+• 시험 패턴: "법정 인정 MOST needed" → <b>무결성 검증</b> (타임스탬프·중복·암호화는 부분 통제)</div>`,
+reference:"CRM Chapter 5: Log Admissibility — Integrity Verification",
+keyConcepts:[
+"로그 무결성(MOST needed)|변조 부재 입증 — 법정 인정의 핵심 (타임스탬프·중복·암호화는 부분)",
+"증거 인정 5요건|관련성·신뢰성·충분성·합법성·진위성",
+"무결성 검증 방법|SHA-256 해시 체이닝·디지털 서명·HMAC·WORM·CoC·TSA·FIM",
+"암호화 vs 무결성|암호화=기밀성(읽기) / 무결성=변조 탐지 — 별개 목적",
+"타임스탬프 한계|시점 증명이나 변조 자체 차단 못 함 — TSA와 결합 필요",
+"다중 로깅 한계|가용성·중복 향상이나 법정 인정 결정 요인 아님"
+]
+}
+,
+{
+id:712,
+domain:"5",
+ks:"5B6 Evidence Collection and Forensics",
+question:"An information systems (IS) auditor is reviewing security incident management procedures for the enterprise. Which of the following choices is the MOST important consideration?",
+questionKo:"기업의 <b>보안 사고 관리 절차</b>를 검토할 때 IS 감사인이 가장 중요하게 고려해야 할 사항은?",
+options:[
+"A. Chain of custody of electronic evidence",
+"B. System breach notification procedures",
+"C. Escalation procedures to external agencies",
+"D. Procedures to recover lost data"
+],
+optionsKo:[
+"A. <b>전자 증거의 Chain of Custody</b>",
+"B. <b>시스템 침해 통지 절차</b>",
+"C. <b>외부 기관으로의 에스컬레이션 절차</b>",
+"D. <b>분실 데이터 복구 절차</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 전자 증거의 Chain of Custody</b><br><br>
+<b>핵심:</b> 증거 수집·처리가 잘못되면 <b>법적 추궁·민사 소송이 불가능</b>해짐 — 통지·에스컬레이션·복구는 모두 증거가 있어야 의미 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>중요성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. CoC</b></td><td><b>증거 무결성·법적 활용의 전제 — 깨지면 소송 불가</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>B. 침해 통지</td><td>법규 요구되나 <b>모든 사고에 해당하진 않음</b></td><td>조건부 ❌</td></tr>
+<tr><td>C. 외부 기관 에스컬레이션</td><td>중요하나 <b>증거 없이는 효과 없음</b></td><td>2차 ❌</td></tr>
+<tr><td>D. 데이터 복구</td><td>가용성 측면 — <b>법적 대응엔 증거가 우선</b></td><td>다른 영역 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>법적 대응 가능성 = Chain of Custody 보존</b>: 정책·절차·기록·도구가 모두 갖춰져야 법정에서 인정<br>
+• CoC가 다루는 범위: <b>수집 → 분석 → 저장 → 이송 → 처분</b>의 전 라이프사이클 추적<br>
+• 침해 통지(B) 의무화 법규: <b>GDPR·HIPAA·PCI DSS·국내 개인정보보호법</b> — 그러나 통지 자체는 증거 없이도 가능<br>
+• 외부 기관(C) 협력 시점: 사고 심각도·법적 의무·국가 보안 등에 따라 — CoC가 보존되어야 의미 있음<br>
+• 데이터 복구(D)는 비즈니스 가용성 측면 — <b>법적 책임 추궁과는 별개</b><br>
+• 사고 관리의 전체 흐름: <b>탐지 → 봉쇄 → 증거 수집(CoC) → 분석 → 통지/에스컬레이션 → 복구 → 교훈</b><br>
+• 시험 패턴: "사고 관리 MOST important" → <b>Chain of Custody</b> (법적 대응 가능성의 전제)</div>`,
+reference:"CRM Chapter 5: Security Incident Management — Chain of Custody Priority",
+keyConcepts:[
+"Chain of Custody(MOST important)|법적 대응 가능성의 전제 — 통지·에스컬레이션·복구는 증거 있어야 의미",
+"CoC 범위|수집 → 분석 → 저장 → 이송 → 처분 전 라이프사이클 추적",
+"침해 통지 법규|GDPR·HIPAA·PCI DSS·개인정보보호법 — 통지 자체는 증거 없이도 가능",
+"외부 에스컬레이션|사고 심각도·법적 의무 따라 — CoC 보존되어야 의미",
+"데이터 복구 vs 증거|가용성 측면과 법적 책임 추궁은 별개 영역",
+"사고 관리 흐름|탐지→봉쇄→증거 수집(CoC)→분석→통지/에스컬레이션→복구→교훈"
+]
+}
+,
+{
+id:713,
+domain:"5",
+ks:"5B6 Evidence Collection and Forensics",
+question:"During the collection of forensic evidence, which of the following actions would MOST likely result in the destruction or corruption of evidence on a compromised system?",
+questionKo:"포렌식 증거 수집 중 침해된 시스템에서 <b>증거 파괴·훼손 가능성이 가장 높은</b> 행위는?",
+options:[
+"A. Dumping the memory content to a file",
+"B. Generating disk images of the compromised system",
+"C. Rebooting the system",
+"D. Removing the system from the network"
+],
+optionsKo:[
+"A. <b>메모리 내용을 파일로 덤프</b>",
+"B. <b>침해 시스템의 디스크 이미지 생성</b>",
+"C. <b>시스템 재부팅(Reboot)</b>",
+"D. <b>시스템을 네트워크에서 분리</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 시스템 재부팅(Reboot)</b><br><br>
+<b>핵심:</b> 재부팅은 <b>RAM·실행 프로세스·네트워크 세션·임시 파일 등 휘발성 증거를 즉시 파괴</b> — 포렌식에서 가장 치명적 실수.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>증거 영향</th><th>판정</th></tr>
+<tr><td>A. 메모리 덤프</td><td>표준 포렌식 절차 — <b>주의 시 손상 없음</b></td><td>정상 절차 ✅</td></tr>
+<tr><td>B. 디스크 이미징</td><td>Write-blocker 사용 시 <b>원본 보존</b></td><td>정상 절차 ✅</td></tr>
+<tr style="background:#d4edda"><td><b>C. 재부팅</b></td><td><b>RAM·프로세스·세션·임시 파일 모두 소실</b></td><td><b>✅ MOST likely 파괴</b></td></tr>
+<tr><td>D. 네트워크 분리</td><td>봉쇄 + 증거 보존 — <b>권장 조치</b></td><td>정상 절차 ✅</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>재부팅 시 사라지는 증거</b>: <b>① RAM 내용(프로세스 메모리·자격증명) ② 실행 중 프로세스 ③ 활성 네트워크 연결 ④ 임시 파일(/tmp) ⑤ 캐시·페이지 파일 ⑥ 로드된 악성코드 모듈</b><br>
+• 휘발성 증거 우선순위(RFC 3227): <b>레지스터/캐시 → RAM → 라우팅·ARP·접속 상태 → 실행 프로세스 → 임시 파일 → 디스크 → 원격 로그·매체</b><br>
+• 올바른 순서: <b>① 격리(네트워크 분리) ② 휘발성 증거 수집(메모리 덤프) ③ 디스크 이미지(Write-blocker) ④ 해시 검증 ⑤ CoC 기록</b><br>
+• 재부팅 외 다른 함정: <b>전원 차단·로그인·파일 열기·AV 스캔·패치·시간 변경</b> — 모두 흔적 손상<br>
+• 디스크 이미지(B) 시 <b>Write-blocker</b> 필수 — 원본 쓰기 차단해야 무결성 보장<br>
+• 메모리 덤프(A) 도구: <b>WinPmem·DumpIt·LiME·Volatility</b> — 휘발성 증거의 핵심<br>
+• 시험 패턴: "포렌식 증거 파괴 MOST likely" → <b>재부팅</b> (휘발성 증거 즉시 소실)</div>`,
+reference:"CRM Chapter 5: Forensic Evidence — Avoid Reboot",
+keyConcepts:[
+"재부팅 금지|RAM·프로세스·세션·임시 파일 등 휘발성 증거 즉시 소실 — 포렌식 최악의 실수",
+"휘발성 증거 우선순위(RFC 3227)|레지스터→RAM→네트워크 상태→프로세스→임시→디스크→원격",
+"올바른 순서|격리 → 메모리 덤프 → 디스크 이미지 → 해시 → CoC",
+"다른 함정|전원 차단·로그인·파일 열기·AV 스캔·패치·시간 변경 — 모두 흔적 손상",
+"Write-blocker|디스크 이미징 시 필수 — 원본 쓰기 차단으로 무결성 보장",
+"메모리 덤프 도구|WinPmem·DumpIt·LiME·Volatility — 휘발성 증거 수집 표준"
+]
+}
 
 ];
