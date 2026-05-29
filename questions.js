@@ -29325,5 +29325,1691 @@ keyConcepts:[
 "메모리 덤프 도구|WinPmem·DumpIt·LiME·Volatility — 휘발성 증거 수집 표준"
 ]
 }
+,
+{
+id:714,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following is MOST important to ensure before communicating the audit findings to top management during the closing meeting?",
+questionKo:"클로징 미팅에서 <b>경영진에 감사 발견사항을 전달</b>하기 전 가장 중요하게 확인해야 할 것은?",
+options:[
+"A. Risk statement includes an explanation of a business impact",
+"B. Findings are clearly tracked back to evidence",
+"C. Recommendations address root causes of findings",
+"D. Remediation plans are provided by responsible parties"
+],
+optionsKo:[
+"A. <b>리스크 진술에 비즈니스 영향 설명 포함</b>",
+"B. <b>발견사항이 증거로 명확히 추적됨</b>",
+"C. <b>권고가 발견의 근본 원인을 다룸</b>",
+"D. <b>책임자가 시정 계획을 제공함</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 발견사항이 증거로 명확히 추적됨</b><br><br>
+<b>핵심:</b> 증거 없는 발견은 <b>이의 제기 시 무력</b> — 리스크·근본 원인·시정 계획은 모두 <b>발견의 정확성</b>을 전제로 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>중요도</th><th>판정</th></tr>
+<tr><td>A. 비즈니스 영향</td><td>중요하나 <b>발견이 부정확하면 의미 없음</b></td><td>2차 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 증거 추적</b></td><td><b>발견의 신뢰성 전제 — 모든 후속 논의의 기반</b></td><td><b>✅ MOST important</b></td></tr>
+<tr><td>C. 근본 원인</td><td>중요하나 <b>발견 정확성이 우선</b></td><td>2차 ❌</td></tr>
+<tr><td>D. 시정 계획</td><td>경영진 기대일 수 있으나 <b>발견 정확성 입증 후</b></td><td>2차 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사 발견의 4요소(IIA·ISACA)</b>: <b>① Criteria(기준) ② Condition(현황) ③ Cause(원인) ④ Effect(영향)</b> — 모두 증거 기반<br>
+• 발견의 신뢰성 확보: <b>① 충분성·관련성·신뢰성 있는 증거 ② Working paper에 매핑 ③ Cross-reference ④ 피감사 부서 사실 확인</b><br>
+• 증거 부족 시 위험: <b>이의 제기로 발견 철회·감사인 평판 손상·경영진 신뢰 상실·발견 무효화</b><br>
+• 클로징 미팅 순서: <b>① 발견 제시(증거 기반) ② 비즈니스 영향 설명 ③ 근본 원인 논의 ④ 권고·시정 계획 합의</b><br>
+• 증거 유형: <b>관찰·인터뷰·문서·재수행·분석·CAAT 결과</b> — 다양한 증거가 강력한 발견의 토대<br>
+• <b>"발견 = 증거"</b> 등식: 증거 없는 발견은 추측·의견에 불과 → 감사 보고서 작성 불가<br>
+• 시험 패턴: "발견 전달 MOST important" → <b>증거 추적</b> (정확성·신뢰성이 모든 것의 전제)</div>`,
+reference:"CRM Chapter 1: Audit Findings — Evidence-Based Reporting",
+keyConcepts:[
+"증거 추적(MOST important)|발견의 신뢰성 전제 — 리스크·원인·시정의 기반",
+"감사 발견 4요소|Criteria(기준)·Condition(현황)·Cause(원인)·Effect(영향) — 모두 증거 기반",
+"신뢰성 확보|충분성·관련성·신뢰성 증거 + Working paper 매핑 + Cross-reference + 사실 확인",
+"증거 부족 위험|발견 철회·평판 손상·경영진 신뢰 상실·발견 무효화",
+"클로징 미팅 순서|발견(증거) → 비즈니스 영향 → 근본 원인 → 권고/시정 계획",
+"증거 유형|관찰·인터뷰·문서·재수행·분석·CAAT — 다양한 증거가 강력한 발견의 토대"
+]
+}
+,
+{
+id:715,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"An information systems (IS) auditor is reviewing a project risk assessment and notices that the overall residual risk level is high due to confidentiality requirements. Which of the following types of risk is normally high due to the number of unauthorized users the project may affect?",
+questionKo:"프로젝트가 영향 미칠 수 있는 <b>비인가 사용자 수</b> 때문에 일반적으로 높아지는 위험 유형은?",
+options:[
+"A. Control risk",
+"B. Compliance risk",
+"C. Inherent risk",
+"D. Residual risk"
+],
+optionsKo:[
+"A. <b>통제 위험(Control risk)</b>",
+"B. <b>준법 위험(Compliance risk)</b>",
+"C. <b>고유 위험(Inherent risk)</b>",
+"D. <b>잔여 위험(Residual risk)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 고유 위험(Inherent Risk)</b><br><br>
+<b>핵심:</b> 고유 위험은 <b>통제 적용 전 본래의 위험</b> — 영향받는 사용자·업무 범위가 크면 본질적으로 위험이 높음.<br><br>
+<table class="cmp">
+<tr><th>위험 유형</th><th>정의·결정 요인</th><th>판정</th></tr>
+<tr><td>A. Control Risk</td><td>내부 통제 실패·우회 위험 — <b>사용자 수와 무관</b></td><td>다른 요인 ❌</td></tr>
+<tr><td>B. Compliance Risk</td><td>법규 미준수 처벌 — <b>사용자 수와 직결 X</b></td><td>다른 요인 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Inherent Risk</b></td><td><b>통제 적용 전 본래 위험 — 영향 범위·사용자 수에 비례</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>D. Residual Risk</td><td>통제 적용 후 남은 위험 — 사용자 수 직접 영향 X</td><td>통제 후 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>위험 등식</b>: <b>Residual Risk = Inherent Risk − Control Effectiveness</b><br>
+• Inherent Risk 결정 요인: <b>① 자산 가치 ② 영향 범위(사용자 수·업무 영역) ③ 위협 노출도 ④ 데이터 민감도 ⑤ 시스템 복잡도</b><br>
+• Control Risk: <b>설계된 통제가 실패·우회될 가능성</b> — 통제 자체의 약점<br>
+• Compliance Risk: <b>법·규제 위반에 따른 벌금·소송·평판 손실</b> — 산업별 다름<br>
+• Residual Risk: <b>통제 적용 후 남은 위험</b> — 경영진 수용 여부 결정<br>
+• 위험 관리 흐름: <b>Inherent 식별 → Control 적용 → Residual 평가 → 수용/이전/회피/완화</b><br>
+• <b>"영향 받는 사용자/범위↑ = Inherent Risk↑"</b> — 통제와 무관하게 본질적으로 큰 위험<br>
+• 시험 패턴: "사용자 수·범위 큼" → <b>Inherent Risk</b> (통제 적용 전 본래 위험)</div>`,
+reference:"CRM Chapter 1: Risk Types — Inherent vs Residual vs Control vs Compliance",
+keyConcepts:[
+"Inherent Risk|통제 적용 전 본래 위험 — 자산 가치·영향 범위·사용자 수에 비례",
+"위험 등식|Residual = Inherent − Control Effectiveness",
+"Control Risk|설계된 통제 실패·우회 가능성 — 통제 자체의 약점",
+"Compliance Risk|법·규제 위반 벌금·소송·평판 — 산업별 다름",
+"Residual Risk|통제 적용 후 남은 위험 — 경영진 수용 여부 결정",
+"위험 관리 흐름|Inherent 식별 → Control 적용 → Residual 평가 → 수용/이전/회피/완화"
+]
+}
+,
+{
+id:716,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"An information systems (IS) auditor received an engagement to audit the enterprise resource planning (ERP) implementation from an audit committee. The auditor does not have competency in the specific ERP solution implemented by the auditee. Which of the following is the BEST course of action for the auditor?",
+questionKo:"감사위원회로부터 <b>ERP 구현 감사</b>를 의뢰받았으나 감사인이 해당 ERP에 대한 역량이 없다. 가장 좋은 조치는?",
+options:[
+"A. Attend a course to understand the specific enterprise resource planning (ERP) solution before conducting the audit.",
+"B. Hire an independent expert to support the audit with approval from the audit committee.",
+"C. Refuse to conduct the audit on the grounds of a lack of required competencies.",
+"D. Conduct a black-box audit around the ERP without going into specific controls."
+],
+optionsKo:[
+"A. <b>감사 전 해당 ERP 교육 수강</b>",
+"B. <b>감사위원회 승인 하에 독립 전문가 채용</b>",
+"C. <b>역량 부족을 이유로 감사 거부</b>",
+"D. <b>특정 통제는 다루지 않는 블랙박스 감사 수행</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 감사위원회 승인 하에 독립 전문가 채용</b><br><br>
+<b>핵심:</b> ISACA 표준은 <b>역량 부족 시 외부 전문가 활용</b>을 허용 — 적절한 승인·관리 하에 전문가를 활용해 감사 품질을 유지하는 것이 모범 사례.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 교육 수강</td><td>시간·비용 과다·필요 역량 보장 못함</td><td>비효율 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 외부 전문가 채용</b></td><td><b>ISACA 표준 허용·감사위원회 승인·역량 갭 즉시 해소</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>C. 감사 거부</td><td>표준이 대안을 허용하므로 거부는 부적절</td><td>월권 회피 ❌</td></tr>
+<tr><td>D. 블랙박스 감사</td><td>감사 목표 미달성 — <b>요구된 깊이 확보 불가</b></td><td>품질 미달 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>ISACA Audit Standard 1006 (Proficiency)</b>: 감사인은 충분한 전문 지식을 보유해야 함 — 부족 시 <b>외부 전문가 활용 명시</b><br>
+• 외부 전문가 활용 시 감사인 책임: <b>① 전문가 자격·독립성 검증 ② 작업 범위 정의 ③ 작업 결과 검토·평가 ④ 최종 의견 책임은 감사인</b><br>
+• 감사위원회 승인 필요 이유: <b>독립성 보장·비용 처리·이해관계자 합의</b><br>
+• 외부 전문가 예시: <b>특정 ERP(SAP·Oracle) 컨설턴트·산업 도메인 전문가·법무·세무·포렌식</b><br>
+• 감사 거부(C)가 마지막 수단인 이유: 표준이 외부 전문가 활용을 권장 — 거부는 부정확한 판단<br>
+• 블랙박스(D) 한계: <b>설정·구성·접근 통제·SoD 등 ERP 핵심 통제 평가 불가</b> → 감사 목적 미달성<br>
+• 시험 패턴: "역량 부족 감사 BEST" → <b>외부 전문가 채용(감사위원회 승인)</b> (표준 허용·품질 유지)</div>`,
+reference:"CRM Chapter 1: ISACA Standard 1006 — Proficiency",
+keyConcepts:[
+"외부 전문가 채용(BEST)|ISACA 표준 허용·감사위원회 승인 후 역량 갭 해소 — 거부 X",
+"ISACA Standard 1006|감사인 충분한 전문성 필요 — 부족 시 외부 전문가 명시 허용",
+"감사인 책임|전문가 자격·독립성 검증·범위 정의·결과 검토 — 최종 의견은 감사인",
+"감사위원회 승인|독립성 보장·비용 처리·이해관계자 합의",
+"감사 거부 부적절|표준이 대안 허용하므로 거부는 마지막 수단",
+"블랙박스 한계|ERP 핵심 통제(설정·SoD·접근) 평가 불가 — 감사 목적 미달성"
+]
+}
+,
+{
+id:717,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"While conducting an information systems (IS) audit, the auditor observed fraudulent activity in an area that was outside the scope of the audit. Which of the following is the BEST course of action for the auditor?",
+questionKo:"IS 감사 중 <b>감사 범위 외 영역에서 부정행위</b>를 발견한 감사인의 가장 좋은 조치는?",
+options:[
+"A. Conduct an audit of the suspected area and include it in the report.",
+"B. Communicate the observations to senior management.",
+"C. Ignore the activity and do nothing, since it is not within the scope of the audit.",
+"D. Report the fraudulent activity to a law enforcement agency."
+],
+optionsKo:[
+"A. <b>의심 영역에 대한 감사 수행 후 보고서에 포함</b>",
+"B. <b>경영진에 관찰 사항 전달</b>",
+"C. <b>범위 외이므로 무시</b>",
+"D. <b>법 집행기관에 직접 신고</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 경영진에 관찰 사항 전달</b><br><br>
+<b>핵심:</b> 범위 외라도 <b>부정행위는 보고 의무</b> — 직접 조사·외부 신고는 권한 밖, 경영진/감사위원회가 후속 조치 결정.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 직접 감사 수행</td><td>범위 외 — <b>감사인 권한 밖, 독립성 훼손</b></td><td>월권 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 경영진 보고</b></td><td><b>감사인의 정당한 의무 — 직접 조치는 경영진</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>C. 무시</td><td><b>윤리 위반</b> — 부정행위 미보고는 직무 유기</td><td>비윤리 ❌</td></tr>
+<tr><td>D. 외부 기관 신고</td><td>직무 윤리 위반·범위 밖 — <b>경영진 통한 절차</b></td><td>월권 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사인의 의무</b>: 부정·불법·중대한 사안 발견 시 <b>경영진·감사위원회에 즉시 보고</b> — 범위 무관<br>
+• 보고 대상 결정: <b>일반 사안=경영진 / 경영진 연루 의심=감사위원회·이사회</b><br>
+• 감사인이 직접 못하는 것: <b>① 범위 외 직접 조사 ② 외부 기관 신고 ③ 운영 개입 ④ 결정 권한 행사</b><br>
+• 직접 외부 신고(D) 부적절 이유: <b>비밀 유지 의무·고객 관계·법무 검토 필요·경영진 권한 침해</b><br>
+• 무시(C) 부적절 이유: <b>ISACA Code of Ethics·내부감사 윤리·법적 책임 가능</b><br>
+• 후속 절차: 보고 → 경영진/감사위원회 결정 → 별도 조사 의뢰(범위 확대) → 필요 시 법 집행기관 신고는 경영진이<br>
+• 시험 패턴: "범위 외 부정행위 발견 BEST" → <b>경영진 보고</b> (직접 조사·외부 신고 X)</div>`,
+reference:"CRM Chapter 1: Auditor Duty — Out-of-Scope Findings",
+keyConcepts:[
+"경영진 보고(BEST)|범위 외 부정행위 발견 시 의무 — 직접 조사·외부 신고는 권한 밖",
+"감사인 의무|부정·불법·중대 사안 발견 시 경영진/감사위원회 즉시 보고 — 범위 무관",
+"보고 대상|일반 사안=경영진 / 경영진 연루 의심=감사위원회·이사회",
+"감사인 권한 밖|범위 외 직접 조사·외부 신고·운영 개입·결정 권한 행사",
+"외부 신고 부적절|비밀 유지·고객 관계·법무 검토·경영진 권한 침해 — 직접 신고 금지",
+"후속 절차|보고 → 경영진 결정 → 별도 조사 의뢰 → 법 집행기관은 경영진이"
+]
+}
+,
+{
+id:718,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"After reviewing the disaster recovery planning process of an organization, an information systems (IS) auditor requests a meeting with organization management to discuss the findings. Which of the following BEST describes the main goal of this meeting?",
+questionKo:"감사 검토 후 IS 감사인이 경영진과 발견사항 논의 미팅을 요청했다. 이 미팅의 <b>주된 목표</b>를 가장 잘 설명한 것은?",
+options:[
+"A. Obtain management approval of the corrective action plan.",
+"B. Confirm factual accuracy of the findings.",
+"C. Assist management in the implementation of corrective actions.",
+"D. Prioritize the resolution of the items."
+],
+optionsKo:[
+"A. <b>시정 조치 계획에 대한 경영진 승인 획득</b>",
+"B. <b>발견사항의 사실 정확성 확인</b>",
+"C. <b>경영진의 시정 조치 구현 지원</b>",
+"D. <b>해결 항목의 우선순위 지정</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 발견사항의 사실 정확성 확인</b><br><br>
+<b>핵심:</b> 클로징 미팅의 <b>1차 목표</b>는 발견의 사실 정확성을 경영진과 함께 검증해 보고서 신뢰성 확보 — 시정 계획·구현은 후속 단계.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할·시점</th><th>판정</th></tr>
+<tr><td>A. 승인 획득</td><td>승인은 필수 아님 — 경영진이 다른 방식 선택 가능</td><td>부정확 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 사실 정확성 확인</b></td><td><b>발견의 신뢰성·이의 해소 — 클로징 미팅의 핵심</b></td><td><b>✅ MAIN goal</b></td></tr>
+<tr><td>C. 구현 지원</td><td>구현은 경영진 책임 — <b>감사인 개입 시 독립성 훼손</b></td><td>월권 ❌</td></tr>
+<tr><td>D. 우선순위 지정</td><td>등급(rating) 활동 — 의제 일부일 수 있으나 핵심 아님</td><td>부분적 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Exit Conference(클로징 미팅) 목적</b>: ① 발견의 사실 정확성 확인 ② 누락된 정보 보완 ③ 경영진 응답·코멘트 수렴 ④ 권고에 대한 합의 도출 ⑤ 시정 일정 논의<br>
+• 사실 정확성 확인의 가치: <b>이의 제기 사전 해소·보고서 신뢰성·경영진 신뢰 확보</b><br>
+• 감사인의 독립성: <b>구현 지원(C)은 자체 평가 위반(self-review threat)</b> — 감사인은 권고만, 구현은 경영진<br>
+• 승인(A)은 경영진의 자유 — 감사인은 권고하고 경영진이 채택 여부 결정<br>
+• 우선순위(D)는 위험 등급 기반으로 보고서에 포함되나 미팅의 1차 목표 아님<br>
+• 보고서 단계: <b>Draft → Exit Conference(사실 확인) → Final Report → Management Response → Follow-up</b><br>
+• 시험 패턴: "Exit Conference 목적 BEST" → <b>사실 정확성 확인</b> (승인·구현·우선순위는 후속 또는 부수적)</div>`,
+reference:"CRM Chapter 1: Exit Conference — Factual Accuracy",
+keyConcepts:[
+"Exit Conference MAIN goal|발견의 사실 정확성 확인 — 보고서 신뢰성·이의 해소",
+"클로징 미팅 목적|사실 확인·정보 보완·응답 수렴·권고 합의·시정 일정 논의",
+"독립성 유지|구현 지원은 self-review 위협 — 감사인은 권고, 구현은 경영진",
+"승인 자유|경영진이 권고 채택 여부 결정 — 감사인 강제 X",
+"보고서 단계|Draft → Exit Conference → Final → Management Response → Follow-up",
+"이의 해소|사전 사실 확인으로 최종 보고서 후 분쟁 최소화"
+]
+}
+,
+{
+id:719,
+domain:"1",
+ks:"1B1 Audit Project Management",
+question:"As part of standardizing the audit functions of different subsidiaries, the chief internal auditor has asked each audit team to use the already developed comprehensive audit manual. This manual was written with large, decentralized audit teams in mind. One of the subsidiaries has a small internal audit function consisting of a supervisor and two junior auditors. What is the BEST approach in providing administrative guidance for this small audit team?",
+questionKo:"감사 표준화를 위해 <b>대규모·분산 감사팀용 매뉴얼</b>을 모든 자회사에 적용한다. 한 자회사는 감독자 1명 + 주니어 2명의 <b>소규모 감사팀</b>이다. 가장 좋은 접근은?",
+options:[
+"A. Use informal supervisory directions for audit engagement management issues.",
+"B. Select critical administrative processes from the audit manual and use verbal directions for other engagement management issues.",
+"C. Continue using the administrative procedures already being followed by the internal auditors of that subsidiary.",
+"D. Use processes from the already developed manual as written."
+],
+optionsKo:[
+"A. <b>모든 감사 관리 사안에 비공식 감독자 지시 사용</b>",
+"B. <b>매뉴얼에서 핵심 행정 프로세스만 선택, 나머지는 구두 지시</b>",
+"C. <b>해당 자회사의 기존 행정 절차 계속 사용</b>",
+"D. <b>이미 개발된 매뉴얼을 그대로 사용</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 매뉴얼에서 핵심 프로세스만 선택 + 구두 지시 병행</b><br><br>
+<b>핵심:</b> <b>"문서화의 형식·내용은 감사 조직 규모·복잡성에 비례"</b> — 작은 팀에 거대한 매뉴얼은 비효율. 핵심 절차만 채택하고 나머지는 일상적 감독으로 관리.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 모두 비공식</td><td>핵심 절차도 비공식화 — <b>품질·표준화 부족</b></td><td>부족 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 핵심 매뉴얼 + 구두</b></td><td><b>규모 적합·표준화·효율성 균형</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>C. 기존 절차 유지</td><td>표준화 노력 위반 — 통일성 결여</td><td>표준 위반 ❌</td></tr>
+<tr><td>D. 매뉴얼 그대로</td><td>대형팀용 — <b>소규모엔 과잉·비효율</b></td><td>과잉 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>IIA·ISACA 원칙</b>: 절차의 형식·내용은 <b>감사 조직의 규모·구조·업무 복잡성</b>에 따라 결정<br>
+• 소규모 팀 관리 특징: <b>① 일상적 밀접 감독 ② 구두 회의·토론 ③ 짧은 보고선 ④ 간소화된 워킹페이퍼</b><br>
+• 대규모 팀 관리 필요: <b>표준화된 매뉴얼·체크리스트·자동화·역할 분담·QA</b> — 의사소통 격차 해소<br>
+• 핵심 절차 선별 기준: <b>① 독립성·윤리 ② 위험 평가 ③ 증거 수집 ④ 워킹페이퍼 ⑤ 보고 ⑥ 품질 관리</b><br>
+• 소규모 팀의 강점 활용: <b>유연성·신속한 의사결정·밀접한 코칭</b><br>
+• 표준화 vs 유연성 균형: 모든 자회사에 동일 매뉴얼은 표준화이나 비효율 — <b>핵심은 표준, 운영은 적응</b><br>
+• 시험 패턴: "소규모 감사팀 행정 BEST" → <b>핵심 절차만 + 구두/감독</b> (전체 매뉴얼·완전 비공식 모두 극단)</div>`,
+reference:"CRM Chapter 1: Audit Project Management — Scale-Appropriate Procedures",
+keyConcepts:[
+"규모 적합 절차(BEST)|핵심 프로세스만 채택 + 구두 지시 — 표준화·효율 균형",
+"IIA·ISACA 원칙|절차 형식은 조직 규모·구조·복잡성에 비례 — 일률 적용 금지",
+"소규모 팀 특징|일상 감독·구두 회의·짧은 보고선·간소화된 워킹페이퍼",
+"대규모 팀 필요|표준 매뉴얼·체크리스트·자동화·역할 분담·QA",
+"핵심 절차 선별|독립성/윤리·위험 평가·증거·워킹페이퍼·보고·품질 관리",
+"표준화 vs 유연성|핵심은 표준, 운영은 적응 — 모두 매뉴얼은 비효율"
+]
+}
+,
+{
+id:720,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following sampling methods is the MOST appropriate for testing automated invoice authorization controls to ensure that exceptions are not made for specific users?",
+questionKo:"<b>특정 사용자에게 예외가 적용되지 않는지</b> 확인하기 위해 자동화된 인보이스 승인 통제를 테스트할 때 가장 적합한 표본추출 방법은?",
+options:[
+"A. Variable sampling",
+"B. Judgmental sampling",
+"C. Stratified random sampling",
+"D. Systematic sampling"
+],
+optionsKo:[
+"A. <b>변량 표본추출(Variable sampling)</b>",
+"B. <b>판단 표본추출(Judgmental sampling)</b>",
+"C. <b>층화 무작위 표본추출(Stratified random sampling)</b>",
+"D. <b>계통 표본추출(Systematic sampling)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 층화 무작위 표본추출(Stratified Random Sampling)</b><br><br>
+<b>핵심:</b> 사용자(또는 그룹)별로 모집단을 <b>층(stratum)</b>으로 나누고 각 층에서 무작위로 추출 — 모든 사용자 그룹이 표본에 포함되어 특정 사용자 예외 식별 가능.<br><br>
+<table class="cmp">
+<tr><th>방법</th><th>용도·특성</th><th>판정</th></tr>
+<tr><td>A. Variable</td><td><b>금액·수량 영향 측정(실증)</b> — 통제 테스트 아님</td><td>용도 불일치 ❌</td></tr>
+<tr><td>B. Judgmental</td><td>감사인 판단으로 추출 — <b>통계적 외삽 불가</b></td><td>편향 위험 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Stratified</b></td><td><b>층(사용자)별 추출 → 모든 그룹 대표성 확보</b></td><td><b>✅ MOST appropriate</b></td></tr>
+<tr><td>D. Systematic</td><td>고정 간격 추출 — <b>특정 사용자 패턴 누락 가능</b></td><td>편향 위험 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Stratified Sampling</b>: 모집단을 <b>유사 특성의 부분집합(층)</b>으로 분할 → 각 층에서 표본 추출 → 모든 층 포함 보장<br>
+• 적용 시나리오: <b>① 사용자 그룹별 통제 ② 금액 구간별(고액/저액) ③ 부서·지역별 ④ 거래 유형별</b><br>
+• 본 문제 맥락: 사용자=층 → <b>각 사용자(또는 그룹)에서 표본 추출 시 특정 사용자 예외 노출 가능</b><br>
+• <b>표본추출 방법 비교</b>:<br>
+&nbsp;&nbsp;— <b>속성(Attribute)</b>: 통제 수행 여부(Yes/No) — 통제 테스트<br>
+&nbsp;&nbsp;— <b>변량(Variable)</b>: 금액·수량 — 실증 테스트<br>
+&nbsp;&nbsp;— <b>무작위(Random)</b>: 모든 항목 동등 기회<br>
+&nbsp;&nbsp;— <b>층화(Stratified)</b>: 층별 무작위<br>
+&nbsp;&nbsp;— <b>계통(Systematic)</b>: 고정 간격<br>
+&nbsp;&nbsp;— <b>판단(Judgmental)</b>: 비통계적<br>
+&nbsp;&nbsp;— <b>발견(Discovery)</b>: 부정 1건이라도 발견 목적<br>
+• Systematic(D)의 함정: <b>모집단에 주기적 패턴</b>이 있으면 편향 발생 — 특정 사용자 거래가 일정 간격 밖이면 누락<br>
+• Judgmental(B)은 신뢰성 검증 불가 — 통계적 결론 도출에 부적합<br>
+• 시험 패턴: "사용자별/그룹별 예외 테스트" → <b>Stratified Random</b> (모든 층 대표 보장)</div>`,
+reference:"CRM Chapter 1: Audit Sampling — Stratified Random Sampling",
+keyConcepts:[
+"Stratified Random(MOST appropriate)|모집단을 층으로 나누고 각 층에서 무작위 추출 — 모든 그룹 대표 보장",
+"표본추출 방법 비교|속성(Y/N)·변량(금액)·무작위·층화·계통·판단·발견",
+"Variable vs Attribute|Variable=실증/금액 / Attribute=통제 테스트/Yes-No",
+"Stratified 적용|사용자 그룹·금액 구간·부서·거래 유형 — 다양한 특성으로 층화",
+"Systematic 함정|모집단 주기적 패턴 있으면 편향 — 일정 간격 밖 누락 위험",
+"Judgmental 한계|감사인 판단 의존 — 통계적 외삽·검증 불가, 편향 위험"
+]
+}
+,
+{
+id:721,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"A long-term IT employee with a strong technical background and broad managerial experience has applied for a vacant position in the information systems (IS) audit department. Determining whether to hire this individual for this position should be PRIMARILY based on the individual's experience and:",
+questionKo:"IT 부서 장기근속 직원이 IS 감사 부서 직위에 지원했다. 채용 결정은 그의 경력과 무엇을 기준으로 해야 하는가?",
+options:[
+"A. length of service because this will help ensure technical competence.",
+"B. age because training in audit techniques may be impractical.",
+"C. IT knowledge because this will bring enhanced credibility to the audit function.",
+"D. ability, as an IS auditor, to be independent of existing IT relationships."
+],
+optionsKo:[
+"A. <b>근속 연수 — 기술 역량 보장</b>",
+"B. <b>연령 — 감사 기법 교육이 비실용적</b>",
+"C. <b>IT 지식 — 감사 기능의 신뢰성 향상</b>",
+"D. <b>기존 IT 관계로부터 독립적일 수 있는 IS 감사인 역량</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 기존 IT 관계로부터 독립적일 수 있는 능력</b><br><br>
+<b>핵심:</b> IS 감사의 본질은 <b>독립성</b> — IT 부서 출신은 기술 역량은 있으나 기존 동료·관계로 인한 독립성 훼손 위험이 가장 큰 평가 요소.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 근속 연수</td><td>기술 역량을 보장하지 않음 — <b>경험 ≠ 역량</b></td><td>부정확 ❌</td></tr>
+<tr><td>B. 연령</td><td>차별 사유 — <b>법적·윤리적 부적절</b></td><td>차별 ❌</td></tr>
+<tr><td>C. IT 지식</td><td>중요하나 <b>독립성이 더 우선</b> — 단독 기준 X</td><td>부분적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 독립성</b></td><td><b>IS 감사의 본질 — 기존 관계가 객관성 훼손</b></td><td><b>✅ PRIMARILY</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사인 독립성 위협</b>: ① 자기 검토(Self-review) ② 옹호(Advocacy) ③ 친밀성(Familiarity) ④ 자기 이익(Self-interest) ⑤ 위협(Intimidation)<br>
+• IT→감사 이동 시 위험: <b>친밀성·자기 검토 위협</b> — 본인이 구축·운영한 시스템을 감사할 수 없음<br>
+• 독립성 평가 요소: <b>개인 관계 변화·재무적 이해관계·이전 직무·책임 범위</b><br>
+• 완화책: <b>① 일정 기간 cooling-off ② 본인 이전 담당 영역 감사 제외 ③ 정기 독립성 선언 ④ 회전 배치</b><br>
+• 연령 기반 평가(B)는 <b>차별금지법 위반</b> — 미국 ADEA·국내 고용상연령차별금지법<br>
+• 근속(A)·IT 지식(C)은 자격 요건이나 <b>"PRIMARILY" 기준은 독립성</b><br>
+• 외부 영입의 장점: <b>독립성 확보 용이</b> / 단점: <b>조직·시스템 이해 부족</b><br>
+• 시험 패턴: "IT→감사 PRIMARILY" → <b>독립성</b> (다른 모든 자격은 독립성 전제 위에서 평가)</div>`,
+reference:"CRM Chapter 1: IS Auditor Independence — Hiring from IT",
+keyConcepts:[
+"감사인 독립성(PRIMARILY)|IT→감사 이동 시 기존 관계로 인한 객관성 훼손이 핵심 우려",
+"독립성 위협 5가지|Self-review·Advocacy·Familiarity·Self-interest·Intimidation",
+"IT→감사 위험|친밀성·자기 검토 — 본인 구축·운영 시스템 감사 불가",
+"완화책|Cooling-off·이전 영역 제외·정기 독립성 선언·회전 배치",
+"연령 차별 금지|ADEA·국내 연령차별금지법 — B 보기는 법적·윤리적 부적절",
+"외부 영입 트레이드오프|독립성 확보 용이 vs 조직 이해 부족"
+]
+}
+,
+{
+id:722,
+domain:"1",
+ks:"1A3 Risk-Based Audit Planning",
+question:"Which of the following BEST ensures the efficacy of risk-based auditing?",
+questionKo:"<b>리스크 기반 감사의 효과성</b>을 가장 잘 보장하는 것은?",
+options:[
+"A. Risk analysis",
+"B. Risk mitigation",
+"C. Risk assessment",
+"D. Risk treatment"
+],
+optionsKo:[
+"A. <b>리스크 분석(Risk analysis)</b>",
+"B. <b>리스크 완화(Risk mitigation)</b>",
+"C. <b>리스크 평가(Risk assessment)</b>",
+"D. <b>리스크 대응(Risk treatment)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 리스크 평가(Risk Assessment)</b><br><br>
+<b>핵심:</b> 리스크 기반 감사는 <b>식별·정량화·우선순위 지정</b>이 핵심 — 이 모두를 포괄하는 <b>Risk Assessment</b>가 효과성의 기반.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>범위</th><th>판정</th></tr>
+<tr><td>A. Risk Analysis</td><td><b>Risk Assessment의 부분집합</b> — 식별·정량화 단계</td><td>구성 요소 ❌</td></tr>
+<tr><td>B. Risk Mitigation</td><td>완화 통제 적용 — <b>평가 후 단계</b></td><td>후속 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Risk Assessment</b></td><td><b>식별 + 분석 + 평가 + 우선순위 — 감사 계획의 기반</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>D. Risk Treatment</td><td>잔여 위험 처리 — <b>평가 후 단계</b></td><td>후속 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Risk Management 흐름(ISO 31000)</b>: <b>Risk Identification → Risk Analysis → Risk Evaluation → Risk Treatment → Monitoring</b><br>
+• <b>Risk Assessment</b> = Identification + Analysis + Evaluation (3단계 포괄)<br>
+• 리스크 기반 감사의 가치: <b>① 자원 효율 ② 고위험 영역 집중 ③ 감사 범위 정당화 ④ 경영진 보고 신뢰성</b><br>
+• Risk Assessment 산출물: <b>위험 등록부(Risk Register)·히트맵·우선순위·감사 가능 영역(Audit Universe)</b><br>
+• 감사 계획에 활용: <b>고위험=깊이 있는 테스트·매년 / 중위험=주기적 / 저위험=순회·샘플</b><br>
+• Mitigation(B)·Treatment(D)는 <b>경영진 책임</b> — 감사인은 평가하고 권고<br>
+• Analysis(A)는 <b>Assessment의 한 단계</b> — 정량화·시나리오 분석에 한정<br>
+• 시험 패턴: "Risk-based audit 효과성 BEST" → <b>Risk Assessment</b> (전체 평가가 식별·우선순위의 기반)</div>`,
+reference:"CRM Chapter 1: Risk-Based Audit — Risk Assessment Foundation",
+keyConcepts:[
+"Risk Assessment(BEST)|식별+분석+평가 포괄 — 리스크 기반 감사의 효과성 기반",
+"Risk Management 흐름|Identification → Analysis → Evaluation → Treatment → Monitoring (ISO 31000)",
+"리스크 기반 감사 가치|자원 효율·고위험 집중·범위 정당화·경영진 보고 신뢰성",
+"Assessment 산출물|Risk Register·히트맵·우선순위·Audit Universe",
+"감사 계획 활용|고위험=깊이 매년 / 중위험=주기 / 저위험=순회·샘플",
+"역할 분리|감사인=평가/권고 / 경영진=Mitigation·Treatment 실행"
+]
+}
+,
+{
+id:723,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which audit technique provides the BEST evidence of the separation of duties in an IT department?",
+questionKo:"IT 부서의 <b>직무 분리(SoD)</b>에 대한 가장 좋은 증거를 제공하는 감사 기법은?",
+options:[
+"A. Discussion with management",
+"B. Review of the organization chart",
+"C. Observation and interviews",
+"D. Testing of user access rights"
+],
+optionsKo:[
+"A. <b>경영진과의 논의</b>",
+"B. <b>조직도 검토</b>",
+"C. <b>관찰 및 인터뷰</b>",
+"D. <b>사용자 접근 권한 테스트</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 관찰 및 인터뷰</b><br><br>
+<b>핵심:</b> SoD의 실제 작동은 <b>업무 수행 현장</b>에서만 확인 가능 — 관찰로 양립불가 업무 동시 수행 여부를 직접 보고, 인터뷰로 업무 범위 확인.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>제공하는 증거</th><th>판정</th></tr>
+<tr><td>A. 경영진 논의</td><td>경영진은 세부 업무 모를 수 있음 — <b>제한적 정보</b></td><td>표면적 ❌</td></tr>
+<tr><td>B. 조직도</td><td>역할 표시만 — <b>실제 수행·통제 작동 미확인</b></td><td>문서일 뿐 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 관찰·인터뷰</b></td><td><b>실제 업무 수행·양립불가 활동 직접 확인</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>D. 권한 테스트</td><td>시스템 권한만 — <b>실제 업무 범위·우회 여부 미확인</b></td><td>부분적 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>SoD(Segregation of Duties)</b>: 양립 불가 업무를 분리해 부정·오류 예방 — <b>거래 시작·승인·기록·자산 보관·검증</b> 분리<br>
+• IT 부서 SoD 핵심 분리 영역: <b>① 개발 vs 운영 ② 시스템 관리 vs 보안 관리 ③ DB 관리 vs 애플리케이션 개발 ④ 변경 요청자 vs 승인자 vs 구현자 ⑤ 운영 vs 감사</b><br>
+• 관찰의 가치: <b>실제로 누가 무엇을 하는지 직접 보기</b> — 문서·정책과 실제 행위 간 차이 식별<br>
+• 인터뷰의 가치: <b>업무 범위·일상 절차·예외 처리·우회 경로 파악</b><br>
+• 권한 테스트(D) 한계: <b>권한 부여 ≠ 실제 사용</b> — 부여는 있어도 실제로 안 쓸 수 있음, 반대로 권한 외 우회 가능<br>
+• 조직도(B) 한계: <b>"이렇게 되어야 한다"의 설계도</b> — 실제 작동 보장 X<br>
+• 보완 절차: 권한 매트릭스 검토 + SoD 충돌 보고서 + 변경 이력 검토 + 관찰·인터뷰 종합<br>
+• 시험 패턴: "SoD 증거 BEST" → <b>관찰·인터뷰</b> (실제 행위 직접 확인)</div>`,
+reference:"CRM Chapter 1: SoD Audit — Observation & Interviews",
+keyConcepts:[
+"관찰·인터뷰(BEST)|실제 업무 수행 직접 확인 — SoD의 작동 여부 검증",
+"SoD 정의|양립 불가 업무 분리 — 거래 시작·승인·기록·보관·검증 분리로 부정 예방",
+"IT 부서 SoD 영역|개발 vs 운영·SysAdmin vs 보안·DB vs 앱·변경 요청/승인/구현·운영 vs 감사",
+"관찰 가치|실제 행위 직접 확인 — 문서·정책과 실제 차이 식별",
+"권한 테스트 한계|권한 부여 ≠ 실제 사용 — 우회·미사용 모두 가능",
+"보완 절차|권한 매트릭스 + SoD 충돌 보고서 + 변경 이력 + 관찰·인터뷰 종합"
+]
+}
+,
+{
+id:724,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following is the GREATEST concern if audit objectives are not established during the initial phase of an audit program?",
+questionKo:"감사 프로그램 초기 단계에 <b>감사 목표가 수립되지 않을 때</b> 가장 큰 우려는?",
+options:[
+"A. Key stakeholders are incorrectly identified.",
+"B. Control costs will exceed the planned budget.",
+"C. Important business risk may be overlooked.",
+"D. Previously audited areas may be inadvertently included."
+],
+optionsKo:[
+"A. <b>핵심 이해관계자가 잘못 식별됨</b>",
+"B. <b>통제 비용이 예산 초과</b>",
+"C. <b>중요한 비즈니스 리스크가 간과될 수 있음</b>",
+"D. <b>이전에 감사한 영역을 의도치 않게 포함</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 중요한 비즈니스 리스크가 간과될 수 있음</b><br><br>
+<b>핵심:</b> 감사 목표가 없으면 <b>리스크 평가의 기준이 없어</b> 고위험 영역이 범위에서 누락 — 감사의 본래 목적(리스크 식별·평가)이 달성되지 않음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>심각도</th><th>판정</th></tr>
+<tr><td>A. 이해관계자 오식별</td><td>발견 보고에 지장 — <b>리스크 누락보다 영향 작음</b></td><td>2차 ❌</td></tr>
+<tr><td>B. 통제 비용 초과</td><td>다양한 요인 — 목표 부재가 유일 원인 아님</td><td>제한적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 핵심 리스크 누락</b></td><td><b>감사 본래 목적 달성 실패 — 고위험 영역 미감사</b></td><td><b>✅ GREATEST</b></td></tr>
+<tr><td>D. 중복 감사</td><td>자원 비효율 — <b>리스크 누락보다 영향 작음</b></td><td>비효율 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사 목표(Audit Objectives)</b>: 감사의 <b>"왜·무엇을 평가할지"</b> 정의 — 모든 감사 활동의 출발점·기준<br>
+• 목표 부재 시 영향: <b>① 범위 불명확 ② 리스크 평가 불가 ③ 자원 배분 비효율 ④ 발견의 기준 없음 ⑤ 경영진 보고 가치↓</b><br>
+• 감사 계획 단계: <b>① 목표 정의 → ② 범위 결정 → ③ 리스크 평가 → ④ 절차 설계 → ⑤ 자원 배정 → ⑥ 일정</b><br>
+• 목표 정의 SMART 원칙: <b>Specific·Measurable·Achievable·Relevant·Time-bound</b><br>
+• 목표 vs 범위(Scope): <b>목표=달성하려는 결과 / 범위=평가할 대상·기간·시스템</b><br>
+• 이해관계자(A)는 목표 정의 후 식별 — 목표가 우선 / 비용·중복은 효율성 문제<br>
+• 시험 패턴: "목표 부재 GREATEST" → <b>리스크 누락</b> (감사의 본래 목적 실패)</div>`,
+reference:"CRM Chapter 1: Audit Objectives — Foundation of Risk-Based Audit",
+keyConcepts:[
+"감사 목표 부재 GREATEST|핵심 리스크 누락 — 감사 본래 목적(리스크 평가) 달성 실패",
+"감사 목표 정의|왜·무엇을 평가할지 — 모든 감사 활동의 출발점·기준",
+"목표 부재 영향|범위 불명확·리스크 평가 불가·자원 비효율·발견 기준 없음·경영진 보고 가치↓",
+"감사 계획 단계|목표 → 범위 → 리스크 평가 → 절차 설계 → 자원 → 일정",
+"SMART 원칙|Specific·Measurable·Achievable·Relevant·Time-bound — 목표 정의 표준",
+"목표 vs 범위|목표=달성 결과 / 범위=평가 대상·기간·시스템"
+]
+}
+,
+{
+id:725,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Due to unexpected resource constraints of the information systems (IS) audit team, the audit plan, as originally approved, cannot be completed. Assuming that the situation is communicated in the audit report, which course of action is MOST acceptable?",
+questionKo:"<b>IS 감사팀의 예상치 못한 자원 제약</b>으로 원래 승인된 감사 계획을 완료할 수 없다. 감사 보고서에 상황을 명시한다는 전제 하에 가장 수용 가능한 조치는?",
+options:[
+"A. Test the adequacy of the control design.",
+"B. Test the operational effectiveness of controls.",
+"C. Focus on auditing high-risk areas.",
+"D. Rely on management testing of controls."
+],
+optionsKo:[
+"A. <b>통제 설계의 적정성만 테스트</b>",
+"B. <b>통제의 운영 효과성만 테스트</b>",
+"C. <b>고위험 영역 감사에 집중</b>",
+"D. <b>경영진의 통제 테스트에 의존</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 고위험 영역 감사에 집중</b><br><br>
+<b>핵심:</b> 자원 제약 시 <b>리스크 기반 우선순위</b>로 범위 축소 — 고위험 영역만 감사해 한정된 자원으로 최대 가치 제공.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 설계만 테스트</td><td>설계 OK ≠ 운영 OK — <b>실제 작동 검증 불가</b></td><td>증거 부족 ❌</td></tr>
+<tr><td>B. 운영만 테스트</td><td>리스크 우선순위 없음 — <b>고위험 영역 보장 X</b></td><td>방향 부재 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 고위험 집중</b></td><td><b>리스크 기반 우선순위 — 한정 자원의 최대 가치</b></td><td><b>✅ MOST acceptable</b></td></tr>
+<tr><td>D. 경영진 의존</td><td>독립성·객관성 훼손 — <b>감사 본질 위배</b></td><td>독립성 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>리스크 기반 감사의 강점</b>: 자원 제약 시 우선순위로 가치 극대화 — 모든 영역을 다 못 봐도 <b>가장 중요한 것</b>은 본다<br>
+• 범위 축소 시 절차: <b>① 경영진·감사위원회 통보 ② 리스크 우선순위 재평가 ③ 고위험 영역 식별 ④ 저위험은 익년 이월 ⑤ 보고서에 제약·범위 명시</b><br>
+• 보고서 공개 의무: <b>"범위 제한(Scope Limitation)" 명시</b> — 감사 결론의 한계를 사용자에게 알림<br>
+• 설계 vs 운영 테스트: <b>설계 적정성(Design Effectiveness) + 운영 효과성(Operating Effectiveness) 모두 필요</b> — 하나만으론 불완전<br>
+• 경영진 테스트 의존(D) 부적절: <b>감사인 독립성·객관성·정량 검증 부재</b> — Self-audit이 됨<br>
+• 자원 제약 대응 옵션: <b>① 우선순위 축소(C 선택) ② 외부 전문가 활용 ③ 일정 조정 ④ 자원 추가 요청 ⑤ 감사위원회 결정</b><br>
+• 시험 패턴: "자원 제약 MOST acceptable" → <b>고위험 집중</b> (리스크 기반 감사의 기본)</div>`,
+reference:"CRM Chapter 1: Audit Resource Constraints — Risk-Based Prioritization",
+keyConcepts:[
+"고위험 집중(MOST acceptable)|자원 제약 시 리스크 기반 우선순위 — 한정 자원의 최대 가치",
+"범위 축소 절차|통보 → 우선순위 재평가 → 고위험 식별 → 저위험 이월 → 보고서 명시",
+"Scope Limitation|보고서에 범위 제한 명시 — 결론의 한계 공개 의무",
+"설계 vs 운영|Design + Operating Effectiveness 모두 필요 — 하나만으론 불완전",
+"경영진 의존 부적절|독립성·객관성 훼손 — Self-audit이 되어 감사 본질 위배",
+"자원 제약 대응|우선순위 축소·외부 전문가·일정 조정·자원 추가·감사위원회 결정"
+]
+}
+,
+{
+id:726,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following responsibilities is MOST likely to compromise the independence of an information systems (IS) auditor when reviewing the risk management process?",
+questionKo:"리스크 관리 프로세스를 검토할 때 IS 감사인의 독립성을 가장 크게 훼손할 가능성이 있는 활동은?",
+options:[
+"A. Participating in the design of the risk management framework",
+"B. Advising on different implementation techniques",
+"C. Facilitating risk awareness training",
+"D. Performing a due diligence review of the risk management processes"
+],
+optionsKo:[
+"A. <b>리스크 관리 프레임워크 설계에 참여</b>",
+"B. <b>다양한 구현 기법에 대한 자문 제공</b>",
+"C. <b>리스크 인식 교육 진행</b>",
+"D. <b>리스크 관리 프로세스에 대한 실사(due diligence) 수행</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 프레임워크 설계 참여</b><br><br>
+<b>핵심:</b> 설계 참여 = <b>통제 설계 참여</b> → 본인이 설계한 것을 본인이 감사하는 <b>Self-review 위협</b> 발생, 독립성 훼손.<br><br>
+<table class="cmp">
+<tr><th>활동</th><th>독립성 영향</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 설계 참여</b></td><td><b>Self-review 위협 — 본인 설계 감사 불가</b></td><td><b>✅ MOST 훼손</b></td></tr>
+<tr><td>B. 자문 제공</td><td>의사결정 안 함 — 자문은 권고일 뿐</td><td>허용 ❌</td></tr>
+<tr><td>C. 교육 진행</td><td>의사결정 무관 — 인식 제고 활동</td><td>허용 ❌</td></tr>
+<tr><td>D. 실사 수행</td><td>감사 활동의 일종 — <b>독립성 유지</b></td><td>감사 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Self-Review Threat</b>: 감사인이 본인이 만든 것·결정한 것을 평가 — 객관성 불가능<br>
+• 5대 독립성 위협(IFAC·ISACA): <b>① Self-review ② Self-interest ③ Advocacy ④ Familiarity ⑤ Intimidation</b><br>
+• 허용 vs 금지 활동:<br>
+&nbsp;&nbsp;— <b>허용</b>: 권고·자문·교육·평가·검토·실사<br>
+&nbsp;&nbsp;— <b>금지</b>: 설계·구현·운영·의사결정·통제 책임<br>
+• 자문(B)의 경계: <b>"이런 방법이 있다" OK / "이걸 도입해라" 결정은 X</b> — 의사결정은 경영진에<br>
+• 교육(C) 허용 이유: 지식 전달일 뿐 — 통제·시스템 결정과 무관<br>
+• Due Diligence(D)는 감사의 한 형태 — 검토·평가 활동<br>
+• 완화책: <b>① 다른 감사인이 해당 영역 감사 ② 일정 기간 cooling-off ③ 외부 전문가 평가</b><br>
+• 시험 패턴: "독립성 가장 훼손" → <b>설계·구현·운영 참여</b> (Self-review 위협)</div>`,
+reference:"CRM Chapter 1: IS Auditor Independence — Self-Review Threat",
+keyConcepts:[
+"설계 참여(MOST 훼손)|Self-review 위협 — 본인 설계 감사 불가, 독립성 직접 훼손",
+"5대 독립성 위협|Self-review·Self-interest·Advocacy·Familiarity·Intimidation",
+"허용 활동|권고·자문·교육·평가·검토·실사 — 의사결정 무관",
+"금지 활동|설계·구현·운영·의사결정·통제 책임 — 감사 대상 영역 직접 참여",
+"자문 경계|방법 제시 OK / 결정 강제 X — 의사결정은 경영진 몫",
+"완화책|다른 감사인 배정·cooling-off·외부 전문가 평가"
+]
+}
+,
+{
+id:727,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"The internal information systems (IS) audit team is auditing controls over sales returns and is concerned about fraud. Which of the following sampling methods will BEST assist the IS auditors?",
+questionKo:"매출 반품 통제를 감사하며 <b>부정 의심</b>이 있는 상황에서 가장 적합한 표본추출 방법은?",
+options:[
+"A. Stop-or-go",
+"B. Classical variable",
+"C. Discovery",
+"D. Probability-proportional-to-size"
+],
+optionsKo:[
+"A. <b>Stop-or-go(중단 결정형)</b>",
+"B. <b>Classical Variable(고전 변량)</b>",
+"C. <b>Discovery(발견 표본추출)</b>",
+"D. <b>Probability-Proportional-to-Size(금액 비례)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. Discovery Sampling(발견 표본추출)</b><br><br>
+<b>핵심:</b> Discovery는 <b>"한 건이라도 발견하면 충분"</b>한 부정·예외 식별용 — 부정이 1건만 있어도 추가 조사 트리거.<br><br>
+<table class="cmp">
+<tr><th>방법</th><th>용도</th><th>판정</th></tr>
+<tr><td>A. Stop-or-go</td><td>오류율 낮을 때 표본 크기 최소화 — 일반 통제 테스트</td><td>용도 불일치 ❌</td></tr>
+<tr><td>B. Classical Variable</td><td>금액·수량 실증 테스트 — 통제 아닌 잔액 검증</td><td>용도 불일치 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. Discovery</b></td><td><b>1건 부정·중대 예외 발견 시 충분 — 부정 탐지 최적</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>D. PPS</td><td>금액 큰 항목에 가중치 — 임계값 부정 탐지에 일부 적합</td><td>덜 직접적 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Discovery Sampling</b>: 부정·중대 예외 발견 시 후속 전면 조사로 전환 — 모집단에 <b>"있나 없나"</b> 확인 목적<br>
+• 적용 시나리오: <b>① 부정 의심 ② 불법 행위 조사 ③ 중대 통제 우회 검출 ④ 비정상 거래 식별</b><br>
+• 작동 방식: 표본 크기는 <b>예상 오류율·신뢰수준</b>으로 결정 → 부정 발견 시 즉시 조사 확대 (1건도 허용 안 됨)<br>
+• Stop-or-go(A): 사전 정의된 오류율 도달 시 표본 추출 중단 — <b>비용 효율</b>이지 부정 탐지 도구 아님<br>
+• Classical Variable(B): 모집단 평균·합계 추정 — <b>금액 정확성</b> 검증, 부정 탐지 아님<br>
+• PPS(D): Monetary Unit Sampling — 금액에 비례한 선택 확률 — 고액 부정 탐지에 보조 활용<br>
+• 부정 1건만 발견되어도 의미: <b>전체 모집단 재조사·법적 조치·근본 원인 분석</b> 트리거<br>
+• 시험 패턴: "부정 의심·1건 발견 BEST" → <b>Discovery</b> (다른 방법은 일반 통제·금액 평가용)</div>`,
+reference:"CRM Chapter 1: Audit Sampling — Discovery for Fraud",
+keyConcepts:[
+"Discovery Sampling|1건 부정·중대 예외 발견 시 충분 — 부정 탐지 표본추출의 표준",
+"적용 시나리오|부정 의심·불법 행위·중대 통제 우회·비정상 거래 — 발견 목적",
+"작동 방식|예상 오류율·신뢰수준으로 표본 크기 → 1건 발견 시 전면 조사 확대",
+"Stop-or-go vs Discovery|Stop-or-go=비용 효율 일반 통제 / Discovery=부정 1건 발견",
+"Variable vs Attribute|Variable=금액 실증 / Attribute=통제 Y/N — Discovery는 Attribute 변형",
+"PPS(MUS)|금액 비례 선택 — 고액 부정 탐지에 보조, Discovery만큼 직접적이지 않음"
+]
+}
+,
+{
+id:728,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"The effect of which of the following should have priority when planning the scope and objectives of an information systems (IS) audit?",
+questionKo:"IS 감사의 범위·목표 수립 시 <b>가장 우선적으로 고려</b>해야 할 것은?",
+options:[
+"A. Applicable statutory requirements",
+"B. Applicable corporate standards",
+"C. Applicable industry good practices",
+"D. Organizational policies and procedures"
+],
+optionsKo:[
+"A. <b>적용 가능한 법령(Statutory Requirements)</b>",
+"B. <b>적용 가능한 기업 표준(Corporate Standards)</b>",
+"C. <b>적용 가능한 산업 모범 사례(Industry Good Practices)</b>",
+"D. <b>조직 정책·절차(Policies and Procedures)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 적용 가능한 법령(Statutory Requirements)</b><br><br>
+<b>핵심:</b> 법령은 <b>선택의 여지가 없는 의무 사항</b> — 다른 모든 기준은 법령을 따라야 하며, 감사 범위에서 법령 적용은 제외 불가.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>강제력</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 법령(Statutory)</b></td><td><b>법적 의무 — 위반 시 벌금·형사 처벌</b></td><td><b>✅ 최우선</b></td></tr>
+<tr><td>B. 기업 표준</td><td>내부 규칙 — <b>법령보다 하위</b></td><td>2차 ❌</td></tr>
+<tr><td>C. 산업 모범 사례</td><td>권장 사항 — <b>의무 아님, 편차 허용</b></td><td>참고 ❌</td></tr>
+<tr><td>D. 정책·절차</td><td>조직 내부 — <b>법령과 정렬되어야 함</b></td><td>3차 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>규제 계층 구조</b>: <b>법령(Law) > 규제(Regulation) > 표준(Standard) > 가이드라인(Guideline) > 모범 사례(Best Practice)</b><br>
+• 주요 법령·규제 예: <b>SOX(미국)·GDPR(유럽)·HIPAA(의료)·PCI DSS(카드)·개인정보보호법·전자금융감독규정·자본시장법</b><br>
+• 법령 우선의 이유: <b>① 법적 책임·처벌 ② 사업 라이선스 위협 ③ 감사 의견 무효화 위험 ④ 평판·신뢰 손상</b><br>
+• 감사 범위 결정 순서: <b>① 법령 의무 식별 → ② 규제 요구 → ③ 기업 표준 → ④ 산업 모범 사례 → ⑤ 조직 정책</b><br>
+• 정책(D)과 법령의 관계: <b>정책은 법령을 구현·운영하는 수단</b> — 법령이 변경되면 정책도 갱신 필수<br>
+• 모범 사례(C)는 의무가 아님 — 조직 상황에 맞게 적용·변형 가능<br>
+• 감사인은 법령 변경을 <b>지속 모니터링·반영</b>해야 — 계속적 학습 의무<br>
+• 시험 패턴: "감사 범위 우선" → <b>법령(Statutory)</b> (다른 모든 기준은 법령에 종속)</div>`,
+reference:"CRM Chapter 1: Audit Scope — Statutory Requirements Priority",
+keyConcepts:[
+"법령 최우선|법적 의무·위반 시 처벌 — 감사 범위에서 제외 불가",
+"규제 계층 구조|법령 > 규제 > 표준 > 가이드라인 > 모범 사례 — 강제력 순",
+"주요 법령 예|SOX·GDPR·HIPAA·PCI DSS·개인정보보호법·전자금융감독·자본시장법",
+"법령 우선 이유|법적 책임·라이선스·감사 의견·평판 — 모두 사업 존속 직결",
+"감사 범위 결정 순서|법령 → 규제 → 기업 표준 → 모범 사례 → 정책",
+"정책과 법령 관계|정책은 법령 구현 수단 — 법령 변경 시 정책 갱신 의무"
+]
+}
+,
+{
+id:729,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following BEST describes the purpose of using information systems (IS) auditing and assurance standards?",
+questionKo:"<b>IS 감사·보증 표준(Standards)</b> 사용 목적을 가장 잘 설명한 것은?",
+options:[
+"A. Providing instruction in applying information systems (IS) audit and assurance processes",
+"B. Identifying instances of processes IS auditors follow in an audit engagement",
+"C. Providing information on how to meet the requirements when completing IS auditing",
+"D. Defining mandatory requirements for IS audit and assurance and reporting"
+],
+optionsKo:[
+"A. <b>IS 감사·보증 프로세스 적용 시 지침 제공</b>",
+"B. <b>감사 과정에서 따르는 프로세스의 사례 식별</b>",
+"C. <b>IS 감사 완료 시 요구사항을 충족하는 방법 정보 제공</b>",
+"D. <b>IS 감사·보증·보고에 대한 필수 요구사항 정의</b>"
+],
+correct:3,
+explanation:`<b>정답: D. IS 감사·보증·보고의 필수 요구사항 정의</b><br><br>
+<b>핵심:</b> Standards는 <b>"반드시 따라야 하는" 의무 사항</b>을 정의 — Guidelines·Tools/Techniques와 명확히 구분됨.<br><br>
+<table class="cmp">
+<tr><th>ITAF 구성</th><th>역할</th><th>강제력</th></tr>
+<tr style="background:#d4edda"><td><b>Standards</b></td><td><b>필수 요구사항 정의 — 의무</b></td><td><b>✅ Mandatory</b></td></tr>
+<tr><td>Guidelines</td><td>적용 시 <b>지침·해설</b> 제공</td><td>권장</td></tr>
+<tr><td>Tools & Techniques</td><td>구체적 <b>예시·도구·기법</b></td><td>참고</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>ITAF(Information Technology Assurance Framework)</b>: ISACA의 IS 감사·보증 통합 프레임워크<br>
+• ITAF 3계층 구조: <b>① Standards(필수) ② Guidelines(권장) ③ Tools and Techniques(참고)</b><br>
+• <b>Standards 분류</b>:<br>
+&nbsp;&nbsp;— <b>General Standards (1000s)</b>: 윤리·전문성·독립성·합리적 기대 등 일반 원칙<br>
+&nbsp;&nbsp;— <b>Performance Standards (1200s)</b>: 계획·실행·증거·문서화 등 수행 기준<br>
+&nbsp;&nbsp;— <b>Reporting Standards (1400s)</b>: 보고·소통·후속 조치 기준<br>
+• 주요 Standards: <b>1001 Audit Charter·1002 Organizational Independence·1003 Auditor Objectivity·1004 Reasonable Expectation·1006 Proficiency</b><br>
+• Standards 미준수의 결과: <b>전문가 자격 박탈·법적 책임·감사 의견 무효</b><br>
+• 보기 매핑: A(B)=Guidelines / B=Tools/Techniques / D=Standards / C는 Tools 영역과 유사<br>
+• 시험 패턴: "Standards 목적" → <b>의무·필수 요구사항</b> (Guidelines=지침, Tools=예시)</div>`,
+reference:"CRM Chapter 1: ITAF — Standards, Guidelines, Tools/Techniques",
+keyConcepts:[
+"Standards(BEST)|IS 감사·보증·보고의 필수 의무 요구사항 정의 — Mandatory",
+"ITAF 3계층|Standards(필수) → Guidelines(권장) → Tools/Techniques(참고)",
+"Standards 분류|General(1000s)·Performance(1200s)·Reporting(1400s)",
+"주요 Standards|1001 Charter·1002 Independence·1003 Objectivity·1004 Reasonable Expectation·1006 Proficiency",
+"Standards vs Guidelines|Standards=의무 / Guidelines=지침·해설 — 강제력 차이",
+"Standards 미준수|전문가 자격 박탈·법적 책임·감사 의견 무효"
+]
+}
+,
+{
+id:730,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following sampling methods is MOST useful when testing for compliance?",
+questionKo:"<b>준법(Compliance) 테스트</b>에 가장 유용한 표본추출 방법은?",
+options:[
+"A. Attribute sampling",
+"B. Variable sampling",
+"C. Stratified mean-per-unit sampling",
+"D. Difference estimation sampling"
+],
+optionsKo:[
+"A. <b>속성(Attribute) 표본추출</b>",
+"B. <b>변량(Variable) 표본추출</b>",
+"C. <b>층화 평균당 표본추출(Stratified mean-per-unit)</b>",
+"D. <b>차이 추정 표본추출(Difference estimation)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 속성(Attribute) 표본추출</b><br><br>
+<b>핵심:</b> Attribute는 <b>특정 속성(예: 승인 여부)의 발생률</b>을 추정 — 통제 수행 여부(Yes/No)를 묻는 준법 테스트에 정확히 부합.<br><br>
+<table class="cmp">
+<tr><th>방법</th><th>측정 대상</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Attribute</b></td><td><b>속성 발생률(Y/N) — 통제 수행 여부</b></td><td><b>✅ Compliance 표준</b></td></tr>
+<tr><td>B. Variable</td><td>금액·수량 평균/합계 추정 — 실증 테스트</td><td>용도 불일치 ❌</td></tr>
+<tr><td>C. Stratified MPU</td><td>층별 평균 추정 — Variable의 변형</td><td>용도 불일치 ❌</td></tr>
+<tr><td>D. Difference Estimation</td><td>장부-실사 차이 측정 — 실증/금액 검증</td><td>용도 불일치 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Compliance Testing(준법 테스트)</b>: 통제가 <b>"설계대로 수행되는가"</b>를 검증 — Yes/No 판정<br>
+• <b>Substantive Testing(실증 테스트)</b>: 잔액·금액의 <b>정확성</b>을 검증 — 금액·수량 측정<br>
+• Attribute Sampling 예: <b>① 모든 거래에 승인 서명이 있는가 ② 사용자 등록 시 절차를 따랐는가 ③ 변경 요청에 CAB 승인이 있는가</b><br>
+• Attribute 핵심 통계량: <b>예상 오류율·허용 오류율·신뢰수준</b>으로 표본 크기 결정<br>
+• Variable(B): "잔액이 정확한가?"·"평균 거래액은 얼마인가?" — <b>실증 테스트</b><br>
+• Stratified MPU(C): 모집단을 층화 후 Variable — 정확도 향상이나 여전히 금액 추정<br>
+• Difference Estimation(D): 장부 vs 감사 차이 추정 — 실증<br>
+• 두 카테고리 매핑: <b>Attribute=Compliance / Variable·Stratified MPU·Difference=Substantive</b><br>
+• 시험 패턴: "Compliance MOST useful" → <b>Attribute</b> (Yes/No로 통제 수행 여부)</div>`,
+reference:"CRM Chapter 1: Audit Sampling — Attribute for Compliance",
+keyConcepts:[
+"Attribute Sampling(BEST)|속성 발생률(Y/N) — 통제 수행 여부 판정에 표준",
+"Compliance vs Substantive|Compliance=통제 수행 Y/N / Substantive=금액·잔액 정확성",
+"Attribute 예시|승인 서명·등록 절차 준수·변경 CAB 승인 — 통제 작동 여부",
+"표본 크기 결정|예상 오류율·허용 오류율·신뢰수준으로 산정",
+"Variable·Stratified MPU·Difference|모두 Substantive — 금액·평균·차이 추정",
+"용도 매핑|Attribute=Compliance / 나머지 3가지=Substantive"
+]
+}
+,
+{
+id:731,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"During an exit interview, in cases where there is disagreement regarding the impact of a finding, an information systems (IS) auditor should:",
+questionKo:"Exit 인터뷰에서 발견사항의 영향에 대해 <b>의견 불일치</b>가 있을 때 IS 감사인이 해야 할 일은?",
+options:[
+"A. ask the auditee to sign a release form accepting full legal responsibility.",
+"B. elaborate on the significance of the finding and the risk of not correcting it.",
+"C. report the disagreement to the audit committee for resolution.",
+"D. accept the auditee position because they are the process owners."
+],
+optionsKo:[
+"A. <b>피감사인에게 법적 책임 면제 서명 요청</b>",
+"B. <b>발견사항의 중요성과 미시정 시 리스크 설명</b>",
+"C. <b>의견 불일치를 감사위원회에 즉시 보고</b>",
+"D. <b>피감사인이 프로세스 오너이므로 그들의 입장 수용</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 발견사항의 중요성과 리스크 설명</b><br><br>
+<b>핵심:</b> 의견 불일치 시 감사인은 <b>명확한 설명·근거 제시로 의사소통</b> — 위협·즉시 보고·맹목적 수용은 모두 부적절.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 책임 서명 요청</td><td>위협적·적대적 — <b>의사소통 단절</b></td><td>부적절 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 중요성·리스크 설명</b></td><td><b>피감사인의 충분한 이해 도움·신정보 발견 가능</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>C. 감사위원회 보고</td><td>최후 수단 — <b>먼저 직접 협의 시도</b></td><td>성급 ❌</td></tr>
+<tr><td>D. 입장 수용</td><td><b>독립성·전문성 포기</b> — 절차 문제 없으면 거부 X</td><td>비전문 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Exit Interview 원칙</b>: 상호 학습·이해 — 발견의 사실 확인·맥락 보완·의견 수렴<br>
+• 의견 불일치 해결 단계: <b>① 발견 재확인 ② 피감사인 관점 경청 ③ 위험 명확화 ④ 추가 정보·증거 검토 ⑤ 합의 시도 ⑥ 합의 불가 시 양측 입장 보고서 명시</b><br>
+• 감사인의 책임: <b>경영진이 충분한 정보로 결정</b>할 수 있도록 위험·영향 명확히 전달<br>
+• 경영진 책임: 위험을 <b>수용·완화·이전·회피</b> 결정 — 감사인은 권고만<br>
+• 보고서 표기: 합의 불가 시 <b>"Management Response" 섹션에 피감사인 의견·반박</b>을 별도 기재<br>
+• 위협(A)·맹목 수용(D)의 위험: <b>적대 관계 형성·독립성 훼손·향후 감사 협조 저하</b><br>
+• 시험 패턴: "의견 불일치 시 감사인 행동" → <b>설명·소통</b> (위협·포기·즉시 에스컬레이션 X)</div>`,
+reference:"CRM Chapter 1: Audit Exit Interview — Handling Disagreement",
+keyConcepts:[
+"발견 설명(BEST)|중요성·리스크 명확화로 피감사인 이해 도움 — 위협·포기·즉시 보고 X",
+"불일치 해결 단계|재확인 → 경청 → 위험 명확화 → 증거 검토 → 합의 시도 → 보고서 명시",
+"감사인 책임|경영진의 충분한 정보 결정 지원 — 권고만, 결정은 경영진",
+"경영진 책임|위험 수용·완화·이전·회피 — 위험 관리 권한과 책임",
+"보고서 표기|Management Response 섹션에 피감사인 의견·반박 별도 기재",
+"위협·맹목 수용 위험|적대 관계·독립성 훼손·향후 협조 저하 — 모두 회피"
+]
+}
+,
+{
+id:732,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following situations can impair the independence of an information systems (IS) auditor? The IS auditor:",
+questionKo:"IS 감사인의 <b>독립성을 훼손할 수 있는 상황</b>은?",
+options:[
+"A. implemented specific functionality during the development of an application.",
+"B. designed an embedded audit module for auditing an application.",
+"C. participated as a member of an application project team and did not have operational responsibilities.",
+"D. provided consulting advice concerning application good practices."
+],
+optionsKo:[
+"A. <b>애플리케이션 개발 중 특정 기능을 구현함</b>",
+"B. <b>애플리케이션 감사용 임베디드 감사 모듈을 설계함</b>",
+"C. <b>운영 책임 없이 프로젝트 팀원으로 참여함</b>",
+"D. <b>애플리케이션 모범 사례에 대한 자문 제공</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 개발 중 특정 기능 구현</b><br><br>
+<b>핵심:</b> <b>본인이 구현한 시스템 감사</b> = Self-review 위협의 전형 — 객관성 보장 불가능, 독립성 직접 훼손.<br><br>
+<table class="cmp">
+<tr><th>활동</th><th>독립성 영향</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 기능 구현</b></td><td><b>Self-review 위협 — 본인 구현 감사 불가</b></td><td><b>✅ 훼손</b></td></tr>
+<tr><td>B. 감사 모듈 설계</td><td>감사 도구 설계 — <b>업무 시스템과 분리</b></td><td>허용 ✅</td></tr>
+<tr><td>C. 팀원 참여(운영 책임 X)</td><td>관찰자·조언자 — <b>의사결정·구현 X</b></td><td>허용 ✅</td></tr>
+<tr><td>D. 모범 사례 자문</td><td>지식 전달 — 의사결정 무관</td><td>허용 ✅</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>독립성 훼손 = "본인이 만든 것 평가"</b> — 구현·운영·의사결정 직접 참여 시 발생<br>
+• 허용 활동의 공통점: <b>설계·구현·운영 책임 X, 조언·관찰·도구 제작 한정</b><br>
+• 임베디드 감사 모듈(B): <b>실시간 감사 도구</b> — Continuous Auditing 지원, 업무 시스템과 별개<br>
+• 프로젝트 팀 참여(C)의 경계: <b>운영 책임 없이 옵저버·자문 역할</b>이면 허용, 의사결정 참여하면 훼손<br>
+• Self-review 위협 완화책: <b>다른 감사인 배정·일정 기간 cooling-off·외부 전문가 평가</b><br>
+• 의사결정 vs 자문의 차이: 자문은 <b>"고려하라"</b>, 의사결정은 <b>"채택하라"</b> — 책임 소재가 핵심<br>
+• 5대 독립성 위협: <b>Self-review·Self-interest·Advocacy·Familiarity·Intimidation</b><br>
+• 시험 패턴: "독립성 훼손" → <b>구현·운영·의사결정 참여</b> / "허용" → 자문·관찰·도구 설계</div>`,
+reference:"CRM Chapter 1: IS Auditor Independence — Implementation Activity",
+keyConcepts:[
+"기능 구현(훼손)|본인이 구현한 시스템 감사 = Self-review 위협 — 객관성 보장 불가",
+"허용 vs 금지 경계|허용=자문·관찰·도구 제작 / 금지=구현·운영·의사결정",
+"임베디드 감사 모듈|실시간 감사 도구 — 업무 시스템과 별개로 독립성 유지",
+"프로젝트 팀 참여 경계|옵저버·자문 OK / 운영 책임·의사결정은 NG",
+"완화책|다른 감사인·cooling-off·외부 전문가 평가",
+"자문 vs 의사결정|자문='고려' / 의사결정='채택' — 책임 소재가 핵심"
+]
+}
+,
+{
+id:733,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"A system developer transfers to the audit department to serve as an IT auditor. When production systems are to be reviewed by this employee, which of the following will become the MOST significant concern?",
+questionKo:"<b>시스템 개발자가 IT 감사 부서로 전배</b>되어 운영 시스템을 검토할 때 가장 중대한 우려는?",
+options:[
+"A. The work may be construed as a self-audit.",
+"B. Audit points may largely shift to technical aspects.",
+"C. The employee may not have sufficient control assessment skills.",
+"D. The employee's knowledge of business risk may be limited."
+],
+optionsKo:[
+"A. <b>작업이 자기 감사(Self-audit)로 간주될 수 있음</b>",
+"B. <b>감사 초점이 기술적 측면으로 치우칠 수 있음</b>",
+"C. <b>통제 평가 역량이 부족할 수 있음</b>",
+"D. <b>비즈니스 리스크 지식이 제한적일 수 있음</b>"
+],
+correct:0,
+explanation:`<b>정답: A. Self-audit 가능성</b><br><br>
+<b>핵심:</b> 개발자였던 본인이 <b>본인이 개발한 시스템</b>을 감사 → Self-review 위협의 직접 사례 — 객관성 보장 불가능, 다른 문제는 해결 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>심각도·해결 가능성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Self-audit</b></td><td><b>이해상충 — 본인 작업 평가 불가, 근본 해결 어려움</b></td><td><b>✅ MOST significant</b></td></tr>
+<tr><td>B. 기술적 편향</td><td>리뷰 프로세스로 교정 가능</td><td>운영 ❌</td></tr>
+<tr><td>C. 통제 평가 역량</td><td>OJT·교육으로 보완 — 해결 가능</td><td>훈련 가능 ❌</td></tr>
+<tr><td>D. 비즈니스 지식</td><td>이미 IT 경험 보유 — <b>오히려 강점</b></td><td>강점 활용 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>이해상충(Conflict of Interest)</b>: 본인이 개발·구현·운영했던 시스템 감사 — 객관적 평가 보장 불가<br>
+• 완화책: <b>① 본인 개발 시스템은 감사 범위 제외 ② Cooling-off 기간(예: 1년) ③ 다른 영역 우선 배치 ④ 정기 독립성 선언</b><br>
+• 다른 문제들의 해결 가능성: <b>기술 편향(B)·역량 부족(C)·지식 부족(D) 모두 훈련·OJT로 해결 가능</b><br>
+• Self-review vs Familiarity: 본인 작업 = Self-review / 전 동료와 관계 = Familiarity — 둘 다 위협<br>
+• IT→감사 전배의 장점: <b>① 기술 이해 ② 시스템 경험 ③ 조직 문화 ④ 인적 네트워크</b><br>
+• IT→감사 전배의 위험: <b>① Self-review ② Familiarity ③ Advocacy(IT팀 옹호)</b><br>
+• 시험 패턴: "개발자→감사 MOST significant" → <b>Self-audit/이해상충</b> (다른 문제는 모두 해결 가능)</div>`,
+reference:"CRM Chapter 1: IT to Audit Transfer — Self-Audit Risk",
+keyConcepts:[
+"Self-audit(MOST significant)|본인 개발 시스템 감사 = 객관성 보장 불가 — 근본 해결 어려움",
+"완화책|본인 개발 시스템 제외·Cooling-off·다른 영역 우선·정기 독립성 선언",
+"다른 문제 해결성|기술 편향·역량·지식 모두 훈련·OJT로 해결 가능",
+"Self-review vs Familiarity|본인 작업=Self-review / 전 동료 관계=Familiarity",
+"IT→감사 장점|기술 이해·시스템 경험·조직 문화·인적 네트워크",
+"IT→감사 위험|Self-review·Familiarity·Advocacy(IT팀 옹호)"
+]
+}
+,
+{
+id:734,
+domain:"1",
+ks:"1A3 Risk-Based Audit Planning",
+question:"When developing a risk-based audit strategy, an information systems (IS) auditor should conduct a risk assessment to ensure that:",
+questionKo:"<b>리스크 기반 감사 전략</b> 수립 시 IS 감사인이 리스크 평가를 수행하는 이유는?",
+options:[
+"A. controls needed to mitigate risk are in place.",
+"B. vulnerabilities and threats are identified.",
+"C. audit risk is considered.",
+"D. a gap analysis is appropriate."
+],
+optionsKo:[
+"A. <b>리스크 완화에 필요한 통제가 마련되어 있는지 확인</b>",
+"B. <b>취약점과 위협을 식별</b>",
+"C. <b>감사 리스크를 고려</b>",
+"D. <b>갭 분석이 적절한지 확인</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 취약점과 위협 식별</b><br><br>
+<b>핵심:</b> 리스크 기반 감사 전략 수립 시 <b>"어디에 리스크가 있는가"</b>를 알아야 감사 대상·우선순위를 결정 — 취약점·위협 식별이 기본.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>리스크 평가와 관계</th><th>판정</th></tr>
+<tr><td>A. 통제 적정성</td><td>감사의 결과 — <b>평가 단계가 아닌 발견사항</b></td><td>결과 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 취약점·위협 식별</b></td><td><b>리스크 평가의 본질 — 감사 범위·우선순위 결정 기반</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>C. 감사 리스크 고려</td><td>감사 자체 위험 — 환경 리스크 평가와 다름</td><td>다른 개념 ❌</td></tr>
+<tr><td>D. 갭 분석</td><td>현재 vs 기대치 비교 — 리스크 평가 아님</td><td>다른 도구 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Risk Equation</b>: <b>Risk = Threat × Vulnerability × Asset Value</b> (또는 = Likelihood × Impact)<br>
+• 리스크 평가 단계: <b>① 자산 식별 ② 위협 식별 ③ 취약점 식별 ④ 가능성·영향 평가 ⑤ 리스크 등급 ⑥ 우선순위</b><br>
+• 감사 리스크(C)는 별개 개념: <b>Inherent Risk × Control Risk × Detection Risk</b> — 감사 자체의 의견 오류 위험<br>
+• 환경 리스크 평가 vs 감사 리스크 평가: <b>환경=감사 대상의 리스크 / 감사=감사 절차의 오류 위험</b><br>
+• 통제 적정성(A)은 <b>감사 수행 후 발견</b>되는 결과 — 평가 단계의 산출물이 아님<br>
+• 갭 분석(D)은 <b>"현재 vs 목표/기대치"</b> 비교 도구 — 리스크 평가와 다른 분석 기법<br>
+• 리스크 평가 산출물: <b>Risk Register·Heat Map·Audit Universe·우선순위 매트릭스</b><br>
+• 시험 패턴: "리스크 기반 감사 평가 목적" → <b>취약점·위협 식별</b> (감사 범위·우선순위의 기반)</div>`,
+reference:"CRM Chapter 1: Risk-Based Audit Planning — Risk Assessment",
+keyConcepts:[
+"리스크 평가 목적|취약점·위협 식별 — 감사 범위·우선순위 결정의 기반",
+"Risk Equation|Threat × Vulnerability × Asset Value (= Likelihood × Impact)",
+"리스크 평가 단계|자산 식별 → 위협·취약점 → 가능성·영향 → 등급 → 우선순위",
+"환경 vs 감사 리스크|환경=감사 대상 리스크 / 감사=감사 절차의 오류 위험(IR×CR×DR)",
+"통제 적정성|감사 수행 후 발견 결과 — 평가 단계 산출물 아님",
+"리스크 평가 산출물|Risk Register·Heat Map·Audit Universe·우선순위 매트릭스"
+]
+}
+,
+{
+id:735,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"An information systems (IS) auditor of an enterprise is also the auditor for a cloud services provider (CSP). Enterprise management requested a copy of the CSP's audit report from the auditor because they are also a client of the CSP. Which of the following is the BEST course of action for the IS auditor?",
+questionKo:"IS 감사인이 기업과 CSP <b>양쪽 모두의 감사인</b>이다. 기업이 CSP 감사 보고서를 직접 달라고 요청했다. 가장 좋은 조치는?",
+options:[
+"A. Share the report because the enterprise will receive it anyway per their contract with the cloud services provider (CSP).",
+"B. Request the management get a copy of the report directly from the CSP.",
+"C. Refuse to share the report because the auditor has signed a nondisclosure agreement with the CSP.",
+"D. Discuss general findings informally to provide assurance on compliance by the CSP."
+],
+optionsKo:[
+"A. <b>어차피 계약상 받게 되므로 보고서 공유</b>",
+"B. <b>경영진에게 CSP로부터 직접 받도록 요청</b>",
+"C. <b>NDA 때문에 공유 거부</b>",
+"D. <b>일반적 발견사항을 비공식적으로 논의</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 경영진에게 CSP로부터 직접 받도록 요청</b><br><br>
+<b>핵심:</b> 한 클라이언트의 정보를 다른 클라이언트에 공유 = <b>직업 윤리 위반</b> — 적절한 채널(CSP 직접 요청)을 안내하는 것이 BEST.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>윤리적 적절성</th><th>판정</th></tr>
+<tr><td>A. 직접 공유</td><td><b>직업 윤리 위반</b> — 추후 받게 된다 해도 감사인 권한 X</td><td>위반 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. CSP 직접 요청 안내</b></td><td><b>적절한 채널 안내 — 윤리 준수, 정중한 해결</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>C. 단순 거부</td><td>NDA 언급이 정확하나 <b>대안 제시 부족</b></td><td>불친절 ❌</td></tr>
+<tr><td>D. 비공식 논의</td><td><b>비공식이라도 정보 공유 = 윤리 위반</b></td><td>위반 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>ISACA Code of Professional Ethics</b>: 클라이언트 정보 비밀 유지 의무 — 법적 의무가 없어도 윤리적 의무<br>
+• 비밀 유지의 범위: <b>① 공식 보고서 ② 비공식 대화·이메일 ③ 발견사항·결론 ④ 작업 절차·증거 ⑤ 클라이언트 식별 자체</b><br>
+• 다중 클라이언트 시 주의: <b>① 정보 분리 ② 별도 작업물 보관 ③ Chinese wall 구축 ④ 이해상충 명확화 ⑤ 양측 동의 시에만 공유</b><br>
+• 적절한 채널 안내(B)의 가치: <b>윤리 준수 + 관계 유지 + 클라이언트 욕구 해결</b> 동시 달성<br>
+• 비공식(D)의 위험: <b>대화 내용·암묵적 정보도 공유 — 후속 책임·평판 손상</b><br>
+• 단순 거부(C) 단점: 클라이언트 관계 손상·이유 불명확<br>
+• 시험 패턴: "다른 클라이언트 정보 공유 요청 BEST" → <b>적절한 채널 안내</b> (윤리 + 해결)</div>`,
+reference:"CRM Chapter 1: ISACA Code of Ethics — Client Confidentiality",
+keyConcepts:[
+"적절한 채널 안내(BEST)|CSP 직접 요청 안내 — 윤리 준수 + 정중한 해결",
+"ISACA 윤리 강령|클라이언트 비밀 유지 의무 — 법적 의무 없어도 윤리적 의무",
+"비밀 유지 범위|공식 보고서·비공식 대화·발견사항·작업 절차·클라이언트 식별",
+"다중 클라이언트 주의|정보 분리·별도 보관·Chinese wall·이해상충 명확화",
+"비공식 공유 위험|대화 내용도 정보 공유 — 후속 책임·평판 손상",
+"거부 vs 안내|단순 거부=관계 손상 / 안내=관계 유지 + 윤리 준수"
+]
+}
+,
+{
+id:736,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"What is the PRIMARY reason for an information systems (IS) auditor to exercise due professional care?",
+questionKo:"IS 감사인이 <b>전문가적 정당한 주의(Due Professional Care)</b>를 행사하는 주된 이유는?",
+options:[
+"A. To get reasonable assurance that IS controls are well-designed and effective",
+"B. To eliminate inherent, control and detection risk associated with IS audit",
+"C. To detect errors, misstatements or fraudulent transactions in IS and report them",
+"D. To make sure that evidence collected during the IS audit is appropriate and sufficient"
+],
+optionsKo:[
+"A. <b>IS 통제가 잘 설계·효과적임에 대한 합리적 보증 획득</b>",
+"B. <b>감사의 고유·통제·발견 리스크를 제거</b>",
+"C. <b>오류·허위 표시·부정 거래 탐지 및 보고</b>",
+"D. <b>수집 증거가 적절하고 충분함을 보장</b>"
+],
+correct:0,
+explanation:`<b>정답: A. IS 통제에 대한 합리적 보증 획득</b><br><br>
+<b>핵심:</b> Due Professional Care의 목적은 <b>"합리적 보증(Reasonable Assurance)"</b> — 절대적 보증이 아닌 합리적 수준의 신뢰성 제공이 핵심.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>정확성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 합리적 보증</b></td><td><b>Due Care의 본래 목적 — 절대 X, 합리적 수준</b></td><td><b>✅ PRIMARY</b></td></tr>
+<tr><td>B. 리스크 제거</td><td>리스크는 <b>제거 불가</b>, 수용 가능 수준으로 감소만 가능</td><td>오개념 ❌</td></tr>
+<tr><td>C. 부정 탐지·보고</td><td>한 측면일 뿐 — <b>유일한 목적 아님</b></td><td>부분적 ❌</td></tr>
+<tr><td>D. 증거 적정성</td><td>중요하나 합리적 보증의 <b>수단</b></td><td>수단 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Due Professional Care</b>: 동료 전문가가 비슷한 상황에서 행할 수준의 신중함·전문성·기술 발휘<br>
+• <b>합리적 보증(Reasonable Assurance)</b>: 절대적이 아닌 높은 수준의 신뢰 — <b>합리적·실용적 한계</b> 인정<br>
+• Due Care가 보장하지 않는 것: <b>① 모든 오류 탐지 ② 모든 부정 발견 ③ 절대적 정확성 ④ 향후 사건 예측</b><br>
+• Due Care의 구성 요소: <b>① 적절한 계획 ② 충분한 증거 ③ 전문가 회의 ④ 위험 평가 ⑤ 절차 문서화 ⑥ 사실 검증</b><br>
+• 감사 리스크 분해: <b>AR = IR × CR × DR</b> — Due Care로 DR(Detection Risk) 통제·낮춤<br>
+• ISACA Standard 1004 Reasonable Expectation: 감사인은 합리적 기대 수준 부합<br>
+• Due Care 부재 시 결과: <b>전문성 의문·법적 책임·자격 박탈·평판 손상</b><br>
+• 시험 패턴: "Due Professional Care PRIMARY" → <b>합리적 보증</b> (절대 보증·리스크 제거 X)</div>`,
+reference:"CRM Chapter 1: Due Professional Care — Reasonable Assurance",
+keyConcepts:[
+"합리적 보증(PRIMARY)|Due Care의 목적 — 절대적 아닌 합리적 수준의 신뢰",
+"Due Professional Care|동료 전문가 수준의 신중함·전문성·기술 발휘",
+"보장하지 않는 것|모든 오류·부정 탐지·절대 정확성·미래 예측 — 한계 인정",
+"Due Care 구성|계획·증거·회의·위험 평가·문서화·사실 검증",
+"감사 리스크|AR = IR × CR × DR — Due Care로 DR 통제",
+"미준수 결과|전문성 의문·법적 책임·자격 박탈·평판 손상"
+]
+}
+,
+{
+id:737,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"An information systems (IS) auditor is reviewing a software application that is built on the principles of service-oriented architecture. What is the INITIAL step?",
+questionKo:"<b>서비스 지향 아키텍처(SOA)</b> 기반 애플리케이션을 검토하는 IS 감사인의 <b>초기 단계(INITIAL step)</b>는?",
+options:[
+"A. Understanding services and their allocation to business processes by reviewing the service repository documentation",
+"B. Sampling the use of service security standards as represented by the Security Assertions Markup Language (SAML)",
+"C. Reviewing the service level agreements established for all system providers",
+"D. Auditing the core service and its dependencies on other systems"
+],
+optionsKo:[
+"A. <b>서비스 저장소 문서 검토로 서비스와 비즈니스 프로세스 매핑 이해</b>",
+"B. <b>SAML로 표현되는 서비스 보안 표준 사용 표본 검토</b>",
+"C. <b>모든 시스템 공급자의 SLA 검토</b>",
+"D. <b>핵심 서비스와 다른 시스템 종속성 감사</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 서비스와 비즈니스 프로세스 매핑 이해</b><br><br>
+<b>핵심:</b> SOA는 <b>서비스가 비즈니스 로직을 캡슐화</b>한 분산 구조 — 어떤 서비스가 어떤 비즈니스 프로세스를 지원하는지 먼저 이해해야 후속 감사 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>감사 순서</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 서비스-프로세스 매핑</b></td><td><b>1단계 — 환경 이해의 기반</b></td><td><b>✅ INITIAL</b></td></tr>
+<tr><td>B. SAML 보안 표본</td><td>구체적 통제 테스트 — <b>이해 후 단계</b></td><td>후속 ❌</td></tr>
+<tr><td>C. SLA 검토</td><td>외부 공급자 검토 — <b>매핑 후 단계</b></td><td>후속 ❌</td></tr>
+<tr><td>D. 핵심 서비스 감사</td><td>실제 감사 활동 — <b>이해 후</b></td><td>후속 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>SOA(Service-Oriented Architecture)</b>: 비즈니스 기능을 <b>독립적·재사용 가능한 서비스</b>로 분리, 표준 인터페이스로 통합<br>
+• 감사 일반 원칙: <b>"이해 → 평가 → 검증"</b> 순서 — 환경을 모르고 감사 불가<br>
+• SOA 감사 단계: <b>① 서비스 저장소·문서 검토(매핑) ② 서비스 의존성·통신 경로 ③ 보안 통제(인증·인가·SAML) ④ 거버넌스·SLA ⑤ 모니터링·감사 로그</b><br>
+• 서비스 저장소(Service Repository): <b>서비스 카탈로그·메타데이터·계약·SLA·버전 관리</b> 포함<br>
+• SOA 보안 표준: <b>SAML(인증)·WS-Security·OAuth·OpenID Connect·API Gateway·mTLS</b><br>
+• 비즈니스 매핑 이해의 가치: <b>① 영향 범위 식별 ② 리스크 우선순위 ③ 핵심 서비스 식별 ④ 의존성 파악</b><br>
+• 시험 패턴: "복잡 환경 감사 INITIAL" → <b>환경/매핑 이해</b> (Risk-Based Auditing 원칙)</div>`,
+reference:"CRM Chapter 1: SOA Audit — Understanding Business-Service Mapping",
+keyConcepts:[
+"서비스-프로세스 매핑(INITIAL)|SOA 감사의 1단계 — 환경 이해 없이 평가 불가",
+"SOA 정의|비즈니스 기능을 독립적·재사용 가능한 서비스로 분리, 표준 인터페이스로 통합",
+"감사 일반 원칙|이해 → 평가 → 검증 — Risk-Based Auditing의 기본",
+"SOA 감사 단계|매핑 → 의존성 → 보안 통제 → 거버넌스/SLA → 모니터링",
+"서비스 저장소|카탈로그·메타데이터·계약·SLA·버전 — 매핑 이해의 1차 자료",
+"SOA 보안 표준|SAML·WS-Security·OAuth·OIDC·API Gateway·mTLS"
+]
+}
+,
+{
+id:738,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"An information systems (IS) auditor realizes that the skilled resources required to test the specific technical controls are only available for a limited period during an IS audit; therefore, comprehensive testing of all audit areas may not be possible. Which of the following is the BEST course of action for the auditor?",
+questionKo:"<b>숙련된 자원이 한정 기간만 이용 가능</b>하여 모든 영역의 포괄적 테스트가 불가능한 IS 감사 상황에서 가장 좋은 조치는?",
+options:[
+"A. Execute the audit focusing on critical areas where skilled resources are used to test controls.",
+"B. Have audit management request skilled resources for the entire audit period.",
+"C. Refuse to conduct the audit unless skilled resources are available for the entire audit period.",
+"D. Extend the timelines of the audit project for training to enhance the skills of the audit team."
+],
+optionsKo:[
+"A. <b>숙련 자원을 핵심 영역의 통제 테스트에 집중하여 감사 실행</b>",
+"B. <b>감사 관리자가 전 기간 숙련 자원을 요청하도록 함</b>",
+"C. <b>전 기간 자원 확보 안 되면 감사 거부</b>",
+"D. <b>감사팀 역량 향상 교육을 위해 일정 연장</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 핵심 영역에 숙련 자원 집중하여 감사 실행</b><br><br>
+<b>핵심:</b> <b>리스크 기반 우선순위</b>로 한정된 숙련 자원을 고위험·복잡 통제에 배분 — 자원 제약을 효과적으로 관리하는 가장 실용적 방법.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 핵심 영역 집중</b></td><td><b>리스크 기반 우선순위 — 한정 자원의 최대 가치</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>B. 전 기간 요청</td><td>경영진 에스컬레이션 — 응답 불확실</td><td>대안 ❌</td></tr>
+<tr><td>C. 감사 거부</td><td><b>고위험 영역 미감사 → 통제 결함 미발견</b></td><td>회피 ❌</td></tr>
+<tr><td>D. 일정 연장</td><td>피감사인에 비현실적·비용 부담</td><td>비현실 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>자원 제약 시 리스크 기반 우선순위</b>: 모든 영역을 다 못 봐도 <b>가장 중요한 것</b>은 본다 — Risk-Based Auditing 핵심 원리<br>
+• 자원 배분 전략: <b>① 숙련 자원 = 고위험·복잡 통제 ② 일반 자원 = 표준·반복적 통제 ③ 자동화 = 대량 트랜잭션 검증 ④ 외부 전문가 = 특수 영역</b><br>
+• 보고서 명시 의무: <b>Scope Limitation·자원 제약 사실·미감사 영역</b> 투명하게 공개<br>
+• 감사 거부(C) 부적절: <b>고위험 영역 결함이 발견되지 않은 채 방치</b> → 사업 위험 증가<br>
+• 일정 연장(D)이 어려운 이유: <b>피감사인 협업·비용·시기·외부 환경 변화</b> — 현실적 한계<br>
+• 보완 방안: <b>① 자동화 도구 활용(CAAT) ② 다음 감사 주기로 이월 ③ 핵심 영역 깊이·기타 표면 ④ 경영진 자체 평가</b><br>
+• 시험 패턴: "자원 제약 BEST" → <b>리스크 기반 우선순위로 핵심 집중</b> (포기·거부 X)</div>`,
+reference:"CRM Chapter 1: Limited Skilled Resources — Risk-Based Prioritization",
+keyConcepts:[
+"핵심 영역 집중(BEST)|리스크 기반 우선순위 — 한정 자원을 고위험·복잡 통제에 배분",
+"자원 배분 전략|숙련=고위험 / 일반=표준 / 자동화=대량 / 외부=특수",
+"보고서 명시|Scope Limitation·자원 제약·미감사 영역 투명 공개",
+"감사 거부 부적절|고위험 결함 미발견 방치 → 사업 위험 증가",
+"일정 연장 비현실|피감사인 협업·비용·시기·외부 환경 — 현실적 제약",
+"보완 방안|CAAT 자동화·다음 주기 이월·깊이/표면 차등·경영진 자체 평가"
+]
+}
+,
+{
+id:739,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"Which of the following choices is the BEST source of information when developing a risk-based audit plan?",
+questionKo:"<b>리스크 기반 감사 계획 수립</b> 시 가장 좋은 정보 출처는?",
+options:[
+"A. Process owners identify key controls.",
+"B. System custodians identify vulnerabilities.",
+"C. Peer auditors understand previous audit results.",
+"D. Senior management identifies key business processes."
+],
+optionsKo:[
+"A. <b>프로세스 오너가 핵심 통제 식별</b>",
+"B. <b>시스템 관리자가 취약점 식별</b>",
+"C. <b>동료 감사인이 이전 감사 결과 이해</b>",
+"D. <b>경영진이 핵심 비즈니스 프로세스 식별</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 경영진이 핵심 비즈니스 프로세스 식별</b><br><br>
+<b>핵심:</b> 리스크 기반 감사 계획은 <b>핵심 비즈니스 프로세스 식별</b>에서 출발 — 경영진이 비즈니스 전략·우선순위를 가장 잘 알고 있는 최상위 출처.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>역할·관점</th><th>판정</th></tr>
+<tr><td>A. 프로세스 오너</td><td>통제 식별에 유용 — 그러나 <b>비즈니스 우선순위 결정 X</b></td><td>하위 ❌</td></tr>
+<tr><td>B. 시스템 관리자</td><td>취약점 이해 — <b>특정 시스템 한정</b></td><td>제한적 ❌</td></tr>
+<tr><td>C. 동료 감사인</td><td>과거 결과 — <b>변경된 환경 미반영 가능</b></td><td>참고 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 경영진(핵심 프로세스)</b></td><td><b>비즈니스 전략·우선순위 - 리스크 평가의 출발점</b></td><td><b>✅ BEST</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>리스크 기반 감사 계획 흐름</b>: <b>비즈니스 프로세스 식별 → 리스크 평가 → 통제 식별 → 감사 우선순위</b><br>
+• 경영진의 가치: <b>① 전략적 방향 ② 비즈니스 영향도 ③ 핵심 자산·프로세스 ④ 외부 환경(규제·시장)</b><br>
+• 정보 출처 계층:<br>
+&nbsp;&nbsp;— <b>경영진</b>: 전략·우선순위 (최상위)<br>
+&nbsp;&nbsp;— <b>프로세스 오너</b>: 통제·일상 운영<br>
+&nbsp;&nbsp;— <b>시스템 관리자</b>: 기술·취약점<br>
+&nbsp;&nbsp;— <b>이전 감사 결과</b>: 참고·추세<br>
+• 과거 감사 결과(C) 한계: <b>범위 제한·환경 변화·신규 프로세스 누락</b> 가능성<br>
+• 모든 정보 출처는 <b>보완적</b>이지만 <b>출발점은 비즈니스 프로세스 식별</b><br>
+• Audit Universe 구성: 비즈니스 프로세스 + 시스템 + 통제 + 리스크 매핑<br>
+• 시험 패턴: "리스크 기반 감사 계획 BEST source" → <b>경영진(비즈니스 프로세스)</b> (전략적 출발점)</div>`,
+reference:"CRM Chapter 1: Risk-Based Audit Planning — Senior Management Input",
+keyConcepts:[
+"경영진(BEST source)|핵심 비즈니스 프로세스 식별 — 리스크 기반 감사의 출발점",
+"계획 흐름|비즈니스 프로세스 → 리스크 평가 → 통제 식별 → 감사 우선순위",
+"정보 출처 계층|경영진(전략) > 프로세스 오너(통제) > 시스템 관리자(기술) > 이전 감사(참고)",
+"과거 감사 한계|범위 제한·환경 변화·신규 프로세스 누락 — 보완적 활용",
+"경영진 가치|전략적 방향·비즈니스 영향·핵심 자산·외부 환경 이해",
+"Audit Universe|비즈니스 프로세스 + 시스템 + 통제 + 리스크 매핑"
+]
+}
+,
+{
+id:740,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"While auditing a third-party IT service provider, an information systems (IS) auditor discovers that access reviews are not being performed as required by the contract. The IS auditor should:",
+questionKo:"제3자 IT 서비스 제공자 감사 중 <b>계약상 요구되는 접근 검토가 수행되지 않음</b>을 발견한 IS 감사인이 해야 할 일은?",
+options:[
+"A. report the issue to IT management.",
+"B. discuss the issue with the service provider.",
+"C. perform a risk assessment.",
+"D. perform an access review."
+],
+optionsKo:[
+"A. <b>IT 경영진에 문제 보고</b>",
+"B. <b>서비스 제공자와 문제 논의</b>",
+"C. <b>리스크 평가 수행</b>",
+"D. <b>접근 검토 수행</b>"
+],
+correct:0,
+explanation:`<b>정답: A. IT 경영진에 문제 보고</b><br><br>
+<b>핵심:</b> 중요한 사안은 <b>감사 보고서에 명시하여 경영진에 보고</b> — 계약 미준수의 최종 책임은 경영진이므로 적절한 채널로 즉시 전달.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 경영진 보고</b></td><td><b>중요 사안의 적절한 보고 — 책임 소재 명확화</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>B. 제공자와 논의</td><td>가능하나 <b>경영진 보고가 우선</b></td><td>2차 ❌</td></tr>
+<tr><td>C. 리스크 평가</td><td>추후 활용 — <b>보고가 먼저</b></td><td>후속 ❌</td></tr>
+<tr><td>D. 접근 검토 수행</td><td>제공자 대신 검토 = <b>월권·책임 전가</b></td><td>월권 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>3자 위탁 시 책임</b>: 위탁자(기업)가 <b>궁극적 책임</b> 보유 — 제공자가 수행해도 책임은 위탁자<br>
+• 계약 미준수의 영향: <b>① 컴플라이언스 위반 ② 보안 리스크 ③ 법적 책임 ④ 감사 의견 영향 ⑤ 평판 손상</b><br>
+• 보고 의무: <b>리스크의 중대성과 무관하게</b> 계약 미준수 자체가 보고 사유<br>
+• 감사인이 직접 수행(D) 부적절: <b>① 제공자의 책임 대신 수행 X ② 감사인 독립성 훼손 ③ Self-review 위협</b><br>
+• 후속 조치: 보고 → 경영진이 제공자에 시정 요구 → 재테스트 → 합의된 시정 조치 모니터링<br>
+• 3자 위탁 감사 시 확인 사항: <b>SLA·SOC 보고서·Right to Audit·계약 조항·시정 조치 절차</b><br>
+• 시험 패턴: "감사 중 문제 발견" → <b>경영진 보고</b> (감사인은 발견자·보고자, 시정자 X)</div>`,
+reference:"CRM Chapter 1: Third-Party Audit — Reporting Non-Compliance",
+keyConcepts:[
+"경영진 보고(BEST)|중요 사안의 적절한 보고 — 책임 소재 명확화",
+"3자 위탁 책임|위탁자가 궁극적 책임 — 제공자가 수행해도 책임은 위탁자",
+"계약 미준수 영향|컴플라이언스 위반·보안 리스크·법적 책임·감사 의견·평판",
+"감사인 직접 수행 부적절|제공자 책임 대신 수행 X·독립성 훼손·Self-review",
+"후속 조치|보고 → 경영진 시정 요구 → 재테스트 → 시정 모니터링",
+"3자 감사 확인사항|SLA·SOC 보고서·Right to Audit·계약 조항·시정 절차"
+]
+}
+,
+{
+id:741,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"The PRIMARY objective of the audit initiation meeting with an information systems (IS) audit client is to:",
+questionKo:"IS 감사 클라이언트와의 <b>감사 시작 미팅(Initiation Meeting)</b>의 주된 목적은?",
+options:[
+"A. discuss the scope of the audit.",
+"B. identify resource requirements of the audit.",
+"C. select the methodology of the audit.",
+"D. collect audit evidence."
+],
+optionsKo:[
+"A. <b>감사 범위 논의</b>",
+"B. <b>감사 자원 요구사항 식별</b>",
+"C. <b>감사 방법론 선정</b>",
+"D. <b>감사 증거 수집</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 감사 범위 논의</b><br><br>
+<b>핵심:</b> Initiation Meeting의 1차 목적은 <b>감사 범위·목표 합의</b> — 클라이언트와 공유된 이해 없이 효과적인 감사 불가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>해당 단계</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 범위 논의</b></td><td><b>Initiation 미팅 핵심 — 양측 기대 정렬</b></td><td><b>✅ PRIMARY</b></td></tr>
+<tr><td>B. 자원 요구</td><td>감사 관리자의 <b>내부 계획</b> 단계</td><td>내부 ❌</td></tr>
+<tr><td>C. 방법론 선정</td><td>감사 팀 내부 결정 — <b>클라이언트 미팅 목적 X</b></td><td>내부 ❌</td></tr>
+<tr><td>D. 증거 수집</td><td>실제 감사 수행 단계 — <b>미팅이 아닌 작업</b></td><td>실행 단계 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Audit Initiation Meeting(Kick-off)</b>: 감사 시작 시 클라이언트와 첫 공식 만남 — <b>기대치 정렬·신뢰 구축</b><br>
+• 주요 의제: <b>① 감사 목표·범위 확인 ② 일정·마일스톤 ③ 보고 체계 ④ 연락 채널 ⑤ 감사인-피감사인 역할 ⑥ 접근 권한·자료 요청 ⑦ 비밀 유지</b><br>
+• 범위 합의의 가치: <b>① 범위 분쟁 사전 방지 ② 자원 효율 ③ 명확한 기대치 ④ 효과적 감사 ⑤ 협력 관계</b><br>
+• 자원 요구사항(B)은 <b>감사 관리자의 사전 계획</b> 활동 — Audit Engagement Plan에 포함<br>
+• 방법론(C)은 <b>감사 팀의 전문적 판단</b> — 클라이언트와 협의 사항이 아님<br>
+• 증거 수집(D)은 감사 <b>수행 단계</b>의 활동 — Initiation 미팅에서 발생 X<br>
+• 후속 절차: 미팅 → Engagement Letter → 상세 계획 → 실행 → Exit Meeting → 보고서<br>
+• 시험 패턴: "Initiation Meeting PRIMARY" → <b>범위 논의·정렬</b> (양측 기대 일치)</div>`,
+reference:"CRM Chapter 1: Audit Initiation Meeting — Scope Alignment",
+keyConcepts:[
+"범위 논의(PRIMARY)|Initiation Meeting의 1차 목적 — 양측 기대 정렬",
+"미팅 의제|목표·범위·일정·보고·연락·역할·접근·비밀 유지",
+"범위 합의 가치|분쟁 방지·자원 효율·명확한 기대·효과적 감사·협력 관계",
+"내부 vs 외부 활동|자원 요구·방법론=내부 결정 / 범위 논의=클라이언트 미팅",
+"증거 수집 단계|감사 수행 단계 — Initiation 미팅 활동 아님",
+"후속 절차|미팅 → Engagement Letter → 상세 계획 → 실행 → Exit → 보고서"
+]
+}
+,
+{
+id:742,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"As part of audit planning, an information systems (IS) auditor is designing various data validation tests to effectively detect transposition and transcription errors. Which of the following will BEST help in detecting these errors?",
+questionKo:"<b>전치(transposition) 및 전사(transcription) 오류</b>를 효과적으로 탐지하는 데 가장 도움이 되는 데이터 검증은?",
+options:[
+"A. Range check",
+"B. Validity check",
+"C. Duplicate check",
+"D. Check digit"
+],
+optionsKo:[
+"A. <b>범위 검사(Range check)</b>",
+"B. <b>유효성 검사(Validity check)</b>",
+"C. <b>중복 검사(Duplicate check)</b>",
+"D. <b>체크 디지트(Check digit)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 체크 디지트(Check Digit)</b><br><br>
+<b>핵심:</b> 체크 디지트는 <b>원본 값에서 수학적으로 계산된 검증 숫자</b>를 추가 — 전치(자리 바꿈)·전사(잘못 베껴 씀) 오류를 즉시 탐지.<br><br>
+<table class="cmp">
+<tr><th>방법</th><th>탐지 대상</th><th>판정</th></tr>
+<tr><td>A. Range</td><td>값이 사전 범위 내 — <b>형식 검증만</b></td><td>전치 못 잡음 ❌</td></tr>
+<tr><td>B. Validity</td><td>사전 기준 충족 — <b>일반적 형식</b></td><td>전치 못 잡음 ❌</td></tr>
+<tr><td>C. Duplicate</td><td>중복 PK 검출 — <b>다른 오류 유형</b></td><td>범위 다름 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. Check Digit</b></td><td><b>수학적 계산 검증 — 전치·전사 오류 즉시 탐지</b></td><td><b>✅ BEST</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Transposition Error(전치 오류)</b>: 자리 바뀜 (예: 1234 → 1324) — Range·Validity는 못 잡음<br>
+• <b>Transcription Error(전사 오류)</b>: 잘못 베껴 씀 (예: 1234 → 1235·1334) — 형식상 유효<br>
+• <b>Check Digit 작동</b>: 원본 숫자들로 알고리즘 계산 → 결과를 추가 자리에 부착 → 입력 시 재계산·비교<br>
+• 유명 알고리즘: <b>Luhn(신용카드·IMEI)·Modulus 11(ISBN·계좌)·Verhoeff·Damm</b><br>
+• 예: 신용카드 마지막 자리 = Luhn 알고리즘으로 계산된 체크 디지트<br>
+• 데이터 검증 유형 비교:<br>
+&nbsp;&nbsp;— <b>Range</b>: 0-100 같은 범위<br>
+&nbsp;&nbsp;— <b>Validity</b>: 사전 정의 목록·형식<br>
+&nbsp;&nbsp;— <b>Format</b>: 패턴(YYYY-MM-DD)<br>
+&nbsp;&nbsp;— <b>Reasonableness</b>: 합리성<br>
+&nbsp;&nbsp;— <b>Existence</b>: 필수 필드<br>
+&nbsp;&nbsp;— <b>Duplicate</b>: 중복 검출<br>
+&nbsp;&nbsp;— <b>Check Digit</b>: 수학적 무결성<br>
+• 시험 패턴: "전치·전사 오류 BEST" → <b>Check Digit</b> (수학적 검증이 키워드)</div>`,
+reference:"CRM Chapter 1: Data Validation — Check Digit for Transposition Errors",
+keyConcepts:[
+"Check Digit(BEST)|수학적 계산 검증 숫자 추가 — 전치·전사 오류 즉시 탐지",
+"Transposition vs Transcription|전치=자리 바뀜 / 전사=잘못 베껴 씀 — 둘 다 형식상 유효",
+"체크 디지트 작동|원본으로 계산 → 자리 추가 → 입력 시 재계산·비교",
+"유명 알고리즘|Luhn(카드)·Modulus 11(ISBN·계좌)·Verhoeff·Damm",
+"검증 유형|Range·Validity·Format·Reasonableness·Existence·Duplicate·Check Digit",
+"다른 검증의 한계|Range·Validity는 형식만 — 자리 바뀐 값도 유효 통과"
+]
+}
+,
+{
+id:743,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"The access control policy should be reviewed by the information systems (IS) auditor to:",
+questionKo:"IS 감사인이 <b>접근 통제 정책</b>을 검토하는 이유는?",
+options:[
+"A. prevent unauthorized disclosure of organizational data.",
+"B. ensure that organizational objectives for separation of duties are met.",
+"C. minimize the impact of an incident.",
+"D. ensure the continuity of business after any disaster."
+],
+optionsKo:[
+"A. <b>조직 데이터의 비인가 공개 방지</b>",
+"B. <b>직무 분리(SoD) 목표 달성 보장</b>",
+"C. <b>사고 영향 최소화</b>",
+"D. <b>재해 후 비즈니스 연속성 보장</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 직무 분리(SoD) 목표 달성 보장</b><br><br>
+<b>핵심:</b> 접근 통제 정책의 핵심 목적은 <b>SoD 실현·비인가 접근 위험 최소화</b> — 부정·오류 예방을 위한 권한 분리 규칙 제공.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>해당 정책 영역</th><th>판정</th></tr>
+<tr><td>A. 비인가 공개 방지</td><td><b>기밀성 정책의 원칙</b> — 접근 통제는 그 수단</td><td>다른 정책 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. SoD 보장</b></td><td><b>접근 통제 정책의 핵심 목적</b> — 권한 분리 규칙</td><td><b>✅ 정답</b></td></tr>
+<tr><td>C. 사고 영향 최소화</td><td><b>사고 대응 정책</b> 영역 — 접근 통제 아님</td><td>다른 정책 ❌</td></tr>
+<tr><td>D. 비즈니스 연속성</td><td><b>BCP 정책</b> 영역 — 접근 통제와 별개</td><td>다른 정책 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>접근 통제 정책 목적</b>: <b>① SoD 실현 ② 최소 권한 ③ Need-to-Know ④ 권한 부여·검토·회수 절차 ⑤ 책임 추적성</b><br>
+• SoD(Segregation of Duties) 핵심 분리: <b>요청 vs 승인 vs 구현 / 거래 시작 vs 기록 vs 보관 / 개발 vs 운영 vs 감사</b><br>
+• 정책 vs 원칙 관계: <b>기밀성 원칙(A) > 접근 통제 정책 > 사용자 권한 매트릭스</b> — 정책은 원칙 실현 수단<br>
+• 정책 영역 매핑:<br>
+&nbsp;&nbsp;— <b>접근 통제 정책</b>: SoD·최소 권한·인증·인가<br>
+&nbsp;&nbsp;— <b>데이터 분류 정책</b>: 기밀성 원칙·라벨링<br>
+&nbsp;&nbsp;— <b>사고 대응 정책</b>: 탐지·봉쇄·복구·교훈<br>
+&nbsp;&nbsp;— <b>BCP/DR 정책</b>: 연속성·재해 복구<br>
+• 감사인의 검토 포인트: <b>SoD 매트릭스·예외 처리·정기 검토 주기·승인 워크플로우·권한 회수 절차</b><br>
+• SoD 위반 사례: <b>같은 사람이 거래 입력 + 승인 / 개발자가 운영 권한 보유 / DBA가 보안 관리</b><br>
+• 시험 패턴: "접근 통제 정책 검토 목적" → <b>SoD 보장</b> (다른 보기는 다른 정책 영역)</div>`,
+reference:"CRM Chapter 1: Access Control Policy — SoD Objective",
+keyConcepts:[
+"SoD 보장(정답)|접근 통제 정책의 핵심 목적 — 권한 분리 규칙 제공",
+"접근 통제 정책 목적|SoD·최소 권한·Need-to-Know·권한 라이프사이클·책임 추적성",
+"SoD 핵심 분리|요청/승인/구현·거래 시작/기록/보관·개발/운영/감사",
+"정책 vs 원칙|기밀성 원칙(A) > 접근 통제 정책 > 권한 매트릭스 — 정책은 원칙 실현 수단",
+"정책 영역 매핑|접근 통제=SoD / 데이터 분류=기밀성 / 사고 대응=영향 / BCP=연속성",
+"검토 포인트|SoD 매트릭스·예외 처리·정기 검토·승인 워크플로우·권한 회수"
+]
+}
+,
+{
+id:744,
+domain:"1",
+ks:"1A1 IS Audit Standards, Guidelines, Functions, and Codes of Ethics",
+question:"Which of the following BEST represents an ethical responsibility of project auditors?",
+questionKo:"<b>프로젝트 감사인의 윤리적 책임</b>을 가장 잘 나타낸 것은?",
+options:[
+"A. Auditors are permitted to divulge propriety information to which they might have access to support the auditee's goals.",
+"B. Auditors should discuss the outcomes of previous audit exercises conducted elsewhere during the audit to ensure completeness.",
+"C. Audit team leaders must demonstrate fairness when settling disputes among members.",
+"D. Unproven facts should be reported by the auditors to ensure further investigation."
+],
+optionsKo:[
+"A. <b>감사인은 피감사인 목표를 지원하기 위해 독점 정보를 공개 가능</b>",
+"B. <b>완전성 보장을 위해 다른 곳에서 수행된 이전 감사 결과 논의</b>",
+"C. <b>감사 팀 리더는 팀원 분쟁 해결 시 공정성 입증</b>",
+"D. <b>추가 조사를 위해 검증되지 않은 사실도 보고</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 분쟁 해결 시 공정성 입증</b><br><br>
+<b>핵심:</b> 윤리적 감사인의 핵심 자질은 <b>객관성·공정성·편향 배제</b> — 팀 내 분쟁이라도 공정하게 해결해 감사 품질 유지.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>윤리적 적절성</th><th>판정</th></tr>
+<tr><td>A. 독점 정보 공개</td><td><b>비밀 유지 의무 위반</b> — 신뢰 손상</td><td>위반 ❌</td></tr>
+<tr><td>B. 타 감사 결과 논의</td><td><b>일반적으로 부적절</b> — 비밀 유지 의무 위반 가능</td><td>위반 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>C. 공정한 분쟁 해결</b></td><td><b>객관성·공정성 유지 — 감사 품질의 핵심</b></td><td><b>✅ 윤리적 책임</b></td></tr>
+<tr><td>D. 미검증 보고</td><td><b>증거 기반 원칙 위반</b> — 신뢰성 손상</td><td>위반 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>ISACA Code of Ethics 7대 원칙</b>: ① 표준·절차 준수 ② Due Care ③ 비밀 유지 ④ 합법·정직 행동 ⑤ 역량 유지 ⑥ 이해관계자 정보 제공 ⑦ 직업 교육 지원<br>
+• 윤리적 감사인의 자질: <b>① 독립성 ② 객관성 ③ 공정성 ④ 진실성 ⑤ 비밀 유지 ⑥ 전문성 ⑦ 책임감</b><br>
+• 분쟁 해결 원칙: <b>편견 없이·증거 기반·객관적 평가 → 프로젝트 진행 유지</b><br>
+• 비밀 유지(A·B 위반): <b>① 클라이언트 정보 보호 ② 한 클라이언트→다른 클라이언트 정보 이동 금지 ③ 비공식 대화도 포함</b><br>
+• 미검증 보고(D 위반): <b>① 발견은 충분한 증거 기반 ② 검증 후 보고서 작성 ③ 피감사인 사실 확인 후</b><br>
+• 분쟁 시 행동: 양측 의견 경청 → 사실 확인 → 객관적 판단 → 공정한 결정<br>
+• 시험 패턴: "윤리적 책임 BEST" → <b>공정성·객관성·증거 기반</b> (비밀 위반·미검증 보고 X)</div>`,
+reference:"CRM Chapter 1: ISACA Code of Ethics — Fairness & Objectivity",
+keyConcepts:[
+"공정성(BEST)|분쟁 해결 시 객관성·편견 배제 — 감사 품질의 핵심",
+"ISACA 윤리 7대 원칙|표준 준수·Due Care·비밀 유지·정직·역량·정보 제공·교육 지원",
+"감사인 자질|독립성·객관성·공정성·진실성·비밀 유지·전문성·책임감",
+"비밀 유지 위반|클라이언트 정보 공개·다른 곳 감사 결과 논의 — 모두 윤리 위반",
+"증거 기반 원칙|충분한 증거 기반 발견·검증 후 보고 — 미검증 보고는 신뢰성 손상",
+"분쟁 해결 절차|양측 경청 → 사실 확인 → 객관적 판단 → 공정한 결정"
+]
+}
+,
+{
+id:745,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"After initial investigation, an information systems (IS) auditor has reasons to believe that fraud may be present. The IS auditor should:",
+questionKo:"초기 조사 후 부정행위가 있을 수 있다고 판단한 IS 감사인이 해야 할 일은?",
+options:[
+"A. expand activities to determine whether an investigation is warranted.",
+"B. report the matter to the audit committee.",
+"C. report the possibility of fraud to management.",
+"D. consult with external legal counsel to determine the course of action to be taken."
+],
+optionsKo:[
+"A. <b>조사가 필요한지 판단하기 위해 활동 확대</b>",
+"B. <b>감사위원회에 보고</b>",
+"C. <b>경영진에 부정 가능성 보고</b>",
+"D. <b>외부 법률 자문 의뢰</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 조사가 필요한지 판단하기 위해 활동 확대</b><br><br>
+<b>핵심:</b> 초기 의심만으로는 부족 — 감사인은 <b>부정 지표를 평가하고 충분한 증거 확보 여부 판단</b>한 후 보고 또는 추가 조치 결정.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성·시점</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 활동 확대</b></td><td><b>추가 증거 수집·지표 평가 — 부정 여부 판단의 1단계</b></td><td><b>✅ 정답</b></td></tr>
+<tr><td>B. 감사위원회 보고</td><td>충분한 지표 확보 후 — <b>초기 의심만으론 성급</b></td><td>후속 ❌</td></tr>
+<tr><td>C. 경영진 보고</td><td>경영진 연루 가능성 평가 후 — <b>충분 증거 필요</b></td><td>후속 ❌</td></tr>
+<tr><td>D. 외부 법률 자문</td><td>감사인 권한 밖 — <b>경영진 결정 사항</b></td><td>월권 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사인의 부정 대응 책임(ISA 240·ISACA)</b>: <b>① 지표 평가 ② 추가 조사 필요성 판단 ③ 조사 권고 ④ 직접 조사 X</b><br>
+• 활동 확대 내용: <b>① 표본 확대 ② 거래 분석 심화 ③ 다른 증거 출처 ④ 인터뷰 추가 ⑤ CAAT 활용</b><br>
+• 보고 시점: <b>충분한 지표·증거 확보 후 → 경영진(B·C) 또는 감사위원회</b><br>
+• 보고 대상 선정: <b>일반 사안=경영진 / 경영진 연루 의심=감사위원회·이사회</b><br>
+• 외부 법률 자문(D) 부적절: <b>① 감사인 권한 밖 ② 경영진 결정 사항 ③ 비밀 유지 위반 가능</b><br>
+• 부정 조사 vs 일반 감사: <b>조사=별도 권한·법무·증거 보존 / 감사=발견·보고</b><br>
+• 시험 패턴: "부정 의심 후 NEXT" → <b>활동 확대로 증거 수집</b> (성급한 보고·외부 의뢰 X)</div>`,
+reference:"CRM Chapter 1: Fraud Indicators — Auditor's Responsibility",
+keyConcepts:[
+"활동 확대(정답)|추가 증거 수집·지표 평가 — 부정 여부 판단의 1단계",
+"감사인 부정 대응|지표 평가 → 조사 필요성 판단 → 조사 권고 — 직접 조사 X",
+"활동 확대 내용|표본 확대·거래 분석·증거 출처·인터뷰·CAAT 활용",
+"보고 시점|충분한 지표·증거 확보 후 → 경영진 또는 감사위원회",
+"보고 대상|일반 사안=경영진 / 경영진 연루=감사위원회·이사회",
+"외부 법률 자문 부적절|감사인 권한 밖 — 경영진 결정 사항"
+]
+}
+,
+{
+id:746,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"The PRIMARY purpose of the information systems (IS) audit charter is to:",
+questionKo:"<b>IS 감사 헌장(Audit Charter)</b>의 주된 목적은?",
+options:[
+"A. establish the organizational structure of the audit department.",
+"B. illustrate the reporting responsibilities of the IS audit function.",
+"C. detail the resource requirements needed for the audit function.",
+"D. outline the responsibility and authority of the IS audit function."
+],
+optionsKo:[
+"A. <b>감사 부서의 조직 구조 수립</b>",
+"B. <b>IS 감사 기능의 보고 책임 설명</b>",
+"C. <b>감사 기능에 필요한 자원 요구사항 상세화</b>",
+"D. <b>IS 감사 기능의 책임과 권한 명시</b>"
+],
+correct:3,
+explanation:`<b>정답: D. IS 감사 기능의 책임과 권한 명시</b><br><br>
+<b>핵심:</b> Audit Charter는 <b>이사회·이해관계자가 감사 기능에 부여한 권한과 책임</b>을 공식화 — 감사 활동의 정당성·범위·접근권의 근거.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>Charter 역할</th><th>판정</th></tr>
+<tr><td>A. 조직 구조</td><td>Charter는 구조 설정 아닌 <b>기능 권한 부여</b></td><td>다른 문서 ❌</td></tr>
+<tr><td>B. 보고 책임</td><td>일부 포함되나 <b>전체 목적 아님</b></td><td>부분 ❌</td></tr>
+<tr><td>C. 자원 요구사항</td><td>감사 계획에서 결정 — Charter 영역 X</td><td>다른 문서 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>D. 책임·권한 명시</b></td><td><b>Charter의 본질 — 권한 위임·정당성</b></td><td><b>✅ PRIMARY</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Audit Charter 4대 요소</b>: <b>① Purpose(목적) ② Responsibility(책임) ③ Authority(권한) ④ Accountability(책임 추적성)</b><br>
+• Charter 승인 주체: <b>이사회·감사위원회</b> — 최고 의사결정 기구의 공식 위임<br>
+• Charter가 부여하는 권한: <b>① 모든 정보·기록 접근 ② 직원 인터뷰 ③ 시스템·시설 접근 ④ 정기 감사 ⑤ 보고서 작성·배포</b><br>
+• Charter 포함 내용: <b>독립성 보장·보고 라인·범위·전문성 요건·이해상충 회피·품질 관리</b><br>
+• Charter vs Engagement Letter: <b>Charter=일반 권한·상시 / Engagement Letter=개별 감사·1회성</b><br>
+• ISACA Standard 1001 Audit Charter: <b>Charter는 서면으로 작성·승인되어야 함</b><br>
+• Charter 정기 검토: <b>최소 연 1회 또는 중요 환경 변화 시</b> — 적합성·유효성 유지<br>
+• 시험 패턴: "Audit Charter PRIMARY" → <b>책임·권한 명시</b> (조직 구조·자원·보고는 다른 문서)</div>`,
+reference:"CRM Chapter 1: Audit Charter — Authority & Responsibility",
+keyConcepts:[
+"책임·권한 명시(PRIMARY)|Charter의 본질 — 이사회·이해관계자가 부여한 권한 위임",
+"Charter 4대 요소|Purpose·Responsibility·Authority·Accountability",
+"승인 주체|이사회·감사위원회 — 최고 의사결정 기구의 공식 위임",
+"부여 권한|정보·기록 접근·직원 인터뷰·시스템 접근·정기 감사·보고서 배포",
+"Charter vs Engagement Letter|Charter=일반·상시 / Engagement=개별·1회",
+"ISACA Standard 1001|Charter 서면 작성·승인 필수 — 최소 연 1회 검토"
+]
+}
+,
+{
+id:747,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"The PRIMARY purpose for meeting with auditees prior to formally closing a review is to:",
+questionKo:"검토를 공식적으로 종료하기 전 피감사인과 만나는 <b>주된 목적</b>은?",
+options:[
+"A. confirm that the auditors did not overlook any important issues.",
+"B. gain agreement on the findings.",
+"C. receive feedback on the adequacy of the audit procedures.",
+"D. test the structure of the final presentation."
+],
+optionsKo:[
+"A. <b>감사인이 중요 사안을 놓치지 않았는지 확인</b>",
+"B. <b>발견사항에 대한 합의 도출</b>",
+"C. <b>감사 절차의 적절성 피드백 수령</b>",
+"D. <b>최종 발표 구조 테스트</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 발견사항에 대한 합의 도출</b><br><br>
+<b>핵심:</b> Closing Meeting의 1차 목적은 <b>발견사항·경영진 응답 합의</b> — 보고서의 신뢰성·수용성 확보가 핵심.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>적절성</th><th>판정</th></tr>
+<tr><td>A. 누락 확인</td><td>오해·오류 해소는 가능하나 <b>주 목적 아님</b></td><td>부수적 ❌</td></tr>
+<tr style="background:#d4edda"><td><b>B. 발견 합의</b></td><td><b>Closing Meeting의 본질 — 발견 신뢰성·수용성</b></td><td><b>✅ PRIMARY</b></td></tr>
+<tr><td>C. 절차 피드백</td><td>의견 수렴 가능하나 <b>공식 검토 아님</b></td><td>부수적 ❌</td></tr>
+<tr><td>D. 발표 구조</td><td>발표 구조는 표준 따름 — <b>테스트 목적 아님</b></td><td>운영 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>Closing Meeting(Exit Conference)</b>: 감사 종료 전 피감사인과 발견사항·시정 계획·시점 합의<br>
+• 주요 의제: <b>① 발견사항 사실 확인 ② 경영진 응답 수렴 ③ 시정 계획·일정 합의 ④ 권고 채택 여부 ⑤ 보고서 형식 합의</b><br>
+• 합의 도출의 가치: <b>① 사후 분쟁 방지 ② 보고서 신뢰성 ③ 시정 조치 확실성 ④ 협력 관계 유지 ⑤ 효과성 향상</b><br>
+• 합의 불가 시: <b>"Management Response" 섹션에 양측 입장 별도 기재</b><br>
+• 보고서 단계: <b>Draft → Closing Meeting(B) → Final Report → Management Response → Follow-up</b><br>
+• Closing Meeting vs Opening Meeting: <b>Opening=범위 합의 / Closing=발견 합의</b><br>
+• 시험 패턴: "Closing Meeting PRIMARY" → <b>발견 합의</b> (다른 활동은 부수적)</div>`,
+reference:"CRM Chapter 1: Closing Meeting — Agreement on Findings",
+keyConcepts:[
+"발견 합의(PRIMARY)|Closing Meeting의 본질 — 발견 신뢰성·수용성 확보",
+"Closing Meeting 의제|사실 확인·응답 수렴·시정 계획·권고 채택·보고서 형식 합의",
+"합의 가치|사후 분쟁 방지·보고서 신뢰성·시정 확실성·협력 관계·효과성",
+"합의 불가 시|Management Response 섹션에 양측 입장 별도 기재",
+"보고서 단계|Draft → Closing Meeting → Final → Management Response → Follow-up",
+"Opening vs Closing|Opening=범위 합의 / Closing=발견 합의"
+]
+}
+,
+{
+id:748,
+domain:"1",
+ks:"1A2 Types of Audits, Assessments, and Reviews",
+question:"Which of the following BEST ensures the effectiveness of controls related to interest calculation for an accounting system?",
+questionKo:"회계 시스템의 <b>이자 계산 통제 효과성</b>을 가장 잘 보장하는 감사 기법은?",
+options:[
+"A. Reperformance",
+"B. Process walk-through",
+"C. Observation",
+"D. Documentation review"
+],
+optionsKo:[
+"A. <b>재수행(Reperformance)</b>",
+"B. <b>프로세스 워크스루(Walk-through)</b>",
+"C. <b>관찰(Observation)</b>",
+"D. <b>문서 검토(Documentation review)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 재수행(Reperformance)</b><br><br>
+<b>핵심:</b> 감사인이 <b>독립적으로 동일 계산을 재수행</b>하여 시스템 결과와 비교 — 정확성 검증의 가장 강력한 증거.<br><br>
+<table class="cmp">
+<tr><th>기법</th><th>증거 강도</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. Reperformance</b></td><td><b>독립 계산·결과 비교 — 직접적·실증적 증거</b></td><td><b>✅ BEST</b></td></tr>
+<tr><td>B. Walk-through</td><td>프로세스 이해 — <b>효과성 검증엔 부족</b></td><td>이해 ❌</td></tr>
+<tr><td>C. 관찰</td><td>사용자 행위 확인 — <b>결과 정확성 검증 X</b></td><td>제한적 ❌</td></tr>
+<tr><td>D. 문서 검토</td><td>정책·절차 이해 — <b>실제 작동 보장 X</b></td><td>설계 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사 증거 강도</b>: <b>Reperformance > Inspection·Observation > Inquiry > Documentation Review</b><br>
+• Reperformance 적용: <b>이자·할인·세금 계산·재고 평가·환율 변환·할증 계산</b> 등 정량적 통제<br>
+• Reperformance 절차: <b>① 거래 표본 선정 ② 입력 데이터 확보 ③ 독립적 계산 수행 ④ 시스템 결과와 비교 ⑤ 차이 조사</b><br>
+• Walk-through(B): <b>프로세스 이해 단계</b> — 효과성 검증의 시작이지 결론 아님<br>
+• 관찰(C): <b>SoD·물리 통제·인적 통제</b> 검증에 적합 / 계산 정확성엔 부적합<br>
+• 문서 검토(D): <b>설계 효과성</b> 평가 / 운영 효과성은 별도 검증 필요<br>
+• 감사 기법 매핑: <b>설계 효과성=문서·인터뷰 / 운영 효과성=재수행·관찰·테스트</b><br>
+• 시험 패턴: "계산 통제 효과성 BEST" → <b>Reperformance</b> (독립 계산이 가장 강력)</div>`,
+reference:"CRM Chapter 1: Audit Techniques — Reperformance for Calculation Controls",
+keyConcepts:[
+"Reperformance(BEST)|독립 계산·결과 비교 — 정량적 통제 효과성의 가장 강력한 증거",
+"감사 증거 강도|Reperformance > Inspection·Observation > Inquiry > Documentation",
+"Reperformance 적용|이자·할인·세금·재고·환율·할증 — 정량적 계산 통제",
+"절차|표본 선정 → 입력 확보 → 독립 계산 → 결과 비교 → 차이 조사",
+"기법 매핑|설계 효과성=문서·인터뷰 / 운영 효과성=재수행·관찰·테스트",
+"다른 기법 한계|Walk-through=이해 / 관찰=행위 / 문서=설계 — 정확성 직접 검증 X"
+]
+}
 
 ];
