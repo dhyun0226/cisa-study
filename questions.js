@@ -35699,5 +35699,640 @@ keyConcepts:[
 "시험 패턴|전치/transposition 오류 탐지 → Check Digit"
 ]
 }
+,
+{
+id:850,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"How would data analytics BEST help in information systems (IS) auditing?",
+questionKo:"<b>데이터 분석(data analytics)</b>이 IS 감사에 가장 잘 도움이 되는 방식은?",
+options:[
+"A. Ensuring that the information systems (IS) auditing process is completed on time and accurate",
+"B. Automating auditing process and examining a large quantity of data",
+"C. Improving auditing quality and decreasing human intervention",
+"D. Detecting potential issues with the IS controls of an organization"
+],
+optionsKo:[
+"A. <b>IS 감사 프로세스가 적시에 정확하게 완료되도록 보장</b>",
+"B. <b>감사 프로세스를 자동화하고 대량의 데이터를 검사</b>",
+"C. <b>감사 품질을 높이고 인적 개입을 줄임</b>",
+"D. <b>조직 IS 통제의 잠재적 문제를 탐지</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 조직 IS 통제의 잠재적 문제를 탐지</b><br><br>
+<b>핵심:</b> IS 감사는 <b>리스크 기반 프로세스</b> — 데이터 분석의 궁극적 가치는 통제의 <b>잠재 문제를 탐지</b>해 통제가 잘 설계·효과적인지 결론짓는 것.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 통제 잠재 문제 탐지</b></td><td><b>리스크 기반 감사의 궁극 목적 ✅</b></td></tr>
+<tr><td>A. 적시·정확 완료</td><td>모든 프로젝트의 일반 제약 — 분석의 핵심 가치 아님 ❌</td></tr>
+<tr><td>B. 자동화·대량 데이터</td><td><b>수단(means)</b>일 뿐 — 목적이 아님 ❌</td></tr>
+<tr><td>C. 품질↑·인적 개입↓</td><td>부수 효과 — 궁극 목적 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>목적 vs 수단</b>: B(자동화·대량 검사)·C(품질·인적 개입 감소)는 데이터 분석의 <b>수단·부수 효과</b> — 궁극 <b>목적은 통제 문제 탐지</b><br>
+• <b>리스크 기반 감사</b>: 감사의 본질은 통제가 <b>잘 설계되고 효과적인지</b> 판단 → 데이터 분석은 그 <b>잠재 문제 탐지</b>에 기여해야 가치<br>
+• 함정 A: 적시·정확 완료는 <b>모든 감사 프로젝트의 일반 제약</b> — 데이터 분석 고유의 best 기여 아님<br>
+• "BEST help" 류 문제 풀이: 수단·효율(B·C)보다 <b>최종 목적·결과(D)</b>를 고르는 게 정석<br>
+• 연계: [[IS 감사 목표 → 통제 존재+효과적 작동]] (id 805) — 감사·도구 모두 결국 <b>통제 평가</b>가 목적<br>
+• 시험 패턴: "데이터 분석이 감사에 BEST 기여" → <b>통제 잠재 문제 탐지</b> (자동화·효율은 함정)</div>`,
+reference:"CRM Chapter 1: Data Analytics in IS Auditing",
+keyConcepts:[
+"통제 잠재 문제 탐지(정답)|리스크 기반 감사의 궁극 목적 — 데이터 분석의 best 기여",
+"목적 vs 수단|B 자동화·C 효율은 수단·부수 효과 — 목적은 통제 문제 탐지",
+"함정 A|적시·정확 완료는 모든 감사 프로젝트 일반 제약 — 고유 기여 아님",
+"BEST help 풀이|수단·효율보다 최종 목적·결과를 고르기",
+"연계|id805 IS 감사 목표 — 도구도 결국 통제 평가가 목적",
+"시험 패턴|데이터 분석 감사 BEST 기여 → 통제 잠재 문제 탐지"
+]
+}
+,
+{
+id:851,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"Which of the following should be the FIRST action of an information systems (IS) auditor during a dispute with a department manager over audit findings?",
+questionKo:"감사 발견사항을 두고 <b>부서 관리자와 분쟁</b>이 발생했을 때, IS 감사인이 <b>가장 먼저(FIRST)</b> 해야 할 행동은?",
+options:[
+"A. Retest the control to validate the finding.",
+"B. Engage a third party to validate the finding.",
+"C. Include the finding in the report with the department manager's comments.",
+"D. Revalidate the supporting evidence for the finding."
+],
+optionsKo:[
+"A. <b>발견사항을 입증하기 위해 통제를 재테스트한다</b>",
+"B. <b>발견사항 검증을 위해 제3자를 참여시킨다</b>",
+"C. <b>부서 관리자의 의견과 함께 발견사항을 보고서에 포함한다</b>",
+"D. <b>발견사항의 뒷받침 증거를 재검증한다</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 발견사항의 뒷받침 증거를 재검증</b><br><br>
+<b>핵심:</b> 분쟁이 생기면 먼저 <b>발견의 근거 증거를 재검증</b> — 감사 정확성을 확보하고 관리자가 제시한 보완통제·정정 사항을 반영.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>순서</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 증거 재검증</b></td><td><b>FIRST</b></td><td><b>✅ 감사 정확성 확보</b></td></tr>
+<tr><td>A. 통제 재테스트</td><td>증거 재검증 후</td><td>후속 ❌</td></tr>
+<tr><td>B. 제3자 참여</td><td>재검증으로 필요성 판단 후</td><td>후속 ❌</td></tr>
+<tr><td>C. 보고서에 포함</td><td>재검증·재테스트 후에도 미해결 시</td><td>마지막 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>분쟁 대응 순서</b>: ① <b>증거 재검증(revalidate)</b> → ② 필요 시 통제 재테스트 → ③ 필요 시 제3자 → ④ 미해결 시 양측 의견과 함께 보고서에 포함<br>
+• <b>증거 재검증이 먼저인 이유</b>: 감사 결론은 <b>증거로 충분히 뒷받침</b>돼야 — 관리자가 지적한 보완통제·정정이 타당할 수 있으므로 근거부터 재확인<br>
+• 함정 A: 재테스트는 보통 <b>증거 재검증 후</b> 수행<br>
+• 함정 B: 제3자 참여는 재검증해 보고 <b>필요성이 확인된 후</b><br>
+• 함정 C: 보고서 포함은 <b>재검증·재테스트로도 합의 안 될 때 최후</b> — 분쟁 즉시 보고서에 넣지 않음<br>
+• 연계: [[잠재 중대 발견 → 추가 테스트로 확정 먼저]] (id 789), [[발견 식별 후 FIRST → 피감사인과 합의]] (id 827) — <b>증거·확정이 보고보다 먼저</b><br>
+• 시험 패턴: "발견 분쟁 발생 FIRST" → <b>뒷받침 증거 재검증</b></div>`,
+reference:"CRM Chapter 1: Handling Disputed Audit Findings",
+keyConcepts:[
+"증거 재검증(정답)|분쟁 시 FIRST — 감사 정확성 확보·관리자 지적 반영",
+"분쟁 대응 순서|증거 재검증→통제 재테스트→제3자→미해결 시 보고서 포함",
+"증거 재검증 우선 이유|결론은 증거로 뒷받침돼야 — 보완통제·정정 타당성 재확인",
+"함정 C 보고서 포함|재검증·재테스트로도 합의 안 될 때 최후",
+"연계|id789·827 — 증거·확정이 보고보다 먼저",
+"시험 패턴|발견 분쟁 발생 FIRST → 뒷받침 증거 재검증"
+]
+}
+,
+{
+id:852,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"The MAIN purpose of a transaction audit trail is to:",
+questionKo:"<b>거래 감사 추적(transaction audit trail)</b>의 주된 목적은?",
+options:[
+"A. reduce the use of storage media.",
+"B. determine accountability and responsibility for processed transactions.",
+"C. help an information systems (IS) auditor trace transactions.",
+"D. provide useful information for capacity planning."
+],
+optionsKo:[
+"A. <b>저장 매체 사용을 줄이기 위해</b>",
+"B. <b>처리된 거래에 대한 책임 추적성(accountability)과 책임을 규명하기 위해</b>",
+"C. <b>IS 감사인이 거래를 추적하도록 돕기 위해</b>",
+"D. <b>용량 계획(capacity planning)에 유용한 정보를 제공하기 위해</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 처리된 거래에 대한 책임 추적성·책임 규명</b><br><br>
+<b>핵심:</b> 감사 추적은 거래를 시스템 전반에 걸쳐 추적해 <b>누가 무엇을 했는지(accountability)</b>를 확립하는 것이 주목적.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 책임 추적성 규명</b></td><td><b>감사 추적의 주목적 ✅</b></td></tr>
+<tr><td>A. 저장 매체 절감</td><td>오히려 감사 추적은 <b>디스크 사용 증가</b> ❌</td></tr>
+<tr><td>C. 감사인의 거래 추적</td><td>거래 추적은 가능하나 — 주목적은 <b>책임 추적성</b>, 감사인 지원 아님 ❌</td></tr>
+<tr><td>D. 용량 계획 정보</td><td>용량 계획은 CPU·대역폭·사용자 수 정보 — 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>감사 추적 주목적 = 책임 추적성(Accountability)</b>: 거래를 시스템 전반에 추적 → <b>누가·언제·무엇을</b> 했는지 확립 (부인 방지·책임 규명)<br>
+• 함정 A: 감사 추적 활성화는 <b>디스크 사용을 늘림</b> (절감 아님)<br>
+• 함정 C: 감사인 지원은 부수 효과 — <b>주목적은 책임 추적성</b> (시스템·통제 차원의 목적)<br>
+• 함정 D: 용량 계획은 <b>CPU 사용률·대역폭·사용자 수</b> 등 다른 정보가 필요 — 감사 추적과 무관<br>
+• 연계: [[공유 ID 발견 → 문서화+리스크 설명]] (id 848) — 공유 ID는 <b>책임 추적성을 상실</b>시키는 문제 (감사 추적의 가치와 정반대)<br>
+• 시험 패턴: "감사 추적/로그의 주목적" → <b>책임 추적성(accountability)</b></div>`,
+reference:"CRM Chapter 1: Purpose of Audit Trails - Accountability",
+keyConcepts:[
+"책임 추적성 규명(정답)|거래를 추적해 누가·언제·무엇을 했는지 확립 — 감사 추적 주목적",
+"함정 A 저장 절감|감사 추적은 디스크 사용 증가 — 절감 아님",
+"함정 C 감사인 지원|부수 효과 — 주목적은 책임 추적성(시스템·통제 차원)",
+"함정 D 용량 계획|CPU·대역폭·사용자 수 정보 필요 — 무관",
+"연계|id848 공유 ID는 책임 추적성 상실 — 감사 추적 가치와 정반대",
+"시험 패턴|감사 추적/로그 주목적 → 책임 추적성(accountability)"
+]
+}
+,
+{
+id:853,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"Which of the following audit techniques BEST helps an information systems (IS) auditor to determine whether unauthorized program changes have been made since the last authorized program update?",
+questionKo:"<b>마지막 승인된 프로그램 업데이트 이후 무단 프로그램 변경</b>이 있었는지 판단하는 데 가장 도움이 되는 감사 기법은?",
+options:[
+"A. Test data run",
+"B. Code review",
+"C. Automated code comparison",
+"D. Review of code migration procedures"
+],
+optionsKo:[
+"A. <b>테스트 데이터 실행(Test data run)</b>",
+"B. <b>코드 리뷰(Code review)</b>",
+"C. <b>자동 코드 비교(Automated code comparison)</b>",
+"D. <b>코드 이관 절차 검토(Code migration procedures)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 자동 코드 비교(Automated code comparison)</b><br><br>
+<b>핵심:</b> 같은 프로그램의 <b>두 버전을 자동 비교</b>해 일치 여부를 판단 — 무단 변경 탐지에 가장 효율적·확실.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 자동 코드 비교</b></td><td><b>두 버전 자동 대조 → 무단 변경 탐지 ✅</b></td></tr>
+<tr><td>A. 테스트 데이터 실행</td><td>선택 거래 처리 검증만 — <b>무단 변경 증거 없음</b> ❌</td></tr>
+<tr><td>B. 코드 리뷰</td><td>대형 프로그램에선 <b>비효율·변경 놓치기 쉬움</b> ❌</td></tr>
+<tr><td>D. 이관 절차 검토</td><td>절차 검토일 뿐 — <b>실제 무단 변경 탐지 못 함</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>자동 코드 비교</b>: 승인된 버전 vs 현재 버전을 <b>자동 대조</b> → 모든 차이를 객관적·효율적으로 식별 → 무단 변경 탐지의 정석<br>
+• 함정 A: 테스트 데이터는 <b>선택된 거래의 처리 정확성</b>만 검증 — 코드 변경 여부와 무관<br>
+• 함정 B: 코드 리뷰(수동 소스 읽기)는 <b>대형 프로그램에서 비효율</b>이고 변경을 놓치기 쉬움 — 비교 수단은 되나 best 아님<br>
+• 함정 D: 이관 절차 검토는 <b>통제 설계</b>를 보는 것 — 실제 변경 발생 여부는 못 잡음<br>
+• 연계: [[소스 코드 비교 목적 → 독립적으로 변경 식별]] (id 825) — 같은 도구·개념 (자동 비교 = 두 버전 차이 식별)<br>
+• 시험 패턴: "무단/실제 프로그램 변경 탐지 BEST" → <b>자동 코드 비교</b></div>`,
+reference:"CRM Chapter 1: Detecting Unauthorized Program Changes",
+keyConcepts:[
+"자동 코드 비교(정답)|승인 버전 vs 현재 버전 자동 대조 — 무단 변경 탐지 정석",
+"함정 A 테스트 데이터|선택 거래 처리 정확성만 — 코드 변경과 무관",
+"함정 B 코드 리뷰|대형 프로그램 비효율·변경 놓치기 쉬움 — best 아님",
+"함정 D 이관 절차|통제 설계 검토 — 실제 변경 발생 여부 못 잡음",
+"연계|id825 소스 코드 비교 — 같은 도구·개념(두 버전 차이 식별)",
+"시험 패턴|무단/실제 프로그램 변경 탐지 BEST → 자동 코드 비교"
+]
+},
+{
+id:854,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"While performing the review of the sampled exception transactions report, which of the following is the MOST appropriate indicator to move from compliance testing to substantive testing for an information systems (IS) auditor?",
+questionKo:"<b>샘플링된 예외 거래 보고서를 검토</b>하는 중, IS 감사인이 <b>준거성 테스트에서 실증 테스트로 전환</b>하는 데 가장 적절한 지표는?",
+options:[
+"A. Control documentation",
+"B. Log analysis",
+"C. System requirements specifications",
+"D. Data flow diagrams"
+],
+optionsKo:[
+"A. <b>통제 문서화(Control documentation)</b>",
+"B. <b>로그 분석(Log analysis)</b>",
+"C. <b>시스템 요구사항 명세(System requirements specifications)</b>",
+"D. <b>데이터 흐름도(Data flow diagrams)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 로그 분석(Log analysis)</b><br><br>
+<b>핵심:</b> 예외 거래의 <b>전기(posting)·승인 로그 분석</b>에서 통제 누락·미작동 정황이 드러나면 → <b>실증(substantive) 샘플링으로 전환</b>해야 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 로그 분석</b></td><td><b>예외 거래 전기·승인 로그 → 통제 누락/미작동 정황 → 실증 전환 지표 ✅</b></td></tr>
+<tr><td>A. 통제 문서화</td><td>잘 문서화돼도 <b>실제 작동 보장 안 됨</b> ❌</td></tr>
+<tr><td>C. 요구사항 명세</td><td>기능·비기능 요구 기록일 뿐 — <b>별도 검증 필요</b> ❌</td></tr>
+<tr><td>D. 데이터 흐름도</td><td>모든 통제 이슈 식별 못 함 — <b>로그 분석보다 비효과적</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>준거성→실증 전환 트리거</b>: 준거성 테스트(통제 작동 여부 확인)에서 <b>통제가 미흡/미작동</b>한다는 증거가 나오면 거래 금액·정확성을 직접 검증하는 <b>실증 테스트</b>로 넘어감<br>
+• 정답 B: 예외 거래의 <b>전기·승인 로그 분석</b>이 통제 누락·비효과를 드러내면 → 실증 샘플링 필요 → <b>전환 지표</b>로 가장 적절<br>
+• 함정 A: 통제가 <b>문서로</b> 잘 정의돼 있어도 실제 운영을 보장하지 않음 — 전환 지표 아님<br>
+• 함정 C: 요구사항 명세는 무엇을 해야 하는지 기록 — <b>그 자체로 검증 필요</b><br>
+• 함정 D: 데이터 흐름도는 흐름 시각화일 뿐 — <b>모든 통제 이슈를 식별·평가하지 못함</b><br>
+• 시험 패턴: "준거→실증 전환 지표 / 통제 미작동 증거" → <b>로그 분석</b></div>`,
+reference:"CRM Chapter 1: Compliance vs. Substantive Testing",
+keyConcepts:[
+"로그 분석(정답)|예외 거래 전기·승인 로그 → 통제 누락/미작동 정황 → 실증 전환 지표",
+"준거→실증 전환|통제 미작동 증거 발견 시 거래 직접 검증(실증)으로 이동",
+"함정 A 통제 문서화|문서화돼도 실제 작동 보장 안 됨",
+"함정 C 요구사항 명세|기능·비기능 요구 기록일 뿐 — 별도 검증 필요",
+"함정 D 데이터 흐름도|모든 통제 이슈 식별 못 함 — 로그 분석보다 비효과적",
+"시험 패턴|준거→실증 전환 지표 / 통제 미작동 증거 → 로그 분석"
+]
+},
+{
+id:855,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"What is the PRIMARY requirement that a data mining and auditing software tool should meet? The software tool should:",
+questionKo:"<b>데이터 마이닝·감사 소프트웨어 도구</b>가 충족해야 할 <b>가장 중요한(PRIMARY) 요건</b>은? 그 도구는:",
+options:[
+"A. interface with various types of enterprise resource planning software and databases.",
+"B. accurately capture data from the enterprise systems without causing excessive performance problems.",
+"C. introduce audit hooks into the financial systems of the enterprise to support continuous auditing.",
+"D. be customizable and support inclusion of custom programming to aid in investigative analysis."
+],
+optionsKo:[
+"A. <b>다양한 ERP 소프트웨어·데이터베이스와 인터페이스</b>한다.",
+"B. <b>과도한 성능 문제 없이 기업 시스템에서 데이터를 정확히 추출</b>한다.",
+"C. <b>지속 감사 지원을 위해 재무 시스템에 감사 후크(audit hook)를 삽입</b>한다.",
+"D. <b>맞춤화 가능하고 조사 분석용 커스텀 프로그래밍을 지원</b>한다."
+],
+correct:1,
+explanation:`<b>정답: B. 과도한 성능 문제 없이 기업 시스템에서 데이터를 정확히 추출</b><br><br>
+<b>핵심:</b> 보기 모두 바람직하지만, <b>가장 중요한 것은 감사 대상 기업의 시스템에서 도구가 실제로 효과적으로 작동(정확한 데이터 추출)</b>하는 것.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 정확한 데이터 추출(성능 영향 최소)</b></td><td><b>분석의 토대 = 정확·유의미한 데이터 확보 → PRIMARY ✅</b></td></tr>
+<tr><td>A. ERP·DB 인터페이스</td><td>바람직하나 — <b>인터페이스만으로 유의미한 분석 보장 안 됨</b> ❌</td></tr>
+<tr><td>C. 감사 후크 삽입</td><td>재무 시스템 한정·<b>반드시 필요한 것 아님</b> ❌</td></tr>
+<tr><td>D. 맞춤화·커스텀 코딩</td><td>유연성은 좋으나 — <b>내장 분석 기능이 우선</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>PRIMARY 판별</b>: 보기 전부 "바람직한" 속성 → 그중 <b>없으면 도구 자체가 무용지물</b>인 것을 고른다 → 정확한 데이터 추출<br>
+• 정답 B: 데이터 마이닝·감사 도구의 본질은 <b>기업 시스템에서 정확하고 유의미한 데이터를 성능 저하 없이 확보</b>하는 것 — 모든 분석의 전제<br>
+• 함정 A: 다양한 ERP·DB와의 <b>인터페이스</b>는 desirable하나, 연결됐다고 데이터가 정확·유의미한 건 아님<br>
+• 함정 C: <b>감사 후크</b>는 지속 감사용 옵션 — 재무 시스템에 국한되고 필수 아님<br>
+• 함정 D: <b>맞춤화·커스텀 프로그래밍</b>보다 <b>내장 분석 기능</b>이 우선 — 유연하되 반드시 커스터마이즈 필요 X<br>
+• 시험 패턴: "감사·데이터 마이닝 도구 PRIMARY 요건" → <b>대상 시스템에서 정확한 데이터 추출(성능 영향 최소)</b></div>`,
+reference:"CRM Chapter 1: Audit Data Analytics Tools",
+keyConcepts:[
+"정확한 데이터 추출(정답)|대상 기업 시스템에서 성능 저하 없이 정확·유의미한 데이터 확보 — 모든 분석의 전제",
+"PRIMARY 판별법|보기 전부 desirable → 없으면 도구가 무용지물인 것 선택",
+"함정 A ERP·DB 인터페이스|연결돼도 데이터 정확·유의미 보장 안 됨",
+"함정 C 감사 후크|지속 감사용 옵션 — 재무 한정·필수 아님",
+"함정 D 맞춤화|내장 분석 기능 우선 — 반드시 커스터마이즈 필요 X",
+"시험 패턴|감사·데이터 마이닝 도구 PRIMARY → 정확한 데이터 추출(성능 영향 최소)"
+]
+},
+{
+id:856,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"The final decision to include a material finding in an audit report should be made by the:",
+questionKo:"<b>중요한(material) 발견사항을 감사 보고서에 포함</b>할지에 대한 <b>최종 결정</b>을 내려야 하는 주체는?",
+options:[
+"A. audit committee.",
+"B. auditee’s manager.",
+"C. information systems (IS) auditor.",
+"D. chief executive officer."
+],
+optionsKo:[
+"A. <b>감사위원회(audit committee)</b>",
+"B. <b>피감사자의 관리자(auditee’s manager)</b>",
+"C. <b>IS 감사인(IS auditor)</b>",
+"D. <b>최고경영자(CEO)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. IS 감사인(IS auditor)</b><br><br>
+<b>핵심:</b> 보고서에 무엇을 포함/제외할지 <b>최종 결정은 IS 감사인</b>이 한다 — 감사의 <b>독립성·객관성·전문성</b>을 지키기 위함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. IS 감사인</b></td><td><b>보고서 포함/제외 최종 결정권 → 독립성 보장 ✅</b></td></tr>
+<tr><td>A. 감사위원회</td><td>보고서 내용에 영향 주면 <b>감사인 독립성 침해</b> ❌</td></tr>
+<tr><td>B. 피감사자 관리자</td><td>피감사 대상이 보고 내용에 영향 X — <b>이해상충</b> ❌</td></tr>
+<tr><td>D. CEO</td><td>내용 개입 시 <b>감사 기능 독립성 위반</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>독립성 원칙</b>: 감사 보고서의 내용 결정권은 외부 압력으로부터 보호돼야 함 → <b>IS 감사인 본인</b>이 최종 결정<br>
+• 정답 C: 감사인은 발견사항을 포함/제외할지 <b>스스로 판단</b> — 이것이 객관성·전문성의 핵심<br>
+• 함정 A: <b>감사위원회</b>는 감사 기능을 감독하나, 보고서 내용을 지시하면 독립성 침해<br>
+• 참고: IS 감사인의 <b>상급자(manager)</b>는 포함 여부를 <b>권고(recommend)</b>할 수 있으나, <b>피감사자</b> 관리자는 영향 줄 수 없음<br>
+• 함정 D: <b>CEO</b>의 내용 개입은 명백한 독립성 위반<br>
+• 시험 패턴: "보고서 내용 최종 결정 주체" → <b>IS 감사인</b> (독립성)</div>`,
+reference:"CRM Chapter 1: Audit Reporting & Auditor Independence",
+keyConcepts:[
+"IS 감사인(정답)|보고서 포함/제외 최종 결정권 — 독립성·객관성·전문성 보장",
+"독립성 원칙|보고서 내용 결정은 외부 압력으로부터 보호 — 감사인 본인이 결정",
+"함정 A 감사위원회|감독은 하되 내용 지시하면 독립성 침해",
+"함정 B 피감사자 관리자|피감 대상 — 내용에 영향 시 이해상충",
+"manager 구분|감사인 상급자는 권고 가능, 피감사자 관리자는 영향 불가",
+"시험 패턴|보고서 내용 최종 결정 → IS 감사인(독립성)"
+]
+},
+{
+id:857,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"What is a KEY benefit of incorporating data analytics into the audit process?",
+questionKo:"<b>감사 프로세스에 데이터 분석(data analytics)을 도입</b>하는 것의 <b>핵심 이점(KEY benefit)</b>은?",
+options:[
+"A. Identification of patterns and trends in data for risk assessment",
+"B. Elimination of the need for audit testing and sampling",
+"C. Reduction of audit scope and reliance on internal controls",
+"D. Addition of work for auditors to learn data analysis tools"
+],
+optionsKo:[
+"A. <b>위험 평가를 위한 데이터의 패턴·추세 식별</b>",
+"B. <b>감사 테스트·샘플링 필요성 제거</b>",
+"C. <b>감사 범위 및 내부통제 의존도 축소</b>",
+"D. <b>감사인이 데이터 분석 도구를 배우는 추가 업무</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 위험 평가를 위한 데이터의 패턴·추세 식별</b><br><br>
+<b>핵심:</b> 데이터 분석은 <b>대량 데이터에서 패턴·추세·이상치를 식별</b>해 위험 평가·의사결정을 강화 — 이것이 핵심 이점.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 패턴·추세 식별</b></td><td><b>이상치 탐지·통제 효과 평가·위험 영역 식별 → KEY benefit ✅</b></td></tr>
+<tr><td>B. 테스트·샘플링 제거</td><td>분석이 강화하나 — <b>테스트·샘플링 필요성 없애지 못함</b> ❌</td></tr>
+<tr><td>C. 감사 범위 축소</td><td>범위 직접 축소 X — <b>고위험 영역에 집중하도록 도울 뿐</b> ❌</td></tr>
+<tr><td>D. 학습 업무 추가</td><td>이점이 아닌 <b>부담</b> — 장기적으론 업무 경감 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>데이터 분석의 본질</b>: 대량 데이터를 효율·효과적으로 분석 → <b>패턴·추세·이상치</b> 식별 → 위험 평가·의사결정 강화<br>
+• 정답 A: 패턴·추세 식별로 <b>이상치 탐지, 통제 효과 평가, 잠재 위험·미준수 영역</b>을 찾아냄 — 핵심 이점<br>
+• 함정 B: 분석은 보조 — <b>테스트·샘플링 자체를 없애지는 못함</b><br>
+• 함정 C: 범위를 직접 줄이는 게 아니라 <b>고위험·중요 영역에 노력을 집중</b>하도록 도움<br>
+• 함정 D: 도구 학습은 단기 부담일 뿐 이점 아님 — 장기적으론 <b>업무량 경감</b><br>
+• 시험 패턴: "데이터 분석 도입 KEY benefit" → <b>패턴·추세 식별(위험 평가)</b></div>`,
+reference:"CRM Chapter 1: Benefits of Audit Data Analytics",
+keyConcepts:[
+"패턴·추세 식별(정답)|대량 데이터에서 이상치 탐지·통제 효과 평가·위험 영역 식별 → 핵심 이점",
+"데이터 분석 본질|대량 데이터 효율 분석 → 위험 평가·의사결정 강화",
+"함정 B 테스트·샘플링 제거|분석은 보조일 뿐 — 필요성 없애지 못함",
+"함정 C 범위 축소|직접 축소 X — 고위험 영역 집중 지원",
+"함정 D 학습 업무|단기 부담일 뿐 이점 아님 — 장기적으론 업무 경감",
+"시험 패턴|데이터 분석 도입 KEY benefit → 패턴·추세 식별(위험 평가)"
+]
+},
+{
+id:858,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"Which technique BEST tests for the existence of dual control when auditing the wire transfer systems of a bank?",
+questionKo:"은행의 <b>전신환(wire transfer) 시스템</b>을 감사할 때 <b>이중 통제(dual control)의 존재</b>를 검증하는 데 가장 적합한 기법은?",
+options:[
+"A. Analysis of transaction logs",
+"B. Reperformance",
+"C. Observation",
+"D. Interviewing personnel"
+],
+optionsKo:[
+"A. <b>거래 로그 분석(Analysis of transaction logs)</b>",
+"B. <b>재수행(Reperformance)</b>",
+"C. <b>관찰(Observation)</b>",
+"D. <b>직원 인터뷰(Interviewing personnel)</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 관찰(Observation)</b><br><br>
+<b>핵심:</b> 이중 통제 = <b>두 사람이 실제로 작업에 관여</b>해야 함. 관찰만이 두 명이 실제로 참여하고 한 명이 두 역할을 위장하지 않음을 <b>직접 확인</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 관찰</b></td><td><b>두 명 실제 참여·위장 여부 직접 확인 → 이중 통제 검증 BEST ✅</b></td></tr>
+<tr><td>A. 거래 로그 분석</td><td>제도 존재는 보이나 — <b>일관된 준수까지 보장 못 함</b> ❌</td></tr>
+<tr><td>B. 재수행</td><td>은행 전신환을 <b>감사인이 재수행하는 것은 불가</b> ❌</td></tr>
+<tr><td>D. 직원 인터뷰</td><td>인식·이해 파악용 — <b>직접 증거 아님(실제와 다를 수 있음)</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>이중 통제(dual control)</b>: 한 작업을 <b>두 사람</b>이 수행 — 상호 감독 요소 존재<br>
+• 정답 C: <b>관찰</b>로 두 사람이 실제 실행에 관여하는지, 한 명이 두 번째 사람 역할을 <b>위장(masquerade)</b>하는지 직접 확인 가능<br>
+• 함정 A: 거래 로그는 이중 통제가 <b>설정돼 있음</b>은 보여줘도 <b>일관 준수</b>를 보장 못 함<br>
+• 함정 B: 재수행은 확증력 있으나 — <b>은행 전신환 재수행은 감사인에게 불가능</b><br>
+• 함정 D: 인터뷰는 직원 인식 파악엔 유용하나 — 답변이 실제 프로세스와 다를 수 있어 <b>직접 증거 X</b><br>
+• 시험 패턴: "이중 통제/사람 개입 통제 실재 검증 BEST" → <b>관찰(Observation)</b></div>`,
+reference:"CRM Chapter 1: Audit Evidence Collection Techniques",
+keyConcepts:[
+"관찰(정답)|두 명 실제 참여·위장 여부 직접 확인 — 이중 통제 검증 BEST",
+"이중 통제|한 작업을 두 사람이 수행 — 상호 감독 요소",
+"함정 A 거래 로그|제도 존재는 보이나 일관 준수 보장 못 함",
+"함정 B 재수행|확증력 있으나 은행 전신환 재수행은 감사인 불가",
+"함정 D 인터뷰|인식 파악용 — 답변이 실제와 다를 수 있어 직접 증거 X",
+"시험 패턴|사람 개입 통제(이중 통제) 실재 검증 BEST → 관찰"
+]
+},
+{
+id:859,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"The internal audit department wrote some scripts that are used for continuous auditing. The IT department asked for copies of the scripts so that they can be used for setting up a continuous monitoring process on key systems. Considering the ability of the information systems (IS) auditors to independently and objectively audit the IT function, should sharing these scripts be permitted?",
+questionKo:"내부감사부서가 <b>지속 감사(continuous auditing)</b>용 스크립트를 작성했다. IT부서가 핵심 시스템의 <b>지속 모니터링(continuous monitoring)</b> 구축에 쓰려고 그 스크립트 사본을 요청했다. IS 감사인이 <b>IT 기능을 독립적·객관적으로 감사</b>할 능력을 고려할 때, 스크립트 공유를 허용해야 하는가?",
+options:[
+"A. Sharing the scripts is not permitted because it gives IT the ability to pre-audit systems and avoid an accurate, comprehensive audit.",
+"B. Sharing the scripts is required because IT must have the ability to review all programs and software that run on information systems regardless of audit independence.",
+"C. Sharing the scripts is permissible if IT recognizes that audits may be conducted in areas not covered in the scripts.",
+"D. Sharing the scripts is not permitted because the IS auditors who wrote the scripts would not be permitted to audit any information systems where the scripts are being used for monitoring."
+],
+optionsKo:[
+"A. <b>허용 안 됨</b> — IT가 시스템을 사전 감사(pre-audit)해 정확·포괄적 감사를 회피할 수 있기 때문.",
+"B. <b>공유 필수</b> — 감사 독립성과 무관하게 IT는 정보시스템에서 실행되는 모든 프로그램·소프트웨어를 검토할 권한이 있어야 하기 때문.",
+"C. <b>허용 가능</b> — 스크립트가 다루지 않는 영역에서도 감사가 수행될 수 있음을 IT가 인지한다면.",
+"D. <b>허용 안 됨</b> — 스크립트를 작성한 IS 감사인은 그 스크립트가 모니터링에 쓰이는 어떤 정보시스템도 감사할 수 없게 되기 때문."
+],
+correct:2,
+explanation:`<b>정답: C. 스크립트가 다루지 않는 영역도 감사 가능함을 IT가 인지하면 공유 허용</b><br><br>
+<b>핵심:</b> IT가 같은 스크립트로 지속 모니터링을 해도 <b>IS 감사의 포괄적 감사 능력은 훼손되지 않음</b> — 감사 범위는 스크립트가 다루는 통제보다 넓음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 한계 인지 시 공유 가능</b></td><td><b>감사는 스크립트 범위 밖도 포함 → 독립성·포괄성 유지 ✅</b></td></tr>
+<tr><td>A. 사전 감사 회피</td><td>IT의 모니터링이 IS 감사의 <b>포괄적 감사 능력을 막지 않음</b> ❌</td></tr>
+<tr><td>B. 공유 필수</td><td>QA·구성관리 정책상 필요할 순 있으나 — <b>감사 능력과 무관, "필수"는 과함</b> ❌</td></tr>
+<tr><td>D. 작성자 감사 금지</td><td>스크립트 효과성 검토는 제한될 수 있으나 — <b>시스템 전반은 여전히 감사 가능</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>지속 감사 vs 지속 모니터링</b>: 감사는 IS audit의 독립적 활동, 모니터링은 경영진(IT)의 상시 통제 활동 — 같은 스크립트를 공유해도 둘은 별개<br>
+• 정답 C: IT가 <b>스크립트가 다루지 않는 영역에서도 감사가 이뤄질 수 있음</b>을 인지한다면 공유는 문제없음 — 감사 범위가 스크립트보다 넓기 때문<br>
+• 함정 A: IT가 같은 스크립트로 사전 점검해도 IS 감사의 <b>포괄적 감사를 회피·차단하지 못함</b><br>
+• 함정 B: 공유가 정책(QA·구성관리)상 요구될 수는 있으나 <b>"독립성 무관하게 필수"</b>는 잘못된 일반화<br>
+• 함정 D: 작성자가 <b>스크립트 자체의 효과성</b>은 객관적으로 못 볼 수 있으나, 시스템의 다른 모든 측면은 감사 가능 — 전면 금지는 과함<br>
+• 시험 패턴: "감사 스크립트 IT 공유 가능?" → <b>한계 인지 시 허용(감사 범위 > 스크립트)</b></div>`,
+reference:"CRM Chapter 1: Continuous Auditing vs. Continuous Monitoring & Independence",
+keyConcepts:[
+"한계 인지 시 공유 가능(정답)|감사 범위가 스크립트보다 넓음 → 독립성·포괄성 유지",
+"지속 감사 vs 지속 모니터링|감사=IS audit 독립 활동, 모니터링=경영진(IT) 상시 통제 — 스크립트 공유해도 별개",
+"함정 A 사전 감사 회피|IT 모니터링이 IS 감사 포괄성 막지 못함",
+"함정 B 공유 필수|QA·구성관리상 필요할 순 있으나 감사 능력과 무관 — '필수' 과함",
+"함정 D 작성자 감사 금지|스크립트 효과성만 제한 — 시스템 전반은 감사 가능",
+"시험 패턴|감사 스크립트 IT 공유 → 한계 인지 시 허용"
+]
+},
+{
+id:860,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"When testing program change requests for a remote system, an information systems (IS) auditor finds that the number of changes available for sampling does not provide a reasonable level of assurance. What is the MOST appropriate action for the IS auditor to take?",
+questionKo:"원격 시스템의 <b>프로그램 변경 요청</b>을 테스트하던 IS 감사인이, <b>샘플링 가능한 변경 건수가 합리적 수준의 확신을 제공하지 못함</b>을 발견했다. 가장 적절한 조치는?",
+options:[
+"A. Develop an alternate testing procedure.",
+"B. Report the finding to management.",
+"C. Perform a walkthrough of the change management process.",
+"D. Create additional sample data to test additional changes."
+],
+optionsKo:[
+"A. <b>대체 테스트 절차를 개발한다.</b>",
+"B. <b>발견사항을 경영진에 보고한다.</b>",
+"C. <b>변경관리 프로세스의 워크스루를 수행한다.</b>",
+"D. <b>추가 변경을 테스트할 추가 샘플 데이터를 생성한다.</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 대체 테스트 절차를 개발한다</b><br><br>
+<b>핵심:</b> 주어진 데이터로 <b>샘플 크기 목표를 못 채우면</b> → 해당 테스트 목적의 확신을 줄 수 없으므로 <b>(감사 관리자 승인 하에) 대체 절차</b>를 마련.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 대체 테스트 절차 개발</b></td><td><b>샘플 부족 → 다른 방법으로 목적 달성 시도 ✅</b></td></tr>
+<tr><td>B. 경영진에 보고</td><td>아직 <b>결함이라 보고할 증거 부족</b> ❌</td></tr>
+<tr><td>C. 워크스루 수행</td><td>확신 제공 가능한지 <b>분석 전엔 착수 부적절</b> ❌</td></tr>
+<tr><td>D. 샘플 데이터 생성</td><td>감사 목적으로 <b>감사인이 샘플 데이터 만드는 것 부적절</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>샘플 부족 상황</b>: 모집단(변경 건수)이 너무 적어 목표 샘플 크기를 못 채우면 통계적 확신 불가 → 무리하게 진행 X<br>
+• 정답 A: <b>대체 테스트 절차</b>(예: 전수 검토, 다른 통제 검증 등)를 <b>감사 관리자 승인 하에</b> 개발 → 테스트 목적을 다른 방법으로 달성<br>
+• 함정 B: 샘플이 적다는 것만으로는 <b>통제 결함의 증거가 아님</b> — 보고는 시기상조<br>
+• 함정 C: 워크스루도 한 방법이나, <b>그것이 필요한 확신을 줄 수 있는지 분석한 뒤</b> 선택해야 — 곧바로 착수 X<br>
+• 함정 D: 감사인이 <b>샘플 데이터를 인위적으로 생성</b>하는 것은 객관성·독립성 위반 — 절대 부적절<br>
+• 시험 패턴: "샘플 크기 부족 / 확신 부족" → <b>대체 테스트 절차 개발(관리자 승인)</b></div>`,
+reference:"CRM Chapter 1: Audit Sampling & Alternate Procedures",
+keyConcepts:[
+"대체 테스트 절차(정답)|샘플 부족으로 목표 미달 시 감사 관리자 승인 하에 다른 방법으로 목적 달성",
+"샘플 부족 원칙|모집단 적어 목표 샘플 못 채우면 무리한 진행 X — 통계적 확신 불가",
+"함정 B 보고|샘플 적음만으론 통제 결함 증거 아님 — 시기상조",
+"함정 C 워크스루|확신 제공 가능한지 분석 후 선택 — 즉시 착수 X",
+"함정 D 샘플 생성|감사인이 샘플 데이터 인위 생성은 객관성·독립성 위반",
+"시험 패턴|샘플 크기 부족/확신 부족 → 대체 테스트 절차 개발(관리자 승인)"
+]
+},
+{
+id:861,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"Which of the following is the PRIMARY purpose of a risk-based audit?",
+questionKo:"<b>위험 기반 감사(risk-based audit)</b>의 <b>가장 주된(PRIMARY) 목적</b>은?",
+options:[
+"A. High-impact areas are addressed first.",
+"B. Audit resources are allocated efficiently.",
+"C. Material areas are addressed first.",
+"D. Management concerns are prioritized."
+],
+optionsKo:[
+"A. <b>고영향(high-impact) 영역을 먼저 다룬다.</b>",
+"B. <b>감사 자원이 효율적으로 배분된다.</b>",
+"C. <b>중요한(material) 영역을 먼저 다룬다.</b>",
+"D. <b>경영진의 관심사가 우선시된다.</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 중요한(material) 영역을 먼저 다룬다</b><br><br>
+<b>핵심:</b> 위험 기반 감사는 <b>위험 순위(risk ranking)</b>에 따라 <b>중요 위험(material risk)</b>부터 감사 — 고위험 영역에 집중하는 것이 주목적.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 중요 영역 우선</b></td><td><b>위험 순위 따라 material risk 우선 감사 → PRIMARY ✅</b></td></tr>
+<tr><td>A. 고영향 우선</td><td>고영향 ≠ 고위험 — <b>위험은 발생 확률도 고려</b> ❌</td></tr>
+<tr><td>B. 자원 효율 배분</td><td>부수 효과일 뿐 — <b>주된 목적 아님</b> ❌</td></tr>
+<tr><td>D. 경영진 관심사</td><td>경영진 관심이 <b>고위험과 일치하지 않을 수 있음</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>위험 = 영향 × 확률</b>: 위험 기반 감사의 핵심은 위험 순위에 따라 <b>중요 위험(material risk)부터</b> 감사하는 것<br>
+• 정답 C: 위험 순위대로 감사 → 감사팀이 <b>고위험 영역에 먼저 집중</b><br>
+• 함정 A: <b>고영향(high-impact)이 곧 고위험은 아님</b> — 위험은 발생 확률(probability)도 반영하므로 영향만으론 부족<br>
+• 함정 B: 자원의 효율적 배분은 위험 기반 접근이 <b>가져오는 효과</b>이나 PRIMARY 목적은 아님<br>
+• 함정 D: <b>경영진 관심사</b>가 반드시 고위험 영역과 정렬되는 것은 아님<br>
+• 시험 패턴: "위험 기반 감사 PRIMARY 목적" → <b>중요(material) 영역 우선</b> (A 고영향과 혼동 주의)</div>`,
+reference:"CRM Chapter 1: Risk-Based Audit Approach",
+keyConcepts:[
+"중요 영역 우선(정답)|위험 순위 따라 material risk부터 감사 — 고위험 집중이 주목적",
+"위험=영향×확률|고영향이 곧 고위험 아님 — 발생 확률도 고려",
+"함정 A 고영향|high-impact ≠ high-risk — 확률 미반영",
+"함정 B 자원 효율|부수 효과일 뿐 PRIMARY 아님",
+"함정 D 경영진 관심사|고위험과 정렬되지 않을 수 있음",
+"시험 패턴|위험 기반 감사 PRIMARY → 중요(material) 영역 우선(A 고영향 혼동 주의)"
+]
+},
+{
+id:862,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"For a retail business with a large volume of transactions, which of the following audit techniques is the MOST appropriate for addressing emerging risk?",
+questionKo:"<b>거래량이 많은 소매업</b>에서 <b>신흥 위험(emerging risk)</b>에 대응하기에 가장 적절한 감사 기법은?",
+options:[
+"A. Use of computer-assisted audit techniques (CAATs)",
+"B. Quarterly risk assessments",
+"C. Sampling of transaction logs",
+"D. Continuous auditing"
+],
+optionsKo:[
+"A. <b>컴퓨터 활용 감사 기법(CAATs) 사용</b>",
+"B. <b>분기별 위험 평가</b>",
+"C. <b>거래 로그 샘플링</b>",
+"D. <b>지속 감사(Continuous auditing)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 지속 감사(Continuous auditing)</b><br><br>
+<b>핵심:</b> 지속 감사는 <b>자동화 보고로 실시간 정보를 경영진에 피드</b> → 신흥 위험에 가장 신속하게 대응(시간 지연 최소).<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 지속 감사</b></td><td><b>실시간 자동 보고 → 신흥 위험 즉각 대응 ✅</b></td></tr>
+<tr><td>A. CAATs</td><td>상세 분석 가능하나 — <b>실행~분석 간 시간차 존재</b> ❌</td></tr>
+<tr><td>B. 분기별 위험 평가</td><td>유효하나 — <b>지속 감사만큼 신속하지 못함</b> ❌</td></tr>
+<tr><td>C. 거래 로그 샘플링</td><td>로그에 안 잡히는 위험·<b>분석 시간 지연</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>emerging risk = 신속성(real-time)이 관건</b>: 거래량 많은 환경에서 신흥 위험은 빠르게 번지므로 <b>시간 지연 최소화</b>가 핵심<br>
+• 정답 D: 지속 감사는 <b>자동 보고 프로세스로 실시간 정보 피드</b> → 경영진이 더 빨리 시정 조치 가능<br>
+• 함정 A: CAATs는 추세·잠재 위험 상세 분석엔 좋으나 <b>소프트웨어 실행과 결과 분석 사이 시간차</b> 때문에 지속 감사보다 못함<br>
+• 함정 B: 분기별 평가는 주기적 — <b>실시간 대응성 부족</b><br>
+• 함정 C: 샘플링은 <b>로그에 없는 위험을 놓치고</b> 분석 지연 가능<br>
+• 시험 패턴: "대량 거래·신흥/실시간 위험 대응 BEST" → <b>지속 감사</b> (CAATs와 혼동 주의: 지속 감사 = 시간차 없음)</div>`,
+reference:"CRM Chapter 1: Continuous Auditing for Emerging Risk",
+keyConcepts:[
+"지속 감사(정답)|실시간 자동 보고 → 신흥 위험 즉각 대응·시정 가속",
+"emerging risk 관건|신속성(real-time)·시간 지연 최소화가 핵심",
+"함정 A CAATs|상세 분석 가능하나 실행~분석 시간차 존재 — 지속 감사보다 못함",
+"함정 B 분기별 평가|주기적이라 실시간 대응성 부족",
+"함정 C 로그 샘플링|로그에 없는 위험 놓침·분석 지연",
+"시험 패턴|대량 거래·신흥/실시간 위험 BEST → 지속 감사(CAATs 시간차 주의)"
+]
+},
+{
+id:863,
+domain:"1",
+ks:"1B4 Audit Data Analytics",
+question:"Which of the following represents an example of a preventive control with respect to IT personnel?",
+questionKo:"IT 인력과 관련하여 <b>예방 통제(preventive control)</b>의 예시는?",
+options:[
+"A. A security guard stationed at the server room door",
+"B. An intrusion detection system (IDS)",
+"C. A badge entry system for the IT facility",
+"D. A fire-suppression system in the server room"
+],
+optionsKo:[
+"A. <b>서버실 문에 배치된 경비원</b>",
+"B. <b>침입 탐지 시스템(IDS)</b>",
+"C. <b>IT 시설용 배지 출입 시스템</b>",
+"D. <b>서버실의 화재 진압 시스템</b>"
+],
+correct:2,
+explanation:`<b>정답: C. IT 시설용 배지 출입 시스템</b><br><br>
+<b>핵심:</b> 예방 통제 = <b>나쁜 사건의 발생 확률을 낮추는</b> 통제. 배지 출입 시스템은 <b>무단 출입을 사전 차단</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>통제 유형</th></tr>
+<tr style="background:#d4edda"><td><b>C. 배지 출입 시스템</b></td><td><b>예방(Preventive) — 무단 출입 사전 차단 ✅</b></td></tr>
+<tr><td>A. 경비원</td><td><b>억제(Deterrent)</b> — 심리적 위하 ❌</td></tr>
+<tr><td>B. IDS</td><td><b>탐지(Detective)</b> — 발생 후 식별 ❌</td></tr>
+<tr><td>D. 화재 진압 시스템</td><td><b>교정(Corrective)</b> — 사건 후 피해 복구·경감 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>통제 유형 4분류</b>: 예방(사전 차단)·탐지(발생 식별)·교정(사후 복구)·억제(심리적 위하)<br>
+• 정답 C: <b>배지 출입 시스템</b>은 무단 출입 자체를 <b>사전에 막음</b> → 예방 통제의 전형<br>
+• 함정 A: <b>경비원</b>은 흔히 억제(deterrent)로 분류 — 잠재 침입자에게 심리적 부담을 주는 위하 효과 (물리적으로 막으면 예방 성격도 있으나 CISA에선 deterrent로 봄)<br>
+• 함정 B: <b>IDS</b>는 침입이 발생한 뒤 이를 <b>탐지</b> → 탐지 통제<br>
+• 함정 D: <b>화재 진압 시스템</b>은 화재(사건) 발생 후 피해를 <b>경감·복구</b> → 교정 통제<br>
+• 시험 패턴: 통제 분류 문제 → 경비원=억제, IDS=탐지, 배지/잠금=예방, 화재진압/백업=교정</div>`,
+reference:"CRM Chapter 1: Control Classifications (Preventive/Detective/Corrective/Deterrent)",
+keyConcepts:[
+"배지 출입 시스템(정답)|무단 출입 사전 차단 → 예방(Preventive) 통제",
+"통제 4분류|예방(사전 차단)·탐지(발생 식별)·교정(사후 복구)·억제(심리적 위하)",
+"함정 A 경비원|억제(Deterrent) — 심리적 위하",
+"함정 B IDS|탐지(Detective) — 발생 후 식별",
+"함정 D 화재 진압|교정(Corrective) — 사건 후 피해 복구·경감",
+"시험 패턴|경비원=억제, IDS=탐지, 배지/잠금=예방, 화재진압/백업=교정"
+]
+}
 
 ];
