@@ -37578,6 +37578,132 @@ keyConcepts:[
 "함정 D 중복 이유 회피|CSA ≠ 감사 대체 → 감사인 역할 여전히 필요",
 "시험 패턴|CSA 환경 → 감사인은 촉진자로 결과 검토+통제 존재 확인 (직접 참여·회피·인센티브 X)"
 ]
+},
+{
+id:893,
+domain:"2",
+ks:"2A1 Laws, Regulations, and Industry Standards",
+question:"Which of the following is the MOST important information systems (IS) audit consideration when an organization outsources a customer credit review system to a third-party service provider? The provider:",
+questionKo:"조직이 <b>고객 신용 심사 시스템</b>을 제3자 서비스 제공자에게 아웃소싱할 때, IS 감사인이 <b>가장 중요하게</b> 고려할 사항은? 제공자가:",
+options:[
+"A. claims to meet or exceed industry security standards.",
+"B. agrees to be subject to external security reviews.",
+"C. has a good market reputation for service and experience.",
+"D. complies with security policies of the organization."
+],
+optionsKo:[
+"A. <b>업계 보안 표준을 충족하거나 초과한다고 주장한다</b>",
+"B. <b>외부 보안 검토를 받는 데 동의한다</b>",
+"C. <b>서비스·경험 측면에서 시장 평판이 좋다</b>",
+"D. <b>조직의 보안 정책을 준수한다</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 외부 보안 검토를 받는 데 동의</b><br><br>
+<b>핵심:</b> 고객 신용정보가 벤더에 보관되므로 <b>독립적(외부) 보안 검토</b>가 필수. A·D처럼 "표준/정책을 준수한다"는 것은 <b>검증할 방법이 없으면 무의미</b> — 외부 검토에 동의해야 실제로 입증·확인 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 외부 보안 검토 동의</b></td><td><b>독립적 검증 가능 → 주장·정책을 실제로 입증 ✅</b></td></tr>
+<tr><td>A. 표준 충족 주장</td><td>주장일 뿐 <b>독립적 검증 없이는 입증 불가</b> ❌</td></tr>
+<tr><td>C. 좋은 평판</td><td>서비스 품질 요소지만 <b>보안 통제 강도를 보장 못함</b> ❌</td></tr>
+<tr><td>D. 조직 정책 준수</td><td>중요하지만 <b>검증 수단 없으면 확인 불가</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 외부 보안 검토 동의 = <b>검증 가능성</b> 확보 — 주장(A)·정책 준수(D)도 결국 외부 검토가 있어야 입증됨<br>
+• 함정 A·D: "준수한다/충족한다"는 <b>자기 주장(claim)</b>에 불과 — 독립적으로 확인할 길이 없으면 감사 증거로 약함<br>
+• 함정 C: 평판·경험은 품질 참고 요소일 뿐 <b>보안 통제 자체를 담보하지 않음</b><br>
+• 시험 패턴: 아웃소싱·민감정보 → <b>"검증 가능한가"가 핵심</b> → 외부/독립 검토에 동의하는 보기가 정답</div>`,
+reference:"CRM Chapter 2: Third-Party Service Provider — Right to Audit / Independent Review",
+keyConcepts:[
+"외부 보안 검토 동의(정답)|민감정보 보관 → 독립적 검증 가능성 확보가 핵심",
+"함정 A 표준 충족 주장|claim에 불과 — 독립 검증 없으면 입증 불가",
+"함정 C 좋은 평판|품질 참고 요소일 뿐 보안 통제 담보 못함",
+"함정 D 조직 정책 준수|중요하나 검증 수단 없으면 확인 불가",
+"시험 패턴|아웃소싱·민감정보 → 검증 가능성(외부·독립 검토 동의)이 정답"
+]
+},
+{
+id:894,
+domain:"2",
+ks:"2A1 Laws, Regulations, and Industry Standards",
+question:"Which of the following inputs adds the MOST value to the strategic IT initiative decision-making process?",
+questionKo:"<b>전략적 IT 이니셔티브 의사결정</b> 과정에 <b>가장 큰 가치</b>를 더하는 입력 정보는?",
+options:[
+"A. Maturity of the project management process",
+"B. Regulatory environment",
+"C. Past audit findings",
+"D. IT project portfolio analysis"
+],
+optionsKo:[
+"A. <b>프로젝트 관리 프로세스의 성숙도</b>",
+"B. <b>규제 환경</b>",
+"C. <b>과거 감사 지적사항</b>",
+"D. <b>IT 프로젝트 포트폴리오 분석</b>"
+],
+correct:3,
+explanation:`<b>정답: D. IT 프로젝트 포트폴리오 분석</b><br><br>
+<b>핵심:</b> 포트폴리오 분석은 <b>계획된 이니셔티브·프로젝트·진행 중인 IT 서비스</b>를 비교 가능한 형태로 제공해 <b>IT 전략을 비즈니스 전략과 정렬</b>시키는 최선의 입력. A·B·C는 특정 투자를 유발할 수는 있어도 전략 수립의 주된 초점은 아님.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. IT 포트폴리오 분석</b></td><td><b>이니셔티브·프로젝트·서비스 비교 → 비즈니스 전략 정렬 ✅</b></td></tr>
+<tr><td>A. PM 프로세스 성숙도</td><td>전략 수립보다 <b>일상 IT 운영 관리</b>에 더 관련 ❌</td></tr>
+<tr><td>B. 규제 환경</td><td>특정 투자 유발은 하나 <b>전략의 주된 초점 아님</b> ❌</td></tr>
+<tr><td>C. 과거 감사 지적</td><td>개선 투자 유발은 하나 <b>전략의 주된 초점 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: 포트폴리오 분석 = 계획·진행 중 항목을 <b>한눈에 비교</b> → 자원 배분·전략 정렬의 핵심 입력<br>
+• 함정 A: 성숙도는 <b>전략(planning)이 아닌 운영(operations) 차원</b> 이슈<br>
+• 함정 B·C: 규제·감사 지적은 <b>특정 투자를 유발하는 제약(constraint)</b>일 뿐, 전략 의사결정의 핵심 동력은 아님<br>
+• 시험 패턴: "전략적 IT 의사결정의 최선 입력" → <b>포트폴리오 분석(전략-비즈니스 정렬)</b></div>`,
+reference:"CRM Chapter 2: IT Strategy — Portfolio Management & Business Alignment",
+keyConcepts:[
+"IT 포트폴리오 분석(정답)|계획·진행 항목 비교 → IT 전략을 비즈니스 전략과 정렬",
+"함정 A PM 성숙도|전략 수립보다 일상 IT 운영 관리 차원",
+"함정 B 규제 환경|특정 투자 유발하나 전략의 주된 초점 아님",
+"함정 C 과거 감사 지적|개선 투자 유발하나 전략의 주된 초점 아님",
+"시험 패턴|전략적 IT 의사결정 최선 입력 → 포트폴리오 분석(전략-비즈니스 정렬)"
+]
+},
+{
+id:895,
+domain:"2",
+ks:"2A1 Laws, Regulations, and Industry Standards",
+question:"An information systems (IS) auditor finds that not all employees are aware of the enterprise's information security policy. The IS auditor should conclude that:",
+questionKo:"IS 감사인이 <b>전 직원이 기업의 정보보안 정책을 인지하고 있지는 않다</b>는 것을 발견했다. 감사인이 내려야 할 결론은?",
+options:[
+"A. this lack of knowledge may lead to unintentional disclosure of sensitive information.",
+"B. information security is not critical to all functions.",
+"C. IS audit should provide security training to the employees.",
+"D. the audit finding will cause management to provide continuous training to staff."
+],
+optionsKo:[
+"A. <b>이런 인지 부족이 민감정보의 비의도적 유출로 이어질 수 있다</b>",
+"B. <b>정보보안이 모든 기능에 중요한 것은 아니다</b>",
+"C. <b>IS 감사가 직원들에게 보안 교육을 제공해야 한다</b>",
+"D. <b>이 감사 지적이 경영진으로 하여금 직원에게 지속적 교육을 제공하게 할 것이다</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 인지 부족이 민감정보의 비의도적 유출로 이어질 수 있다</b><br><br>
+<b>핵심:</b> 감사인은 <b>리스크(영향)를 결론·보고</b>해야 함. 보안 인식 부족 → 민감정보 비의도적 유출 위험. 감사인은 통제 결함의 <b>위험을 식별·보고</b>할 뿐, 교육을 직접 수행(C)하거나 경영진 행동을 단정(D)하지 않음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 비의도적 유출 위험</b></td><td><b>인식 부족의 리스크를 결론으로 도출 ✅</b></td></tr>
+<tr><td>B. 보안은 일부만 중요</td><td>정보보안은 <b>전원의 책임</b> — 틀린 명제 ❌</td></tr>
+<tr><td>C. 감사가 교육 제공</td><td>교육 제공은 <b>감사 기능이 아님</b>(독립성) ❌</td></tr>
+<tr><td>D. 경영진이 교육할 것</td><td>경영진은 지적을 <b>수용/거부 가능</b> — 단정 불가 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 감사인의 역할은 <b>결함의 위험(영향)을 식별하고 보고</b> — "인식 부족 → 비의도적 유출"이 그 리스크<br>
+• 함정 C: 보안 교육 실시는 <b>경영진/관리 책임</b>이지 감사 기능이 아님 (독립성 침해)<br>
+• 함정 D: 감사인은 경영진 후속조치를 <b>보장·단정할 수 없음</b> — 지적은 수용/거부 가능<br>
+• 시험 패턴: "감사인이 결론지어야 할 것" → <b>통제 결함의 위험(impact)</b>을 말하는 보기가 정답 (조치 수행·결과 단정 X)</div>`,
+reference:"CRM Chapter 2: Security Awareness — Auditor Reports Risk, Not Performs Remediation",
+keyConcepts:[
+"비의도적 유출 위험(정답)|감사인은 인식 부족의 리스크(영향)를 결론·보고",
+"함정 B 일부만 중요|정보보안은 전원의 책임 — 틀린 명제",
+"함정 C 감사가 교육 제공|교육은 관리 책임, 감사 기능 아님(독립성)",
+"함정 D 경영진 교육 단정|지적은 수용/거부 가능 — 후속조치 단정 불가",
+"시험 패턴|감사인 결론 → 결함의 위험(impact) 명시 (조치 수행·결과 단정 X)"
+]
 }
 
 ];
