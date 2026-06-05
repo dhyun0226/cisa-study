@@ -37704,6 +37704,1787 @@ keyConcepts:[
 "함정 D 경영진 교육 단정|지적은 수용/거부 가능 — 후속조치 단정 불가",
 "시험 패턴|감사인 결론 → 결함의 위험(impact) 명시 (조치 수행·결과 단정 X)"
 ]
+},
+{
+id:896,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following IT governance good practices improves strategic alignment?",
+questionKo:"다음 중 <b>전략적 정렬(strategic alignment)</b>을 개선하는 IT 거버넌스 모범사례는?",
+options:[
+"A. Supplier and partner risk is managed.",
+"B. A knowledge base of customers, products, markets and processes is in place.",
+"C. A structure is provided that facilitates the creation and sharing of business information.",
+"D. Top management mediates between the imperatives of business and technology."
+],
+optionsKo:[
+"A. <b>공급업체·파트너 리스크가 관리된다</b>",
+"B. <b>고객·제품·시장·프로세스에 대한 지식 기반이 갖춰져 있다</b>",
+"C. <b>비즈니스 정보의 생성·공유를 촉진하는 구조가 제공된다</b>",
+"D. <b>최고경영진이 비즈니스와 기술의 요구 사이를 중재한다</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 최고경영진이 비즈니스와 기술의 요구를 중재</b><br><br>
+<b>핵심:</b> IT 거버넌스의 다섯 영역(전략적 정렬·가치 전달·리스크 관리·자원 관리·성과 측정) 중 <b>전략적 정렬</b>을 직접 개선하는 것은 <b>최고경영진이 비즈니스-기술 간 요구를 조율(중재)</b>하는 것. 나머지는 가치 전달·리스크 관리에 해당.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>거버넌스 영역</th></tr>
+<tr style="background:#d4edda"><td><b>D. 경영진의 비즈니스-기술 중재</b></td><td><b>전략적 정렬(strategic alignment) ✅</b></td></tr>
+<tr><td>A. 공급업체·파트너 리스크 관리</td><td>리스크 관리(risk management) ❌</td></tr>
+<tr><td>B. 지식 기반 구축</td><td>가치 전달(value delivery) ❌</td></tr>
+<tr><td>C. 정보 생성·공유 구조</td><td>가치 전달·리스크 관리 — 정렬 효과는 약함 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: 전략적 정렬 = <b>비즈니스 목표와 IT를 한 방향으로</b> — 최고경영진이 양측 요구를 중재해야 달성<br>
+• 함정 A: 공급업체 리스크 관리는 <b>리스크 관리</b> 영역 (정렬 아님)<br>
+• 함정 B·C: 지식 기반·정보 공유 구조는 <b>가치 전달</b> 모범사례 — 정렬을 직접 보장하지 않음<br>
+• 시험 패턴: "strategic alignment 개선" → <b>최고경영진(top management)의 비즈니스-IT 조율</b>이 정답</div>`,
+reference:"CRM Chapter 2: IT Governance — Five Focus Areas (Strategic Alignment)",
+keyConcepts:[
+"경영진의 비즈니스-기술 중재(정답)|전략적 정렬 영역 — IT를 비즈니스 목표와 한 방향으로",
+"함정 A 공급업체 리스크 관리|리스크 관리 영역 (정렬 아님)",
+"함정 B 지식 기반|가치 전달 모범사례 — 정렬 보장 못함",
+"함정 C 정보 공유 구조|가치 전달·리스크 관리 — 정렬 효과 약함",
+"시험 패턴|strategic alignment 개선 → 최고경영진의 비즈니스-IT 조율"
+]
+},
+{
+id:897,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following is the BEST reference for an information systems (IS) auditor to determine a vendor's ability to meet service level agreement requirements for a critical IT security service?",
+questionKo:"중요한 IT 보안 서비스에 대해 벤더가 <b>SLA(서비스 수준 협약) 요건을 충족할 능력</b>이 있는지 파악할 때, IS 감사인이 참고할 <b>가장 좋은 기준</b>은?",
+options:[
+"A. Compliance with the master contract",
+"B. Agreed-on key performance indicators (KPIs)",
+"C. Results of business continuity tests",
+"D. Results of independent audit reports"
+],
+optionsKo:[
+"A. <b>기본 계약(master contract) 준수 여부</b>",
+"B. <b>합의된 핵심성과지표(KPI)</b>",
+"C. <b>업무연속성 테스트 결과</b>",
+"D. <b>독립적 감사 보고서 결과</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 합의된 핵심성과지표(KPI)</b><br><br>
+<b>핵심:</b> SLA는 <b>기대 서비스 수준에 대한 진술</b>이고, KPI는 그 수준을 <b>측정할 수 있는 지표</b>. 따라서 벤더가 SLA를 충족하는지 판단하려면 <b>합의된 KPI로 실제 성과를 측정</b>해야 함. 나머지는 SLA 충족 능력을 직접 측정하지 못함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 합의된 KPI</b></td><td><b>SLA 수준을 측정 가능한 지표 → 충족 여부 직접 판단 ✅</b></td></tr>
+<tr><td>A. 기본 계약 준수</td><td>계약은 조건·비용 중심, <b>서비스 수준은 보통 미포함</b> ❌</td></tr>
+<tr><td>C. BCP 테스트 결과</td><td>실사(due diligence) 항목일 뿐 <b>SLA 측정 기준 아님</b> ❌</td></tr>
+<tr><td>D. 독립 감사 보고서</td><td>재무·통제 환경 보고 — <b>그 자체도 기준·지표 필요</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: <b>SLA = 기대 수준(진술), KPI = 측정 지표</b> — 충족 여부를 보려면 측정 가능한 KPI가 필요<br>
+• 함정 A: master contract는 <b>약정·비용</b> 위주로 구체적 서비스 수준은 보통 담지 않음<br>
+• 함정 C·D: BCP 테스트·독립 감사는 <b>실사 자료</b>일 뿐 — 결국 측정하려면 기준(KPI)이 있어야 함<br>
+• 시험 패턴: "SLA 충족 능력 판단 기준" → <b>합의된 KPI(측정 지표)</b>가 정답</div>`,
+reference:"CRM Chapter 2: SLA & KPI — Measuring Vendor Service Performance",
+keyConcepts:[
+"합의된 KPI(정답)|SLA=기대 수준 진술, KPI=측정 지표 → 충족 여부 직접 판단",
+"함정 A 기본 계약|조건·비용 중심, 구체적 서비스 수준은 보통 미포함",
+"함정 C BCP 테스트 결과|실사 항목일 뿐 SLA 측정 기준 아님",
+"함정 D 독립 감사 보고서|재무·통제 보고 — 그 자체도 기준·지표 필요",
+"시험 패턴|SLA 충족 능력 판단 → 합의된 KPI(측정 지표)"
+]
+},
+{
+id:898,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"The MOST likely effect of the lack of senior management commitment to IT strategic planning is:",
+questionKo:"<b>고위 경영진이 IT 전략 계획에 대한 의지(commitment)가 부족</b>할 때 <b>가장 발생하기 쉬운</b> 영향은?",
+options:[
+"A. lack of investment in technology.",
+"B. lack of a methodology for systems development.",
+"C. Technology not aligning with organization objectives.",
+"D. absence of control over technology contracts."
+],
+optionsKo:[
+"A. <b>기술에 대한 투자 부족</b>",
+"B. <b>시스템 개발 방법론의 부재</b>",
+"C. <b>기술이 조직 목표와 정렬되지 않음</b>",
+"D. <b>기술 계약에 대한 통제 부재</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 기술이 조직 목표와 정렬되지 않음</b><br><br>
+<b>핵심:</b> 고위 경영진의 의지가 없으면 <b>운영위원회(steering committee)</b>가 제 역할을 못해 IT 전략이 비즈니스 전략과 정렬되지 못함. 투자 부족(A)도 생기지만 <b>가장 핵심 손실은 전략적 정렬의 실패</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 조직 목표와 미정렬</b></td><td><b>경영진 부재 → 운영위 기능 상실 → 정렬 실패 ✅</b></td></tr>
+<tr><td>A. 투자 부족</td><td>영향은 있으나 <b>부차적</b> — 핵심 손실은 정렬 ❌</td></tr>
+<tr><td>B. 개발 방법론 부재</td><td>프로세스 차원 이슈 — <b>경영진의 핵심 관심사 아님</b> ❌</td></tr>
+<tr><td>D. 계약 통제 부재</td><td>계약 승인은 <b>재무 프로세스 통제</b> — 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 경영진 의지 부재 → <b>운영위원회 부실</b> → IT 전략이 비즈니스 목표와 정렬 안 됨 (가장 큰 손실)<br>
+• 함정 A: 투자 부족은 <b>2차적 영향</b> — "MOST likely effect"는 전략적 정렬 실패<br>
+• 함정 B·D: 개발 방법론(프로세스)·계약 통제(재무 프로세스)는 <b>경영진 전략 의지와 직접 관련 없음</b><br>
+• 시험 패턴: "경영진 commitment 부족의 영향" → <b>전략적 정렬(alignment) 실패</b>가 정답</div>`,
+reference:"CRM Chapter 2: IT Steering Committee & Senior Management Commitment",
+keyConcepts:[
+"조직 목표와 미정렬(정답)|경영진 부재→운영위 부실→IT 전략 정렬 실패(핵심 손실)",
+"함정 A 투자 부족|2차적 영향 — MOST likely는 정렬 실패",
+"함정 B 개발 방법론 부재|프로세스 이슈 — 경영진 핵심 관심사 아님",
+"함정 D 계약 통제 부재|재무 프로세스 통제 — 무관",
+"시험 패턴|경영진 commitment 부족 영향 → 전략적 정렬 실패"
+]
+},
+{
+id:899,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Enterprise governance of IT frameworks has been developed MAINLY to help an organization's leaders:",
+questionKo:"<b>전사적 IT 거버넌스(EGIT) 프레임워크</b>는 <b>주로</b> 조직의 리더가 무엇을 하도록 돕기 위해 개발되었는가?",
+options:[
+"A. use resources responsibly and manage information systems risk.",
+"B. realize benefits and manage the performance of practices and processes.",
+"C. deliver value to stakeholders and preserve the value created.",
+"D. establish accountability and manage information security risk."
+],
+optionsKo:[
+"A. <b>자원을 책임 있게 사용하고 정보시스템 리스크를 관리한다</b>",
+"B. <b>편익을 실현하고 관행·프로세스의 성과를 관리한다</b>",
+"C. <b>이해관계자에게 가치를 전달하고 창출된 가치를 보존한다</b>",
+"D. <b>책무성을 확립하고 정보보안 리스크를 관리한다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 이해관계자에게 가치를 전달하고 창출된 가치를 보존</b><br><br>
+<b>핵심:</b> EGIT 프레임워크의 <b>최상위 목적은 가치(value)</b> — 자원 활용·편익 실현·역할 정립으로 <b>가치를 창출(deliver)</b>하고, 리스크 관리·성과 유지로 <b>가치를 보존(preserve)</b>. A·B·D는 모두 이 큰 목적의 <b>구성요소(수단)</b>일 뿐.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 가치 전달 + 가치 보존</b></td><td><b>EGIT의 포괄적 최상위 목적 ✅</b></td></tr>
+<tr><td>A. 자원·리스크 관리</td><td>가치 창출·보존의 <b>구성요소(수단)</b> ❌</td></tr>
+<tr><td>B. 편익 실현·성과 관리</td><td>가치 창출·보존을 <b>측정/지원하는 수단</b> ❌</td></tr>
+<tr><td>D. 책무성·정보보안 리스크</td><td>가치 창출·보존의 <b>일부 요소</b>일 뿐 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: EGIT의 큰 그림 = <b>가치 창출(deliver) + 가치 보존(preserve)</b> — 가장 포괄적인 목적<br>
+• 함정 A·B·D: 자원 활용·편익 실현·책무성·리스크 관리는 모두 <b>가치를 만들거나 지키는 하위 수단</b><br>
+• 구분 팁: "deliver value(창출) ↔ preserve value(보존)" 두 축을 함께 담은 보기가 정답<br>
+• 시험 패턴: "거버넌스 프레임워크의 MAIN 목적" → <b>이해관계자 가치(전달+보존)</b></div>`,
+reference:"CRM Chapter 2: Enterprise Governance of IT (EGIT) — Value Creation & Preservation",
+keyConcepts:[
+"가치 전달+보존(정답)|EGIT 최상위 목적 — 가치 창출(deliver)과 보존(preserve)",
+"함정 A 자원·리스크 관리|가치 창출·보존의 수단(구성요소)",
+"함정 B 편익 실현·성과 관리|가치를 측정/지원하는 수단",
+"함정 D 책무성·정보보안 리스크|가치 창출·보존의 일부 요소",
+"시험 패턴|거버넌스 프레임워크 MAIN 목적 → 이해관계자 가치(전달+보존)"
+]
+},
+{
+id:900,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"A team conducting a risk analysis is having difficulty projecting the financial losses that can result from a risk. To evaluate the potential impact, the team should:",
+questionKo:"리스크 분석을 수행하는 팀이 어떤 리스크로 인한 <b>재무적 손실 추정에 어려움</b>을 겪고 있다. 잠재적 영향을 평가하기 위해 팀이 해야 할 것은?",
+options:[
+"A. compute the amortization of the related assets.",
+"B. calculate a return on investment (ROI).",
+"C. apply a qualitative approach.",
+"D. spend the time needed to define the loss amount exactly."
+],
+optionsKo:[
+"A. <b>관련 자산의 상각(amortization)을 계산한다</b>",
+"B. <b>투자수익률(ROI)을 계산한다</b>",
+"C. <b>정성적(qualitative) 접근법을 적용한다</b>",
+"D. <b>손실 금액을 정확히 산정하는 데 필요한 시간을 쓴다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 정성적 접근법을 적용</b><br><br>
+<b>핵심:</b> 재무적 손실을 <b>금액으로 산정하기 어려울 때</b>(예: 해킹으로 인한 평판 훼손)의 일반적 관행은 <b>정성적 접근</b> — 영향받는 관리자가 가중치 척도(예: 1=매우 낮음 ~ 5=매우 높음)로 영향을 평가. 무리하게 정확한 금액을 추구(D)하면 시간만 낭비.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 정성적 접근</b></td><td><b>금액 산정 곤란 시 가중치 척도로 영향 평가 ✅</b></td></tr>
+<tr><td>A. 자산 상각 계산</td><td>손익계산서용 — <b>잠재 손실 산정과 무관</b> ❌</td></tr>
+<tr><td>B. ROI 계산</td><td>예측 가능한 수익·절감이 있을 때 사용 — <b>손실 추정용 아님</b> ❌</td></tr>
+<tr><td>D. 정확한 금액 산정</td><td>이미 어려운 추정 → <b>시간만 낭비, 근거 약함</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 정량화가 어려운 손실(평판·이미지 등) → <b>정성적 척도(가중치)로 영향 평가</b>가 실무 관행<br>
+• 함정 A·B: 상각·ROI는 <b>손익/투자 분석 도구</b>이지 잠재 손실 추정 기법이 아님<br>
+• 함정 D: 추정이 어려운 상황은 잘 안 바뀜 → <b>정확한 금액 고집은 비효율</b>적이고 근거도 부실<br>
+• 시험 패턴: "재무 손실 추정이 어려움" → <b>정성적 접근(qualitative)</b>이 정답</div>`,
+reference:"CRM Chapter 2: Risk Analysis — Quantitative vs. Qualitative Approach",
+keyConcepts:[
+"정성적 접근(정답)|금액 산정 곤란 시 가중치 척도로 영향 평가하는 실무 관행",
+"함정 A 자산 상각|손익계산서용 — 잠재 손실 산정과 무관",
+"함정 B ROI|예측 가능한 수익·절감 비교용 — 손실 추정 아님",
+"함정 D 정확한 금액 고집|추정 어려운 상황 불변 → 시간 낭비·근거 부실",
+"시험 패턴|재무 손실 추정 곤란 → 정성적 접근(qualitative)"
+]
+},
+{
+id:901,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Regarding the outsourcing of IT services, which of the following conditions should be of GREATEST concern to an information systems (IS) auditor?",
+questionKo:"IT 서비스 아웃소싱과 관련하여, IS 감사인이 <b>가장 우려해야 할</b> 상황은?",
+options:[
+"A. Core activities that provide a differentiated advantage to the organization have been outsourced.",
+"B. Periodic renegotiation is not specified in the outsourcing contract.",
+"C. The outsourcing contract fails to cover every action required by the business.",
+"D. Similar activities are outsourced to more than one vendor."
+],
+optionsKo:[
+"A. <b>조직에 차별화된 경쟁우위를 제공하는 핵심 활동(core activity)이 아웃소싱되었다</b>",
+"B. <b>아웃소싱 계약에 주기적 재협상이 명시되어 있지 않다</b>",
+"C. <b>아웃소싱 계약이 비즈니스가 요구하는 모든 행위를 다루지 못한다</b>",
+"D. <b>유사한 활동이 둘 이상의 벤더에게 아웃소싱되었다</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 차별화된 경쟁우위를 주는 핵심 활동이 아웃소싱됨</b><br><br>
+<b>핵심:</b> <b>핵심 활동(core activity)</b>은 조직이 가장 잘하고 경쟁우위의 원천이므로 <b>원칙적으로 아웃소싱하면 안 됨</b>. 이를 외부에 넘긴 상황이 감사인에게 가장 큰 우려.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 핵심 활동 아웃소싱</b></td><td><b>경쟁우위 원천 → 외부 위탁은 중대 우려 ✅</b></td></tr>
+<tr><td>B. 주기적 재협상 미명시</td><td>계약 조건에 따른 것 — <b>우려 사항 아님</b> ❌</td></tr>
+<tr><td>C. 모든 행위 미포함</td><td>계약이 <b>모든 세부를 담을 수는 없음</b> — 비즈니스 요건만 충족하면 됨 ❌</td></tr>
+<tr><td>D. 복수 벤더에 위탁</td><td>멀티소싱 = <b>단일 장애점 리스크 감소</b> — 수용 가능 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: <b>core activity는 내재화</b> 원칙 — 차별적 경쟁우위를 외부에 넘기면 전략적 위험<br>
+• 함정 C: 계약은 <b>모든 행위·세부를 다 담을 수 없음</b> — 비즈니스 요구사항을 포괄하면 충분<br>
+• 함정 D: <b>멀티소싱(multisourcing)</b>은 단일 공급자 의존(SPOF) 리스크를 줄이는 <b>허용 가능한 방법</b><br>
+• 시험 패턴: 아웃소싱 우려 → <b>"핵심 역량을 외부에 넘겼는가"</b>가 최우선 관심사</div>`,
+reference:"CRM Chapter 2: Outsourcing — Retain Core Competencies / Multisourcing",
+keyConcepts:[
+"핵심 활동 아웃소싱(정답)|core activity는 경쟁우위 원천 → 외부 위탁은 중대 우려",
+"함정 B 재협상 미명시|계약 조건에 따른 것 — 우려 아님",
+"함정 C 모든 행위 미포함|계약은 모든 세부 못 담음 — 비즈니스 요건만 충족하면 됨",
+"함정 D 복수 벤더|멀티소싱 = 단일 장애점 리스크 감소, 수용 가능",
+"시험 패턴|아웃소싱 우려 → 핵심 역량을 외부에 넘겼는지가 최우선"
+]
+},
+{
+id:902,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Involvement of senior management is MOST important in the development of:",
+questionKo:"고위 경영진의 참여가 <b>가장 중요한</b> 것은 무엇의 개발에서인가?",
+options:[
+"A. strategic plans.",
+"B. IT policies.",
+"C. IT procedures.",
+"D. standards and guidelines."
+],
+optionsKo:[
+"A. <b>전략 계획(strategic plans)</b>",
+"B. <b>IT 정책(policies)</b>",
+"C. <b>IT 절차(procedures)</b>",
+"D. <b>표준 및 지침(standards and guidelines)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 전략 계획</b><br><br>
+<b>핵심:</b> 전략 계획은 기업이 목표를 달성하는 <b>기반</b>이며, 그것이 조직의 목표를 제대로 담도록 보장하려면 <b>고위 경영진의 참여가 필수</b>. 정책·절차·표준은 그 아래에서 전략을 뒷받침하는 하위 산출물.<br><br>
+<table class="cmp">
+<tr><th>계층</th><th>작성 주체</th></tr>
+<tr style="background:#d4edda"><td><b>A. 전략 계획 (최상위)</b></td><td><b>고위 경영진 — 목표 달성 기반 ✅</b></td></tr>
+<tr><td>B. IT 정책</td><td>IT 경영진·정보보안 — 전략을 지원 ❌</td></tr>
+<tr><td>C. IT 절차</td><td>정책 지원용 — <b>경영진 미관여</b> ❌</td></tr>
+<tr><td>D. 표준·지침</td><td>정책 지원용 — <b>경영진 미관여</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: <b>전략(strategy)은 최상위 계층</b> → 조직 목표 정렬을 보장하려면 고위 경영진 직접 참여 필수<br>
+• 계층 구조: <b>전략 → 정책 → 표준/지침 → 절차</b> (아래로 갈수록 실무·세부, 경영진 관여 ↓)<br>
+• 함정 B·C·D: 정책은 IT 경영진, 절차·표준은 실무진이 작성 — <b>전략을 뒷받침하는 하위 문서</b><br>
+• 시험 패턴: "고위 경영진 참여가 MOST 중요" → <b>가장 상위 문서(전략 계획)</b>가 정답</div>`,
+reference:"CRM Chapter 2: Policy Hierarchy — Strategy > Policy > Standard > Procedure",
+keyConcepts:[
+"전략 계획(정답)|최상위 계층 — 조직 목표 정렬 보장 위해 고위 경영진 참여 필수",
+"계층 구조|전략 → 정책 → 표준/지침 → 절차 (아래로 갈수록 경영진 관여 감소)",
+"함정 B IT 정책|IT 경영진·정보보안이 작성 — 전략 지원",
+"함정 C·D 절차·표준|실무 지원 문서 — 경영진 미관여",
+"시험 패턴|고위 경영진 참여 MOST 중요 → 최상위 문서(전략 계획)"
+]
+},
+{
+id:903,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"A small organization has only one database administrator (DBA) and one system administrator. The DBA has root access to the UNIX server, which hosts the database application. How should separation of duties be enforced in this scenario?",
+questionKo:"소규모 조직에 <b>DBA 1명과 시스템 관리자 1명</b>뿐이다. DBA는 데이터베이스 애플리케이션을 호스팅하는 <b>UNIX 서버의 root 접근 권한</b>을 갖고 있다. 이 상황에서 <b>직무분리(SoD)</b>를 어떻게 강제해야 하는가?",
+options:[
+"A. Hire a second DBA and split the duties between the two individuals.",
+"B. Remove the DBA's root access on all UNIX servers.",
+"C. Ensure that all actions of the DBA are logged and that all logs are backed up to removable media.",
+"D. Ensure that database logs are forwarded to a UNIX server where the DBA does not have root access."
+],
+optionsKo:[
+"A. <b>두 번째 DBA를 채용해 두 사람이 업무를 나눈다</b>",
+"B. <b>모든 UNIX 서버에서 DBA의 root 접근을 제거한다</b>",
+"C. <b>DBA의 모든 행위를 로깅하고 모든 로그를 이동식 매체에 백업한다</b>",
+"D. <b>데이터베이스 로그를 DBA가 root 접근 권한이 없는 UNIX 서버로 전송한다</b>"
+],
+correct:3,
+explanation:`<b>정답: D. DBA가 root 권한 없는 서버로 로그를 전송</b><br><br>
+<b>핵심:</b> 소규모라 인력 분리가 어려우면 <b>보완 통제(compensating control)</b>로 SoD를 보강. DBA가 <b>지우거나 수정할 수 없는 로그</b>를 만들면 — 즉 DBA가 root 권한이 없는 서버로 로그를 보내면 — 활동이 독립적으로 보존되어 직무분리 효과를 냄.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 권한 없는 서버로 로그 전송</b></td><td><b>DBA가 변조 불가한 로그 → SoD 보완 ✅</b></td></tr>
+<tr><td>A. DBA 추가 채용</td><td>직무분리는 되나 <b>비용 과다</b> — 소규모엔 비현실적 ❌</td></tr>
+<tr><td>B. root 접근 제거</td><td>DBA는 <b>패치·업그레이드에 root 필요</b> — 업무 불가 ❌</td></tr>
+<tr><td>C. 로그 후 이동식 매체 백업</td><td>백업 전에 <b>DBA가 로그 수정·삭제 가능</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: 핵심은 <b>"DBA가 통제할 수 없는 곳"에 로그 보존</b> → 변조 방지로 독립적 감시 = SoD 보완 통제<br>
+• 함정 C: 같은 서버에 남기면 백업 시점 전에 <b>변조 가능</b> — 보완 통제로 불충분<br>
+• 함정 B: root 제거는 <b>DBA 직무 자체를 불가능</b>하게 만듦 (과잉 통제)<br>
+• 함정 A: 인력 추가는 정석이나 <b>소규모 조직엔 비용상 비현실적</b><br>
+• 시험 패턴: 인력 부족으로 SoD 불가 → <b>변조 불가능한 독립 로깅(보완 통제)</b>이 정답</div>`,
+reference:"CRM Chapter 2: Separation of Duties — Compensating Controls (Tamper-Proof Logging)",
+keyConcepts:[
+"권한 없는 서버로 로그 전송(정답)|DBA가 변조 불가한 독립 로그 → SoD 보완 통제",
+"함정 A DBA 추가 채용|정석이나 소규모엔 비용상 비현실적",
+"함정 B root 제거|DBA는 패치·업그레이드에 root 필요 — 업무 불가",
+"함정 C 이동식 매체 백업|백업 전 DBA가 로그 수정·삭제 가능 — 불충분",
+"시험 패턴|인력 부족 SoD 불가 → 변조 불가능한 독립 로깅(보완 통제)"
+]
+},
+{
+id:904,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following is expected to approve the audit charter?",
+questionKo:"다음 중 <b>감사 헌장(audit charter)을 승인</b>할 것으로 기대되는 주체는?",
+options:[
+"A. Chief financial officer",
+"B. CEO",
+"C. Audit steering committee",
+"D. Audit committee"
+],
+optionsKo:[
+"A. <b>최고재무책임자(CFO)</b>",
+"B. <b>CEO</b>",
+"C. <b>감사 운영위원회(audit steering committee)</b>",
+"D. <b>감사위원회(audit committee)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 감사위원회(audit committee)</b><br><br>
+<b>핵심:</b> 감사위원회의 핵심 기능 중 하나가 바로 <b>감사 헌장을 작성·승인</b>하는 것. 헌장은 감사 기능의 권한·책임·범위를 규정하는 최상위 문서로, 독립적 감독 기구인 감사위원회가 승인.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 감사위원회</b></td><td><b>헌장 작성·승인이 핵심 기능 ✅</b></td></tr>
+<tr><td>A. CFO</td><td>감사 예산 배정엔 관여하나 <b>단독 승인 주체 아님</b> ❌</td></tr>
+<tr><td>B. CEO</td><td>통보받을 수 있으나 <b>감사위원회와 독립</b> — 승인 아님 ❌</td></tr>
+<tr><td>C. 감사 운영위원회</td><td>헌장 <b>틀 안에서 활동</b>할 뿐 승인하지 않음 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: <b>감사 헌장 승인 = 감사위원회의 핵심 기능</b> — 감사 기능의 독립성·권한을 부여하는 문서<br>
+• 함정 A·B: CFO·CEO는 경영진 — 예산·통보 관여는 있어도 <b>헌장 승인 권한 없음</b> (독립성 보장 위해)<br>
+• 함정 C: 운영위원회는 <b>헌장 하에서 활동</b>하는 실행 기구 — 승인 주체가 아님<br>
+• 시험 패턴: "audit charter 승인" → <b>감사위원회(audit committee)</b> 고정 정답</div>`,
+reference:"CRM Chapter 2: Audit Charter — Approved by Audit Committee",
+keyConcepts:[
+"감사위원회(정답)|감사 헌장 작성·승인이 핵심 기능 — 감사 독립성·권한 부여",
+"함정 A CFO|예산 배정 관여하나 단독 승인 주체 아님",
+"함정 B CEO|통보 가능하나 감사위원회와 독립 — 승인 아님",
+"함정 C 운영위원회|헌장 틀 안에서 활동 — 승인 주체 아님",
+"시험 패턴|audit charter 승인 → 감사위원회(audit committee) 고정"
+]
+},
+{
+id:905,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An information systems (IS) auditor reviewing an organization that uses cross-training practices should assess the risk of:",
+questionKo:"<b>교차 훈련(cross-training)</b>을 활용하는 조직을 검토하는 IS 감사인이 평가해야 할 리스크는?",
+options:[
+"A. dependency on a single person.",
+"B. inadequate succession planning.",
+"C. one person knowing all parts of a system.",
+"D. a disruption of operations."
+],
+optionsKo:[
+"A. <b>한 사람에 대한 의존</b>",
+"B. <b>부적절한 승계 계획</b>",
+"C. <b>한 사람이 시스템의 모든 부분을 알게 되는 것</b>",
+"D. <b>운영의 중단</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 한 사람이 시스템의 모든 부분을 알게 되는 것</b><br><br>
+<b>핵심:</b> 교차 훈련은 여러 사람이 한 직무를 수행하도록 훈련하는 것. <b>장점</b>(단일 의존·승계·운영 중단 리스크 감소)은 명백하므로, 감사인은 오히려 그 <b>부작용 = 한 사람이 시스템 전체를 알아 권한 남용 가능성</b>을 평가해야 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 한 사람이 전체를 앎</b></td><td><b>교차 훈련의 부작용 — 권한 남용 위험 평가 대상 ✅</b></td></tr>
+<tr><td>A. 단일 인물 의존</td><td>교차 훈련이 <b>오히려 감소</b>시키는 리스크 ❌</td></tr>
+<tr><td>B. 승계 계획 부적절</td><td>교차 훈련이 <b>승계를 지원</b> ❌</td></tr>
+<tr><td>D. 운영 중단</td><td>교차 훈련이 <b>인력 백업으로 연속성 제공</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 교차 훈련의 <b>이면 리스크</b> — 한 사람이 시스템 전반을 파악 → <b>특권 남용(abuse of privilege)</b> 노출<br>
+• 함정 A·B·D: 모두 교차 훈련이 <b>완화·해결해주는 이점</b> — 평가해야 할 "리스크"가 아님<br>
+• 함정 함정: 문제는 "장점"이 아니라 "감사인이 평가할 리스크"를 물음 → 이점 보기는 전부 오답<br>
+• 시험 패턴: cross-training 리스크 → <b>한 사람의 과도한 지식·권한 집중(남용 가능성)</b></div>`,
+reference:"CRM Chapter 2: Cross-Training — Benefits vs. Privilege Abuse Risk",
+keyConcepts:[
+"한 사람이 전체를 앎(정답)|교차 훈련 부작용 — 권한 남용(abuse of privilege) 위험",
+"함정 A 단일 의존|교차 훈련이 오히려 감소시키는 리스크",
+"함정 B 승계 계획|교차 훈련이 승계를 지원 — 이점",
+"함정 D 운영 중단|교차 훈련이 인력 백업으로 연속성 제공 — 이점",
+"시험 패턴|cross-training 리스크 → 한 사람의 지식·권한 집중(남용 가능성)"
+]
+},
+{
+id:906,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"In reviewing the IT short-range (tactical) plan, an information systems (IS) auditor should determine whether:",
+questionKo:"<b>IT 단기(전술적, tactical) 계획</b>을 검토할 때, IS 감사인이 <b>파악</b>해야 할 것은?",
+options:[
+"A. there is an integration of IT and business personnel within projects.",
+"B. there is a clear definition of the IT mission and vision.",
+"C. a strategic information technology planning scorecard is in place.",
+"D. the plan correlates business objectives to IT goals and objectives."
+],
+optionsKo:[
+"A. <b>프로젝트 내에서 IT 인력과 현업 인력이 통합되어 있는지</b>",
+"B. <b>IT 미션·비전이 명확히 정의되어 있는지</b>",
+"C. <b>전략적 IT 계획 스코어카드가 마련되어 있는지</b>",
+"D. <b>계획이 비즈니스 목표를 IT 목표와 연계시키는지</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 프로젝트 내 IT 인력과 현업 인력의 통합 여부</b><br><br>
+<b>핵심:</b> 단기(전술) 계획은 <b>운영(operational) 차원</b> — 프로젝트 내 IT-현업 인력 통합 같은 실행 이슈를 다룸. B·C·D는 모두 <b>장기(전략) 계획</b>에서 다루는 상위 항목.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>계획 차원</th></tr>
+<tr style="background:#d4edda"><td><b>A. IT-현업 인력 통합</b></td><td><b>단기(전술/운영) 계획 ✅</b></td></tr>
+<tr><td>B. IT 미션·비전 정의</td><td>장기(전략) 계획 ❌</td></tr>
+<tr><td>C. 전략 IT 스코어카드</td><td>장기(전략) 계획 ❌</td></tr>
+<tr><td>D. 비즈니스-IT 목표 연계</td><td>장기(전략) 계획 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: <b>단기/전술 계획 = 운영·실행 차원</b> → 프로젝트 인력 통합 같은 구체적 실행 이슈 점검<br>
+• 함정 B·C·D: 미션·비전, 스코어카드, 목표 연계는 모두 <b>전략(장기) 계획의 영역</b><br>
+• 구분 팁: <b>전략(장기)=방향·정렬·비전 / 전술(단기)=실행·자원·프로젝트 운영</b><br>
+• 시험 패턴: "단기(tactical) 계획 검토" → 운영적 실행 항목 / "장기(strategic)" → 비전·목표 정렬</div>`,
+reference:"CRM Chapter 2: IT Planning — Strategic (Long-Range) vs. Tactical (Short-Range)",
+keyConcepts:[
+"IT-현업 인력 통합(정답)|단기/전술 계획은 운영·실행 차원 — 프로젝트 인력 통합 점검",
+"함정 B 미션·비전|장기(전략) 계획 영역",
+"함정 C 전략 스코어카드|장기(전략) 계획 영역",
+"함정 D 비즈니스-IT 목표 연계|장기(전략) 계획 영역",
+"시험 패턴|단기=실행·자원·프로젝트 운영 / 장기=방향·정렬·비전"
+]
+},
+{
+id:907,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"A local area network (LAN) administrator normally is restricted from:",
+questionKo:"<b>LAN 관리자</b>가 일반적으로 <b>제한받는</b> 역할은?",
+options:[
+"A. having end-user responsibilities.",
+"B. reporting to the end-user manager.",
+"C. having programming responsibilities.",
+"D. being responsible for LAN security administration."
+],
+optionsKo:[
+"A. <b>최종 사용자(end-user) 업무를 겸하는 것</b>",
+"B. <b>최종 사용자 관리자에게 보고하는 것</b>",
+"C. <b>프로그래밍 업무를 겸하는 것</b>",
+"D. <b>LAN 보안 관리를 담당하는 것</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 프로그래밍 업무를 겸하는 것</b><br><br>
+<b>핵심:</b> LAN 관리자가 <b>프로그래밍 권한</b>까지 가지면 적절한 직무분리 없이 <b>운영 프로그램을 변경</b>할 수 있어 금지. 나머지(end-user 겸직, end-user 관리자 보고, LAN 보안 관리)는 이상적이진 않아도 <b>허용 가능</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 프로그래밍 겸직</b></td><td><b>SoD 없이 운영 프로그램 변경 가능 → 제한 ✅</b></td></tr>
+<tr><td>A. end-user 업무 겸직</td><td>이상적은 아니나 <b>허용 가능</b> ❌</td></tr>
+<tr><td>B. end-user 관리자 보고</td><td>분산 운영 시 <b>가능한 보고 체계</b> ❌</td></tr>
+<tr><td>D. LAN 보안 관리</td><td>소규모 조직에선 <b>겸임 가능</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: <b>운영(관리)과 개발(프로그래밍) 분리</b>가 핵심 — LAN 관리자가 프로그래밍하면 통제 없는 운영 프로그램 변경 위험<br>
+• 함정 A·B·D: end-user 겸직·보고 체계·보안 관리 겸임은 모두 <b>현실적으로 허용</b>되는 경우 (특히 소규모)<br>
+• 핵심 원칙: <b>프로그래밍(개발) ↔ 운영</b>은 절대 한 사람이 겸하면 안 됨 (직무분리)<br>
+• 시험 패턴: 관리자 역할 제한 → <b>"개발/프로그래밍 권한 보유"</b>가 가장 금지되는 항목</div>`,
+reference:"CRM Chapter 2: Separation of Duties — Operations vs. Programming",
+keyConcepts:[
+"프로그래밍 겸직(정답)|SoD 없이 운영 프로그램 변경 가능 → LAN 관리자에 금지",
+"함정 A end-user 겸직|이상적은 아니나 허용 가능",
+"함정 B end-user 관리자 보고|분산 운영 시 가능한 보고 체계",
+"함정 D LAN 보안 관리|소규모 조직에선 겸임 가능",
+"시험 패턴|관리자 역할 제한 → 개발/프로그래밍 권한 보유가 가장 금지"
+]
+},
+{
+id:908,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following user profiles should be of MOST concern to an information systems (IS) auditor when performing an audit of an electronic funds transfer system?",
+questionKo:"<b>전자자금이체(EFT) 시스템</b> 감사를 수행할 때, IS 감사인이 <b>가장 우려해야 할</b> 사용자 프로파일은?",
+options:[
+"A. Three users with the ability to capture and verify their own messages",
+"B. Five users with the ability to capture and send their own messages",
+"C. Five users with the ability to verify other users and to send their own messages",
+"D. Three users with the ability to capture and verify the messages of other users and to send their own messages"
+],
+optionsKo:[
+"A. <b>자신의 메시지를 입력(capture)하고 검증(verify)할 수 있는 사용자 3명</b>",
+"B. <b>자신의 메시지를 입력하고 전송(send)할 수 있는 사용자 5명</b>",
+"C. <b>다른 사용자를 검증하고 자신의 메시지를 전송할 수 있는 사용자 5명</b>",
+"D. <b>다른 사용자의 메시지를 입력·검증하고 자신의 메시지를 전송할 수 있는 사용자 3명</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 자신의 메시지를 입력하고 검증할 수 있는 사용자 3명</b><br><br>
+<b>핵심:</b> <b>입력(capture)과 검증(verify)을 같은 사람이</b> 수행하면 — 자기가 입력한 메시지를 스스로 검증 = 이미 검증된 것처럼 통과 → <b>직무분리 위배</b>. 메시지 검증은 <b>그것을 보낸 사람이 해서는 안 됨</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 자기 메시지 입력+검증</b></td><td><b>자기검증 → SoD 위배 (가장 우려) ✅</b></td></tr>
+<tr><td>B. 자기 메시지 입력+전송</td><td>검증 권한 없음 — <b>수용 가능</b> ❌</td></tr>
+<tr><td>C. 타인 검증+자기 전송</td><td><b>직무분리 예시</b> — 타인 것만 검증 ❌</td></tr>
+<tr><td>D. 타인 입력·검증+자기 전송</td><td>자기 것은 전송만 — <b>수용 가능</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 핵심 위반은 <b>"자기 메시지를 자기가 검증"</b> — 입력자와 검증자가 동일하면 통제 무력화<br>
+• 판단 기준: <b>verify(검증)는 반드시 타인의 메시지에 대해서만</b> — 본인 송신 건은 검증 불가<br>
+• 함정 B·D: 검증을 자기 것에 안 하거나(타인만 검증) 전송만 하면 OK<br>
+• 함정 C: "타인 검증 + 자기 전송"은 오히려 <b>모범적 직무분리</b><br>
+• 시험 패턴: EFT/메시지 권한 → <b>"자기 입력 + 자기 검증" 조합이 정답(위반)</b></div>`,
+reference:"CRM Chapter 2: EFT — Separation of Duties (Capture vs. Verify)",
+keyConcepts:[
+"자기 메시지 입력+검증(정답)|입력자=검증자 → 자기검증으로 SoD 위배 (가장 우려)",
+"판단 기준|verify는 타인 메시지에만 — 본인 송신 건 검증 불가",
+"함정 B 자기 입력+전송|검증 권한 없음 — 수용 가능",
+"함정 C 타인 검증+자기 전송|모범적 직무분리 예시",
+"함정 D 타인 입력·검증+자기 전송|자기 것은 전송만 — 수용 가능",
+"시험 패턴|EFT 권한 → 자기 입력+자기 검증 조합이 위반(정답)"
+]
+},
+{
+id:909,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An enterprise is looking to obtain cloud hosting services from a cloud vendor with a high level of maturity. Which of the following is MOST important for the auditor to ensure continued alignment with the enterprise's security requirements?",
+questionKo:"한 기업이 성숙도가 높은 클라우드 벤더로부터 클라우드 호스팅 서비스를 받으려 한다. 기업의 보안 요건과 <b>지속적인 정렬</b>을 보장하기 위해 감사인에게 <b>가장 중요한</b> 것은?",
+options:[
+"A. The vendor provides the latest third-party audit report for verification.",
+"B. The vendor provides the latest internal audit report for verification.",
+"C. The vendor agrees to implement controls in alignment with the enterprise.",
+"D. The vendor agrees to provide annual external audit reports in the contract."
+],
+optionsKo:[
+"A. <b>벤더가 검증용으로 최신 제3자 감사 보고서를 제공한다</b>",
+"B. <b>벤더가 검증용으로 최신 내부 감사 보고서를 제공한다</b>",
+"C. <b>벤더가 기업과 정렬되게 통제를 구현하기로 동의한다</b>",
+"D. <b>벤더가 계약서에 매년 외부 감사 보고서를 제공하기로 동의한다</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 계약서에 매년 외부 감사 보고서 제공을 명시</b><br><br>
+<b>핵심:</b> 키워드는 <b>"지속적(continued) 정렬"</b>. 오늘뿐 아니라 <b>미래에도</b> 리스크가 완화되려면 <b>계약 조항(clause)</b>으로 매년 외부 감사 보고서 제공을 강제해야 함. 계약에 없으면 벤더는 향후 감사를 안 받을 수 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 계약상 연례 외부 감사 보고서</b></td><td><b>미래에도 강제 → 지속적 정렬 보장 ✅</b></td></tr>
+<tr><td>A. 최신 제3자 감사 제공</td><td><b>일회성</b> — 향후 제공 의무 없음 ❌</td></tr>
+<tr><td>B. 최신 내부 감사 제공</td><td>일회성 + <b>내부 보고서는 객관성 약함</b> ❌</td></tr>
+<tr><td>C. 통제 구현 동의</td><td>계약 조항 없으면 <b>지속 보장 안 됨</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: <b>"continued/ongoing"</b>이 키워드 → <b>계약(contract)에 명문화</b>해야 미래 시점까지 강제력 발생<br>
+• 함정 A·B: 최신 보고서 제공은 <b>현재 한 시점</b>만 커버 — 지속성 없음 (B는 외부 아닌 내부라 객관성도 약함)<br>
+• 함정 C: 구두/일반 동의는 <b>계약 조항이 없으면 이행 보장 불가</b><br>
+• 시험 패턴: "지속적 보장" → <b>계약 조항(contractual clause)으로 의무화</b>한 보기가 정답</div>`,
+reference:"CRM Chapter 2: Cloud Vendor — Right-to-Audit Clause in Contract",
+keyConcepts:[
+"계약상 연례 외부 감사(정답)|continued 정렬 → 계약 조항으로 미래까지 강제",
+"함정 A 최신 제3자 감사|일회성 — 향후 제공 의무 없음",
+"함정 B 최신 내부 감사|일회성 + 내부라 객관성 약함",
+"함정 C 통제 구현 동의|계약 조항 없으면 지속 보장 안 됨",
+"시험 패턴|지속적 보장 → 계약 조항(contractual clause)으로 의무화"
+]
+},
+{
+id:910,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Information systems (IS) control objectives are useful to IS auditors because they provide the basis for understanding the:",
+questionKo:"<b>IS 통제 목표(control objectives)</b>가 IS 감사인에게 유용한 이유는, 그것이 무엇을 이해하는 기반을 제공하기 때문인가?",
+options:[
+"A. desired result or purpose of implementing specific control procedures.",
+"B. best information systems (IS) security control practices relevant to a specific entity.",
+"C. techniques for securing information.",
+"D. security policy."
+],
+optionsKo:[
+"A. <b>특정 통제 절차를 구현함으로써 달성하려는 원하는 결과 또는 목적</b>",
+"B. <b>특정 조직에 적합한 최선의 IS 보안 통제 모범사례</b>",
+"C. <b>정보를 보호하는 기법(techniques)</b>",
+"D. <b>보안 정책(security policy)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 통제 절차 구현으로 달성하려는 원하는 결과/목적</b><br><br>
+<b>핵심:</b> <b>통제 목표(control objective)의 정의</b> = 특정 IS 활동에서 통제 절차를 구현해 <b>달성하고자 하는 원하는 결과·목적에 대한 진술</b>. 즉 "왜 이 통제를 하는가"를 설명해줌.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 원하는 결과/목적</b></td><td><b>control objective의 정의 그 자체 ✅</b></td></tr>
+<tr><td>B. 보안 모범사례</td><td>통제 목표가 <b>반드시 모범사례 기반은 아님</b> ❌</td></tr>
+<tr><td>C. 보안 기법</td><td>기법은 <b>목표 달성의 수단</b> — 목표(이유)가 더 중요 ❌</td></tr>
+<tr><td>D. 보안 정책</td><td>정책이 통제를 <b>요구</b>하는 것 — 통제로 정책을 이해하는 게 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 통제 목표 = <b>"무엇을 왜 달성하려는가"(원하는 결과·목적)</b>에 대한 진술 — 정의 그대로<br>
+• 함정 C: 기법(technique)은 <b>수단</b> — 감사인에겐 "어떻게(기법)"보다 "왜(목표)"가 더 중요<br>
+• 함정 B·D: 모범사례·정책과 혼동 주의 — 통제 목표는 모범사례 기반일 수도 아닐 수도 있고, 정책은 통제를 요구하는 상위 개념<br>
+• 시험 패턴: control objective → <b>"원하는 결과/목적(desired result/purpose)"</b>이 핵심 정의</div>`,
+reference:"CRM Chapter 2: IS Control Objectives — Definition (Desired Result/Purpose)",
+keyConcepts:[
+"원하는 결과/목적(정답)|control objective 정의 — 통제로 달성하려는 결과·목적 진술",
+"함정 B 보안 모범사례|통제 목표가 반드시 모범사례 기반은 아님",
+"함정 C 보안 기법|기법은 수단 — 왜(목표)가 어떻게(기법)보다 중요",
+"함정 D 보안 정책|정책이 통제를 요구 — 통제로 정책 이해하는 게 아님",
+"시험 패턴|control objective → 원하는 결과/목적(desired result/purpose)"
+]
+},
+{
+id:911,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"A benefit of open system architecture is that it:",
+questionKo:"<b>개방형 시스템 아키텍처(open system architecture)</b>의 이점은?",
+options:[
+"A. facilitates interoperability within different systems.",
+"B. facilitates the integration of proprietary components.",
+"C. is a basis for volume discounts from equipment vendors.",
+"D. allows for the achievement of more economies of scale for equipment."
+],
+optionsKo:[
+"A. <b>서로 다른 시스템 간 상호운용성(interoperability)을 촉진한다</b>",
+"B. <b>독점(proprietary) 구성요소의 통합을 촉진한다</b>",
+"C. <b>장비 벤더로부터 대량 할인을 받는 근거가 된다</b>",
+"D. <b>장비에 대해 더 큰 규모의 경제를 달성하게 한다</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 서로 다른 시스템 간 상호운용성을 촉진</b><br><br>
+<b>핵심:</b> 개방형 시스템은 인터페이스가 <b>공개 표준(public standards)</b>으로 정의되어, <b>서로 다른 벤더가 만든 시스템 간에도 상호운용</b>이 가능. 이것이 핵심 이점.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 상호운용성 촉진</b></td><td><b>공개 표준 → 이종 벤더 간 연동 ✅</b></td></tr>
+<tr><td>B. 독점 구성요소 통합</td><td>독점 표준 = <b>폐쇄형(closed) 시스템</b> 특성 ❌</td></tr>
+<tr><td>C. 대량 할인 근거</td><td>할인은 <b>대량 구매·주력 벤더</b>로 달성 — 개방형과 무관 ❌</td></tr>
+<tr><td>D. 규모의 경제</td><td>저렴할 수 있으나 <b>핵심 이점은 상호운용성</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 개방형 = <b>공개 표준 인터페이스 → 벤더 종속 없이 이종 시스템 연동</b><br>
+• 함정 B: 독점(proprietary) 표준은 <b>폐쇄형 시스템</b>의 특성 — 타사 시스템과 연동 불가<br>
+• 함정 C·D: 가격·규모의 경제는 <b>구매 방식</b>의 문제이지 개방형 아키텍처의 본질적 이점이 아님<br>
+• 시험 패턴: open system → <b>interoperability(상호운용성)</b> / closed(proprietary) → 벤더 종속·연동 불가</div>`,
+reference:"CRM Chapter 2: Open vs. Closed System Architecture — Interoperability",
+keyConcepts:[
+"상호운용성 촉진(정답)|개방형=공개 표준 → 이종 벤더 시스템 간 연동",
+"함정 B 독점 구성요소 통합|독점 표준 = 폐쇄형 시스템 특성",
+"함정 C 대량 할인|구매 방식 문제 — 개방형과 무관",
+"함정 D 규모의 경제|저렴할 수 있으나 핵심 이점은 상호운용성",
+"시험 패턴|open system → interoperability / closed → 벤더 종속·연동 불가"
+]
+},
+{
+id:912,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following factors is MOST critical when evaluating the effectiveness of an IT governance implementation?",
+questionKo:"<b>IT 거버넌스 구현</b>의 효과성을 평가할 때 <b>가장 중요한</b> 요소는?",
+options:[
+"A. Ensure that assurance objectives are defined.",
+"B. Determine stakeholder requirements and involvement.",
+"C. Identify relevant risk and related opportunities.",
+"D. Determine relevant enablers and their applicability."
+],
+optionsKo:[
+"A. <b>보증(assurance) 목표가 정의되었는지 확인한다</b>",
+"B. <b>이해관계자의 요구사항과 참여를 파악한다</b>",
+"C. <b>관련 리스크와 그에 따른 기회를 식별한다</b>",
+"D. <b>관련 조력자(enabler)와 그 적용 가능성을 파악한다</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 이해관계자의 요구사항과 참여 파악</b><br><br>
+<b>핵심:</b> 이해관계자 요구·참여가 <b>모든 것의 출발점(기반)</b>. 이를 토대로 보증 범위·목표(A)가 정해지고, 거기서 리스크·기회(C)와 조력자(D)가 도출됨. 따라서 가장 먼저·가장 중요한 것은 B.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>순서·판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 이해관계자 요구·참여</b></td><td><b>출발점 — 범위·목표의 기반 ✅</b></td></tr>
+<tr><td>A. 보증 목표 정의</td><td>B를 <b>기반으로 결정</b>되는 후속 단계 ❌</td></tr>
+<tr><td>C. 리스크·기회 식별</td><td>보증 목표에 의해 <b>도출됨</b> ❌</td></tr>
+<tr><td>D. 조력자·적용성</td><td>보증 목표에 따라 <b>고려됨</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: <b>이해관계자 요구·참여 → 보증 목표(A) → 리스크·기회(C)·조력자(D)</b> 순으로 흘러감 — B가 모든 것의 기반<br>
+• 함정 A·C·D: 모두 <b>이해관계자 요구를 바탕으로 정해지는 하위·후속 산출물</b><br>
+• 판단 기준: "무엇이 프로젝트 성공을 견인(drive)하는가" → 이해관계자 요구·참여<br>
+• 시험 패턴: 거버넌스 구현 평가의 MOST critical → <b>이해관계자 요구·참여(출발점)</b></div>`,
+reference:"CRM Chapter 2: IT Governance Implementation — Stakeholder Needs Drive Scope",
+keyConcepts:[
+"이해관계자 요구·참여(정답)|모든 것의 출발점 — 보증 범위·목표의 기반, 성공 견인",
+"함정 A 보증 목표 정의|이해관계자 요구를 기반으로 결정되는 후속 단계",
+"함정 C 리스크·기회 식별|보증 목표에 의해 도출됨",
+"함정 D 조력자·적용성|보증 목표에 따라 고려됨",
+"시험 패턴|거버넌스 구현 평가 MOST critical → 이해관계자 요구·참여(출발점)"
+]
+},
+{
+id:913,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"As an outcome of information security governance, strategic alignment provides:",
+questionKo:"정보보안 거버넌스의 결과(outcome)로서, <b>전략적 정렬(strategic alignment)</b>이 제공하는 것은?",
+options:[
+"A. security requirements driven by enterprise requirements.",
+"B. baseline security following good practices.",
+"C. institutionalized and commoditized solutions.",
+"D. an understanding of risk exposure."
+],
+optionsKo:[
+"A. <b>기업 요구사항에 의해 도출되는 보안 요구사항</b>",
+"B. <b>모범사례를 따르는 기준선(baseline) 보안</b>",
+"C. <b>제도화·표준화(commoditized)된 솔루션</b>",
+"D. <b>리스크 노출에 대한 이해</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 기업 요구사항에 의해 도출되는 보안 요구사항</b><br><br>
+<b>핵심:</b> 정보보안 거버넌스의 4대 결과 = <b>전략적 정렬·가치 전달·리스크 관리·성과 측정</b>. <b>전략적 정렬</b>은 보안이 비즈니스 목표와 맞물리게 하는 것 → <b>기업 요구가 보안 요구를 견인</b>하도록 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>거버넌스 결과</th></tr>
+<tr style="background:#d4edda"><td><b>A. 기업 요구 기반 보안 요구</b></td><td><b>전략적 정렬(strategic alignment) ✅</b></td></tr>
+<tr><td>B. baseline 보안(모범사례)</td><td>가치 전달(value delivery) ❌</td></tr>
+<tr><td>C. 제도화·표준화 솔루션</td><td>가치 전달(value delivery) ❌</td></tr>
+<tr><td>D. 리스크 노출 이해</td><td>리스크 관리(risk management) ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 전략적 정렬 = <b>"비즈니스(기업) 요구가 보안 요구를 결정"</b> → 보안이 사업 목표에 종속·정렬<br>
+• 함정 B·C: 표준화된 보안 관행·솔루션 제공은 <b>가치 전달(value delivery)</b> 결과<br>
+• 함정 D: 리스크 노출 이해는 <b>리스크 관리(risk management)</b> 결과 — 정렬과 별개<br>
+• 4대 결과 암기: <b>전략적 정렬 / 가치 전달 / 리스크 관리 / 성과 측정</b><br>
+• 시험 패턴: strategic alignment → <b>"enterprise/business 요구가 보안을 견인"</b>한 보기가 정답</div>`,
+reference:"CRM Chapter 2: Information Security Governance — Four Outcomes",
+keyConcepts:[
+"기업 요구 기반 보안 요구(정답)|전략적 정렬 — 비즈니스 요구가 보안 요구를 견인",
+"함정 B baseline 보안|가치 전달(value delivery) 결과",
+"함정 C 제도화·표준화 솔루션|가치 전달(value delivery) 결과",
+"함정 D 리스크 노출 이해|리스크 관리(risk management) 결과",
+"4대 결과|전략적 정렬·가치 전달·리스크 관리·성과 측정",
+"시험 패턴|strategic alignment → 기업/비즈니스 요구가 보안을 견인"
+]
+},
+{
+id:914,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An information systems (IS) auditor is evaluating the IT governance framework of an organization. Which of the following is the GREATEST concern?",
+questionKo:"IS 감사인이 조직의 <b>IT 거버넌스 프레임워크</b>를 평가하고 있다. <b>가장 큰 우려</b>는?",
+options:[
+"A. Senior management has limited involvement.",
+"B. Return on investment (ROI) is not measured.",
+"C. Chargeback of IT cost is not consistent.",
+"D. Risk appetite is not quantified."
+],
+optionsKo:[
+"A. <b>고위 경영진의 관여가 제한적이다</b>",
+"B. <b>투자수익률(ROI)이 측정되지 않는다</b>",
+"C. <b>IT 비용의 차지백(chargeback)이 일관되지 않다</b>",
+"D. <b>위험 선호도(risk appetite)가 정량화되지 않았다</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 고위 경영진의 관여가 제한적이다</b><br><br>
+<b>핵심:</b> IT 거버넌스가 효과적으로 작동하려면 <b>고위 경영진의 관여와 역할·책임 인식</b>이 전제. 경영진 관여 부족은 거버넌스 자체의 건전성을 흔드는 가장 근본적 문제. B·C·D는 거버넌스 <b>프레임워크 안에서 다뤄지는 목표·구성요소</b>일 뿐.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 경영진 관여 제한적</b></td><td><b>거버넌스 작동의 전제 — 가장 근본적 우려 ✅</b></td></tr>
+<tr><td>B. ROI 미측정</td><td>거버넌스 <b>목표(가치 창출)의 일부</b> — 건전성 판단엔 부족 ❌</td></tr>
+<tr><td>C. 차지백 비일관</td><td>비용 배분은 거버넌스 <b>목표의 일부</b> ❌</td></tr>
+<tr><td>D. 위험 선호 미정량화</td><td>중요하나 <b>이것만으로 건전성 판단 불가</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: <b>경영진 관여 = 거버넌스의 토대(tone at the top)</b> — 없으면 프레임워크 전체가 부실<br>
+• 함정 B·C·D: ROI·차지백·위험 선호는 모두 <b>거버넌스 프레임워크 내부의 개별 목표/요소</b> — 하나가 빠져도 거버넌스 자체 건전성과는 다른 차원<br>
+• 판단 기준: "거버넌스가 성립하는가"의 근본 조건 > 개별 목표의 달성도<br>
+• 시험 패턴: IT 거버넌스 평가 GREATEST concern → <b>고위 경영진 관여 부족</b></div>`,
+reference:"CRM Chapter 2: IT Governance — Senior Management Involvement (Tone at the Top)",
+keyConcepts:[
+"경영진 관여 제한적(정답)|거버넌스 작동의 전제(토대) — 가장 근본적 우려",
+"함정 B ROI 미측정|거버넌스 목표(가치 창출)의 일부 — 건전성 판단엔 부족",
+"함정 C 차지백 비일관|비용 배분은 거버넌스 목표의 일부",
+"함정 D 위험 선호 미정량화|중요하나 이것만으로 건전성 판단 불가",
+"시험 패턴|IT 거버넌스 평가 GREATEST concern → 고위 경영진 관여 부족"
+]
+},
+{
+id:915,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following is MOST important to consider when reviewing the classification levels of information assets?",
+questionKo:"<b>정보자산의 분류(classification) 수준</b>을 검토할 때 <b>가장 중요하게</b> 고려할 것은?",
+options:[
+"A. Potential loss",
+"B. Financial cost",
+"C. Potential threats",
+"D. Cost of insurance"
+],
+optionsKo:[
+"A. <b>잠재적 손실(potential loss)</b>",
+"B. <b>금전적 비용(financial cost)</b>",
+"C. <b>잠재적 위협(potential threats)</b>",
+"D. <b>보험 비용(cost of insurance)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 잠재적 손실</b><br><br>
+<b>핵심:</b> 자산 분류의 최선 기준은 자산이 침해됐을 때 <b>기업이 입을 총 손실(total loss)에 대한 이해</b>. 이는 금전적 비용을 넘어 <b>운영·전략·평판</b>까지 포함하는 중요도·민감도 검토를 요함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 잠재적 손실</b></td><td><b>침해 시 총 손실(운영·전략·평판 포함) → 분류 기준 ✅</b></td></tr>
+<tr><td>B. 금전적 비용</td><td>자산 가치는 <b>금전 비용보다 클 수 있음</b>(평판·브랜드) ❌</td></tr>
+<tr><td>C. 잠재적 위협</td><td>분류는 <b>위협에 따라 바뀌지 않음</b> ❌</td></tr>
+<tr><td>D. 보험 비용</td><td>보험은 <b>분류에 기반해</b> 가입 — 순서가 반대 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 분류 = <b>"침해 시 얼마나 큰 손실인가(영향)"</b> 기준 — 금전 + 운영·전략·평판 포함<br>
+• 함정 B: 금전 비용만으로는 부족 — <b>자산 가치 ＞ 장부상 비용</b>(평판·브랜드 영향)<br>
+• 함정 C: <b>위협은 분류를 바꾸지 않음</b> — 분류는 자산의 가치·민감도 기준 (위협은 리스크 평가 단계)<br>
+• 함정 D: 보험은 분류의 <b>결과(후속)</b>이지 분류 기준이 아님<br>
+• 시험 패턴: 자산 분류 기준 → <b>잠재적 손실/영향(criticality·sensitivity)</b>, 위협·비용 아님</div>`,
+reference:"CRM Chapter 2: Information Asset Classification — Based on Potential Loss/Impact",
+keyConcepts:[
+"잠재적 손실(정답)|침해 시 총 손실(운영·전략·평판 포함)이 분류 기준",
+"함정 B 금전적 비용|자산 가치 ＞ 장부 비용 — 평판·브랜드 포함 못함",
+"함정 C 잠재적 위협|분류는 위협에 따라 바뀌지 않음 (위협은 리스크 평가 단계)",
+"함정 D 보험 비용|보험은 분류에 기반 — 순서가 반대",
+"시험 패턴|자산 분류 기준 → 잠재적 손실/영향(criticality·sensitivity)"
+]
+},
+{
+id:916,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An information systems (IS) auditor reviewing an outsourcing contract of IT facilities expects it to define the:",
+questionKo:"IT 설비 <b>아웃소싱 계약</b>을 검토하는 IS 감사인이 계약서에 <b>정의되어 있을 것으로 기대</b>하는 것은?",
+options:[
+"A. hardware configuration.",
+"B. access control software.",
+"C. ownership of intellectual property (IP).",
+"D. application development methodology."
+],
+optionsKo:[
+"A. <b>하드웨어 구성(hardware configuration)</b>",
+"B. <b>접근통제 소프트웨어(access control software)</b>",
+"C. <b>지적재산권(IP)의 소유권</b>",
+"D. <b>애플리케이션 개발 방법론</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 지적재산권(IP)의 소유권</b><br><br>
+<b>핵심:</b> 아웃소싱 계약은 <b>누가 IP를 소유하는가</b>(처리되는 정보·애플리케이션 프로그램)를 반드시 명시해야 함. IP 소유권은 상당한 비용·분쟁 소지가 있는 <b>핵심 정의 사항</b>. 나머지는 기능·가용성·보안만 충족되면 계약상 다룰 필요 없는 <b>구현 세부사항</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. IP 소유권</b></td><td><b>정보·프로그램 소유 주체 명시 — 핵심 계약 사항 ✅</b></td></tr>
+<tr><td>A. 하드웨어 구성</td><td>기능·가용성·보안만 보장되면 <b>무관(구현 세부)</b> ❌</td></tr>
+<tr><td>B. 접근통제 SW</td><td>마찬가지로 <b>구현 세부</b> — 계약 핵심 아님 ❌</td></tr>
+<tr><td>D. 개발 방법론</td><td>아웃소싱 계약에서 <b>실질적 관심사 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 계약은 <b>"무엇을 어떻게 만드는가"가 아니라 "결과물·정보를 누가 소유하는가"</b>를 정의해야 함 → IP 소유권<br>
+• 함정 A·B·D: 하드웨어·접근통제 SW·개발 방법론은 모두 <b>벤더가 알아서 할 구현 세부</b> — 기능·가용성·보안(SLA)만 충족하면 됨<br>
+• 핵심 관점: 계약은 <b>결과(outcome)·권리·책임</b>을 정의 / 수단(means)은 벤더 재량<br>
+• 시험 패턴: 아웃소싱 계약 필수 정의 → <b>IP 소유권·SLA·권리·책임</b> (구현 방법 X)</div>`,
+reference:"CRM Chapter 2: Outsourcing Contract — IP Ownership Clause",
+keyConcepts:[
+"IP 소유권(정답)|처리 정보·프로그램 소유 주체 명시 — 핵심 계약 사항(비용·분쟁)",
+"함정 A 하드웨어 구성|기능·가용성·보안 보장되면 무관(구현 세부)",
+"함정 B 접근통제 SW|구현 세부 — 계약 핵심 아님",
+"함정 D 개발 방법론|아웃소싱 계약의 실질 관심사 아님",
+"시험 패턴|아웃소싱 계약 정의 → IP 소유권·권리·책임 (구현 방법 X)"
+]
+},
+{
+id:917,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"During an audit, the information systems (IS) auditor discovers that the HR department uses a cloud-based application to manage employee records. The HR department engaged in a contract outside of the normal vendor management process and manages the application on its own. Which of the following is of GREATEST concern?",
+questionKo:"감사 중 IS 감사인은 <b>인사부서(HR)가 클라우드 기반 애플리케이션</b>으로 직원 기록을 관리함을 발견했다. HR은 정상적인 벤더 관리 프로세스 <b>밖에서 계약</b>을 맺고 애플리케이션을 <b>자체적으로 관리</b>하고 있다. <b>가장 큰 우려</b>는?",
+options:[
+"A. Maximum acceptable downtime metrics have not been defined in the contract.",
+"B. The IT department does not manage the relationship with the cloud vendor.",
+"C. The help desk call center is in a different country, with different privacy requirements.",
+"D. Organization-defined security policies are not applied to the cloud application."
+],
+optionsKo:[
+"A. <b>최대 허용 다운타임 지표가 계약에 정의되어 있지 않다</b>",
+"B. <b>IT 부서가 클라우드 벤더와의 관계를 관리하지 않는다</b>",
+"C. <b>헬프데스크 콜센터가 개인정보 요건이 다른 타국에 있다</b>",
+"D. <b>조직이 정의한 보안 정책이 클라우드 애플리케이션에 적용되지 않는다</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 조직 보안 정책이 클라우드 앱에 적용되지 않음</b><br><br>
+<b>핵심:</b> 직원 기록(민감정보)을 다루는 클라우드 앱은 <b>조직의 보안 정책(비밀번호·접근관리·데이터 분류 등)을 준수</b>해야 내부 앱과 동일 수준으로 데이터가 보호됨. 정책 미적용이 가장 큰 우려.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>D. 보안 정책 미적용</b></td><td><b>민감 직원정보 보호 결여 — 가장 큰 우려 ✅</b></td></tr>
+<tr><td>A. 다운타임 미정의</td><td>HR 앱은 보통 <b>미션크리티컬 아님</b> — 가용성 우려 낮음 ❌</td></tr>
+<tr><td>B. IT가 관계 관리 안 함</td><td>관계 관리는 <b>IT 부서일 필요 없음</b>(지정 담당/팀이면 됨) ❌</td></tr>
+<tr><td>C. 헬프데스크 타국</td><td>결국 <b>보안 정책 준수 여부</b>가 더 핵심 이슈 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: <b>섀도 IT(shadow IT)의 핵심 위험 = 보안 정책 미적용</b> → 민감 데이터가 내부 기준 밖에서 처리<br>
+• 함정 A: 가용성(다운타임)은 미션크리티컬 시스템에서 중요 — HR 앱은 해당 아님<br>
+• 함정 B: 벤더 관계 관리 주체가 <b>꼭 IT일 필요는 없음</b> — 지정된 담당자/팀이면 충분<br>
+• 함정 C: 콜센터 위치보다 <b>"보안 정책을 지키는가"가 상위 이슈</b> (C도 결국 D에 포섭)<br>
+• 시험 패턴: 우회 계약·shadow IT + 민감정보 → <b>조직 보안 정책 준수 여부</b>가 최대 우려</div>`,
+reference:"CRM Chapter 2: Shadow IT / Cloud — Adherence to Organization Security Policies",
+keyConcepts:[
+"보안 정책 미적용(정답)|민감 직원정보가 조직 정책(비밀번호·접근·분류) 밖에서 처리",
+"함정 A 다운타임 미정의|HR 앱은 미션크리티컬 아님 — 가용성 우려 낮음",
+"함정 B IT가 관계 관리 안 함|관계 관리 주체가 IT일 필요는 없음(지정 담당/팀)",
+"함정 C 헬프데스크 타국|보안 정책 준수 여부가 더 상위 이슈(C도 D에 포섭)",
+"시험 패턴|shadow IT + 민감정보 → 조직 보안 정책 준수 여부가 최대 우려"
+]
+},
+{
+id:918,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following is a function of an IT steering committee?",
+questionKo:"다음 중 <b>IT 운영위원회(steering committee)</b>의 기능은?",
+options:[
+"A. Monitoring vendor-controlled change control and testing",
+"B. Ensuring a separation of duties within the information's processing environment",
+"C. Approving and monitoring the status of IT plans and budgets",
+"D. Liaising between the IT department and end users"
+],
+optionsKo:[
+"A. <b>벤더가 통제하는 변경관리·테스트를 모니터링하는 것</b>",
+"B. <b>정보 처리 환경 내 직무분리(SoD)를 보장하는 것</b>",
+"C. <b>IT 계획·예산의 현황을 승인하고 모니터링하는 것</b>",
+"D. <b>IT 부서와 최종 사용자 간 연락(liaison) 역할</b>"
+],
+correct:2,
+explanation:`<b>정답: C. IT 계획·예산 현황을 승인·모니터링</b><br><br>
+<b>핵심:</b> IT 운영위원회는 <b>주요 IT 프로젝트의 일반 심의 기구</b> — 일상 운영에는 관여하지 않고, IT 계획·예산 같은 <b>주요 프로젝트의 승인·진행 모니터링</b>을 담당. A·B는 IT 경영진의 운영 책임, D는 개별 당사자의 역할.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 계획·예산 승인·모니터링</b></td><td><b>주요 프로젝트 심의 — 운영위 핵심 기능 ✅</b></td></tr>
+<tr><td>A. 벤더 변경관리 모니터링</td><td>소싱 이슈 — <b>IT 경영진</b>의 운영 책임 ❌</td></tr>
+<tr><td>B. 직무분리 보장</td><td><b>IT 경영진</b>의 책임 (일상 운영) ❌</td></tr>
+<tr><td>D. IT-사용자 연락</td><td>개별 당사자 역할 — <b>위원회 책임 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 운영위원회 = <b>전략·주요 프로젝트 심의 기구</b> → 계획·예산 승인 및 진행 감독<br>
+• 핵심 구분: <b>운영위원회 = 방향·승인·감독(상위) / IT 경영진 = 일상 운영(변경관리·SoD 등)</b><br>
+• 함정 A·B: 변경관리·직무분리는 <b>운영 차원 → IT 경영진 책임</b> (위원회 X)<br>
+• 함정 D: 연락 역할은 위원회가 아닌 <b>개별 부서·담당자</b>의 몫<br>
+• 시험 패턴: steering committee 기능 → <b>주요 IT 계획·예산·프로젝트 승인·모니터링</b> (일상 운영 X)</div>`,
+reference:"CRM Chapter 2: IT Steering Committee — Functions (Approve/Monitor Major Projects)",
+keyConcepts:[
+"계획·예산 승인·모니터링(정답)|운영위는 주요 IT 프로젝트 심의 기구 — 승인·진행 감독",
+"핵심 구분|운영위=방향·승인·감독(상위) / IT 경영진=일상 운영",
+"함정 A 벤더 변경관리|소싱 이슈 — IT 경영진 운영 책임",
+"함정 B 직무분리 보장|IT 경영진 책임(일상 운영)",
+"함정 D IT-사용자 연락|개별 당사자 역할 — 위원회 책임 아님",
+"시험 패턴|steering committee → 주요 계획·예산·프로젝트 승인·모니터링(일상 운영 X)"
+]
+},
+{
+id:919,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"During a feasibility study regarding outsourcing IT processing, the relevance for the information systems (IS) auditor of reviewing the vendor's business continuity plan is to:",
+questionKo:"IT 처리 아웃소싱에 관한 <b>타당성 조사(feasibility study)</b> 중, IS 감사인이 <b>벤더의 업무연속성계획(BCP)을 검토</b>하는 것의 의의는?",
+options:[
+"A. evaluate the adequacy of the service levels that the vendor can provide in a contingency.",
+"B. evaluate the financial stability of the service bureau and its ability to fulfill the contract.",
+"C. review the experience of the vendor's staff.",
+"D. test the business continuity plan."
+],
+optionsKo:[
+"A. <b>비상 상황(contingency)에서 벤더가 제공할 수 있는 서비스 수준의 적정성을 평가하기 위해</b>",
+"B. <b>서비스 뷰로의 재무 안정성과 계약 이행 능력을 평가하기 위해</b>",
+"C. <b>벤더 직원의 경험을 검토하기 위해</b>",
+"D. <b>업무연속성계획을 테스트하기 위해</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 비상 상황에서 벤더가 제공할 서비스 수준의 적정성 평가</b><br><br>
+<b>핵심:</b> 아웃소싱 성공의 핵심은 벤더가 <b>비상 상황(contingency)에서도 조직의 처리 요구를 계속 지원</b>할 수 있는 능력. BCP 검토는 바로 그 능력(비상 시 서비스 수준)을 보기 위함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 비상 시 서비스 수준 적정성</b></td><td><b>BCP 검토의 본래 목적 ✅</b></td></tr>
+<tr><td>B. 재무 안정성·계약 이행</td><td>재무 안정성은 <b>BCP와 무관</b> ❌</td></tr>
+<tr><td>C. 직원 경험</td><td>직원 경험은 <b>BCP와 무관</b> ❌</td></tr>
+<tr><td>D. BCP 테스트</td><td>타당성 조사 단계의 <b>검토는 테스트가 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: BCP 검토 = <b>"비상 시에도 약속한 서비스 수준을 유지할 수 있는가"</b> 평가가 목적<br>
+• 함정 B·C: 재무 안정성·직원 경험은 중요한 실사 항목이나 <b>BCP 검토로 알 수 있는 것이 아님</b> (질문은 "BCP 검토의 의의")<br>
+• 함정 D: 타당성 조사 단계에서의 <b>문서 검토 ≠ BCP 실제 테스트</b><br>
+• 시험 패턴: 벤더 BCP 검토 목적 → <b>비상 시 서비스 연속성·수준 보장 여부</b></div>`,
+reference:"CRM Chapter 2: Outsourcing Feasibility — Review of Vendor BCP (Contingency Service Levels)",
+keyConcepts:[
+"비상 시 서비스 수준 적정성(정답)|BCP 검토 목적 — 비상 시 처리 요구 지속 지원 능력 평가",
+"함정 B 재무 안정성|BCP와 무관 — 별도 실사 항목",
+"함정 C 직원 경험|BCP와 무관",
+"함정 D BCP 테스트|타당성 조사 단계 문서 검토 ≠ 실제 테스트",
+"시험 패턴|벤더 BCP 검토 목적 → 비상 시 서비스 연속성·수준 보장 여부"
+]
+},
+{
+id:920,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"During an audit, the information systems (IS) auditor observed that a user can log in to post a transaction and then change role to authorize the same. Which of the following is the BEST course of action for the IS auditor?",
+questionKo:"감사 중 IS 감사인은 한 사용자가 로그인하여 거래를 <b>입력(post)</b>한 뒤 역할을 바꿔 같은 거래를 <b>승인(authorize)</b>할 수 있음을 관찰했다. IS 감사인의 <b>가장 좋은 조치</b>는?",
+options:[
+"A. Ask the system administrator to suspend the user's access.",
+"B. Check for suitable compensating controls.",
+"C. Ask the database administrator to merge the two roles into a single role.",
+"D. Record the finding in the audit report."
+],
+optionsKo:[
+"A. <b>시스템 관리자에게 해당 사용자의 접근을 정지하도록 요청한다</b>",
+"B. <b>적절한 보완 통제(compensating controls)가 있는지 확인한다</b>",
+"C. <b>DBA에게 두 역할을 하나로 병합하도록 요청한다</b>",
+"D. <b>그 발견사항을 감사 보고서에 기록한다</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 적절한 보완 통제가 있는지 확인</b><br><br>
+<b>핵심:</b> 직무분리(SoD) 위반(입력자=승인자)을 관찰하면, 감사인은 <b>결론을 내리기 전에 먼저 보완 통제를 확인</b>해야 함. 모든 통제를 식별·평가한 후에야 발견사항을 기록(D).<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 보완 통제 확인</b></td><td><b>결론 전 모든 통제 평가 — 감사 절차상 우선 ✅</b></td></tr>
+<tr><td>A. 접근 정지 요청</td><td>감사인은 <b>운영 조치를 지시할 수 없음</b>(독립성) ❌</td></tr>
+<tr><td>C. 역할 병합 요청</td><td>오히려 <b>SoD 위반</b> — 잘못된 권고 ❌</td></tr>
+<tr><td>D. 즉시 보고서 기록</td><td>보완 통제 <b>평가 후</b>에 기록해야 함 — 순서 빠름 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: SoD 위반 발견 → <b>"보완 통제부터 확인"</b> → 잔여 리스크 평가 후 결론·보고<br>
+• 함정 A·C: 감사인은 <b>운영에 개입(접근 정지·역할 변경 지시)하지 않음</b> — 독립성 위배 (C는 SoD 위반까지)<br>
+• 함정 D: 보고는 <b>모든 통제(보완 포함) 평가 후</b> — B를 건너뛴 조기 결론<br>
+• 시험 패턴: 통제 결함 관찰 → <b>"보완 통제 먼저 확인" → 그 다음 보고</b> (조치 지시 X)</div>`,
+reference:"CRM Chapter 2: SoD Violation — Evaluate Compensating Controls First",
+keyConcepts:[
+"보완 통제 확인(정답)|SoD 위반 발견 시 결론 전 보완 통제부터 평가",
+"함정 A 접근 정지 요청|감사인은 운영 조치 지시 불가(독립성)",
+"함정 C 역할 병합 요청|오히려 SoD 위반 — 잘못된 권고",
+"함정 D 즉시 보고|보완 통제 평가 후 기록 — 순서가 빠름",
+"시험 패턴|통제 결함 관찰 → 보완 통제 먼저 확인 → 그 다음 보고(조치 지시 X)"
+]
+},
+{
+id:921,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Many organizations require an employee to take a mandatory vacation (holiday) of a week or more to:",
+questionKo:"많은 조직이 직원에게 1주 이상의 <b>의무 휴가(mandatory vacation)</b>를 요구하는 이유는?",
+options:[
+"A. ensure that the employee maintains a good quality of life, which will lead to greater productivity.",
+"B. reduce the opportunity for an employee to commit an improper or illegal act.",
+"C. provide proper cross-training for another employee.",
+"D. eliminate the potential disruption caused when an employee takes vacation one day at a time."
+],
+optionsKo:[
+"A. <b>직원의 삶의 질을 유지해 생산성을 높이기 위해</b>",
+"B. <b>직원이 부적절하거나 불법적인 행위를 저지를 기회를 줄이기 위해</b>",
+"C. <b>다른 직원에게 적절한 교차 훈련을 제공하기 위해</b>",
+"D. <b>직원이 하루씩 휴가를 쓸 때 생기는 잠재적 업무 차질을 없애기 위해</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 부적절·불법 행위 기회를 줄이기 위해</b><br><br>
+<b>핵심:</b> 의무 휴가의 핵심 목적은 <b>부정·오류 탐지</b>. 1주 이상 휴가 동안 <b>다른 사람이 그 직무를 대신 수행</b>하게 되어, 진행 중이던 부정 행위가 드러날 가능성이 커짐(민감 직무에서 특히 의무화).<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 부정·불법 행위 기회 감소</b></td><td><b>의무 휴가의 1차 목적(부정 탐지) ✅</b></td></tr>
+<tr><td>A. 삶의 질·생산성</td><td>중요하나 <b>의무 휴가의 주된 이유 아님</b> ❌</td></tr>
+<tr><td>C. 교차 훈련 제공</td><td>부수 효과일 뿐 <b>주된 이유 아님</b> ❌</td></tr>
+<tr><td>D. 분산 휴가 차질 제거</td><td>경영 판단일 뿐 <b>의무 휴가 정책과 무관</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 의무 휴가 = <b>탐지 통제(detective control)</b> — 부재 중 타인이 직무 수행하며 부정·오류 발각<br>
+• 핵심: <b>1주 이상 + 타인이 대행</b>이 부정 탐지의 메커니즘 (혼자 계속하면 은폐 가능)<br>
+• 함정 A·C·D: 삶의 질·교차 훈련·업무 차질 제거는 부수 효과/경영 판단 — <b>1차 목적은 부정 탐지</b><br>
+• 시험 패턴: mandatory vacation/job rotation 목적 → <b>부정·오류 탐지(fraud detection)</b></div>`,
+reference:"CRM Chapter 2: Mandatory Vacation — Detective Control for Fraud",
+keyConcepts:[
+"부정·불법 행위 기회 감소(정답)|의무 휴가 1차 목적 — 부재 중 타인 대행으로 부정 탐지",
+"메커니즘|1주 이상+타인 대행 → 진행 중 부정 발각 (탐지 통제)",
+"함정 A 삶의 질|중요하나 주된 이유 아님",
+"함정 C 교차 훈련|부수 효과일 뿐 주된 이유 아님",
+"함정 D 분산 휴가 차질|경영 판단 — 의무 휴가 정책과 무관",
+"시험 패턴|mandatory vacation/job rotation 목적 → 부정·오류 탐지"
+]
+},
+{
+id:922,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following situations is addressed by a software escrow agreement?",
+questionKo:"<b>소프트웨어 에스크로(software escrow) 계약</b>이 대비하는 상황은?",
+options:[
+"A. The system administrator requires access to software to recover from a disaster.",
+"B. A user requests to have software reloaded onto a replacement hard drive.",
+"C. The vendor of custom-written software goes out of business.",
+"D. An information systems (IS) auditor requires access to software code written by the organization."
+],
+optionsKo:[
+"A. <b>시스템 관리자가 재해 복구를 위해 소프트웨어 접근이 필요하다</b>",
+"B. <b>사용자가 교체된 하드디스크에 소프트웨어 재설치를 요청한다</b>",
+"C. <b>맞춤 제작 소프트웨어의 벤더가 폐업한다</b>",
+"D. <b>IS 감사인이 조직이 작성한 소프트웨어 코드에 접근해야 한다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 맞춤 제작 소프트웨어 벤더가 폐업하는 경우</b><br><br>
+<b>핵심:</b> 소프트웨어 에스크로는 <b>벤더와 고객 간 법적 계약</b>으로, 소스 코드를 <b>신뢰할 수 있는 제3자(에스크로 대리인)에게 보관</b>. 벤더 <b>폐업·계약 분쟁·약속한 유지보수 미이행</b> 시 고객이 소스 코드에 접근하도록 보장.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 벤더 폐업</b></td><td><b>제3자 보관 소스 코드로 사업 연속성 보장 ✅</b></td></tr>
+<tr><td>A. 재해 복구 접근</td><td>내부 <b>소프트웨어 라이브러리</b>가 담당 — 에스크로 아님 ❌</td></tr>
+<tr><td>B. HDD 재설치</td><td>백업 복사본 제공 — <b>에스크로 아님</b> ❌</td></tr>
+<tr><td>D. 감사인의 자체 코드 접근</td><td>자사가 작성한 코드 — <b>에스크로 대상 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 에스크로 = <b>제3자에 소스 코드 보관</b> → 벤더 폐업/분쟁/유지보수 미이행 시 고객 접근 보장<br>
+• 핵심 구분: <b>에스크로 = 제3자(외부) 보관 / 백업·재설치·재해복구 = 내부 라이브러리</b><br>
+• 함정 A·B: 내부 소프트웨어 라이브러리·백업 영역 — 외부 제3자 보관(에스크로)과 무관<br>
+• 함정 D: 에스크로는 <b>타사가 만들어 판 소프트웨어</b> 보호용 — 자사 작성 코드엔 해당 없음<br>
+• 시험 패턴: software escrow → <b>"벤더 폐업 시 소스 코드 확보"</b>가 정답</div>`,
+reference:"CRM Chapter 2: Software Escrow — Source Code Held by Third Party",
+keyConcepts:[
+"벤더 폐업(정답)|에스크로 = 제3자 보관 소스 코드로 사업 연속성 보장",
+"핵심 구분|에스크로=제3자(외부) 보관 / 백업·재설치·재해복구=내부 라이브러리",
+"함정 A·B 재해복구·재설치|내부 라이브러리·백업 — 에스크로 아님",
+"함정 D 자사 코드 접근|에스크로는 타사 제작 SW 보호용 — 자사 코드엔 해당 없음",
+"시험 패턴|software escrow → 벤더 폐업 시 소스 코드 확보"
+]
+},
+{
+id:923,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"What is the PRIMARY consideration for an information systems (IS) auditor reviewing the prioritization and coordination of IT projects and program management?",
+questionKo:"<b>IT 프로젝트·프로그램 관리의 우선순위 결정과 조율</b>을 검토하는 IS 감사인의 <b>1차적 고려사항</b>은?",
+options:[
+"A. Projects are aligned with the organization's strategy.",
+"B. Identified project risk is monitored and mitigated.",
+"C. Controls related to project planning and budgeting are appropriate.",
+"D. IT project metrics are reported accurately."
+],
+optionsKo:[
+"A. <b>프로젝트가 조직의 전략과 정렬되어 있는지</b>",
+"B. <b>식별된 프로젝트 리스크가 모니터링·완화되는지</b>",
+"C. <b>프로젝트 계획·예산 관련 통제가 적절한지</b>",
+"D. <b>IT 프로젝트 지표가 정확히 보고되는지</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 프로젝트가 조직 전략과 정렬되어 있는지</b><br><br>
+<b>핵심:</b> IT 프로젝트의 근본 목적은 <b>비즈니스에 가치를 더하는 것</b>이므로, 의도한 결과를 내려면 <b>비즈니스 전략과 정렬</b>되어야 함. 따라서 감사인은 이 정렬을 가장 먼저 확인. 리스크·예산·보고는 그 다음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 전략과 정렬</b></td><td><b>프로젝트 가치 창출의 근본 — 1차 고려 ✅</b></td></tr>
+<tr><td>B. 리스크 모니터링·완화</td><td>중요하나 <b>정렬이 있어야 리스크를 사업 관점에서 평가</b> ❌</td></tr>
+<tr><td>C. 계획·예산 통제</td><td>시간·예산 준수보다 <b>전략 정렬된 결과 달성이 우선</b> ❌</td></tr>
+<tr><td>D. 지표 정확 보고</td><td>중요하나 <b>전략적 관점을 보장하진 않음</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 프로그램·포트폴리오 관리의 출발점 = <b>"이 프로젝트들이 비즈니스 전략에 기여하는가"</b><br>
+• 함정 B·C·D: 리스크·예산·보고는 모두 <b>전략 정렬을 전제로 한 실행·관리 수준</b> 사항<br>
+• 우선순위 논리: 정렬(왜/무엇을) ＞ 리스크·예산·보고(어떻게 잘하나)<br>
+• 시험 패턴: 프로젝트·프로그램 관리 검토 PRIMARY → <b>비즈니스 전략과의 정렬</b></div>`,
+reference:"CRM Chapter 2: IT Project/Program Management — Strategic Alignment First",
+keyConcepts:[
+"전략과 정렬(정답)|IT 프로젝트는 가치 창출이 목적 → 비즈니스 전략 정렬이 1차 고려",
+"함정 B 리스크 모니터링|정렬이 있어야 리스크를 사업 관점에서 평가",
+"함정 C 계획·예산 통제|시간·예산 준수보다 전략 정렬된 결과가 우선",
+"함정 D 지표 보고|중요하나 전략적 관점을 보장하진 않음",
+"시험 패턴|프로젝트·프로그램 관리 검토 PRIMARY → 비즈니스 전략과의 정렬"
+]
+},
+{
+id:924,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following insurance types provide for a loss arising from fraudulent acts by employees?",
+questionKo:"<b>직원의 부정 행위(fraudulent acts)</b>로 인한 손실을 보상하는 보험 유형은?",
+options:[
+"A. Business interruption",
+"B. Fidelity coverage",
+"C. Errors and omissions",
+"D. Extra expense"
+],
+optionsKo:[
+"A. <b>영업 중단(business interruption) 보험</b>",
+"B. <b>성실(fidelity) 보험</b>",
+"C. <b>오류·누락(errors and omissions) 보험</b>",
+"D. <b>추가 비용(extra expense) 보험</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 성실(fidelity) 보험</b><br><br>
+<b>핵심:</b> 성실 보험(fidelity coverage)은 <b>직원의 부정직하거나 사기적인 행위</b>로 인한 손실을 보상. 나머지는 각각 영업 중단 손실·전문가 과실·재해 후 추가 운영비를 다룸.<br><br>
+<table class="cmp">
+<tr><th>보험 유형</th><th>보상 대상</th></tr>
+<tr style="background:#d4edda"><td><b>B. 성실(fidelity)</b></td><td><b>직원의 부정직·사기 행위 손실 ✅</b></td></tr>
+<tr><td>A. 영업 중단</td><td>운영 중단으로 인한 <b>이익 손실</b> ❌</td></tr>
+<tr><td>C. 오류·누락(E&O)</td><td>전문가의 <b>과실로 고객이 입은 손실(법적 책임)</b> ❌</td></tr>
+<tr><td>D. 추가 비용</td><td>재해 후 <b>운영 지속을 위한 추가 비용</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: <b>fidelity = 직원 부정·횡령</b> 손실 보상 (사람의 부정직에 초점)<br>
+• 함정 A 영업 중단: <b>중단으로 못 번 이익</b> 보상 / D 추가 비용: <b>중단 중에도 쓰는 추가 운영비</b> 보상 (둘은 짝)<br>
+• 함정 C E&O: <b>전문가 배상책임</b> — 과실로 고객 손해 시<br>
+• 시험 패턴: 직원 부정 → fidelity / 이익 손실 → business interruption / 전문가 과실 → E&O / 복구 추가비 → extra expense</div>`,
+reference:"CRM Chapter 2: Insurance Types — Fidelity / BI / E&O / Extra Expense",
+keyConcepts:[
+"성실 보험(정답)|fidelity = 직원의 부정직·사기 행위 손실 보상",
+"함정 A 영업 중단|운영 중단으로 인한 이익 손실 보상",
+"함정 C 오류·누락(E&O)|전문가 과실로 고객이 입은 손실(배상책임)",
+"함정 D 추가 비용|재해 후 운영 지속을 위한 추가 비용 보상",
+"시험 패턴|직원 부정→fidelity / 이익손실→BI / 전문가 과실→E&O / 복구 추가비→extra expense"
+]
+},
+{
+id:925,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following MOST likely indicates that a customer data warehouse should remain in-house rather than be outsourced to an offshore operation?",
+questionKo:"다음 중 <b>고객 데이터 웨어하우스</b>를 해외(offshore) 위탁이 아닌 <b>사내(in-house)에 유지</b>해야 함을 <b>가장 강하게</b> 시사하는 것은?",
+options:[
+"A. Time-zone differences can impede communications between IT teams.",
+"B. Telecommunications cost can be much higher in the first year.",
+"C. Privacy laws can prevent cross-border flow of information.",
+"D. Software development may require more detailed specifications."
+],
+optionsKo:[
+"A. <b>시차로 인해 IT 팀 간 의사소통이 저해될 수 있다</b>",
+"B. <b>첫 해 통신 비용이 훨씬 높을 수 있다</b>",
+"C. <b>개인정보보호법이 정보의 국경 간 이동을 막을 수 있다</b>",
+"D. <b>소프트웨어 개발에 더 상세한 사양이 필요할 수 있다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 개인정보보호법이 정보의 국경 간 이동을 막을 수 있음</b><br><br>
+<b>핵심:</b> 개인식별정보(PII)의 <b>국경 간 이전을 금지하는 개인정보보호법</b>이 있으면, 고객 정보를 담은 데이터 웨어하우스를 타국에 두는 것이 <b>법적으로 불가능</b>. 이는 결정적(showstopper) 제약. 나머지는 관리·비용 차원의 이슈로 위탁을 막지 않음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 개인정보 국경 이전 금지</b></td><td><b>법적으로 해외 보관 불가 — 결정적 제약 ✅</b></td></tr>
+<tr><td>A. 시차</td><td>아웃소싱에서 <b>관리 가능한</b> 통상적 이슈 ❌</td></tr>
+<tr><td>B. 통신 비용</td><td>비용편익 분석 요소 — <b>사내 유지 사유는 아님</b> ❌</td></tr>
+<tr><td>D. 상세 사양 필요</td><td>오프쇼어에서 흔한 일 — <b>위탁을 막지 않음</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: <b>법적 제약(데이터 국외 이전 금지)은 절대적 제약</b> → 비용·관리로 해결 불가 → 사내 유지 강제<br>
+• 함정 A·B·D: 시차·비용·사양은 모두 <b>완화·관리 가능한 운영 이슈</b> — 위탁 자체를 금지하지 않음<br>
+• 판단 기준: "관리 가능한가 vs 법적으로 불가능한가" → 법적 불가가 항상 우선<br>
+• 시험 패턴: 해외 위탁 불가 사유 → <b>개인정보·데이터 주권(cross-border) 법규</b>가 정답</div>`,
+reference:"CRM Chapter 2: Offshore Outsourcing — Cross-Border Privacy Law Constraints",
+keyConcepts:[
+"개인정보 국경 이전 금지(정답)|법적으로 해외 보관 불가 — 결정적 제약으로 사내 유지 강제",
+"함정 A 시차|아웃소싱에서 관리 가능한 통상 이슈",
+"함정 B 통신 비용|비용편익 분석 요소 — 사내 유지 사유 아님",
+"함정 D 상세 사양|오프쇼어에서 흔한 일 — 위탁 막지 않음",
+"시험 패턴|해외 위탁 불가 사유 → 개인정보·데이터 주권(cross-border) 법규"
+]
+},
+{
+id:926,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Before implementing an IT balanced scorecard, an organization must:",
+questionKo:"<b>IT 균형성과표(balanced scorecard, BSC)</b>를 구현하기 전에 조직이 반드시 해야 할 것은?",
+options:[
+"A. deliver effective and efficient services.",
+"B. define key performance indicators.",
+"C. provide business value to IT projects.",
+"D. control IT expenses."
+],
+optionsKo:[
+"A. <b>효과적이고 효율적인 서비스를 제공한다</b>",
+"B. <b>핵심성과지표(KPI)를 정의한다</b>",
+"C. <b>IT 프로젝트에 비즈니스 가치를 제공한다</b>",
+"D. <b>IT 비용을 통제한다</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 핵심성과지표(KPI)를 정의</b><br><br>
+<b>핵심:</b> BSC는 <b>성과를 측정하는 방법</b>이므로, 구현하기 전에 <b>무엇을 측정할지 = KPI를 먼저 정의</b>해야 함. 측정 지표가 없으면 스코어카드가 성립하지 않음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. KPI 정의</b></td><td><b>측정 도구의 전제 — 구현 전 필수 ✅</b></td></tr>
+<tr><td>A. 효과·효율 서비스 제공</td><td>BSC가 <b>측정하는 대상</b> — 사전에 갖춰져 있지 않을 수 있음 ❌</td></tr>
+<tr><td>C. IT에 비즈니스 가치 제공</td><td>BSC는 <b>IT의 가치를 측정</b> — 방향이 반대 ❌</td></tr>
+<tr><td>D. IT 비용 통제</td><td>BSC가 성과를 측정할 뿐 <b>비용 통제는 전제 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: BSC = 측정 프레임워크 → <b>"무엇을 측정할까(KPI)"를 먼저 정의</b>해야 작동<br>
+• 함정 A: 효과·효율 서비스는 BSC가 <b>측정하는 결과물</b>이지 사전 조건이 아님<br>
+• 함정 C: BSC는 <b>IT가 비즈니스에 주는 가치를 측정</b> — "IT 프로젝트에 가치 제공"은 방향 반대<br>
+• 함정 D: 비용 통제는 BSC의 한 관점일 뿐 <b>구현 전제 조건은 아님</b><br>
+• 시험 패턴: BSC 구현 전제 → <b>KPI(측정 지표) 정의</b></div>`,
+reference:"CRM Chapter 2: IT Balanced Scorecard — KPIs Required First",
+keyConcepts:[
+"KPI 정의(정답)|BSC는 측정 도구 → 구현 전 무엇을 측정할지(KPI) 정의 필수",
+"함정 A 효과·효율 서비스|BSC가 측정하는 결과물 — 사전 조건 아님",
+"함정 C IT에 가치 제공|BSC는 IT의 가치를 측정 — 방향 반대",
+"함정 D IT 비용 통제|BSC의 한 관점일 뿐 구현 전제 아님",
+"시험 패턴|BSC 구현 전제 → KPI(측정 지표) 정의"
+]
+},
+{
+id:927,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"A decision support system (DSS) is used to help high-level management:",
+questionKo:"<b>의사결정지원시스템(DSS)</b>은 고위 경영진이 무엇을 하도록 돕는 데 사용되는가?",
+options:[
+"A. solve highly structured problems.",
+"B. combine the use of decision models with predetermined criteria.",
+"C. make decisions based on data analysis and interactive models.",
+"D. support only structured decision-making tasks."
+],
+optionsKo:[
+"A. <b>고도로 구조화된(structured) 문제를 해결한다</b>",
+"B. <b>의사결정 모델을 사전에 정해진 기준(criteria)과 결합한다</b>",
+"C. <b>데이터 분석과 대화형(interactive) 모델에 기반해 의사결정을 내린다</b>",
+"D. <b>구조화된 의사결정 과업만 지원한다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 데이터 분석과 대화형 모델에 기반한 의사결정</b><br><br>
+<b>핵심:</b> DSS는 <b>덜 구조화된(반구조적, semi-structured) 문제</b>를 다루며, <b>데이터 분석 + 대화형 모델</b>로 의사결정의 <b>유연성</b>을 강조. 고정된 기준이나 구조화된 과업에 한정되지 않음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 데이터 분석+대화형 모델</b></td><td><b>유연한 의사결정 지원 — DSS의 본질 ✅</b></td></tr>
+<tr><td>A. 고도로 구조화된 문제</td><td>DSS는 <b>덜 구조화된 문제</b> 대상 ❌</td></tr>
+<tr><td>B. 사전 정해진 기준 결합</td><td>DSS는 <b>고정 기준에 제한되지 않음</b> ❌</td></tr>
+<tr><td>D. 구조화된 과업만 지원</td><td>DSS는 <b>반구조적(semi-structured)</b> 과업 지원 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: DSS = <b>유연성·대화형 모델·데이터 분석</b>으로 반구조적 문제의 의사결정 지원<br>
+• 핵심 키워드: <b>덜 구조화(less/semi-structured) + 유연성(flexibility) + interactive</b><br>
+• 함정 A·D: "highly structured/structured only"는 DSS와 반대 — 구조화 문제는 정형 처리(거래처리) 영역<br>
+• 함정 B: "predetermined criteria(고정 기준)"는 DSS의 유연성과 모순<br>
+• 시험 패턴: DSS → 반구조적·유연·대화형 / 구조화된 정형 문제 → 일반 정보시스템(TPS/MIS)</div>`,
+reference:"CRM Chapter 2: Decision Support System (DSS) — Semi-Structured, Flexible",
+keyConcepts:[
+"데이터 분석+대화형 모델(정답)|DSS = 유연성·대화형 모델로 반구조적 의사결정 지원",
+"핵심 키워드|덜 구조화(semi-structured) + 유연성 + interactive",
+"함정 A·D 구조화 문제만|DSS와 반대 — 정형 문제는 TPS/MIS 영역",
+"함정 B 사전 정해진 기준|고정 기준은 DSS의 유연성과 모순",
+"시험 패턴|DSS → 반구조적·유연·대화형 / 구조화 정형 → TPS/MIS"
+]
+},
+{
+id:928,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An information systems (IS) auditor was hired to review ebusiness security. The IS auditor's first task was to examine each existing ebusiness application, looking for vulnerabilities. What is the IS auditor's next task?",
+questionKo:"IS 감사인이 <b>e비즈니스 보안</b> 검토를 위해 채용되었다. 첫 번째 과업은 기존 e비즈니스 애플리케이션을 검사해 <b>취약점(vulnerabilities)</b>을 찾는 것이었다. 그 <b>다음 과업</b>은?",
+options:[
+"A. Immediately report the risk to the chief information officer and chief executive officer.",
+"B. Examine the ebusiness application in development.",
+"C. Identify threats and the likelihood of occurrence.",
+"D. Check the budget available for risk management."
+],
+optionsKo:[
+"A. <b>즉시 CIO와 CEO에게 리스크를 보고한다</b>",
+"B. <b>개발 중인 e비즈니스 애플리케이션을 검사한다</b>",
+"C. <b>위협(threats)과 발생 가능성(likelihood)을 식별한다</b>",
+"D. <b>리스크 관리에 가용한 예산을 확인한다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 위협과 발생 가능성을 식별</b><br><br>
+<b>핵심:</b> 리스크 평가 순서는 <b>① 자산 식별 → ② 취약점 파악 → ③ 위협·발생 가능성 식별 → ④ 리스크 산정</b>. 취약점을 찾았으니(②) 다음은 <b>위협과 발생 가능성 식별(③)</b>. 리스크가 산정되기 전엔 보고(A)·예산 확인(D)이 무의미.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 위협·발생 가능성 식별</b></td><td><b>취약점 다음 단계 — 리스크 산정의 전제 ✅</b></td></tr>
+<tr><td>A. 즉시 보고</td><td>리스크가 <b>아직 산정 안 됨</b> — 보고할 결론 없음 ❌</td></tr>
+<tr><td>B. 개발 중 앱 검사</td><td>기존 앱 리스크 산정 <b>후</b> 적용 — 순서 빠름 ❌</td></tr>
+<tr><td>D. 예산 확인</td><td>리스크 미산정 단계에선 <b>무관</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 리스크 = <b>자산 → 취약점 → 위협·가능성 → 리스크</b> 순으로 도출 → 취약점 다음은 위협·가능성<br>
+• 공식: <b>리스크 = 위협 × 취약점 × 영향(가능성)</b> — 위협·가능성 없이는 리스크 산정 불가<br>
+• 함정 A·D: 보고·예산은 <b>리스크가 산정된 후</b>의 활동<br>
+• 함정 B: 개발 중 앱은 기존 앱 리스크 수준을 <b>구한 뒤</b> 적용하는 후속 단계<br>
+• 시험 패턴: "취약점 파악 다음" → <b>위협·발생 가능성 식별</b> (리스크 산정 흐름)</div>`,
+reference:"CRM Chapter 2: Risk Assessment Sequence — Asset → Vulnerability → Threat/Likelihood → Risk",
+keyConcepts:[
+"위협·발생 가능성 식별(정답)|취약점 다음 단계 — 리스크 산정의 전제",
+"리스크 산정 순서|자산 → 취약점 → 위협·가능성 → 리스크",
+"함정 A 즉시 보고|리스크 아직 미산정 — 보고할 결론 없음",
+"함정 B 개발 중 앱 검사|기존 앱 리스크 산정 후 적용 — 순서 빠름",
+"함정 D 예산 확인|리스크 미산정 단계에선 무관",
+"시험 패턴|취약점 파악 다음 → 위협·발생 가능성 식별"
+]
+},
+{
+id:929,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An enterprise hosts its data center onsite and has outsourced the management of its key financial applications to a service provider. Which of the following controls BEST ensures that the service provider's employees adhere to the security policies?",
+questionKo:"한 기업이 데이터센터를 자체(onsite)에 두고, 핵심 재무 애플리케이션의 관리는 서비스 제공자에게 위탁했다. 서비스 제공자의 직원이 <b>보안 정책을 준수하도록</b> 가장 잘 보장하는 통제는?",
+options:[
+"A. Sign-off is required on the enterprise's security policies for all users.",
+"B. An indemnity clause is included in the contract with the service provider.",
+"C. Mandatory security awareness training is implemented for all users.",
+"D. Security policies should be modified to address compliance by third-party users."
+],
+optionsKo:[
+"A. <b>모든 사용자에게 기업 보안 정책에 대한 서명(sign-off)을 요구한다</b>",
+"B. <b>서비스 제공자와의 계약에 면책·배상(indemnity) 조항을 포함한다</b>",
+"C. <b>모든 사용자에게 의무 보안 인식 교육을 시행한다</b>",
+"D. <b>제3자 사용자의 준수를 다루도록 보안 정책을 수정한다</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 계약에 배상(indemnity) 조항 포함</b><br><br>
+<b>핵심:</b> 서비스 제공자가 <b>배상 조항에 서명</b>하면 보안 정책 위반 시 <b>재무적 책임(financial liability)</b>을 지므로 조직 차원의 준수가 강제됨. 또한 기업이 위반을 면밀히 모니터링하도록 유도. A·C·D는 개인 차원이거나 준수를 보장하지 못함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 계약 배상 조항</b></td><td><b>위반 시 조직에 재무 책임 → 준수 강제 ✅</b></td></tr>
+<tr><td>A. 사용자 서명</td><td>준수 책임을 <b>개인에게만</b> 지움 — 조직 차원 보장 X ❌</td></tr>
+<tr><td>C. 인식 교육</td><td>훌륭한 통제이나 <b>준수를 보장하진 못함</b> ❌</td></tr>
+<tr><td>D. 정책 수정</td><td>전달·시행·교육 없이는 <b>준수 보장 안 됨</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 제3자(법인) 준수 보장의 핵심은 <b>계약상 책임·제재 장치</b> — 배상 조항이 조직 차원 강제력 부여<br>
+• 함정 A: 개인 서명은 책임을 <b>개인에게 전가</b>할 뿐 — 서비스 제공자 조직의 준수를 담보 못함<br>
+• 함정 C·D: 교육·정책 수정은 <b>준수의 보조 수단</b>일 뿐 강제력(보장)은 없음<br>
+• 시험 패턴: 제3자/아웃소싱 직원의 정책 준수 보장 → <b>계약상 조항(배상·책임)</b>이 정답</div>`,
+reference:"CRM Chapter 2: Third-Party Compliance — Contractual Indemnity Clause",
+keyConcepts:[
+"계약 배상 조항(정답)|위반 시 서비스 제공자에 재무 책임 → 조직 차원 준수 강제",
+"함정 A 사용자 서명|준수 책임을 개인에게만 지움 — 조직 차원 보장 X",
+"함정 C 인식 교육|훌륭하나 준수를 보장하진 못함",
+"함정 D 정책 수정|전달·시행·교육 없으면 준수 보장 안 됨",
+"시험 패턴|제3자 직원 정책 준수 보장 → 계약상 조항(배상·책임)"
+]
+},
+{
+id:930,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"A poor choice of passwords and unencrypted data transmissions over unprotected communications lines are examples of:",
+questionKo:"<b>취약한 비밀번호 선택</b>과 <b>보호되지 않은 통신 회선을 통한 비암호화 데이터 전송</b>은 무엇의 예인가?",
+options:[
+"A. vulnerabilities.",
+"B. threats.",
+"C. probabilities.",
+"D. impacts."
+],
+optionsKo:[
+"A. <b>취약점(vulnerabilities)</b>",
+"B. <b>위협(threats)</b>",
+"C. <b>확률(probabilities)</b>",
+"D. <b>영향(impacts)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 취약점(vulnerabilities)</b><br><br>
+<b>핵심:</b> 취약점은 <b>위협에 의해 악용될 수 있는 정보 자원의 약점</b>. 취약한 비밀번호·비암호화 전송은 보안 담당자가 <b>개선·통제할 수 있는 내부 약점</b>이므로 취약점에 해당.<br><br>
+<table class="cmp">
+<tr><th>용어</th><th>정의</th></tr>
+<tr style="background:#d4edda"><td><b>A. 취약점(vulnerability)</b></td><td><b>악용될 수 있는 자원의 약점 (통제 가능) ✅</b></td></tr>
+<tr><td>B. 위협(threat)</td><td>피해를 줄 수 있는 사건·상황 — <b>보통 통제 밖</b> ❌</td></tr>
+<tr><td>C. 확률(probability)</td><td>위협 발생 <b>가능성(likelihood)</b> ❌</td></tr>
+<tr><td>D. 영향(impact)</td><td>위협이 취약점을 악용한 <b>결과(outcome)</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: <b>"내부의 약점·결함"</b> = 취약점 — 보안 담당자가 보완할 수 있음 (약한 비밀번호, 미암호화)<br>
+• 핵심 구분: <b>위협=외부 사건(통제 밖) / 취약점=내부 약점(통제 가능) / 확률=발생 가능성 / 영향=결과</b><br>
+• 함정 B: 위협은 해커·악성코드·재해처럼 <b>약점을 노리는 외부 요인</b> (약점 자체가 아님)<br>
+• 관계식: <b>리스크 = 위협이 취약점을 악용할 확률 × 영향</b><br>
+• 시험 패턴: 약한 설정·미암호화·미패치 = <b>취약점</b> / 해킹·악성코드·천재지변 = 위협</div>`,
+reference:"CRM Chapter 2: Risk Terminology — Vulnerability vs. Threat vs. Probability vs. Impact",
+keyConcepts:[
+"취약점(정답)|악용될 수 있는 자원의 약점 — 보안 담당자가 통제·보완 가능",
+"핵심 구분|위협=외부 사건(통제 밖)/취약점=내부 약점(통제 가능)/확률=가능성/영향=결과",
+"함정 B 위협|해커·악성코드·재해 등 약점을 노리는 외부 요인",
+"관계식|리스크 = 위협이 취약점을 악용할 확률 × 영향",
+"시험 패턴|약한 설정·미암호화·미패치=취약점 / 해킹·악성코드·천재지변=위협"
+]
+},
+{
+id:931,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following is the MOST important element for the successful implementation of IT governance?",
+questionKo:"<b>IT 거버넌스의 성공적 구현</b>을 위해 <b>가장 중요한</b> 요소는?",
+options:[
+"A. Implementing an IT scorecard",
+"B. Identifying organizational strategies",
+"C. Performing a risk assessment",
+"D. Creating a formal security policy"
+],
+optionsKo:[
+"A. <b>IT 스코어카드를 구현한다</b>",
+"B. <b>조직의 전략을 식별한다</b>",
+"C. <b>위험 평가를 수행한다</b>",
+"D. <b>공식 보안 정책을 수립한다</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 조직의 전략을 식별</b><br><br>
+<b>핵심:</b> IT 거버넌스의 핵심 목표는 <b>비즈니스 지원</b>이므로, IT와 기업 거버넌스의 정렬을 위해 <b>조직 전략의 식별이 선행</b>되어야 함. 전략 식별 없이는 스코어카드·위험 평가·정책 모두 무의미.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 조직 전략 식별</b></td><td><b>모든 것의 기반 — IT-기업 정렬의 전제 ✅</b></td></tr>
+<tr><td>A. IT 스코어카드</td><td>훌륭한 도구이나 <b>전략 정렬이 더 중요</b> ❌</td></tr>
+<tr><td>C. 위험 평가</td><td>중요하나 <b>조직 전략에 기반</b>해야 함 ❌</td></tr>
+<tr><td>D. 보안 정책 수립</td><td>핵심 요소이나 <b>전략에 기반</b>해야 함 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 거버넌스 = <b>비즈니스 지원</b>이 목표 → 조직 전략 식별이 모든 활동의 출발점·기반<br>
+• 함정 A·C·D: 스코어카드·위험 평가·보안 정책은 모두 <b>조직 전략을 토대로</b> 만들어져야 효과적<br>
+• 우선순위 논리: <b>"무엇을 위한 것인가(전략)"가 "어떻게 할 것인가(도구·평가·정책)"보다 우선</b><br>
+• 시험 패턴: 거버넌스/보안 프로그램 성공 MOST 중요 → <b>조직 전략과의 정렬·식별</b></div>`,
+reference:"CRM Chapter 2: IT Governance Implementation — Alignment with Organizational Strategy",
+keyConcepts:[
+"조직 전략 식별(정답)|거버넌스는 비즈니스 지원이 목표 → 전략 식별이 모든 활동의 기반",
+"함정 A IT 스코어카드|훌륭한 도구이나 전략 정렬이 더 중요",
+"함정 C 위험 평가|중요하나 조직 전략에 기반해야 함",
+"함정 D 보안 정책|핵심 요소이나 전략에 기반해야 함",
+"시험 패턴|거버넌스 성공 MOST 중요 → 조직 전략과의 정렬·식별"
+]
+},
+{
+id:932,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Which of the following is responsible for the approval of an information security policy?",
+questionKo:"<b>정보보안 정책의 승인</b>을 책임지는 주체는?",
+options:[
+"A. IT department",
+"B. Security committee",
+"C. Security administrator",
+"D. Board of directors"
+],
+optionsKo:[
+"A. <b>IT 부서</b>",
+"B. <b>보안 위원회(security committee)</b>",
+"C. <b>보안 관리자(security administrator)</b>",
+"D. <b>이사회(board of directors)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 이사회(board of directors)</b><br><br>
+<b>핵심:</b> 정보보안 정책의 <b>승인</b>은 통상 <b>최고경영진 또는 이사회</b>의 책임. 정책은 조직 최상위에서 권위를 부여받아야 전사적 강제력을 가짐. 나머지는 정책 <b>틀 안에서 실행·운영</b>하는 역할.<br><br>
+<table class="cmp">
+<tr><th>주체</th><th>역할</th></tr>
+<tr style="background:#d4edda"><td><b>D. 이사회</b></td><td><b>정책 승인 — 최상위 권한 ✅</b></td></tr>
+<tr><td>A. IT 부서</td><td>정책 <b>실행(execution)</b> — 정책 수립 권한 없음 ❌</td></tr>
+<tr><td>B. 보안 위원회</td><td>이사회가 정한 <b>정책 틀 안에서 기능</b> ❌</td></tr>
+<tr><td>C. 보안 관리자</td><td>경영진이 승인한 규칙을 <b>구현·모니터링·집행</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: 정책 <b>승인 = 최상위(이사회/최고경영진)</b> 권한 — tone at the top, 전사 강제력 부여<br>
+• 역할 구분: <b>이사회=승인 / 보안위원회=정책 틀 내 의사결정 / 보안 관리자=구현·집행 / IT부서=실행</b><br>
+• 함정 B·C: 위원회·관리자는 <b>승인이 아닌 운영·집행</b> 주체<br>
+• 시험 패턴: 보안 정책 "승인" → <b>이사회/최고경영진</b> / "구현·집행" → 보안 관리자</div>`,
+reference:"CRM Chapter 2: Security Policy — Approved by Board/Top Management",
+keyConcepts:[
+"이사회(정답)|정보보안 정책 승인 = 최고경영진/이사회 책임 — 전사 강제력 부여",
+"역할 구분|이사회=승인 / 보안위원회=정책 틀 내 결정 / 보안관리자=구현·집행 / IT부서=실행",
+"함정 A IT 부서|정책 실행 — 수립·승인 권한 없음",
+"함정 C 보안 관리자|승인된 규칙 구현·모니터링·집행",
+"시험 패턴|보안 정책 승인 → 이사회/최고경영진 / 구현·집행 → 보안 관리자"
+]
+},
+{
+id:933,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"An organization has outsourced its help desk activities. An information systems (IS) auditor's GREATEST concern when reviewing the contract and associated service level agreement between the organization and vendor should be the provisions for:",
+questionKo:"한 조직이 헬프데스크 활동을 아웃소싱했다. 조직과 벤더 간 계약 및 관련 SLA를 검토할 때 IS 감사인의 <b>가장 큰 관심사</b>여야 할 조항은?",
+options:[
+"A. documentation of staff background checks.",
+"B. independent audit reports or full audit access.",
+"C. reporting the year-to-year incremental cost reductions.",
+"D. reporting staff turnover, development or training."
+],
+optionsKo:[
+"A. <b>직원 배경 조사(background check)의 문서화</b>",
+"B. <b>독립적 감사 보고서 또는 완전한 감사 접근권</b>",
+"C. <b>연도별 점진적 비용 절감 보고</b>",
+"D. <b>직원 이직·개발·교육 보고</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 독립적 감사 보고서 또는 완전한 감사 접근권</b><br><br>
+<b>핵심:</b> IT 기능을 아웃소싱하면 감사인은 모든 핵심 영역을 다루는 <b>독립적 감사 보고서</b>가 제공되거나 <b>완전한 감사 접근권(full audit access)</b>이 보장되는 조항을 가장 중시해야 함. 이것이 있어야 벤더의 통제를 지속적으로 검증 가능.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 독립 감사 보고서/감사 접근권</b></td><td><b>벤더 통제 검증 수단 — 가장 중요 ✅</b></td></tr>
+<tr><td>A. 배경 조사 문서화</td><td>필요하나 <b>감사 조항의 일부</b>일 뿐 ❌</td></tr>
+<tr><td>C. 비용 절감 보고</td><td>재무 지표 — <b>감사 접근권보다 덜 중요</b> ❌</td></tr>
+<tr><td>D. 이직·교육 보고</td><td>인적 관리 지표 — <b>감사 접근권보다 덜 중요</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 아웃소싱 계약의 핵심 = <b>"검증할 수 있는가" = 감사권(right to audit)·독립 감사 보고서</b><br>
+• 함정 A: 배경 조사는 중요하나 <b>감사로 확인할 항목 중 하나</b>일 뿐 — 감사 접근권이 더 포괄적<br>
+• 함정 C·D: 비용 절감·인적 지표는 SLA에 있으면 좋으나 <b>통제 검증 수단(감사권)보다 후순위</b><br>
+• 시험 패턴: 아웃소싱 계약/SLA 최대 관심사 → <b>독립 감사 보고서·완전한 감사 접근권(검증 가능성)</b></div>`,
+reference:"CRM Chapter 2: Outsourcing SLA — Right to Audit / Independent Audit Reports",
+keyConcepts:[
+"독립 감사 보고서/감사 접근권(정답)|벤더 통제 지속 검증 수단 — 아웃소싱 계약의 핵심",
+"함정 A 배경 조사 문서화|필요하나 감사로 확인할 항목 중 하나일 뿐",
+"함정 C 비용 절감 보고|재무 지표 — 감사 접근권보다 덜 중요",
+"함정 D 이직·교육 보고|인적 관리 지표 — 감사 접근권보다 덜 중요",
+"시험 패턴|아웃소싱 계약/SLA 최대 관심사 → 감사권(검증 가능성)"
+]
+},
+{
+id:934,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"To gain an understanding of the effectiveness of an organization's planning and management of investments in IT assets, an information systems (IS) auditor should review the:",
+questionKo:"조직의 <b>IT 자산 투자에 대한 계획·관리의 효과성</b>을 이해하기 위해, IS 감사인이 검토해야 할 것은?",
+options:[
+"A. enterprise data model.",
+"B. IT balanced scorecard (BSC).",
+"C. IT organizational structure.",
+"D. historical financial statements."
+],
+optionsKo:[
+"A. <b>전사 데이터 모델(enterprise data model)</b>",
+"B. <b>IT 균형성과표(IT balanced scorecard, BSC)</b>",
+"C. <b>IT 조직 구조</b>",
+"D. <b>과거 재무제표(historical financial statements)</b>"
+],
+correct:1,
+explanation:`<b>정답: B. IT 균형성과표(BSC)</b><br><br>
+<b>핵심:</b> IT BSC는 전통적 재무 평가에 <b>고객 만족·내부 프로세스·혁신 능력</b> 측정을 더해 <b>IT 목표와 비즈니스 목표를 연결</b>하는 도구. 이를 통해 IT 투자·전략의 성공(효과성)을 측정할 수 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. IT BSC</b></td><td><b>IT 투자·전략의 성공을 다차원 측정 ✅</b></td></tr>
+<tr><td>A. 전사 데이터 모델</td><td>데이터 구조 정의 — <b>투자 정보 없음</b> ❌</td></tr>
+<tr><td>C. IT 조직 구조</td><td>기능·보고 관계 개요 — <b>투자 효과성 보장 안 함</b> ❌</td></tr>
+<tr><td>D. 과거 재무제표</td><td>계획 정보 없음 + <b>과거 비용 ≠ 가치</b>(데이터 등 미계상) ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: IT BSC의 4가지 관점 = <b>재무 + 고객 + 내부 프로세스 + 학습·혁신</b> → IT 투자 효과를 다차원으로 평가<br>
+• 함정 D: 과거 재무제표는 <b>비용(과거)만 보여줌 — 계획·가치는 못 봄</b> (데이터 자산은 장부에 없음)<br>
+• 함정 A·C: 데이터 모델·조직 구조는 <b>투자 관리·효과성과 직접 관련 없음</b><br>
+• 시험 패턴: IT 투자·전략 효과성 측정 → <b>IT 균형성과표(BSC)</b></div>`,
+reference:"CRM Chapter 2: IT Balanced Scorecard — Measuring IT Investment Effectiveness",
+keyConcepts:[
+"IT BSC(정답)|재무+고객+내부프로세스+혁신 다차원 측정 → IT 투자·전략 성공 평가",
+"함정 A 전사 데이터 모델|데이터 구조 정의 — 투자 정보 없음",
+"함정 C IT 조직 구조|기능·보고 관계 — 투자 효과성 보장 안 함",
+"함정 D 과거 재무제표|과거 비용만 — 계획·가치 못 봄(데이터 자산 미계상)",
+"시험 패턴|IT 투자·전략 효과성 측정 → IT 균형성과표(BSC)"
+]
+},
+{
+id:935,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"Due to profitability pressure, senior management of an enterprise decided to keep investments in information security at an inadequate level. Which of the following is the BEST recommendation for an information systems (IS) auditor?",
+questionKo:"수익성 압박으로 인해 한 기업의 고위 경영진이 정보보안 투자를 <b>부적절한 수준으로 유지</b>하기로 결정했다. IS 감사인의 <b>가장 좋은 권고</b>는?",
+options:[
+"A. Use cloud providers for low-risk operations.",
+"B. Revise compliance enforcement processes.",
+"C. Request that senior management accept the risk.",
+"D. Postpone low-priority security procedures."
+],
+optionsKo:[
+"A. <b>저위험 업무에는 클라우드 제공자를 사용한다</b>",
+"B. <b>컴플라이언스 집행 프로세스를 수정한다</b>",
+"C. <b>고위 경영진이 그 리스크를 수용(accept)하도록 요청한다</b>",
+"D. <b>우선순위가 낮은 보안 절차를 연기한다</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 고위 경영진이 리스크를 수용하도록 요청</b><br><br>
+<b>핵심:</b> 자원 배분은 경영진의 결정 권한. 보안 수준이 부적절하다고 확인된 이상, 그 결정에서 비롯되는 <b>리스크를 경영진이 공식적으로 수용(risk acceptance)</b>하도록 하는 것이 감사인의 최선 권고. 감사인은 경영진을 대신해 절차를 줄이거나 연기할 수 없음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 경영진 리스크 수용 요청</b></td><td><b>자원 결정은 경영진 몫 → 잔여 리스크 공식 수용 ✅</b></td></tr>
+<tr><td>A. 클라우드 사용</td><td>비용 절감·위험 감소가 <b>보장되지 않음</b> ❌</td></tr>
+<tr><td>B. 컴플라이언스 프로세스 수정</td><td>높은 잔여 리스크를 식별 = <b>정상 작동</b> — 수정 불필요 ❌</td></tr>
+<tr><td>D. 저우선 절차 연기</td><td>경영진 결정 사항 — <b>먼저 리스크 수용이 선행</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 경영진이 의도적으로 보안 투자를 줄였으면 → <b>잔여 리스크를 명시적으로 수용·문서화</b>하게 하는 것이 감사인의 역할<br>
+• 함정 D: 절차 연기/축소는 <b>경영진의 결정</b> — 감사인이 권고할 사항 아니며, 리스크 수용이 우선<br>
+• 함정 B: 컴플라이언스 프로세스가 높은 리스크를 잡아냈다면 <b>잘 작동 중</b> — 수정 대상 아님<br>
+• 핵심 원칙: 통제 결함이 경영 결정에서 비롯되면 → <b>감사인은 리스크를 가시화하고 "수용"을 요구</b><br>
+• 시험 패턴: 경영진이 통제 미흡 결정 → <b>경영진의 공식적 리스크 수용(accept the risk)</b></div>`,
+reference:"CRM Chapter 2: Risk Treatment — Management's Formal Risk Acceptance",
+keyConcepts:[
+"경영진 리스크 수용 요청(정답)|자원 결정은 경영진 몫 → 잔여 리스크 공식 수용·문서화",
+"함정 A 클라우드 사용|비용 절감·위험 감소 보장 안 됨",
+"함정 B 컴플라이언스 수정|높은 리스크 식별 = 정상 작동 — 수정 불필요",
+"함정 D 저우선 절차 연기|경영진 결정 — 리스크 수용이 선행",
+"시험 패턴|경영진이 통제 미흡 결정 → 경영진의 공식적 리스크 수용"
+]
+},
+{
+id:936,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"The PRIMARY control purpose of required vacations or job rotations is to:",
+questionKo:"<b>의무 휴가(required vacations)나 직무순환(job rotation)</b>의 <b>1차적 통제 목적</b>은?",
+options:[
+"A. allow cross-training for development.",
+"B. help preserve employee morale.",
+"C. detect improper or illegal employee acts.",
+"D. provide a competitive employee benefit."
+],
+optionsKo:[
+"A. <b>개발(역량 강화)을 위한 교차 훈련을 가능하게 하는 것</b>",
+"B. <b>직원 사기(morale)를 유지하는 데 도움을 주는 것</b>",
+"C. <b>부적절하거나 불법적인 직원 행위를 탐지하는 것</b>",
+"D. <b>경쟁력 있는 직원 복리후생을 제공하는 것</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 부적절·불법 직원 행위 탐지</b><br><br>
+<b>핵심:</b> 의무 휴가·직무순환은 <b>다른 사람이 그 직무를 대신 수행</b>하게 하여, 진행 중이던 <b>부정·불법 행위(irregularities/fraud)를 탐지</b>하는 통제. 교차 훈련·사기·복리후생은 부수 효과일 뿐 통제 목적이 아님.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 부정·불법 행위 탐지</b></td><td><b>타인이 직무 수행 → 부정 발각 (탐지 통제) ✅</b></td></tr>
+<tr><td>A. 교차 훈련</td><td>BC에 좋으나 <b>의무 휴가로 달성되는 게 아님</b> ❌</td></tr>
+<tr><td>B. 직원 사기 유지</td><td>좋은 관행이나 <b>1차 통제 목적 아님</b> ❌</td></tr>
+<tr><td>D. 복리후생 제공</td><td>복지일 뿐 <b>통제가 아님</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 의무 휴가·직무순환 = <b>탐지 통제(detective control)</b> — 부재 중 타인이 직무를 맡아 부정·오류 발각<br>
+• 핵심: <b>혼자 계속 수행하면 은폐 가능 → 강제로 자리를 비우게 해 노출</b><br>
+• 함정 A·B·D: 교차 훈련·사기·복리후생은 부수 효과 — <b>"통제 목적"은 부정 탐지</b><br>
+• 시험 패턴: required vacation/job rotation 통제 목적 → <b>부정·불법 행위 탐지(fraud detection)</b></div>`,
+reference:"CRM Chapter 2: Required Vacation / Job Rotation — Detective Control for Fraud",
+keyConcepts:[
+"부정·불법 행위 탐지(정답)|타인이 직무 수행 → 진행 중 부정 발각 (탐지 통제)",
+"메커니즘|혼자 계속 수행하면 은폐 가능 → 강제로 자리 비우게 해 노출",
+"함정 A 교차 훈련|BC에 좋으나 의무 휴가로 달성되는 게 아님",
+"함정 B·D 사기·복리후생|부수 효과 — 통제 목적 아님",
+"시험 패턴|required vacation/job rotation 통제 목적 → 부정·불법 행위 탐지"
+]
+},
+{
+id:937,
+domain:"2",
+ks:"2A2 Organizational Structure, IT Governance, and IT Strategy",
+question:"The risk associated with electronic evidence gathering is MOST likely reduced by an email:",
+questionKo:"<b>전자 증거 수집(electronic evidence gathering)</b>과 관련된 리스크를 <b>가장 잘 줄여주는</b> 이메일 정책은?",
+options:[
+"A. destruction policy.",
+"B. security policy.",
+"C. archive policy.",
+"D. audit policy."
+],
+optionsKo:[
+"A. <b>파기(destruction) 정책</b>",
+"B. <b>보안(security) 정책</b>",
+"C. <b>보관(archive) 정책</b>",
+"D. <b>감사(audit) 정책</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 이메일 보관(archive) 정책</b><br><br>
+<b>핵심:</b> 잘 보관(archive)된 이메일 기록이 있어야 <b>법적 요구 시 특정 이메일을 접근·검색·제출</b>할 수 있음. 전자 증거 수집의 핵심 리스크는 "필요한 기록을 못 찾는 것" → 보관 정책이 이를 해소.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 보관(archive) 정책</b></td><td><b>법적 요구 시 이메일 검색·제출 가능 ✅</b></td></tr>
+<tr><td>A. 파기 정책</td><td>삭제 중심 — 오히려 <b>증거 소실 위험</b>(보존과 반대) ❌</td></tr>
+<tr><td>B. 보안 정책</td><td>너무 상위 개념 — <b>보존·접근 리스크를 다루지 않음</b> ❌</td></tr>
+<tr><td>D. 감사 정책</td><td>전자 증거 <b>제출의 법적 요건을 다루지 않음</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 전자 증거 수집 = <b>"필요할 때 기록을 보존·검색·제출할 수 있는가"</b> → 보관(archive)/보존(retention) 정책이 핵심<br>
+• 함정 A: 파기 정책은 보존 정책의 일부지만 <b>증거 수집 리스크를 줄이는 건 보존(archive)</b> 측면 (과도한 삭제는 오히려 위험)<br>
+• 함정 B·D: 보안·감사 정책은 <b>증거 보존·제출이라는 구체적 리스크와 직접 관련 없음</b><br>
+• 시험 패턴: 전자 증거/e-discovery 리스크 → <b>이메일 보관·보존(archive/retention) 정책</b></div>`,
+reference:"CRM Chapter 2: Email Archive/Retention Policy — E-Discovery Risk",
+keyConcepts:[
+"이메일 보관(archive) 정책(정답)|법적 요구 시 이메일 검색·접근·제출 가능 → 증거 수집 리스크 감소",
+"함정 A 파기 정책|삭제 중심 — 오히려 증거 소실 위험(보존과 반대)",
+"함정 B 보안 정책|너무 상위 — 보존·접근 리스크 다루지 않음",
+"함정 D 감사 정책|전자 증거 제출의 법적 요건 다루지 않음",
+"시험 패턴|전자 증거/e-discovery 리스크 → 이메일 보관·보존(archive/retention) 정책"
+]
 }
 
 ];
