@@ -42071,6 +42071,48 @@ keyConcepts:[
 "함정 D 경계 보안 기술 아키텍처|전략 계획에 구체적 기술 아키텍처 미포함",
 "시험 패턴|전략 vs 전술 → 전략은 사업 목표 정렬·고수준, 전술은 비용·공급자·기술 세부"
 ]
+},
+
+{
+id:999,
+domain:"2",
+ks:"2A6 Privacy Program and Principles",
+question:"To ensure that an enterprise is complying with privacy requirements, an information systems (IS) auditor should FIRST review:",
+questionKo:"기업이 <b>개인정보보호(privacy) 요구사항을 준수</b>하는지 확인하기 위해, IS 감사인이 <b>가장 먼저</b> 검토해야 할 것은?",
+options:[
+"A. the IT infrastructure.",
+"B. organizational policies, standards and procedures.",
+"C. legal and regulatory requirements.",
+"D. adherence to organizational policies, standards and procedures."
+],
+optionsKo:[
+"A. <b>IT 인프라</b>",
+"B. <b>조직의 정책·표준·절차</b>",
+"C. <b>법적·규제 요구사항(legal and regulatory requirements)</b>",
+"D. <b>조직의 정책·표준·절차 준수 여부</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 법적·규제 요구사항</b><br><br>
+<b>핵심:</b> 준수 여부를 확인하려면 감사인은 <b>먼저 요구사항이 무엇인지</b> 알아야 함. 개인정보보호 요구사항은 관할권마다 다름. 법적·규제 요구사항을 이해한 후 → 정책·표준·절차가 이를 적절히 다루는지 평가 → 준수 여부 확인 순서.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정·순서</th></tr>
+<tr style="background:#d4edda"><td><b>C. 법적·규제 요구사항</b></td><td><b>FIRST — 무엇을 지켜야 하는지 기준 ✅</b></td></tr>
+<tr><td>A. IT 인프라</td><td>요구사항 <b>구현(implementation)</b> 단계 — 나중 ❌</td></tr>
+<tr><td>B. 정책·표준·절차</td><td>법적 요구에 <b>종속</b> — 법규 검토 후 확인 ❌</td></tr>
+<tr><td>D. 정책 준수 여부</td><td>정책이 법규와 정렬됨을 <b>확인한 후</b>에 점검 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 순서 = <b>법규(기준) → 정책·표준·절차(법규 반영 평가) → 준수 점검 → 인프라(구현)</b><br>
+• 함정 B·D: 정책은 법적 요구에 종속 — <b>법규를 먼저 알아야</b> 정책 적정성·준수를 평가<br>
+• 시험 패턴: 컴플라이언스/프라이버시 감사 FIRST → <b>법적·규제 요구사항(기준 먼저)</b></div>`,
+reference:"CRM Chapter 2: Privacy Compliance — Legal/Regulatory Requirements First",
+keyConcepts:[
+"법적·규제 요구사항(정답)|준수 확인은 기준(법규)부터 / 관할권마다 다름",
+"함정 A IT 인프라|요구사항 구현 단계 — 나중",
+"함정 B 정책·표준·절차|법적 요구에 종속 — 법규 검토 후 확인",
+"함정 D 정책 준수 여부|정책이 법규와 정렬됨을 확인한 후에 점검",
+"시험 패턴|컴플라이언스/프라이버시 감사 FIRST → 법적·규제 요구사항(기준 먼저) / 순서: 법규→정책→준수→인프라"
+]
 }
 
 ];
