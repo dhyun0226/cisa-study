@@ -44349,6 +44349,256 @@ keyConcepts:[
 "함정 D 수용|위험 인정하되 조치 없이 모니터링만",
 "시험 패턴|통제 추가·구현 → 완화(mitigation)"
 ]
+},
+
+{
+id:1053,
+domain:"2",
+ks:"2B3 IT Performance Monitoring and Reporting",
+question:"Which of the following is the MOST important factor for IT management to consider in developing performance metrics?",
+questionKo:"IT 경영진이 <b>성과 지표(performance metrics)</b>를 개발할 때 고려할 <b>가장 중요한</b> 요소는?",
+options:[
+"A. Risk management and compliance with regulations",
+"B. Key IT processes, including solution and service delivery",
+"C. Business contribution, including financials",
+"D. Critical processes in place to meet customer requirements"
+],
+optionsKo:[
+"A. <b>위험 관리 및 규제 준수</b>",
+"B. 솔루션·서비스 제공을 포함한 <b>핵심 IT 프로세스</b>",
+"C. 재무를 포함한 <b>사업 기여도</b>",
+"D. <b>고객 요구사항 충족을 위한 핵심 프로세스</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 고객 요구사항 충족을 위한 핵심 프로세스</b><br><br>
+성과 지표 개발에서 <b>고객 요구사항을 충족하는 핵심 프로세스 식별</b>이 가장 중요하다. 이후 해당 프로세스의 정량화 가능한 산출물을 식별하고, 결과를 평가할 목표치를 설정한다.<br>
+A·B·C는 모두 성과 지표의 <b>한 차원(dimension)</b>일 뿐이다.<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>D 고객 요구 핵심 프로세스</b></td><td>성과 지표 개발의 가장 중요한 측면 — 출발점(정답)</td></tr>
+<tr><td>A 위험·규제 준수</td><td>성과 지표의 한 차원일 뿐</td></tr>
+<tr><td>B 핵심 IT 프로세스</td><td>성과 지표의 한 차원일 뿐</td></tr>
+<tr><td>C 사업 기여도(재무)</td><td>성과 지표의 한 차원일 뿐</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: 성과 지표 개발 핵심 = <b>고객 요구 충족 핵심 프로세스 식별</b><br>
+• 순서: 핵심 프로세스 식별 → 정량 산출물 식별 → 목표치 설정<br>
+• 함정 A·B·C: 위험·IT프로세스·재무는 각각 지표의 한 차원일 뿐<br>
+• 시험 패턴: 성과 지표 가장 중요 → 고객 요구 기반 프로세스(BSC 고객 관점)</div>`,
+reference:"CRM Chapter 2: IT Performance Metrics — Critical Processes for Customer Requirements",
+keyConcepts:[
+"고객 요구 핵심 프로세스(정답)|성과 지표 개발 가장 중요한 측면 — 출발점",
+"순서|핵심 프로세스 식별 → 정량 산출물 식별 → 목표치 설정",
+"함정 A 위험·규제|성과 지표의 한 차원일 뿐",
+"함정 B 핵심 IT 프로세스·함정 C 사업 기여도|각각 한 차원일 뿐",
+"시험 패턴|성과 지표 가장 중요 → 고객 요구 기반 핵심 프로세스"
+]
+},
+
+{
+id:1054,
+domain:"2",
+ks:"2B3 IT Performance Monitoring and Reporting",
+question:"An organization purchased a third-party application and made significant modifications. While auditing the development process for this critical customer-facing application, the information systems (IS) auditor noted that the vendor has been in business for only one year. Which of the following helps to mitigate the risk relating to continued application support?",
+questionKo:"조직이 제3자 애플리케이션을 구매해 상당히 수정했다. 이 핵심 고객 대면 애플리케이션의 개발 프로세스를 감사하던 중, IS 감사인은 <b>벤더가 설립 1년차</b>임을 확인했다. <b>지속적인 애플리케이션 지원</b> 관련 위험을 완화하는 데 도움이 되는 것은?",
+options:[
+"A. Viability study on the vendor",
+"B. Software escrow agreement",
+"C. Financial evaluation of the vendor",
+"D. Contractual agreement for future enhancements"
+],
+optionsKo:[
+"A. 벤더에 대한 <b>존속 가능성(viability) 연구</b>",
+"B. <b>소프트웨어 에스크로(escrow) 계약</b>",
+"C. 벤더에 대한 <b>재무 평가</b>",
+"D. 향후 개선에 대한 <b>계약상 합의</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 소프트웨어 에스크로 계약</b><br><br>
+설립 1년차 벤더의 최대 우려는 재무 안정성·존속성 → <b>폐업 위험</b>. 이를 다루는 최선책은 소스코드 <b>에스크로 계약</b>으로, 벤더가 폐업해도 조직이 소스코드에 접근할 수 있게 한다.<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>B 소프트웨어 에스크로</b></td><td>폐업 시 소스코드 접근권 확보 → 지속 지원 보장(정답)</td></tr>
+<tr><td>A 존속 가능성 연구</td><td>일부 보증은 되나 소스코드 권리 확보가 더 중요</td></tr>
+<tr><td>C 재무 평가</td><td>1년차라 평가 가치 낮음 — 장기 가용성 보증 못 함</td></tr>
+<tr><td>D 향후 개선 계약</td><td>구속력은 있으나 <b>파산 시 집행 불가/제한적</b></td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 벤더 폐업 위험 → <b>소스코드 에스크로</b>(폐업해도 접근 보장)<br>
+• 함정 A·C: 존속성 연구·재무 평가는 1년차 벤더엔 보증 한계<br>
+• 함정 D: 계약은 파산 시 집행 불가 — 실효성 없음<br>
+• 시험 패턴: 벤더 폐업·지속 지원 위험 → 소프트웨어 에스크로</div>`,
+reference:"CRM Chapter 2: Vendor Continuity Risk — Software Escrow Agreement",
+keyConcepts:[
+"소프트웨어 에스크로(정답)|벤더 폐업 시 소스코드 접근권 확보 → 지속 지원 보장",
+"함정 A 존속 가능성 연구|일부 보증되나 소스코드 권리 확보가 더 중요",
+"함정 C 재무 평가|1년차라 평가 가치 낮음 — 장기 가용성 보증 못 함",
+"함정 D 향후 개선 계약|구속력 있으나 파산 시 집행 불가/제한적",
+"시험 패턴|벤더 폐업·지속 지원 위험 → 소프트웨어 에스크로"
+]
+},
+
+{
+id:1055,
+domain:"2",
+ks:"2B3 IT Performance Monitoring and Reporting",
+question:"A top-down approach to the development of operational policies helps to ensure that:",
+questionKo:"운영 정책 개발에 대한 <b>하향식(top-down) 접근</b>은 무엇을 보장하는 데 도움이 되는가?",
+options:[
+"A. they are consistent across the organization.",
+"B. they are implemented as a part of risk assessment.",
+"C. there is compliance with all policies.",
+"D. they are reviewed periodically."
+],
+optionsKo:[
+"A. 정책이 조직 전반에 걸쳐 <b>일관</b>된다",
+"B. 정책이 <b>위험 평가의 일부</b>로 구현된다",
+"C. 모든 정책에 대한 <b>준수</b>가 이루어진다",
+"D. 정책이 <b>주기적으로 검토</b>된다"
+],
+correct:0,
+explanation:`<b>정답: A. 조직 전반에 걸쳐 일관된다</b><br><br>
+전사 정책에서 하위 정책을 도출하는 하향식 접근은 조직 전반 및 다른 정책과의 <b>일관성</b>을 보장하는 데 도움이 된다.<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>A 일관성</b></td><td>전사 정책→하위 정책 도출 → 조직 전반 일관성(정답)</td></tr>
+<tr><td>B 위험 평가 일부 구현</td><td>정책은 위험 평가의 영향을 받으나, 하향식의 주된 이유는 일관성</td></tr>
+<tr><td>C 모든 정책 준수</td><td>하향식만으로는 준수 보장 못 함</td></tr>
+<tr><td>D 주기적 검토</td><td>하향식만으로는 검토 보장 못 함</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 하향식 정책 개발 = 전사→하위 도출 → <b>조직 전반 일관성</b><br>
+• 함정 B·C·D: 위험 평가·준수·검토는 하향식만으로 보장되지 않음<br>
+• 시험 패턴: top-down 정책 → 일관성(consistency)</div>`,
+reference:"CRM Chapter 2: Top-Down Policy Development — Organizational Consistency",
+keyConcepts:[
+"일관성(정답)|하향식=전사 정책에서 하위 도출 → 조직 전반 일관성 보장",
+"함정 B 위험 평가 일부|정책은 위험 평가 영향받으나 하향식 주목적은 일관성",
+"함정 C 모든 정책 준수|하향식만으로 준수 보장 못 함",
+"함정 D 주기적 검토|하향식만으로 검토 보장 못 함",
+"시험 패턴|top-down 정책 개발 → 조직 전반 일관성"
+]
+},
+
+{
+id:1056,
+domain:"2",
+ks:"2B3 IT Performance Monitoring and Reporting",
+question:"A business unit has selected a new accounting application and did not consult with IT early in the selection process. The PRIMARY risk is that the:",
+questionKo:"한 사업부서가 새 회계 애플리케이션을 선정하면서 선정 초기에 IT와 협의하지 않았다. <b>주된 위험</b>은?",
+options:[
+"A. security controls of the application may not meet requirements.",
+"B. application may not meet the requirements of the business users.",
+"C. application technology may be inconsistent with the enterprise architecture.",
+"D. application may create unanticipated support issues for IT."
+],
+optionsKo:[
+"A. 애플리케이션의 <b>보안 통제</b>가 요구사항을 충족하지 못할 수 있다",
+"B. 애플리케이션이 <b>사업 사용자의 요구사항</b>을 충족하지 못할 수 있다",
+"C. 애플리케이션 기술이 <b>엔터프라이즈 아키텍처(EA)와 불일치</b>할 수 있다",
+"D. 애플리케이션이 IT에 <b>예상치 못한 지원 문제</b>를 일으킬 수 있다"
+],
+correct:2,
+explanation:`<b>정답: C. EA와 불일치할 수 있다</b><br><br>
+EA의 핵심은 신규 애플리케이션이 IT 조직의 <b>플랫폼·데이터·개발 표준과 일관</b>되도록 하는 것. IT 협의 없이 선정하면 EA에 없는 DB·OS를 쓸 수 있고, 이는 비용·복잡성을 늘리고 사업에 전달되는 가치를 떨어뜨린다.<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>C EA 불일치</b></td><td>IT 미협의 → 표준 외 기술 채택 → 비용·복잡성↑, 가치↓(정답)</td></tr>
+<tr><td>A 보안 통제 미충족</td><td>요구사항이긴 하나 EA 일관성이 주된 초점</td></tr>
+<tr><td>B 사업 요구 미충족</td><td>오히려 사업부 단독 선정은 <b>자기 업무엔 더 잘 맞춤</b> — 우려 아님</td></tr>
+<tr><td>D 지원 문제</td><td>발생 가능하나 IT 미협의가 지원 요건에 직접 영향 주지 않음</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 사업부 단독 선정 주된 위험 = <b>EA(표준)와의 불일치</b><br>
+• 함정 B: 단독 선정은 자기 업무엔 더 잘 맞음 → 사업 요구 미충족은 우려 아님<br>
+• 시험 패턴: IT 미협의 애플리케이션 선정 → EA 일관성 위험</div>`,
+reference:"CRM Chapter 2: Enterprise Architecture — Consistency Risk in Unilateral App Selection",
+keyConcepts:[
+"EA 불일치(정답)|IT 미협의 → 표준 외 기술 채택 → 비용·복잡성↑·가치↓",
+"함정 A 보안 통제 미충족|요구사항이나 EA 일관성이 주된 초점",
+"함정 B 사업 요구 미충족|단독 선정은 자기 업무엔 더 잘 맞음 — 우려 아님",
+"함정 D 지원 문제|발생 가능하나 IT 미협의가 지원 요건에 직접 영향 안 줌",
+"시험 패턴|IT 미협의 앱 선정 주된 위험 → EA(표준)와 불일치"
+]
+},
+
+{
+id:1057,
+domain:"2",
+ks:"2B3 IT Performance Monitoring and Reporting",
+question:"An information systems (IS) auditor of a large organization is reviewing the roles and responsibilities of the IT function and finds some individuals serving multiple roles. Which one of the following combinations of roles should be of GREATEST concern for the IS auditor?",
+questionKo:"대규모 조직의 IS 감사인이 IT 기능의 역할·책임을 검토하던 중 일부 개인이 <b>복수 역할</b>을 수행함을 발견했다. 감사인이 <b>가장 우려</b>해야 할 역할 조합은?",
+options:[
+"A. Network administrators are responsible for quality assurance.",
+"B. System administrators are application programmers.",
+"C. End users are security administrators for critical applications.",
+"D. Systems analysts are database administrators (DBAs)."
+],
+optionsKo:[
+"A. <b>네트워크 관리자</b>가 <b>품질보증(QA)</b>을 담당",
+"B. <b>시스템 관리자</b>가 <b>애플리케이션 프로그래머</b>를 겸함",
+"C. <b>최종 사용자</b>가 핵심 애플리케이션의 <b>보안 관리자</b>",
+"D. <b>시스템 분석가</b>가 <b>데이터베이스 관리자(DBA)</b>를 겸함"
+],
+correct:1,
+explanation:`<b>정답: B. 시스템 관리자가 애플리케이션 프로그래머를 겸함</b><br><br>
+시스템 권한과 프로그래밍 권한을 모두 가진 사람은 시스템에서 거의 모든 일(예: <b>백도어 생성</b>)을 할 수 있어 권한 남용 위험이 사실상 무제한이다 → 직무분리(SoD) 관점에서 가장 심각.<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>B 시스템관리+프로그래머</b></td><td>두 권한 결합 → 백도어 등 무제한 남용 가능(정답)</td></tr>
+<tr><td>A 네트워크관리+QA</td><td>자기 작업 승인 우려 있으나 B보다 덜 심각</td></tr>
+<tr><td>C 최종사용자+보안관리</td><td>소규모 분산 환경에선 사용자가 보안 관리 가능 — 허용 가능</td></tr>
+<tr><td>D 시스템분석가+DBA</td><td>DBA는 특권적이나 분석가와 충돌 없음 — SoD상 유효</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: <b>시스템관리+프로그래밍</b> = 백도어 등 무제한 남용 → 최대 우려<br>
+• 함정 A: QA 자기승인 우려 있으나 B보다 경미<br>
+• 함정 C·D: 소규모 환경 보안관리·DBA 겸직은 SoD상 허용 가능<br>
+• 시험 패턴: SoD 최대 우려 → 시스템 권한+개발 권한 결합</div>`,
+reference:"CRM Chapter 2: Separation of Duties — System Admin + Programmer Conflict",
+keyConcepts:[
+"시스템관리+프로그래머(정답)|두 권한 결합 → 백도어 등 무제한 남용 가능",
+"함정 A 네트워크관리+QA|자기승인 우려 있으나 B보다 경미",
+"함정 C 사용자+보안관리|소규모 분산 환경선 허용 가능",
+"함정 D 분석가+DBA|DBA 특권적이나 분석가와 충돌 없음 — SoD상 유효",
+"시험 패턴|SoD 최대 우려 → 시스템 권한+개발(프로그래밍) 권한 결합"
+]
+},
+
+{
+id:1058,
+domain:"2",
+ks:"2B3 IT Performance Monitoring and Reporting",
+question:"The effectiveness and efficiency of IT governance are dependent FIRST in quality management of:",
+questionKo:"IT 거버넌스의 효과성과 효율성은 <b>가장 먼저</b> 무엇의 품질 관리에 달려 있는가?",
+options:[
+"A. strategies and policies.",
+"B. processes and procedures.",
+"C. functions and services.",
+"D. roles and responsibilities."
+],
+optionsKo:[
+"A. <b>전략과 정책</b>",
+"B. <b>프로세스와 절차</b>",
+"C. <b>기능과 서비스</b>",
+"D. <b>역할과 책임</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 전략과 정책</b><br><br>
+전략과 정책은 IT 거버넌스에 내재된 품질 관리의 <b>첫 번째 building block</b>이다. 정책이 먼저 정의되고, 이를 적절한 프로세스·절차가 뒷받침하며, 기능·서비스가 그 위에서 운영되고, 역할·책임은 이 모든 것에 기반해 명확해진다.<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>A 전략·정책</b></td><td>품질 관리의 첫 building block(정답)</td></tr>
+<tr><td>B 프로세스·절차</td><td>정책을 <b>뒷받침</b> — 정책 다음</td></tr>
+<tr><td>C 기능·서비스</td><td>전략·정책에 의해 관리·지시됨</td></tr>
+<tr><td>D 역할·책임</td><td>전략·정책·프로세스·절차에 <b>기반</b>해 명확해짐</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: IT 거버넌스 품질 관리 1순위 = <b>전략·정책</b>(최상위 building block)<br>
+• 위계: 전략·정책 → 프로세스·절차 → 기능·서비스 → 역할·책임<br>
+• 시험 패턴: 거버넌스 효과성 "FIRST" → 전략·정책부터</div>`,
+reference:"CRM Chapter 2: IT Governance — Quality Management Starts with Strategies/Policies",
+keyConcepts:[
+"전략·정책(정답)|IT 거버넌스 품질 관리의 첫 building block",
+"위계|전략·정책 → 프로세스·절차 → 기능·서비스 → 역할·책임",
+"함정 B 프로세스·절차|정책을 뒷받침 — 정책 다음",
+"함정 C 기능·서비스·함정 D 역할·책임|전략·정책에 기반해 도출",
+"시험 패턴|거버넌스 효과성 FIRST → 전략·정책부터"
+]
 }
 
 ];
