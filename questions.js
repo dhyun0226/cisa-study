@@ -44599,6 +44599,187 @@ keyConcepts:[
 "함정 C 기능·서비스·함정 D 역할·책임|전략·정책에 기반해 도출",
 "시험 패턴|거버넌스 효과성 FIRST → 전략·정책부터"
 ]
+},
+
+{
+id:1059,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"Organizations requiring employees to take a mandatory vacation each year PRIMARILY want to ensure that:",
+questionKo:"매년 직원에게 <b>의무 휴가(mandatory vacation)</b>를 강제하는 조직이 <b>주로</b> 보장하고자 하는 것은?",
+options:[
+"A. adequate cross-training exists between functions.",
+"B. an effective internal control environment is in place by increasing morale.",
+"C. potential irregularities in processing are identified by a temporary replacement.",
+"D. the risk of processing errors is reduced."
+],
+optionsKo:[
+"A. 기능 간 적절한 <b>교차 훈련(cross-training)</b>이 존재한다",
+"B. 사기 진작을 통해 효과적인 <b>내부통제 환경</b>이 마련된다",
+"C. 처리 과정의 잠재적 <b>부정·이상이 임시 대체자에 의해 식별</b>된다",
+"D. 처리 <b>오류</b>의 위험이 감소된다"
+],
+correct:2,
+explanation:`<b>정답: C. 처리 과정의 잠재적 부정·이상이 임시 대체자에 의해 식별된다</b><br><br>
+핵심·민감 업무 담당자에게 휴가를 강제하면, 그 자리를 임시 대체자가 맡아 <b>부정(fraud)·이상거래를 적발</b>할 수 있다 → 의무 휴가의 주된 목적(탐지 통제).<br><br>
+<table class="cmp">
+<tr style="background:#d4edda"><td><b>C 부정·이상 식별</b></td><td>임시 대체자가 은폐된 부정 적발 → 의무 휴가 주목적(정답)</td></tr>
+<tr><td>A 교차 훈련</td><td>좋은 관행이나 의무 휴가 없이도 달성 가능</td></tr>
+<tr><td>B 사기 진작</td><td>가치 있는 목표이나 내부통제 수단으로 보긴 어려움</td></tr>
+<tr><td>D 처리 오류 감소</td><td>기여할 수 있으나 의무 휴가의 통상적 이유 아님</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 의무 휴가 주목적 = <b>부정 적발</b>(임시 대체자가 은폐 발견)<br>
+• 함정 A·B·D: 교차훈련·사기·오류감소는 부수 효과 — 주목적 아님<br>
+• 시험 패턴: 의무 휴가/직무순환 → 부정 탐지(detective control)</div>`,
+reference:"CRM Chapter 2: Mandatory Vacation — Detective Control for Fraud/Irregularities",
+keyConcepts:[
+"부정·이상 식별(정답)|의무 휴가 주목적 — 임시 대체자가 은폐된 부정 적발",
+"함정 A 교차 훈련|좋은 관행이나 의무 휴가 없이도 달성 가능",
+"함정 B 사기 진작|가치 있으나 내부통제 수단으로 보긴 어려움",
+"함정 D 처리 오류 감소|기여 가능하나 의무 휴가의 통상적 이유 아님",
+"시험 패턴|의무 휴가·직무순환 → 부정 탐지(detective control)"
+]
+},
+
+{
+id:1060,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"Errors in audit procedures PRIMARILY impact which type of risk?",
+questionKo:"감사 절차상의 오류는 <b>주로 어떤 유형의 위험</b>에 영향을 미치는가?",
+options:["A. Detection risk","B. Inherent risk","C. Control risk","D. Business risk"],
+optionsKo:["A. <b>적발위험(Detection risk)</b>","B. <b>고유위험(Inherent risk)</b>","C. <b>통제위험(Control risk)</b>","D. <b>사업위험(Business risk)</b>"],
+correct:0,
+explanation:`<b>정답: A. 적발위험(Detection risk)</b><br><br>적발위험은 <b>감사 절차가 중요한 오류나 부정을 발견하지 못할 확률</b>로, 감사인이 수행하는 절차의 품질에 직접 좌우된다. 따라서 <b>감사 절차상의 오류</b>는 곧바로 적발위험에 영향을 준다.<table class="cmp"><tr style="background:#d4edda"><td><b>A 적발위험</b></td><td>감사 절차가 중요 오류·부정을 놓칠 위험 → 감사인 통제 영역</td></tr><tr><td>B 고유위험</td><td>업무·거래의 본질적 위험, 통제 적용 전 존재 → 감사 절차와 무관</td></tr><tr><td>C 통제위험</td><td>내부통제가 오류를 예방·적시 적발하지 못할 위험 → 조직의 통제 영역</td></tr><tr><td>D 사업위험</td><td>전략·규정준수·운영·평판 위험 포괄, 감사위험의 구성요소 아님</td></tr></table><div class="sbox">감사위험 = 고유위험 × 통제위험 × 적발위험. 이 중 <b>감사인이 직접 조정·통제할 수 있는 것은 적발위험뿐</b>이다(절차·표본 크기 조정). 고유·통제위험은 조직 측 요인.</div>`,
+reference:"CRM Chapter 2: Audit Risk Components",
+keyConcepts:["적발위험(정답)|감사 절차가 중요 오류·부정을 놓칠 확률 → 감사인이 통제","고유위험|업무 본질적 위험, 통제 전 존재","통제위험|내부통제가 적시 예방·적발 실패","함정 D 사업위험|감사위험 구성요소 아님","시험 패턴|감사 절차 오류 → 적발위험"]
+},
+
+{
+id:1061,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"An information systems (IS) auditor is reviewing a contract management process to determine the financial viability of a software vendor for a critical business application. An IS auditor should determine whether the vendor being considered:",
+questionKo:"IS 감사인이 핵심 업무 애플리케이션 소프트웨어 공급업체의 <b>재무적 존속가능성</b>을 파악하기 위해 계약 관리 프로세스를 검토하고 있다. 감사인은 고려 중인 공급업체가 다음 중 무엇이 가능한지를 확인해야 하는가?",
+options:["A. can deliver on the immediate contract.","B. is of similar financial standing as the organization.","C. has significant financial obligations that can impose liability to the organization.","D. can support the organization in the long term."],
+optionsKo:["A. <b>당장의 계약을 이행</b>할 수 있는지","B. 조직과 <b>유사한 재무 상태</b>인지","C. 조직에 책임을 지울 수 있는 <b>중대한 재무적 의무</b>를 지고 있는지","D. <b>장기적으로</b> 조직을 지원할 수 있는지"],
+correct:3,
+explanation:`<b>정답: D. 장기적으로 조직을 지원할 수 있는지</b><br><br>핵심 업무 애플리케이션의 경우, 재무 평가의 목적은 <b>당장의 계약</b>이 아니라 <b>장기간 지속 지원 능력</b>을 보증하는 데 있다. 재무적으로 건전한 공급업체일수록 오래 사업을 유지하며 제품에 대한 장기 지원을 제공할 가능성이 높다.<table class="cmp"><tr><td>A 당장의 계약 이행</td><td>최소 요건일 뿐, 재무 존속가능성 평가의 목적은 즉시 계약 너머까지 확장돼야 함</td></tr><tr><td>B 유사한 재무 상태</td><td>구매자와 공급업체의 재무 규모 비교는 본 검토와 무관</td></tr><tr><td>C 중대한 재무 의무 보유</td><td>오히려 부정적 신호 — 재무 의무는 통상 구매자→공급업체 방향</td></tr><tr style="background:#d4edda"><td><b>D 장기 지원 가능</b></td><td>재무 존속가능성의 핵심 → 장기 가치·지원 보장</td></tr></table><div class="sbox">"financial viability(재무 존속가능성)" 키워드 → <b>장기 지속성</b>으로 직결. 즉시 계약 이행 능력(A)은 함정.</div>`,
+reference:"CRM Chapter 2: Vendor Management — Financial Viability",
+keyConcepts:["장기 지원 가능(정답)|재무 존속가능성 = 장기 지속성·지원 보장","함정 A 당장 계약 이행|최소 요건, 즉시 계약 너머까지 평가해야","함정 B 유사 재무 상태|구매자-공급업체 규모 비교 무관","함정 C 중대 재무 의무|오히려 부정 신호","시험 패턴|financial viability → 장기 존속·지원"]
+},
+
+{
+id:1062,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"The development, implementation and integration of capability and maturity modeling quality tools, techniques and processes will MAINLY facilitate and foster the quality of:",
+questionKo:"역량·성숙도 모델링(capability and maturity modeling) 품질 도구·기법·프로세스의 개발·구현·통합은 <b>주로</b> 무엇의 품질을 촉진·증진하는가?",
+options:["A. enterprise IT strategies and policies.","B. enterprise IT processes and procedures.","C. enterprise IT governance.","D. enterprise IT standards and frameworks."],
+optionsKo:["A. 기업 IT <b>전략 및 정책</b>","B. 기업 IT <b>프로세스 및 절차</b>","C. 기업 IT <b>거버넌스</b>","D. 기업 IT <b>표준 및 프레임워크</b>"],
+correct:2,
+explanation:`<b>정답: C. 기업 IT 거버넌스</b><br><br>역량·성숙도 모델링 품질 도구·기법·프로세스를 개발·통합하면 <b>IT 거버넌스 자체</b>가 향상되고, 거버넌스가 개선되면 그 구성요소인 <b>전략·정책·프로세스·절차·표준</b>이 모두 함께 향상된다. 즉 거버넌스가 최상위 포괄 개념이므로 가장 적절한 답이다.<table class="cmp"><tr><td>A 전략·정책</td><td>거버넌스의 구성요소 — 거버넌스 향상 시 함께 개선됨</td></tr><tr><td>B 프로세스·절차</td><td>거버넌스가 방향을 제시하는 하위 요소</td></tr><tr style="background:#d4edda"><td><b>C IT 거버넌스</b></td><td>품질 성숙도 향상의 최상위 결실 → 모든 구성요소 견인</td></tr><tr><td>D 표준·프레임워크</td><td>거버넌스 강화 시 유지·개선되는 하위 요소</td></tr></table><div class="sbox">"MAINLY" + 역량/성숙도 모델 → <b>가장 포괄적 상위 개념(거버넌스)</b> 선택. 나머지 보기는 모두 거버넌스에 종속되는 building block.</div>`,
+reference:"CRM Chapter 2: Quality Management & Maturity Models",
+keyConcepts:["IT 거버넌스(정답)|성숙도 향상의 최상위 결실, 모든 구성요소 견인","함정 A/B/D|전략·프로세스·표준은 거버넌스의 하위 구성요소","성숙도 모델|역량·품질 개선 → 거버넌스 향상","시험 패턴|MAINLY → 가장 포괄적 상위 개념 선택"]
+},
+
+{
+id:1063,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"The PRIMARY goal of using maturity models in (information systems (IS)) is to:",
+questionKo:"정보시스템(IS)에서 <b>성숙도 모델</b>을 사용하는 주된 목적은?",
+options:["A. measure the current maturity levels of a certain aspect of an IS organization in a meaningful way.","B. prioritize what the organization should do to reach higher maturity levels.","C. help gain senior management understanding, commitment and support for IS.","D. enable stakeholders to clearly identify strengths and areas of improvement."],
+optionsKo:["A. IS 조직의 특정 측면의 <b>현재 성숙도를 의미 있게 측정</b>","B. 더 높은 성숙도 도달을 위해 할 일의 <b>우선순위 결정</b>","C. IS에 대한 경영진의 이해·헌신·지원 확보","D. 이해관계자가 <b>강점과 개선 영역을 명확히 식별</b>하게 함"],
+correct:3,
+explanation:`<b>정답: D. 이해관계자가 강점과 개선 영역을 명확히 식별하게 함</b><br><br>성숙도 모델의 궁극적 목적은 단순 측정에 그치지 않고, 측정 결과를 통해 <b>이해관계자가 IS의 강점과 개선이 필요한 영역을 명확히 파악</b>하게 하는 것이다. 측정(A)은 수단이고, 우선순위 결정(B)·경영진 지원 확보(C)는 식별 이후 단계다.<table class="cmp"><tr><td>A 현재 성숙도 측정</td><td>목적 달성을 위한 <b>수단</b>일 뿐</td></tr><tr><td>B 개선 우선순위 결정</td><td>어느 부분이 주목 필요한지 안 <b>이후</b> 단계</td></tr><tr><td>C 경영진 지원 확보</td><td>측정·식별·우선순위 결정 이후 단계</td></tr><tr style="background:#d4edda"><td><b>D 강점·개선영역 식별</b></td><td>성숙도 모델 사용의 핵심 목적</td></tr></table><div class="sbox">순서: 측정(A) → <b>강점·개선영역 식별(D, 목적)</b> → 우선순위(B) → 경영진 지원(C). "측정"은 매력적 함정이나 그 자체가 목적은 아니다.</div>`,
+reference:"CRM Chapter 2: Maturity Models — Purpose",
+keyConcepts:["강점·개선영역 식별(정답)|성숙도 모델 사용의 핵심 목적","함정 A 측정|수단일 뿐, 목적 아님","우선순위 B·경영진 C|식별 이후의 후속 단계","순서|측정→식별(목적)→우선순위→지원확보","시험 패턴|PRIMARY goal → 측정 자체 아닌 '식별·통찰'"]
+},
+
+{
+id:1064,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"An information systems (IS) auditor observes that an enterprise has outsourced software development to a third-party start-up organization. To ensure that the enterprise's investment in software is protected, which of the following should be recommended by the IS auditor?",
+questionKo:"기업이 소프트웨어 개발을 <b>신생(start-up) 제3자</b>에게 아웃소싱한 것을 IS 감사인이 관찰했다. 기업의 소프트웨어 투자를 보호하기 위해 감사인이 권고해야 할 것은?",
+options:["A. Due diligence should be performed on the software vendor.","B. A quarterly audit of the vendor facilities should be performed.","C. There should be a source code escrow agreement in place.","D. A high penalty clause should be included in the contract."],
+optionsKo:["A. 소프트웨어 공급업체에 대한 <b>실사(due diligence)</b> 수행","B. 공급업체 시설에 대한 <b>분기별 감사</b> 수행","C. <b>소스 코드 에스크로 계약</b> 체결","D. 계약에 <b>높은 위약금 조항</b> 포함"],
+correct:2,
+explanation:`<b>정답: C. 소스 코드 에스크로 계약</b><br><br>신생 업체는 도산 위험이 높다. 소스 코드 에스크로는 신뢰할 수 있는 제3자에게 소스 코드를 보관시켜, <b>공급업체가 폐업해도 소스 코드를 회수해 지원·유지보수를 지속</b>할 수 있게 한다. 따라서 소프트웨어 투자 보호에 직접 기여한다.<table class="cmp"><tr><td>A 실사</td><td>계약 전 위험 식별엔 좋으나, 도산 시 <b>소스 코드 가용성을 보장하지 못함</b></td></tr><tr><td>B 분기별 시설 감사</td><td>지속 평가엔 유용하나 도산 시 코드 확보 불가</td></tr><tr style="background:#d4edda"><td><b>C 소스 코드 에스크로</b></td><td>도산 시에도 코드 회수 → 지속 지원·투자 보호</td></tr><tr><td>D 높은 위약금</td><td>계약 위반 시 벌칙일 뿐, 도산 시 코드 가용성 보장 못 함</td></tr></table><div class="sbox">"신생 업체 + 투자 보호 + 소프트웨어" → <b>소스 코드 에스크로</b>가 정석. 도산·폐업 시 소스 코드 가용성 확보가 핵심.</div>`,
+reference:"CRM Chapter 2: Source Code Escrow — Vendor Continuity",
+keyConcepts:["소스 코드 에스크로(정답)|도산 시 코드 회수 → 지속 지원·투자 보호","함정 A 실사|계약 전 위험 식별, 코드 가용성 보장 못 함","함정 B 분기 감사|지속 평가용, 도산 대비 안 됨","함정 D 위약금|계약 위반 벌칙, 코드 확보 무관","시험 패턴|신생업체+투자보호 → 소스코드 에스크로"]
+},
+
+{
+id:1065,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"An information systems (IS) auditor is reviewing the risk management process. Which of the following is the MOST important consideration during this review?",
+questionKo:"IS 감사인이 <b>위험 관리 프로세스</b>를 검토하고 있다. 이 검토에서 <b>가장 중요한</b> 고려사항은?",
+options:["A. Controls are implemented based on cost-benefit analysis.","B. The risk management framework is based on global standards.","C. The approval process for risk response is in place.","D. IT risk is presented in business terms."],
+optionsKo:["A. 통제가 <b>비용-편익 분석</b>에 기반해 구현된다","B. 위험 관리 프레임워크가 <b>글로벌 표준</b>에 기반한다","C. 위험 대응에 대한 <b>승인 프로세스</b>가 마련되어 있다","D. IT 위험이 <b>비즈니스 용어</b>로 제시된다"],
+correct:3,
+explanation:`<b>정답: D. IT 위험이 비즈니스 용어로 제시된다</b><br><br>위험 관리가 효과적이려면 <b>IT 위험을 비즈니스 목표와 정렬</b>해야 하며, 그러려면 모두가 이해하는 용어, 즉 비즈니스 용어로 IT 위험을 표현하는 것이 가장 중요하다. 이것이 전제되어야 다른 활동들도 의미를 갖는다.<table class="cmp"><tr><td>A 비용-편익 기반 통제</td><td>중요하나, 위험이 <b>비즈니스 용어로 표현되어야</b> 비용-편익 분석이 유효</td></tr><tr><td>B 글로벌 표준 기반</td><td>완전성엔 도움되나 조직 특성에 맞게 조정 필요</td></tr><tr><td>C 위험 대응 승인 프로세스</td><td>프로세스 <b>후반</b> 단계에 해당</td></tr><tr style="background:#d4edda"><td><b>D 비즈니스 용어로 제시</b></td><td>IT 위험-비즈니스 목표 정렬의 핵심 전제</td></tr></table><div class="sbox">위험 관리의 효과성은 <b>경영진·이해관계자와의 소통</b>에서 출발한다. 기술 용어가 아닌 비즈니스 용어로 위험을 표현해야 의사결정·비용편익 분석이 모두 성립.</div>`,
+reference:"CRM Chapter 2: Risk Management — Business Alignment",
+keyConcepts:["비즈니스 용어로 제시(정답)|IT 위험-비즈니스 목표 정렬의 전제","함정 A 비용-편익|위험이 비즈니스 용어로 표현돼야 유효","함정 B 글로벌 표준|조직 특성 맞게 조정 필요","함정 C 승인 프로세스|프로세스 후반 단계","시험 패턴|위험관리 MOST important → 비즈니스 정렬·소통"]
+},
+
+{
+id:1066,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"Which of the following BEST describes the function of control self-assessment?",
+questionKo:"다음 중 <b>통제 자가평가(control self-assessment, CSA)</b>의 기능을 가장 잘 설명하는 것은?",
+options:["A. Quality control","B. Quality assessment","C. Quality planning","D. Quality assurance (QA)"],
+optionsKo:["A. <b>품질 관리(Quality control)</b>","B. <b>품질 평가(Quality assessment)</b>","C. <b>품질 계획(Quality planning)</b>","D. <b>품질 보증(Quality assurance, QA)</b>"],
+correct:3,
+explanation:`<b>정답: D. 품질 보증(QA)</b><br><br>QA는 IS 감사인이 <b>컨설턴트 역할</b>로서 업무 부서가 프로세스 개선과 통제에 직접 참여하도록 자문·촉진하는 활동이다. <b>통제 자가평가(CSA)</b>가 바로 그 대표적 접근법으로, QA의 기능에 해당한다.<table class="cmp"><tr><td>A 품질 관리(QC)</td><td>품질 요구사항 충족에 초점 — 결과물·서비스를 <b>모니터링·평가</b></td></tr><tr><td>B 품질 평가</td><td>사전 기준 대비 적합도를 데이터 수집·분석으로 입증</td></tr><tr><td>C 품질 계획</td><td>목표 달성 가능한 프로세스·서비스를 <b>설계</b></td></tr><tr style="background:#d4edda"><td><b>D 품질 보증(QA)</b></td><td>업무부서의 프로세스 개선 참여를 자문·촉진 → CSA가 대표 기법</td></tr></table><div class="sbox">CSA = 업무 담당자가 스스로 통제를 평가하고 개선에 <b>참여</b>하게 만드는 촉진(facilitation) 활동 → QA. QC(결과 검사)·평가(적합도 측정)·계획(설계)과 구분.</div>`,
+reference:"CRM Chapter 2: Control Self-Assessment & Quality Management",
+keyConcepts:["품질 보증 QA(정답)|업무부서 참여 자문·촉진, CSA가 대표 기법","함정 A 품질 관리 QC|결과물·서비스 모니터링·평가","함정 B 품질 평가|기준 대비 적합도 측정","함정 C 품질 계획|프로세스·서비스 설계","시험 패턴|CSA → QA(촉진·참여 유도)"]
+},
+
+{
+id:1067,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"Which of the following reasons BEST describes the purpose of a mandatory vacation policy?",
+questionKo:"다음 중 <b>의무 휴가 정책</b>의 목적을 가장 잘 설명하는 것은?",
+options:["A. To ensure that employees are properly cross-trained in multiple functions.","B. To improve employee morale.","C. To identify potential errors or inconsistencies in business processes.","D. To be used as a cost-saving measure."],
+optionsKo:["A. 직원들이 여러 기능에 걸쳐 적절히 <b>교차 훈련</b>되도록 보장하기 위해","B. 직원 <b>사기 진작</b>을 위해","C. 업무 프로세스의 잠재적 <b>오류·불일치를 식별</b>하기 위해","D. <b>비용 절감</b> 수단으로 사용하기 위해"],
+correct:2,
+explanation:`<b>정답: C. 업무 프로세스의 잠재적 오류·불일치 식별</b><br><br>의무 휴가는 담당자가 자리를 비운 동안 <b>부정·불일치를 드러내는</b> 탐지 통제다. 민감한 내부통제·프로세스 접근 권한자에게 연 1회 의무 휴가를 강제하는 것은 흔히 규제 요건이며, 무엇보다 <b>부정 적발</b>의 효과적 수단이다.<table class="cmp"><tr><td>A 교차 훈련</td><td>역량 향상·승계 계획엔 도움되나 주목적 아님</td></tr><tr><td>B 사기 진작</td><td>번아웃 완화엔 도움되나 주목적 아님</td></tr><tr style="background:#d4edda"><td><b>C 오류·불일치 식별</b></td><td>부정·이상 적발 → 의무 휴가의 핵심 목적(탐지 통제)</td></tr><tr><td>D 비용 절감</td><td>기업에 따라 다르며 정책의 주목적 아님</td></tr></table><div class="sbox">[[id 1059]]와 동일 개념. 의무 휴가·직무 순환 → <b>부정/이상 탐지(detective control)</b>. 나머지는 부수 효과.</div>`,
+reference:"CRM Chapter 2: Mandatory Vacation — Detective Control",
+keyConcepts:["오류·불일치 식별(정답)|부정·이상 적발하는 탐지 통제","함정 A 교차 훈련|역량·승계엔 도움, 주목적 아님","함정 B 사기 진작·D 비용 절감|부수 효과일 뿐","의무 휴가·직무 순환|부정 탐지(detective control)","시험 패턴|mandatory vacation → 부정·이상 적발"]
+},
+
+{
+id:1068,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"The corporate IT policy for a call center requires that all users be assigned unique user accounts. On discovering that this is not the case for all current users, what is the MOST appropriate recommendation?",
+questionKo:"콜센터의 회사 IT 정책은 모든 사용자에게 <b>고유 사용자 계정</b>을 할당하도록 요구한다. 현재 일부 사용자가 그렇지 않다는 것을 발견했을 때, <b>가장 적절한</b> 권고는?",
+options:["A. Have the current configuration approved by operations management.","B. Ensure that there is an audit trail for all existing accounts.","C. Implement individual user accounts for all staff.","D. Amend the IT policy to allow shared accounts."],
+optionsKo:["A. 현재 구성을 <b>운영 관리자에게 승인</b>받는다","B. 모든 기존 계정에 대한 <b>감사 추적</b>을 보장한다","C. 모든 직원에게 <b>개별 사용자 계정</b>을 구현한다","D. 공유 계정을 허용하도록 <b>IT 정책을 개정</b>한다"],
+correct:2,
+explanation:`<b>정답: C. 모든 직원에게 개별 사용자 계정 구현</b><br><br>고유 계정은 거래에 대한 <b>책임 추적성(accountability)</b>을 가능하게 하며, 현재 상황에서 정책 준수와 모범 관행을 동시에 만족시키는 가장 적절한 권고다.<table class="cmp"><tr><td>A 현 구성 승인</td><td>회사 자체 정책 위반을 추인하는 것 → 모범 관행 위배</td></tr><tr><td>B 감사 추적 보장</td><td>공유 계정의 감사 추적은 <b>책임 추적성 미해결</b>, 정책 위반 그대로</td></tr><tr style="background:#d4edda"><td><b>C 개별 계정 구현</b></td><td>책임 추적성 확보 + 정책 준수</td></tr><tr><td>D 정책 개정(공유 허용)</td><td>공유 계정은 책임 추적성 없음 → 모범 관행 아님</td></tr></table><div class="sbox">정책 위반 발견 시 → <b>정책에 맞추도록 시정(C)</b>이 원칙. 정책을 위반 상태에 맞춰 완화(A·D)하는 것은 함정. 공유 계정은 accountability 부재가 핵심 문제.</div>`,
+reference:"CRM Chapter 2: User Account Management — Accountability",
+keyConcepts:["개별 계정 구현(정답)|책임 추적성 확보 + 정책 준수","함정 A 현 구성 승인|정책 위반 추인, 모범관행 위배","함정 B 감사 추적|공유 계정은 책임 추적성 미해결","함정 D 정책 개정|공유 계정 = accountability 없음","시험 패턴|정책 위반 발견 → 정책에 맞춰 시정(완화 아님)"]
+},
+
+{
+id:1069,
+domain:"2",
+ks:"2B4 Quality Assurance and Quality Management of IT",
+question:"A financial services enterprise has a small IT department, and individuals perform more than one role. Which of the following practices represents the GREATEST risk?",
+questionKo:"한 금융 서비스 기업의 IT 부서는 규모가 작아 개인이 둘 이상의 역할을 수행한다. 다음 중 <b>가장 큰 위험</b>을 나타내는 관행은?",
+options:["A. The developers promote code into the production environment.","B. The business analyst writes the requirements and performs functional testing.","C. The IT manager also performs systems administration.","D. The database administrator (DBA) also performs data backups."],
+optionsKo:["A. <b>개발자가 운영 환경으로 코드를 이관(promote)</b>한다","B. 비즈니스 분석가가 요구사항을 작성하고 <b>기능 테스트</b>를 수행한다","C. IT 관리자가 <b>시스템 관리(systems administration)</b>도 수행한다","D. DBA가 <b>데이터 백업</b>도 수행한다"],
+correct:0,
+explanation:`<b>정답: A. 개발자가 운영 환경으로 코드를 이관</b><br><br>운영 환경에 접근 가능한 개발자는 <b>승인되지 않은 코드를 실행하거나 테스트되지 않은 코드를 운영에 이관</b>해 시스템 장애를 초래할 수 있다. 이는 개발-운영 간 직무분리(SoD)의 핵심 위반으로 가장 큰 위험이다.<table class="cmp"><tr style="background:#d4edda"><td><b>A 개발자→운영 이관</b></td><td>미검증·무단 코드 운영 반영 위험 → SoD 핵심 위반</td></tr><tr><td>B 분석가 요구사항+테스트</td><td>전담 테스트 조직 없을 때 흔히 허용 — 요구사항 숙지로 적합</td></tr><tr><td>C IT관리자+시스템 관리</td><td>코드 개발만 안 하면 소규모 팀에서 수용 가능</td></tr><tr><td>D DBA+데이터 백업</td><td>백업은 DBA의 통상 업무 범위</td></tr></table><div class="sbox">소규모 팀 SoD 문제에서 <b>개발자의 운영 환경 접근</b>이 최대 위험. 나머지는 보완통제·업무 범위로 수용 가능한 조합. 핵심: 개발과 운영 이관 권한의 분리.</div>`,
+reference:"CRM Chapter 2: Segregation of Duties — Small IT Teams",
+keyConcepts:["개발자→운영 이관(정답)|미검증·무단 코드 반영, SoD 핵심 위반","함정 B 분석가 테스트|전담 조직 없을 때 수용 가능","함정 C IT관리자+시스템관리|코드 개발 안 하면 수용","함정 D DBA+백업|통상 업무 범위","시험 패턴|소규모 SoD → 개발-운영 접근 분리가 최우선"]
 }
 
 ];
