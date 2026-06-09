@@ -42113,6 +42113,690 @@ keyConcepts:[
 "함정 D 정책 준수 여부|정책이 법규와 정렬됨을 확인한 후에 점검",
 "시험 패턴|컴플라이언스/프라이버시 감사 FIRST → 법적·규제 요구사항(기준 먼저) / 순서: 법규→정책→준수→인프라"
 ]
+},
+
+{
+id:1000,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"During a system development life cycle audit of a human resources and payroll application, the information systems (IS) auditor notes that the data used for user acceptance testing have been masked. The purpose of masking the data is to ensure the:",
+questionKo:"인사·급여 애플리케이션의 SDLC 감사 중, IS 감사인은 <b>사용자 인수 테스트(UAT)에 사용되는 데이터가 마스킹(masking)</b>되었음을 확인했다. 데이터를 마스킹하는 목적은 무엇을 보장하기 위함인가:",
+options:[
+"A. confidentiality of the data.",
+"B. accuracy of the data.",
+"C. completeness of the data.",
+"D. reliability of the data."
+],
+optionsKo:[
+"A. 데이터의 <b>기밀성(confidentiality)</b>",
+"B. 데이터의 <b>정확성(accuracy)</b>",
+"C. 데이터의 <b>완전성(completeness)</b>",
+"D. 데이터의 <b>신뢰성(reliability)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 데이터의 기밀성</b><br><br>
+<b>핵심:</b> 마스킹은 데이터 <b>기밀성</b>을 보장하기 위함 — 특히 UAT에서 테스터가 정상 운영 환경에서는 접근할 수 없는 (인사·급여 같은 민감) 데이터에 접근하게 되는 상황에서 중요.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 기밀성</b></td><td><b>마스킹 = 민감 데이터 노출 방지 ✅</b></td></tr>
+<tr><td>B. 정확성</td><td>원본이 부정확하면 <b>마스킹 데이터도 부정확</b> — 보장 안 함 ❌</td></tr>
+<tr><td>C. 완전성</td><td>원본이 불완전하면 <b>마스킹 데이터도 불완전</b> ❌</td></tr>
+<tr><td>D. 신뢰성</td><td>원본이 불신뢰면 <b>마스킹 데이터도 불신뢰</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 데이터 마스킹 = <b>민감 데이터(인사·급여)를 가려 기밀성 보호</b> (테스터가 실데이터 못 봄)<br>
+• 함정 B·C·D: 마스킹은 <b>데이터 내용 품질(정확·완전·신뢰)을 바꾸지 않음</b> — 원본 품질 그대로<br>
+• 시험 패턴: 테스트 데이터 마스킹 목적 → <b>기밀성(confidentiality)</b></div>`,
+reference:"CRM Chapter 2: Data Masking — Confidentiality in Testing",
+keyConcepts:[
+"기밀성(정답)|마스킹은 민감 데이터(인사·급여)를 가려 기밀성 보호 — 테스터가 실데이터 못 봄",
+"함정 B 정확성|원본이 부정확하면 마스킹 데이터도 부정확 — 보장 안 함",
+"함정 C 완전성|원본이 불완전하면 마스킹 데이터도 불완전",
+"함정 D 신뢰성|원본이 불신뢰면 마스킹 데이터도 불신뢰",
+"시험 패턴|테스트 데이터 마스킹 목적 → 기밀성(confidentiality) / 마스킹은 데이터 품질 안 바꿈"
+]
+},
+
+{
+id:1001,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"The FIRST step in data classification is to:",
+questionKo:"<b>데이터 분류(data classification)</b>의 <b>첫 번째 단계</b>는?",
+options:[
+"A. establish ownership.",
+"B. perform a criticality analysis.",
+"C. define access rules.",
+"D. create a data dictionary."
+],
+optionsKo:[
+"A. <b>소유권(ownership)을 확립</b>한다.",
+"B. <b>중요도 분석(criticality analysis)을 수행</b>한다.",
+"C. <b>접근 규칙(access rules)을 정의</b>한다.",
+"D. <b>데이터 사전(data dictionary)을 생성</b>한다."
+],
+correct:0,
+explanation:`<b>정답: A. 소유권을 확립한다</b><br><br>
+<b>핵심:</b> 데이터 분류는 need-to-know·need-to-do 기반의 접근 규칙을 정의하기 위함. <b>접근 규칙 정의 책임은 데이터 소유자(data owner)</b>에게 있으므로, <b>소유권 확립</b>이 데이터 분류의 첫 단계.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정·순서</th></tr>
+<tr style="background:#d4edda"><td><b>A. 소유권 확립</b></td><td><b>FIRST — 소유자가 분류·접근 규칙 책임 ✅</b></td></tr>
+<tr><td>B. 중요도 분석</td><td>분류에 따른 <b>보호 수준 결정</b>에 필요 — 소유권 후 ❌</td></tr>
+<tr><td>C. 접근 규칙 정의</td><td>데이터 <b>분류에 종속</b> — 소유자가 분류 후 설정 ❌</td></tr>
+<tr><td>D. 데이터 사전 생성</td><td>분류 <b>결과로 입력</b>이 준비됨 — 나중 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 데이터 분류·접근 규칙 책임 = <b>데이터 소유자</b> → 소유권 확립이 출발점<br>
+• 순서: <b>소유권 확립 → 분류(중요도 분석) → 접근 규칙 → 데이터 사전</b><br>
+• 함정 B·C·D: 중요도 분석·접근 규칙·데이터 사전은 모두 <b>소유권·분류 이후</b> 단계<br>
+• 시험 패턴: 데이터 분류 FIRST → <b>소유권(ownership) 확립</b></div>`,
+reference:"CRM Chapter 2: Data Classification — Establish Ownership First",
+keyConcepts:[
+"소유권 확립(정답)|데이터 분류·접근 규칙 책임은 데이터 소유자 → 소유권 확립이 첫 단계",
+"함정 B 중요도 분석|분류에 따른 보호 수준 결정에 필요 — 소유권 후",
+"함정 C 접근 규칙 정의|데이터 분류에 종속 — 소유자가 분류 후 설정",
+"함정 D 데이터 사전 생성|분류 결과로 입력 준비 — 나중",
+"시험 패턴|데이터 분류 FIRST → 소유권 확립 / 순서: 소유권→분류→접근 규칙→데이터 사전"
+]
+},
+
+{
+id:1002,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Which of the following goals do you expect to find in an organization's strategic plan?",
+questionKo:"조직의 <b>전략 계획(strategic plan)</b>에서 발견될 것으로 기대되는 <b>목표</b>는?",
+options:[
+"A. Results of new software testing",
+"B. An evaluation of information technology needs",
+"C. Short-term project plans for a new planning system",
+"D. Approved suppliers for products offered by the organization"
+],
+optionsKo:[
+"A. <b>신규 소프트웨어 테스트 결과</b>",
+"B. <b>정보기술 수요(IT needs)에 대한 평가</b>",
+"C. <b>새 기획 시스템을 위한 단기 프로젝트 계획</b>",
+"D. <b>조직이 제공하는 제품의 승인된 공급자(approved suppliers)</b>"
+],
+correct:3,
+explanation:`<b>정답: D. 조직이 제공하는 제품의 승인된 공급자</b><br><br>
+<b>핵심:</b> 제품의 선호 승인 공급자는 사업 전체 방향을 설정하는 <b>전략적 사업 목표</b>로, 조직의 전략 계획의 일부. 나머지는 모두 전술·단기·측정 수준.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정·수준</th></tr>
+<tr style="background:#d4edda"><td><b>D. 승인 공급자(전략 목표)</b></td><td><b>사업 전체 방향 설정 — 전략 ✅</b></td></tr>
+<tr><td>A. SW 테스트 결과</td><td>전술·단기 목표 — 전략 계획 아님 ❌</td></tr>
+<tr><td>B. IT 수요 평가</td><td>성과 <b>측정 방법</b> — 전략 계획의 목표 아님 ❌</td></tr>
+<tr><td>C. 단기 프로젝트 계획</td><td>목표 <b>구현 방법</b> — 목표 자체 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 D: 전략 계획 = <b>사업 전체 방향을 설정하는 전략적 목표</b>(예: 선호 공급자 확보)<br>
+• 함정 A·C: 테스트 결과·단기 프로젝트는 <b>전술·구현 수준</b> — 목표가 아닌 수단<br>
+• 함정 B: IT 수요 평가는 <b>측정 방법</b>일 뿐 — 전략적 목표 아님<br>
+• 시험 패턴: 전략 계획의 "목표" → <b>사업 전체 방향(고수준), 전술·단기·측정과 구분</b></div>`,
+reference:"CRM Chapter 2: Strategic Plan — Strategic Business Objectives",
+keyConcepts:[
+"승인 공급자(정답)|사업 전체 방향 설정하는 전략적 사업 목표 — 전략 계획의 일부",
+"함정 A SW 테스트 결과|전술·단기 목표 — 전략 계획 아님",
+"함정 B IT 수요 평가|성과 측정 방법 — 전략 계획의 목표 아님",
+"함정 C 단기 프로젝트 계획|목표 구현 방법 — 목표 자체 아님",
+"시험 패턴|전략 계획의 목표 → 사업 전체 방향(고수준), 전술·단기·측정과 구분"
+]
+},
+
+{
+id:1003,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Which of the following is the MOST critical to the quality of data in a data warehouse?",
+questionKo:"<b>데이터 웨어하우스(data warehouse)의 데이터 품질</b>에 <b>가장 결정적</b>인 것은?",
+options:[
+"A. Accuracy of the source data",
+"B. Credibility of the data source",
+"C. Accuracy of the extraction process",
+"D. Accuracy of the data transformation"
+],
+optionsKo:[
+"A. <b>원천 데이터(source data)의 정확성</b>",
+"B. <b>데이터 출처(data source)의 신뢰성</b>",
+"C. <b>추출(extraction) 프로세스의 정확성</b>",
+"D. <b>데이터 변환(transformation)의 정확성</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 원천 데이터의 정확성</b><br><br>
+<b>핵심:</b> 원천 데이터의 정확성은 데이터 웨어하우스 품질의 <b>전제 조건</b>. 부정확한 원천 데이터는 웨어하우스 데이터의 무결성을 훼손함 — <b>"쓰레기를 넣으면 쓰레기가 나온다(GIGO)"</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 원천 데이터 정확성</b></td><td><b>품질의 전제 — 가장 결정적 ✅</b></td></tr>
+<tr><td>B. 출처 신뢰성</td><td>중요하나 <b>부정확 데이터를 정확하게 못 만듦</b> ❌</td></tr>
+<tr><td>C. 추출 정확성</td><td>중요하나 <b>부정확 데이터를 정확하게 못 만듦</b> ❌</td></tr>
+<tr><td>D. 변환 정확성</td><td>중요하나 <b>부정확 데이터를 정확하게 못 만듦</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: ETL이 아무리 정확해도 <b>원천이 부정확하면 결과도 부정확</b>(GIGO) → 원천 정확성이 근본<br>
+• 함정 B·C·D: 출처 신뢰성·추출·변환은 모두 <b>정확한 원천을 전제로</b> 의미 — 부정확을 정확으로 바꾸지 못함<br>
+• 시험 패턴: 데이터 웨어하우스/ETL 품질 핵심 → <b>원천 데이터 정확성(GIGO)</b></div>`,
+reference:"CRM Chapter 2: Data Warehouse Quality — Source Data Accuracy (GIGO)",
+keyConcepts:[
+"원천 데이터 정확성(정답)|웨어하우스 품질의 전제 — 부정확 원천은 무결성 훼손(GIGO)",
+"함정 B 출처 신뢰성|중요하나 부정확 데이터를 정확하게 못 만듦",
+"함정 C 추출 정확성|중요하나 부정확 데이터를 정확하게 못 만듦",
+"함정 D 변환 정확성|중요하나 부정확 데이터를 정확하게 못 만듦",
+"시험 패턴|데이터 웨어하우스/ETL 품질 핵심 → 원천 데이터 정확성(GIGO)"
+]
+},
+
+{
+id:1004,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"The PRIMARY objective of implementing corporate governance is to:",
+questionKo:"<b>기업 거버넌스(corporate governance)</b> 구현의 <b>주된 목적</b>은?",
+options:[
+"A. provide strategic direction.",
+"B. control business operations.",
+"C. align IT with business.",
+"D. implement good practices."
+],
+optionsKo:[
+"A. <b>전략적 방향(strategic direction)을 제시</b>한다.",
+"B. <b>사업 운영을 통제</b>한다.",
+"C. <b>IT를 사업과 정렬</b>한다.",
+"D. <b>모범 사례(good practices)를 구현</b>한다."
+],
+correct:0,
+explanation:`<b>정답: A. 전략적 방향을 제시한다</b><br><br>
+<b>핵심:</b> 기업 거버넌스는 조직 <b>전체에 전략적 방향을 제시</b>하는 관리 관행의 집합 — 목표 달성 가능성을 보장하고, 리스크를 적절히 다루며, 조직 자원을 올바르게 사용하게 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 전략적 방향 제시</b></td><td><b>기업 거버넌스의 주된 목적 ✅</b></td></tr>
+<tr><td>B. 사업 운영 통제</td><td>운영은 <b>전략적 방향에 기반</b>해 지휘·통제됨 — 결과 ❌</td></tr>
+<tr><td>C. IT-사업 정렬</td><td>거버넌스는 <b>IT뿐 아니라 조직 전체</b> 대상 — 너무 좁음 ❌</td></tr>
+<tr><td>D. 모범 사례 구현</td><td>거버넌스는 모범 사례로 <b>적용</b>되나 — 목적은 아님 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 기업 거버넌스 = <b>조직 전체에 전략적 방향 제시</b>(목표·리스크·자원 통합 관리)<br>
+• 함정 C: IT-사업 정렬은 <b>IT 거버넌스</b> 영역 — 기업 거버넌스는 더 넓음<br>
+• 함정 B·D: 운영 통제·모범 사례는 <b>수단·결과</b> — 주된 목적 아님<br>
+• 시험 패턴: 기업 거버넌스 주된 목적 → <b>전략적 방향 제시(전사 범위)</b></div>`,
+reference:"CRM Chapter 2: Corporate Governance — Strategic Direction",
+keyConcepts:[
+"전략적 방향 제시(정답)|기업 거버넌스 주된 목적 — 조직 전체에 방향 제시(목표·리스크·자원 통합)",
+"함정 B 사업 운영 통제|운영은 전략적 방향에 기반해 통제됨 — 결과",
+"함정 C IT-사업 정렬|IT 거버넌스 영역 — 기업 거버넌스는 조직 전체로 더 넓음",
+"함정 D 모범 사례 구현|거버넌스는 모범 사례로 적용되나 목적은 아님",
+"시험 패턴|기업 거버넌스 주된 목적 → 전략적 방향 제시(전사 범위) / IT 거버넌스와 구분"
+]
+},
+
+{
+id:1005,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"While auditing an ecommerce architecture, an information systems (IS) auditor notes that customer master data are stored on the web server for six months after the transaction date and then purged due to inactivity. Which of the following is the PRIMARY concern for the IS auditor?",
+questionKo:"전자상거래 아키텍처를 감사하던 중, IS 감사인은 <b>고객 마스터 데이터가 거래일로부터 6개월간 웹 서버에 저장</b>된 후 비활성으로 삭제됨을 확인했다. IS 감사인의 <b>주된 우려</b>는?",
+options:[
+"A. Availability of customer data",
+"B. Integrity of customer data",
+"C. Confidentiality of customer data",
+"D. System storage performance"
+],
+optionsKo:[
+"A. 고객 데이터의 <b>가용성(availability)</b>",
+"B. 고객 데이터의 <b>무결성(integrity)</b>",
+"C. 고객 데이터의 <b>기밀성(confidentiality)</b>",
+"D. <b>시스템 저장 성능</b>"
+],
+correct:2,
+explanation:`<b>정답: C. 고객 데이터의 기밀성</b><br><br>
+<b>핵심:</b> 고객 데이터를 인터넷에 노출된 <b>웹 서버에 6개월간 저장</b>하는 것은 <b>기밀성</b>에 대한 우려를 야기. 웹 서버는 인터넷에 직접 노출되므로 민감한 고객 마스터 데이터를 두면 유출 위험.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 기밀성</b></td><td><b>인터넷 노출 웹 서버에 고객 데이터 저장 → 유출 위험 ✅</b></td></tr>
+<tr><td>A. 가용성</td><td>인터넷 단절 시 영향 — <b>기밀성보다 낮은 우려</b> ❌</td></tr>
+<tr><td>B. 무결성</td><td>보안 통제 약할 때만 영향 — <b>기밀성이 더 큰 우려</b> ❌</td></tr>
+<tr><td>D. 저장 성능</td><td>데이터량 우려 가능하나 <b>정보 보호가 더 큰 이슈</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: <b>인터넷 노출 웹 서버 = 기밀성 위험 최우선</b> (민감 고객 데이터를 외부 노출 계층에 보관)<br>
+• 함정 B: 무결성은 변경 로깅으로 추적 가능 — 기밀성보다 낮은 우려<br>
+• 핵심 원칙: 민감 데이터는 <b>인터넷 노출 계층(웹 서버)이 아닌 내부 보호 계층</b>에 저장<br>
+• 시험 패턴: 웹 서버에 민감/고객 데이터 저장 → <b>기밀성(confidentiality) 우려</b></div>`,
+reference:"CRM Chapter 2: E-commerce Data Storage — Confidentiality on Web Server",
+keyConcepts:[
+"기밀성(정답)|인터넷 노출 웹 서버에 고객 데이터 6개월 저장 → 유출 위험이 최우선 우려",
+"함정 A 가용성|인터넷 단절 시 영향 — 기밀성보다 낮은 우려",
+"함정 B 무결성|보안 통제 약할 때만 영향 / 변경 로깅으로 추적 — 기밀성이 더 큰 우려",
+"함정 D 저장 성능|데이터량 우려 가능하나 정보 보호가 더 큰 이슈",
+"시험 패턴|웹 서버에 민감/고객 데이터 저장 → 기밀성(confidentiality) 우려 / 민감 데이터는 내부 계층에"
+]
+},
+
+{
+id:1006,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"The PRIMARY benefit of implementing a security program as part of a security governance framework is the:",
+questionKo:"<b>보안 거버넌스 프레임워크</b>의 일부로 <b>보안 프로그램을 구현</b>하는 것의 <b>주된 이점</b>은?",
+options:[
+"A. alignment of the IT activities with information systems (IS) audit recommendations.",
+"B. enforcement of the management of security risk.",
+"C. implementation of the chief information security officer's recommendations.",
+"D. reduction of the cost for IT security."
+],
+optionsKo:[
+"A. IT 활동을 <b>IS 감사 권고사항과 정렬</b>",
+"B. <b>보안 리스크 관리의 실행(enforcement)</b>",
+"C. <b>최고정보보안책임자(CISO)의 권고 구현</b>",
+"D. <b>IT 보안 비용 절감</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 보안 리스크 관리의 실행</b><br><br>
+<b>핵심:</b> 보안 프로그램 구현의 주된 이점은 <b>경영진의 리스크 평가 및 적정 수준으로의 완화</b>, 그리고 잔여 리스크 모니터링. 즉 보안 리스크 관리가 체계적으로 실행됨.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 보안 리스크 관리 실행</b></td><td><b>리스크 평가·완화·잔여 리스크 모니터링 ✅</b></td></tr>
+<tr><td>A. IS 감사 권고 정렬</td><td>부가 가치로 다뤄지나 <b>주된 이점 아님</b> ❌</td></tr>
+<tr><td>C. CISO 권고 구현</td><td>프로그램에 포함되나 <b>주된 이점 아님</b> ❌</td></tr>
+<tr><td>D. 비용 절감</td><td>비용 영향 <b>불확실</b> — 절감될 수도 안 될 수도 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 보안 프로그램 = <b>경영진 주도 리스크 평가·완화·잔여 리스크 모니터링</b>의 체계적 실행<br>
+• 함정 A·C: 감사 권고·CISO 권고는 <b>부가 가치·구성요소</b> — 주된 이점 아님<br>
+• 함정 D: 비용 절감은 <b>불확실</b> — 보장되지 않음<br>
+• 시험 패턴: 보안 프로그램/거버넌스 주된 이점 → <b>보안 리스크 관리의 체계적 실행</b></div>`,
+reference:"CRM Chapter 2: Security Program — Enforcing Risk Management",
+keyConcepts:[
+"보안 리스크 관리 실행(정답)|경영진 주도 리스크 평가·완화·잔여 리스크 모니터링의 체계적 실행",
+"함정 A IS 감사 권고 정렬|부가 가치로 다뤄지나 주된 이점 아님",
+"함정 C CISO 권고 구현|프로그램에 포함되나 주된 이점 아님",
+"함정 D 비용 절감|비용 영향 불확실 — 절감 보장 안 됨",
+"시험 패턴|보안 프로그램/거버넌스 주된 이점 → 보안 리스크 관리의 체계적 실행"
+]
+},
+
+{
+id:1007,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Which of the following is of MOST interest to an information systems (IS) auditor who is reviewing an organization's risk strategy?",
+questionKo:"조직의 <b>리스크 전략(risk strategy)</b>을 검토하는 IS 감사인에게 <b>가장 관심 있는</b> 것은?",
+options:[
+"A. All risk is mitigated effectively.",
+"B. Residual risk is zero after control implementation.",
+"C. All likely risk is identified and ranked.",
+"D. The organization uses an established risk framework."
+],
+optionsKo:[
+"A. <b>모든 리스크가 효과적으로 완화</b>된다.",
+"B. 통제 구현 후 <b>잔여 리스크(residual risk)가 0</b>이다.",
+"C. <b>발생 가능한 모든 리스크가 식별·순위화</b>된다.",
+"D. 조직이 <b>확립된 리스크 프레임워크를 사용</b>한다."
+],
+correct:2,
+explanation:`<b>정답: C. 발생 가능한 모든 리스크가 식별·순위화된다</b><br><br>
+<b>핵심:</b> 조직에 영향을 줄 가능성이 있는 리스크는 리스크 전략의 일부로 <b>식별·순위화·문서화</b>되어야 함. <b>리스크를 알지 못하면 리스크 전략 자체가 성립 불가</b>.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 리스크 식별·순위화</b></td><td><b>리스크 전략의 출발점 — 핵심 ✅</b></td></tr>
+<tr><td>A. 모든 리스크 완화</td><td>모든 리스크 완화 <b>불가능</b> — 식별·순위가 선행 ❌</td></tr>
+<tr><td>B. 잔여 리스크 0</td><td>잔여 리스크 0은 <b>비현실적</b> — 항상 일부 남음 ❌</td></tr>
+<tr><td>D. 확립된 프레임워크 사용</td><td>프레임워크보다 <b>리스크 식별·순위가 더 중요</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 리스크 전략의 기초 = <b>발생 가능 리스크 식별·순위화·문서화</b> (알아야 다룰 수 있음)<br>
+• 함정 A·B: "모든 리스크 완화"·"잔여 리스크 0"은 <b>비현실적</b> — 항상 잔여 리스크 존재<br>
+• 함정 D: 프레임워크 사용은 부차적 — <b>리스크 식별·순위가 우선</b><br>
+• 시험 패턴: 리스크 전략 검토 핵심 → <b>리스크 식별·순위화(우선순위 기반 대응)</b></div>`,
+reference:"CRM Chapter 2: Risk Strategy — Identify and Rank Risk",
+keyConcepts:[
+"리스크 식별·순위화(정답)|리스크 전략 출발점 — 발생 가능 리스크 식별·순위·문서화 / 알아야 다룸",
+"함정 A 모든 리스크 완화|모든 리스크 완화 불가능 — 식별·순위가 선행",
+"함정 B 잔여 리스크 0|비현실적 — 항상 일부 잔여 리스크 존재",
+"함정 D 확립된 프레임워크 사용|프레임워크보다 리스크 식별·순위가 더 중요",
+"시험 패턴|리스크 전략 검토 핵심 → 리스크 식별·순위화(우선순위 기반 대응)"
+]
+},
+
+{
+id:1008,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"During an information systems (IS) risk assessment of a health care organization regarding protected health information (PHI), an IS auditor interviews IS management. Which of the following findings from the interviews would be of MOST concern to the IS auditor?",
+questionKo:"보호대상 건강정보(PHI)에 관한 의료기관의 IS 리스크 평가 중, IS 감사인이 IS 경영진을 인터뷰한다. 인터뷰에서 나온 발견사항 중 IS 감사인에게 <b>가장 우려</b>되는 것은?",
+options:[
+"A. The organization does not encrypt all of its outgoing email messages.",
+"B. Staff have to type \"[PHI]\" in the subject field of email messages to be encrypted.",
+"C. An individual's computer screen saver function is disabled.",
+"D. Server configuration requires the user to change the password annually."
+],
+optionsKo:[
+"A. 조직이 <b>모든 발신 이메일을 암호화하지는 않는다</b>.",
+"B. 직원이 이메일을 암호화하려면 제목란에 <b>\"[PHI]\"를 직접 입력</b>해야 한다.",
+"C. 개인 컴퓨터의 <b>화면 보호기(screen saver) 기능이 비활성화</b>되어 있다.",
+"D. 서버 설정이 사용자에게 <b>비밀번호를 매년 변경</b>하도록 요구한다."
+],
+correct:1,
+explanation:`<b>정답: B. 직원이 제목란에 "[PHI]"를 직접 입력해야 암호화된다</b><br><br>
+<b>핵심:</b> 수동 입력에 의존하면 <b>직원이 단어 입력을 잊는 인적 오류(human error)</b> 리스크가 항상 존재. PHI를 다루는 직원에게는 <b>발신 이메일 자동 암호화</b>가 설정되어야 민감 정보를 보호. 외부 무단 노출 위험이 가장 큼.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 수동 "[PHI]" 입력 의존</b></td><td><b>인적 오류 → PHI 외부 미암호화 노출 ✅</b></td></tr>
+<tr><td>A. 모든 발신 이메일 미암호화</td><td>전체 암호화는 비싸고 <b>일반적 관행 아님</b> ❌</td></tr>
+<tr><td>C. 화면 보호기 비활성</td><td>내부 노출 위험 — <b>외부 노출보다 낮음</b> ❌</td></tr>
+<tr><td>D. 비밀번호 연 1회 변경</td><td>우려되나 <b>외부 데이터 노출보다 낮음</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 암호화를 <b>수동(사람 기억)에 의존 → 인적 오류로 PHI가 평문 외부 발송</b>(가장 심각)<br>
+• 함정 C·D: 화면 보호기·비밀번호는 <b>내부 노출 리스크</b> — 외부 무단 노출(B)보다 낮음<br>
+• 핵심 원칙: 민감정보 보호는 <b>자동 통제 &gt; 수동 절차</b> (사람 의존 최소화)<br>
+• 시험 패턴: PHI/민감정보 + 수동 암호화 의존 → <b>자동화 부재가 최대 우려(외부 노출)</b></div>`,
+reference:"CRM Chapter 2: PHI Protection — Automated vs Manual Email Encryption",
+keyConcepts:[
+"수동 [PHI] 입력 의존(정답)|인적 오류로 PHI가 평문 외부 발송 → 자동 암호화 부재가 최대 우려",
+"함정 A 모든 발신 이메일 미암호화|전체 암호화는 비싸고 일반적 관행 아님",
+"함정 C 화면 보호기 비활성|내부 노출 위험 — 외부 노출보다 낮음",
+"함정 D 비밀번호 연 1회 변경|우려되나 외부 데이터 노출보다 낮음",
+"시험 패턴|PHI/민감정보 + 수동 암호화 의존 → 자동화 부재가 최대 우려 / 자동 통제>수동 절차"
+]
+},
+
+{
+id:1009,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"An IT steering committee should:",
+questionKo:"<b>IT 운영위원회(steering committee)</b>는 무엇을 해야 하는가?",
+options:[
+"A. include a mix of members from different departments and staff levels.",
+"B. ensure that information security policies and procedures have been executed properly.",
+"C. maintain minutes of its meetings and keep the board of directors informed.",
+"D. be briefed about new trends and products at each meeting by a vendor."
+],
+optionsKo:[
+"A. <b>여러 부서·직급의 구성원을 혼합</b>하여 포함한다.",
+"B. 정보보안 <b>정책·절차가 제대로 실행되었는지 보장</b>한다.",
+"C. <b>회의록을 유지하고 이사회에 정보를 제공</b>한다.",
+"D. 매 회의마다 <b>벤더로부터 신규 트렌드·제품을 브리핑</b>받는다."
+],
+correct:2,
+explanation:`<b>정답: C. 회의록을 유지하고 이사회에 정보를 제공한다</b><br><br>
+<b>핵심:</b> IT 운영위원회의 결정·활동을 문서화하기 위해 <b>상세한 회의록 유지</b>가 중요하며, 그 결정사항을 <b>이사회에 적시 보고</b>해야 함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>C. 회의록 유지·이사회 보고</b></td><td><b>결정 문서화·적시 보고 — 핵심 책임 ✅</b></td></tr>
+<tr><td>A. 부서·직급 혼합 구성</td><td>전략적 임무상 <b>고위/고위급 인원만</b> — 결정 권한 필요 ❌</td></tr>
+<tr><td>B. 정책·절차 실행 보장</td><td>이는 <b>IT 경영진·보안 관리자</b> 책임 ❌</td></tr>
+<tr><td>D. 매 회의 벤더 브리핑</td><td>벤더는 <b>적절할 때만</b> 초대 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 C: 운영위원회 = <b>회의록 유지 + 이사회 적시 보고</b>(거버넌스 책무성·투명성)<br>
+• 함정 A: 운영위원회는 <b>전략적 임무 → 의사결정 권한 있는 고위급</b>으로 구성 (직급 혼합 X)<br>
+• 함정 B: 정책·절차 실행은 <b>IT 경영진·보안 관리자</b> 몫 — 위원회 아님<br>
+• 시험 패턴: 운영위원회 책임 → <b>회의록·이사회 보고(책무성), 고위급 구성</b></div>`,
+reference:"CRM Chapter 2: IT Steering Committee — Minutes and Board Reporting",
+keyConcepts:[
+"회의록 유지·이사회 보고(정답)|결정 문서화·적시 보고 — 운영위원회 핵심 책임(책무성·투명성)",
+"함정 A 부서·직급 혼합 구성|전략적 임무상 의사결정 권한 있는 고위급으로 구성 — 직급 혼합 X",
+"함정 B 정책·절차 실행 보장|IT 경영진·보안 관리자 책임 — 위원회 아님",
+"함정 D 매 회의 벤더 브리핑|벤더는 적절할 때만 초대",
+"시험 패턴|운영위원회 책임 → 회의록·이사회 보고(책무성), 고위급 구성"
+]
+},
+
+{
+id:1010,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Which of the following BEST provides assurance of the integrity of new staff?",
+questionKo:"<b>신입 직원의 진실성(integrity)</b>에 대한 확신을 <b>가장 잘 제공</b>하는 것은?",
+options:[
+"A. Background screening",
+"B. References",
+"C. Bonding",
+"D. Qualifications listed on a resume"
+],
+optionsKo:[
+"A. <b>배경 조사(background screening)</b>",
+"B. <b>추천서/평판조회(references)</b>",
+"C. <b>신원보증보험(bonding)</b>",
+"D. <b>이력서에 기재된 자격(qualifications)</b>"
+],
+correct:0,
+explanation:`<b>정답: A. 배경 조사</b><br><br>
+<b>핵심:</b> 배경 조사는 예비 직원의 진실성을 확인하는 1차 방법 — 범죄 이력, 운전 기록, 재정 상태, 학력 검증 등을 포함. 신입의 integrity를 가장 잘 보증.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 배경 조사</b></td><td><b>범죄·학력·재정 검증 → 진실성 보증 ✅</b></td></tr>
+<tr><td>B. 추천서</td><td>중요하나 <b>추천인 자체의 신뢰성 미검증</b> — 배경 조사보다 약함 ❌</td></tr>
+<tr><td>C. 신원보증보험</td><td><b>실사 준수(due-diligence)용</b> — 진실성 보증 아님 ❌</td></tr>
+<tr><td>D. 이력서 자격</td><td><b>역량(proficiency) 입증</b>용 — 진실성과 무관 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: 진실성(integrity) 확인 = <b>배경 조사</b>(범죄·학력·재정·이력 검증)<br>
+• 함정 B: 추천서는 <b>추천인의 신뢰성을 검증 못 함</b> — 배경 조사보다 신뢰도 낮음<br>
+• 함정 C·D: 보증보험(due-diligence)·이력서 자격(역량)은 <b>진실성과 직접 무관</b><br>
+• 시험 패턴: 직원 진실성 보증 → <b>배경 조사(background screening)</b></div>`,
+reference:"CRM Chapter 2: HR Security — Background Screening for Integrity",
+keyConcepts:[
+"배경 조사(정답)|범죄·학력·재정·이력 검증 → 신입 진실성 보증의 1차 방법",
+"함정 B 추천서|추천인 자체의 신뢰성 미검증 — 배경 조사보다 약함",
+"함정 C 신원보증보험|실사 준수(due-diligence)용 — 진실성 보증 아님",
+"함정 D 이력서 자격|역량(proficiency) 입증용 — 진실성과 무관",
+"시험 패턴|직원 진실성 보증 → 배경 조사(background screening)"
+]
+},
+
+{
+id:1011,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"The GREATEST benefit of having well-defined data classification policies and procedures is:",
+questionKo:"잘 정의된 <b>데이터 분류(data classification) 정책·절차</b>를 갖추는 것의 <b>가장 큰 이점</b>은?",
+options:[
+"A. a more accurate inventory of information assets.",
+"B. a decreased cost and improvement of controls.",
+"C. a reduced risk of inappropriate system access.",
+"D. an improved regulatory compliance."
+],
+optionsKo:[
+"A. <b>정보 자산 목록(inventory)의 정확도 향상</b>",
+"B. <b>비용 절감 및 통제 개선</b>",
+"C. <b>부적절한 시스템 접근 리스크 감소</b>",
+"D. <b>규제 준수 향상</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 비용 절감 및 통제 개선</b><br><br>
+<b>핵심:</b> 잘 정의된 데이터 분류의 중요한 이점은 <b>데이터 민감도에 맞는 적절한 통제를 적용</b>하여 데이터 보호 비용을 낮추는 것. 분류 프레임워크가 없으면 일부 통제가 필요 이상으로 과도·고비용이 될 수 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 비용 절감·통제 개선</b></td><td><b>민감도별 적정 통제 → 과잉 통제 제거 ✅</b></td></tr>
+<tr><td>A. 자산 목록 정확도</td><td>이점이나 <b>가장 큰 이점 아님</b> ❌</td></tr>
+<tr><td>C. 부적절 접근 리스크 감소</td><td>도움 되나 <b>가장 큰 이점 아님</b> ❌</td></tr>
+<tr><td>D. 규제 준수 향상</td><td>이점이나 <b>비용 절감이 더 큰 이점</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 데이터 분류 = <b>민감도에 맞춰 통제 차등 적용</b> → 과잉 통제(고비용) 제거, 비용 효율<br>
+• 함정 A·C·D: 자산 목록·접근 리스크·규제 준수는 모두 부수적 이점 — <b>비용 최적화가 핵심</b><br>
+• 시험 패턴: 데이터 분류 최대 이점 → <b>적정 통제로 보호 비용 절감(과보호 방지)</b></div>`,
+reference:"CRM Chapter 2: Data Classification — Cost-Effective Controls",
+keyConcepts:[
+"비용 절감·통제 개선(정답)|민감도별 적정 통제 적용 → 과잉 통제(고비용) 제거, 비용 효율",
+"함정 A 자산 목록 정확도|이점이나 가장 큰 이점 아님",
+"함정 C 부적절 접근 리스크 감소|도움 되나 가장 큰 이점 아님",
+"함정 D 규제 준수 향상|이점이나 비용 절감이 더 큰 이점",
+"시험 패턴|데이터 분류 최대 이점 → 적정 통제로 보호 비용 절감(과보호 방지)"
+]
+},
+
+{
+id:1012,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Which of the following choices BEST helps information owners to properly classify data?",
+questionKo:"정보 소유자(information owner)가 <b>데이터를 올바르게 분류</b>하도록 <b>가장 잘 돕는</b> 것은?",
+options:[
+"A. Understanding of technical controls that protect data",
+"B. Training on enterprise policies and standards",
+"C. Use of an automated data leak prevention tool",
+"D. Understanding which people need to access the data"
+],
+optionsKo:[
+"A. 데이터를 보호하는 <b>기술적 통제에 대한 이해</b>",
+"B. <b>전사 정책·표준에 대한 교육</b>",
+"C. <b>자동화된 데이터 유출 방지(DLP) 도구 사용</b>",
+"D. <b>어떤 사람이 데이터에 접근해야 하는지 이해</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 전사 정책·표준에 대한 교육</b><br><br>
+<b>핵심:</b> 데이터 분류 구현 시 가장 핵심은, 소유자/관리인이 <b>데이터 분류 체계(schema)를 포함한 전사 정책·표준을 이해</b>하는 것. 그래야 데이터를 올바르게 분류할 수 있음.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>B. 정책·표준 교육</b></td><td><b>분류 체계 이해 → 올바른 분류 ✅</b></td></tr>
+<tr><td>A. 기술 통제 이해</td><td>중요하나 <b>분류 체계 이해 없으면 통제 오적용</b> ❌</td></tr>
+<tr><td>C. DLP 도구 사용</td><td>생산성↑ 가능하나 <b>여전히 분류 체계 이해 필요</b> ❌</td></tr>
+<tr><td>D. 접근 필요자 이해</td><td>보호엔 중요하나 <b>분류 체계 모르면 부적절 접근 부여</b> ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 올바른 분류의 전제 = <b>데이터 분류 체계(schema)·정책·표준 이해</b> → 교육이 핵심<br>
+• 함정 A·C·D: 기술 통제·DLP·접근자 이해는 모두 <b>분류 체계를 먼저 이해해야</b> 제대로 작동<br>
+• 시험 패턴: 정보 소유자의 올바른 분류 → <b>정책·표준(분류 schema) 교육·이해</b></div>`,
+reference:"CRM Chapter 2: Data Classification — Owner Training on Policies/Standards",
+keyConcepts:[
+"정책·표준 교육(정답)|소유자가 분류 체계(schema)·정책·표준 이해해야 올바른 분류 가능",
+"함정 A 기술 통제 이해|중요하나 분류 체계 이해 없으면 통제 오적용",
+"함정 C DLP 도구 사용|생산성↑ 가능하나 여전히 분류 체계 이해 필요",
+"함정 D 접근 필요자 이해|보호엔 중요하나 분류 체계 모르면 부적절 접근 부여",
+"시험 패턴|정보 소유자의 올바른 분류 → 정책·표준(분류 schema) 교육·이해"
+]
+},
+
+{
+id:1013,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Which of the following is the responsibility of information asset owners?",
+questionKo:"다음 중 <b>정보 자산 소유자(information asset owner)</b>의 책임은?",
+options:[
+"A. Implementation of information security within applications",
+"B. Assignment of criticality levels to data",
+"C. Implementation of access rules to data and programs",
+"D. Provision of physical and logical security for data"
+],
+optionsKo:[
+"A. <b>애플리케이션 내 정보보안 구현</b>",
+"B. <b>데이터에 중요도(criticality) 수준 배정</b>",
+"C. <b>데이터·프로그램에 대한 접근 규칙 구현</b>",
+"D. <b>데이터에 대한 물리적·논리적 보안 제공</b>"
+],
+correct:1,
+explanation:`<b>정답: B. 데이터에 중요도 수준 배정</b><br><br>
+<b>핵심:</b> 정보 자산의 <b>중요도·민감도 수준을 정의</b>하는 것이 소유자(owner)의 책임. 구현·접근 규칙·보안 제공은 소유자가 정한 요구사항에 따라 <b>관리인(custodian)·보안 관리자</b>가 수행.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>담당</th></tr>
+<tr style="background:#d4edda"><td><b>B. 중요도 수준 배정</b></td><td><b>소유자(owner) — 분류·요구사항 정의 ✅</b></td></tr>
+<tr><td>A. 앱 내 보안 구현</td><td>관리인(custodian) — 소유자 요구에 따라 구현 ❌</td></tr>
+<tr><td>C. 접근 규칙 구현</td><td>관리인(custodian) — 소유자 요구에 따라 구현 ❌</td></tr>
+<tr><td>D. 물리·논리 보안 제공</td><td>보안 관리자(security administrator) ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• <b>소유자(owner)</b> = "무엇을/얼마나 보호" 결정 → <b>분류·중요도·접근 요구사항 정의</b><br>
+• <b>관리인(custodian)</b> = "어떻게 보호" 실행 → 통제·접근 규칙 <b>구현</b><br>
+• <b>보안 관리자</b> = 물리·논리 보안 제공<br>
+• 시험 패턴: 소유자=분류/요구 정의(결정), 관리인=구현(실행) 구분 핵심</div>`,
+reference:"CRM Chapter 2: Data Owner vs Custodian — Roles & Responsibilities",
+keyConcepts:[
+"중요도 수준 배정(정답)|소유자 책임 — 정보 자산의 중요도·민감도·분류 정의(결정)",
+"함정 A 앱 내 보안 구현|관리인(custodian) — 소유자 요구에 따라 구현",
+"함정 C 접근 규칙 구현|관리인(custodian) — 소유자 요구에 따라 구현",
+"함정 D 물리·논리 보안 제공|보안 관리자(security administrator)",
+"시험 패턴|소유자=분류/요구 정의(결정), 관리인=구현(실행), 보안 관리자=보안 제공"
+]
+},
+
+{
+id:1014,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"An information systems (IS) auditor discovers that some hard drives disposed of by an enterprise were not sanitized in a manner that would reasonably ensure that the data cannot be recovered. In addition, the enterprise does not have a written policy on data disposal. The IS auditor should FIRST:",
+questionKo:"IS 감사인이 기업이 폐기한 일부 하드디스크가 <b>데이터 복구가 불가능하도록 정화(sanitize)되지 않았음</b>을 발견했다. 또한 기업에는 <b>데이터 폐기에 관한 문서화된 정책이 없다</b>. IS 감사인이 <b>가장 먼저</b> 해야 할 일은?",
+options:[
+"A. draft an audit finding and discuss it with the auditor in charge.",
+"B. determine the sensitivity of the information on the hard drives.",
+"C. discuss with the IT manager good practices in data disposal.",
+"D. develop an appropriate data disposal policy for the enterprise."
+],
+optionsKo:[
+"A. <b>감사 발견사항을 작성</b>하고 담당 감사인과 논의한다.",
+"B. 하드디스크에 있는 <b>정보의 민감도(sensitivity)를 파악</b>한다.",
+"C. IT 관리자와 데이터 폐기 <b>모범사례를 논의</b>한다.",
+"D. 기업을 위한 적절한 <b>데이터 폐기 정책을 개발</b>한다."
+],
+correct:1,
+explanation:`<b>정답: B. 하드디스크에 있는 정보의 민감도를 파악한다</b><br><br>
+<b>핵심:</b> 정책이 없더라도 IS 감사인은 먼저 하드디스크 <b>정보의 성격(민감도)을 파악해 리스크를 최대한 정량화</b>해야 함. 리스크 정량화 없이 발견사항 작성·논의·정책 개발은 시기상조.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정·순서</th></tr>
+<tr style="background:#d4edda"><td><b>B. 정보 민감도 파악</b></td><td><b>FIRST — 리스크 정량화 ✅</b></td></tr>
+<tr><td>A. 발견사항 작성</td><td>리스크 <b>정량화 전 작성은 시기상조</b> ❌</td></tr>
+<tr><td>C. 모범사례 논의</td><td>사건 규모 <b>정량화 후</b>에 논의 ❌</td></tr>
+<tr><td>D. 폐기 정책 개발</td><td>감사인은 <b>정책을 개발하지 않음</b>(독립성 위반) ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 B: 발견 후 FIRST = <b>정보 민감도 파악 → 리스크 정량화</b> (발견의 실제 영향 평가)<br>
+• 함정 A·C: 발견사항 작성·모범사례 논의는 <b>리스크 정량화 이후</b><br>
+• 함정 D: 감사인은 <b>정책을 개발하지 않음</b> — 독립성·객관성 위반<br>
+• 시험 패턴: 감사 발견 후 FIRST → <b>리스크 정량화(영향·민감도 파악)</b> / 감사인 ≠ 정책 개발자</div>`,
+reference:"CRM Chapter 2: Data Disposal Audit — Quantify Risk First",
+keyConcepts:[
+"정보 민감도 파악(정답)|발견 후 FIRST — 정보 민감도 파악으로 리스크 정량화",
+"함정 A 발견사항 작성|리스크 정량화 전 작성은 시기상조",
+"함정 C 모범사례 논의|사건 규모 정량화 후에 논의",
+"함정 D 폐기 정책 개발|감사인은 정책을 개발하지 않음(독립성 위반)",
+"시험 패턴|감사 발견 후 FIRST → 리스크 정량화(영향·민감도 파악) / 감사인 ≠ 정책 개발자"
+]
+},
+
+{
+id:1015,
+domain:"2",
+ks:"2A7 Data Governance and Classification",
+question:"Assessing IT risk is BEST achieved by:",
+questionKo:"<b>IT 리스크 평가</b>를 <b>가장 잘 달성</b>하는 방법은?",
+options:[
+"A. evaluating threats and vulnerabilities that are associated with existing IT assets and IT projects.",
+"B. using the organization's past actual loss experience to determine current exposure.",
+"C. reviewing published loss statistics from comparable organizations.",
+"D. reviewing IT control weaknesses identified in audit reports."
+],
+optionsKo:[
+"A. 기존 IT 자산·IT 프로젝트와 관련된 <b>위협과 취약점을 평가</b>한다.",
+"B. 조직의 <b>과거 실제 손실 경험</b>을 사용해 현재 노출을 파악한다.",
+"C. 비교 가능한 조직의 <b>공표된 손실 통계를 검토</b>한다.",
+"D. 감사 보고서에서 식별된 <b>IT 통제 약점을 검토</b>한다."
+],
+correct:0,
+explanation:`<b>정답: A. 기존 IT 자산·프로젝트와 관련된 위협·취약점을 평가</b><br><br>
+<b>핵심:</b> IT 리스크 평가는 정성적·정량적 접근법으로 <b>위협과 취약점을 평가</b>해야 함. 과거 손실·타사 통계·감사 약점은 모두 현재·미래 리스크를 온전히 반영하지 못함.<br><br>
+<table class="cmp">
+<tr><th>보기</th><th>판정</th></tr>
+<tr style="background:#d4edda"><td><b>A. 위협·취약점 평가</b></td><td><b>현재 자산·프로젝트 기반 리스크 평가 ✅</b></td></tr>
+<tr><td>B. 과거 손실 경험</td><td>신규 위협·변화 반영 못 함 + <b>데이터 범위·품질 한계</b> ❌</td></tr>
+<tr><td>C. 타사 손실 통계</td><td>자산·통제·전략 환경이 <b>달라 직접 적용 불가</b> ❌</td></tr>
+<tr><td>D. 감사 통제 약점</td><td>관련 있으나 <b>모든 핵심 자산이 최근 감사되진 않음</b> — 불완전 ❌</td></tr>
+</table>
+<div class="sbox"><b>핵심 인사이트</b><br>
+• 정답 A: IT 리스크 평가 = <b>현재 자산·프로젝트의 위협 × 취약점</b> 평가(정성·정량)<br>
+• 함정 B·C: 과거·타사 손실은 <b>현재 환경·신규 위협을 반영 못 함</b><br>
+• 함정 D: 감사 약점은 부분적 — <b>전체 핵심 자산·전략 리스크 미포괄</b><br>
+• 시험 패턴: IT 리스크 평가 → <b>현재 자산·프로젝트 기반 위협·취약점 평가(과거/타사 통계 아님)</b></div>`,
+reference:"CRM Chapter 2: IT Risk Assessment — Threats & Vulnerabilities of Current Assets",
+keyConcepts:[
+"위협·취약점 평가(정답)|현재 IT 자산·프로젝트 기반 위협×취약점 평가(정성·정량)",
+"함정 B 과거 손실 경험|신규 위협·변화 반영 못 함 + 데이터 범위·품질 한계",
+"함정 C 타사 손실 통계|자산·통제·전략 환경이 달라 직접 적용 불가",
+"함정 D 감사 통제 약점|관련 있으나 모든 핵심 자산이 최근 감사되진 않음 — 불완전",
+"시험 패턴|IT 리스크 평가 → 현재 자산·프로젝트 기반 위협·취약점 평가(과거/타사 통계 아님)"
+]
 }
 
 ];
