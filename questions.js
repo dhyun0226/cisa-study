@@ -10986,6 +10986,45 @@ keyConcepts:[
 },
 
 // ============================================================
+// Q1070 - Corrective Control for Corrupt Data (DB)
+// ============================================================
+{
+id: 1070,
+domain: "4",
+ks: "4A1 Database Management",
+question: `응용 프로그램 감사 중, IS 감사인이 데이터베이스의 손상된 데이터(corrupt data)와 관련된 여러 문제를 발견했다. IS 감사인이 권고해야 할 시정 통제(corrective control)는?<br><small style="color:#94a3b8">During an application audit, the information systems (IS) auditor finds several problems related to corrupt data in the database. Which of the following is a corrective control that the IS auditor should recommend?</small>`,
+options: [
+  "표준을 정의하고, 준수 여부를 면밀히 모니터링한다.<br><small style='color:#94a3b8'>Define the standards, and closely monitor them for compliance.</small>",
+  "인가된 인원만 데이터베이스를 업데이트할 수 있도록 보장한다.<br><small style='color:#94a3b8'>Ensure that only authorized personnel can update the database.</small>",
+  "동시 접근(concurrent access) 문제를 처리할 통제를 수립한다.<br><small style='color:#94a3b8'>Establish controls to handle concurrent access problems.</small>",
+  "복원(restore) 절차를 진행한다.<br><small style='color:#94a3b8'>Proceed with restore procedures.</small>"
+],
+correct: 3,
+explanation: `<p><b>핵심: 질문이 콕 집어 "시정 통제(corrective)"를 물었다.</b> 손상된 데이터는 이미 발생한 문제이므로, 막거나(예방) 찾는(발견) 것이 아니라 <b>복구</b>해야 한다. 복원 절차는 DB를 마지막 정상(아카이브) 버전으로 되돌리므로 시정 통제다. → <b>D</b></p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0">
+<tr style="background:#1e293b;color:#e2e8f0"><th style="padding:8px;border:1px solid #334155">보기</th><th style="padding:8px;border:1px solid #334155">통제 유형</th><th style="padding:8px;border:1px solid #334155">판정</th></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">A. 표준 정의 + 준수 모니터링</td><td style="padding:8px;border:1px solid #ddd">예방 + 발견(혼합)</td><td style="padding:8px;border:1px solid #ddd">시정 아님 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">B. 인가자만 업데이트</td><td style="padding:8px;border:1px solid #ddd">예방(Preventive)</td><td style="padding:8px;border:1px solid #ddd">사전 차단 ✗</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">C. 동시 접근 통제</td><td style="padding:8px;border:1px solid #ddd">예방(Preventive)</td><td style="padding:8px;border:1px solid #ddd">사전 방지 ✗</td></tr>
+<tr style="background:#e8f5e9"><td style="padding:8px;border:1px solid #ddd"><b>D. 복원 절차 진행 ✔</b></td><td style="padding:8px;border:1px solid #ddd"><b>시정(Corrective)</b></td><td style="padding:8px;border:1px solid #ddd"><b>✔ 손상 → 마지막 정상본으로 복구</b></td></tr>
+</table>
+<div class="sbox"><b>🔧 통제 3유형 (질문이 유형을 지정하면 그 유형만 정답):</b><br>
+• <b>예방(Preventive):</b> 막음 — 인가·권한제한·표준수립·동시접근통제·교육·직무분리<br>
+• <b>발견(Detective):</b> 발견 — 모니터링·로그·검토·감사<br>
+• <b>시정(Corrective):</b> 복구 — <b>복원(restore)·롤백·재처리·백업에서 되돌림</b><br>
+• 키워드 "restore/recover/rollback" → 시정 통제<br>
+• A 함정: 한 보기에 예방+발견을 섞어도, 시정이 없으면 오답<br>
+• 이미 손상된 데이터 → 예방·발견 불가 → 복원(시정)만이 답</div>`,
+reference:"CRM Chapter 4: IS Operations — Control Types (Preventive/Detective/Corrective)",
+keyConcepts:[
+"시정 통제|이미 발생한 손상·오류를 복구 — 복원/롤백/재처리",
+"통제 3유형|예방(막음)·발견(찾음)·시정(복구) — 질문이 지정한 유형만 정답",
+"손상 데이터 대응|예방·발견 불가 → restore 절차(시정)로 마지막 정상본 복구",
+"A 함정|표준정의(예방)+모니터링(발견) 혼합 — 시정 없으면 오답"
+]
+},
+
+// ============================================================
 // Q305 - Primary Purpose of BIA
 // ============================================================
 {
@@ -24385,6 +24424,36 @@ keyConcepts:[
 }
 ,
 {
+id:1071,
+domain:"5",
+ks:"5A7 Public Key Infrastructure",
+question:"Which of the following would an information systems (IS) auditor consider a weakness when performing an audit of an enterprise that uses a public key infrastructure with digital certificates for its business-to-consumer transactions via the Internet?",
+questionKo:"인터넷을 통한 <b>B2C(기업-소비자) 거래</b>에 디지털 인증서를 사용하는 PKI 기업을 감사할 때, IS 감사인이 <b>약점(weakness)</b>으로 간주할 것은?",
+options:[
+"A. Customers are widely dispersed geographically, but the certificate (certification) authority (CA) are not.",
+"B. Customers can make their transactions from any computer or mobile device.",
+"C. The CA has several data processing subcenters to administer certificates.",
+"D. The enterprise is the owner of the CA."
+],
+optionsKo:[
+"A. 고객은 지리적으로 널리 분산돼 있으나 <b>CA는 그렇지 않다</b>",
+"B. 고객이 <b>어떤 컴퓨터·모바일 기기로든</b> 거래할 수 있다",
+"C. CA가 인증서 관리를 위해 <b>여러 데이터 처리 서브센터</b>를 둔다",
+"D. <b>기업이 CA의 소유자</b>이다"
+],
+correct:3,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>판정</th></tr></thead><tbody><tr><td><b>A</b></td><td>고객은 분산, CA는 단일</td><td>CA는 보통 단일이면 충분 — 지리적 분산 불필요. <b>약점 아님</b></td></tr><tr><td><b>B</b></td><td>어떤 기기로든 거래</td><td>PKI·인증서의 <b>장점</b>(유연한 보안 통신). 약점 아님</td></tr><tr><td><b>C</b></td><td>CA가 여러 서브센터 보유</td><td>이중화·페일오버로 <b>가용성 확보</b> — 정상. 약점 아님</td></tr><tr><td class="correct-cell"><b>D ✓</b></td><td class="correct-cell"><b>기업이 CA를 소유</b></td><td class="correct-cell">거래 당사자가 CA를 직접 소유 = <b>이해상충·신뢰 위험</b>. 등록·배포·폐기 통제 미비 시 인증서 위·변조·신뢰 상실</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — CA는 신뢰·독립이 생명</h4><ul><li>CA(인증기관) 관리는 <b>신뢰되고 안전한 절차</b>에 기반해야 함</li><li>거래 당사자(기업)가 CA를 소유하면 <b>"심판이 선수 겸업"</b> → 객관성·신뢰 훼손</li><li>등록(registration)·배포(distribution)·폐기(revocation) 통제가 없으면 <b>인증서 침해·신뢰 상실</b>로 직결</li><li>B2C 신뢰의 핵심은 <b>제3의 신뢰기관</b>이 인증서를 보증하는 것</li></ul><h4>오답이 약점이 아닌 이유</h4><ul><li><b>A</b>: 단일 CA가 일반적 — 지리적 분산은 요건 아님</li><li><b>B</b>: 다양한 기기 접근 = PKI의 강점(유연·안전)</li><li><b>C</b>: 서브센터·이중화 = 가용성·연속성 확보(정상 운영)</li></ul><h4>CISA 시험 포인트</h4><ul><li>CA 소유 주체 = <b>거래 당사자면 위험</b>(이해상충) → 약점</li><li>CA는 <b>독립적·신뢰된 제3자</b>여야 신뢰 성립</li><li>Q597(RA)·Q600(부인방지)·Q603(CA 위임) 연계 — PKI 신뢰 구조</li><li>"weakness" 키워드 → 신뢰·통제의 결함을 묻는 것</li></ul></div>`,
+reference:"CRM Chapter 5: PKI — Certificate Authority Trust and Independence",
+keyConcepts:[
+"CA 독립성|거래 당사자(기업)가 CA 소유 = 이해상충·신뢰 위험 → 약점",
+"CA 신뢰 기반|등록·배포·폐기 통제 필수 — 미비 시 인증서 침해·신뢰 상실",
+"단일 CA 일반적|지리적 분산 불필요 — A는 약점 아님",
+"PKI 장점|다양한 기기 접근(B)·서브센터 이중화(C) = 강점이지 약점 아님",
+"B2C 신뢰|제3의 신뢰기관이 인증서 보증 — 자가 소유 CA는 신뢰 약화"
+]
+}
+,
+{
 id:604,
 domain:"5",
 ks:"5A8 Cloud and Virtualized Environments",
@@ -24678,6 +24747,36 @@ keyConcepts:[
 "RCA 공유|근본 원인 분석 공유 의무 — 재발 방지",
 "SaaS 감사 영역|SLA·사고 처리·데이터 처리·접근 통제·준법 보고서",
 "concern 키워드|비정상·갭 있는 항목 선택 — 정상 특성은 자동 오답"
+]
+},
+
+{
+id:1072,
+domain:"5",
+ks:"5A8 Cloud and Virtualized Environments",
+question:"Which of the following is the MOST important security consideration to an enterprise that wants to move a business application to external cloud service (PaaS) provided by a vendor?",
+questionKo:"비즈니스 애플리케이션을 벤더가 제공하는 <b>외부 클라우드(PaaS)로 이전</b>하려는 기업에게 <b>가장 중요한 보안 고려사항</b>은?",
+options:[
+"A. Classification and categories of data processed by the application",
+"B. Cost of hosting the application internally versus externally",
+"C. Reputation of a vendor based on the market and feedback from clients",
+"D. Drop in application performance due to use of shared services"
+],
+optionsKo:[
+"A. 애플리케이션이 처리하는 <b>데이터의 분류·범주</b>",
+"B. 내부 vs 외부 <b>호스팅 비용</b>",
+"C. 시장·고객 피드백에 기반한 <b>벤더의 평판</b>",
+"D. 공유 서비스 사용으로 인한 <b>성능 저하</b>"
+],
+correct:0,
+explanation:`<div class="comparison-table"><table><thead><tr><th>보기</th><th>내용</th><th>판정</th></tr></thead><tbody><tr><td class="correct-cell"><b>A ✓</b></td><td class="correct-cell"><b>데이터의 분류·민감도</b></td><td class="correct-cell">개인·금융·의료 정보 등은 <b>호스팅·보호 수준에 법적 의무</b>가 따름. 가장 큰 위험 = <b>데이터 프라이버시 법규 위반</b> → 최우선</td></tr><tr><td><b>B</b></td><td>호스팅 비용</td><td>고려 요소지만, 최고 위험은 <b>법규 위반</b>. 비용은 부차적</td></tr><tr><td><b>C</b></td><td>벤더 평판</td><td>중요하나 법규 위반 위험보다 낮음</td></tr><tr><td><b>D</b></td><td>성능 저하</td><td>운영 요소일 뿐 — 법규 위반 위험에 비해 부차적</td></tr></tbody></table></div><div class="sbox"><h4>핵심 — 클라우드 이전 = "무슨 데이터를 보내나"부터</h4><ul><li>클라우드 이전 = 데이터가 <b>제3자(벤더) 환경</b>으로 이동</li><li>데이터의 <b>유형·민감도</b>에 따라 법적 의무(데이터 보호·호스팅 위치 규제)가 달라짐</li><li>개인정보·금융·의료 정보 = 강한 법적 보호 요구 → <b>분류부터 파악</b>해야 적정 통제 결정</li><li>가장 큰 위험 = <b>데이터 프라이버시 법규 위반</b>(GDPR 등)</li></ul><h4>왜 B·C·D가 아닌가</h4><ul><li>모두 클라우드 이전 시 고려할 <b>유효한 요소</b>지만</li><li>비용(B)·평판(C)·성능(D)은 <b>법규 위반 위험보다 낮은 순위</b></li><li>보안·준법 관점의 "MOST important"는 항상 <b>데이터 보호·법적 의무</b></li></ul><h4>CISA 시험 포인트</h4><ul><li>클라우드 이전 보안 1순위 = <b>데이터 분류·민감도</b> (Q1072 정답 A)</li><li>이번 세션 단골: <b>"데이터 분류·소유권부터"</b> 패턴과 일치</li><li>비용·평판·성능은 부차적 — 법규 위반이 최고 위험</li><li>Q604·Q607·Q611·Q1072 — 클라우드 데이터 거버넌스 시리즈</li></ul></div>`,
+reference:"CRM Chapter 5: Cloud Computing — Data Classification and Privacy Compliance",
+keyConcepts:[
+"데이터 분류 우선|클라우드 이전 시 데이터 유형·민감도가 최우선 — 법적 보호 의무 결정",
+"최고 위험|데이터 프라이버시 법규 위반(GDPR 등) — 비용·평판·성능보다 우선",
+"법적 의무|개인·금융·의료 정보 = 호스팅 위치·보호 수준 규제 대상",
+"부차적 요소|비용(B)·평판(C)·성능(D) = 유효하나 법규 위반보다 낮은 순위",
+"데이터 분류 패턴|보안 고려 1순위는 '무슨 데이터인지' 파악 — 소유권·분류부터"
 ]
 },
 
